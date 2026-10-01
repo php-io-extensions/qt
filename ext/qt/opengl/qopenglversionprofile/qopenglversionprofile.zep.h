@@ -1,0 +1,73 @@
+
+extern zend_class_entry *qt_opengl_qopenglversionprofile_qopenglversionprofile_ce;
+
+ZEPHIR_INIT_CLASS(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile);
+
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, new_);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, newQSurfaceFormat);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, newQOpenGLVersionProfile);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, version);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, setVersion);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, profile);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, setProfile);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, hasProfiles);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, isLegacyVersion);
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, isValid);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_newqsurfaceformat, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, format, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_newqopenglversionprofile, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_version, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_setversion, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, majorVersion, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, minorVersion, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_profile, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_setprofile, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, profile, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_hasprofiles, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_islegacyversion, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_opengl_qopenglversionprofile_qopenglversionprofile_method_entry) {
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, new_, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, newQSurfaceFormat, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_newqsurfaceformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, newQOpenGLVersionProfile, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_newqopenglversionprofile, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, version, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, setVersion, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_setversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, profile, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_profile, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, setProfile, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_setprofile, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, hasProfiles, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_hasprofiles, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, isLegacyVersion, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_islegacyversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVersionProfile_QOpenGLVersionProfile, isValid, arginfo_qt_opengl_qopenglversionprofile_qopenglversionprofile_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

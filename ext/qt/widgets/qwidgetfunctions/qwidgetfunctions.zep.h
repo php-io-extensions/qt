@@ -1,0 +1,15 @@
+
+extern zend_class_entry *qt_widgets_qwidgetfunctions_qwidgetfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QWidgetFunctions_QWidgetFunctions);
+
+PHP_METHOD(Qt_Widgets_QWidgetFunctions_QWidgetFunctions, qt_qwidget_data);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qwidgetfunctions_qwidgetfunctions_qt_qwidget_data, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, widget, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qwidgetfunctions_qwidgetfunctions_method_entry) {
+	PHP_ME(Qt_Widgets_QWidgetFunctions_QWidgetFunctions, qt_qwidget_data, arginfo_qt_widgets_qwidgetfunctions_qwidgetfunctions_qt_qwidget_data, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

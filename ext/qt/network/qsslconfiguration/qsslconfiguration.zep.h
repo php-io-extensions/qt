@@ -1,0 +1,431 @@
+
+extern zend_class_entry *qt_network_qsslconfiguration_qsslconfiguration_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QSslConfiguration_QSslConfiguration);
+
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, new_);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, newQSslConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, swap);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, isNull);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, protocol);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setProtocol);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, peerVerifyMode);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setPeerVerifyMode);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, peerVerifyDepth);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setPeerVerifyDepth);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, localCertificateChain);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setLocalCertificateChain);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, localCertificate);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setLocalCertificate);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, peerCertificate);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, peerCertificateChain);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, sessionCipher);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, sessionProtocol);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, privateKey);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setPrivateKey);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, ciphers);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setCiphers);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setCiphersQString);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, supportedCiphers);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, caCertificates);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setCaCertificates);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, addCaCertificates);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, addCaCertificate);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, addCaCertificatesQListQSslCertificate);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, systemCaCertificates);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setSslOption);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, testSslOption);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, sessionTicket);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setSessionTicket);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, sessionTicketLifeTimeHint);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, ephemeralServerKey);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, ellipticCurves);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setEllipticCurves);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, supportedEllipticCurves);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, preSharedKeyIdentityHint);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setPreSharedKeyIdentityHint);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, diffieHellmanParameters);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setDiffieHellmanParameters);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, backendConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setBackendConfigurationOption);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setBackendConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, defaultConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setDefaultConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, dtlsCookieVerificationEnabled);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setDtlsCookieVerificationEnabled);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, defaultDtlsConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setDefaultDtlsConfiguration);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, handshakeMustInterruptOnError);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setHandshakeMustInterruptOnError);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, missingCertificateIsFatal);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setMissingCertificateIsFatal);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setOcspStaplingEnabled);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, ocspStaplingEnabled);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, setAllowedNextProtocols);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, allowedNextProtocols);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, nextNegotiatedProtocol);
+PHP_METHOD(Qt_Network_QSslConfiguration_QSslConfiguration, nextProtocolNegotiationStatus);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_newqsslconfiguration, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_isnull, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_protocol, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setprotocol, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, protocol, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_peerverifymode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setpeerverifymode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, mode, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_peerverifydepth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setpeerverifydepth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, depth, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_localcertificatechain, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setlocalcertificatechain, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, localChain, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_localcertificate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setlocalcertificate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, certificate, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_peercertificate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_peercertificatechain, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessioncipher, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessionprotocol, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_privatekey, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setprivatekey, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_ciphers, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setciphers, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, ciphers, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setciphersqstring, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, ciphers, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_supportedciphers, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_cacertificates, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setcacertificates, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, certificates, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_addcacertificates, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, path, IS_STRING, 0)
+	ZEND_ARG_INFO(0, format)
+	ZEND_ARG_INFO(0, syntax)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_addcacertificate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, certificate, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_addcacertificatesqlistqsslcertificate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, certificates, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_systemcacertificates, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setssloption, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, option, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, on, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_testssloption, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, option, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessionticket, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setsessionticket, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sessionTicket, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessionticketlifetimehint, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_ephemeralserverkey, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_ellipticcurves, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setellipticcurves, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, curves, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_supportedellipticcurves, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_presharedkeyidentityhint, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setpresharedkeyidentityhint, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, hint, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_diffiehellmanparameters, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdiffiehellmanparameters, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dhparams, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_backendconfiguration, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setbackendconfigurationoption, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setbackendconfiguration, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, backendConfiguration)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_defaultconfiguration, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdefaultconfiguration, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, configuration, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_dtlscookieverificationenabled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdtlscookieverificationenabled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_defaultdtlsconfiguration, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdefaultdtlsconfiguration, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, configuration, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_handshakemustinterruptonerror, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_sethandshakemustinterruptonerror, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, interrupt, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_missingcertificateisfatal, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setmissingcertificateisfatal, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, cannotRecover, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setocspstaplingenabled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_ocspstaplingenabled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_setallowednextprotocols, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, protocols, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_allowednextprotocols, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_nextnegotiatedprotocol, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslconfiguration_qsslconfiguration_nextprotocolnegotiationstatus, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qsslconfiguration_qsslconfiguration_method_entry) {
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, new_, arginfo_qt_network_qsslconfiguration_qsslconfiguration_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, newQSslConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_newqsslconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, swap, arginfo_qt_network_qsslconfiguration_qsslconfiguration_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, isNull, arginfo_qt_network_qsslconfiguration_qsslconfiguration_isnull, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, protocol, arginfo_qt_network_qsslconfiguration_qsslconfiguration_protocol, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setProtocol, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setprotocol, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, peerVerifyMode, arginfo_qt_network_qsslconfiguration_qsslconfiguration_peerverifymode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setPeerVerifyMode, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setpeerverifymode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, peerVerifyDepth, arginfo_qt_network_qsslconfiguration_qsslconfiguration_peerverifydepth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setPeerVerifyDepth, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setpeerverifydepth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, localCertificateChain, arginfo_qt_network_qsslconfiguration_qsslconfiguration_localcertificatechain, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setLocalCertificateChain, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setlocalcertificatechain, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, localCertificate, arginfo_qt_network_qsslconfiguration_qsslconfiguration_localcertificate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setLocalCertificate, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setlocalcertificate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, peerCertificate, arginfo_qt_network_qsslconfiguration_qsslconfiguration_peercertificate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, peerCertificateChain, arginfo_qt_network_qsslconfiguration_qsslconfiguration_peercertificatechain, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, sessionCipher, arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessioncipher, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, sessionProtocol, arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessionprotocol, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, privateKey, arginfo_qt_network_qsslconfiguration_qsslconfiguration_privatekey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setPrivateKey, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setprivatekey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, ciphers, arginfo_qt_network_qsslconfiguration_qsslconfiguration_ciphers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setCiphers, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setciphers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setCiphersQString, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setciphersqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, supportedCiphers, arginfo_qt_network_qsslconfiguration_qsslconfiguration_supportedciphers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, caCertificates, arginfo_qt_network_qsslconfiguration_qsslconfiguration_cacertificates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setCaCertificates, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setcacertificates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, addCaCertificates, arginfo_qt_network_qsslconfiguration_qsslconfiguration_addcacertificates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, addCaCertificate, arginfo_qt_network_qsslconfiguration_qsslconfiguration_addcacertificate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, addCaCertificatesQListQSslCertificate, arginfo_qt_network_qsslconfiguration_qsslconfiguration_addcacertificatesqlistqsslcertificate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, systemCaCertificates, arginfo_qt_network_qsslconfiguration_qsslconfiguration_systemcacertificates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setSslOption, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setssloption, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, testSslOption, arginfo_qt_network_qsslconfiguration_qsslconfiguration_testssloption, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, sessionTicket, arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessionticket, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setSessionTicket, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setsessionticket, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, sessionTicketLifeTimeHint, arginfo_qt_network_qsslconfiguration_qsslconfiguration_sessionticketlifetimehint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, ephemeralServerKey, arginfo_qt_network_qsslconfiguration_qsslconfiguration_ephemeralserverkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, ellipticCurves, arginfo_qt_network_qsslconfiguration_qsslconfiguration_ellipticcurves, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setEllipticCurves, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setellipticcurves, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, supportedEllipticCurves, arginfo_qt_network_qsslconfiguration_qsslconfiguration_supportedellipticcurves, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, preSharedKeyIdentityHint, arginfo_qt_network_qsslconfiguration_qsslconfiguration_presharedkeyidentityhint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setPreSharedKeyIdentityHint, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setpresharedkeyidentityhint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, diffieHellmanParameters, arginfo_qt_network_qsslconfiguration_qsslconfiguration_diffiehellmanparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setDiffieHellmanParameters, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdiffiehellmanparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, backendConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_backendconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setBackendConfigurationOption, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setbackendconfigurationoption, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setBackendConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setbackendconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, defaultConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_defaultconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setDefaultConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdefaultconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, dtlsCookieVerificationEnabled, arginfo_qt_network_qsslconfiguration_qsslconfiguration_dtlscookieverificationenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setDtlsCookieVerificationEnabled, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdtlscookieverificationenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, defaultDtlsConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_defaultdtlsconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setDefaultDtlsConfiguration, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setdefaultdtlsconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, handshakeMustInterruptOnError, arginfo_qt_network_qsslconfiguration_qsslconfiguration_handshakemustinterruptonerror, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setHandshakeMustInterruptOnError, arginfo_qt_network_qsslconfiguration_qsslconfiguration_sethandshakemustinterruptonerror, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, missingCertificateIsFatal, arginfo_qt_network_qsslconfiguration_qsslconfiguration_missingcertificateisfatal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setMissingCertificateIsFatal, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setmissingcertificateisfatal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setOcspStaplingEnabled, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setocspstaplingenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, ocspStaplingEnabled, arginfo_qt_network_qsslconfiguration_qsslconfiguration_ocspstaplingenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, setAllowedNextProtocols, arginfo_qt_network_qsslconfiguration_qsslconfiguration_setallowednextprotocols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, allowedNextProtocols, arginfo_qt_network_qsslconfiguration_qsslconfiguration_allowednextprotocols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, nextNegotiatedProtocol, arginfo_qt_network_qsslconfiguration_qsslconfiguration_nextnegotiatedprotocol, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslConfiguration_QSslConfiguration, nextProtocolNegotiationStatus, arginfo_qt_network_qsslconfiguration_qsslconfiguration_nextprotocolnegotiationstatus, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

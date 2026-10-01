@@ -1,0 +1,41 @@
+
+extern zend_class_entry *qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface);
+
+PHP_METHOD(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, currentValue);
+PHP_METHOD(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, setCurrentValue);
+PHP_METHOD(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, maximumValue);
+PHP_METHOD(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, minimumValue);
+PHP_METHOD(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, minimumStepSize);
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_currentvalue, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_setcurrentvalue, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_maximumvalue, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_minimumvalue, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_minimumstepsize, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, currentValue, arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_currentvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, setCurrentValue, arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_setcurrentvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, maximumValue, arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_maximumvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, minimumValue, arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_minimumvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueInterface_QAccessibleValueInterface, minimumStepSize, arginfo_qt_gui_qaccessiblevalueinterface_qaccessiblevalueinterface_minimumstepsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

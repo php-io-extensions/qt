@@ -1,0 +1,99 @@
+
+extern zend_class_entry *qt_printsupport_qabstractprintdialog_qabstractprintdialog_ce;
+
+ZEPHIR_INIT_CLASS(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog);
+
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, staticMetaObject);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, tr);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, new_);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setOptionTabs);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setPrintRange);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, printRange);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setMinMax);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, minPage);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, maxPage);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setFromTo);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, fromPage);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, toPage);
+PHP_METHOD(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, printer);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printer, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setoptiontabs, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, tabs, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setprintrange, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, range, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_printrange, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setminmax, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, min, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, max, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_minpage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_maxpage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setfromto, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, fromPage, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, toPage, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_frompage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_topage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_printer, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_printsupport_qabstractprintdialog_qabstractprintdialog_method_entry) {
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, staticMetaObject, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, tr, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, new_, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setOptionTabs, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setoptiontabs, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setPrintRange, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setprintrange, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, printRange, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_printrange, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setMinMax, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setminmax, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, minPage, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_minpage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, maxPage, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_maxpage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, setFromTo, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_setfromto, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, fromPage, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_frompage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, toPage, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_topage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QAbstractPrintDialog_QAbstractPrintDialog, printer, arginfo_qt_printsupport_qabstractprintdialog_qabstractprintdialog_printer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

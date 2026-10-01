@@ -1,0 +1,59 @@
+
+extern zend_class_entry *qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo);
+
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, timerId);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, setTimerId);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, interval);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, setInterval);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, timerType);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, setTimerType);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, new_);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_timerid, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_settimerid, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_interval, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_setinterval, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_timertype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_settimertype, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_new_, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, id, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, i, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, t, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_method_entry) {
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, timerId, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_timerid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, setTimerId, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_settimerid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, interval, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_interval, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, setInterval, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_setinterval, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, timerType, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_timertype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, setTimerType, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_settimertype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherTimerInfo_QAbstractEventDispatcherTimerInfo, new_, arginfo_qt_core_qabstracteventdispatchertimerinfo_qabstracteventdispatchertimerinfo_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

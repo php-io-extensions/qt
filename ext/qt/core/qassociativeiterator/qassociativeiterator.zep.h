@@ -1,0 +1,15 @@
+
+extern zend_class_entry *qt_core_qassociativeiterator_qassociativeiterator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QAssociativeIterator_QAssociativeIterator);
+
+PHP_METHOD(Qt_Core_QAssociativeIterator_QAssociativeIterator, key);
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_core_qassociativeiterator_qassociativeiterator_key, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qassociativeiterator_qassociativeiterator_method_entry) {
+	PHP_ME(Qt_Core_QAssociativeIterator_QAssociativeIterator, key, arginfo_qt_core_qassociativeiterator_qassociativeiterator_key, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

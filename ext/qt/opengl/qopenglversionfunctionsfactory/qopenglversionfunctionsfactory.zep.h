@@ -1,0 +1,16 @@
+
+extern zend_class_entry *qt_opengl_qopenglversionfunctionsfactory_qopenglversionfunctionsfactory_ce;
+
+ZEPHIR_INIT_CLASS(Qt_OpenGL_QOpenGLVersionFunctionsFactory_QOpenGLVersionFunctionsFactory);
+
+PHP_METHOD(Qt_OpenGL_QOpenGLVersionFunctionsFactory_QOpenGLVersionFunctionsFactory, get);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglversionfunctionsfactory_qopenglversionfunctionsfactory_get, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, versionProfile)
+	ZEND_ARG_TYPE_INFO(0, context, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_opengl_qopenglversionfunctionsfactory_qopenglversionfunctionsfactory_method_entry) {
+	PHP_ME(Qt_OpenGL_QOpenGLVersionFunctionsFactory_QOpenGLVersionFunctionsFactory, get, arginfo_qt_opengl_qopenglversionfunctionsfactory_qopenglversionfunctionsfactory_get, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

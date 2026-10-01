@@ -1,0 +1,88 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, pos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, scenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, screenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, modifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setModifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, reason);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setReason);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, type)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_pos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_scenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_screenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_modifiers, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setmodifiers, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_reason, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setreason, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, reason, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, new_, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, pos, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_pos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setPos, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, scenePos, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_scenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setScenePos, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, screenPos, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_screenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setScreenPos, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, modifiers, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_modifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setModifiers, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, reason, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_reason, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneContextMenuEvent_QGraphicsSceneContextMenuEvent, setReason, arginfo_qt_widgets_qgraphicsscenecontextmenuevent_qgraphicsscenecontextmenuevent_setreason, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

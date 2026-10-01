@@ -1,0 +1,43 @@
+
+extern zend_class_entry *qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent);
+
+PHP_METHOD(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, new_);
+PHP_METHOD(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, newQAccessibleInterfaceQAccessibleState);
+PHP_METHOD(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, changedStates);
+PHP_METHOD(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, m_changedStates);
+PHP_METHOD(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, setM_changedStates);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_new_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, obj, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, state, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_newqaccessibleinterfaceqaccessiblestate, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, iface, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, state, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_changedstates, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_m_changedstates, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_setm_changedstates, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, new_, arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, newQAccessibleInterfaceQAccessibleState, arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_newqaccessibleinterfaceqaccessiblestate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, changedStates, arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_changedstates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, m_changedStates, arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_m_changedstates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleStateChangeEvent_QAccessibleStateChangeEvent, setM_changedStates, arginfo_qt_gui_qaccessiblestatechangeevent_qaccessiblestatechangeevent_setm_changedstates, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

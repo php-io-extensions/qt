@@ -1,0 +1,76 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, text);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setText);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, icon);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setIcon);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, position);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setPosition);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, selectedPosition);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setSelectedPosition);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, newQStyleOptionToolBox);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_icon, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_seticon, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_position, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_setposition, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_selectedposition, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_setselectedposition, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_newqstyleoptiontoolbox, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, text, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setText, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, icon, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_icon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setIcon, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_seticon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, position, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_position, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setPosition, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_setposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, selectedPosition, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_selectedposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, setSelectedPosition, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_setselectedposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, new_, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolBox_QStyleOptionToolBox, newQStyleOptionToolBox, arginfo_qt_widgets_qstyleoptiontoolbox_qstyleoptiontoolbox_newqstyleoptiontoolbox, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

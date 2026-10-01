@@ -1,0 +1,56 @@
+
+extern zend_class_entry *qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem);
+
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, new_);
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, pen);
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, setPen);
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, brush);
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, setBrush);
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, isObscuredBy);
+PHP_METHOD(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, opaqueArea);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_pen, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_setpen, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pen, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_brush, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_setbrush, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, brush, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_isobscuredby, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, item, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_opaquearea, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_method_entry) {
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, new_, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, pen, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_pen, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, setPen, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_setpen, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, brush, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_brush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, setBrush, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_setbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, isObscuredBy, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_isobscuredby, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QAbstractGraphicsShapeItem_QAbstractGraphicsShapeItem, opaqueArea, arginfo_qt_widgets_qabstractgraphicsshapeitem_qabstractgraphicsshapeitem_opaquearea, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,27 @@
+
+extern zend_class_entry *qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface);
+
+PHP_METHOD(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface, imageDescription);
+PHP_METHOD(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface, imageSize);
+PHP_METHOD(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface, imagePosition);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_imagedescription, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_imagesize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_imageposition, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface, imageDescription, arginfo_qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_imagedescription, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface, imageSize, arginfo_qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_imagesize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleImageInterface_QAccessibleImageInterface, imagePosition, arginfo_qt_gui_qaccessibleimageinterface_qaccessibleimageinterface_imageposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

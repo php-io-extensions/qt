@@ -1,0 +1,76 @@
+
+extern zend_class_entry *qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader);
+
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, NoteType);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, n_namesz);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setN_namesz);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, n_descsz);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setN_descsz);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, n_type);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setN_type);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, header);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setHeader);
+PHP_METHOD(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, new_);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_notetype, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_n_namesz, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setn_namesz, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_n_descsz, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setn_descsz, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_n_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setn_type, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_header, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setheader, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, payloadSize, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_method_entry) {
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, NoteType, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_notetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, n_namesz, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_n_namesz, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setN_namesz, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setn_namesz, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, n_descsz, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_n_descsz, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setN_descsz, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setn_descsz, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, n_type, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_n_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setN_type, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setn_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, header, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_header, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, setHeader, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_setheader, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataElfNoteHeader_QPluginMetaDataElfNoteHeader, new_, arginfo_qt_core_qpluginmetadataelfnoteheader_qpluginmetadataelfnoteheader_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

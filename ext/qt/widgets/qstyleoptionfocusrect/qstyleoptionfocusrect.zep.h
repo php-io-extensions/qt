@@ -1,0 +1,34 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, backgroundColor);
+PHP_METHOD(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, setBackgroundColor);
+PHP_METHOD(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, newQStyleOptionFocusRect);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_backgroundcolor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_setbackgroundcolor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_newqstyleoptionfocusrect, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, backgroundColor, arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_backgroundcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, setBackgroundColor, arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_setbackgroundcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, new_, arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionFocusRect_QStyleOptionFocusRect, newQStyleOptionFocusRect, arginfo_qt_widgets_qstyleoptionfocusrect_qstyleoptionfocusrect_newqstyleoptionfocusrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

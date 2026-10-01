@@ -1,0 +1,29 @@
+
+extern zend_class_entry *qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver);
+
+PHP_METHOD(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver, new_);
+PHP_METHOD(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver, resolveEntity);
+PHP_METHOD(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver, resolveUndeclaredEntity);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_resolveentity, 0, 3, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, publicId, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, systemId, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_resolveundeclaredentity, 0, 2, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_method_entry) {
+	PHP_ME(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver, new_, arginfo_qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver, resolveEntity, arginfo_qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_resolveentity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamEntityResolver_QXmlStreamEntityResolver, resolveUndeclaredEntity, arginfo_qt_core_qxmlstreamentityresolver_qxmlstreamentityresolver_resolveundeclaredentity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

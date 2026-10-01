@@ -1,0 +1,54 @@
+
+extern zend_class_entry *qt_core_qcontactspermission_qcontactspermission_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QContactsPermission_QContactsPermission);
+
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, staticMetaObject);
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, qt_check_for_QGADGET_macro);
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, setAccessMode);
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, accessMode);
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, new_);
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, newQContactsPermission);
+PHP_METHOD(Qt_Core_QContactsPermission_QContactsPermission, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_qt_check_for_qgadget_macro, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_setaccessmode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, mode, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_accessmode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_newqcontactspermission, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcontactspermission_qcontactspermission_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qcontactspermission_qcontactspermission_method_entry) {
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, staticMetaObject, arginfo_qt_core_qcontactspermission_qcontactspermission_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, qt_check_for_QGADGET_macro, arginfo_qt_core_qcontactspermission_qcontactspermission_qt_check_for_qgadget_macro, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, setAccessMode, arginfo_qt_core_qcontactspermission_qcontactspermission_setaccessmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, accessMode, arginfo_qt_core_qcontactspermission_qcontactspermission_accessmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, new_, arginfo_qt_core_qcontactspermission_qcontactspermission_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, newQContactsPermission, arginfo_qt_core_qcontactspermission_qcontactspermission_newqcontactspermission, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QContactsPermission_QContactsPermission, swap, arginfo_qt_core_qcontactspermission_qcontactspermission_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

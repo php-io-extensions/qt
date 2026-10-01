@@ -1,0 +1,57 @@
+
+extern zend_class_entry *qt_network_qdnslookupfunctions_qdnslookupfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QDnslookupFunctions_QDnslookupFunctions);
+
+PHP_METHOD(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swap);
+PHP_METHOD(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsHostAddressRecordQDnsHostAddressRecord);
+PHP_METHOD(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsMailExchangeRecordQDnsMailExchangeRecord);
+PHP_METHOD(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsServiceRecordQDnsServiceRecord);
+PHP_METHOD(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsTextRecordQDnsTextRecord);
+PHP_METHOD(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsTlsAssociationRecordQDnsTlsAssociationRecord);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnshostaddressrecordqdnshostaddressrecord, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnsmailexchangerecordqdnsmailexchangerecord, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnsservicerecordqdnsservicerecord, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnstextrecordqdnstextrecord, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnstlsassociationrecordqdnstlsassociationrecord, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qdnslookupfunctions_qdnslookupfunctions_method_entry) {
+	PHP_ME(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swap, arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsHostAddressRecordQDnsHostAddressRecord, arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnshostaddressrecordqdnshostaddressrecord, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsMailExchangeRecordQDnsMailExchangeRecord, arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnsmailexchangerecordqdnsmailexchangerecord, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsServiceRecordQDnsServiceRecord, arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnsservicerecordqdnsservicerecord, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsTextRecordQDnsTextRecord, arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnstextrecordqdnstextrecord, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDnslookupFunctions_QDnslookupFunctions, swapQDnsTlsAssociationRecordQDnsTlsAssociationRecord, arginfo_qt_network_qdnslookupfunctions_qdnslookupfunctions_swapqdnstlsassociationrecordqdnstlsassociationrecord, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

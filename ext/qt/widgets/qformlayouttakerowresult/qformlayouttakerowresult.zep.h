@@ -1,0 +1,37 @@
+
+extern zend_class_entry *qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult);
+
+PHP_METHOD(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, labelItem);
+PHP_METHOD(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, setLabelItem);
+PHP_METHOD(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, fieldItem);
+PHP_METHOD(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, setFieldItem);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_labelitem, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_setlabelitem, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_fielditem, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_setfielditem, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_method_entry) {
+	PHP_ME(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, labelItem, arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_labelitem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, setLabelItem, arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_setlabelitem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, fieldItem, arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_fielditem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QFormLayoutTakeRowResult_QFormLayoutTakeRowResult, setFieldItem, arginfo_qt_widgets_qformlayouttakerowresult_qformlayouttakerowresult_setfielditem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

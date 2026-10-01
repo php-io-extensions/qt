@@ -1,0 +1,146 @@
+
+extern zend_class_entry *qt_opengl_qopengldebuglogger_qopengldebuglogger_ce;
+
+ZEPHIR_INIT_CLASS(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger);
+
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, staticMetaObject);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, tr);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, new_);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, initialize);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, isLogging);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, loggingMode);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, maximumMessageLength);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, pushGroup);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, popGroup);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, enableMessages);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, enableMessagesQListUnsignedIntQOpenGLDebugMessageSourcesQOpenGLDebugMessageTypes);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, disableMessages);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, disableMessagesQListUnsignedIntQOpenGLDebugMessageSourcesQOpenGLDebugMessageTypes);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, loggedMessages);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, logMessage);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, startLogging);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, stopLogging);
+PHP_METHOD(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, messageLogged);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_initialize, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_islogging, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_loggingmode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_maximummessagelength, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_pushgroup, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, id, IS_LONG, 0)
+	ZEND_ARG_INFO(0, source)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_popgroup, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_enablemessages, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, sources)
+	ZEND_ARG_INFO(0, types)
+	ZEND_ARG_INFO(0, severities)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_enablemessagesqlistunsignedintqopengldebugmessagesourcesqopengldebugmessagetypes, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, ids, 0)
+	ZEND_ARG_INFO(0, sources)
+	ZEND_ARG_INFO(0, types)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_disablemessages, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, sources)
+	ZEND_ARG_INFO(0, types)
+	ZEND_ARG_INFO(0, severities)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_disablemessagesqlistunsignedintqopengldebugmessagesourcesqopengldebugmessagetypes, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, ids, 0)
+	ZEND_ARG_INFO(0, sources)
+	ZEND_ARG_INFO(0, types)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_loggedmessages, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_logmessage, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, debugMessage, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_startlogging, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, loggingMode)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_stoplogging, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_messagelogged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, debugMessage, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_opengl_qopengldebuglogger_qopengldebuglogger_method_entry) {
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, staticMetaObject, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, tr, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, new_, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, initialize, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_initialize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, isLogging, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_islogging, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, loggingMode, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_loggingmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, maximumMessageLength, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_maximummessagelength, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, pushGroup, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_pushgroup, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, popGroup, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_popgroup, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, enableMessages, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_enablemessages, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, enableMessagesQListUnsignedIntQOpenGLDebugMessageSourcesQOpenGLDebugMessageTypes, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_enablemessagesqlistunsignedintqopengldebugmessagesourcesqopengldebugmessagetypes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, disableMessages, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_disablemessages, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, disableMessagesQListUnsignedIntQOpenGLDebugMessageSourcesQOpenGLDebugMessageTypes, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_disablemessagesqlistunsignedintqopengldebugmessagesourcesqopengldebugmessagetypes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, loggedMessages, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_loggedmessages, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, logMessage, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_logmessage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, startLogging, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_startlogging, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, stopLogging, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_stoplogging, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLDebugLogger_QOpenGLDebugLogger, messageLogged, arginfo_qt_opengl_qopengldebuglogger_qopengldebuglogger_messagelogged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

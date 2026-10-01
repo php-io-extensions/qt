@@ -1,0 +1,26 @@
+
+extern zend_class_entry *qt_xml_qdomentityreference_qdomentityreference_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Xml_QDomEntityReference_QDomEntityReference);
+
+PHP_METHOD(Qt_Xml_QDomEntityReference_QDomEntityReference, new_);
+PHP_METHOD(Qt_Xml_QDomEntityReference_QDomEntityReference, newQDomEntityReference);
+PHP_METHOD(Qt_Xml_QDomEntityReference_QDomEntityReference, nodeType);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomentityreference_qdomentityreference_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomentityreference_qdomentityreference_newqdomentityreference, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, entityReference, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomentityreference_qdomentityreference_nodetype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_xml_qdomentityreference_qdomentityreference_method_entry) {
+	PHP_ME(Qt_Xml_QDomEntityReference_QDomEntityReference, new_, arginfo_qt_xml_qdomentityreference_qdomentityreference_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomEntityReference_QDomEntityReference, newQDomEntityReference, arginfo_qt_xml_qdomentityreference_qdomentityreference_newqdomentityreference, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomEntityReference_QDomEntityReference, nodeType, arginfo_qt_xml_qdomentityreference_qdomentityreference_nodetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,141 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, lineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setLineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, midLineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setMidLineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, shape);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setShape);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, tabBarSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setTabBarSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, rightCornerWidgetSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setRightCornerWidgetSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, leftCornerWidgetSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setLeftCornerWidgetSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, tabBarRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setTabBarRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, selectedTabRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setSelectedTabRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, newQStyleOptionTabWidgetFrame);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_linewidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setlinewidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_midlinewidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setmidlinewidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_shape, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setshape, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_tabbarsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_settabbarsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_rightcornerwidgetsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setrightcornerwidgetsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_leftcornerwidgetsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setleftcornerwidgetsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_tabbarrect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_settabbarrect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_selectedtabrect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setselectedtabrect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_newqstyleoptiontabwidgetframe, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, lineWidth, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_linewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setLineWidth, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setlinewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, midLineWidth, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_midlinewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setMidLineWidth, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setmidlinewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, shape, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_shape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setShape, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setshape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, tabBarSize, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_tabbarsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setTabBarSize, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_settabbarsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, rightCornerWidgetSize, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_rightcornerwidgetsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setRightCornerWidgetSize, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setrightcornerwidgetsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, leftCornerWidgetSize, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_leftcornerwidgetsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setLeftCornerWidgetSize, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setleftcornerwidgetsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, tabBarRect, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_tabbarrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setTabBarRect, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_settabbarrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, selectedTabRect, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_selectedtabrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, setSelectedTabRect, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_setselectedtabrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, new_, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabWidgetFrame_QStyleOptionTabWidgetFrame, newQStyleOptionTabWidgetFrame, arginfo_qt_widgets_qstyleoptiontabwidgetframe_qstyleoptiontabwidgetframe_newqstyleoptiontabwidgetframe, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

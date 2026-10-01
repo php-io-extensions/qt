@@ -1,0 +1,35 @@
+
+extern zend_class_entry *qt_core_qmetatypefunctions_qmetatypefunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMetatypeFunctions_QMetatypeFunctions);
+
+PHP_METHOD(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, qRegisterMetaType);
+PHP_METHOD(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, qHash);
+PHP_METHOD(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, qRegisterNormalizedMetaType_QPairVariantInterfaceImpl);
+PHP_METHOD(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, comparesEqual);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_qregistermetatype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, meta, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_qhash, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, type, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_qregisternormalizedmetatype_qpairvariantinterfaceimpl, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_comparesequal, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmetatypefunctions_qmetatypefunctions_method_entry) {
+	PHP_ME(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, qRegisterMetaType, arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_qregistermetatype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, qHash, arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_qhash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, qRegisterNormalizedMetaType_QPairVariantInterfaceImpl, arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_qregisternormalizedmetatype_qpairvariantinterfaceimpl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetatypeFunctions_QMetatypeFunctions, comparesEqual, arginfo_qt_core_qmetatypefunctions_qmetatypefunctions_comparesequal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

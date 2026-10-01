@@ -1,0 +1,14 @@
+
+extern zend_class_entry *qt_gui_qnativeinterfaceqx11application_qnativeinterfaceqx11application_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QNativeInterfaceQX11Application_QNativeInterfaceQX11Application);
+
+PHP_METHOD(Qt_Gui_QNativeInterfaceQX11Application_QNativeInterfaceQX11Application, new_);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qnativeinterfaceqx11application_qnativeinterfaceqx11application_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qnativeinterfaceqx11application_qnativeinterfaceqx11application_method_entry) {
+	PHP_ME(Qt_Gui_QNativeInterfaceQX11Application_QNativeInterfaceQX11Application, new_, arginfo_qt_gui_qnativeinterfaceqx11application_qnativeinterfaceqx11application_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

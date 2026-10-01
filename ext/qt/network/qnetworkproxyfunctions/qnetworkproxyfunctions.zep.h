@@ -1,0 +1,31 @@
+
+extern zend_class_entry *qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions);
+
+PHP_METHOD(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions, swap);
+PHP_METHOD(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions, swapQNetworkProxyQNetworkProxy);
+PHP_METHOD(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions, qRegisterNormalizedMetaType_QNetworkProxy);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_swapqnetworkproxyqnetworkproxy, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_qregisternormalizedmetatype_qnetworkproxy, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_method_entry) {
+	PHP_ME(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions, swap, arginfo_qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions, swapQNetworkProxyQNetworkProxy, arginfo_qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_swapqnetworkproxyqnetworkproxy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkproxyFunctions_QNetworkproxyFunctions, qRegisterNormalizedMetaType_QNetworkProxy, arginfo_qt_network_qnetworkproxyfunctions_qnetworkproxyfunctions_qregisternormalizedmetatype_qnetworkproxy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

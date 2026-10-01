@@ -1,0 +1,122 @@
+
+extern zend_class_entry *qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, newQStringQGraphicsItem);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, setText);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, text);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, setFont);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, font);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, boundingRect);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, shape);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, contains);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, paint);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, isObscuredBy);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, opaqueArea);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, type);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, supportsExtension);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, setExtension);
+PHP_METHOD(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, extension);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_newqstringqgraphicsitem, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_setfont, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, font, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_font, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_boundingrect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_shape, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_contains, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pointX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, pointY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_paint, 0, 4, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, painter, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, option, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, widget, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_isobscuredby, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, item, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_opaquearea, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_supportsextension, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, extension, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_setextension, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, extension, IS_LONG, 0)
+	ZEND_ARG_INFO(0, variant)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_extension, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, variant)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, new_, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, newQStringQGraphicsItem, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_newqstringqgraphicsitem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, setText, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, text, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, setFont, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_setfont, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, font, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_font, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, boundingRect, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_boundingrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, shape, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_shape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, contains, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_contains, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, paint, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_paint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, isObscuredBy, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_isobscuredby, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, opaqueArea, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_opaquearea, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, type, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, supportsExtension, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_supportsextension, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, setExtension, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_setextension, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSimpleTextItem_QGraphicsSimpleTextItem, extension, arginfo_qt_widgets_qgraphicssimpletextitem_qgraphicssimpletextitem_extension, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

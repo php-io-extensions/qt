@@ -1,0 +1,226 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, pos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, scenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, screenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttonDownPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtonDownPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttonDownScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtonDownScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttonDownScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtonDownScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, lastPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setLastPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, lastScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setLastScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, lastScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setLastScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttons);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtons);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, button);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButton);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, modifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setModifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, source);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setSource);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, flags);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setFlags);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, type)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_pos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_scenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_screenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttondownpos, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttondownpos, 0, 4, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttondownscenepos, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttondownscenepos, 0, 4, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttondownscreenpos, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttondownscreenpos, 0, 4, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_lastpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setlastpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_lastscenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setlastscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_lastscreenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setlastscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttons, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttons, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buttons, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_button, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbutton, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_modifiers, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setmodifiers, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_source, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setsource, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_flags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setflags, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, new_, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, pos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_pos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, scenePos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_scenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setScenePos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, screenPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_screenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setScreenPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttonDownPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttondownpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtonDownPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttondownpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttonDownScenePos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttondownscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtonDownScenePos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttondownscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttonDownScreenPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttondownscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtonDownScreenPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttondownscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, lastPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_lastpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setLastPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setlastpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, lastScenePos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_lastscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setLastScenePos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setlastscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, lastScreenPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_lastscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setLastScreenPos, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setlastscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, buttons, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_buttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButtons, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbuttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, button, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_button, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setButton, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setbutton, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, modifiers, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_modifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setModifiers, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, source, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_source, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setSource, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setsource, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, flags, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_flags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMouseEvent_QGraphicsSceneMouseEvent, setFlags, arginfo_qt_widgets_qgraphicsscenemouseevent_qgraphicsscenemouseevent_setflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

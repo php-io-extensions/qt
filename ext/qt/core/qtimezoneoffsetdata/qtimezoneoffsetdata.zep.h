@@ -1,0 +1,79 @@
+
+extern zend_class_entry *qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData);
+
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, abbreviation);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setAbbreviation);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, atUtc);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setAtUtc);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, offsetFromUtc);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setOffsetFromUtc);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, standardTimeOffset);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setStandardTimeOffset);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, daylightTimeOffset);
+PHP_METHOD(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setDaylightTimeOffset);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_abbreviation, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setabbreviation, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_atutc, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setatutc, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_offsetfromutc, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setoffsetfromutc, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_standardtimeoffset, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setstandardtimeoffset, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_daylighttimeoffset, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setdaylighttimeoffset, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_method_entry) {
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, abbreviation, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_abbreviation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setAbbreviation, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setabbreviation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, atUtc, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_atutc, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setAtUtc, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setatutc, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, offsetFromUtc, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_offsetfromutc, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setOffsetFromUtc, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setoffsetfromutc, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, standardTimeOffset, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_standardtimeoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setStandardTimeOffset, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setstandardtimeoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, daylightTimeOffset, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_daylighttimeoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTimeZoneOffsetData_QTimeZoneOffsetData, setDaylightTimeOffset, arginfo_qt_core_qtimezoneoffsetdata_qtimezoneoffsetdata_setdaylighttimeoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

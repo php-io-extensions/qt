@@ -1,0 +1,40 @@
+
+extern zend_class_entry *qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent);
+
+PHP_METHOD(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, new_);
+PHP_METHOD(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, clone_);
+PHP_METHOD(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, newQtWindowStatesBool);
+PHP_METHOD(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, oldState);
+PHP_METHOD(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, isOverride);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_clone_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_newqtwindowstatesbool, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, oldState, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, isOverride, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_oldstate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_isoverride, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_method_entry) {
+	PHP_ME(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, new_, arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, clone_, arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_clone_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, newQtWindowStatesBool, arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_newqtwindowstatesbool, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, oldState, arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_oldstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QWindowStateChangeEvent_QWindowStateChangeEvent, isOverride, arginfo_qt_gui_qwindowstatechangeevent_qwindowstatechangeevent_isoverride, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

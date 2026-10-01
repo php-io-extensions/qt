@@ -1,0 +1,54 @@
+
+extern zend_class_entry *qt_core_qbluetoothpermission_qbluetoothpermission_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QBluetoothPermission_QBluetoothPermission);
+
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, staticMetaObject);
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, qt_check_for_QGADGET_macro);
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, setCommunicationModes);
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, communicationModes);
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, new_);
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, newQBluetoothPermission);
+PHP_METHOD(Qt_Core_QBluetoothPermission_QBluetoothPermission, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_qt_check_for_qgadget_macro, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_setcommunicationmodes, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modes, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_communicationmodes, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_newqbluetoothpermission, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qbluetoothpermission_qbluetoothpermission_method_entry) {
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, staticMetaObject, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, qt_check_for_QGADGET_macro, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_qt_check_for_qgadget_macro, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, setCommunicationModes, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_setcommunicationmodes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, communicationModes, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_communicationmodes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, new_, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, newQBluetoothPermission, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_newqbluetoothpermission, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBluetoothPermission_QBluetoothPermission, swap, arginfo_qt_core_qbluetoothpermission_qbluetoothpermission_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

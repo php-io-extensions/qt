@@ -1,0 +1,82 @@
+
+extern zend_class_entry *qt_core_qrandomgenerator64_qrandomgenerator64_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QRandomGenerator64_QRandomGenerator64);
+
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, generate);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, generate2);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, new_);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, newQuint32Qsizetype);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, newQuint32Quint32);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, newQRandomGenerator);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, discard);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, min);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, max);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, system);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, global_);
+PHP_METHOD(Qt_Core_QRandomGenerator64_QRandomGenerator64, securelySeeded);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_generate, 0, 3, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, begin)
+	ZEND_ARG_INFO(0, end)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_generate2, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seedValue, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_newquint32qsizetype, 0, 2, IS_LONG, 0)
+	ZEND_ARG_INFO(0, seedBuffer)
+	ZEND_ARG_TYPE_INFO(0, len, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_newquint32quint32, 0, 2, IS_LONG, 0)
+	ZEND_ARG_INFO(0, begin)
+	ZEND_ARG_INFO(0, end)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_newqrandomgenerator, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_discard, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, z, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_min, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_max, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_system, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_global_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_securelyseeded, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qrandomgenerator64_qrandomgenerator64_method_entry) {
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, generate, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_generate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, generate2, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_generate2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, new_, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, newQuint32Qsizetype, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_newquint32qsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, newQuint32Quint32, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_newquint32quint32, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, newQRandomGenerator, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_newqrandomgenerator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, discard, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_discard, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, min, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_min, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, max, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_max, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, system, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_system, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, global_, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_global_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRandomGenerator64_QRandomGenerator64, securelySeeded, arginfo_qt_core_qrandomgenerator64_qrandomgenerator64_securelyseeded, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,37 @@
+
+extern zend_class_entry *qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters);
+
+PHP_METHOD(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, flags);
+PHP_METHOD(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, setFlags);
+PHP_METHOD(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, lowestFileDescriptorToClose);
+PHP_METHOD(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, setLowestFileDescriptorToClose);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_flags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_setflags, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_lowestfiledescriptortoclose, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_setlowestfiledescriptortoclose, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_method_entry) {
+	PHP_ME(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, flags, arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_flags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, setFlags, arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_setflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, lowestFileDescriptorToClose, arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_lowestfiledescriptortoclose, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QProcessUnixProcessParameters_QProcessUnixProcessParameters, setLowestFileDescriptorToClose, arginfo_qt_core_qprocessunixprocessparameters_qprocessunixprocessparameters_setlowestfiledescriptortoclose, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

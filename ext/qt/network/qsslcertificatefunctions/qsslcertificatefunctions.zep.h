@@ -1,0 +1,30 @@
+
+extern zend_class_entry *qt_network_qsslcertificatefunctions_qsslcertificatefunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions);
+
+PHP_METHOD(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions, qHash);
+PHP_METHOD(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions, swap);
+PHP_METHOD(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions, qRegisterNormalizedMetaType_QSslCertificate);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificatefunctions_qsslcertificatefunctions_qhash, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificatefunctions_qsslcertificatefunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificatefunctions_qsslcertificatefunctions_qregisternormalizedmetatype_qsslcertificate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qsslcertificatefunctions_qsslcertificatefunctions_method_entry) {
+	PHP_ME(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions, qHash, arginfo_qt_network_qsslcertificatefunctions_qsslcertificatefunctions_qhash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions, swap, arginfo_qt_network_qsslcertificatefunctions_qsslcertificatefunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslcertificateFunctions_QSslcertificateFunctions, qRegisterNormalizedMetaType_QSslCertificate, arginfo_qt_network_qsslcertificatefunctions_qsslcertificatefunctions_qregisternormalizedmetatype_qsslcertificate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

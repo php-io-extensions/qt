@@ -1,0 +1,74 @@
+
+extern zend_class_entry *qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent);
+
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, new_);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, newQAccessibleInterfaceIntInt);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, setSelection);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, selectionStart);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, selectionEnd);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, m_selectionStart);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, setM_selectionStart);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, m_selectionEnd);
+PHP_METHOD(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, setM_selectionEnd);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_new_, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, obj, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, start, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, end, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_newqaccessibleinterfaceintint, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, iface, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, start, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, end, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_setselection, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, start, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, end, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_selectionstart, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_selectionend, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_m_selectionstart, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_setm_selectionstart, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_m_selectionend, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_setm_selectionend, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, new_, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, newQAccessibleInterfaceIntInt, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_newqaccessibleinterfaceintint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, setSelection, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_setselection, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, selectionStart, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_selectionstart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, selectionEnd, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_selectionend, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, m_selectionStart, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_m_selectionstart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, setM_selectionStart, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_setm_selectionstart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, m_selectionEnd, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_m_selectionend, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextSelectionEvent_QAccessibleTextSelectionEvent, setM_selectionEnd, arginfo_qt_gui_qaccessibletextselectionevent_qaccessibletextselectionevent_setm_selectionend, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

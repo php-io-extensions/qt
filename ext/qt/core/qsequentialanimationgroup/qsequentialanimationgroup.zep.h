@@ -1,0 +1,95 @@
+
+extern zend_class_entry *qt_core_qsequentialanimationgroup_qsequentialanimationgroup_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup);
+
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, staticMetaObject);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, tr);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, new_);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, addPause);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, insertPause);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, currentAnimation);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, duration);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, currentAnimationChanged);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, event);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, updateCurrentTime);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, updateState);
+PHP_METHOD(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, updateDirection);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_addpause, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, msecs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_insertpause, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, msecs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_currentanimation, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_duration, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_currentanimationchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, current, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_event, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, event, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_updatecurrenttime, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_updatestate, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, newState, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, oldState, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_updatedirection, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, direction, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qsequentialanimationgroup_qsequentialanimationgroup_method_entry) {
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, staticMetaObject, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, tr, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, new_, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, addPause, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_addpause, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, insertPause, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_insertpause, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, currentAnimation, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_currentanimation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, duration, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_duration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, currentAnimationChanged, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_currentanimationchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, event, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_event, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, updateCurrentTime, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_updatecurrenttime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, updateState, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_updatestate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QSequentialAnimationGroup_QSequentialAnimationGroup, updateDirection, arginfo_qt_core_qsequentialanimationgroup_qsequentialanimationgroup_updatedirection, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

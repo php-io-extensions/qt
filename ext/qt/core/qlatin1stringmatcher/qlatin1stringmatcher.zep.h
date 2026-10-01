@@ -1,0 +1,65 @@
+
+extern zend_class_entry *qt_core_qlatin1stringmatcher_qlatin1stringmatcher_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher);
+
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, new_);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, newQLatin1StringViewQtCaseSensitivity);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, setPattern);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, pattern);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, setCaseSensitivity);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, caseSensitivity);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, indexIn);
+PHP_METHOD(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, indexInQStringViewQsizetype);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_newqlatin1stringviewqtcasesensitivity, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pattern, IS_STRING, 0)
+	ZEND_ARG_INFO(0, cs)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_setpattern, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pattern, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_pattern, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_setcasesensitivity, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, cs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_casesensitivity, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_indexin, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, haystack, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, from, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_indexinqstringviewqsizetype, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, haystack, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, from, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qlatin1stringmatcher_qlatin1stringmatcher_method_entry) {
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, new_, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, newQLatin1StringViewQtCaseSensitivity, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_newqlatin1stringviewqtcasesensitivity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, setPattern, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_setpattern, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, pattern, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_pattern, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, setCaseSensitivity, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_setcasesensitivity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, caseSensitivity, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_casesensitivity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, indexIn, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_indexin, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QLatin1StringMatcher_QLatin1StringMatcher, indexInQStringViewQsizetype, arginfo_qt_core_qlatin1stringmatcher_qlatin1stringmatcher_indexinqstringviewqsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

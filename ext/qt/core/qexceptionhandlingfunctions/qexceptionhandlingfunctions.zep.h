@@ -1,0 +1,14 @@
+
+extern zend_class_entry *qt_core_qexceptionhandlingfunctions_qexceptionhandlingfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QExceptionhandlingFunctions_QExceptionhandlingFunctions);
+
+PHP_METHOD(Qt_Core_QExceptionhandlingFunctions_QExceptionhandlingFunctions, qTerminate);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qexceptionhandlingfunctions_qexceptionhandlingfunctions_qterminate, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qexceptionhandlingfunctions_qexceptionhandlingfunctions_method_entry) {
+	PHP_ME(Qt_Core_QExceptionhandlingFunctions_QExceptionhandlingFunctions, qTerminate, arginfo_qt_core_qexceptionhandlingfunctions_qexceptionhandlingfunctions_qterminate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

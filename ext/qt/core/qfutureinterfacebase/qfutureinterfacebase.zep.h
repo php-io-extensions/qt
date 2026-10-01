@@ -1,0 +1,338 @@
+
+extern zend_class_entry *qt_core_qfutureinterfacebase_qfutureinterfacebase_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase);
+
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, new_);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, newQFutureInterfaceBase);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportStarted);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportFinished);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportCanceled);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportException);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportResultsReady);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setRunnable);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setThreadPool);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, threadPool);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setFilterMode);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setProgressRange);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressMinimum);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressMaximum);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isProgressUpdateNeeded);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setProgressValue);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressValue);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setProgressValueAndText);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressText);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setExpectedResultCount);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, expectedResultCount);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, resultCount);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, queryState);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isRunning);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isStarted);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isCanceled);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isFinished);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isSuspending);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isSuspended);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isThrottled);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isResultReadyAt);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isValid);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, loadState);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, cancel);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, cancelAndFinish);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setSuspended);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, toggleSuspended);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportSuspended);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setThrottled);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForFinished);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForNextResult);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForResult);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForResume);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, suspendIfRequested);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, mutex);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, hasException);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, swap);
+PHP_METHOD(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isChainCanceled);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, initialState)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_newqfutureinterfacebase, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportstarted, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportfinished, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportcanceled, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportexception, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, e, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportresultsready, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, beginIndex, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, endIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setrunnable, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, runnable, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setthreadpool, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pool, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_threadpool, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setfiltermode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setprogressrange, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, minimum, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, maximum, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progressminimum, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progressmaximum, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isprogressupdateneeded, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setprogressvalue, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, progressValue, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progressvalue, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setprogressvalueandtext, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, progressValue, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, progressText, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progresstext, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setexpectedresultcount, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, resultCount, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_expectedresultcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_resultcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_querystate, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, state, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isrunning, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isstarted, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_iscanceled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isfinished, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_issuspending, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_issuspended, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isthrottled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isresultreadyat, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_loadstate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_cancel, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_cancelandfinish, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setsuspended, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, suspend, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_togglesuspended, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportsuspended, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setthrottled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitforfinished, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitfornextresult, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitforresult, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, resultIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitforresume, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_suspendifrequested, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_mutex, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_hasexception, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_ischaincanceled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qfutureinterfacebase_qfutureinterfacebase_method_entry) {
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, new_, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, newQFutureInterfaceBase, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_newqfutureinterfacebase, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportStarted, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportstarted, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportFinished, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportfinished, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportCanceled, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportcanceled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportException, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportexception, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportResultsReady, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportresultsready, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setRunnable, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setrunnable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setThreadPool, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setthreadpool, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, threadPool, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_threadpool, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setFilterMode, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setfiltermode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setProgressRange, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setprogressrange, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressMinimum, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progressminimum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressMaximum, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progressmaximum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isProgressUpdateNeeded, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isprogressupdateneeded, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setProgressValue, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setprogressvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressValue, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progressvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setProgressValueAndText, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setprogressvalueandtext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, progressText, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_progresstext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setExpectedResultCount, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setexpectedresultcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, expectedResultCount, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_expectedresultcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, resultCount, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_resultcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, queryState, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_querystate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isRunning, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isrunning, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isStarted, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isstarted, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isCanceled, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_iscanceled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isFinished, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isfinished, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isSuspending, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_issuspending, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isSuspended, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_issuspended, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isThrottled, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isthrottled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isResultReadyAt, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isresultreadyat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isValid, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, loadState, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_loadstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, cancel, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_cancel, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, cancelAndFinish, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_cancelandfinish, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setSuspended, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setsuspended, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, toggleSuspended, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_togglesuspended, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, reportSuspended, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_reportsuspended, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, setThrottled, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_setthrottled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForFinished, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitforfinished, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForNextResult, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitfornextresult, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForResult, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitforresult, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, waitForResume, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_waitforresume, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, suspendIfRequested, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_suspendifrequested, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, mutex, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_mutex, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, hasException, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_hasexception, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, swap, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFutureInterfaceBase_QFutureInterfaceBase, isChainCanceled, arginfo_qt_core_qfutureinterfacebase_qfutureinterfacebase_ischaincanceled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

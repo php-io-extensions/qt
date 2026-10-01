@@ -1,0 +1,29 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions);
+
+PHP_METHOD(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions, qRegisterNormalizedMetaType_QGraphicsItem_ptr);
+PHP_METHOD(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions, qt_closestItemFirst);
+PHP_METHOD(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions, qt_closestLeaf);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_qregisternormalizedmetatype_qgraphicsitem_ptr, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_qt_closestitemfirst, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_qt_closestleaf, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions, qRegisterNormalizedMetaType_QGraphicsItem_ptr, arginfo_qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_qregisternormalizedmetatype_qgraphicsitem_ptr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions, qt_closestItemFirst, arginfo_qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_qt_closestitemfirst, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsitemFunctions_QGraphicsitemFunctions, qt_closestLeaf, arginfo_qt_widgets_qgraphicsitemfunctions_qgraphicsitemfunctions_qt_closestleaf, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

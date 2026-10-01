@@ -1,0 +1,50 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, subControls);
+PHP_METHOD(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, setSubControls);
+PHP_METHOD(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, activeSubControls);
+PHP_METHOD(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, setActiveSubControls);
+PHP_METHOD(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, newQStyleOptionComplex);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_subcontrols, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_setsubcontrols, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_activesubcontrols, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_setactivesubcontrols, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, version)
+	ZEND_ARG_INFO(0, type)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_newqstyleoptioncomplex, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, subControls, arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_subcontrols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, setSubControls, arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_setsubcontrols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, activeSubControls, arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_activesubcontrols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, setActiveSubControls, arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_setactivesubcontrols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, new_, arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComplex_QStyleOptionComplex, newQStyleOptionComplex, arginfo_qt_widgets_qstyleoptioncomplex_qstyleoptioncomplex_newqstyleoptioncomplex, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

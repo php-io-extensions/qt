@@ -1,0 +1,82 @@
+
+extern zend_class_entry *qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute);
+
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, new_);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, newQInputMethodEventAttributeTypeIntInt);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, type);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setType);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, start);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setStart);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, length);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setLength);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, value);
+PHP_METHOD(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setValue);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_new_, 0, 4, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, typ, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, s, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, l, IS_LONG, 0)
+	ZEND_ARG_INFO(0, val)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_newqinputmethodeventattributetypeintint, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, typ, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, s, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, l, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_settype, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_start, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_setstart, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_length, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_setlength, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_value, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_setvalue, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_method_entry) {
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, new_, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, newQInputMethodEventAttributeTypeIntInt, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_newqinputmethodeventattributetypeintint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, type, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setType, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_settype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, start, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_start, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setStart, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_setstart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, length, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_length, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setLength, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_setlength, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, value, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodEventAttribute_QInputMethodEventAttribute, setValue, arginfo_qt_gui_qinputmethodeventattribute_qinputmethodeventattribute_setvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

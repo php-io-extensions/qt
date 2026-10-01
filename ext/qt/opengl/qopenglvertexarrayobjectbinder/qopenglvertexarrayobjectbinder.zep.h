@@ -1,0 +1,29 @@
+
+extern zend_class_entry *qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_ce;
+
+ZEPHIR_INIT_CLASS(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder);
+
+PHP_METHOD(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder, new_);
+PHP_METHOD(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder, release);
+PHP_METHOD(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder, rebind);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_release, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_rebind, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_method_entry) {
+	PHP_ME(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder, new_, arginfo_qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder, release, arginfo_qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_release, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLVertexArrayObjectBinder_QOpenGLVertexArrayObjectBinder, rebind, arginfo_qt_opengl_qopenglvertexarrayobjectbinder_qopenglvertexarrayobjectbinder_rebind, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

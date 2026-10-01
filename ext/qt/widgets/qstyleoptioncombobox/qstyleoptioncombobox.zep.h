@@ -1,0 +1,122 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, editable);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setEditable);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, popupRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setPopupRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, frame);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setFrame);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, currentText);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setCurrentText);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, currentIcon);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setCurrentIcon);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, iconSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setIconSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, textAlignment);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setTextAlignment);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, newQStyleOptionComboBox);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_editable, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_seteditable, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_popuprect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setpopuprect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_frame, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setframe, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_currenttext, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setcurrenttext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_currenticon, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setcurrenticon, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_iconsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_seticonsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_textalignment, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_settextalignment, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_newqstyleoptioncombobox, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, editable, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_editable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setEditable, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_seteditable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, popupRect, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_popuprect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setPopupRect, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setpopuprect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, frame, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_frame, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setFrame, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setframe, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, currentText, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_currenttext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setCurrentText, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setcurrenttext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, currentIcon, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_currenticon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setCurrentIcon, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_setcurrenticon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, iconSize, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_iconsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setIconSize, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_seticonsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, textAlignment, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_textalignment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, setTextAlignment, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_settextalignment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, new_, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionComboBox_QStyleOptionComboBox, newQStyleOptionComboBox, arginfo_qt_widgets_qstyleoptioncombobox_qstyleoptioncombobox_newqstyleoptioncombobox, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

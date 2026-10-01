@@ -1,0 +1,184 @@
+
+extern zend_class_entry *qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel);
+
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, staticMetaObject);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, tr);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, new_);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, sourceModels);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, addSourceModel);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, removeSourceModel);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mapFromSource);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mapToSource);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, data);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, setData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, itemData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, setItemData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, flags);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, index);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, parent_);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, rowCount);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, headerData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, columnCount);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mimeTypes);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mimeData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, canDropMimeData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, dropMimeData);
+PHP_METHOD(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, span);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_sourcemodels, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_addsourcemodel, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceModel, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_removesourcemodel, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceModel, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_mapfromsource, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_maptosource, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, proxyIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_data, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+	ZEND_ARG_INFO(0, role)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_setdata, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+	ZEND_ARG_INFO(0, role)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_itemdata, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, proxyIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_setitemdata, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, roles, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_flags, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_index, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_INFO(0, parent_)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_parent_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_rowcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, parent_)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_headerdata, 0, 0, 3)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, section, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, orientation, IS_LONG, 0)
+	ZEND_ARG_INFO(0, role)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_columncount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, parent_)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_mimetypes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_mimedata, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, indexes, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_candropmimedata, 0, 6, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, action, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_dropmimedata, 0, 6, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, action, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_span, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_method_entry) {
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, staticMetaObject, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, tr, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, new_, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, sourceModels, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_sourcemodels, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, addSourceModel, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_addsourcemodel, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, removeSourceModel, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_removesourcemodel, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mapFromSource, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_mapfromsource, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mapToSource, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_maptosource, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, data, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_data, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, setData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_setdata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, itemData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_itemdata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, setItemData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_setitemdata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, flags, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_flags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, index, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_index, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, parent_, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_parent_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, rowCount, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_rowcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, headerData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_headerdata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, columnCount, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_columncount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mimeTypes, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_mimetypes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, mimeData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_mimedata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, canDropMimeData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_candropmimedata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, dropMimeData, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_dropmimedata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QConcatenateTablesProxyModel_QConcatenateTablesProxyModel, span, arginfo_qt_core_qconcatenatetablesproxymodel_qconcatenatetablesproxymodel_span, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

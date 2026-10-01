@@ -1,0 +1,37 @@
+
+extern zend_class_entry *qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface);
+
+PHP_METHOD(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface, deleteText);
+PHP_METHOD(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface, insertText);
+PHP_METHOD(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface, replaceText);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_deletetext, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, startOffset, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, endOffset, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_inserttext, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, offset, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_replacetext, 0, 4, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, startOffset, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, endOffset, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface, deleteText, arginfo_qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_deletetext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface, insertText, arginfo_qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_inserttext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleEditableTextInterface_QAccessibleEditableTextInterface, replaceText, arginfo_qt_gui_qaccessibleeditabletextinterface_qaccessibleeditabletextinterface_replacetext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

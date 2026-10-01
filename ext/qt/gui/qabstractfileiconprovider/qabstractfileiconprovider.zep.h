@@ -1,0 +1,49 @@
+
+extern zend_class_entry *qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider);
+
+PHP_METHOD(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, new_);
+PHP_METHOD(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, icon);
+PHP_METHOD(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, iconQFileInfo);
+PHP_METHOD(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, type);
+PHP_METHOD(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, setOptions);
+PHP_METHOD(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, options);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_icon, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_iconqfileinfo, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_type, 0, 2, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_setoptions, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_options, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_method_entry) {
+	PHP_ME(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, new_, arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, icon, arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_icon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, iconQFileInfo, arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_iconqfileinfo, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, type, arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, setOptions, arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_setoptions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAbstractFileIconProvider_QAbstractFileIconProvider, options, arginfo_qt_gui_qabstractfileiconprovider_qabstractfileiconprovider_options, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

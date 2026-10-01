@@ -1,0 +1,30 @@
+
+extern zend_class_entry *qt_network_qocspresponsefunctions_qocspresponsefunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions);
+
+PHP_METHOD(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions, qHash);
+PHP_METHOD(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions, swap);
+PHP_METHOD(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions, qRegisterNormalizedMetaType_QOcspResponse);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qocspresponsefunctions_qocspresponsefunctions_qhash, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, response, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qocspresponsefunctions_qocspresponsefunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qocspresponsefunctions_qocspresponsefunctions_qregisternormalizedmetatype_qocspresponse, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qocspresponsefunctions_qocspresponsefunctions_method_entry) {
+	PHP_ME(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions, qHash, arginfo_qt_network_qocspresponsefunctions_qocspresponsefunctions_qhash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions, swap, arginfo_qt_network_qocspresponsefunctions_qocspresponsefunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QOcspresponseFunctions_QOcspresponseFunctions, qRegisterNormalizedMetaType_QOcspResponse, arginfo_qt_network_qocspresponsefunctions_qocspresponsefunctions_qregisternormalizedmetatype_qocspresponse, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

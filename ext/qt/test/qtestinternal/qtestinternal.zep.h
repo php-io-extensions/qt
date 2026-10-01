@@ -1,0 +1,29 @@
+
+extern zend_class_entry *qt_test_qtestinternal_qtestinternal_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Test_QTestInternal_QTestInternal);
+
+PHP_METHOD(Qt_Test_QTestInternal_QTestInternal, throwOnFail);
+PHP_METHOD(Qt_Test_QTestInternal_QTestInternal, throwOnSkip);
+PHP_METHOD(Qt_Test_QTestInternal_QTestInternal, maybeThrowOnFail);
+PHP_METHOD(Qt_Test_QTestInternal_QTestInternal, maybeThrowOnSkip);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qtestinternal_qtestinternal_throwonfail, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qtestinternal_qtestinternal_throwonskip, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qtestinternal_qtestinternal_maybethrowonfail, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qtestinternal_qtestinternal_maybethrowonskip, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_test_qtestinternal_qtestinternal_method_entry) {
+	PHP_ME(Qt_Test_QTestInternal_QTestInternal, throwOnFail, arginfo_qt_test_qtestinternal_qtestinternal_throwonfail, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QTestInternal_QTestInternal, throwOnSkip, arginfo_qt_test_qtestinternal_qtestinternal_throwonskip, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QTestInternal_QTestInternal, maybeThrowOnFail, arginfo_qt_test_qtestinternal_qtestinternal_maybethrowonfail, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QTestInternal_QTestInternal, maybeThrowOnSkip, arginfo_qt_test_qtestinternal_qtestinternal_maybethrowonskip, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

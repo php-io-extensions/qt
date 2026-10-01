@@ -1,0 +1,42 @@
+
+extern zend_class_entry *qt_network_qhttp1configuration_qhttp1configuration_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QHttp1Configuration_QHttp1Configuration);
+
+PHP_METHOD(Qt_Network_QHttp1Configuration_QHttp1Configuration, new_);
+PHP_METHOD(Qt_Network_QHttp1Configuration_QHttp1Configuration, newQHttp1Configuration);
+PHP_METHOD(Qt_Network_QHttp1Configuration_QHttp1Configuration, setNumberOfConnectionsPerHost);
+PHP_METHOD(Qt_Network_QHttp1Configuration_QHttp1Configuration, numberOfConnectionsPerHost);
+PHP_METHOD(Qt_Network_QHttp1Configuration_QHttp1Configuration, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp1configuration_qhttp1configuration_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp1configuration_qhttp1configuration_newqhttp1configuration, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp1configuration_qhttp1configuration_setnumberofconnectionsperhost, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, amount, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp1configuration_qhttp1configuration_numberofconnectionsperhost, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp1configuration_qhttp1configuration_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qhttp1configuration_qhttp1configuration_method_entry) {
+	PHP_ME(Qt_Network_QHttp1Configuration_QHttp1Configuration, new_, arginfo_qt_network_qhttp1configuration_qhttp1configuration_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp1Configuration_QHttp1Configuration, newQHttp1Configuration, arginfo_qt_network_qhttp1configuration_qhttp1configuration_newqhttp1configuration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp1Configuration_QHttp1Configuration, setNumberOfConnectionsPerHost, arginfo_qt_network_qhttp1configuration_qhttp1configuration_setnumberofconnectionsperhost, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp1Configuration_QHttp1Configuration, numberOfConnectionsPerHost, arginfo_qt_network_qhttp1configuration_qhttp1configuration_numberofconnectionsperhost, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp1Configuration_QHttp1Configuration, swap, arginfo_qt_network_qhttp1configuration_qhttp1configuration_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

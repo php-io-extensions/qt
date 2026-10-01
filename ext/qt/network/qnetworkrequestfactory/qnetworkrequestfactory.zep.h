@@ -1,0 +1,248 @@
+
+extern zend_class_entry *qt_network_qnetworkrequestfactory_qnetworkrequestfactory_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory);
+
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, new_);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, newQUrl);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, newQNetworkRequestFactory);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, swap);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, baseUrl);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setBaseUrl);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, sslConfiguration);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setSslConfiguration);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequest);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequestQUrlQuery);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequestQString);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequestQStringQUrlQuery);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setCommonHeaders);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, commonHeaders);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearCommonHeaders);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, bearerToken);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setBearerToken);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearBearerToken);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, userName);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setUserName);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearUserName);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, password);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setPassword);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearPassword);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, queryParameters);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setQueryParameters);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearQueryParameters);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setPriority);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, priority);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, attribute);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, attributeQNetworkRequestAttributeQVariant);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setAttribute);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearAttribute);
+PHP_METHOD(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearAttributes);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_newqurl, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, baseUrl, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_newqnetworkrequestfactory, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_baseurl, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setbaseurl, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, url, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_sslconfiguration, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setsslconfiguration, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, configuration, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequest, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequestqurlquery, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, query, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequestqstring, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, path, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequestqstringqurlquery, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, path, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, query, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setcommonheaders, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, headers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_commonheaders, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearcommonheaders, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_bearertoken, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setbearertoken, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, token, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearbearertoken, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_username, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setusername, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, userName, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearusername, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_password, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setpassword, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, password, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearpassword, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_queryparameters, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setqueryparameters, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, query, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearqueryparameters, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setpriority, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, priority, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_priority, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_attribute, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_attributeqnetworkrequestattributeqvariant, 0, 0, 3)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_LONG, 0)
+	ZEND_ARG_INFO(0, defaultValue)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setattribute, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearattribute, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearattributes, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkrequestfactory_qnetworkrequestfactory_method_entry) {
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, new_, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, newQUrl, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_newqurl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, newQNetworkRequestFactory, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_newqnetworkrequestfactory, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, swap, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, baseUrl, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_baseurl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setBaseUrl, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setbaseurl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, sslConfiguration, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_sslconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setSslConfiguration, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setsslconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequest, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequest, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequestQUrlQuery, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequestqurlquery, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequestQString, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequestqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, createRequestQStringQUrlQuery, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_createrequestqstringqurlquery, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setCommonHeaders, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setcommonheaders, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, commonHeaders, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_commonheaders, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearCommonHeaders, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearcommonheaders, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, bearerToken, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_bearertoken, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setBearerToken, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setbearertoken, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearBearerToken, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearbearertoken, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, userName, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_username, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setUserName, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setusername, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearUserName, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearusername, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, password, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_password, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setPassword, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setpassword, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearPassword, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearpassword, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, queryParameters, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_queryparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setQueryParameters, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setqueryparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearQueryParameters, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearqueryparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setPriority, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setpriority, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, priority, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_priority, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, attribute, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_attribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, attributeQNetworkRequestAttributeQVariant, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_attributeqnetworkrequestattributeqvariant, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, setAttribute, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_setattribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearAttribute, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearattribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkRequestFactory_QNetworkRequestFactory, clearAttributes, arginfo_qt_network_qnetworkrequestfactory_qnetworkrequestfactory_clearattributes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

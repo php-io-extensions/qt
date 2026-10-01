@@ -1,0 +1,80 @@
+
+extern zend_class_entry *qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect);
+
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, staticMetaObject);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, tr);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, color);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, strength);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, setColor);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, setStrength);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, colorChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, strengthChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, draw);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_color, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_strength, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_setcolor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, c, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_setstrength, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, strength, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_colorchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, color, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_strengthchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, strength, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_draw, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, painter, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, staticMetaObject, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, tr, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, new_, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, color, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_color, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, strength, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_strength, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, setColor, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_setcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, setStrength, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_setstrength, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, colorChanged, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_colorchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, strengthChanged, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_strengthchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsColorizeEffect_QGraphicsColorizeEffect, draw, arginfo_qt_widgets_qgraphicscolorizeeffect_qgraphicscolorizeeffect_draw, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

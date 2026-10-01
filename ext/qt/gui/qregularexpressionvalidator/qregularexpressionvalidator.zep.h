@@ -1,0 +1,63 @@
+
+extern zend_class_entry *qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator);
+
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, staticMetaObject);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, tr);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, new_);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, newQRegularExpressionQObject);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, validate);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, regularExpression);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, setRegularExpression);
+PHP_METHOD(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, regularExpressionChanged);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_newqregularexpressionqobject, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, re, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_validate, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_regularexpression, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_setregularexpression, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, re, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_regularexpressionchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, re, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_method_entry) {
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, staticMetaObject, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, tr, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, new_, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, newQRegularExpressionQObject, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_newqregularexpressionqobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, validate, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_validate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, regularExpression, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_regularexpression, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, setRegularExpression, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_setregularexpression, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QRegularExpressionValidator_QRegularExpressionValidator, regularExpressionChanged, arginfo_qt_gui_qregularexpressionvalidator_qregularexpressionvalidator_regularexpressionchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

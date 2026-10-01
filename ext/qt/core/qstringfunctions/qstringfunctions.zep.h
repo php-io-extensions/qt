@@ -1,0 +1,112 @@
+
+extern zend_class_entry *qt_core_qstringfunctions_qstringfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QStringFunctions_QStringFunctions);
+
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, swap);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWay);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqual);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQByteArray);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQByteArray);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQByteArrayView);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQByteArrayView);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQChar);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQChar);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringChar16T);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringChar16T);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQLatin1StringView);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQLatin1StringView);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQString);
+PHP_METHOD(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQString);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_swap, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreeway, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_INFO(0, rhs)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequal, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_INFO(0, rhs)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqbytearray, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqbytearray, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqbytearrayview, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqbytearrayview, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqchar, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqchar, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringchar16t, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, s1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s2)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringchar16t, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, s1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s2)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqlatin1stringview, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, s1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, s2, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqlatin1stringview, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, s1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, s2, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqstring, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, s1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, s2, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqstring, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, s1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, s2, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qstringfunctions_qstringfunctions_method_entry) {
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, swap, arginfo_qt_core_qstringfunctions_qstringfunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWay, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreeway, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqual, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQByteArray, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqbytearray, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQByteArray, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqbytearray, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQByteArrayView, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqbytearrayview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQByteArrayView, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqbytearrayview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQChar, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqchar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQChar, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqchar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringChar16T, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringchar16t, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringChar16T, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringchar16t, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQLatin1StringView, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqlatin1stringview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQLatin1StringView, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqlatin1stringview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, compareThreeWayQStringQString, arginfo_qt_core_qstringfunctions_qstringfunctions_comparethreewayqstringqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringFunctions_QStringFunctions, comparesEqualQStringQString, arginfo_qt_core_qstringfunctions_qstringfunctions_comparesequalqstringqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

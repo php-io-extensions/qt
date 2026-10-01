@@ -1,0 +1,66 @@
+
+extern zend_class_entry *qt_core_qparallelanimationgroup_qparallelanimationgroup_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup);
+
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, staticMetaObject);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, tr);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, new_);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, duration);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, event);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, updateCurrentTime);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, updateState);
+PHP_METHOD(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, updateDirection);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_duration, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_event, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, event, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_updatecurrenttime, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, currentTime, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_updatestate, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, newState, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, oldState, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_updatedirection, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, direction, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qparallelanimationgroup_qparallelanimationgroup_method_entry) {
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, staticMetaObject, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, tr, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, new_, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, duration, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_duration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, event, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_event, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, updateCurrentTime, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_updatecurrenttime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, updateState, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_updatestate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QParallelAnimationGroup_QParallelAnimationGroup, updateDirection, arginfo_qt_core_qparallelanimationgroup_qparallelanimationgroup_updatedirection, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

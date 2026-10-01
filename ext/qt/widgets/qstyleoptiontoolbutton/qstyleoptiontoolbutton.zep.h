@@ -1,0 +1,134 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, features);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setFeatures);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, icon);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setIcon);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, iconSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setIconSize);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, text);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setText);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, arrowType);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setArrowType);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, toolButtonStyle);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setToolButtonStyle);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, pos);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setPos);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, font);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setFont);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, newQStyleOptionToolButton);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_features, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setfeatures, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_icon, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_seticon, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_iconsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_seticonsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_arrowtype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setarrowtype, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_toolbuttonstyle, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_settoolbuttonstyle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_pos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_font, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setfont, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_newqstyleoptiontoolbutton, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, features, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_features, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setFeatures, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setfeatures, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, icon, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_icon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setIcon, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_seticon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, iconSize, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_iconsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setIconSize, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_seticonsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, text, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setText, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, arrowType, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_arrowtype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setArrowType, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setarrowtype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, toolButtonStyle, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_toolbuttonstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setToolButtonStyle, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_settoolbuttonstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, pos, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_pos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setPos, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, font, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_font, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, setFont, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_setfont, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, new_, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionToolButton_QStyleOptionToolButton, newQStyleOptionToolButton, arginfo_qt_widgets_qstyleoptiontoolbutton_qstyleoptiontoolbutton_newqstyleoptiontoolbutton, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

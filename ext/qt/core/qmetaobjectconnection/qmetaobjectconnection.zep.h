@@ -1,0 +1,28 @@
+
+extern zend_class_entry *qt_core_qmetaobjectconnection_qmetaobjectconnection_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMetaObjectConnection_QMetaObjectConnection);
+
+PHP_METHOD(Qt_Core_QMetaObjectConnection_QMetaObjectConnection, new_);
+PHP_METHOD(Qt_Core_QMetaObjectConnection_QMetaObjectConnection, newQMetaObjectConnection);
+PHP_METHOD(Qt_Core_QMetaObjectConnection_QMetaObjectConnection, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaobjectconnection_qmetaobjectconnection_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaobjectconnection_qmetaobjectconnection_newqmetaobjectconnection, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaobjectconnection_qmetaobjectconnection_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmetaobjectconnection_qmetaobjectconnection_method_entry) {
+	PHP_ME(Qt_Core_QMetaObjectConnection_QMetaObjectConnection, new_, arginfo_qt_core_qmetaobjectconnection_qmetaobjectconnection_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaObjectConnection_QMetaObjectConnection, newQMetaObjectConnection, arginfo_qt_core_qmetaobjectconnection_qmetaobjectconnection_newqmetaobjectconnection, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaObjectConnection_QMetaObjectConnection, swap, arginfo_qt_core_qmetaobjectconnection_qmetaobjectconnection_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

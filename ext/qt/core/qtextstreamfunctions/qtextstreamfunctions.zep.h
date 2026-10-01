@@ -1,0 +1,27 @@
+
+extern zend_class_entry *qt_core_qtextstreamfunctions_qtextstreamfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QTextstreamFunctions_QTextstreamFunctions);
+
+PHP_METHOD(Qt_Core_QTextstreamFunctions_QTextstreamFunctions, qSetFieldWidth);
+PHP_METHOD(Qt_Core_QTextstreamFunctions_QTextstreamFunctions, qSetPadChar);
+PHP_METHOD(Qt_Core_QTextstreamFunctions_QTextstreamFunctions, qSetRealNumberPrecision);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextstreamfunctions_qtextstreamfunctions_qsetfieldwidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextstreamfunctions_qtextstreamfunctions_qsetpadchar, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, ch, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextstreamfunctions_qtextstreamfunctions_qsetrealnumberprecision, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, precision, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qtextstreamfunctions_qtextstreamfunctions_method_entry) {
+	PHP_ME(Qt_Core_QTextstreamFunctions_QTextstreamFunctions, qSetFieldWidth, arginfo_qt_core_qtextstreamfunctions_qtextstreamfunctions_qsetfieldwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextstreamFunctions_QTextstreamFunctions, qSetPadChar, arginfo_qt_core_qtextstreamfunctions_qtextstreamfunctions_qsetpadchar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextstreamFunctions_QTextstreamFunctions, qSetRealNumberPrecision, arginfo_qt_core_qtextstreamfunctions_qtextstreamfunctions_qsetrealnumberprecision, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,83 @@
+
+extern zend_class_entry *qt_core_qmessageauthenticationcode_qmessageauthenticationcode_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode);
+
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, new_);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, swap);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, reset);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, setKey);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, addData);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, addDataQByteArrayView);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, addDataQIODevice);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, resultView);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, result);
+PHP_METHOD(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, hash);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, method, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_reset, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_setkey, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_adddata, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, data)
+	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_adddataqbytearrayview, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_adddataqiodevice, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, device, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_resultview, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_result, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_hash, 0, 3, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, method, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmessageauthenticationcode_qmessageauthenticationcode_method_entry) {
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, new_, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, swap, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, reset, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_reset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, setKey, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_setkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, addData, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_adddata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, addDataQByteArrayView, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_adddataqbytearrayview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, addDataQIODevice, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_adddataqiodevice, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, resultView, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_resultview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, result, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_result, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMessageAuthenticationCode_QMessageAuthenticationCode, hash, arginfo_qt_core_qmessageauthenticationcode_qmessageauthenticationcode_hash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,67 @@
+
+extern zend_class_entry *qt_core_qpartialordering_qpartialordering_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPartialOrdering_QPartialOrdering);
+
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, Less);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, Equivalent);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, Greater);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, Unordered);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, less2);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, equivalent2);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, greater2);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, unordered2);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, new_);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, newQtWeakOrdering);
+PHP_METHOD(Qt_Core_QPartialOrdering_QPartialOrdering, newQtStrongOrdering);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_less, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_equivalent, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_greater, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_unordered, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_less2, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_equivalent2, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_greater2, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_unordered2, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, order, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_newqtweakordering, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, stdorder, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpartialordering_qpartialordering_newqtstrongordering, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, stdorder, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpartialordering_qpartialordering_method_entry) {
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, Less, arginfo_qt_core_qpartialordering_qpartialordering_less, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, Equivalent, arginfo_qt_core_qpartialordering_qpartialordering_equivalent, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, Greater, arginfo_qt_core_qpartialordering_qpartialordering_greater, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, Unordered, arginfo_qt_core_qpartialordering_qpartialordering_unordered, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, less2, arginfo_qt_core_qpartialordering_qpartialordering_less2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, equivalent2, arginfo_qt_core_qpartialordering_qpartialordering_equivalent2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, greater2, arginfo_qt_core_qpartialordering_qpartialordering_greater2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, unordered2, arginfo_qt_core_qpartialordering_qpartialordering_unordered2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, new_, arginfo_qt_core_qpartialordering_qpartialordering_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, newQtWeakOrdering, arginfo_qt_core_qpartialordering_qpartialordering_newqtweakordering, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPartialOrdering_QPartialOrdering, newQtStrongOrdering, arginfo_qt_core_qpartialordering_qpartialordering_newqtstrongordering, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

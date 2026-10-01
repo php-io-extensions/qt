@@ -1,0 +1,98 @@
+
+extern zend_class_entry *qt_core_qmetaassociation_qmetaassociation_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMetaAssociation_QMetaAssociation);
+
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, new_);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, keyMetaType);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, mappedMetaType);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canInsertKey);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canRemoveKey);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canContainsKey);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canGetMappedAtKey);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canSetMappedAtKey);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canGetKeyAtIterator);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canGetKeyAtConstIterator);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canGetMappedAtIterator);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canGetMappedAtConstIterator);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canSetMappedAtIterator);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canCreateIteratorAtKey);
+PHP_METHOD(Qt_Core_QMetaAssociation_QMetaAssociation, canCreateConstIteratorAtKey);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_keymetatype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_mappedmetatype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_caninsertkey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_canremovekey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cancontainskey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cangetmappedatkey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cansetmappedatkey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cangetkeyatiterator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cangetkeyatconstiterator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cangetmappedatiterator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cangetmappedatconstiterator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cansetmappedatiterator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cancreateiteratoratkey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaassociation_qmetaassociation_cancreateconstiteratoratkey, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmetaassociation_qmetaassociation_method_entry) {
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, new_, arginfo_qt_core_qmetaassociation_qmetaassociation_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, keyMetaType, arginfo_qt_core_qmetaassociation_qmetaassociation_keymetatype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, mappedMetaType, arginfo_qt_core_qmetaassociation_qmetaassociation_mappedmetatype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canInsertKey, arginfo_qt_core_qmetaassociation_qmetaassociation_caninsertkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canRemoveKey, arginfo_qt_core_qmetaassociation_qmetaassociation_canremovekey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canContainsKey, arginfo_qt_core_qmetaassociation_qmetaassociation_cancontainskey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canGetMappedAtKey, arginfo_qt_core_qmetaassociation_qmetaassociation_cangetmappedatkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canSetMappedAtKey, arginfo_qt_core_qmetaassociation_qmetaassociation_cansetmappedatkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canGetKeyAtIterator, arginfo_qt_core_qmetaassociation_qmetaassociation_cangetkeyatiterator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canGetKeyAtConstIterator, arginfo_qt_core_qmetaassociation_qmetaassociation_cangetkeyatconstiterator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canGetMappedAtIterator, arginfo_qt_core_qmetaassociation_qmetaassociation_cangetmappedatiterator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canGetMappedAtConstIterator, arginfo_qt_core_qmetaassociation_qmetaassociation_cangetmappedatconstiterator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canSetMappedAtIterator, arginfo_qt_core_qmetaassociation_qmetaassociation_cansetmappedatiterator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canCreateIteratorAtKey, arginfo_qt_core_qmetaassociation_qmetaassociation_cancreateiteratoratkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaAssociation_QMetaAssociation, canCreateConstIteratorAtKey, arginfo_qt_core_qmetaassociation_qmetaassociation_cancreateconstiteratoratkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

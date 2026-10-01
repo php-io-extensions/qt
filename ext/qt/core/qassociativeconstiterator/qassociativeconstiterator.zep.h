@@ -1,0 +1,21 @@
+
+extern zend_class_entry *qt_core_qassociativeconstiterator_qassociativeconstiterator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QAssociativeConstIterator_QAssociativeConstIterator);
+
+PHP_METHOD(Qt_Core_QAssociativeConstIterator_QAssociativeConstIterator, key);
+PHP_METHOD(Qt_Core_QAssociativeConstIterator_QAssociativeConstIterator, value);
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_core_qassociativeconstiterator_qassociativeconstiterator_key, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_core_qassociativeconstiterator_qassociativeconstiterator_value, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qassociativeconstiterator_qassociativeconstiterator_method_entry) {
+	PHP_ME(Qt_Core_QAssociativeConstIterator_QAssociativeConstIterator, key, arginfo_qt_core_qassociativeconstiterator_qassociativeconstiterator_key, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAssociativeConstIterator_QAssociativeConstIterator, value, arginfo_qt_core_qassociativeconstiterator_qassociativeconstiterator_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

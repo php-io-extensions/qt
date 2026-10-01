@@ -1,0 +1,58 @@
+
+extern zend_class_entry *qt_network_qsslcertificateextension_qsslcertificateextension_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QSslCertificateExtension_QSslCertificateExtension);
+
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, new_);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, newQSslCertificateExtension);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, swap);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, oid);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, name);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, value);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, isCritical);
+PHP_METHOD(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, isSupported);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_newqsslcertificateextension, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_oid, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_name, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_value, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_iscritical, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_issupported, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qsslcertificateextension_qsslcertificateextension_method_entry) {
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, new_, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, newQSslCertificateExtension, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_newqsslcertificateextension, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, swap, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, oid, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_oid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, name, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_name, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, value, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, isCritical, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_iscritical, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslCertificateExtension_QSslCertificateExtension, isSupported, arginfo_qt_network_qsslcertificateextension_qsslcertificateextension_issupported, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

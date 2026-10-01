@@ -1,0 +1,16 @@
+
+extern zend_class_entry *qt_gui_qpaintdevicefunctions_qpaintdevicefunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QPaintdeviceFunctions_QPaintdeviceFunctions);
+
+PHP_METHOD(Qt_Gui_QPaintdeviceFunctions_QPaintdeviceFunctions, qt_paint_device_metric);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qpaintdevicefunctions_qpaintdevicefunctions_qt_paint_device_metric, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, device, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, metric, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qpaintdevicefunctions_qpaintdevicefunctions_method_entry) {
+	PHP_ME(Qt_Gui_QPaintdeviceFunctions_QPaintdeviceFunctions, qt_paint_device_metric, arginfo_qt_gui_qpaintdevicefunctions_qpaintdevicefunctions_qt_paint_device_metric, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,80 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect);
+
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, staticMetaObject);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, tr);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacity);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacityMask);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, setOpacity);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, setOpacityMask);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacityChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacityMaskChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, draw);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacity, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacitymask, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_setopacity, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, opacity, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_setopacitymask, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, mask, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacitychanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, opacity, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacitymaskchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, mask, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_draw, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, painter, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, staticMetaObject, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, tr, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, new_, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacity, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacityMask, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacitymask, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, setOpacity, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_setopacity, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, setOpacityMask, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_setopacitymask, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacityChanged, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacitychanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, opacityMaskChanged, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_opacitymaskchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsOpacityEffect_QGraphicsOpacityEffect, draw, arginfo_qt_widgets_qgraphicsopacityeffect_qgraphicsopacityeffect_draw, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

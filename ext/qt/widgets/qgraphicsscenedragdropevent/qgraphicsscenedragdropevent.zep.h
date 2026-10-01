@@ -1,0 +1,165 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, pos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, scenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, screenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, buttons);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setButtons);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, modifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setModifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, possibleActions);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setPossibleActions);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, proposedAction);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setProposedAction);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, acceptProposedAction);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, dropAction);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setDropAction);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, source);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setSource);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, mimeData);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setMimeData);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, type)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_pos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_scenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_screenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_buttons, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setbuttons, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buttons, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_modifiers, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setmodifiers, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_possibleactions, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setpossibleactions, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, actions, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_proposedaction, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setproposedaction, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, action, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_acceptproposedaction, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_dropaction, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setdropaction, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, action, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_source, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setsource, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_mimedata, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setmimedata, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, new_, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, pos, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_pos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setPos, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, scenePos, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_scenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setScenePos, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, screenPos, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_screenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setScreenPos, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, buttons, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_buttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setButtons, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setbuttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, modifiers, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_modifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setModifiers, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, possibleActions, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_possibleactions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setPossibleActions, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setpossibleactions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, proposedAction, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_proposedaction, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setProposedAction, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setproposedaction, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, acceptProposedAction, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_acceptproposedaction, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, dropAction, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_dropaction, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setDropAction, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setdropaction, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, source, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_source, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setSource, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setsource, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, mimeData, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_mimedata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneDragDropEvent_QGraphicsSceneDragDropEvent, setMimeData, arginfo_qt_widgets_qgraphicsscenedragdropevent_qgraphicsscenedragdropevent_setmimedata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,73 @@
+
+extern zend_class_entry *qt_gui_qtextformatfunctions_qtextformatfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QTextformatFunctions_QTextformatFunctions);
+
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swap);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextCharFormatQTextCharFormat);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextBlockFormatQTextBlockFormat);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextListFormatQTextListFormat);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextImageFormatQTextImageFormat);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextFrameFormatQTextFrameFormat);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextTableFormatQTextTableFormat);
+PHP_METHOD(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextTableCellFormatQTextTableCellFormat);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextcharformatqtextcharformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextblockformatqtextblockformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextlistformatqtextlistformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextimageformatqtextimageformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextframeformatqtextframeformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtexttableformatqtexttableformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtexttablecellformatqtexttablecellformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qtextformatfunctions_qtextformatfunctions_method_entry) {
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swap, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextCharFormatQTextCharFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextcharformatqtextcharformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextBlockFormatQTextBlockFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextblockformatqtextblockformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextListFormatQTextListFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextlistformatqtextlistformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextImageFormatQTextImageFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextimageformatqtextimageformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextFrameFormatQTextFrameFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtextframeformatqtextframeformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextTableFormatQTextTableFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtexttableformatqtexttableformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextformatFunctions_QTextformatFunctions, swapQTextTableCellFormatQTextTableCellFormat, arginfo_qt_gui_qtextformatfunctions_qtextformatfunctions_swapqtexttablecellformatqtexttablecellformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,36 @@
+
+extern zend_class_entry *qt_core_qtyperevisionfunctions_qtyperevisionfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions);
+
+PHP_METHOD(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, qHash);
+PHP_METHOD(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, qRegisterNormalizedMetaType_QTypeRevision);
+PHP_METHOD(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, compareThreeWay);
+PHP_METHOD(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, comparesEqual);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_qhash, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_qregisternormalizedmetatype_qtyperevision, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_comparethreeway, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_comparesequal, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qtyperevisionfunctions_qtyperevisionfunctions_method_entry) {
+	PHP_ME(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, qHash, arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_qhash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, qRegisterNormalizedMetaType_QTypeRevision, arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_qregisternormalizedmetatype_qtyperevision, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, compareThreeWay, arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_comparethreeway, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTyperevisionFunctions_QTyperevisionFunctions, comparesEqual, arginfo_qt_core_qtyperevisionfunctions_qtyperevisionfunctions_comparesequal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

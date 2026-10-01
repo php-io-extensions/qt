@@ -1,0 +1,111 @@
+
+extern zend_class_entry *qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout);
+
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, staticMetaObject);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, tr);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, new_);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, draw);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, hitTest);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, pageCount);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, documentSize);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, frameBoundingRect);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, blockBoundingRect);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, ensureBlockLayout);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, setCursorWidth);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, cursorWidth);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, requestUpdate);
+PHP_METHOD(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, documentChanged);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, document, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_draw, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_hittest, 0, 4, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0X, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0Y, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_pagecount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_documentsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_frameboundingrect, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_blockboundingrect, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, block, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_ensureblocklayout, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, block, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_setcursorwidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_cursorwidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_requestupdate, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_documentchanged, 0, 4, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, from, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, charsAdded, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_method_entry) {
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, staticMetaObject, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, tr, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, new_, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, draw, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_draw, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, hitTest, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_hittest, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, pageCount, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_pagecount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, documentSize, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_documentsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, frameBoundingRect, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_frameboundingrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, blockBoundingRect, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_blockboundingrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, ensureBlockLayout, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_ensureblocklayout, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, setCursorWidth, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_setcursorwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, cursorWidth, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_cursorwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, requestUpdate, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_requestupdate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QPlainTextDocumentLayout_QPlainTextDocumentLayout, documentChanged, arginfo_qt_widgets_qplaintextdocumentlayout_qplaintextdocumentlayout_documentchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

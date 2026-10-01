@@ -1,0 +1,26 @@
+
+extern zend_class_entry *qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData);
+
+PHP_METHOD(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData, direct);
+PHP_METHOD(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData, new_);
+PHP_METHOD(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData, newQMetaObject);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_direct, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_newqmetaobject, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, mo, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_method_entry) {
+	PHP_ME(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData, direct, arginfo_qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_direct, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData, new_, arginfo_qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMetaObjectSuperData_QMetaObjectSuperData, newQMetaObject, arginfo_qt_core_qmetaobjectsuperdata_qmetaobjectsuperdata_newqmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

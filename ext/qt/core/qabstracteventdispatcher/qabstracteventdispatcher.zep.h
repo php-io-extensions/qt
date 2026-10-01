@@ -1,0 +1,177 @@
+
+extern zend_class_entry *qt_core_qabstracteventdispatcher_qabstracteventdispatcher_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher);
+
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, staticMetaObject);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, tr);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, new_);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, instance);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, processEvents);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registerSocketNotifier);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterSocketNotifier);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registerTimer);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registerTimerIntQint64QtTimerTypeQObject);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterTimer);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterTimers);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registeredTimers);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, remainingTime);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterTimerQtTimerId);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, timersForObject);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, wakeUp);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, interrupt);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, startingUp);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, closingDown);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, installNativeEventFilter);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, removeNativeEventFilter);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, aboutToBlock);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, awake);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_instance, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, thread, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_processevents, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, flags, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registersocketnotifier, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, notifier, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistersocketnotifier, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, notifier, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registertimer, 0, 4, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, interval, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerType, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registertimerintqint64qttimertypeqobject, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerId, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, interval, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerType, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistertimer, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerId, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistertimers, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registeredtimers, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_remainingtime, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerId, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistertimerqttimerid, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerId, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_timersforobject, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_wakeup, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_interrupt, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_startingup, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_closingdown, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_installnativeeventfilter, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filterObj, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_removenativeeventfilter, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filterObj, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_abouttoblock, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_awake, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qabstracteventdispatcher_qabstracteventdispatcher_method_entry) {
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, staticMetaObject, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, tr, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, new_, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, instance, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_instance, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, processEvents, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_processevents, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registerSocketNotifier, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registersocketnotifier, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterSocketNotifier, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistersocketnotifier, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registerTimer, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registertimer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registerTimerIntQint64QtTimerTypeQObject, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registertimerintqint64qttimertypeqobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterTimer, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistertimer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterTimers, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistertimers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, registeredTimers, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_registeredtimers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, remainingTime, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_remainingtime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, unregisterTimerQtTimerId, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_unregistertimerqttimerid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, timersForObject, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_timersforobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, wakeUp, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_wakeup, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, interrupt, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_interrupt, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, startingUp, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_startingup, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, closingDown, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_closingdown, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, installNativeEventFilter, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_installnativeeventfilter, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, removeNativeEventFilter, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_removenativeeventfilter, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, aboutToBlock, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_abouttoblock, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcher_QAbstractEventDispatcher, awake, arginfo_qt_core_qabstracteventdispatcher_qabstracteventdispatcher_awake, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

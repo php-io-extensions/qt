@@ -1,0 +1,116 @@
+
+extern zend_class_entry *qt_core_qtextboundaryfinder_qtextboundaryfinder_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder);
+
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, new_);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinder);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinderBoundaryTypeQString);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinderBoundaryTypeQCharQsizetypeUnsignedCharQsizetype);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinderBoundaryTypeQStringViewUnsignedCharQsizetype);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, isValid);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, type);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, string_);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toStart);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toEnd);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, position);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, setPosition);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toNextBoundary);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toPreviousBoundary);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, isAtBoundary);
+PHP_METHOD(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, boundaryReasons);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinder, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinderboundarytypeqstring, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, type, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, string_, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinderboundarytypeqcharqsizetypeunsignedcharqsizetype, 0, 3, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, type, IS_LONG, 0)
+	ZEND_ARG_INFO(0, chars)
+	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
+	ZEND_ARG_INFO(0, buffer)
+	ZEND_ARG_TYPE_INFO(0, bufferSize, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinderboundarytypeqstringviewunsignedcharqsizetype, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, type, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+	ZEND_ARG_INFO(0, buffer)
+	ZEND_ARG_TYPE_INFO(0, bufferSize, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_string_, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_tostart, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_toend, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_position, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_setposition, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, position, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_tonextboundary, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_topreviousboundary, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_isatboundary, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_boundaryreasons, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qtextboundaryfinder_qtextboundaryfinder_method_entry) {
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, new_, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinder, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinderBoundaryTypeQString, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinderboundarytypeqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinderBoundaryTypeQCharQsizetypeUnsignedCharQsizetype, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinderboundarytypeqcharqsizetypeunsignedcharqsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, newQTextBoundaryFinderBoundaryTypeQStringViewUnsignedCharQsizetype, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_newqtextboundaryfinderboundarytypeqstringviewunsignedcharqsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, isValid, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, type, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, string_, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_string_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toStart, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_tostart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toEnd, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_toend, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, position, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_position, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, setPosition, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_setposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toNextBoundary, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_tonextboundary, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, toPreviousBoundary, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_topreviousboundary, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, isAtBoundary, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_isatboundary, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QTextBoundaryFinder_QTextBoundaryFinder, boundaryReasons, arginfo_qt_core_qtextboundaryfinder_qtextboundaryfinder_boundaryreasons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

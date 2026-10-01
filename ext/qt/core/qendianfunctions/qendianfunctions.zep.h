@@ -1,0 +1,63 @@
+
+extern zend_class_entry *qt_core_qendianfunctions_qendianfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QEndianFunctions_QEndianFunctions);
+
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helper);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helperQuint32);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helperQuint16);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helperQuint8);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapQint128);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapQfloat16);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapFloat);
+PHP_METHOD(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapDouble);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helper, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helperquint32, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helperquint16, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helperquint8, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapqint128, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapqfloat16, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapfloat, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapdouble, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qendianfunctions_qendianfunctions_method_entry) {
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helper, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helper, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helperQuint32, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helperquint32, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helperQuint16, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helperquint16, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap_helperQuint8, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap_helperquint8, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswap, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapQint128, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapqint128, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapQfloat16, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapqfloat16, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapFloat, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapfloat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QEndianFunctions_QEndianFunctions, qbswapDouble, arginfo_qt_core_qendianfunctions_qendianfunctions_qbswapdouble, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

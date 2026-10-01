@@ -1,0 +1,45 @@
+
+extern zend_class_entry *qt_core_qpropertybindingerror_qpropertybindingerror_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPropertyBindingError_QPropertyBindingError);
+
+PHP_METHOD(Qt_Core_QPropertyBindingError_QPropertyBindingError, new_);
+PHP_METHOD(Qt_Core_QPropertyBindingError_QPropertyBindingError, newQPropertyBindingErrorTypeQString);
+PHP_METHOD(Qt_Core_QPropertyBindingError_QPropertyBindingError, newQPropertyBindingError);
+PHP_METHOD(Qt_Core_QPropertyBindingError_QPropertyBindingError, hasError);
+PHP_METHOD(Qt_Core_QPropertyBindingError_QPropertyBindingError, type);
+PHP_METHOD(Qt_Core_QPropertyBindingError_QPropertyBindingError, description);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_newqpropertybindingerrortypeqstring, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, type, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, description, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_newqpropertybindingerror, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_haserror, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_description, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpropertybindingerror_qpropertybindingerror_method_entry) {
+	PHP_ME(Qt_Core_QPropertyBindingError_QPropertyBindingError, new_, arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPropertyBindingError_QPropertyBindingError, newQPropertyBindingErrorTypeQString, arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_newqpropertybindingerrortypeqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPropertyBindingError_QPropertyBindingError, newQPropertyBindingError, arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_newqpropertybindingerror, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPropertyBindingError_QPropertyBindingError, hasError, arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_haserror, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPropertyBindingError_QPropertyBindingError, type, arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPropertyBindingError_QPropertyBindingError, description, arginfo_qt_core_qpropertybindingerror_qpropertybindingerror_description, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

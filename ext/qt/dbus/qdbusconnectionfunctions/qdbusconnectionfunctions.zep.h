@@ -1,0 +1,17 @@
+
+extern zend_class_entry *qt_dbus_qdbusconnectionfunctions_qdbusconnectionfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_DBus_QDbusconnectionFunctions_QDbusconnectionFunctions);
+
+PHP_METHOD(Qt_DBus_QDbusconnectionFunctions_QDbusconnectionFunctions, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusconnectionfunctions_qdbusconnectionfunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_dbus_qdbusconnectionfunctions_qdbusconnectionfunctions_method_entry) {
+	PHP_ME(Qt_DBus_QDbusconnectionFunctions_QDbusconnectionFunctions, swap, arginfo_qt_dbus_qdbusconnectionfunctions_qdbusconnectionfunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

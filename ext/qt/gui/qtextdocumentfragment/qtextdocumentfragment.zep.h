@@ -1,0 +1,83 @@
+
+extern zend_class_entry *qt_gui_qtextdocumentfragment_qtextdocumentfragment_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment);
+
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, new_);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, newQTextDocument);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, newQTextCursor);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, newQTextDocumentFragment);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, isEmpty);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toPlainText);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toRawText);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toHtml);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toMarkdown);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, fromPlainText);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, fromHtml);
+PHP_METHOD(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, fromMarkdown);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_newqtextdocument, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, document, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_newqtextcursor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, range, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_newqtextdocumentfragment, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_isempty, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_toplaintext, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_torawtext, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_tohtml, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_tomarkdown, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, features)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_fromplaintext, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, plainText, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_fromhtml, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, html, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, resourceProvider, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_frommarkdown, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, markdown, IS_STRING, 0)
+	ZEND_ARG_INFO(0, features)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qtextdocumentfragment_qtextdocumentfragment_method_entry) {
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, new_, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, newQTextDocument, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_newqtextdocument, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, newQTextCursor, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_newqtextcursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, newQTextDocumentFragment, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_newqtextdocumentfragment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, isEmpty, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_isempty, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toPlainText, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_toplaintext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toRawText, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_torawtext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toHtml, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_tohtml, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, toMarkdown, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_tomarkdown, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, fromPlainText, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_fromplaintext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, fromHtml, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_fromhtml, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextDocumentFragment_QTextDocumentFragment, fromMarkdown, arginfo_qt_gui_qtextdocumentfragment_qtextdocumentfragment_frommarkdown, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

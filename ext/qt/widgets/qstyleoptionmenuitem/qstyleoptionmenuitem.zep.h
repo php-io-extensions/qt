@@ -1,0 +1,163 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, menuItemType);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMenuItemType);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, checkType);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setCheckType);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, checked);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setChecked);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, menuHasCheckableItems);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMenuHasCheckableItems);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, menuRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMenuRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, text);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setText);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, icon);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setIcon);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, maxIconWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMaxIconWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, reservedShortcutWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setReservedShortcutWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, font);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setFont);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, newQStyleOptionMenuItem);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_menuitemtype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmenuitemtype, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_checktype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setchecktype, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_checked, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setchecked, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_menuhascheckableitems, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmenuhascheckableitems, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_menurect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmenurect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_icon, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_seticon, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_maxiconwidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmaxiconwidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_reservedshortcutwidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setreservedshortcutwidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_font, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setfont, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_newqstyleoptionmenuitem, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, menuItemType, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_menuitemtype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMenuItemType, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmenuitemtype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, checkType, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_checktype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setCheckType, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setchecktype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, checked, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_checked, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setChecked, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setchecked, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, menuHasCheckableItems, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_menuhascheckableitems, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMenuHasCheckableItems, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmenuhascheckableitems, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, menuRect, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_menurect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMenuRect, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmenurect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, text, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setText, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, icon, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_icon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setIcon, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_seticon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, maxIconWidth, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_maxiconwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setMaxIconWidth, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setmaxiconwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, reservedShortcutWidth, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_reservedshortcutwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setReservedShortcutWidth, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setreservedshortcutwidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, font, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_font, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, setFont, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_setfont, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, new_, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionMenuItem_QStyleOptionMenuItem, newQStyleOptionMenuItem, arginfo_qt_widgets_qstyleoptionmenuitem_qstyleoptionmenuitem_newqstyleoptionmenuitem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,166 @@
+
+extern zend_class_entry *qt_core_qregularexpression_qregularexpression_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QRegularExpression_QRegularExpression);
+
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, patternOptions);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, setPatternOptions);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, new_);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, newQStringQRegularExpressionPatternOptions);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, newQRegularExpression);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, swap);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, pattern);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, setPattern);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, isValid);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, patternErrorOffset);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, errorString);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, captureCount);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, namedCaptureGroups);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, match_);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, matchView);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, optimize);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, escape);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, wildcardToRegularExpression);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, anchoredPattern);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, escapeQStringView);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, wildcardToRegularExpressionQStringViewQRegularExpressionWildcardConversionOptions);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, anchoredPatternQStringView);
+PHP_METHOD(Qt_Core_QRegularExpression_QRegularExpression, fromWildcard);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_patternoptions, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_setpatternoptions, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, options, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_newqstringqregularexpressionpatternoptions, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pattern, IS_STRING, 0)
+	ZEND_ARG_INFO(0, options)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_newqregularexpression, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, re, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_pattern, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_setpattern, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pattern, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_patternerroroffset, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_errorstring, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_capturecount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_namedcapturegroups, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_match_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, subject, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, offset, IS_LONG, 0)
+	ZEND_ARG_INFO(0, matchType)
+	ZEND_ARG_INFO(0, matchOptions)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_matchview, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, subjectView, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, offset, IS_LONG, 0)
+	ZEND_ARG_INFO(0, matchType)
+	ZEND_ARG_INFO(0, matchOptions)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_optimize, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_escape, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_wildcardtoregularexpression, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+	ZEND_ARG_INFO(0, options)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_anchoredpattern, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, expression, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_escapeqstringview, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_wildcardtoregularexpressionqstringviewqregularexpressionwildcardconversionoptions, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
+	ZEND_ARG_INFO(0, options)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_anchoredpatternqstringview, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, expression, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qregularexpression_qregularexpression_fromwildcard, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pattern, IS_STRING, 0)
+	ZEND_ARG_INFO(0, cs)
+	ZEND_ARG_INFO(0, options)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qregularexpression_qregularexpression_method_entry) {
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, patternOptions, arginfo_qt_core_qregularexpression_qregularexpression_patternoptions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, setPatternOptions, arginfo_qt_core_qregularexpression_qregularexpression_setpatternoptions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, new_, arginfo_qt_core_qregularexpression_qregularexpression_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, newQStringQRegularExpressionPatternOptions, arginfo_qt_core_qregularexpression_qregularexpression_newqstringqregularexpressionpatternoptions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, newQRegularExpression, arginfo_qt_core_qregularexpression_qregularexpression_newqregularexpression, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, swap, arginfo_qt_core_qregularexpression_qregularexpression_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, pattern, arginfo_qt_core_qregularexpression_qregularexpression_pattern, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, setPattern, arginfo_qt_core_qregularexpression_qregularexpression_setpattern, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, isValid, arginfo_qt_core_qregularexpression_qregularexpression_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, patternErrorOffset, arginfo_qt_core_qregularexpression_qregularexpression_patternerroroffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, errorString, arginfo_qt_core_qregularexpression_qregularexpression_errorstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, captureCount, arginfo_qt_core_qregularexpression_qregularexpression_capturecount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, namedCaptureGroups, arginfo_qt_core_qregularexpression_qregularexpression_namedcapturegroups, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, match_, arginfo_qt_core_qregularexpression_qregularexpression_match_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, matchView, arginfo_qt_core_qregularexpression_qregularexpression_matchview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, optimize, arginfo_qt_core_qregularexpression_qregularexpression_optimize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, escape, arginfo_qt_core_qregularexpression_qregularexpression_escape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, wildcardToRegularExpression, arginfo_qt_core_qregularexpression_qregularexpression_wildcardtoregularexpression, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, anchoredPattern, arginfo_qt_core_qregularexpression_qregularexpression_anchoredpattern, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, escapeQStringView, arginfo_qt_core_qregularexpression_qregularexpression_escapeqstringview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, wildcardToRegularExpressionQStringViewQRegularExpressionWildcardConversionOptions, arginfo_qt_core_qregularexpression_qregularexpression_wildcardtoregularexpressionqstringviewqregularexpressionwildcardconversionoptions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, anchoredPatternQStringView, arginfo_qt_core_qregularexpression_qregularexpression_anchoredpatternqstringview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QRegularExpression_QRegularExpression, fromWildcard, arginfo_qt_core_qregularexpression_qregularexpression_fromwildcard, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

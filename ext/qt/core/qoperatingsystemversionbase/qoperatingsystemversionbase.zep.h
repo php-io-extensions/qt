@@ -1,0 +1,76 @@
+
+extern zend_class_entry *qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase);
+
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, new_);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, current);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, name);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, currentType);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, version);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, majorVersion);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, minorVersion);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, microVersion);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, segmentCount);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, type);
+PHP_METHOD(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, name2);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_new_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, osType, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, vmajor, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, vminor, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, vmicro, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_current, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_name, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, osversion, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_currenttype, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_version, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_majorversion, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_minorversion, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_microversion, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_segmentcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_name2, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_method_entry) {
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, new_, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, current, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_current, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, name, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_name, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, currentType, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_currenttype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, version, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, majorVersion, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_majorversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, minorVersion, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_minorversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, microVersion, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_microversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, segmentCount, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_segmentcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, type, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QOperatingSystemVersionBase_QOperatingSystemVersionBase, name2, arginfo_qt_core_qoperatingsystemversionbase_qoperatingsystemversionbase_name2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

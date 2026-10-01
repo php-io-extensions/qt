@@ -1,0 +1,76 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, text);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setText);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, icon);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setIcon);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, titleBarState);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setTitleBarState);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, titleBarFlags);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setTitleBarFlags);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, newQStyleOptionTitleBar);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_icon, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_seticon, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_titlebarstate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_settitlebarstate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_titlebarflags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_settitlebarflags, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_newqstyleoptiontitlebar, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, text, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setText, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, icon, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_icon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setIcon, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_seticon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, titleBarState, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_titlebarstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setTitleBarState, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_settitlebarstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, titleBarFlags, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_titlebarflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, setTitleBarFlags, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_settitlebarflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, new_, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTitleBar_QStyleOptionTitleBar, newQStyleOptionTitleBar, arginfo_qt_widgets_qstyleoptiontitlebar_qstyleoptiontitlebar_newqstyleoptiontitlebar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,62 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, buttonSymbols);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, setButtonSymbols);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, stepEnabled);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, setStepEnabled);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, frame);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, setFrame);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, newQStyleOptionSpinBox);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_buttonsymbols, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_setbuttonsymbols, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_stepenabled, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_setstepenabled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_frame, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_setframe, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_newqstyleoptionspinbox, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, buttonSymbols, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_buttonsymbols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, setButtonSymbols, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_setbuttonsymbols, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, stepEnabled, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_stepenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, setStepEnabled, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_setstepenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, frame, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_frame, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, setFrame, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_setframe, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, new_, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionSpinBox_QStyleOptionSpinBox, newQStyleOptionSpinBox, arginfo_qt_widgets_qstyleoptionspinbox_qstyleoptionspinbox_newqstyleoptionspinbox, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

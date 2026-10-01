@@ -1,0 +1,49 @@
+
+extern zend_class_entry *qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent);
+
+PHP_METHOD(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, new_);
+PHP_METHOD(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, clone_);
+PHP_METHOD(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, newQtInputMethodQueries);
+PHP_METHOD(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, queries);
+PHP_METHOD(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, setValue);
+PHP_METHOD(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, value);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_clone_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_newqtinputmethodqueries, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, queries, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_queries, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_setvalue, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, query, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_value, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, query, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_method_entry) {
+	PHP_ME(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, new_, arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, clone_, arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_clone_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, newQtInputMethodQueries, arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_newqtinputmethodqueries, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, queries, arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_queries, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, setValue, arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_setvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QInputMethodQueryEvent_QInputMethodQueryEvent, value, arginfo_qt_gui_qinputmethodqueryevent_qinputmethodqueryevent_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

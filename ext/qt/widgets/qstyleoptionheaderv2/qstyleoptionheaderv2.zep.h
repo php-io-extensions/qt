@@ -1,0 +1,62 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, newQStyleOptionHeaderV2);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, textElideMode);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, setTextElideMode);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, isSectionDragTarget);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, setIsSectionDragTarget);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, unused);
+PHP_METHOD(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, setUnused);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_newqstyleoptionheaderv2, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_textelidemode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_settextelidemode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_issectiondragtarget, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_setissectiondragtarget, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_unused, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_setunused, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, new_, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, newQStyleOptionHeaderV2, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_newqstyleoptionheaderv2, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, textElideMode, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_textelidemode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, setTextElideMode, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_settextelidemode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, isSectionDragTarget, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_issectiondragtarget, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, setIsSectionDragTarget, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_setissectiondragtarget, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, unused, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_unused, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionHeaderV2_QStyleOptionHeaderV2, setUnused, arginfo_qt_widgets_qstyleoptionheaderv2_qstyleoptionheaderv2_setunused, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

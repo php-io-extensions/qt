@@ -1,0 +1,69 @@
+
+extern zend_class_entry *qt_network_qdtlsclientverifier_qdtlsclientverifier_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier);
+
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, staticMetaObject);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, tr);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, new_);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, setCookieGeneratorParameters);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, cookieGeneratorParameters);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, verifyClient);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, verifiedHello);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, dtlsError);
+PHP_METHOD(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, dtlsErrorString);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_setcookiegeneratorparameters, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, params, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_cookiegeneratorparameters, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_verifyclient, 0, 5, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, socket, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dgram, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, address, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, port, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_verifiedhello, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_dtlserror, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_dtlserrorstring, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qdtlsclientverifier_qdtlsclientverifier_method_entry) {
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, staticMetaObject, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, tr, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, new_, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, setCookieGeneratorParameters, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_setcookiegeneratorparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, cookieGeneratorParameters, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_cookiegeneratorparameters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, verifyClient, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_verifyclient, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, verifiedHello, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_verifiedhello, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, dtlsError, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_dtlserror, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QDtlsClientVerifier_QDtlsClientVerifier, dtlsErrorString, arginfo_qt_network_qdtlsclientverifier_qdtlsclientverifier_dtlserrorstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

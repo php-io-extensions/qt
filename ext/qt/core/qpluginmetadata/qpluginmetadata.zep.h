@@ -1,0 +1,33 @@
+
+extern zend_class_entry *qt_core_qpluginmetadata_qpluginmetadata_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPluginMetaData_QPluginMetaData);
+
+PHP_METHOD(Qt_Core_QPluginMetaData_QPluginMetaData, CurrentMetaDataVersion);
+PHP_METHOD(Qt_Core_QPluginMetaData_QPluginMetaData, archRequirements);
+PHP_METHOD(Qt_Core_QPluginMetaData_QPluginMetaData, size);
+PHP_METHOD(Qt_Core_QPluginMetaData_QPluginMetaData, setSize);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadata_qpluginmetadata_currentmetadataversion, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadata_qpluginmetadata_archrequirements, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadata_qpluginmetadata_size, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadata_qpluginmetadata_setsize, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpluginmetadata_qpluginmetadata_method_entry) {
+	PHP_ME(Qt_Core_QPluginMetaData_QPluginMetaData, CurrentMetaDataVersion, arginfo_qt_core_qpluginmetadata_qpluginmetadata_currentmetadataversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaData_QPluginMetaData, archRequirements, arginfo_qt_core_qpluginmetadata_qpluginmetadata_archrequirements, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaData_QPluginMetaData, size, arginfo_qt_core_qpluginmetadata_qpluginmetadata_size, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaData_QPluginMetaData, setSize, arginfo_qt_core_qpluginmetadata_qpluginmetadata_setsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

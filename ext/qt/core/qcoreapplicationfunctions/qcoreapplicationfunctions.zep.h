@@ -1,0 +1,14 @@
+
+extern zend_class_entry *qt_core_qcoreapplicationfunctions_qcoreapplicationfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QCoreapplicationFunctions_QCoreapplicationFunctions);
+
+PHP_METHOD(Qt_Core_QCoreapplicationFunctions_QCoreapplicationFunctions, qAppName);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplicationfunctions_qcoreapplicationfunctions_qappname, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qcoreapplicationfunctions_qcoreapplicationfunctions_method_entry) {
+	PHP_ME(Qt_Core_QCoreapplicationFunctions_QCoreapplicationFunctions, qAppName, arginfo_qt_core_qcoreapplicationfunctions_qcoreapplicationfunctions_qappname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,160 @@
+
+extern zend_class_entry *qt_printsupport_qprinterinfo_qprinterinfo_ce;
+
+ZEPHIR_INIT_CLASS(Qt_PrintSupport_QPrinterInfo_QPrinterInfo);
+
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, new_);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, newQPrinterInfo);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, newQPrinter);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, printerName);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, description);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, location);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, makeAndModel);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, isNull);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, isDefault);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, isRemote);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, state);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedPageSizes);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultPageSize);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportsCustomPageSizes);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, minimumPhysicalPageSize);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, maximumPhysicalPageSize);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedResolutions);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultDuplexMode);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedDuplexModes);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultColorMode);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedColorModes);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, availablePrinterNames);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, availablePrinters);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultPrinterName);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultPrinter);
+PHP_METHOD(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, printerInfo);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_newqprinterinfo, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_newqprinter, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printer, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_printername, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_description, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_location, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_makeandmodel, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_isnull, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_isdefault, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_isremote, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_state, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedpagesizes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultpagesize, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportscustompagesizes, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_minimumphysicalpagesize, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_maximumphysicalpagesize, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedresolutions, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultduplexmode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedduplexmodes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultcolormode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedcolormodes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_availableprinternames, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_availableprinters, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultprintername, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultprinter, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprinterinfo_qprinterinfo_printerinfo, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printerName, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_printsupport_qprinterinfo_qprinterinfo_method_entry) {
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, new_, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, newQPrinterInfo, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_newqprinterinfo, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, newQPrinter, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_newqprinter, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, printerName, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_printername, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, description, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_description, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, location, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_location, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, makeAndModel, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_makeandmodel, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, isNull, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_isnull, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, isDefault, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_isdefault, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, isRemote, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_isremote, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, state, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_state, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedPageSizes, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedpagesizes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultPageSize, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultpagesize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportsCustomPageSizes, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportscustompagesizes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, minimumPhysicalPageSize, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_minimumphysicalpagesize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, maximumPhysicalPageSize, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_maximumphysicalpagesize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedResolutions, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedresolutions, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultDuplexMode, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultduplexmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedDuplexModes, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedduplexmodes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultColorMode, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultcolormode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, supportedColorModes, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_supportedcolormodes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, availablePrinterNames, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_availableprinternames, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, availablePrinters, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_availableprinters, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultPrinterName, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultprintername, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, defaultPrinter, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_defaultprinter, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrinterInfo_QPrinterInfo, printerInfo, arginfo_qt_printsupport_qprinterinfo_qprinterinfo_printerinfo, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

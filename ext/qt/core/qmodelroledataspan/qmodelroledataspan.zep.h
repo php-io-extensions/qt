@@ -1,0 +1,57 @@
+
+extern zend_class_entry *qt_core_qmodelroledataspan_qmodelroledataspan_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan);
+
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, new_);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, newQModelRoleData);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, newQModelRoleDataQsizetype);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, size);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, length);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, data);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, begin);
+PHP_METHOD(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, end);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_newqmodelroledata, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modelRoleData, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_newqmodelroledataqsizetype, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modelRoleData, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, len, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_size, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_length, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_data, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_begin, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_end, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmodelroledataspan_qmodelroledataspan_method_entry) {
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, new_, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, newQModelRoleData, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_newqmodelroledata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, newQModelRoleDataQsizetype, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_newqmodelroledataqsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, size, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_size, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, length, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_length, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, data, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_data, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, begin, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_begin, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QModelRoleDataSpan_QModelRoleDataSpan, end, arginfo_qt_core_qmodelroledataspan_qmodelroledataspan_end, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

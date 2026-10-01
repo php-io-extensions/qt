@@ -1,0 +1,398 @@
+
+extern zend_class_entry *qt_network_qnetworkaccessmanager_qnetworkaccessmanager_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkAccessManager_QNetworkAccessManager);
+
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, staticMetaObject);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, tr);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, new_);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, supportedSchemes);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, clearAccessCache);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, clearConnectionCache);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, proxy);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setProxy);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, proxyFactory);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setProxyFactory);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, cache);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setCache);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, cookieJar);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setCookieJar);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setStrictTransportSecurityEnabled);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, isStrictTransportSecurityEnabled);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, enableStrictTransportSecurityStore);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, isStrictTransportSecurityStoreEnabled);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, addStrictTransportSecurityHosts);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, strictTransportSecurityHosts);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, head);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, get);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, getQNetworkRequestQIODevice);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, getQNetworkRequestQByteArray);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, post);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, postQNetworkRequestQByteArray);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, put);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, putQNetworkRequestQByteArray);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, deleteResource);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sendCustomRequest);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sendCustomRequestQNetworkRequestQByteArrayQByteArray);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, postQNetworkRequestQHttpMultiPart);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, putQNetworkRequestQHttpMultiPart);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sendCustomRequestQNetworkRequestQByteArrayQHttpMultiPart);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, connectToHostEncrypted);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, connectToHostEncryptedQStringQuint16QSslConfigurationQString);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, connectToHost);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setRedirectPolicy);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, redirectPolicy);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, autoDeleteReplies);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setAutoDeleteReplies);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, transferTimeout);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setTransferTimeout);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, proxyAuthenticationRequired);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, authenticationRequired);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, finished);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, encrypted);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sslErrors);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, preSharedKeyAuthenticationRequired);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, createRequest);
+PHP_METHOD(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, supportedSchemesImplementation);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_supportedschemes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_clearaccesscache, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_clearconnectioncache, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_proxy, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setproxy, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, proxy, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_proxyfactory, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setproxyfactory, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, factory, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_cache, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setcache, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, cache, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_cookiejar, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setcookiejar, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, cookieJar, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setstricttransportsecurityenabled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enabled, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_isstricttransportsecurityenabled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_enablestricttransportsecuritystore, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enabled, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, storeDir, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_isstricttransportsecuritystoreenabled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_addstricttransportsecurityhosts, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, knownHosts, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_stricttransportsecurityhosts, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_head, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_get, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_getqnetworkrequestqiodevice, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_getqnetworkrequestqbytearray, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_post, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_postqnetworkrequestqbytearray, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_put, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_putqnetworkrequestqbytearray, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_deleteresource, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sendcustomrequest, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, verb, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sendcustomrequestqnetworkrequestqbytearrayqbytearray, 0, 4, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, verb, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_postqnetworkrequestqhttpmultipart, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, multiPart, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_putqnetworkrequestqhttpmultipart, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, multiPart, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sendcustomrequestqnetworkrequestqbytearrayqhttpmultipart, 0, 4, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, verb, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, multiPart, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_connecttohostencrypted, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, hostName, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, port, IS_LONG, 0)
+	ZEND_ARG_INFO(0, sslConfiguration)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_connecttohostencryptedqstringquint16qsslconfigurationqstring, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, hostName, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, port, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sslConfiguration, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, peerName, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_connecttohost, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, hostName, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, port, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setredirectpolicy, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, policy, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_redirectpolicy, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_autodeletereplies, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setautodeletereplies, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, autoDelete, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_transfertimeout, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_settransfertimeout, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timeout, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_proxyauthenticationrequired, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, proxy, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, authenticator, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_authenticationrequired, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, reply, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, authenticator, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_finished, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, reply, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_encrypted, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, reply, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sslerrors, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, reply, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, errors, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_presharedkeyauthenticationrequired, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, reply, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, authenticator, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_createrequest, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, op, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, request, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, outgoingData, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_supportedschemesimplementation, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkaccessmanager_qnetworkaccessmanager_method_entry) {
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, staticMetaObject, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, tr, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, new_, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, supportedSchemes, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_supportedschemes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, clearAccessCache, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_clearaccesscache, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, clearConnectionCache, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_clearconnectioncache, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, proxy, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_proxy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setProxy, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setproxy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, proxyFactory, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_proxyfactory, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setProxyFactory, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setproxyfactory, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, cache, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_cache, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setCache, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setcache, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, cookieJar, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_cookiejar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setCookieJar, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setcookiejar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setStrictTransportSecurityEnabled, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setstricttransportsecurityenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, isStrictTransportSecurityEnabled, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_isstricttransportsecurityenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, enableStrictTransportSecurityStore, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_enablestricttransportsecuritystore, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, isStrictTransportSecurityStoreEnabled, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_isstricttransportsecuritystoreenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, addStrictTransportSecurityHosts, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_addstricttransportsecurityhosts, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, strictTransportSecurityHosts, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_stricttransportsecurityhosts, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, head, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_head, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, get, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_get, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, getQNetworkRequestQIODevice, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_getqnetworkrequestqiodevice, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, getQNetworkRequestQByteArray, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_getqnetworkrequestqbytearray, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, post, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_post, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, postQNetworkRequestQByteArray, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_postqnetworkrequestqbytearray, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, put, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_put, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, putQNetworkRequestQByteArray, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_putqnetworkrequestqbytearray, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, deleteResource, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_deleteresource, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sendCustomRequest, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sendcustomrequest, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sendCustomRequestQNetworkRequestQByteArrayQByteArray, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sendcustomrequestqnetworkrequestqbytearrayqbytearray, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, postQNetworkRequestQHttpMultiPart, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_postqnetworkrequestqhttpmultipart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, putQNetworkRequestQHttpMultiPart, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_putqnetworkrequestqhttpmultipart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sendCustomRequestQNetworkRequestQByteArrayQHttpMultiPart, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sendcustomrequestqnetworkrequestqbytearrayqhttpmultipart, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, connectToHostEncrypted, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_connecttohostencrypted, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, connectToHostEncryptedQStringQuint16QSslConfigurationQString, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_connecttohostencryptedqstringquint16qsslconfigurationqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, connectToHost, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_connecttohost, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setRedirectPolicy, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setredirectpolicy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, redirectPolicy, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_redirectpolicy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, autoDeleteReplies, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_autodeletereplies, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setAutoDeleteReplies, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_setautodeletereplies, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, transferTimeout, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_transfertimeout, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, setTransferTimeout, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_settransfertimeout, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, proxyAuthenticationRequired, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_proxyauthenticationrequired, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, authenticationRequired, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_authenticationrequired, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, finished, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_finished, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, encrypted, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_encrypted, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, sslErrors, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_sslerrors, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, preSharedKeyAuthenticationRequired, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_presharedkeyauthenticationrequired, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, createRequest, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_createrequest, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAccessManager_QNetworkAccessManager, supportedSchemesImplementation, arginfo_qt_network_qnetworkaccessmanager_qnetworkaccessmanager_supportedschemesimplementation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

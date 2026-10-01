@@ -1,0 +1,51 @@
+
+extern zend_class_entry *qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent);
+
+PHP_METHOD(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, new_);
+PHP_METHOD(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, newQAccessibleInterfaceInt);
+PHP_METHOD(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, setCursorPosition);
+PHP_METHOD(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, cursorPosition);
+PHP_METHOD(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, m_cursorPosition);
+PHP_METHOD(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, setM_cursorPosition);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_new_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, obj, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, cursorPos, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_newqaccessibleinterfaceint, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, iface, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, cursorPos, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_setcursorposition, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, position, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_cursorposition, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_m_cursorposition, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_setm_cursorposition, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, new_, arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, newQAccessibleInterfaceInt, arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_newqaccessibleinterfaceint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, setCursorPosition, arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_setcursorposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, cursorPosition, arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_cursorposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, m_cursorPosition, arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_m_cursorposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextCursorEvent_QAccessibleTextCursorEvent, setM_cursorPosition, arginfo_qt_gui_qaccessibletextcursorevent_qaccessibletextcursorevent_setm_cursorposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

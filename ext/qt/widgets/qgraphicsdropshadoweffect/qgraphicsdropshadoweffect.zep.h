@@ -1,0 +1,159 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect);
+
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, staticMetaObject);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, tr);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, boundingRectFor);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, offset);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, xOffset);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, yOffset);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, blurRadius);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, color);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setOffset);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setOffsetQrealQreal);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setOffsetQreal);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setXOffset);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setYOffset);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setBlurRadius);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setColor);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, offsetChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, blurRadiusChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, colorChanged);
+PHP_METHOD(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, draw);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_boundingrectfor, 0, 5, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, rectX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, rectY, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, rectWidth, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, rectHeight, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_offset, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_xoffset, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_yoffset, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_blurradius, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_color, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setoffset, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, ofsX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, ofsY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setoffsetqrealqreal, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dx, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, dy, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setoffsetqreal, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, d, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setxoffset, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dx, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setyoffset, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dy, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setblurradius, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, blurRadius, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setcolor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, color, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_offsetchanged, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, offsetX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, offsetY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_blurradiuschanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, blurRadius, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_colorchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, color, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_draw, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, painter, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, staticMetaObject, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, tr, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, new_, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, boundingRectFor, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_boundingrectfor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, offset, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_offset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, xOffset, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_xoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, yOffset, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_yoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, blurRadius, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_blurradius, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, color, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_color, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setOffset, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setOffsetQrealQreal, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setoffsetqrealqreal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setOffsetQreal, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setoffsetqreal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setXOffset, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setxoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setYOffset, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setyoffset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setBlurRadius, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setblurradius, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, setColor, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_setcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, offsetChanged, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_offsetchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, blurRadiusChanged, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_blurradiuschanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, colorChanged, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_colorchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsDropShadowEffect_QGraphicsDropShadowEffect, draw, arginfo_qt_widgets_qgraphicsdropshadoweffect_qgraphicsdropshadoweffect_draw, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

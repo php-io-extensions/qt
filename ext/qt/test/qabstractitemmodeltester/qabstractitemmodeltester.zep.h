@@ -1,0 +1,57 @@
+
+extern zend_class_entry *qt_test_qabstractitemmodeltester_qabstractitemmodeltester_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester);
+
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, staticMetaObject);
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, tr);
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, new_);
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, newQAbstractItemModelQAbstractItemModelTesterFailureReportingModeQObject);
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, model);
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, failureReportingMode);
+PHP_METHOD(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, setUseFetchMore);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, model, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_newqabstractitemmodelqabstractitemmodeltesterfailurereportingmodeqobject, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, model, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, mode, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_model, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_failurereportingmode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_setusefetchmore, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_test_qabstractitemmodeltester_qabstractitemmodeltester_method_entry) {
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, staticMetaObject, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, tr, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, new_, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, newQAbstractItemModelQAbstractItemModelTesterFailureReportingModeQObject, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_newqabstractitemmodelqabstractitemmodeltesterfailurereportingmodeqobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, model, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_model, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, failureReportingMode, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_failurereportingmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Test_QAbstractItemModelTester_QAbstractItemModelTester, setUseFetchMore, arginfo_qt_test_qabstractitemmodeltester_qabstractitemmodeltester_setusefetchmore, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

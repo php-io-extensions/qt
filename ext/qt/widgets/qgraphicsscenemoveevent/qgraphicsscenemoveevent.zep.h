@@ -1,0 +1,44 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, oldPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, setOldPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, newPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, setNewPos);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_oldpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_setoldpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_newpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_setnewpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, new_, arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, oldPos, arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_oldpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, setOldPos, arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_setoldpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, newPos, arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_newpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneMoveEvent_QGraphicsSceneMoveEvent, setNewPos, arginfo_qt_widgets_qgraphicsscenemoveevent_qgraphicsscenemoveevent_setnewpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

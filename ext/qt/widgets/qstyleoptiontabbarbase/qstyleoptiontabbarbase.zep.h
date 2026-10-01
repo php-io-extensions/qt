@@ -1,0 +1,82 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, shape);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setShape);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, tabBarRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setTabBarRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, selectedTabRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setSelectedTabRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, documentMode);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setDocumentMode);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, newQStyleOptionTabBarBase);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_shape, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_setshape, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_tabbarrect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_settabbarrect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_selectedtabrect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_setselectedtabrect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_documentmode, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_setdocumentmode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_newqstyleoptiontabbarbase, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, shape, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_shape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setShape, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_setshape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, tabBarRect, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_tabbarrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setTabBarRect, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_settabbarrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, selectedTabRect, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_selectedtabrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setSelectedTabRect, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_setselectedtabrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, documentMode, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_documentmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, setDocumentMode, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_setdocumentmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, new_, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionTabBarBase_QStyleOptionTabBarBase, newQStyleOptionTabBarBase, arginfo_qt_widgets_qstyleoptiontabbarbase_qstyleoptiontabbarbase_newqstyleoptiontabbarbase, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,50 @@
+
+extern zend_class_entry *qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2);
+
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, staticMetaObject);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, tr);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, new_);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, unregisterTimer);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, timersForObject);
+PHP_METHOD(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, processEventsWithDeadline);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_unregistertimer, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timerId, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_timersforobject, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_processeventswithdeadline, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, flags, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, deadline, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_method_entry) {
+	PHP_ME(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, staticMetaObject, arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, tr, arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, new_, arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, unregisterTimer, arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_unregistertimer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, timersForObject, arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_timersforobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QAbstractEventDispatcherV2_QAbstractEventDispatcherV2, processEventsWithDeadline, arginfo_qt_core_qabstracteventdispatcherv2_qabstracteventdispatcherv2_processeventswithdeadline, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

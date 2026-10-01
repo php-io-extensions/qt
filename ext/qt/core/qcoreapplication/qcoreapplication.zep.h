@@ -1,0 +1,347 @@
+
+extern zend_class_entry *qt_core_qcoreapplication_qcoreapplication_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QCoreApplication_QCoreApplication);
+
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, staticMetaObject);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, tr);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, new_);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, arguments);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setAttribute);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, testAttribute);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setOrganizationDomain);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, organizationDomain);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setOrganizationName);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, organizationName);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setApplicationName);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationName);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setApplicationVersion);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationVersion);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setSetuidAllowed);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, isSetuidAllowed);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, instance);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, exec);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, processEvents);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, processEventsQEventLoopProcessEventsFlagsInt);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, processEventsQEventLoopProcessEventsFlagsQDeadlineTimer);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, sendEvent);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, postEvent);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, sendPostedEvents);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, removePostedEvents);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, eventDispatcher);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setEventDispatcher);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, notify);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, startingUp);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, closingDown);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationDirPath);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationFilePath);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationPid);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, checkPermission);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setLibraryPaths);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, libraryPaths);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, addLibraryPath);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, removeLibraryPath);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, installTranslator);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, removeTranslator);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, translate);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, installNativeEventFilter);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, removeNativeEventFilter);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, isQuitLockEnabled);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, setQuitLockEnabled);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, quit);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, exit_);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, organizationNameChanged);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, organizationDomainChanged);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationNameChanged);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, applicationVersionChanged);
+PHP_METHOD(Qt_Core_QCoreApplication_QCoreApplication, event);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, argv, 0)
+	ZEND_ARG_INFO(0, arg0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_arguments, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setattribute, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, on, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_testattribute, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setorganizationdomain, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, orgDomain, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_organizationdomain, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setorganizationname, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, orgName, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_organizationname, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setapplicationname, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, application, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationname, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setapplicationversion, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, version, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationversion, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setsetuidallowed, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, allow, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_issetuidallowed, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_instance, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_exec, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_processevents, 0, 0, IS_VOID, 0)
+
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_processeventsqeventloopprocesseventsflagsint, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, flags, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, maxtime, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_processeventsqeventloopprocesseventsflagsqdeadlinetimer, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, flags, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, deadline, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_sendevent, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, receiver, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, event, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_postevent, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, receiver, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, event, IS_LONG, 0)
+	ZEND_ARG_INFO(0, priority)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_sendpostedevents, 0, 0, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, receiver, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, event_type, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_removepostedevents, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, receiver, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, eventType, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_eventdispatcher, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_seteventdispatcher, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, eventDispatcher, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_notify, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_startingup, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_closingdown, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationdirpath, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationfilepath, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationpid, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_checkpermission, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, permission, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setlibrarypaths, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_ARRAY_INFO(0, arg0, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_librarypaths, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_addlibrarypath, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_removelibrarypath, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_installtranslator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, messageFile, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_removetranslator, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, messageFile, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_translate, 0, 2, IS_STRING, 0)
+	ZEND_ARG_INFO(0, context)
+	ZEND_ARG_INFO(0, key)
+	ZEND_ARG_INFO(0, disambiguation)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_installnativeeventfilter, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filterObj, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_removenativeeventfilter, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filterObj, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_isquitlockenabled, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_setquitlockenabled, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, enabled, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_quit, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_exit_, 0, 0, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, retcode, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_organizationnamechanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_organizationdomainchanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationnamechanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_applicationversionchanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qcoreapplication_qcoreapplication_event, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qcoreapplication_qcoreapplication_method_entry) {
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, staticMetaObject, arginfo_qt_core_qcoreapplication_qcoreapplication_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, tr, arginfo_qt_core_qcoreapplication_qcoreapplication_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, new_, arginfo_qt_core_qcoreapplication_qcoreapplication_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, arguments, arginfo_qt_core_qcoreapplication_qcoreapplication_arguments, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setAttribute, arginfo_qt_core_qcoreapplication_qcoreapplication_setattribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, testAttribute, arginfo_qt_core_qcoreapplication_qcoreapplication_testattribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setOrganizationDomain, arginfo_qt_core_qcoreapplication_qcoreapplication_setorganizationdomain, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, organizationDomain, arginfo_qt_core_qcoreapplication_qcoreapplication_organizationdomain, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setOrganizationName, arginfo_qt_core_qcoreapplication_qcoreapplication_setorganizationname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, organizationName, arginfo_qt_core_qcoreapplication_qcoreapplication_organizationname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setApplicationName, arginfo_qt_core_qcoreapplication_qcoreapplication_setapplicationname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationName, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setApplicationVersion, arginfo_qt_core_qcoreapplication_qcoreapplication_setapplicationversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationVersion, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setSetuidAllowed, arginfo_qt_core_qcoreapplication_qcoreapplication_setsetuidallowed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, isSetuidAllowed, arginfo_qt_core_qcoreapplication_qcoreapplication_issetuidallowed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, instance, arginfo_qt_core_qcoreapplication_qcoreapplication_instance, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, exec, arginfo_qt_core_qcoreapplication_qcoreapplication_exec, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, processEvents, arginfo_qt_core_qcoreapplication_qcoreapplication_processevents, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, processEventsQEventLoopProcessEventsFlagsInt, arginfo_qt_core_qcoreapplication_qcoreapplication_processeventsqeventloopprocesseventsflagsint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, processEventsQEventLoopProcessEventsFlagsQDeadlineTimer, arginfo_qt_core_qcoreapplication_qcoreapplication_processeventsqeventloopprocesseventsflagsqdeadlinetimer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, sendEvent, arginfo_qt_core_qcoreapplication_qcoreapplication_sendevent, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, postEvent, arginfo_qt_core_qcoreapplication_qcoreapplication_postevent, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, sendPostedEvents, arginfo_qt_core_qcoreapplication_qcoreapplication_sendpostedevents, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, removePostedEvents, arginfo_qt_core_qcoreapplication_qcoreapplication_removepostedevents, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, eventDispatcher, arginfo_qt_core_qcoreapplication_qcoreapplication_eventdispatcher, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setEventDispatcher, arginfo_qt_core_qcoreapplication_qcoreapplication_seteventdispatcher, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, notify, arginfo_qt_core_qcoreapplication_qcoreapplication_notify, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, startingUp, arginfo_qt_core_qcoreapplication_qcoreapplication_startingup, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, closingDown, arginfo_qt_core_qcoreapplication_qcoreapplication_closingdown, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationDirPath, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationdirpath, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationFilePath, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationfilepath, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationPid, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationpid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, checkPermission, arginfo_qt_core_qcoreapplication_qcoreapplication_checkpermission, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setLibraryPaths, arginfo_qt_core_qcoreapplication_qcoreapplication_setlibrarypaths, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, libraryPaths, arginfo_qt_core_qcoreapplication_qcoreapplication_librarypaths, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, addLibraryPath, arginfo_qt_core_qcoreapplication_qcoreapplication_addlibrarypath, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, removeLibraryPath, arginfo_qt_core_qcoreapplication_qcoreapplication_removelibrarypath, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, installTranslator, arginfo_qt_core_qcoreapplication_qcoreapplication_installtranslator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, removeTranslator, arginfo_qt_core_qcoreapplication_qcoreapplication_removetranslator, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, translate, arginfo_qt_core_qcoreapplication_qcoreapplication_translate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, installNativeEventFilter, arginfo_qt_core_qcoreapplication_qcoreapplication_installnativeeventfilter, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, removeNativeEventFilter, arginfo_qt_core_qcoreapplication_qcoreapplication_removenativeeventfilter, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, isQuitLockEnabled, arginfo_qt_core_qcoreapplication_qcoreapplication_isquitlockenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, setQuitLockEnabled, arginfo_qt_core_qcoreapplication_qcoreapplication_setquitlockenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, quit, arginfo_qt_core_qcoreapplication_qcoreapplication_quit, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, exit_, arginfo_qt_core_qcoreapplication_qcoreapplication_exit_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, organizationNameChanged, arginfo_qt_core_qcoreapplication_qcoreapplication_organizationnamechanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, organizationDomainChanged, arginfo_qt_core_qcoreapplication_qcoreapplication_organizationdomainchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationNameChanged, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationnamechanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, applicationVersionChanged, arginfo_qt_core_qcoreapplication_qcoreapplication_applicationversionchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QCoreApplication_QCoreApplication, event, arginfo_qt_core_qcoreapplication_qcoreapplication_event, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

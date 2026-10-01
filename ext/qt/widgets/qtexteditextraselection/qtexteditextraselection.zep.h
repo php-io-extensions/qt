@@ -1,0 +1,37 @@
+
+extern zend_class_entry *qt_widgets_qtexteditextraselection_qtexteditextraselection_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection);
+
+PHP_METHOD(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, cursor);
+PHP_METHOD(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, setCursor);
+PHP_METHOD(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, format);
+PHP_METHOD(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, setFormat);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_cursor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_setcursor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_format, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_setformat, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qtexteditextraselection_qtexteditextraselection_method_entry) {
+	PHP_ME(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, cursor, arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_cursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, setCursor, arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_setcursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, format, arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_format, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTextEditExtraSelection_QTextEditExtraSelection, setFormat, arginfo_qt_widgets_qtexteditextraselection_qtexteditextraselection_setformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

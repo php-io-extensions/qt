@@ -1,0 +1,14 @@
+
+extern zend_class_entry *qt_core_qpropertynotifier_qpropertynotifier_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPropertyNotifier_QPropertyNotifier);
+
+PHP_METHOD(Qt_Core_QPropertyNotifier_QPropertyNotifier, new_);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpropertynotifier_qpropertynotifier_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpropertynotifier_qpropertynotifier_method_entry) {
+	PHP_ME(Qt_Core_QPropertyNotifier_QPropertyNotifier, new_, arginfo_qt_core_qpropertynotifier_qpropertynotifier_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

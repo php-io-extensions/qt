@@ -1,0 +1,180 @@
+
+extern zend_class_entry *qt_gui_qaccessibleinterface_qaccessibleinterface_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleInterface_QAccessibleInterface);
+
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, isValid);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, object_);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, window);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, relations);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, focusChild);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, childAt);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, parent_);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, child);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, childCount);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, indexOfChild);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, text);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, setText);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, rect);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, role);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, state);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, foregroundColor);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, backgroundColor);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, textInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, editableTextInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, valueInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, actionInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, imageInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, tableInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, tableCellInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, hyperlinkInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, selectionInterface);
+PHP_METHOD(Qt_Gui_QAccessibleInterface_QAccessibleInterface, attributesInterface);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_object_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_window, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_relations, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, match_)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_focuschild, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_childat, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_parent_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_child, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_childcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_indexofchild, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_text, 0, 2, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, t, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_settext, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, t, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_rect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_role, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_state, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_foregroundcolor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_backgroundcolor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_textinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_editabletextinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_valueinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_actioninterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_imageinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_tableinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_tablecellinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_hyperlinkinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_selectioninterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_attributesinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibleinterface_qaccessibleinterface_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, isValid, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, object_, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_object_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, window, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_window, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, relations, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_relations, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, focusChild, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_focuschild, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, childAt, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_childat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, parent_, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_parent_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, child, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_child, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, childCount, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_childcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, indexOfChild, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_indexofchild, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, text, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, setText, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, rect, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_rect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, role, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_role, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, state, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_state, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, foregroundColor, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_foregroundcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, backgroundColor, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_backgroundcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, textInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_textinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, editableTextInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_editabletextinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, valueInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_valueinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, actionInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_actioninterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, imageInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_imageinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, tableInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_tableinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, tableCellInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_tablecellinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, hyperlinkInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_hyperlinkinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, selectionInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_selectioninterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleInterface_QAccessibleInterface, attributesInterface, arginfo_qt_gui_qaccessibleinterface_qaccessibleinterface_attributesinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

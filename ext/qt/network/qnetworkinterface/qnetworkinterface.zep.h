@@ -1,0 +1,128 @@
+
+extern zend_class_entry *qt_network_qnetworkinterface_qnetworkinterface_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkInterface_QNetworkInterface);
+
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, staticMetaObject);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, qt_check_for_QGADGET_macro);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, new_);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, newQNetworkInterface);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, swap);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, isValid);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, index);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, maximumTransmissionUnit);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, name);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, humanReadableName);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, flags);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, type);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, hardwareAddress);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, addressEntries);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceIndexFromName);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceFromName);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceFromIndex);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceNameFromIndex);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, allInterfaces);
+PHP_METHOD(Qt_Network_QNetworkInterface_QNetworkInterface, allAddresses);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_qt_check_for_qgadget_macro, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_newqnetworkinterface, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_index, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_maximumtransmissionunit, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_name, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_humanreadablename, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_flags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_type, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_hardwareaddress, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_addressentries, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfaceindexfromname, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfacefromname, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfacefromindex, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfacenamefromindex, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_allinterfaces, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinterface_qnetworkinterface_alladdresses, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkinterface_qnetworkinterface_method_entry) {
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, staticMetaObject, arginfo_qt_network_qnetworkinterface_qnetworkinterface_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, qt_check_for_QGADGET_macro, arginfo_qt_network_qnetworkinterface_qnetworkinterface_qt_check_for_qgadget_macro, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, new_, arginfo_qt_network_qnetworkinterface_qnetworkinterface_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, newQNetworkInterface, arginfo_qt_network_qnetworkinterface_qnetworkinterface_newqnetworkinterface, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, swap, arginfo_qt_network_qnetworkinterface_qnetworkinterface_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, isValid, arginfo_qt_network_qnetworkinterface_qnetworkinterface_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, index, arginfo_qt_network_qnetworkinterface_qnetworkinterface_index, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, maximumTransmissionUnit, arginfo_qt_network_qnetworkinterface_qnetworkinterface_maximumtransmissionunit, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, name, arginfo_qt_network_qnetworkinterface_qnetworkinterface_name, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, humanReadableName, arginfo_qt_network_qnetworkinterface_qnetworkinterface_humanreadablename, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, flags, arginfo_qt_network_qnetworkinterface_qnetworkinterface_flags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, type, arginfo_qt_network_qnetworkinterface_qnetworkinterface_type, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, hardwareAddress, arginfo_qt_network_qnetworkinterface_qnetworkinterface_hardwareaddress, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, addressEntries, arginfo_qt_network_qnetworkinterface_qnetworkinterface_addressentries, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceIndexFromName, arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfaceindexfromname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceFromName, arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfacefromname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceFromIndex, arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfacefromindex, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, interfaceNameFromIndex, arginfo_qt_network_qnetworkinterface_qnetworkinterface_interfacenamefromindex, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, allInterfaces, arginfo_qt_network_qnetworkinterface_qnetworkinterface_allinterfaces, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInterface_QNetworkInterface, allAddresses, arginfo_qt_network_qnetworkinterface_qnetworkinterface_alladdresses, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

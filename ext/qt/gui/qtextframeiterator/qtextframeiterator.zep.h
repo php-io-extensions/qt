@@ -1,0 +1,38 @@
+
+extern zend_class_entry *qt_gui_qtextframeiterator_qtextframeiterator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QTextFrameiterator_QTextFrameiterator);
+
+PHP_METHOD(Qt_Gui_QTextFrameiterator_QTextFrameiterator, new_);
+PHP_METHOD(Qt_Gui_QTextFrameiterator_QTextFrameiterator, parentFrame);
+PHP_METHOD(Qt_Gui_QTextFrameiterator_QTextFrameiterator, currentFrame);
+PHP_METHOD(Qt_Gui_QTextFrameiterator_QTextFrameiterator, currentBlock);
+PHP_METHOD(Qt_Gui_QTextFrameiterator_QTextFrameiterator, atEnd);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextframeiterator_qtextframeiterator_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextframeiterator_qtextframeiterator_parentframe, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextframeiterator_qtextframeiterator_currentframe, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextframeiterator_qtextframeiterator_currentblock, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtextframeiterator_qtextframeiterator_atend, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qtextframeiterator_qtextframeiterator_method_entry) {
+	PHP_ME(Qt_Gui_QTextFrameiterator_QTextFrameiterator, new_, arginfo_qt_gui_qtextframeiterator_qtextframeiterator_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextFrameiterator_QTextFrameiterator, parentFrame, arginfo_qt_gui_qtextframeiterator_qtextframeiterator_parentframe, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextFrameiterator_QTextFrameiterator, currentFrame, arginfo_qt_gui_qtextframeiterator_qtextframeiterator_currentframe, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextFrameiterator_QTextFrameiterator, currentBlock, arginfo_qt_gui_qtextframeiterator_qtextframeiterator_currentblock, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextFrameiterator_QTextFrameiterator, atEnd, arginfo_qt_gui_qtextframeiterator_qtextframeiterator_atend, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

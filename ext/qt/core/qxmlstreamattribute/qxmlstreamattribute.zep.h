@@ -1,0 +1,65 @@
+
+extern zend_class_entry *qt_core_qxmlstreamattribute_qxmlstreamattribute_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute);
+
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, new_);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, newQStringQString);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, newQStringQStringQString);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, namespaceUri);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, name);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, qualifiedName);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, prefix);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, value);
+PHP_METHOD(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, isDefault);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_newqstringqstring, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, qualifiedName, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_newqstringqstringqstring, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, namespaceUri, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_namespaceuri, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_name, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_qualifiedname, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_prefix, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_value, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_isdefault, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qxmlstreamattribute_qxmlstreamattribute_method_entry) {
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, new_, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, newQStringQString, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_newqstringqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, newQStringQStringQString, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_newqstringqstringqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, namespaceUri, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_namespaceuri, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, name, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_name, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, qualifiedName, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_qualifiedname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, prefix, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_prefix, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, value, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QXmlStreamAttribute_QXmlStreamAttribute, isDefault, arginfo_qt_core_qxmlstreamattribute_qxmlstreamattribute_isdefault, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

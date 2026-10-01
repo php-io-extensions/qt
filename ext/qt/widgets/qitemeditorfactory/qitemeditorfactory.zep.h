@@ -1,0 +1,50 @@
+
+extern zend_class_entry *qt_widgets_qitemeditorfactory_qitemeditorfactory_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QItemEditorFactory_QItemEditorFactory);
+
+PHP_METHOD(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, new_);
+PHP_METHOD(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, createEditor);
+PHP_METHOD(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, valuePropertyName);
+PHP_METHOD(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, registerEditor);
+PHP_METHOD(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, defaultFactory);
+PHP_METHOD(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, setDefaultFactory);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_createeditor, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, userType, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_valuepropertyname, 0, 2, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, userType, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_registereditor, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, userType, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, creator, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_defaultfactory, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_setdefaultfactory, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, factory, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qitemeditorfactory_qitemeditorfactory_method_entry) {
+	PHP_ME(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, new_, arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, createEditor, arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_createeditor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, valuePropertyName, arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_valuepropertyname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, registerEditor, arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_registereditor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, defaultFactory, arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_defaultfactory, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QItemEditorFactory_QItemEditorFactory, setDefaultFactory, arginfo_qt_widgets_qitemeditorfactory_qitemeditorfactory_setdefaultfactory, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

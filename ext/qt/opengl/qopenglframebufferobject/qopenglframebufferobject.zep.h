@@ -1,0 +1,279 @@
+
+extern zend_class_entry *qt_opengl_qopenglframebufferobject_qopenglframebufferobject_ce;
+
+ZEPHIR_INIT_CLASS(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject);
+
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, new_);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newIntIntGLenum);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newQSizeQOpenGLFramebufferObjectAttachmentGLenumGLenum);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newIntIntQOpenGLFramebufferObjectAttachmentGLenumGLenum);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newQSizeQOpenGLFramebufferObjectFormat);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newIntIntQOpenGLFramebufferObjectFormat);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, addColorAttachment);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, addColorAttachmentIntIntGLenum);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, format);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, isValid);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, isBound);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, bind);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, release);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, width);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, height);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, texture);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, textures);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, takeTexture);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, takeTextureInt);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, size);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, sizes);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, toImage);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, toImageBoolInt);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, attachment);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, setAttachment);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, handle);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, bindDefault);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, hasOpenGLFramebufferObjects);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, hasOpenGLFramebufferBlit);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebuffer);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebufferQOpenGLFramebufferObjectQRectQOpenGLFramebufferObjectQRectGLbitfieldGLenumIntInt);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebufferQOpenGLFramebufferObjectQRectQOpenGLFramebufferObjectQRectGLbitfieldGLenum);
+PHP_METHOD(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebufferQOpenGLFramebufferObjectQOpenGLFramebufferObjectGLbitfieldGLenum);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_new_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newintintglenum, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newqsizeqopenglframebufferobjectattachmentglenumglenum, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attachment, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, internalFormat, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newintintqopenglframebufferobjectattachmentglenumglenum, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attachment, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, internalFormat, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newqsizeqopenglframebufferobjectformat, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, format, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newintintqopenglframebufferobjectformat, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, format, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_addcolorattachment, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, internalFormat, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_addcolorattachmentintintglenum, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, internalFormat, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_format, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_isbound, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_bind, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_release, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_width, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_height, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_texture, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_textures, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_taketexture, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_taketextureint, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, colorAttachmentIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_size, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_sizes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_toimage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, flipped, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_toimageboolint, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, flipped, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, colorAttachmentIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_attachment, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_setattachment, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, attachment, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_handle, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_binddefault, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_hasopenglframebufferobjects, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_hasopenglframebufferblit, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebuffer, 0, 15, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buffers, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filter, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, readColorAttachmentIndex, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, drawColorAttachmentIndex, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, restorePolicy, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebufferqopenglframebufferobjectqrectqopenglframebufferobjectqrectglbitfieldglenumintint, 0, 14, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buffers, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filter, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, readColorAttachmentIndex, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, drawColorAttachmentIndex, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebufferqopenglframebufferobjectqrectqopenglframebufferobjectqrectglbitfieldglenum, 0, 10, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, targetRectHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectY, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sourceRectHeight, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buffers, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filter, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebufferqopenglframebufferobjectqopenglframebufferobjectglbitfieldglenum, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, target, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, source, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buffers, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, filter, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_opengl_qopenglframebufferobject_qopenglframebufferobject_method_entry) {
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, new_, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newIntIntGLenum, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newintintglenum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newQSizeQOpenGLFramebufferObjectAttachmentGLenumGLenum, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newqsizeqopenglframebufferobjectattachmentglenumglenum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newIntIntQOpenGLFramebufferObjectAttachmentGLenumGLenum, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newintintqopenglframebufferobjectattachmentglenumglenum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newQSizeQOpenGLFramebufferObjectFormat, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newqsizeqopenglframebufferobjectformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, newIntIntQOpenGLFramebufferObjectFormat, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_newintintqopenglframebufferobjectformat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, addColorAttachment, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_addcolorattachment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, addColorAttachmentIntIntGLenum, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_addcolorattachmentintintglenum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, format, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_format, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, isValid, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, isBound, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_isbound, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, bind, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_bind, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, release, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_release, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, width, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_width, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, height, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_height, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, texture, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_texture, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, textures, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_textures, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, takeTexture, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_taketexture, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, takeTextureInt, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_taketextureint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, size, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_size, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, sizes, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_sizes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, toImage, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_toimage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, toImageBoolInt, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_toimageboolint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, attachment, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_attachment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, setAttachment, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_setattachment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, handle, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_handle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, bindDefault, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_binddefault, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, hasOpenGLFramebufferObjects, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_hasopenglframebufferobjects, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, hasOpenGLFramebufferBlit, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_hasopenglframebufferblit, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebuffer, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebuffer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebufferQOpenGLFramebufferObjectQRectQOpenGLFramebufferObjectQRectGLbitfieldGLenumIntInt, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebufferqopenglframebufferobjectqrectqopenglframebufferobjectqrectglbitfieldglenumintint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebufferQOpenGLFramebufferObjectQRectQOpenGLFramebufferObjectQRectGLbitfieldGLenum, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebufferqopenglframebufferobjectqrectqopenglframebufferobjectqrectglbitfieldglenum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLFramebufferObject_QOpenGLFramebufferObject, blitFramebufferQOpenGLFramebufferObjectQOpenGLFramebufferObjectGLbitfieldGLenum, arginfo_qt_opengl_qopenglframebufferobject_qopenglframebufferobject_blitframebufferqopenglframebufferobjectqopenglframebufferobjectglbitfieldglenum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

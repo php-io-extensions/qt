@@ -1,0 +1,215 @@
+
+extern zend_class_entry *qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_ce;
+
+ZEPHIR_INIT_CLASS(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget);
+
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, staticMetaObject);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, tr);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, new_);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, newQWidgetQtWindowFlags);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomFactor);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, orientation);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, viewMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, currentPage);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, pageCount);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setVisible);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, print_);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomIn);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomOut);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setZoomFactor);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setOrientation);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setViewMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setZoomMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setCurrentPage);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, fitToWidth);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, fitInView);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setLandscapeOrientation);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setPortraitOrientation);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setSinglePageViewMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setFacingPagesViewMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setAllPagesViewMode);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, updatePreview);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, paintRequested);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, previewChanged);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printer, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_newqwidgetqtwindowflags, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoomfactor, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_orientation, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_viewmode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoommode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_currentpage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_pagecount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setvisible, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, visible, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_print_, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoomin, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, zoom, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoomout, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, zoom, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setzoomfactor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, zoomFactor, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setorientation, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, orientation, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setviewmode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, viewMode, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setzoommode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, zoomMode, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setcurrentpage, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pageNumber, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_fittowidth, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_fitinview, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setlandscapeorientation, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setportraitorientation, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setsinglepageviewmode, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setfacingpagesviewmode, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setallpagesviewmode, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_updatepreview, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_paintrequested, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printer, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_previewchanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_method_entry) {
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, staticMetaObject, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, tr, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, new_, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, newQWidgetQtWindowFlags, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_newqwidgetqtwindowflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomFactor, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoomfactor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, orientation, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_orientation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, viewMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_viewmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoommode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, currentPage, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_currentpage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, pageCount, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_pagecount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setVisible, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setvisible, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, print_, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_print_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomIn, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoomin, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, zoomOut, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_zoomout, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setZoomFactor, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setzoomfactor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setOrientation, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setorientation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setViewMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setviewmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setZoomMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setzoommode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setCurrentPage, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setcurrentpage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, fitToWidth, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_fittowidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, fitInView, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_fitinview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setLandscapeOrientation, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setlandscapeorientation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setPortraitOrientation, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setportraitorientation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setSinglePageViewMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setsinglepageviewmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setFacingPagesViewMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setfacingpagesviewmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, setAllPagesViewMode, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_setallpagesviewmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, updatePreview, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_updatepreview, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, paintRequested, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_paintrequested, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewWidget_QPrintPreviewWidget, previewChanged, arginfo_qt_printsupport_qprintpreviewwidget_qprintpreviewwidget_previewchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,104 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, features);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setFeatures);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, text);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setText);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, textAlignment);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setTextAlignment);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, textColor);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setTextColor);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, lineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setLineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, midLineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setMidLineWidth);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, newQStyleOptionGroupBox);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_features, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_setfeatures, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_textalignment, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_settextalignment, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_textcolor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_settextcolor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_linewidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_setlinewidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_midlinewidth, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_setmidlinewidth, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_newqstyleoptiongroupbox, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, features, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_features, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setFeatures, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_setfeatures, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, text, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setText, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, textAlignment, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_textalignment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setTextAlignment, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_settextalignment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, textColor, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_textcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setTextColor, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_settextcolor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, lineWidth, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_linewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setLineWidth, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_setlinewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, midLineWidth, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_midlinewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, setMidLineWidth, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_setmidlinewidth, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, new_, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGroupBox_QStyleOptionGroupBox, newQStyleOptionGroupBox, arginfo_qt_widgets_qstyleoptiongroupbox_qstyleoptiongroupbox_newqstyleoptiongroupbox, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

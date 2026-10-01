@@ -1,0 +1,93 @@
+
+extern zend_class_entry *qt_core_qmathfunctions_qmathfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMathFunctions_QMathFunctions);
+
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qFastSin);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qFastCos);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qDegreesToRadians);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qDegreesToRadiansDouble);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qDegreesToRadiansLongDouble);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qRadiansToDegrees);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qRadiansToDegreesDouble);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qRadiansToDegreesLongDouble);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwo);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoQuint64);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoQint32);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoQint64);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoLongUnsignedInt);
+PHP_METHOD(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoLongInt);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qfastsin, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qfastcos, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qdegreestoradians, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, degrees, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qdegreestoradiansdouble, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, degrees, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qdegreestoradianslongdouble, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, degrees, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qradianstodegrees, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, radians, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qradianstodegreesdouble, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, radians, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qradianstodegreeslongdouble, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, radians, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwo, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwoquint64, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwoqint32, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwoqint64, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwolongunsignedint, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwolongint, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, v, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmathfunctions_qmathfunctions_method_entry) {
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qFastSin, arginfo_qt_core_qmathfunctions_qmathfunctions_qfastsin, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qFastCos, arginfo_qt_core_qmathfunctions_qmathfunctions_qfastcos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qDegreesToRadians, arginfo_qt_core_qmathfunctions_qmathfunctions_qdegreestoradians, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qDegreesToRadiansDouble, arginfo_qt_core_qmathfunctions_qmathfunctions_qdegreestoradiansdouble, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qDegreesToRadiansLongDouble, arginfo_qt_core_qmathfunctions_qmathfunctions_qdegreestoradianslongdouble, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qRadiansToDegrees, arginfo_qt_core_qmathfunctions_qmathfunctions_qradianstodegrees, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qRadiansToDegreesDouble, arginfo_qt_core_qmathfunctions_qmathfunctions_qradianstodegreesdouble, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qRadiansToDegreesLongDouble, arginfo_qt_core_qmathfunctions_qmathfunctions_qradianstodegreeslongdouble, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwo, arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwo, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoQuint64, arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwoquint64, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoQint32, arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwoqint32, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoQint64, arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwoqint64, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoLongUnsignedInt, arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwolongunsignedint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMathFunctions_QMathFunctions, qNextPowerOfTwoLongInt, arginfo_qt_core_qmathfunctions_qmathfunctions_qnextpoweroftwolongint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

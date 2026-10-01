@@ -1,0 +1,144 @@
+
+extern zend_class_entry *qt_network_qnetworkaddressentry_qnetworkaddressentry_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry);
+
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, new_);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, newQNetworkAddressEntry);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, swap);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, dnsEligibility);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setDnsEligibility);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, ip);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setIp);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, netmask);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setNetmask);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, prefixLength);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setPrefixLength);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, broadcast);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setBroadcast);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, isLifetimeKnown);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, preferredLifetime);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, validityLifetime);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setAddressLifetime);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, clearAddressLifetime);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, isPermanent);
+PHP_METHOD(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, isTemporary);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_newqnetworkaddressentry, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_dnseligibility, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setdnseligibility, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, status, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_ip, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setip, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, newIp, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_netmask, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setnetmask, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, newNetmask, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_prefixlength, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setprefixlength, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_broadcast, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setbroadcast, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, newBroadcast, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_islifetimeknown, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_preferredlifetime, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_validitylifetime, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setaddresslifetime, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, preferred, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, validity, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_clearaddresslifetime, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_ispermanent, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_istemporary, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkaddressentry_qnetworkaddressentry_method_entry) {
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, new_, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, newQNetworkAddressEntry, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_newqnetworkaddressentry, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, swap, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, dnsEligibility, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_dnseligibility, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setDnsEligibility, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setdnseligibility, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, ip, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_ip, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setIp, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setip, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, netmask, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_netmask, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setNetmask, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setnetmask, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, prefixLength, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_prefixlength, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setPrefixLength, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setprefixlength, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, broadcast, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_broadcast, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setBroadcast, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setbroadcast, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, isLifetimeKnown, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_islifetimeknown, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, preferredLifetime, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_preferredlifetime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, validityLifetime, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_validitylifetime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, setAddressLifetime, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_setaddresslifetime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, clearAddressLifetime, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_clearaddresslifetime, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, isPermanent, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_ispermanent, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkAddressEntry_QNetworkAddressEntry, isTemporary, arginfo_qt_network_qnetworkaddressentry_qnetworkaddressentry_istemporary, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

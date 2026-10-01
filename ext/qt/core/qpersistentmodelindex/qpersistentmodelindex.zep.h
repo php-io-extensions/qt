@@ -1,0 +1,99 @@
+
+extern zend_class_entry *qt_core_qpersistentmodelindex_qpersistentmodelindex_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPersistentModelIndex_QPersistentModelIndex);
+
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, new_);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, newQModelIndex);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, newQPersistentModelIndex);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, swap);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, row);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, column);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, internalId);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, parent_);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, sibling);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, data);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, multiData);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, flags);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, model);
+PHP_METHOD(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, isValid);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_newqmodelindex, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_newqpersistentmodelindex, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_row, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_column, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_internalid, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_parent_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_sibling, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_data, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, role)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_multidata, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, roleDataSpan, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_flags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_model, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpersistentmodelindex_qpersistentmodelindex_method_entry) {
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, new_, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, newQModelIndex, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_newqmodelindex, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, newQPersistentModelIndex, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_newqpersistentmodelindex, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, swap, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, row, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_row, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, column, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_column, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, internalId, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_internalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, parent_, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_parent_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, sibling, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_sibling, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, data, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_data, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, multiData, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_multidata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, flags, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_flags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, model, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_model, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPersistentModelIndex_QPersistentModelIndex, isValid, arginfo_qt_core_qpersistentmodelindex_qpersistentmodelindex_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

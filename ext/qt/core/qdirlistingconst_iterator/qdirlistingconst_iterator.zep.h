@@ -1,0 +1,14 @@
+
+extern zend_class_entry *qt_core_qdirlistingconst_iterator_qdirlistingconst_iterator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QDirListingconst_iterator_QDirListingconst_iterator);
+
+PHP_METHOD(Qt_Core_QDirListingconst_iterator_QDirListingconst_iterator, new_);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qdirlistingconst_iterator_qdirlistingconst_iterator_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qdirlistingconst_iterator_qdirlistingconst_iterator_method_entry) {
+	PHP_ME(Qt_Core_QDirListingconst_iterator_QDirListingconst_iterator, new_, arginfo_qt_core_qdirlistingconst_iterator_qdirlistingconst_iterator_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

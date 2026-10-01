@@ -1,0 +1,119 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, pos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, scenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, screenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, lastPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setLastPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, lastScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setLastScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, lastScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setLastScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, modifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setModifiers);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, type)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_pos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_scenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_screenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_lastpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setlastpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_lastscenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setlastscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_lastscreenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setlastscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_modifiers, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setmodifiers, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, new_, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, pos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_pos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, scenePos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_scenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setScenePos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, screenPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_screenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setScreenPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, lastPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_lastpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setLastPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setlastpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, lastScenePos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_lastscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setLastScenePos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setlastscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, lastScreenPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_lastscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setLastScreenPos, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setlastscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, modifiers, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_modifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneHoverEvent_QGraphicsSceneHoverEvent, setModifiers, arginfo_qt_widgets_qgraphicsscenehoverevent_qgraphicsscenehoverevent_setmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

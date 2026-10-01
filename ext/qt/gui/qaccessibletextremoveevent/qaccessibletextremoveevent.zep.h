@@ -1,0 +1,65 @@
+
+extern zend_class_entry *qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent);
+
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, new_);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, newQAccessibleInterfaceIntQString);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, textRemoved);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, changePosition);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, m_position);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, setM_position);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, m_text);
+PHP_METHOD(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, setM_text);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_new_, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, obj, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, position, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_newqaccessibleinterfaceintqstring, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, iface, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, position, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_textremoved, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_changeposition, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_m_position, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_setm_position, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_m_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_setm_text, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, new_, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, newQAccessibleInterfaceIntQString, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_newqaccessibleinterfaceintqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, textRemoved, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_textremoved, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, changePosition, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_changeposition, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, m_position, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_m_position, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, setM_position, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_setm_position, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, m_text, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_m_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTextRemoveEvent_QAccessibleTextRemoveEvent, setM_text, arginfo_qt_gui_qaccessibletextremoveevent_qaccessibletextremoveevent_setm_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

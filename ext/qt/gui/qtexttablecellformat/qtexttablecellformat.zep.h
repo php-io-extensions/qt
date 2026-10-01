@@ -1,0 +1,276 @@
+
+extern zend_class_entry *qt_gui_qtexttablecellformat_qtexttablecellformat_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat);
+
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, new_);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, isValid);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setPadding);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBorder);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBorderStyle);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightBorderBrush);
+PHP_METHOD(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBorderBrush);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settoppadding, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, padding, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_toppadding, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottompadding, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, padding, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottompadding, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftpadding, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, padding, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftpadding, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightpadding, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, padding, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightpadding, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setpadding, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, padding, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settopborder, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_topborder, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottomborder, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottomborder, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftborder, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftborder, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightborder, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightborder, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setborder, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settopborderstyle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, style, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_topborderstyle, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottomborderstyle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, style, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottomborderstyle, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftborderstyle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, style, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftborderstyle, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightborderstyle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, style, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightborderstyle, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setborderstyle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, style, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settopborderbrush, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, brush, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_topborderbrush, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottomborderbrush, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, brush, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottomborderbrush, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftborderbrush, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, brush, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftborderbrush, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightborderbrush, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, brush, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightborderbrush, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setborderbrush, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, brush, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qtexttablecellformat_qtexttablecellformat_method_entry) {
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, new_, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, isValid, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settoppadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_toppadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottompadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottompadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftpadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftpadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightpadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightpadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setPadding, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setpadding, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settopborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_topborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottomborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottomborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBorder, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setborder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settopborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_topborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottomborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottomborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBorderStyle, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setborderstyle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setTopBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_settopborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, topBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_topborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBottomBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setbottomborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, bottomBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_bottomborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setLeftBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setleftborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, leftBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_leftborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setRightBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setrightborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, rightBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_rightborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QTextTableCellFormat_QTextTableCellFormat, setBorderBrush, arginfo_qt_gui_qtexttablecellformat_qtexttablecellformat_setborderbrush, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

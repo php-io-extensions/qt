@@ -1,0 +1,21 @@
+
+extern zend_class_entry *qt_gui_qgenericpluginfactory_qgenericpluginfactory_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QGenericPluginFactory_QGenericPluginFactory);
+
+PHP_METHOD(Qt_Gui_QGenericPluginFactory_QGenericPluginFactory, keys);
+PHP_METHOD(Qt_Gui_QGenericPluginFactory_QGenericPluginFactory, create);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qgenericpluginfactory_qgenericpluginfactory_keys, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qgenericpluginfactory_qgenericpluginfactory_create, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qgenericpluginfactory_qgenericpluginfactory_method_entry) {
+	PHP_ME(Qt_Gui_QGenericPluginFactory_QGenericPluginFactory, keys, arginfo_qt_gui_qgenericpluginfactory_qgenericpluginfactory_keys, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGenericPluginFactory_QGenericPluginFactory, create, arginfo_qt_gui_qgenericpluginfactory_qgenericpluginfactory_create, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

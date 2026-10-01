@@ -1,0 +1,23 @@
+
+extern zend_class_entry *qt_dbus_qdbusmessagefunctions_qdbusmessagefunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_DBus_QDbusmessageFunctions_QDbusmessageFunctions);
+
+PHP_METHOD(Qt_DBus_QDbusmessageFunctions_QDbusmessageFunctions, swap);
+PHP_METHOD(Qt_DBus_QDbusmessageFunctions_QDbusmessageFunctions, qRegisterNormalizedMetaType_QDBusMessage);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusmessagefunctions_qdbusmessagefunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusmessagefunctions_qdbusmessagefunctions_qregisternormalizedmetatype_qdbusmessage, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_dbus_qdbusmessagefunctions_qdbusmessagefunctions_method_entry) {
+	PHP_ME(Qt_DBus_QDbusmessageFunctions_QDbusmessageFunctions, swap, arginfo_qt_dbus_qdbusmessagefunctions_qdbusmessagefunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDbusmessageFunctions_QDbusmessageFunctions, qRegisterNormalizedMetaType_QDBusMessage, arginfo_qt_dbus_qdbusmessagefunctions_qdbusmessagefunctions_qregisternormalizedmetatype_qdbusmessage, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,46 @@
+
+extern zend_class_entry *qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction);
+
+PHP_METHOD(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, new_);
+PHP_METHOD(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, newQDomProcessingInstruction);
+PHP_METHOD(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, target);
+PHP_METHOD(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, data);
+PHP_METHOD(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, setData);
+PHP_METHOD(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, nodeType);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_newqdomprocessinginstruction, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, processingInstruction, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_target, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_data, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_setdata, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_nodetype, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_method_entry) {
+	PHP_ME(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, new_, arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, newQDomProcessingInstruction, arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_newqdomprocessinginstruction, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, target, arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_target, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, data, arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_data, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, setData, arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_setdata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Xml_QDomProcessingInstruction_QDomProcessingInstruction, nodeType, arginfo_qt_xml_qdomprocessinginstruction_qdomprocessinginstruction_nodetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

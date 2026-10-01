@@ -1,0 +1,90 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, title);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setTitle);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, closable);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setClosable);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, movable);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setMovable);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, floatable);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setFloatable);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, verticalTitleBar);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setVerticalTitleBar);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, newQStyleOptionDockWidget);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_title, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_settitle, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_closable, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setclosable, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_movable, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setmovable, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_floatable, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setfloatable, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_verticaltitlebar, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setverticaltitlebar, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_newqstyleoptiondockwidget, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, title, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_title, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setTitle, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_settitle, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, closable, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_closable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setClosable, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setclosable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, movable, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_movable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setMovable, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setmovable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, floatable, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_floatable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setFloatable, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setfloatable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, verticalTitleBar, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_verticaltitlebar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, setVerticalTitleBar, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_setverticaltitlebar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, new_, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionDockWidget_QStyleOptionDockWidget, newQStyleOptionDockWidget, arginfo_qt_widgets_qstyleoptiondockwidget_qstyleoptiondockwidget_newqstyleoptiondockwidget, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

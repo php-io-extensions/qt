@@ -1,0 +1,41 @@
+
+extern zend_class_entry *qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian);
+
+PHP_METHOD(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, new_);
+PHP_METHOD(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, reset);
+PHP_METHOD(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, addValue);
+PHP_METHOD(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, isMedianValid);
+PHP_METHOD(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, median);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_reset, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_addvalue, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_ismedianvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_median, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_method_entry) {
+	PHP_ME(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, new_, arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, reset, arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_reset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, addValue, arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_addvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, isMedianValid, arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_ismedianvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Concurrent_QtConcurrentMedian_QtConcurrentMedian, median, arginfo_qt_concurrent_qtconcurrentmedian_qtconcurrentmedian_median, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,14 @@
+
+extern zend_class_entry *qt_core_qyieldcpufunctions_qyieldcpufunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QYieldcpuFunctions_QYieldcpuFunctions);
+
+PHP_METHOD(Qt_Core_QYieldcpuFunctions_QYieldcpuFunctions, qYieldCpu);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qyieldcpufunctions_qyieldcpufunctions_qyieldcpu, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qyieldcpufunctions_qyieldcpufunctions_method_entry) {
+	PHP_ME(Qt_Core_QYieldcpuFunctions_QYieldcpuFunctions, qYieldCpu, arginfo_qt_core_qyieldcpufunctions_qyieldcpufunctions_qyieldcpu, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

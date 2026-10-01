@@ -1,0 +1,80 @@
+
+extern zend_class_entry *qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument);
+
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, size);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setSize);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, mode);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setMode);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, state);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setState);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, scale);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setScale);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, pixmap);
+PHP_METHOD(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setPixmap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_size, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_mode, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setmode, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_state, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setstate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_scale, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setscale, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_pixmap, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setpixmap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_method_entry) {
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, size, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_size, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setSize, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, mode, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_mode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setMode, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setmode, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, state, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_state, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setState, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, scale, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_scale, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setScale, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setscale, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, pixmap, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_pixmap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QIconEngineScaledPixmapArgument_QIconEngineScaledPixmapArgument, setPixmap, arginfo_qt_gui_qiconenginescaledpixmapargument_qiconenginescaledpixmapargument_setpixmap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

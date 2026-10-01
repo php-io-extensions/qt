@@ -1,0 +1,159 @@
+
+extern zend_class_entry *qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, pos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, scenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setScenePos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, screenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setScreenPos);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, buttons);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setButtons);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, modifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setModifiers);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, delta);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setDelta);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, orientation);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setOrientation);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, phase);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setPhase);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, pixelDelta);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setPixelDelta);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, isInverted);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setInverted);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, type)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_pos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_scenepos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setscenepos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_screenpos, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setscreenpos, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_buttons, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setbuttons, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, buttons, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_modifiers, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setmodifiers, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_delta, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setdelta, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, delta, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_orientation, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setorientation, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, orientation, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_phase, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setphase, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, scrollPhase, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_pixeldelta, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setpixeldelta, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, deltaX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, deltaY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_isinverted, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setinverted, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, inverted, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, new_, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, pos, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_pos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setPos, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, scenePos, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_scenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setScenePos, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setscenepos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, screenPos, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_screenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setScreenPos, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setscreenpos, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, buttons, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_buttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setButtons, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setbuttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, modifiers, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_modifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setModifiers, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, delta, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_delta, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setDelta, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setdelta, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, orientation, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_orientation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setOrientation, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setorientation, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, phase, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_phase, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setPhase, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setphase, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, pixelDelta, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_pixeldelta, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setPixelDelta, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setpixeldelta, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, isInverted, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_isinverted, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneWheelEvent_QGraphicsSceneWheelEvent, setInverted, arginfo_qt_widgets_qgraphicsscenewheelevent_qgraphicsscenewheelevent_setinverted, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

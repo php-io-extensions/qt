@@ -1,0 +1,48 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, shape);
+PHP_METHOD(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, setShape);
+PHP_METHOD(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, opaque);
+PHP_METHOD(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, setOpaque);
+PHP_METHOD(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, newQStyleOptionRubberBand);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_shape, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_setshape, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_opaque, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_setopaque, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_newqstyleoptionrubberband, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, shape, arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_shape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, setShape, arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_setshape, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, opaque, arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_opaque, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, setOpaque, arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_setopaque, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, new_, arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionRubberBand_QStyleOptionRubberBand, newQStyleOptionRubberBand, arginfo_qt_widgets_qstyleoptionrubberband_qstyleoptionrubberband_newqstyleoptionrubberband, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

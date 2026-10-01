@@ -1,0 +1,83 @@
+
+extern zend_class_entry *qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_ce;
+
+ZEPHIR_INIT_CLASS(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog);
+
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, open);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, staticMetaObject);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, tr);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, new_);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, newQPrinterQWidgetQtWindowFlags);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, openQObjectChar);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, printer);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, setVisible);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, done);
+PHP_METHOD(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, paintRequested);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_open, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_newqprinterqwidgetqtwindowflags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printer, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_openqobjectchar, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, receiver, IS_LONG, 0)
+	ZEND_ARG_INFO(0, member)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_printer, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_setvisible, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, visible, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_done, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, result, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_paintrequested, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, printer, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_method_entry) {
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, open, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_open, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, staticMetaObject, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, tr, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, new_, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, newQPrinterQWidgetQtWindowFlags, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_newqprinterqwidgetqtwindowflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, openQObjectChar, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_openqobjectchar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, printer, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_printer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, setVisible, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_setvisible, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, done, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_done, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_PrintSupport_QPrintPreviewDialog_QPrintPreviewDialog, paintRequested, arginfo_qt_printsupport_qprintpreviewdialog_qprintpreviewdialog_paintrequested, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

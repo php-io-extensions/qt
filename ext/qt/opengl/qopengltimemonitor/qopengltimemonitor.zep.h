@@ -1,0 +1,86 @@
+
+extern zend_class_entry *qt_opengl_qopengltimemonitor_qopengltimemonitor_ce;
+
+ZEPHIR_INIT_CLASS(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor);
+
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, staticMetaObject);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, tr);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, new_);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, setSampleCount);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, sampleCount);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, create);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, destroy);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, isCreated);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, objectIds);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, recordSample);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, isResultAvailable);
+PHP_METHOD(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, reset);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_setsamplecount, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sampleCount, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_samplecount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_create, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_destroy, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_iscreated, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_objectids, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_recordsample, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_isresultavailable, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_reset, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_opengl_qopengltimemonitor_qopengltimemonitor_method_entry) {
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, staticMetaObject, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, tr, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, new_, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, setSampleCount, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_setsamplecount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, sampleCount, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_samplecount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, create, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_create, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, destroy, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_destroy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, isCreated, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_iscreated, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, objectIds, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_objectids, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, recordSample, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_recordsample, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, isResultAvailable, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_isresultavailable, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_OpenGL_QOpenGLTimeMonitor_QOpenGLTimeMonitor, reset, arginfo_qt_opengl_qopengltimemonitor_qopengltimemonitor_reset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

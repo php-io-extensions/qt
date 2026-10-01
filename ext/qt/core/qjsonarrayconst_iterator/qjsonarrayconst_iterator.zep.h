@@ -1,0 +1,21 @@
+
+extern zend_class_entry *qt_core_qjsonarrayconst_iterator_qjsonarrayconst_iterator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QJsonArrayconst_iterator_QJsonArrayconst_iterator);
+
+PHP_METHOD(Qt_Core_QJsonArrayconst_iterator_QJsonArrayconst_iterator, new_);
+PHP_METHOD(Qt_Core_QJsonArrayconst_iterator_QJsonArrayconst_iterator, newQJsonArrayQsizetype);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qjsonarrayconst_iterator_qjsonarrayconst_iterator_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qjsonarrayconst_iterator_qjsonarrayconst_iterator_newqjsonarrayqsizetype, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, array_, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qjsonarrayconst_iterator_qjsonarrayconst_iterator_method_entry) {
+	PHP_ME(Qt_Core_QJsonArrayconst_iterator_QJsonArrayconst_iterator, new_, arginfo_qt_core_qjsonarrayconst_iterator_qjsonarrayconst_iterator_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QJsonArrayconst_iterator_QJsonArrayconst_iterator, newQJsonArrayQsizetype, arginfo_qt_core_qjsonarrayconst_iterator_qjsonarrayconst_iterator_newqjsonarrayqsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

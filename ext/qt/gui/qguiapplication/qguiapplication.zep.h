@@ -1,0 +1,416 @@
+
+extern zend_class_entry *qt_gui_qguiapplication_qguiapplication_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QGuiApplication_QGuiApplication);
+
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, staticMetaObject);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, tr);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, new_);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setApplicationDisplayName);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, applicationDisplayName);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setBadgeNumber);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setDesktopFileName);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, desktopFileName);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, allWindows);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, topLevelWindows);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, topLevelAt);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setWindowIcon);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, windowIcon);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, platformName);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, modalWindow);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, focusWindow);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, focusObject);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, primaryScreen);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, screens);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, screenAt);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, devicePixelRatio);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, overrideCursor);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setOverrideCursor);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, changeOverrideCursor);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, restoreOverrideCursor);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, font);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setFont);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, clipboard);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, palette);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setPalette);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, keyboardModifiers);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, queryKeyboardModifiers);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, mouseButtons);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setLayoutDirection);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, layoutDirection);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, isRightToLeft);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, isLeftToRight);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, styleHints);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setDesktopSettingsAware);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, desktopSettingsAware);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, inputMethod);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setQuitOnLastWindowClosed);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, quitOnLastWindowClosed);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, applicationState);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, setHighDpiScaleFactorRoundingPolicy);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, highDpiScaleFactorRoundingPolicy);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, exec);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, notify);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, isSessionRestored);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, sessionId);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, sessionKey);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, isSavingSession);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, sync);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, fontDatabaseChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, screenAdded);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, screenRemoved);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, primaryScreenChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, lastWindowClosed);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, focusObjectChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, focusWindowChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, applicationStateChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, layoutDirectionChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, commitDataRequest);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, saveStateRequest);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, applicationDisplayNameChanged);
+PHP_METHOD(Qt_Gui_QGuiApplication_QGuiApplication, event);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, argv, 0)
+	ZEND_ARG_INFO(0, arg0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setapplicationdisplayname, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_applicationdisplayname, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setbadgenumber, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, number, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setdesktopfilename, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_desktopfilename, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_allwindows, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_toplevelwindows, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_toplevelat, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, posY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setwindowicon, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, icon, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_windowicon, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_platformname, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_modalwindow, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_focuswindow, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_focusobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_primaryscreen, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_screens, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_screenat, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pointX, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, pointY, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_devicepixelratio, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_overridecursor, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setoverridecursor, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_changeoverridecursor, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_restoreoverridecursor, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_font, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setfont, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_clipboard, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_palette, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setpalette, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, pal, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_keyboardmodifiers, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_querykeyboardmodifiers, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_mousebuttons, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setlayoutdirection, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, direction, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_layoutdirection, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_isrighttoleft, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_islefttoright, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_stylehints, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setdesktopsettingsaware, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, on, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_desktopsettingsaware, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_inputmethod, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_setquitonlastwindowclosed, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, quit, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_quitonlastwindowclosed, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_applicationstate, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_sethighdpiscalefactorroundingpolicy, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, policy, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_highdpiscalefactorroundingpolicy, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_exec, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_notify, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_issessionrestored, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_sessionid, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_sessionkey, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_issavingsession, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_sync, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_fontdatabasechanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_screenadded, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, screen, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_screenremoved, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, screen, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_primaryscreenchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, screen, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_lastwindowclosed, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_focusobjectchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, focusObject, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_focuswindowchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, focusWindow, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_applicationstatechanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, state, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_layoutdirectionchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, direction, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_commitdatarequest, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sessionManager, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_savestaterequest, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sessionManager, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_applicationdisplaynamechanged, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qguiapplication_qguiapplication_event, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qguiapplication_qguiapplication_method_entry) {
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, staticMetaObject, arginfo_qt_gui_qguiapplication_qguiapplication_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, tr, arginfo_qt_gui_qguiapplication_qguiapplication_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, new_, arginfo_qt_gui_qguiapplication_qguiapplication_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setApplicationDisplayName, arginfo_qt_gui_qguiapplication_qguiapplication_setapplicationdisplayname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, applicationDisplayName, arginfo_qt_gui_qguiapplication_qguiapplication_applicationdisplayname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setBadgeNumber, arginfo_qt_gui_qguiapplication_qguiapplication_setbadgenumber, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setDesktopFileName, arginfo_qt_gui_qguiapplication_qguiapplication_setdesktopfilename, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, desktopFileName, arginfo_qt_gui_qguiapplication_qguiapplication_desktopfilename, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, allWindows, arginfo_qt_gui_qguiapplication_qguiapplication_allwindows, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, topLevelWindows, arginfo_qt_gui_qguiapplication_qguiapplication_toplevelwindows, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, topLevelAt, arginfo_qt_gui_qguiapplication_qguiapplication_toplevelat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setWindowIcon, arginfo_qt_gui_qguiapplication_qguiapplication_setwindowicon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, windowIcon, arginfo_qt_gui_qguiapplication_qguiapplication_windowicon, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, platformName, arginfo_qt_gui_qguiapplication_qguiapplication_platformname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, modalWindow, arginfo_qt_gui_qguiapplication_qguiapplication_modalwindow, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, focusWindow, arginfo_qt_gui_qguiapplication_qguiapplication_focuswindow, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, focusObject, arginfo_qt_gui_qguiapplication_qguiapplication_focusobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, primaryScreen, arginfo_qt_gui_qguiapplication_qguiapplication_primaryscreen, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, screens, arginfo_qt_gui_qguiapplication_qguiapplication_screens, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, screenAt, arginfo_qt_gui_qguiapplication_qguiapplication_screenat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, devicePixelRatio, arginfo_qt_gui_qguiapplication_qguiapplication_devicepixelratio, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, overrideCursor, arginfo_qt_gui_qguiapplication_qguiapplication_overridecursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setOverrideCursor, arginfo_qt_gui_qguiapplication_qguiapplication_setoverridecursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, changeOverrideCursor, arginfo_qt_gui_qguiapplication_qguiapplication_changeoverridecursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, restoreOverrideCursor, arginfo_qt_gui_qguiapplication_qguiapplication_restoreoverridecursor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, font, arginfo_qt_gui_qguiapplication_qguiapplication_font, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setFont, arginfo_qt_gui_qguiapplication_qguiapplication_setfont, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, clipboard, arginfo_qt_gui_qguiapplication_qguiapplication_clipboard, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, palette, arginfo_qt_gui_qguiapplication_qguiapplication_palette, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setPalette, arginfo_qt_gui_qguiapplication_qguiapplication_setpalette, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, keyboardModifiers, arginfo_qt_gui_qguiapplication_qguiapplication_keyboardmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, queryKeyboardModifiers, arginfo_qt_gui_qguiapplication_qguiapplication_querykeyboardmodifiers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, mouseButtons, arginfo_qt_gui_qguiapplication_qguiapplication_mousebuttons, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setLayoutDirection, arginfo_qt_gui_qguiapplication_qguiapplication_setlayoutdirection, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, layoutDirection, arginfo_qt_gui_qguiapplication_qguiapplication_layoutdirection, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, isRightToLeft, arginfo_qt_gui_qguiapplication_qguiapplication_isrighttoleft, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, isLeftToRight, arginfo_qt_gui_qguiapplication_qguiapplication_islefttoright, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, styleHints, arginfo_qt_gui_qguiapplication_qguiapplication_stylehints, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setDesktopSettingsAware, arginfo_qt_gui_qguiapplication_qguiapplication_setdesktopsettingsaware, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, desktopSettingsAware, arginfo_qt_gui_qguiapplication_qguiapplication_desktopsettingsaware, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, inputMethod, arginfo_qt_gui_qguiapplication_qguiapplication_inputmethod, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setQuitOnLastWindowClosed, arginfo_qt_gui_qguiapplication_qguiapplication_setquitonlastwindowclosed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, quitOnLastWindowClosed, arginfo_qt_gui_qguiapplication_qguiapplication_quitonlastwindowclosed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, applicationState, arginfo_qt_gui_qguiapplication_qguiapplication_applicationstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, setHighDpiScaleFactorRoundingPolicy, arginfo_qt_gui_qguiapplication_qguiapplication_sethighdpiscalefactorroundingpolicy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, highDpiScaleFactorRoundingPolicy, arginfo_qt_gui_qguiapplication_qguiapplication_highdpiscalefactorroundingpolicy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, exec, arginfo_qt_gui_qguiapplication_qguiapplication_exec, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, notify, arginfo_qt_gui_qguiapplication_qguiapplication_notify, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, isSessionRestored, arginfo_qt_gui_qguiapplication_qguiapplication_issessionrestored, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, sessionId, arginfo_qt_gui_qguiapplication_qguiapplication_sessionid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, sessionKey, arginfo_qt_gui_qguiapplication_qguiapplication_sessionkey, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, isSavingSession, arginfo_qt_gui_qguiapplication_qguiapplication_issavingsession, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, sync, arginfo_qt_gui_qguiapplication_qguiapplication_sync, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, fontDatabaseChanged, arginfo_qt_gui_qguiapplication_qguiapplication_fontdatabasechanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, screenAdded, arginfo_qt_gui_qguiapplication_qguiapplication_screenadded, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, screenRemoved, arginfo_qt_gui_qguiapplication_qguiapplication_screenremoved, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, primaryScreenChanged, arginfo_qt_gui_qguiapplication_qguiapplication_primaryscreenchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, lastWindowClosed, arginfo_qt_gui_qguiapplication_qguiapplication_lastwindowclosed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, focusObjectChanged, arginfo_qt_gui_qguiapplication_qguiapplication_focusobjectchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, focusWindowChanged, arginfo_qt_gui_qguiapplication_qguiapplication_focuswindowchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, applicationStateChanged, arginfo_qt_gui_qguiapplication_qguiapplication_applicationstatechanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, layoutDirectionChanged, arginfo_qt_gui_qguiapplication_qguiapplication_layoutdirectionchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, commitDataRequest, arginfo_qt_gui_qguiapplication_qguiapplication_commitdatarequest, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, saveStateRequest, arginfo_qt_gui_qguiapplication_qguiapplication_savestaterequest, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, applicationDisplayNameChanged, arginfo_qt_gui_qguiapplication_qguiapplication_applicationdisplaynamechanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QGuiApplication_QGuiApplication, event, arginfo_qt_gui_qguiapplication_qguiapplication_event, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,28 @@
+
+extern zend_class_entry *qt_core_qmicrophonepermission_qmicrophonepermission_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QMicrophonePermission_QMicrophonePermission);
+
+PHP_METHOD(Qt_Core_QMicrophonePermission_QMicrophonePermission, new_);
+PHP_METHOD(Qt_Core_QMicrophonePermission_QMicrophonePermission, newQMicrophonePermission);
+PHP_METHOD(Qt_Core_QMicrophonePermission_QMicrophonePermission, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmicrophonepermission_qmicrophonepermission_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmicrophonepermission_qmicrophonepermission_newqmicrophonepermission, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qmicrophonepermission_qmicrophonepermission_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qmicrophonepermission_qmicrophonepermission_method_entry) {
+	PHP_ME(Qt_Core_QMicrophonePermission_QMicrophonePermission, new_, arginfo_qt_core_qmicrophonepermission_qmicrophonepermission_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMicrophonePermission_QMicrophonePermission, newQMicrophonePermission, arginfo_qt_core_qmicrophonepermission_qmicrophonepermission_newqmicrophonepermission, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QMicrophonePermission_QMicrophonePermission, swap, arginfo_qt_core_qmicrophonepermission_qmicrophonepermission_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

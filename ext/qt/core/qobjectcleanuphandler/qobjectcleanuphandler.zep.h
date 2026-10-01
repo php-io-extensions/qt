@@ -1,0 +1,55 @@
+
+extern zend_class_entry *qt_core_qobjectcleanuphandler_qobjectcleanuphandler_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler);
+
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, staticMetaObject);
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, tr);
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, new_);
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, add);
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, remove);
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, isEmpty);
+PHP_METHOD(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, clear);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_add, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_remove, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_isempty, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_clear, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qobjectcleanuphandler_qobjectcleanuphandler_method_entry) {
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, staticMetaObject, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, tr, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, new_, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, add, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_add, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, remove, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_remove, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, isEmpty, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_isempty, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QObjectCleanupHandler_QObjectCleanupHandler, clear, arginfo_qt_core_qobjectcleanuphandler_qobjectcleanuphandler_clear, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

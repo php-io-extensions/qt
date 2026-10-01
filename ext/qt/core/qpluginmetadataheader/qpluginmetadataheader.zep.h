@@ -1,0 +1,65 @@
+
+extern zend_class_entry *qt_core_qpluginmetadataheader_qpluginmetadataheader_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader);
+
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, version);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setVersion);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, qt_major_version);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setQt_major_version);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, qt_minor_version);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setQt_minor_version);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, plugin_arch_requirements);
+PHP_METHOD(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setPlugin_arch_requirements);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_version, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setversion, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_qt_major_version, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setqt_major_version, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_qt_minor_version, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setqt_minor_version, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_plugin_arch_requirements, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setplugin_arch_requirements, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qpluginmetadataheader_qpluginmetadataheader_method_entry) {
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, version, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setVersion, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setversion, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, qt_major_version, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_qt_major_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setQt_major_version, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setqt_major_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, qt_minor_version, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_qt_minor_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setQt_minor_version, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setqt_minor_version, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, plugin_arch_requirements, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_plugin_arch_requirements, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QPluginMetaDataHeader_QPluginMetaDataHeader, setPlugin_arch_requirements, arginfo_qt_core_qpluginmetadataheader_qpluginmetadataheader_setplugin_arch_requirements, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

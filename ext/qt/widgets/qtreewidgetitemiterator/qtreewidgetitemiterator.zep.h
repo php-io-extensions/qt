@@ -1,0 +1,23 @@
+
+extern zend_class_entry *qt_widgets_qtreewidgetitemiterator_qtreewidgetitemiterator_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QTreeWidgetItemIterator_QTreeWidgetItemIterator);
+
+PHP_METHOD(Qt_Widgets_QTreeWidgetItemIterator_QTreeWidgetItemIterator, new_);
+PHP_METHOD(Qt_Widgets_QTreeWidgetItemIterator_QTreeWidgetItemIterator, newQTreeWidgetItemQTreeWidgetItemIteratorIteratorFlags);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtreewidgetitemiterator_qtreewidgetitemiterator_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, widget, IS_LONG, 0)
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtreewidgetitemiterator_qtreewidgetitemiterator_newqtreewidgetitemqtreewidgetitemiteratoriteratorflags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, item, IS_LONG, 0)
+	ZEND_ARG_INFO(0, flags)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qtreewidgetitemiterator_qtreewidgetitemiterator_method_entry) {
+	PHP_ME(Qt_Widgets_QTreeWidgetItemIterator_QTreeWidgetItemIterator, new_, arginfo_qt_widgets_qtreewidgetitemiterator_qtreewidgetitemiterator_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTreeWidgetItemIterator_QTreeWidgetItemIterator, newQTreeWidgetItemQTreeWidgetItemIteratorIteratorFlags, arginfo_qt_widgets_qtreewidgetitemiterator_qtreewidgetitemiterator_newqtreewidgetitemqtreewidgetitemiteratoriteratorflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

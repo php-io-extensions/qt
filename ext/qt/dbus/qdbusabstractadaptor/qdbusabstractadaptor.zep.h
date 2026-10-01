@@ -1,0 +1,42 @@
+
+extern zend_class_entry *qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_ce;
+
+ZEPHIR_INIT_CLASS(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor);
+
+PHP_METHOD(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, staticMetaObject);
+PHP_METHOD(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, tr);
+PHP_METHOD(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, new_);
+PHP_METHOD(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, setAutoRelaySignals);
+PHP_METHOD(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, autoRelaySignals);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_new_, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_setautorelaysignals, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_autorelaysignals, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_method_entry) {
+	PHP_ME(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, staticMetaObject, arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, tr, arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, new_, arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, setAutoRelaySignals, arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_setautorelaysignals, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusAbstractAdaptor_QDBusAbstractAdaptor, autoRelaySignals, arginfo_qt_dbus_qdbusabstractadaptor_qdbusabstractadaptor_autorelaysignals, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

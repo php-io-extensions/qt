@@ -1,0 +1,85 @@
+
+extern zend_class_entry *qt_core_qstringconverterbasestate_qstringconverterbasestate_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QStringConverterBaseState_QStringConverterBaseState);
+
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, new_);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, clear);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, reset);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, flags);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setFlags);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, internalState);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setInternalState);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, remainingChars);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setRemainingChars);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, invalidChars);
+PHP_METHOD(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setInvalidChars);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_INFO(0, f)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_clear, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_reset, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_flags, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setflags, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_internalstate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setinternalstate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_remainingchars, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setremainingchars, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_invalidchars, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setinvalidchars, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qstringconverterbasestate_qstringconverterbasestate_method_entry) {
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, new_, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, clear, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_clear, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, reset, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_reset, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, flags, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_flags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setFlags, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setflags, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, internalState, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_internalstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setInternalState, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setinternalstate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, remainingChars, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_remainingchars, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setRemainingChars, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setremainingchars, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, invalidChars, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_invalidchars, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QStringConverterBaseState_QStringConverterBaseState, setInvalidChars, arginfo_qt_core_qstringconverterbasestate_qstringconverterbasestate_setinvalidchars, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,68 @@
+
+extern zend_class_entry *qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions);
+
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrlen);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrnlen);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrcmp);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrncmp);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstricmp);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrnicmp);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrnicmpCharQsizetypeCharQsizetype);
+PHP_METHOD(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qChecksum);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrlen, 0, 1, IS_LONG, 0)
+	ZEND_ARG_INFO(0, str)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrnlen, 0, 2, IS_LONG, 0)
+	ZEND_ARG_INFO(0, str)
+	ZEND_ARG_TYPE_INFO(0, maxlen, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrcmp, 0, 2, IS_LONG, 0)
+	ZEND_ARG_INFO(0, str1)
+	ZEND_ARG_INFO(0, str2)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrncmp, 0, 3, IS_LONG, 0)
+	ZEND_ARG_INFO(0, str1)
+	ZEND_ARG_INFO(0, str2)
+	ZEND_ARG_TYPE_INFO(0, len, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstricmp, 0, 2, IS_LONG, 0)
+	ZEND_ARG_INFO(0, arg0)
+	ZEND_ARG_INFO(0, arg1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrnicmp, 0, 3, IS_LONG, 0)
+	ZEND_ARG_INFO(0, arg0)
+	ZEND_ARG_INFO(0, arg1)
+	ZEND_ARG_TYPE_INFO(0, len, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrnicmpcharqsizetypecharqsizetype, 0, 3, IS_LONG, 0)
+	ZEND_ARG_INFO(0, arg0)
+	ZEND_ARG_TYPE_INFO(0, arg1, IS_LONG, 0)
+	ZEND_ARG_INFO(0, arg2)
+	ZEND_ARG_TYPE_INFO(0, arg3, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qchecksum, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+	ZEND_ARG_INFO(0, standard)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_method_entry) {
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrlen, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrlen, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrnlen, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrnlen, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrcmp, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrcmp, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrncmp, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrncmp, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstricmp, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstricmp, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrnicmp, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrnicmp, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qstrnicmpCharQsizetypeCharQsizetype, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qstrnicmpcharqsizetypecharqsizetype, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QBytearrayalgorithmsFunctions_QBytearrayalgorithmsFunctions, qChecksum, arginfo_qt_core_qbytearrayalgorithmsfunctions_qbytearrayalgorithmsfunctions_qchecksum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

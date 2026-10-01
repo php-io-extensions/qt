@@ -1,0 +1,43 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, exposedRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, setExposedRect);
+PHP_METHOD(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, newQStyleOptionGraphicsItem);
+PHP_METHOD(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, levelOfDetailFromTransform);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_exposedrect, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_setexposedrect, 0, 5, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, valueX, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, valueY, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, valueWidth, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, valueHeight, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_newqstyleoptiongraphicsitem, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_levelofdetailfromtransform, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, worldTransform, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, exposedRect, arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_exposedrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, setExposedRect, arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_setexposedrect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, new_, arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, newQStyleOptionGraphicsItem, arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_newqstyleoptiongraphicsitem, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionGraphicsItem_QStyleOptionGraphicsItem, levelOfDetailFromTransform, arginfo_qt_widgets_qstyleoptiongraphicsitem_qstyleoptiongraphicsitem_levelofdetailfromtransform, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

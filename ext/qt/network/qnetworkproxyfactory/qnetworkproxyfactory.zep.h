@@ -1,0 +1,52 @@
+
+extern zend_class_entry *qt_network_qnetworkproxyfactory_qnetworkproxyfactory_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory);
+
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, new_);
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, queryProxy);
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, usesSystemConfiguration);
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, setUseSystemConfiguration);
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, setApplicationProxyFactory);
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, proxyForQuery);
+PHP_METHOD(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, systemProxyForQuery);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_queryproxy, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, query)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_usessystemconfiguration, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_setusesystemconfiguration, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_setapplicationproxyfactory, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, factory, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_proxyforquery, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, query, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_systemproxyforquery, 0, 0, IS_ARRAY, 0)
+	ZEND_ARG_INFO(0, query)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkproxyfactory_qnetworkproxyfactory_method_entry) {
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, new_, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, queryProxy, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_queryproxy, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, usesSystemConfiguration, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_usessystemconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, setUseSystemConfiguration, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_setusesystemconfiguration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, setApplicationProxyFactory, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_setapplicationproxyfactory, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, proxyForQuery, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_proxyforquery, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkProxyFactory_QNetworkProxyFactory, systemProxyForQuery, arginfo_qt_network_qnetworkproxyfactory_qnetworkproxyfactory_systemproxyforquery, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

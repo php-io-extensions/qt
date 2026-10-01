@@ -1,0 +1,132 @@
+
+extern zend_class_entry *qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar);
+
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, minimum);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setMinimum);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, maximum);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setMaximum);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, progress);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setProgress);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, text);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setText);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, textAlignment);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setTextAlignment);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, textVisible);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setTextVisible);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, invertedAppearance);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setInvertedAppearance);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, bottomToTop);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setBottomToTop);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, new_);
+PHP_METHOD(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, newQStyleOptionProgressBar);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_minimum, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setminimum, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_maximum, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setmaximum, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_progress, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setprogress, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_settext, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_textalignment, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_settextalignment, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_textvisible, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_settextvisible, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_invertedappearance, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setinvertedappearance, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_bottomtotop, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setbottomtotop, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_newqstyleoptionprogressbar, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_method_entry) {
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, minimum, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_minimum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setMinimum, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setminimum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, maximum, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_maximum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setMaximum, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setmaximum, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, progress, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_progress, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setProgress, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setprogress, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, text, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_text, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setText, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_settext, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, textAlignment, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_textalignment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setTextAlignment, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_settextalignment, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, textVisible, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_textvisible, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setTextVisible, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_settextvisible, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, invertedAppearance, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_invertedappearance, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setInvertedAppearance, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setinvertedappearance, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, bottomToTop, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_bottomtotop, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, setBottomToTop, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_setbottomtotop, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, new_, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QStyleOptionProgressBar_QStyleOptionProgressBar, newQStyleOptionProgressBar, arginfo_qt_widgets_qstyleoptionprogressbar_qstyleoptionprogressbar_newqstyleoptionprogressbar, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

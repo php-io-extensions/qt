@@ -1,0 +1,59 @@
+
+extern zend_class_entry *qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange);
+
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, new_);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, newIntIntIntInt);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, topRow);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, bottomRow);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, leftColumn);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, rightColumn);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, rowCount);
+PHP_METHOD(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, columnCount);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_newintintintint, 0, 4, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, top, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, left, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, bottom, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, right, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_toprow, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_bottomrow, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_leftcolumn, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_rightcolumn, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_rowcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_columncount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_method_entry) {
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, new_, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, newIntIntIntInt, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_newintintintint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, topRow, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_toprow, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, bottomRow, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_bottomrow, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, leftColumn, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_leftcolumn, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, rightColumn, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_rightcolumn, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, rowCount, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_rowcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QTableWidgetSelectionRange_QTableWidgetSelectionRange, columnCount, arginfo_qt_widgets_qtablewidgetselectionrange_qtablewidgetselectionrange_columncount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

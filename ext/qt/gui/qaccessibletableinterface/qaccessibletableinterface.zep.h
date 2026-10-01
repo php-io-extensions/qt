@@ -1,0 +1,141 @@
+
+extern zend_class_entry *qt_gui_qaccessibletableinterface_qaccessibletableinterface_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface);
+
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, caption);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, summary);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, cellAt);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedCellCount);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedCells);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, columnDescription);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, rowDescription);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedColumnCount);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedRowCount);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, columnCount);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, rowCount);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedColumns);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedRows);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, isColumnSelected);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, isRowSelected);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectRow);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectColumn);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, unselectRow);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, unselectColumn);
+PHP_METHOD(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, modelChange);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_caption, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_summary, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_cellat, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcellcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcells, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_columndescription, 0, 2, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_rowdescription, 0, 2, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcolumncount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedrowcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_columncount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_rowcount, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcolumns, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedrows, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_iscolumnselected, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_isrowselected, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectrow, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectcolumn, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_unselectrow, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_unselectcolumn, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_modelchange, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, event, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibletableinterface_qaccessibletableinterface_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, caption, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_caption, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, summary, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_summary, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, cellAt, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_cellat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedCellCount, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcellcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedCells, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcells, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, columnDescription, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_columndescription, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, rowDescription, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_rowdescription, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedColumnCount, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcolumncount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedRowCount, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedrowcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, columnCount, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_columncount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, rowCount, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_rowcount, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedColumns, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedcolumns, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectedRows, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectedrows, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, isColumnSelected, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_iscolumnselected, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, isRowSelected, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_isrowselected, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectRow, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectrow, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, selectColumn, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_selectcolumn, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, unselectRow, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_unselectrow, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, unselectColumn, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_unselectcolumn, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleTableInterface_QAccessibleTableInterface, modelChange, arginfo_qt_gui_qaccessibletableinterface_qaccessibletableinterface_modelchange, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

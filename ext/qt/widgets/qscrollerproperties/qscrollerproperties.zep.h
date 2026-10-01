@@ -1,0 +1,48 @@
+
+extern zend_class_entry *qt_widgets_qscrollerproperties_qscrollerproperties_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QScrollerProperties_QScrollerProperties);
+
+PHP_METHOD(Qt_Widgets_QScrollerProperties_QScrollerProperties, new_);
+PHP_METHOD(Qt_Widgets_QScrollerProperties_QScrollerProperties, newQScrollerProperties);
+PHP_METHOD(Qt_Widgets_QScrollerProperties_QScrollerProperties, setDefaultScrollerProperties);
+PHP_METHOD(Qt_Widgets_QScrollerProperties_QScrollerProperties, unsetDefaultScrollerProperties);
+PHP_METHOD(Qt_Widgets_QScrollerProperties_QScrollerProperties, scrollMetric);
+PHP_METHOD(Qt_Widgets_QScrollerProperties_QScrollerProperties, setScrollMetric);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_newqscrollerproperties, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sp, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_setdefaultscrollerproperties, 0, 1, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, sp, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_unsetdefaultscrollerproperties, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_scrollmetric, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, metric, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_setscrollmetric, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, metric, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qscrollerproperties_qscrollerproperties_method_entry) {
+	PHP_ME(Qt_Widgets_QScrollerProperties_QScrollerProperties, new_, arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QScrollerProperties_QScrollerProperties, newQScrollerProperties, arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_newqscrollerproperties, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QScrollerProperties_QScrollerProperties, setDefaultScrollerProperties, arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_setdefaultscrollerproperties, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QScrollerProperties_QScrollerProperties, unsetDefaultScrollerProperties, arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_unsetdefaultscrollerproperties, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QScrollerProperties_QScrollerProperties, scrollMetric, arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_scrollmetric, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QScrollerProperties_QScrollerProperties, setScrollMetric, arginfo_qt_widgets_qscrollerproperties_qscrollerproperties_setscrollmetric, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

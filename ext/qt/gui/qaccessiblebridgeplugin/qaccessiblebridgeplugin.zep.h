@@ -1,0 +1,35 @@
+
+extern zend_class_entry *qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin);
+
+PHP_METHOD(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, staticMetaObject);
+PHP_METHOD(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, tr);
+PHP_METHOD(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, new_);
+PHP_METHOD(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, create);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_new_, 0, 0, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, parent_, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_create, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, staticMetaObject, arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, tr, arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, new_, arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleBridgePlugin_QAccessibleBridgePlugin, create, arginfo_qt_gui_qaccessiblebridgeplugin_qaccessiblebridgeplugin_create, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

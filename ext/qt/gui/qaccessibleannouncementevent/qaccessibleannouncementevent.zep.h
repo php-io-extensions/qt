@@ -1,0 +1,71 @@
+
+extern zend_class_entry *qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent);
+
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, new_);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, newQAccessibleInterfaceQString);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, message);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, politeness);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, setPoliteness);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, m_message);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, setM_message);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, m_politeness);
+PHP_METHOD(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, setM_politeness);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_new_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, object_, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_newqaccessibleinterfaceqstring, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, iface, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_message, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_politeness, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_setpoliteness, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, politeness, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_m_message, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_setm_message, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_m_politeness, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_setm_politeness, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, new_, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, newQAccessibleInterfaceQString, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_newqaccessibleinterfaceqstring, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, message, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_message, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, politeness, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_politeness, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, setPoliteness, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_setpoliteness, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, m_message, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_m_message, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, setM_message, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_setm_message, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, m_politeness, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_m_politeness, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleAnnouncementEvent_QAccessibleAnnouncementEvent, setM_politeness, arginfo_qt_gui_qaccessibleannouncementevent_qaccessibleannouncementevent_setm_politeness, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

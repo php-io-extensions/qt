@@ -1,0 +1,124 @@
+
+extern zend_class_entry *qt_network_qnetworkinformation_qnetworkinformation_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkInformation_QNetworkInformation);
+
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, staticMetaObject);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, tr);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, reachability);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, isBehindCaptivePortal);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, transportMedium);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, isMetered);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, backendName);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, supports);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, supportedFeatures);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, loadDefaultBackend);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, loadBackendByName);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, loadBackendByFeatures);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, availableBackends);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, instance);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, reachabilityChanged);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, isBehindCaptivePortalChanged);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, transportMediumChanged);
+PHP_METHOD(Qt_Network_QNetworkInformation_QNetworkInformation, isMeteredChanged);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_staticmetaobject, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_tr, 0, 1, IS_STRING, 0)
+	ZEND_ARG_INFO(0, s)
+	ZEND_ARG_INFO(0, c)
+	ZEND_ARG_TYPE_INFO(0, n, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_reachability, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_isbehindcaptiveportal, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_transportmedium, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_ismetered, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_backendname, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_supports, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, features, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_supportedfeatures, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_loaddefaultbackend, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_loadbackendbyname, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, backend, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_loadbackendbyfeatures, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, features, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_availablebackends, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_instance, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_reachabilitychanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, newReachability, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_isbehindcaptiveportalchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, state, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_transportmediumchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, current, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkinformation_qnetworkinformation_ismeteredchanged, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, isMetered, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkinformation_qnetworkinformation_method_entry) {
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, staticMetaObject, arginfo_qt_network_qnetworkinformation_qnetworkinformation_staticmetaobject, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, tr, arginfo_qt_network_qnetworkinformation_qnetworkinformation_tr, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, reachability, arginfo_qt_network_qnetworkinformation_qnetworkinformation_reachability, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, isBehindCaptivePortal, arginfo_qt_network_qnetworkinformation_qnetworkinformation_isbehindcaptiveportal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, transportMedium, arginfo_qt_network_qnetworkinformation_qnetworkinformation_transportmedium, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, isMetered, arginfo_qt_network_qnetworkinformation_qnetworkinformation_ismetered, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, backendName, arginfo_qt_network_qnetworkinformation_qnetworkinformation_backendname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, supports, arginfo_qt_network_qnetworkinformation_qnetworkinformation_supports, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, supportedFeatures, arginfo_qt_network_qnetworkinformation_qnetworkinformation_supportedfeatures, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, loadDefaultBackend, arginfo_qt_network_qnetworkinformation_qnetworkinformation_loaddefaultbackend, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, loadBackendByName, arginfo_qt_network_qnetworkinformation_qnetworkinformation_loadbackendbyname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, loadBackendByFeatures, arginfo_qt_network_qnetworkinformation_qnetworkinformation_loadbackendbyfeatures, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, availableBackends, arginfo_qt_network_qnetworkinformation_qnetworkinformation_availablebackends, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, instance, arginfo_qt_network_qnetworkinformation_qnetworkinformation_instance, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, reachabilityChanged, arginfo_qt_network_qnetworkinformation_qnetworkinformation_reachabilitychanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, isBehindCaptivePortalChanged, arginfo_qt_network_qnetworkinformation_qnetworkinformation_isbehindcaptiveportalchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, transportMediumChanged, arginfo_qt_network_qnetworkinformation_qnetworkinformation_transportmediumchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkInformation_QNetworkInformation, isMeteredChanged, arginfo_qt_network_qnetworkinformation_qnetworkinformation_ismeteredchanged, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

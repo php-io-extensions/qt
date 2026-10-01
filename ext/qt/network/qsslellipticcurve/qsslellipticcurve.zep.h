@@ -1,0 +1,50 @@
+
+extern zend_class_entry *qt_network_qsslellipticcurve_qsslellipticcurve_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QSslEllipticCurve_QSslEllipticCurve);
+
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, new_);
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, fromShortName);
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, fromLongName);
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, shortName);
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, longName);
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, isValid);
+PHP_METHOD(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, isTlsNamedCurve);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_fromshortname, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_fromlongname, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_shortname, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_longname, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_istlsnamedcurve, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qsslellipticcurve_qsslellipticcurve_method_entry) {
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, new_, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, fromShortName, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_fromshortname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, fromLongName, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_fromlongname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, shortName, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_shortname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, longName, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_longname, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, isValid, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QSslEllipticCurve_QSslEllipticCurve, isTlsNamedCurve, arginfo_qt_network_qsslellipticcurve_qsslellipticcurve_istlsnamedcurve, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

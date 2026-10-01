@@ -1,0 +1,95 @@
+
+extern zend_class_entry *qt_network_qhttp2configuration_qhttp2configuration_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QHttp2Configuration_QHttp2Configuration);
+
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, new_);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, newQHttp2Configuration);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, setServerPushEnabled);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, serverPushEnabled);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, setHuffmanCompressionEnabled);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, huffmanCompressionEnabled);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, setSessionReceiveWindowSize);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, sessionReceiveWindowSize);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, setStreamReceiveWindowSize);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, streamReceiveWindowSize);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, setMaxFrameSize);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, maxFrameSize);
+PHP_METHOD(Qt_Network_QHttp2Configuration_QHttp2Configuration, swap);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_newqhttp2configuration, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_setserverpushenabled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_serverpushenabled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_sethuffmancompressionenabled, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_huffmancompressionenabled, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_setsessionreceivewindowsize, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, size, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_sessionreceivewindowsize, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_setstreamreceivewindowsize, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, size, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_streamreceivewindowsize, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_setmaxframesize, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, size, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_maxframesize, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qhttp2configuration_qhttp2configuration_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qhttp2configuration_qhttp2configuration_method_entry) {
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, new_, arginfo_qt_network_qhttp2configuration_qhttp2configuration_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, newQHttp2Configuration, arginfo_qt_network_qhttp2configuration_qhttp2configuration_newqhttp2configuration, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, setServerPushEnabled, arginfo_qt_network_qhttp2configuration_qhttp2configuration_setserverpushenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, serverPushEnabled, arginfo_qt_network_qhttp2configuration_qhttp2configuration_serverpushenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, setHuffmanCompressionEnabled, arginfo_qt_network_qhttp2configuration_qhttp2configuration_sethuffmancompressionenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, huffmanCompressionEnabled, arginfo_qt_network_qhttp2configuration_qhttp2configuration_huffmancompressionenabled, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, setSessionReceiveWindowSize, arginfo_qt_network_qhttp2configuration_qhttp2configuration_setsessionreceivewindowsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, sessionReceiveWindowSize, arginfo_qt_network_qhttp2configuration_qhttp2configuration_sessionreceivewindowsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, setStreamReceiveWindowSize, arginfo_qt_network_qhttp2configuration_qhttp2configuration_setstreamreceivewindowsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, streamReceiveWindowSize, arginfo_qt_network_qhttp2configuration_qhttp2configuration_streamreceivewindowsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, setMaxFrameSize, arginfo_qt_network_qhttp2configuration_qhttp2configuration_setmaxframesize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, maxFrameSize, arginfo_qt_network_qhttp2configuration_qhttp2configuration_maxframesize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QHttp2Configuration_QHttp2Configuration, swap, arginfo_qt_network_qhttp2configuration_qhttp2configuration_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

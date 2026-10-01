@@ -1,0 +1,44 @@
+
+extern zend_class_entry *qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent);
+
+PHP_METHOD(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, new_);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, oldSize);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, setOldSize);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, newSize);
+PHP_METHOD(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, setNewSize);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_oldsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_setoldsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeWidth, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeHeight, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_newsize, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_setnewsize, 0, 3, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeWidth, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, sizeHeight, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_method_entry) {
+	PHP_ME(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, new_, arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, oldSize, arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_oldsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, setOldSize, arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_setoldsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, newSize, arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_newsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Widgets_QGraphicsSceneResizeEvent_QGraphicsSceneResizeEvent, setNewSize, arginfo_qt_widgets_qgraphicssceneresizeevent_qgraphicssceneresizeevent_setnewsize, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

@@ -1,0 +1,73 @@
+
+extern zend_class_entry *qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_ce;
+
+ZEPHIR_INIT_CLASS(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor);
+
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, new_);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, newInt);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, newQDBusUnixFileDescriptor);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, swap);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, isValid);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, fileDescriptor);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, setFileDescriptor);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, giveFileDescriptor);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, takeFileDescriptor);
+PHP_METHOD(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, isSupported);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_newint, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, fileDescriptor, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_newqdbusunixfiledescriptor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_filedescriptor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_setfiledescriptor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, fileDescriptor, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_givefiledescriptor, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, fileDescriptor, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_takefiledescriptor, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_issupported, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_method_entry) {
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, new_, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, newInt, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_newint, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, newQDBusUnixFileDescriptor, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_newqdbusunixfiledescriptor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, swap, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, isValid, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, fileDescriptor, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_filedescriptor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, setFileDescriptor, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_setfiledescriptor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, giveFileDescriptor, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_givefiledescriptor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, takeFileDescriptor, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_takefiledescriptor, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_DBus_QDBusUnixFileDescriptor_QDBusUnixFileDescriptor, isSupported, arginfo_qt_dbus_qdbusunixfiledescriptor_qdbusunixfiledescriptor_issupported, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

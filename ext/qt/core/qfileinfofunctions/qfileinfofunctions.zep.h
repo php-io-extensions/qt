@@ -1,0 +1,30 @@
+
+extern zend_class_entry *qt_core_qfileinfofunctions_qfileinfofunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QFileinfoFunctions_QFileinfoFunctions);
+
+PHP_METHOD(Qt_Core_QFileinfoFunctions_QFileinfoFunctions, swap);
+PHP_METHOD(Qt_Core_QFileinfoFunctions_QFileinfoFunctions, qRegisterNormalizedMetaType_QFileInfo);
+PHP_METHOD(Qt_Core_QFileinfoFunctions_QFileinfoFunctions, comparesEqual);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfileinfofunctions_qfileinfofunctions_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, value1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value2, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfileinfofunctions_qfileinfofunctions_qregisternormalizedmetatype_qfileinfo, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, arg0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qfileinfofunctions_qfileinfofunctions_comparesequal, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, lhs, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, rhs, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qfileinfofunctions_qfileinfofunctions_method_entry) {
+	PHP_ME(Qt_Core_QFileinfoFunctions_QFileinfoFunctions, swap, arginfo_qt_core_qfileinfofunctions_qfileinfofunctions_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFileinfoFunctions_QFileinfoFunctions, qRegisterNormalizedMetaType_QFileInfo, arginfo_qt_core_qfileinfofunctions_qfileinfofunctions_qregisternormalizedmetatype_qfileinfo, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QFileinfoFunctions_QFileinfoFunctions, comparesEqual, arginfo_qt_core_qfileinfofunctions_qfileinfofunctions_comparesequal, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

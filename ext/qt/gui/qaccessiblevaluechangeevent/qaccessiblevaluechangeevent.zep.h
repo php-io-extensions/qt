@@ -1,0 +1,51 @@
+
+extern zend_class_entry *qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent);
+
+PHP_METHOD(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, new_);
+PHP_METHOD(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, newQAccessibleInterfaceQVariant);
+PHP_METHOD(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, setValue);
+PHP_METHOD(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, value);
+PHP_METHOD(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, m_value);
+PHP_METHOD(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, setM_value);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_new_, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, obj, IS_LONG, 0)
+	ZEND_ARG_INFO(0, val)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_newqaccessibleinterfaceqvariant, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, iface, IS_LONG, 0)
+	ZEND_ARG_INFO(0, val)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_setvalue, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, val)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_value, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_m_value, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_setm_value, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_INFO(0, value)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_method_entry) {
+	PHP_ME(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, new_, arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, newQAccessibleInterfaceQVariant, arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_newqaccessibleinterfaceqvariant, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, setValue, arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_setvalue, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, value, arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, m_value, arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_m_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Gui_QAccessibleValueChangeEvent_QAccessibleValueChangeEvent, setM_value, arginfo_qt_gui_qaccessiblevaluechangeevent_qaccessiblevaluechangeevent_setm_value, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

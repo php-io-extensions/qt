@@ -1,0 +1,132 @@
+
+extern zend_class_entry *qt_network_qnetworkcachemetadata_qnetworkcachemetadata_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData);
+
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, new_);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, newQNetworkCacheMetaData);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, swap);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, isValid);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, url);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setUrl);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, rawHeaders);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setRawHeaders);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, headers);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setHeaders);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, lastModified);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setLastModified);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, expirationDate);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setExpirationDate);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, saveToDisk);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setSaveToDisk);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, attributes);
+PHP_METHOD(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setAttributes);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_new_, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_newqnetworkcachemetadata, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_swap, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, other, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_isvalid, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_url, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_seturl, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, url, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_rawheaders, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setrawheaders, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, headers, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_headers, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setheaders, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, headers, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_lastmodified, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setlastmodified, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dateTime, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_expirationdate, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setexpirationdate, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, dateTime, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_savetodisk, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setsavetodisk, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, allow, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_attributes, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setattributes, 0, 2, IS_VOID, 0)
+
+	ZEND_ARG_TYPE_INFO(0, handle, IS_LONG, 0)
+	ZEND_ARG_ARRAY_INFO(0, attributes, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_network_qnetworkcachemetadata_qnetworkcachemetadata_method_entry) {
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, new_, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_new_, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, newQNetworkCacheMetaData, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_newqnetworkcachemetadata, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, swap, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_swap, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, isValid, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_isvalid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, url, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_url, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setUrl, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_seturl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, rawHeaders, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_rawheaders, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setRawHeaders, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setrawheaders, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, headers, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_headers, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setHeaders, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setheaders, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, lastModified, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_lastmodified, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setLastModified, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setlastmodified, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, expirationDate, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_expirationdate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setExpirationDate, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setexpirationdate, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, saveToDisk, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_savetodisk, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setSaveToDisk, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setsavetodisk, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, attributes, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_attributes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Network_QNetworkCacheMetaData_QNetworkCacheMetaData, setAttributes, arginfo_qt_network_qnetworkcachemetadata_qnetworkcachemetadata_setattributes, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};

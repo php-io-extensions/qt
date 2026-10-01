@@ -1,0 +1,206 @@
+
+extern zend_class_entry *qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_ce;
+
+ZEPHIR_INIT_CLASS(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions);
+
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHash);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUcharSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashSignedCharSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUshortSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashShortIntSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUintSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashIntSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUlongSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashLongIntSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQuint64SizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQint64SizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQuint128SizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQint128SizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashFloatSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashDoubleSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashLongDoubleSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashWcharTSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashChar16TSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashChar32TSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQCharSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQByteArrayViewSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQByteArraySizeTQtDisambiguatedT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQStringViewSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQStringSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQBitArraySizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQLatin1StringViewSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQKeyCombinationSizeT);
+PHP_METHOD(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qt_hash);
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhash, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashucharsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashsignedcharsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashushortsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashshortintsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashuintsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashintsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashulongsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashlongintsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashquint64sizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqint64sizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashquint128sizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqint128sizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashfloatsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashdoublesizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashlongdoublesizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashwchartsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashchar16tsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashchar32tsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqcharsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqbytearrayviewsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqbytearraysizetqtdisambiguatedt, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+	ZEND_ARG_INFO(0, arg2)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqstringviewsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqstringsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqbitarraysizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqlatin1stringviewsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqkeycombinationsizet, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seed, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qt_hash, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, chained, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_method_entry) {
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHash, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUcharSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashucharsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashSignedCharSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashsignedcharsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUshortSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashushortsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashShortIntSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashshortintsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUintSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashuintsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashIntSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashintsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashUlongSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashulongsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashLongIntSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashlongintsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQuint64SizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashquint64sizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQint64SizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqint64sizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQuint128SizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashquint128sizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQint128SizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqint128sizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashFloatSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashfloatsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashDoubleSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashdoublesizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashLongDoubleSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashlongdoublesizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashWcharTSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashwchartsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashChar16TSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashchar16tsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashChar32TSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashchar32tsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQCharSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqcharsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQByteArrayViewSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqbytearrayviewsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQByteArraySizeTQtDisambiguatedT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqbytearraysizetqtdisambiguatedt, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQStringViewSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqstringviewsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQStringSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqstringsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQBitArraySizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqbitarraysizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQLatin1StringViewSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqlatin1stringviewsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qHashQKeyCombinationSizeT, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qhashqkeycombinationsizet, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Qt_Core_QHashfunctionsFunctions_QHashfunctionsFunctions, qt_hash, arginfo_qt_core_qhashfunctionsfunctions_qhashfunctionsfunctions_qt_hash, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_FE_END
+};
