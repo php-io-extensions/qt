@@ -1,0 +1,20 @@
+{
+    "name": "php-io-extensions/qt",
+    "type": "php-ext",
+    "description": "Qt 6 bound 1:1 into PHP (Zephir extension; Linux primary, macOS compile check)",
+    "license": "MIT",
+    "version": "0.8.0",
+    "authors": [{ "name": "Project Saturn Studios, LLC", "email": "info@projectsaturnstudios.com" }],
+    "require": { "php": ">=8.4" },
+    "php-ext": {
+        "extension-name": "qt",
+        "priority": 30,
+        "build-path": "ext",
+        "support-zts": true,
+        "support-nts": true,
+        "os-families": ["linux", "darwin"],
+        "configure-options": [
+            { "name": "enable-qt", "description": "Enable the qt extension", "needs-value": false }
+        ]
+    }
+}
