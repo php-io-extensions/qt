@@ -428,7 +428,6 @@ void PhpSlot::invoke(void **argv)
 
 	int argc = (argv != nullptr && signal.isValid()) ? signal.parameterCount() : 0;
 	zval *args = argc > 0 ? static_cast<zval *>(safe_emalloc(argc, sizeof(zval), 0)) : nullptr;
-	zval functor;
 	zval retval;
 
 	QObject *emitter = argc > 0 ? sender() : nullptr;
@@ -437,16 +436,8 @@ void PhpSlot::invoke(void **argv)
 		phpqt_arg_to_zval(&args[i], signal.parameterMetaType(i), argv[i + 1], emitter);
 	}
 
-	/* The callable may disconnect itself and so free this slot's copy: call through our own reference. */
-	ZVAL_COPY(&functor, &callable);
-
-	PHPQT_G(callout_depth)++;
-	if (call_user_function(nullptr, nullptr, &functor, &retval, (uint32_t) argc, args) == SUCCESS) {
-		zval_ptr_dtor(&retval);
-	}
-	PHPQT_G(callout_depth)--;
-
-	zval_ptr_dtor(&functor);
+	call((uint32_t) argc, args, &retval);
+	zval_ptr_dtor(&retval);
 
 	for (int i = 0; i < argc; i++) {
 		zval_ptr_dtor(&args[i]);
@@ -454,6 +445,29 @@ void PhpSlot::invoke(void **argv)
 	if (args != nullptr) {
 		efree(args);
 	}
+}
+
+bool PhpSlot::call(uint32_t argc, zval *argv, zval *retval)
+{
+	ZVAL_UNDEF(retval);
+
+	if (Z_ISUNDEF(callable) || EG(exception) != nullptr) {
+		return false;
+	}
+
+	zval functor;
+	bool called;
+
+	/* The callable may disconnect itself and so free this slot's copy: call through our own reference. */
+	ZVAL_COPY(&functor, &callable);
+
+	PHPQT_G(callout_depth)++;
+	called = call_user_function(nullptr, nullptr, &functor, retval, argc, argv) == SUCCESS && EG(exception) == nullptr;
+	PHPQT_G(callout_depth)--;
+
+	zval_ptr_dtor(&functor);
+
+	return called;
 }
 
 /*

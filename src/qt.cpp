@@ -10,8 +10,15 @@
 #include "../stubs/qt_arginfo.h"
 #include "../stubs/QEventLoop_arginfo.h"
 #include "../stubs/qnamespace_arginfo.h"
+#include "../stubs/QEvent_arginfo.h"
 
 #include <QtCore/QtGlobal>
+#include <QtCore/QEvent>
+#include <QtCore/qnamespace.h>
+
+/* Every generated enum case is proved against the Qt this build compiles with. */
+#include "checks/QEvent_Type.inc"
+#include "checks/Qt_WidgetAttribute.inc"
 
 ZEND_DECLARE_MODULE_GLOBALS(qt)
 
@@ -27,6 +34,17 @@ zend_class_entry *phpqt_ce_QTimer;
 zend_class_entry *phpqt_ce_QSocketNotifier;
 zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
+zend_class_entry *phpqt_ce_QEvent_Type;
+zend_class_entry *phpqt_ce_Qt_WidgetAttribute;
+zend_class_entry *phpqt_ce_QWidget;
+zend_class_entry *phpqt_ce_QMainWindow;
+zend_class_entry *phpqt_ce_QDialog;
+zend_class_entry *phpqt_ce_QMessageBox;
+zend_class_entry *phpqt_ce_QMenuBar;
+zend_class_entry *phpqt_ce_QMenu;
+zend_class_entry *phpqt_ce_QAction;
+zend_class_entry *phpqt_ce_QAction_MenuRole;
+zend_class_entry *phpqt_ce_QEventFilter;
 
 ZEND_FUNCTION(qVersion)
 {
@@ -39,6 +57,8 @@ void phpqt_register_enums()
 {
 	phpqt_ce_QEventLoop_ProcessEventsFlag = register_class_QEventLoop_ProcessEventsFlag();
 	phpqt_ce_Qt_TimerType = register_class_Qt_TimerType();
+	phpqt_ce_Qt_WidgetAttribute = register_class_Qt_WidgetAttribute();
+	phpqt_ce_QEvent_Type = register_class_QEvent_Type();
 }
 
 static PHP_GINIT_FUNCTION(qt)
@@ -67,6 +87,9 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QTimer();
 	phpqt_register_QSocketNotifier();
 	phpqt_register_QAbstractEventDispatcher();
+	phpqt_register_QWidget();
+	phpqt_register_QMenu();
+	phpqt_register_QtGlue();
 
 	return SUCCESS;
 }

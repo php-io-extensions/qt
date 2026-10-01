@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 5aa69fce38fc85b5cbfa4b61ee8ac907dbb39ec9 */
+ * Stub hash: d18304241ffef49df876c535da5bed4c7779d05e */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QObject___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
@@ -26,6 +26,14 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_deleteLater, 0, 0, IS_VOID, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_installEventFilter, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, filterObj, QObject, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_removeEventFilter, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, obj, QObject, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_pointer, 0, 0, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
@@ -46,6 +54,8 @@ ZEND_METHOD(QObject, inherits);
 ZEND_METHOD(QObject, parent);
 ZEND_METHOD(QObject, setParent);
 ZEND_METHOD(QObject, deleteLater);
+ZEND_METHOD(QObject, installEventFilter);
+ZEND_METHOD(QObject, removeEventFilter);
 ZEND_METHOD(QObject, pointer);
 ZEND_METHOD(QObject, connect);
 ZEND_METHOD(QObject, disconnect);
@@ -58,6 +68,8 @@ static const zend_function_entry class_QObject_methods[] = {
 	ZEND_ME(QObject, parent, arginfo_class_QObject_parent, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, setParent, arginfo_class_QObject_setParent, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, deleteLater, arginfo_class_QObject_deleteLater, ZEND_ACC_PUBLIC)
+	ZEND_ME(QObject, installEventFilter, arginfo_class_QObject_installEventFilter, ZEND_ACC_PUBLIC)
+	ZEND_ME(QObject, removeEventFilter, arginfo_class_QObject_removeEventFilter, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, pointer, arginfo_class_QObject_pointer, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, connect, arginfo_class_QObject_connect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QObject, disconnect, arginfo_class_QObject_disconnect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)

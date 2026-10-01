@@ -15,3 +15,5 @@ okf_version: "0.2"
 # Runbooks
 
 * [Build, install, test](runbooks/build.md) - Debian installer on the Pi, Homebrew installer on the Mac, Pest, smoke, clean tree.
+* [Adding a binding](runbooks/adding-a-binding.md) - Stub, gen_stub, one .cpp per header group, config.m4 source list, PHPQT_THIS, ownership, surface test.
+* [Generating enums](runbooks/generating-enums.md) - scripts/gen-enum.php turns a Qt header enum into stub cases plus one static_assert per case.

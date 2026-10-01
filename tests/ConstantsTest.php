@@ -21,3 +21,20 @@ it('backs Qt\TimerType and QSocketNotifier\Type with the Qt values', function ()
         ->and(QSocketNotifier\Type::WRITE->value)->toBe(1)
         ->and(QSocketNotifier\Type::EXCEPTION->value)->toBe(2);
 });
+
+it('backs the generated QEvent\Type and Qt\WidgetAttribute enums with the Qt values', function (): void {
+    expect(QEvent\Type::NONE->value)->toBe(0)
+        ->and(QEvent\Type::CLOSE->value)->toBe(19)
+        ->and(QEvent\Type::WINDOW_ACTIVATE->value)->toBe(24)
+        ->and(QEvent\Type::WINDOW_DEACTIVATE->value)->toBe(25)
+        ->and(QEvent\Type::USER->value)->toBe(1000)
+        ->and(QEvent\Type::MAX_USER->value)->toBe(65535)
+        ->and(Qt\WidgetAttribute::DELETE_ON_CLOSE->value)->toBe(55)
+        ->and(Qt\WidgetAttribute::QUIT_ON_CLOSE->value)->toBe(76);
+});
+
+it('backs QAction\MenuRole with the Qt values', function (): void {
+    expect(QAction\MenuRole::NO_ROLE->value)->toBe(0)
+        ->and(QAction\MenuRole::ABOUT_ROLE->value)->toBe(4)
+        ->and(QAction\MenuRole::QUIT_ROLE->value)->toBe(6);
+});

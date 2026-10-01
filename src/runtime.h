@@ -71,6 +71,17 @@ extern zend_class_entry *phpqt_ce_QTimer;
 extern zend_class_entry *phpqt_ce_QSocketNotifier;
 extern zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 extern zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
+extern zend_class_entry *phpqt_ce_QEvent_Type;
+extern zend_class_entry *phpqt_ce_Qt_WidgetAttribute;
+extern zend_class_entry *phpqt_ce_QWidget;
+extern zend_class_entry *phpqt_ce_QMainWindow;
+extern zend_class_entry *phpqt_ce_QDialog;
+extern zend_class_entry *phpqt_ce_QMessageBox;
+extern zend_class_entry *phpqt_ce_QMenuBar;
+extern zend_class_entry *phpqt_ce_QMenu;
+extern zend_class_entry *phpqt_ce_QAction;
+extern zend_class_entry *phpqt_ce_QAction_MenuRole;
+extern zend_class_entry *phpqt_ce_QEventFilter;
 
 void phpqt_register_QObject();
 void phpqt_register_QMetaObject();
@@ -79,6 +90,9 @@ void phpqt_register_QCoreApplication();
 void phpqt_register_QTimer();
 void phpqt_register_QSocketNotifier();
 void phpqt_register_QAbstractEventDispatcher();
+void phpqt_register_QWidget();
+void phpqt_register_QMenu();
+void phpqt_register_QtGlue();
 
 /* Object model. */
 void phpqt_object_setup(zend_class_entry *ce);
@@ -118,6 +132,10 @@ public:
 
 	PhpSlot *prev = nullptr;
 	PhpSlot *next = nullptr;
+
+protected:
+	/* Calls the PHP callable; false when it did not run (detached, or an exception already pending). */
+	bool call(uint32_t argc, zval *argv, zval *retval);
 
 private:
 	void invoke(void **argv);

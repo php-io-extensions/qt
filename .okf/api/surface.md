@@ -5,7 +5,7 @@ description: Classes, enums and functions ext-qt binds, each one Qt call; C++ sc
 resource: stubs/
 tags: [qt, api]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-09-30T21:06:21Z }
+generated: { by: claude-opus/5.5, at: 2026-10-01T18:15:45Z }
 sources:
   - id: stubs
     resource: stubs/
@@ -14,7 +14,7 @@ sources:
 
 # Overview
 
-Scope: calls that create the application, pump Qt's event dispatcher, sleep with a budget, wake a sleep. Stubs = source of truth; `tests/SurfaceTest.php` fails if a stub declaration is missing from the build.[^stubs]
+Scope: calls that create the application, pump Qt's event dispatcher, sleep with a budget, wake a sleep, open/close windows, build menu bars. Stubs = source of truth; `tests/SurfaceTest.php` fails if a stub declaration is missing from the build.[^stubs]
 
 Naming, all fixed:
 
@@ -36,6 +36,14 @@ Naming, all fixed:
 | `QAbstractEventDispatcher` | static instance, processEvents(flags), wakeUp, interrupt |
 | `QMetaObject\Connection` | isValid (operator bool) |
 | `qVersion()` | runtime Qt version |
+| `QWidget` | ctor(?parent; needs a QApplication), show/hide/close/visible, isWindow, isActiveWindow, activateWindow, raise, window title, resize/width/height, parentWidget, set/testAttribute(Qt\WidgetAttribute) |
+| `QMainWindow` | ctor, menuBar (made on first use, owned by the window), setMenuBar, central widget |
+| `QMenuBar`, `QMenu` | addMenu(string) → QMenu, addMenu(QMenu) → its QAction, addAction, addSeparator, clear, title, isEmpty, menuAction, native menu bar flag |
+| `QAction` | text, checkable/checked, enabled, separator, menu role (`QAction\MenuRole`), shortcut as a portable-text QKeySequence string (an unreadable string is refused), trigger, toggle; signals `triggered(bool)`, `toggled(bool)` |
+| `QDialog`, `QMessageBox` | open (window-modal, returns at once), modal flag, result/done/accept/reject; text, informative text |
+| `QEventFilter` | trampoline for installEventFilter/removeEventFilter: `$filter(QObject $watched, QEvent\Type|int $type): bool`, only for the listed types (all when null); true stops delivery to the watched object |
+
+Generated enums: `scripts/gen-enum.php <header> <enum> <scope> <PHP enum> [prefix]` writes the stub cases and `src/checks/<Scope>_<Enum>.inc`, one `static_assert` per case, compiled into `src/qt.cpp`, so each build proves the values against its own Qt. It keeps what a default build compiles (`#ifndef QT_NO_*` and `#if` blocks in, `#ifdef` blocks out) and drops enumerators that repeat a value. `QEvent\Type` and `Qt\WidgetAttribute` come from the 6.8 headers, a subset of every later 6.x.
 
 Behaviour confirmed on both platforms: macOS (cocoa) makes the process a regular app on construction (Dock icon); Qt has no call to withdraw it. Linux: the app connects to the display server (`xcb` through XWayland on the Pi until `qt6-wayland` is installed); the taskbar lists windows, not processes.
 

@@ -140,6 +140,42 @@ ZEND_METHOD(QObject, deleteLater)
 	object->deleteLater();
 }
 
+ZEND_METHOD(QObject, installEventFilter)
+{
+	zend_object *filter_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(filter_obj, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QObject, object);
+
+	QObject *filter = phpqt_arg(filter_obj, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	object->installEventFilter(filter);
+}
+
+ZEND_METHOD(QObject, removeEventFilter)
+{
+	zend_object *filter_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(filter_obj, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QObject, object);
+
+	QObject *filter = phpqt_arg(filter_obj, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	object->removeEventFilter(filter);
+}
+
 ZEND_METHOD(QObject, pointer)
 {
 	ZEND_PARSE_PARAMETERS_NONE();

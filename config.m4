@@ -12,7 +12,7 @@ if test "$PHP_QT" != "no"; then
   PHP_SUBST([QT_SHARED_LIBADD])
 
   PHP_NEW_EXTENSION([qt],
-    [src/qt.cpp src/runtime.cpp src/QObject.cpp src/QCoreApplication.cpp src/QTimer.cpp src/QSocketNotifier.cpp src/QAbstractEventDispatcher.cpp],
+    [src/qt.cpp src/runtime.cpp src/QObject.cpp src/QCoreApplication.cpp src/QTimer.cpp src/QSocketNotifier.cpp src/QAbstractEventDispatcher.cpp src/QWidget.cpp src/QMenu.cpp src/QtGlue.cpp],
     [$ext_shared],, [$QT_CFLAGS -std=c++17 -fPIC -DQT_NO_KEYWORDS -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1], [cxx])
   PHP_ADD_BUILD_DIR([$ext_builddir/src])
 fi

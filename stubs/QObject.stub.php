@@ -21,6 +21,10 @@ class QObject
 
     public function deleteLater(): void {}
 
+    public function installEventFilter(QObject $filterObj): void {}
+
+    public function removeEventFilter(QObject $obj): void {}
+
     /** The object's address, for handing it to another extension. */
     public function pointer(): int {}
 

@@ -12,7 +12,7 @@ Linux first, macOS too. Qt 6.5+, PHP 8.4+, NTS and ZTS.
 ## What is bound
 
 The calls that create the application, pump Qt's event dispatcher, sleep with a
-budget, and wake a sleep:
+budget, wake a sleep, open and close windows, and build menu bars:
 
 | Class | Qt |
 |---|---|
@@ -22,8 +22,17 @@ budget, and wake a sleep:
 | `QSocketNotifier` | constructor (fd as int, stream or Socket), `socket`, `type`, `isEnabled`, `setEnabled`, `isValid` |
 | `QAbstractEventDispatcher` | `instance`, `processEvents`, `wakeUp`, `interrupt` |
 | `QMetaObject\Connection` | `operator bool` as `isValid()` |
+| `QWidget` | constructor, `show`, `hide`, `close`, `isVisible`, `setVisible`, `isWindow`, `isActiveWindow`, `activateWindow`, `raise`, `windowTitle`, `setWindowTitle`, `resize`, `width`, `height`, `parentWidget`, `setAttribute`, `testAttribute` |
+| `QMainWindow` | constructor, `menuBar`, `setMenuBar`, `centralWidget`, `setCentralWidget` |
+| `QMenuBar`, `QMenu` | constructors, `addMenu` (both overloads), `addAction`, `clear`, `isNativeMenuBar`, `setNativeMenuBar`; `title`, `setTitle`, `addSeparator`, `isEmpty`, `menuAction` |
+| `QAction` | constructor, `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `isEnabled`, `setEnabled`, `isSeparator`, `setSeparator`, `menuRole`, `setMenuRole`, `shortcut`, `setShortcut`, `trigger`, `toggle` |
+| `QDialog`, `QMessageBox` | constructors, `open`, `isModal`, `setModal`, `result`, `done`, `accept`, `reject`; `text`, `setText`, `informativeText`, `setInformativeText` |
+| `QObject` (filters) | `installEventFilter`, `removeEventFilter` |
+| `QEventFilter` | trampoline: `new QEventFilter(callable, ?array $types)`; hands the listed event types of each watched object to PHP |
 
-Enums: `QEventLoop\ProcessEventsFlag`, `Qt\TimerType`, `QSocketNotifier\Type`.
+Enums: `QEventLoop\ProcessEventsFlag`, `Qt\TimerType`, `QSocketNotifier\Type`,
+`QAction\MenuRole`, and, generated from the Qt headers by `scripts/gen-enum.php`,
+`QEvent\Type` and `Qt\WidgetAttribute`.
 Function: `qVersion()`. The stubs in `stubs/` are the full declaration.
 
 Signals connect by the signature `SIGNAL()` spells, and the callable receives
@@ -64,7 +73,8 @@ Or with PIE: `pie install php-io-extensions/qt`.
 ```bash
 composer install
 php vendor/bin/pest
-php examples/smoke.php   # needs a display session; prints SMOKE_OK
+php examples/smoke.php          # bridge: application, pump, sleep, wake; prints SMOKE_OK
+php examples/window-smoke.php   # window, menu bar, actions, close filter; prints SMOKE_OK
 ```
 
 On Linux over SSH, export the session's `DISPLAY` (and `WAYLAND_DISPLAY` when

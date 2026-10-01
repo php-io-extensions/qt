@@ -5,7 +5,7 @@ description: String-signature connect through a moc-free dynamic slot; argument 
 resource: src/runtime.cpp
 tags: [qt, signals, callbacks]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-09-30T21:06:21Z }
+generated: { by: claude-opus/5.5, at: 2026-10-01T18:15:45Z }
 sources:
   - id: runtime
     resource: src/runtime.cpp
@@ -28,6 +28,8 @@ Lifetime:
 * `QMetaObject\Connection` going out of scope does not disconnect, as in Qt.
 * `QTimer::singleShot(msec, callable)`: the slot is the functor's context; it fires, frees the callable, `deleteLater`s itself.
 * RSHUTDOWN deletes every remaining slot (disconnecting it) and frees its callable while the engine can still free it.
+
+`QEventFilter` is a `PhpSlot` subclass overriding `eventFilter()`: it shares the slot's call path and request-end teardown, and filters by event type in C++ so unlisted events never reach PHP.
 
 A callable that throws leaves the exception pending; later callbacks in the same Qt call are skipped and the exception surfaces when `processEvents`/`exec` returns to PHP.
 

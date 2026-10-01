@@ -36,7 +36,7 @@ function stubDeclarations(): array
 it('exposes every function, class, enum and method the stubs declare', function (): void {
     $declared = stubDeclarations();
 
-    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag']);
+    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole']);
 
     foreach ($declared['functions'] as $function) {
         expect(function_exists($function))->toBeTrue("{$function}() is missing");
@@ -63,7 +63,15 @@ it('keeps the native class hierarchy', function (): void {
         ->and(get_parent_class(QTimer::class))->toBe(QObject::class)
         ->and(get_parent_class(QSocketNotifier::class))->toBe(QObject::class)
         ->and(get_parent_class(QAbstractEventDispatcher::class))->toBe(QObject::class)
-        ->and(get_parent_class(QtException::class))->toBe(RuntimeException::class);
+        ->and(get_parent_class(QtException::class))->toBe(RuntimeException::class)
+        ->and(get_parent_class(QWidget::class))->toBe(QObject::class)
+        ->and(get_parent_class(QMainWindow::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QMenuBar::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QMenu::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QDialog::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QMessageBox::class))->toBe(QDialog::class)
+        ->and(get_parent_class(QAction::class))->toBe(QObject::class)
+        ->and(get_parent_class(QEventFilter::class))->toBe(QObject::class);
 });
 
 it('refuses to clone or serialize a wrapper', function (): void {
