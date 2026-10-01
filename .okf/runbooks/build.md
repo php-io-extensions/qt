@@ -1,0 +1,54 @@
+---
+type: Runbook
+title: Build, install, test
+description: Debian installer on the Pi, Homebrew installer on the Mac, Pest, smoke, clean tree.
+resource: install-debian-trixie.sh
+tags: [build, linux, macos, pest]
+status: draft
+generated: { by: claude-opus/5.5, at: 2026-09-30T21:06:21Z }
+sources:
+  - id: debian
+    resource: install-debian-trixie.sh
+    title: install-debian-trixie.sh
+  - id: mac
+    resource: install-macos.sh
+    title: install-macos.sh
+  - id: config
+    resource: config.m4
+    title: config.m4
+  - id: smoke
+    resource: examples/smoke.php
+    title: examples/smoke.php
+---
+
+# Overview
+
+`config.m4`: `PHP_REQUIRE_CXX`, `PKG_CHECK_MODULES(Qt6Widgets Qt6Gui Qt6Core >= 6.5)`. `PHP_EVAL_INCLINE/LIBLINE` keep only `-I/-l/-L`, so Qt's full `QT_CFLAGS` (with `-D`, `-F`) go in as extension cflags and `QT_LIBS` (with `-framework`) as `QT_SHARED_LIBADD`. Compiled `-std=c++17 -DQT_NO_KEYWORDS`.[^config]
+
+Linux (`install-debian-trixie.sh`): needs `qt6-base-dev`, `g++`, php-dev. Builds in place, installs `qt.so`, writes `30-qt.ini`, removes build artifacts. ≈ 12 s on a Pi 5.[^debian]
+
+macOS (`install-macos.sh`): needs `brew install qt`. Builds in a temp copy for `php84` and `zhp`. When the default C++ include path has no libc++ (a Command Line Tools upgrade can leave a stale `/Library/Developer/CommandLineTools/usr/include/c++/v1` ahead of the SDK's), it builds with `-nostdinc++ -isystem <SDK>/usr/include/c++/v1` and says so.[^mac]
+
+Pi loop from the Mac (Pi copy at `~/qt` is disposable):
+
+```bash
+fnk 'rm -rf ~/qt'
+rsync -az --delete --exclude .git --exclude vendor --exclude composer.lock ./ angel@<pi>:/home/angel/qt/
+fnk 'cd ~/qt && bash install-debian-trixie.sh'
+```
+
+Verify (Linux over SSH: `export DISPLAY=:0 XDG_RUNTIME_DIR=/run/user/1000`):
+
+```bash
+php --ri qt
+composer install && php vendor/bin/pest
+php examples/smoke.php     # SMOKE_OK
+rm -rf vendor composer.lock build.log
+```
+
+Smoke steps: QApplication up (macOS: Dock icon via `lsappinfo`; Linux: display server connected); pump; 50 ms single-shot QTimer budget; `wakeUp()`; `singleShot` functor; pipe-fd wake through QSocketNotifier; kqueue (macOS) / epoll (Linux) fd nested in Qt's dispatcher; `exec()` ended by `quit()`; disconnect; application destroyed.[^smoke]
+
+[^debian]: install-debian-trixie.sh
+[^mac]: install-macos.sh
+[^config]: config.m4
+[^smoke]: examples/smoke.php
