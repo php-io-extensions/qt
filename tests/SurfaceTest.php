@@ -36,7 +36,7 @@ function stubDeclarations(): array
 it('exposes every function, class, enum and method the stubs declare', function (): void {
     $declared = stubDeclarations();
 
-    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole']);
+    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole', 'Qt\AlignmentFlag', 'QSizePolicy\Policy', 'Qt\Orientation', 'QLineEdit\EchoMode', 'Qt\AspectRatioMode', 'Qt\ScrollBarPolicy', 'QFont\Weight', 'QFrame\Shape', 'QFrame\Shadow', 'QAbstractItemView\SelectionBehavior', 'QAbstractItemView\SelectionMode', 'QMediaPlayer\PlaybackState', 'QMediaPlayer\MediaStatus', 'QMediaPlayer\Error']);
 
     foreach ($declared['functions'] as $function) {
         expect(function_exists($function))->toBeTrue("{$function}() is missing");
@@ -71,7 +71,35 @@ it('keeps the native class hierarchy', function (): void {
         ->and(get_parent_class(QDialog::class))->toBe(QWidget::class)
         ->and(get_parent_class(QMessageBox::class))->toBe(QDialog::class)
         ->and(get_parent_class(QAction::class))->toBe(QObject::class)
-        ->and(get_parent_class(QEventFilter::class))->toBe(QObject::class);
+        ->and(get_parent_class(QEventFilter::class))->toBe(QObject::class)
+        ->and(get_parent_class(QLayout::class))->toBe(QObject::class)
+        ->and(get_parent_class(QBoxLayout::class))->toBe(QLayout::class)
+        ->and(get_parent_class(QVBoxLayout::class))->toBe(QBoxLayout::class)
+        ->and(get_parent_class(QHBoxLayout::class))->toBe(QBoxLayout::class)
+        ->and(get_parent_class(QGridLayout::class))->toBe(QLayout::class)
+        ->and(get_parent_class(QLabel::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QAbstractButton::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QPushButton::class))->toBe(QAbstractButton::class)
+        ->and(get_parent_class(QCheckBox::class))->toBe(QAbstractButton::class)
+        ->and(get_parent_class(QAbstractSlider::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QSlider::class))->toBe(QAbstractSlider::class)
+        ->and(get_parent_class(QComboBox::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QLineEdit::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QPlainTextEdit::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QDateEdit::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QProgressBar::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QFrame::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QScrollArea::class))->toBe(QFrame::class)
+        ->and(get_parent_class(QAbstractItemView::class))->toBe(QFrame::class)
+        ->and(get_parent_class(QTableWidget::class))->toBe(QAbstractItemView::class)
+        ->and(get_parent_class(QFont::class))->toBeFalse()
+        ->and(get_parent_class(QPixmap::class))->toBeFalse()
+        ->and(get_parent_class(QTableWidgetItem::class))->toBeFalse()
+        ->and(get_parent_class(QUrl::class))->toBeFalse()
+        ->and(get_parent_class(QAudioOutput::class))->toBe(QObject::class)
+        ->and(get_parent_class(QMediaPlayer::class))->toBe(QObject::class)
+        ->and(get_parent_class(QVideoWidget::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QMetaObject::class))->toBeFalse();
 });
 
 it('refuses to clone or serialize a wrapper', function (): void {
@@ -79,5 +107,7 @@ it('refuses to clone or serialize a wrapper', function (): void {
 
     expect(fn () => clone $object)->toThrow(Error::class)
         ->and(fn () => serialize($object))->toThrow(Exception::class)
-        ->and(fn () => new QMetaObject\Connection())->toThrow(Error::class);
+        ->and(fn () => new QMetaObject\Connection())->toThrow(Error::class)
+        ->and(fn () => clone new QFont())->toThrow(Error::class)
+        ->and(fn () => serialize(new QPixmap()))->toThrow(Exception::class);
 });

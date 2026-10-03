@@ -29,17 +29,6 @@ void phpqt_register_QMenu()
 	phpqt_map_class("QAction", phpqt_ce_QAction);
 }
 
-static QString phpqt_qstring(zend_string *value)
-{
-	return QString::fromUtf8(ZSTR_VAL(value), (qsizetype) ZSTR_LEN(value));
-}
-
-static void phpqt_return_qstring(zval *rv, const QString &value)
-{
-	QByteArray utf8 = value.toUtf8();
-	ZVAL_STRINGL(rv, utf8.constData(), (size_t) utf8.size());
-}
-
 /* addMenu(const QString &) or addMenu(QMenu *), on a QMenuBar or a QMenu. */
 template <typename Owner>
 static void phpqt_add_menu(Owner *owner, zval *menu_or_title, zval *return_value)

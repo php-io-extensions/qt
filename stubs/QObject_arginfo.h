@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: d18304241ffef49df876c535da5bed4c7779d05e */
+ * Stub hash: c039dbb23ee23b8bba3fa37422d74fd202303617 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QObject___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
@@ -21,6 +21,9 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_setParent, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, parent, QObject, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_children, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_deleteLater, 0, 0, IS_VOID, 0)
@@ -53,6 +56,7 @@ ZEND_METHOD(QObject, setObjectName);
 ZEND_METHOD(QObject, inherits);
 ZEND_METHOD(QObject, parent);
 ZEND_METHOD(QObject, setParent);
+ZEND_METHOD(QObject, children);
 ZEND_METHOD(QObject, deleteLater);
 ZEND_METHOD(QObject, installEventFilter);
 ZEND_METHOD(QObject, removeEventFilter);
@@ -67,6 +71,7 @@ static const zend_function_entry class_QObject_methods[] = {
 	ZEND_ME(QObject, inherits, arginfo_class_QObject_inherits, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, parent, arginfo_class_QObject_parent, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, setParent, arginfo_class_QObject_setParent, ZEND_ACC_PUBLIC)
+	ZEND_ME(QObject, children, arginfo_class_QObject_children, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, deleteLater, arginfo_class_QObject_deleteLater, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, installEventFilter, arginfo_class_QObject_installEventFilter, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, removeEventFilter, arginfo_class_QObject_removeEventFilter, ZEND_ACC_PUBLIC)

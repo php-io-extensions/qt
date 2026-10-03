@@ -27,11 +27,6 @@ static zend_string *phpqt_utf8(const QString &value)
 	return zend_string_init(utf8.constData(), (size_t) utf8.size(), 0);
 }
 
-static QString phpqt_qstring(zend_string *value)
-{
-	return QString::fromUtf8(ZSTR_VAL(value), (qsizetype) ZSTR_LEN(value));
-}
-
 /*
  * The three constructors share one shape: Qt takes argc by reference and keeps
  * argv, so both live in the PHP object and outlive the application.

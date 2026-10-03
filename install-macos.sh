@@ -20,6 +20,11 @@ step() { printf '▶ %s\n' "$*"; }
 
 [[ "$(uname -s)" == "Darwin" ]] || die "This installer targets macOS; on Debian or Raspberry Pi OS use install-debian-trixie.sh."
 pkg-config --exists 'Qt6Widgets >= 6.5' || die "Qt 6.5+ not found by pkg-config — install: brew install qt"
+pkg-config --exists 'Qt6Multimedia >= 6.5 Qt6MultimediaWidgets >= 6.5' || die "Qt Multimedia not found — install: brew install qt (Homebrew's qt carries both modules)"
+# QMediaPlayer builds without a backend and then plays nothing: require the plugin (darwin/AVFoundation, shipped in qt).
+QT_PLUGIN_DIR="$(qtpaths6 --query QT_INSTALL_PLUGINS 2>/dev/null || true)"
+[[ -n "$QT_PLUGIN_DIR" ]] || die "qtpaths6 not found — install: brew install qt"
+compgen -G "${QT_PLUGIN_DIR}/multimedia/*" >/dev/null || die "No Qt Multimedia backend plugin in ${QT_PLUGIN_DIR}/multimedia — reinstall: brew reinstall qt"
 
 # A Command Line Tools upgrade can leave a stale usr/include/c++/v1 ahead of the SDK's
 # libc++ on the default include path; build against the SDK's headers when that happens.

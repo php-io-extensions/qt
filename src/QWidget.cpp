@@ -4,7 +4,10 @@
 #include "../stubs/QDialog_arginfo.h"
 
 #include <QtCore/QString>
+#include <QtGui/QFont>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QSizePolicy>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -28,47 +31,6 @@ void phpqt_register_QWidget()
 	phpqt_ce_QMessageBox = register_class_QMessageBox(phpqt_ce_QDialog);
 	phpqt_object_setup(phpqt_ce_QMessageBox);
 	phpqt_map_class("QMessageBox", phpqt_ce_QMessageBox);
-}
-
-static QString phpqt_qstring(zend_string *value)
-{
-	return QString::fromUtf8(ZSTR_VAL(value), (qsizetype) ZSTR_LEN(value));
-}
-
-static void phpqt_return_qstring(zval *rv, const QString &value)
-{
-	QByteArray utf8 = value.toUtf8();
-	ZVAL_STRINGL(rv, utf8.constData(), (size_t) utf8.size());
-}
-
-/*
- * The widget constructors share one shape: an optional parent widget, a new object
- * PHP owns until the parent (or a later setParent) takes it. Widgets are made on the
- * main thread, after a QApplication.
- */
-template <typename Widget>
-static void phpqt_construct_widget(INTERNAL_FUNCTION_PARAMETERS)
-{
-	zend_object *parent = nullptr;
-	bool failed;
-
-	ZEND_PARSE_PARAMETERS_START(0, 1)
-		Z_PARAM_OPTIONAL
-		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
-	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
-
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QApplication first", ZSTR_VAL(EX(func)->common.scope->name));
-		RETURN_THROWS();
-	}
-
-	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 1, &failed));
-	if (failed) {
-		RETURN_THROWS();
-	}
-
-	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(qparent));
 }
 
 /* ---- QWidget ----------------------------------------------------------- */
@@ -192,6 +154,219 @@ ZEND_METHOD(QWidget, testAttribute)
 	PHPQT_THIS(QWidget, widget);
 
 	RETURN_BOOL(widget->testAttribute(static_cast<Qt::WidgetAttribute>(phpqt_enum_value(attribute, 0))));
+}
+
+ZEND_METHOD(QWidget, setLayout)
+{
+	zend_object *layout_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(layout_obj, phpqt_ce_QLayout)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QLayout *layout = static_cast<QLayout *>(phpqt_arg(layout_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	widget->setLayout(layout);
+}
+
+ZEND_METHOD(QWidget, layout)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->layout());
+}
+
+#define PHPQT_WIDGET_INT2(name, call) \
+ZEND_METHOD(QWidget, name) \
+{ \
+	zend_long a; \
+	zend_long b; \
+	ZEND_PARSE_PARAMETERS_START(2, 2) \
+		Z_PARAM_LONG(a) \
+		Z_PARAM_LONG(b) \
+	ZEND_PARSE_PARAMETERS_END(); \
+	PHPQT_THIS(QWidget, widget); \
+	widget->call(static_cast<int>(a), static_cast<int>(b)); \
+}
+
+PHPQT_WIDGET_INT2(setMinimumSize, setMinimumSize)
+PHPQT_WIDGET_INT2(setFixedSize, setFixedSize)
+PHPQT_WIDGET_INT2(move, move)
+PHPQT_WIDGET_INT(minimumWidth, minimumWidth)
+PHPQT_WIDGET_INT(minimumHeight, minimumHeight)
+PHPQT_WIDGET_BOOL(isEnabled, isEnabled)
+
+static void phpqt_return_size(zval *rv, const QSize &size)
+{
+	array_init_size(rv, 2);
+	add_next_index_long(rv, size.width());
+	add_next_index_long(rv, size.height());
+}
+
+ZEND_METHOD(QWidget, sizeHint)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_size(return_value, widget->sizeHint());
+}
+
+ZEND_METHOD(QWidget, size)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_size(return_value, widget->size());
+}
+
+ZEND_METHOD(QWidget, pos)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	QPoint pos = widget->pos();
+	array_init_size(return_value, 2);
+	add_next_index_long(return_value, pos.x());
+	add_next_index_long(return_value, pos.y());
+}
+
+ZEND_METHOD(QWidget, geometry)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	QRect rect = widget->geometry();
+	array_init_size(return_value, 4);
+	add_assoc_long(return_value, "x", rect.x());
+	add_assoc_long(return_value, "y", rect.y());
+	add_assoc_long(return_value, "width", rect.width());
+	add_assoc_long(return_value, "height", rect.height());
+}
+
+ZEND_METHOD(QWidget, setGeometry)
+{
+	zend_long x, y, w, h;
+
+	ZEND_PARSE_PARAMETERS_START(4, 4)
+		Z_PARAM_LONG(x)
+		Z_PARAM_LONG(y)
+		Z_PARAM_LONG(w)
+		Z_PARAM_LONG(h)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setGeometry(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h));
+}
+
+ZEND_METHOD(QWidget, setSizePolicy)
+{
+	zend_object *horizontal;
+	zend_object *vertical;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_OBJ_OF_CLASS(horizontal, phpqt_ce_QSizePolicy_Policy)
+		Z_PARAM_OBJ_OF_CLASS(vertical, phpqt_ce_QSizePolicy_Policy)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setSizePolicy(QSizePolicy(
+		static_cast<QSizePolicy::Policy>(phpqt_enum_value(horizontal, 0)),
+		static_cast<QSizePolicy::Policy>(phpqt_enum_value(vertical, 0))));
+}
+
+ZEND_METHOD(QWidget, setEnabled)
+{
+	bool enabled;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_BOOL(enabled)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setEnabled(enabled);
+}
+
+ZEND_METHOD(QWidget, setStyleSheet)
+{
+	zend_string *sheet;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(sheet)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setStyleSheet(phpqt_qstring(sheet));
+}
+
+ZEND_METHOD(QWidget, styleSheet)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_qstring(return_value, widget->styleSheet());
+}
+
+ZEND_METHOD(QWidget, devicePixelRatioF)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	RETURN_DOUBLE(widget->devicePixelRatioF());
+}
+
+ZEND_METHOD(QWidget, setFont)
+{
+	zend_object *font_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(font_obj, phpqt_ce_QFont)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QFont *font = static_cast<QFont *>(phpqt_value_arg(font_obj, 1));
+	if (font == nullptr) {
+		RETURN_THROWS();
+	}
+
+	widget->setFont(*font);
+}
+
+ZEND_METHOD(QWidget, font)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_font(return_value, widget->font());
+}
+
+/* QWidget::setParent(QWidget *): the QObject overload is hidden, so a non-widget parent is refused. */
+ZEND_METHOD(QWidget, setParent)
+{
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	if (parent != nullptr && !instanceof_function(parent->ce, phpqt_ce_QWidget)) {
+		zend_argument_type_error(1, "must be of type ?QWidget, %s given", ZSTR_VAL(parent->ce->name));
+		RETURN_THROWS();
+	}
+
+	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	widget->setParent(qparent);
 }
 
 /* ---- QMainWindow ------------------------------------------------------- */

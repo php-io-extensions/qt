@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 12879659c1f161c055ec2830d966d8bbdf234dc5 */
+ * Stub hash: d4ada507cac2624c28362d8e07289d03f75621e3 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -56,6 +56,76 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_testAttribute, 0, 
 	ZEND_ARG_OBJ_INFO(0, attribute, Qt\\WidgetAttribute, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setLayout, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, layout, QLayout, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_layout, 0, 0, QLayout, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setMinimumSize, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, minw, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, minh, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_minimumWidth arginfo_class_QWidget_width
+
+#define arginfo_class_QWidget_minimumHeight arginfo_class_QWidget_width
+
+#define arginfo_class_QWidget_setFixedSize arginfo_class_QWidget_resize
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_sizeHint, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_size arginfo_class_QWidget_sizeHint
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setSizePolicy, 0, 2, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, horizontal, QSizePolicy\\Policy, 0)
+	ZEND_ARG_OBJ_INFO(0, vertical, QSizePolicy\\Policy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_move, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setGeometry, 0, 4, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, w, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, h, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_geometry arginfo_class_QWidget_sizeHint
+
+#define arginfo_class_QWidget_pos arginfo_class_QWidget_sizeHint
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setEnabled, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, enabled, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_isEnabled arginfo_class_QWidget_close
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setStyleSheet, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, styleSheet, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_styleSheet arginfo_class_QWidget_windowTitle
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_devicePixelRatioF, 0, 0, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setFont, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, font, QFont, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_font, 0, 0, QFont, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setParent, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, parent, QObject, 1)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QWidget, __construct);
 ZEND_METHOD(QWidget, show);
 ZEND_METHOD(QWidget, hide);
@@ -74,6 +144,27 @@ ZEND_METHOD(QWidget, height);
 ZEND_METHOD(QWidget, parentWidget);
 ZEND_METHOD(QWidget, setAttribute);
 ZEND_METHOD(QWidget, testAttribute);
+ZEND_METHOD(QWidget, setLayout);
+ZEND_METHOD(QWidget, layout);
+ZEND_METHOD(QWidget, setMinimumSize);
+ZEND_METHOD(QWidget, minimumWidth);
+ZEND_METHOD(QWidget, minimumHeight);
+ZEND_METHOD(QWidget, setFixedSize);
+ZEND_METHOD(QWidget, sizeHint);
+ZEND_METHOD(QWidget, size);
+ZEND_METHOD(QWidget, setSizePolicy);
+ZEND_METHOD(QWidget, move);
+ZEND_METHOD(QWidget, setGeometry);
+ZEND_METHOD(QWidget, geometry);
+ZEND_METHOD(QWidget, pos);
+ZEND_METHOD(QWidget, setEnabled);
+ZEND_METHOD(QWidget, isEnabled);
+ZEND_METHOD(QWidget, setStyleSheet);
+ZEND_METHOD(QWidget, styleSheet);
+ZEND_METHOD(QWidget, devicePixelRatioF);
+ZEND_METHOD(QWidget, setFont);
+ZEND_METHOD(QWidget, font);
+ZEND_METHOD(QWidget, setParent);
 
 static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, __construct, arginfo_class_QWidget___construct, ZEND_ACC_PUBLIC)
@@ -94,6 +185,27 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, parentWidget, arginfo_class_QWidget_parentWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setAttribute, arginfo_class_QWidget_setAttribute, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, testAttribute, arginfo_class_QWidget_testAttribute, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setLayout, arginfo_class_QWidget_setLayout, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, layout, arginfo_class_QWidget_layout, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setMinimumSize, arginfo_class_QWidget_setMinimumSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, minimumWidth, arginfo_class_QWidget_minimumWidth, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, minimumHeight, arginfo_class_QWidget_minimumHeight, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setFixedSize, arginfo_class_QWidget_setFixedSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, sizeHint, arginfo_class_QWidget_sizeHint, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, size, arginfo_class_QWidget_size, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setSizePolicy, arginfo_class_QWidget_setSizePolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, move, arginfo_class_QWidget_move, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setGeometry, arginfo_class_QWidget_setGeometry, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, geometry, arginfo_class_QWidget_geometry, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, pos, arginfo_class_QWidget_pos, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setEnabled, arginfo_class_QWidget_setEnabled, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, isEnabled, arginfo_class_QWidget_isEnabled, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setStyleSheet, arginfo_class_QWidget_setStyleSheet, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, styleSheet, arginfo_class_QWidget_styleSheet, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, devicePixelRatioF, arginfo_class_QWidget_devicePixelRatioF, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setFont, arginfo_class_QWidget_setFont, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, font, arginfo_class_QWidget_font, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setParent, arginfo_class_QWidget_setParent, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

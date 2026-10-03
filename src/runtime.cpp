@@ -8,6 +8,7 @@
 
 #include <QtCore/QByteArray>
 #include <QtCore/QCoreApplication>
+#include <QtCore/QDate>
 #include <QtCore/QSocketDescriptor>
 #include <QtCore/QString>
 
@@ -144,9 +145,20 @@ void phpqt_box(zval *rv, QObject *qobject)
 	ZVAL_OBJ(rv, wrapper);
 }
 
-/* A constructor's new object: PHP owns it until Qt takes it through a parent. */
+/*
+ * A constructor's new object: PHP owns it until Qt takes it through a parent.
+ * A second __construct() on the same wrapper would orphan the first object and
+ * leave its identity-map entry pointing at a wrapper that no longer tracks it,
+ * so the newcomer is deleted and the call refused.
+ */
 void phpqt_adopt(zend_object *wrapper, QObject *created)
 {
+	if (phpqt_object_from(wrapper)->guard != nullptr) {
+		delete created;
+		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s::__construct() called twice", ZSTR_VAL(wrapper->ce->name));
+		return;
+	}
+
 	phpqt_track(wrapper, created, true);
 }
 
@@ -329,6 +341,13 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 		case QMetaType::QByteArray: {
 			QByteArray *bytes = static_cast<QByteArray *>(value);
 			ZVAL_STRINGL(rv, bytes->constData(), bytes->size());
+			return;
+		}
+
+		/* Dates cross as ISO 8601 strings, as QDateEdit::date() hands them out. */
+		case QMetaType::QDate: {
+			QByteArray iso = static_cast<QDate *>(value)->toString(Qt::ISODate).toUtf8();
+			ZVAL_STRINGL(rv, iso.constData(), iso.size());
 			return;
 		}
 	}

@@ -91,3 +91,33 @@ it('lets a disconnect inside the slot stop further calls', function (): void {
 
     expect($calls)->toBe(1);
 });
+
+it('invokes a method or emits a signal by name', function (): void {
+    testApplication();
+    $edit = new QLineEdit();
+    $returns = 0;
+    QObject::connect($edit, 'returnPressed()', function () use (&$returns): void { $returns++; });
+
+    expect(QMetaObject::invokeMethod($edit, 'returnPressed'))->toBeTrue()
+        ->and($returns)->toBe(1)
+        ->and(QMetaObject::invokeMethod($edit, 'clear'))->toBeTrue()
+        ->and(QMetaObject::invokeMethod($edit, 'noSuchMember'))->toBeFalse()
+        ->and(fn () => new QMetaObject())->toThrow(Error::class);
+});
+
+it('invokes a member with arguments converted to its parameter types', function (): void {
+    testApplication();
+    $slider = new QSlider(Qt\Orientation::HORIZONTAL);
+    $edit = new QDateEdit();
+    $edit->setCalendarPopup(true);
+    $clicked = [];
+    QObject::connect($edit->calendarWidget(), 'clicked(QDate)', function (string $date) use (&$clicked): void { $clicked[] = $date; });
+
+    expect(QMetaObject::invokeMethod($slider, 'setValue', 42))->toBeTrue()
+        ->and($slider->value())->toBe(42)
+        ->and(QMetaObject::invokeMethod($edit->calendarWidget(), 'clicked', '2026-10-02'))->toBeTrue()
+        ->and($clicked)->toBe(['2026-10-02'])
+        ->and(QMetaObject::invokeMethod($slider, 'setValue', 1, 2))->toBeFalse()
+        ->and(fn () => QMetaObject::invokeMethod($slider, 'setValue', 'many'))->toThrow(TypeError::class)
+        ->and(fn () => QMetaObject::invokeMethod($edit->calendarWidget(), 'clicked', 'someday'))->toThrow(ValueError::class, 'ISO 8601');
+});

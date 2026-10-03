@@ -5,7 +5,7 @@ description: String-signature connect through a moc-free dynamic slot; argument 
 resource: src/runtime.cpp
 tags: [qt, signals, callbacks]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-01T18:15:45Z }
+generated: { by: claude-fable/5.1, at: 2026-10-02T17:26:27Z }
 sources:
   - id: runtime
     resource: src/runtime.cpp
@@ -19,7 +19,7 @@ sources:
 
 `PhpSlot` = a `QObject` subclass holding a PHP callable. `QObject::connect()` normalises the signature (`QMetaObject::normalizedSignature`), finds the signal with `indexOfSignal`, and calls `QMetaObject::connect(sender, index, slot, QObject::staticMetaObject.methodCount(), Qt::DirectConnection)`. Activation arrives in `PhpSlot::qt_metacall`; after `QObject::qt_metacall` subtracts QObject's own methods the id is 0, which invokes the callable. No moc, no generated metaobject.[^qobject]
 
-Arguments, typed by the signal's `QMetaMethod::parameterMetaType`: bool, integer and float types as PHP scalars; `QString`/`QByteArray` as strings; `QSocketDescriptor` as the int fd; enums as ints; `QObject*` boxed. A `QObject*` that is the emitting sender maps to the sender's own wrapper even during `destroyed()`, when Qt has already cleared its QPointers.[^runtime]
+Arguments, typed by the signal's `QMetaMethod::parameterMetaType`: bool, integer and float types as PHP scalars; `QString`/`QByteArray` as strings; `QDate` as its ISO 8601 string (`QDateEdit::dateChanged`); `QSocketDescriptor` as the int fd; enums as ints (`QMediaPlayer::MediaStatus` arrives as the `QMediaPlayer\MediaStatus` case value); `QObject*` boxed. A `QObject*` that is the emitting sender maps to the sender's own wrapper even during `destroyed()`, when Qt has already cleared its QPointers.[^runtime]
 
 Lifetime:
 

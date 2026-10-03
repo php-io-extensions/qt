@@ -7,32 +7,59 @@ PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,
 `QMetaObject\Connection`. No defaults, no composites: behaviour is composed by
 the caller.
 
-Linux first, macOS too. Qt 6.5+, PHP 8.4+, NTS and ZTS.
+Linux first, macOS too. Qt 6.5+ with the Multimedia and MultimediaWidgets
+modules, PHP 8.4+, NTS and ZTS.
 
 ## What is bound
 
 The calls that create the application, pump Qt's event dispatcher, sleep with a
-budget, wake a sleep, open and close windows, and build menu bars:
+budget, wake a sleep, open and close windows, build menu bars, lay widgets out,
+style them, drive the common controls and play video:
 
 | Class | Qt |
 |---|---|
-| `QObject` | constructor, `objectName`, `setObjectName`, `inherits`, `parent`, `setParent`, `deleteLater`, `connect` (string signature), `disconnect` |
+| `QObject` | constructor, `objectName`, `setObjectName`, `inherits`, `parent`, `setParent`, `children`, `deleteLater`, `connect` (string signature), `disconnect` |
 | `QCoreApplication`, `QGuiApplication`, `QApplication` | constructors, `instance`, `processEvents` (both overloads), `sendPostedEvents`, `exec`, `quit`, `exit`, `applicationName`, `setApplicationName`, `applicationPid`, `closingDown`, `startingUp`, `platformName`, `desktopFileName`, `setDesktopFileName`, `applicationDisplayName`, `setApplicationDisplayName`, `quitOnLastWindowClosed`, `setQuitOnLastWindowClosed` |
 | `QTimer` | constructor, `start` (both overloads), `stop`, `isActive`, `interval`, `setInterval`, `isSingleShot`, `setSingleShot`, `timerType`, `setTimerType`, `remainingTime`, `timerId`, `singleShot` (functor overload) |
 | `QSocketNotifier` | constructor (fd as int, stream or Socket), `socket`, `type`, `isEnabled`, `setEnabled`, `isValid` |
 | `QAbstractEventDispatcher` | `instance`, `processEvents`, `wakeUp`, `interrupt` |
 | `QMetaObject\Connection` | `operator bool` as `isValid()` |
-| `QWidget` | constructor, `show`, `hide`, `close`, `isVisible`, `setVisible`, `isWindow`, `isActiveWindow`, `activateWindow`, `raise`, `windowTitle`, `setWindowTitle`, `resize`, `width`, `height`, `parentWidget`, `setAttribute`, `testAttribute` |
+| `QMetaObject` | `invokeMethod` (object, member name, arguments converted to its parameter types: calls a slot or emits a signal) |
+| `QWidget` | constructor, `show`, `hide`, `close`, `isVisible`, `setVisible`, `isWindow`, `isActiveWindow`, `activateWindow`, `raise`, `windowTitle`, `setWindowTitle`, `resize`, `width`, `height`, `size`, `sizeHint`, `pos`, `geometry`, `setGeometry`, `move`, `setMinimumSize`, `minimumWidth`, `minimumHeight`, `setFixedSize`, `setSizePolicy`, `setLayout`, `layout`, `isEnabled`, `setEnabled`, `styleSheet`, `setStyleSheet`, `font`, `setFont`, `setParent` (widgets only), `parentWidget`, `setAttribute`, `testAttribute` |
 | `QMainWindow` | constructor, `menuBar`, `setMenuBar`, `centralWidget`, `setCentralWidget` |
 | `QMenuBar`, `QMenu` | constructors, `addMenu` (both overloads), `addAction`, `clear`, `isNativeMenuBar`, `setNativeMenuBar`; `title`, `setTitle`, `addSeparator`, `isEmpty`, `menuAction` |
 | `QAction` | constructor, `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `isEnabled`, `setEnabled`, `isSeparator`, `setSeparator`, `menuRole`, `setMenuRole`, `shortcut`, `setShortcut`, `trigger`, `toggle` |
 | `QDialog`, `QMessageBox` | constructors, `open`, `isModal`, `setModal`, `result`, `done`, `accept`, `reject`; `text`, `setText`, `informativeText`, `setInformativeText` |
 | `QObject` (filters) | `installEventFilter`, `removeEventFilter` |
 | `QEventFilter` | trampoline: `new QEventFilter(callable, ?array $types)`; hands the listed event types of each watched object to PHP |
+| `QLayout` | `setSpacing`, `spacing`, `setContentsMargins`, `count`, `removeWidget`, `indexOf`, `itemAtWidget` (`itemAt(i)->widget()`) |
+| `QBoxLayout`, `QVBoxLayout`, `QHBoxLayout` | constructors (optional parent widget), `addWidget(widget, stretch, alignment)`, `insertWidget`, `addLayout`, `addStretch`, `setStretch`, `setAlignment`; widgets added before the layout is installed are held until it is |
+| `QGridLayout` | constructor, `addWidget(widget, row, column, rowSpan, columnSpan, alignment)`, `addItem(QSpacerItem, …)`, `rowCount`, `columnCount`, `setRowStretch`, `setColumnStretch`, `rowStretch`, `columnStretch`, `setHorizontalSpacing`, `setVerticalSpacing`, `itemAtPosition` (its widget) |
+| `QSpacerItem` | constructor (w, h, policies), `changeSize`, `sizeHint` |
+| `QLabel` | constructor, `text`, `setText`, `alignment`, `setAlignment`, `wordWrap`, `setWordWrap`, `setScaledContents`, `pixmap`, `setPixmap` |
+| `QAbstractButton`, `QPushButton`, `QCheckBox` | constructors (text, parent), `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `click`, `toggle`; signals `clicked(bool)`, `toggled(bool)` |
+| `QAbstractSlider`, `QSlider` | constructor (orientation, vertical by default as in Qt, parent), `minimum`, `maximum`, `setRange`, `value`, `setValue`, `orientation`, `setOrientation`; signal `valueChanged(int)` |
+| `QComboBox` | constructor, `addItem`, `addItems`, `clear`, `count`, `currentIndex`, `setCurrentIndex`, `currentText`, `itemText`; signal `currentIndexChanged(int)` |
+| `QLineEdit` | constructor (text, parent), `text`, `setText`, `placeholderText`, `setPlaceholderText`, `echoMode`, `setEchoMode`, `isReadOnly`, `setReadOnly`; signals `textChanged(QString)`, `returnPressed()` |
+| `QPlainTextEdit` | constructor, `toPlainText`, `setPlainText`, `isReadOnly`, `setReadOnly`; signal `textChanged()` |
+| `QDateEdit` | constructor, `date`, `setDate` (ISO 8601 strings), `setCalendarPopup`, `setDisplayFormat`; signal `dateChanged(QDate)` as the ISO string |
+| `QProgressBar` | constructor, `minimum`, `maximum`, `setRange`, `value`, `setValue`, `setTextVisible`, `reset` |
+| `QFrame`, `QScrollArea` | constructors, `frameShape`, `setFrameShape`, `setFrameShadow`; `setWidget`, `widget`, `setWidgetResizable`, `setHorizontalScrollBarPolicy`, `setVerticalScrollBarPolicy` |
+| `QAbstractItemView`, `QTableWidget`, `QTableWidgetItem` | `setSelectionBehavior`, `setSelectionMode`, `setEditTriggers`, `NO_EDIT_TRIGGERS`; constructor (rows, columns, parent), `rowCount`, `setRowCount`, `columnCount`, `setColumnCount`, `setHorizontalHeaderLabels`, `horizontalHeaderItem`, `selectedItems`, `clearSelection`, `setItem`, `item`, `clearContents`, `currentRow`, `selectRow`; item constructor, `text`, `setText`, `row`; signals `itemSelectionChanged()`, `cellClicked(int,int)` |
+| `QFont`, `QPixmap` | values: constructor (family, point size, weight on Qt's 1–1000 scale), `family`, `setFamily`, `pointSizeF`, `setPointSizeF`, `weight`, `setWeight`; constructor, `load`, `isNull`, `width`, `height`, `scaled` |
+| `QUrl` | value: `fromLocalFile`, `toString`, `isValid` |
+| `QAudioOutput` | constructor, `setMuted`, `isMuted`, `setVolume`, `volume` |
+| `QMediaPlayer` | constructor, `setVideoOutput`, `setAudioOutput`, `setSource`, `source`, `play`, `pause`, `stop`, `position`, `duration`, `setPosition`, `playbackState`, `mediaStatus`, `setLoops`, `INFINITE_LOOPS`, `errorString`, `hasVideo`, `isAvailable`; signals `playbackStateChanged`, `mediaStatusChanged`, `errorOccurred`, `positionChanged` |
+| `QVideoWidget` | constructor |
 
 Enums: `QEventLoop\ProcessEventsFlag`, `Qt\TimerType`, `QSocketNotifier\Type`,
-`QAction\MenuRole`, and, generated from the Qt headers by `scripts/gen-enum.php`,
-`QEvent\Type` and `Qt\WidgetAttribute`.
+`QAction\MenuRole`, `Qt\Orientation`, `Qt\AspectRatioMode`, `Qt\ScrollBarPolicy`,
+`QSizePolicy\Policy`, `QLineEdit\EchoMode`, `QFont\Weight`, `QFrame\Shape`,
+`QFrame\Shadow`, `QAbstractItemView\SelectionBehavior`,
+`QAbstractItemView\SelectionMode`, `QMediaPlayer\PlaybackState`,
+`QMediaPlayer\MediaStatus`, `QMediaPlayer\Error`, and, generated from the Qt
+headers by `scripts/gen-enum.php`, `QEvent\Type`, `Qt\WidgetAttribute` and
+`Qt\AlignmentFlag`. QFlags parameters (`alignment`) take the enum or an OR'd int.
 Function: `qVersion()`. The stubs in `stubs/` are the full declaration.
 
 Signals connect by the signature `SIGNAL()` spells, and the callable receives
@@ -62,8 +89,8 @@ QObject::connect($notifier, 'activated(QSocketDescriptor,QSocketNotifier::Type)'
 ## Install
 
 ```bash
-bash install-debian-trixie.sh   # Debian, Ubuntu, Raspberry Pi OS (needs qt6-base-dev, g++)
-bash install-macos.sh           # Homebrew php@8.4 and php@8.4-zts (needs brew install qt)
+bash install-debian-trixie.sh   # Debian, Ubuntu, Raspberry Pi OS (needs qt6-base-dev, qt6-multimedia-dev, libqt6multimediawidgets6, g++)
+bash install-macos.sh           # Homebrew php@8.4 and php@8.4-zts (needs brew install qt, which carries Multimedia)
 ```
 
 Or with PIE: `pie install php-io-extensions/qt`.
@@ -76,6 +103,10 @@ php vendor/bin/pest
 php examples/smoke.php          # bridge: application, pump, sleep, wake; prints SMOKE_OK
 php examples/window-smoke.php   # window, menu bar, actions, close filter; prints SMOKE_OK
 ```
+
+`tests/VideoTest.php` plays `tests/fixtures/clip.mp4` (1.2 s, silent) through the
+platform media backend: AVFoundation on macOS, the FFmpeg plugin of
+`libqt6multimedia6` on Debian.
 
 On Linux over SSH, export the session's `DISPLAY` (and `WAYLAND_DISPLAY` when
 the `qt6-wayland` platform plugin is installed) first. Design notes live in the

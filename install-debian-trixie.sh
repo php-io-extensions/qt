@@ -88,6 +88,11 @@ PHP_VER_ID="$(php -r 'echo PHP_VERSION_ID;')"
 command -v cc >/dev/null 2>&1 || die "cc not found — install: apt install build-essential"
 command -v pkg-config >/dev/null 2>&1 || die "pkg-config not found — install: apt install pkg-config"
 pkg-config --exists 'Qt6Widgets >= 6.5' || die "Qt 6.5+ development files not found — install: apt install qt6-base-dev"
+pkg-config --exists 'Qt6Multimedia >= 6.5 Qt6MultimediaWidgets >= 6.5' || die "Qt Multimedia not found — install: apt install qt6-multimedia-dev libqt6multimediawidgets6"
+# QMediaPlayer builds without a backend and then plays nothing: require the plugin (FFmpeg, shipped in libqt6multimedia6).
+QT_PLUGIN_DIR="$(qtpaths6 --query QT_INSTALL_PLUGINS 2>/dev/null || true)"
+[ -n "$QT_PLUGIN_DIR" ] || die "qtpaths6 not found — install: apt install qt6-base-dev-tools"
+compgen -G "${QT_PLUGIN_DIR}/multimedia/*" >/dev/null || die "No Qt Multimedia backend plugin in ${QT_PLUGIN_DIR}/multimedia — install: apt install libqt6multimedia6"
 command -v c++ >/dev/null 2>&1 || die "c++ not found — install: apt install g++"
 
 PHP_BIN_REAL="$(php -r 'echo PHP_BINARY;' 2>/dev/null)"

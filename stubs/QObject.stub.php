@@ -19,6 +19,9 @@ class QObject
 
     public function setParent(?QObject $parent): void {}
 
+    /** @return list<QObject> */
+    public function children(): array {}
+
     public function deleteLater(): void {}
 
     public function installEventFilter(QObject $filterObj): void {}

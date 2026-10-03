@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 9e08ee16f2263182c8fe2fde9b457a36b6213800 */
+ * Stub hash: 97ca88b033ab6f8de15917d79b4bd2871f119b10 */
 
 static zend_class_entry *register_class_Qt_TimerType(void)
 {
@@ -16,6 +16,97 @@ static zend_class_entry *register_class_Qt_TimerType(void)
 	zval enum_case_VERY_COARSE_TIMER_value;
 	ZVAL_LONG(&enum_case_VERY_COARSE_TIMER_value, 2);
 	zend_enum_add_case_cstr(class_entry, "VERY_COARSE_TIMER", &enum_case_VERY_COARSE_TIMER_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_Orientation(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\Orientation", IS_LONG, NULL);
+
+	zval enum_case_HORIZONTAL_value;
+	ZVAL_LONG(&enum_case_HORIZONTAL_value, 1);
+	zend_enum_add_case_cstr(class_entry, "HORIZONTAL", &enum_case_HORIZONTAL_value);
+
+	zval enum_case_VERTICAL_value;
+	ZVAL_LONG(&enum_case_VERTICAL_value, 2);
+	zend_enum_add_case_cstr(class_entry, "VERTICAL", &enum_case_VERTICAL_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_AspectRatioMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\AspectRatioMode", IS_LONG, NULL);
+
+	zval enum_case_IGNORE_value;
+	ZVAL_LONG(&enum_case_IGNORE_value, 0);
+	zend_enum_add_case_cstr(class_entry, "IGNORE", &enum_case_IGNORE_value);
+
+	zval enum_case_KEEP_value;
+	ZVAL_LONG(&enum_case_KEEP_value, 1);
+	zend_enum_add_case_cstr(class_entry, "KEEP", &enum_case_KEEP_value);
+
+	zval enum_case_KEEP_BY_EXPANDING_value;
+	ZVAL_LONG(&enum_case_KEEP_BY_EXPANDING_value, 2);
+	zend_enum_add_case_cstr(class_entry, "KEEP_BY_EXPANDING", &enum_case_KEEP_BY_EXPANDING_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_ScrollBarPolicy(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ScrollBarPolicy", IS_LONG, NULL);
+
+	zval enum_case_AS_NEEDED_value;
+	ZVAL_LONG(&enum_case_AS_NEEDED_value, 0);
+	zend_enum_add_case_cstr(class_entry, "AS_NEEDED", &enum_case_AS_NEEDED_value);
+
+	zval enum_case_ALWAYS_OFF_value;
+	ZVAL_LONG(&enum_case_ALWAYS_OFF_value, 1);
+	zend_enum_add_case_cstr(class_entry, "ALWAYS_OFF", &enum_case_ALWAYS_OFF_value);
+
+	zval enum_case_ALWAYS_ON_value;
+	ZVAL_LONG(&enum_case_ALWAYS_ON_value, 2);
+	zend_enum_add_case_cstr(class_entry, "ALWAYS_ON", &enum_case_ALWAYS_ON_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_TextFormat(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\TextFormat", IS_LONG, NULL);
+
+	zval enum_case_PLAIN_TEXT_value;
+	ZVAL_LONG(&enum_case_PLAIN_TEXT_value, 0);
+	zend_enum_add_case_cstr(class_entry, "PLAIN_TEXT", &enum_case_PLAIN_TEXT_value);
+
+	zval enum_case_RICH_TEXT_value;
+	ZVAL_LONG(&enum_case_RICH_TEXT_value, 1);
+	zend_enum_add_case_cstr(class_entry, "RICH_TEXT", &enum_case_RICH_TEXT_value);
+
+	zval enum_case_AUTO_TEXT_value;
+	ZVAL_LONG(&enum_case_AUTO_TEXT_value, 2);
+	zend_enum_add_case_cstr(class_entry, "AUTO_TEXT", &enum_case_AUTO_TEXT_value);
+
+	zval enum_case_MARKDOWN_TEXT_value;
+	ZVAL_LONG(&enum_case_MARKDOWN_TEXT_value, 3);
+	zend_enum_add_case_cstr(class_entry, "MARKDOWN_TEXT", &enum_case_MARKDOWN_TEXT_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_TransformationMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\TransformationMode", IS_LONG, NULL);
+
+	zval enum_case_FAST_TRANSFORMATION_value;
+	ZVAL_LONG(&enum_case_FAST_TRANSFORMATION_value, 0);
+	zend_enum_add_case_cstr(class_entry, "FAST_TRANSFORMATION", &enum_case_FAST_TRANSFORMATION_value);
+
+	zval enum_case_SMOOTH_TRANSFORMATION_value;
+	ZVAL_LONG(&enum_case_SMOOTH_TRANSFORMATION_value, 1);
+	zend_enum_add_case_cstr(class_entry, "SMOOTH_TRANSFORMATION", &enum_case_SMOOTH_TRANSFORMATION_value);
 
 	return class_entry;
 }
@@ -435,6 +526,61 @@ static zend_class_entry *register_class_Qt_WidgetAttribute(void)
 	zval enum_case_ATTRIBUTE_COUNT_value;
 	ZVAL_LONG(&enum_case_ATTRIBUTE_COUNT_value, 132);
 	zend_enum_add_case_cstr(class_entry, "ATTRIBUTE_COUNT", &enum_case_ATTRIBUTE_COUNT_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_AlignmentFlag(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\AlignmentFlag", IS_LONG, NULL);
+
+	zval enum_case_LEFT_value;
+	ZVAL_LONG(&enum_case_LEFT_value, 1);
+	zend_enum_add_case_cstr(class_entry, "LEFT", &enum_case_LEFT_value);
+
+	zval enum_case_RIGHT_value;
+	ZVAL_LONG(&enum_case_RIGHT_value, 2);
+	zend_enum_add_case_cstr(class_entry, "RIGHT", &enum_case_RIGHT_value);
+
+	zval enum_case_H_CENTER_value;
+	ZVAL_LONG(&enum_case_H_CENTER_value, 4);
+	zend_enum_add_case_cstr(class_entry, "H_CENTER", &enum_case_H_CENTER_value);
+
+	zval enum_case_JUSTIFY_value;
+	ZVAL_LONG(&enum_case_JUSTIFY_value, 8);
+	zend_enum_add_case_cstr(class_entry, "JUSTIFY", &enum_case_JUSTIFY_value);
+
+	zval enum_case_ABSOLUTE_value;
+	ZVAL_LONG(&enum_case_ABSOLUTE_value, 16);
+	zend_enum_add_case_cstr(class_entry, "ABSOLUTE", &enum_case_ABSOLUTE_value);
+
+	zval enum_case_HORIZONTAL_MASK_value;
+	ZVAL_LONG(&enum_case_HORIZONTAL_MASK_value, 31);
+	zend_enum_add_case_cstr(class_entry, "HORIZONTAL_MASK", &enum_case_HORIZONTAL_MASK_value);
+
+	zval enum_case_TOP_value;
+	ZVAL_LONG(&enum_case_TOP_value, 32);
+	zend_enum_add_case_cstr(class_entry, "TOP", &enum_case_TOP_value);
+
+	zval enum_case_BOTTOM_value;
+	ZVAL_LONG(&enum_case_BOTTOM_value, 64);
+	zend_enum_add_case_cstr(class_entry, "BOTTOM", &enum_case_BOTTOM_value);
+
+	zval enum_case_V_CENTER_value;
+	ZVAL_LONG(&enum_case_V_CENTER_value, 128);
+	zend_enum_add_case_cstr(class_entry, "V_CENTER", &enum_case_V_CENTER_value);
+
+	zval enum_case_BASELINE_value;
+	ZVAL_LONG(&enum_case_BASELINE_value, 256);
+	zend_enum_add_case_cstr(class_entry, "BASELINE", &enum_case_BASELINE_value);
+
+	zval enum_case_VERTICAL_MASK_value;
+	ZVAL_LONG(&enum_case_VERTICAL_MASK_value, 480);
+	zend_enum_add_case_cstr(class_entry, "VERTICAL_MASK", &enum_case_VERTICAL_MASK_value);
+
+	zval enum_case_CENTER_value;
+	ZVAL_LONG(&enum_case_CENTER_value, 132);
+	zend_enum_add_case_cstr(class_entry, "CENTER", &enum_case_CENTER_value);
 
 	return class_entry;
 }
