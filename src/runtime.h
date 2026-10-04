@@ -131,6 +131,8 @@ extern zend_class_entry *phpqt_ce_Qt_ScrollBarPolicy;
 extern zend_class_entry *phpqt_ce_QFont_Weight;
 extern zend_class_entry *phpqt_ce_QFont;
 extern zend_class_entry *phpqt_ce_QPixmap;
+extern zend_class_entry *phpqt_ce_QImage;
+extern zend_class_entry *phpqt_ce_QImage_Format;
 extern zend_class_entry *phpqt_ce_QTableWidgetItem;
 extern zend_class_entry *phpqt_ce_QFrame_Shape;
 extern zend_class_entry *phpqt_ce_QFrame_Shadow;

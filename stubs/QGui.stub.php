@@ -17,6 +17,22 @@ namespace QFont {
     }
 }
 
+namespace QImage {
+    /** The QImage::Format layouts with 8 bits a channel. */
+    enum Format: int
+    {
+        case RGB32 = 4;
+        case ARGB32 = 5;
+        case ARGB32_PREMULTIPLIED = 6;
+        case RGB888 = 13;
+        /** Four bytes, red first; the fourth is ignored: opaque. */
+        case RGBX8888 = 16;
+        case RGBA8888 = 17;
+        case RGBA8888_PREMULTIPLIED = 18;
+        case BGR888 = 29;
+    }
+}
+
 namespace {
     /**
      * A value in Qt; here a heap copy owned by the PHP object.
@@ -57,6 +73,9 @@ namespace {
         /** Needs a QGuiApplication (or QApplication) first. */
         public function __construct() {}
 
+        /** Needs a QGuiApplication (or QApplication) first. */
+        public static function fromImage(QImage $image): QPixmap {}
+
         public function load(string $fileName): bool {}
 
         public function isNull(): bool {}
@@ -71,6 +90,28 @@ namespace {
 
         /** @param float $scaleFactor greater than 0 */
         public function setDevicePixelRatio(float $scaleFactor): void {}
+    }
+
+    /**
+     * A value in Qt; here a heap copy owned by the PHP object.
+     *
+     * @not-serializable
+     */
+    final class QImage
+    {
+        /**
+         * QImage(data, width, height, bytesPerLine, format), then a deep copy: Qt only borrows
+         * the bytes it is handed, and the PHP string may go away. $data must hold every line.
+         */
+        public function __construct(string $data, int $width, int $height, int $bytesPerLine, QImage\Format $format) {}
+
+        public function isNull(): bool {}
+
+        public function width(): int {}
+
+        public function height(): int {}
+
+        public function format(): QImage\Format {}
     }
 
     /**

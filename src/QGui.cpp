@@ -9,6 +9,7 @@
 
 #include <QtGui/QFont>
 #include <QtGui/QGuiApplication>
+#include <QtGui/QImage>
 #include <QtGui/QPixmap>
 #include <QtWidgets/QTableWidgetItem>
 
@@ -46,6 +47,7 @@ public:
 
 static void phpqt_destroy_font(void *ptr) { delete static_cast<QFont *>(ptr); }
 static void phpqt_destroy_pixmap(void *ptr) { delete static_cast<QPixmap *>(ptr); }
+static void phpqt_destroy_image(void *ptr) { delete static_cast<QImage *>(ptr); }
 static void phpqt_destroy_table_item(void *ptr) { delete static_cast<QTableWidgetItem *>(ptr); }
 
 /* The item outlives this wrapper when a table owns it: stop it from writing back. */
@@ -116,6 +118,10 @@ void phpqt_register_QGui()
 
 	phpqt_ce_QPixmap = register_class_QPixmap();
 	phpqt_value_setup(phpqt_ce_QPixmap);
+
+	phpqt_ce_QImage_Format = register_class_QImage_Format();
+	phpqt_ce_QImage = register_class_QImage();
+	phpqt_value_setup(phpqt_ce_QImage);
 
 	phpqt_ce_QTableWidgetItem = register_class_QTableWidgetItem();
 	phpqt_value_setup(phpqt_ce_QTableWidgetItem);
@@ -347,6 +353,120 @@ ZEND_METHOD(QPixmap, __construct)
 
 	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QPixmap(), true, phpqt_destroy_pixmap);
 }
+
+ZEND_METHOD(QPixmap, fromImage)
+{
+	zend_object *image_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(image_obj, phpqt_ce_QImage)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	/* Qt aborts the process (qFatal) on a pixmap made before a QGuiApplication. */
+	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
+		zend_throw_exception(phpqt_ce_QtException, "QPixmap needs a QGuiApplication first", 0);
+		RETURN_THROWS();
+	}
+
+	QImage *image = static_cast<QImage *>(phpqt_value_arg(image_obj, 1));
+	if (image == nullptr) {
+		RETURN_THROWS();
+	}
+
+	phpqt_return_pixmap(return_value, QPixmap::fromImage(*image));
+}
+
+/* ---- QImage ------------------------------------------------------------ */
+
+static_assert(QImage::Format_RGB32 == 4 && QImage::Format_ARGB32 == 5 && QImage::Format_ARGB32_Premultiplied == 6
+	&& QImage::Format_RGB888 == 13 && QImage::Format_RGBX8888 == 16 && QImage::Format_RGBA8888 == 17
+	&& QImage::Format_RGBA8888_Premultiplied == 18 && QImage::Format_BGR888 == 29,
+	"QImage::Format values differ from the stub's QImage\\Format enum");
+
+ZEND_METHOD(QImage, __construct)
+{
+	zend_string *data;
+	zend_long width;
+	zend_long height;
+	zend_long bytes_per_line;
+	zend_object *format_obj;
+
+	ZEND_PARSE_PARAMETERS_START(5, 5)
+		Z_PARAM_STR(data)
+		Z_PARAM_LONG(width)
+		Z_PARAM_LONG(height)
+		Z_PARAM_LONG(bytes_per_line)
+		Z_PARAM_OBJ_OF_CLASS(format_obj, phpqt_ce_QImage_Format)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
+		zend_throw_exception(phpqt_ce_QtException, "QImage::__construct() called twice", 0);
+		RETURN_THROWS();
+	}
+
+	QImage::Format format = static_cast<QImage::Format>(phpqt_enum_value(format_obj, QImage::Format_Invalid));
+	/* RGB888 and BGR888 take three bytes a pixel; every other format bound here takes four. */
+	zend_long pixel = format == QImage::Format_RGB888 || format == QImage::Format_BGR888 ? 3 : 4;
+
+	/* Qt reads width x height pixels from the pointer it is handed and trusts the description. */
+	if (width < 1 || width > 32767) {
+		zend_argument_value_error(2, "must be between 1 and 32767");
+		RETURN_THROWS();
+	}
+	if (height < 1 || height > 32767) {
+		zend_argument_value_error(3, "must be between 1 and 32767");
+		RETURN_THROWS();
+	}
+	if (bytes_per_line < width * pixel) {
+		zend_argument_value_error(4, "must hold a line: at least " ZEND_LONG_FMT " bytes", width * pixel);
+		RETURN_THROWS();
+	}
+	if (static_cast<zend_long>(ZSTR_LEN(data)) < bytes_per_line * (height - 1) + width * pixel) {
+		zend_argument_value_error(1, "must hold every line (" ZEND_LONG_FMT " bytes), " ZEND_LONG_FMT " given",
+			bytes_per_line * (height - 1) + width * pixel, static_cast<zend_long>(ZSTR_LEN(data)));
+		RETURN_THROWS();
+	}
+
+	QImage borrowed(reinterpret_cast<const uchar *>(ZSTR_VAL(data)), static_cast<int>(width), static_cast<int>(height),
+		static_cast<qsizetype>(bytes_per_line), format);
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QImage(borrowed.copy()), true, phpqt_destroy_image);
+}
+
+ZEND_METHOD(QImage, isNull)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	RETURN_BOOL(image->isNull());
+}
+
+ZEND_METHOD(QImage, width)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	RETURN_LONG(image->width());
+}
+
+ZEND_METHOD(QImage, height)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	RETURN_LONG(image->height());
+}
+
+ZEND_METHOD(QImage, format)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	phpqt_return_enum(return_value, phpqt_ce_QImage_Format, static_cast<zend_long>(image->format()));
+}
+
+/* ---- QPixmap, continued ------------------------------------------------ */
 
 ZEND_METHOD(QPixmap, load)
 {

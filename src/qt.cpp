@@ -80,6 +80,8 @@ zend_class_entry *phpqt_ce_Qt_ScrollBarPolicy;
 zend_class_entry *phpqt_ce_QFont_Weight;
 zend_class_entry *phpqt_ce_QFont;
 zend_class_entry *phpqt_ce_QPixmap;
+zend_class_entry *phpqt_ce_QImage;
+zend_class_entry *phpqt_ce_QImage_Format;
 zend_class_entry *phpqt_ce_QTableWidgetItem;
 zend_class_entry *phpqt_ce_QFrame_Shape;
 zend_class_entry *phpqt_ce_QFrame_Shadow;
