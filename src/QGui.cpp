@@ -386,14 +386,15 @@ static_assert(QImage::Format_RGB32 == 4 && QImage::Format_ARGB32 == 5 && QImage:
 
 ZEND_METHOD(QImage, __construct)
 {
-	zend_string *data;
+	zend_string *data = NULL;
+	zend_long address = 0;
 	zend_long width;
 	zend_long height;
 	zend_long bytes_per_line;
 	zend_object *format_obj;
 
 	ZEND_PARSE_PARAMETERS_START(5, 5)
-		Z_PARAM_STR(data)
+		Z_PARAM_STR_OR_LONG(data, address)
 		Z_PARAM_LONG(width)
 		Z_PARAM_LONG(height)
 		Z_PARAM_LONG(bytes_per_line)
@@ -422,14 +423,21 @@ ZEND_METHOD(QImage, __construct)
 		zend_argument_value_error(4, "must hold a line: at least " ZEND_LONG_FMT " bytes", width * pixel);
 		RETURN_THROWS();
 	}
-	if (static_cast<zend_long>(ZSTR_LEN(data)) < bytes_per_line * (height - 1) + width * pixel) {
-		zend_argument_value_error(1, "must hold every line (" ZEND_LONG_FMT " bytes), " ZEND_LONG_FMT " given",
-			bytes_per_line * (height - 1) + width * pixel, static_cast<zend_long>(ZSTR_LEN(data)));
+	if (data != NULL) {
+		if (static_cast<zend_long>(ZSTR_LEN(data)) < bytes_per_line * (height - 1) + width * pixel) {
+			zend_argument_value_error(1, "must hold every line (" ZEND_LONG_FMT " bytes), " ZEND_LONG_FMT " given",
+				bytes_per_line * (height - 1) + width * pixel, static_cast<zend_long>(ZSTR_LEN(data)));
+			RETURN_THROWS();
+		}
+	} else if (address == 0) {
+		zend_argument_value_error(1, "must not be a null address");
 		RETURN_THROWS();
 	}
 
-	QImage borrowed(reinterpret_cast<const uchar *>(ZSTR_VAL(data)), static_cast<int>(width), static_cast<int>(height),
-		static_cast<qsizetype>(bytes_per_line), format);
+	/* The address is trusted: an ext-fb buffer's pointer(), which holds $bytesPerLine × $height readable bytes. */
+	QImage borrowed(data != NULL ? reinterpret_cast<const uchar *>(ZSTR_VAL(data))
+			: reinterpret_cast<const uchar *>(static_cast<uintptr_t>(address)),
+		static_cast<int>(width), static_cast<int>(height), static_cast<qsizetype>(bytes_per_line), format);
 
 	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QImage(borrowed.copy()), true, phpqt_destroy_image);
 }

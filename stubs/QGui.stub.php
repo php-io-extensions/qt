@@ -101,9 +101,10 @@ namespace {
     {
         /**
          * QImage(data, width, height, bytesPerLine, format), then a deep copy: Qt only borrows
-         * the bytes it is handed, and the PHP string may go away. $data must hold every line.
+         * the bytes it is handed, and the PHP string may go away. $data must hold every line,
+         * or $bytesPerLine × $height bytes read at the address $data (trusted).
          */
-        public function __construct(string $data, int $width, int $height, int $bytesPerLine, QImage\Format $format) {}
+        public function __construct(string|int $data, int $width, int $height, int $bytesPerLine, QImage\Format $format) {}
 
         public function isNull(): bool {}
 

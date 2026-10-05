@@ -15,6 +15,19 @@ it('makes an image from bytes, as a copy', function (): void {
         ->and((new QImage(str_repeat('x', 14), 2, 2, 8, QImage\Format::RGB888))->width())->toBe(2);   // a padded line; the last needs no padding
 });
 
+it('copies an image from an address', function (): void {
+    $buffer = new FbBuffer(new FbFormat(FB_LAYOUT_RGBA8888, channelOrder: FB_CHANNELS_RGBA), 4, 2);
+
+    $image = new QImage($buffer->pointer(), 4, 2, 16, QImage\Format::RGBX8888);
+
+    expect([$image->width(), $image->height(), $image->format()])->toBe([4, 2, QImage\Format::RGBX8888])
+        ->and($image->isNull())->toBeFalse();
+})->skip(! class_exists(FbBuffer::class), 'needs ext-fb for a native address');
+
+it('refuses a null address', function (): void {
+    new QImage(0, 4, 2, 16, QImage\Format::RGBX8888);
+})->throws(ValueError::class, 'must not be a null address');
+
 it('carries Qt\'s values for the image formats', function (): void {
     expect(array_map(fn (QImage\Format $f): int => $f->value, QImage\Format::cases()))->toBe([4, 5, 6, 13, 16, 17, 18, 29]);
 });
