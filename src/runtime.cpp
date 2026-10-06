@@ -36,6 +36,20 @@ static zend_object *phpqt_create_object(zend_class_entry *ce)
 	return &intern->std;
 }
 
+/* True when Qt is destroying a slot below $object, at any depth of nested teardowns: deleting $object now would delete that slot's dying parents a second time. */
+static bool phpqt_tearing_down(QObject *object)
+{
+	for (phpqt_teardown *slot = PHPQT_G(teardown); slot != nullptr; slot = slot->outer) {
+		for (QObject *at = slot->at; at != nullptr; at = at->parent()) {
+			if (at == object) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 static void phpqt_free_object(zend_object *object)
 {
 	phpqt_object *intern = phpqt_object_from(object);
@@ -54,7 +68,7 @@ static void phpqt_free_object(zend_object *object)
 
 		if (intern->owned && qobject != nullptr && qobject->parent() == nullptr) {
 			/* Inside a Qt callback the object may be the one emitting: let Qt delete it once back in its loop. */
-			if (PHPQT_G(callout_depth) > 0 && qobject_cast<QCoreApplication *>(qobject) == nullptr) {
+			if ((PHPQT_G(callout_depth) > 0 || phpqt_tearing_down(qobject)) && qobject_cast<QCoreApplication *>(qobject) == nullptr) {
 				qobject->deleteLater();
 			} else {
 				delete qobject;
@@ -393,7 +407,18 @@ PhpSlot::PhpSlot(zval *functor, QMetaMethod signal_) : QObject(nullptr), signal(
 
 PhpSlot::~PhpSlot()
 {
+	/*
+	 * Qt is deleting this slot, with its parent or alone. Freeing the callable
+	 * here can free the last reference to an owned, parentless ancestor of the
+	 * slot, which Qt is still tearing down around us: phpqt_free_object()
+	 * hands such an object to deleteLater() instead of deleting it in the
+	 * middle of that. phpqt_slots_detach_all() frees callables before it
+	 * deletes slots, so it never reaches this with a callable left.
+	 */
+	phpqt_teardown here = {parent(), PHPQT_G(teardown)};
+	PHPQT_G(teardown) = &here;
 	detach();
+	PHPQT_G(teardown) = here.outer;
 }
 
 /* Unlinks the slot and frees its callable; the callable is taken out first because freeing it can run PHP destructors. */

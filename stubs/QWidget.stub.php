@@ -9,6 +9,9 @@ class QWidget extends QObject
 {
     public function __construct(?QWidget $parent = null) {}
 
+    /** QWidget::createWindowContainer: a widget that embeds $window; the container owns the window. */
+    public static function createWindowContainer(QWindow $window, ?QWidget $parent = null): QWidget {}
+
     public function show(): void {}
 
     public function hide(): void {}

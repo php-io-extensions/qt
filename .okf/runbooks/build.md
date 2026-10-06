@@ -23,9 +23,9 @@ sources:
 
 # Overview
 
-`config.m4`: `PHP_REQUIRE_CXX`, `PKG_CHECK_MODULES(Qt6Widgets Qt6Gui Qt6Core Qt6Multimedia Qt6MultimediaWidgets >= 6.5)`. `PHP_EVAL_INCLINE/LIBLINE` keep only `-I/-l/-L`, so Qt's full `QT_CFLAGS` (with `-D`, `-F`) go in as extension cflags and `QT_LIBS` (with `-framework`) as `QT_SHARED_LIBADD`. Compiled `-std=c++17 -DQT_NO_KEYWORDS`.[^config]
+`config.m4`: `PHP_REQUIRE_CXX`, `PKG_CHECK_MODULES(Qt6Widgets Qt6Gui Qt6Core Qt6Multimedia Qt6MultimediaWidgets Qt6OpenGL Qt6OpenGLWidgets >= 6.5)`. `PHP_EVAL_INCLINE/LIBLINE` keep only `-I/-l/-L`, so Qt's full `QT_CFLAGS` (with `-D`, `-F`) go in as extension cflags and `QT_LIBS` (with `-framework`) as `QT_SHARED_LIBADD`. Compiled `-std=c++17 -DQT_NO_KEYWORDS`.[^config]
 
-Linux (`install-debian-trixie.sh`): needs `qt6-base-dev`, `qt6-multimedia-dev`, `libqt6multimediawidgets6`, `g++`, php-dev; the preflight refuses to build when pkg-config lacks the Multimedia modules or `$(qtpaths6 --query QT_INSTALL_PLUGINS)/multimedia` holds no backend plugin (`libqt6multimedia6`; `qtpaths6` is in `qt6-base-dev-tools`). Builds in place, installs `qt.so`, writes `30-qt.ini`, removes build artifacts. ≈ 12 s on a Pi 5.[^debian]
+Linux (`install-debian-trixie.sh`): needs `qt6-base-dev`, `qt6-multimedia-dev`, `libqt6multimediawidgets6`, `g++`, php-dev; the preflight refuses to build when pkg-config lacks the Multimedia or OpenGL widget modules (`qt6-base-dev` carries Qt6OpenGL and Qt6OpenGLWidgets) or `$(qtpaths6 --query QT_INSTALL_PLUGINS)/multimedia` holds no backend plugin (`libqt6multimedia6`; `qtpaths6` is in `qt6-base-dev-tools`). Builds in place, installs `qt.so`, writes `30-qt.ini`, removes build artifacts. ≈ 12 s on a Pi 5.[^debian]
 
 macOS (`install-macos.sh`): needs `brew install qt` (carries Multimedia); the same preflight check. Builds in a temp copy for `php84` and `zhp`. When the default C++ include path has no libc++ (a Command Line Tools upgrade can leave a stale `/Library/Developer/CommandLineTools/usr/include/c++/v1` ahead of the SDK's), it builds with `-nostdinc++ -isystem <SDK>/usr/include/c++/v1` and says so.[^mac]
 

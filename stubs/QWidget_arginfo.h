@@ -1,7 +1,12 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: d4ada507cac2624c28362d8e07289d03f75621e3 */
+ * Stub hash: 85e3e5a2444a49f4cbb65128490cca5fb3f21542 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_createWindowContainer, 0, 1, QWidget, 0)
+	ZEND_ARG_OBJ_INFO(0, window, QWindow, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
 ZEND_END_ARG_INFO()
 
@@ -127,6 +132,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setParent, 0, 1, I
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(QWidget, __construct);
+ZEND_METHOD(QWidget, createWindowContainer);
 ZEND_METHOD(QWidget, show);
 ZEND_METHOD(QWidget, hide);
 ZEND_METHOD(QWidget, close);
@@ -168,6 +174,7 @@ ZEND_METHOD(QWidget, setParent);
 
 static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, __construct, arginfo_class_QWidget___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, createWindowContainer, arginfo_class_QWidget_createWindowContainer, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QWidget, show, arginfo_class_QWidget_show, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, hide, arginfo_class_QWidget_hide, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, close, arginfo_class_QWidget_close, ZEND_ACC_PUBLIC)

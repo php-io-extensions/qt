@@ -48,6 +48,13 @@ zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
 zend_class_entry *phpqt_ce_QEvent_Type;
 zend_class_entry *phpqt_ce_Qt_WidgetAttribute;
+zend_class_entry *phpqt_ce_QWindow;
+zend_class_entry *phpqt_ce_QOpenGLWidget;
+zend_class_entry *phpqt_ce_QSurfaceFormat;
+zend_class_entry *phpqt_ce_QSurfaceFormat_OpenGLContextProfile;
+zend_class_entry *phpqt_ce_QSurfaceFormat_RenderableType;
+zend_class_entry *phpqt_ce_QOpenGLPainter;
+zend_class_entry *phpqt_ce_QSurface_SurfaceType;
 zend_class_entry *phpqt_ce_QWidget;
 zend_class_entry *phpqt_ce_QMainWindow;
 zend_class_entry *phpqt_ce_QDialog;
@@ -133,6 +140,7 @@ static PHP_GINIT_FUNCTION(qt)
 	zend_hash_init(&qt_globals->boxes, 32, nullptr, nullptr, 1);
 	qt_globals->slots_head = nullptr;
 	qt_globals->callout_depth = 0;
+	qt_globals->teardown = nullptr;
 }
 
 static PHP_GSHUTDOWN_FUNCTION(qt)
@@ -151,7 +159,9 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QTimer();
 	phpqt_register_QSocketNotifier();
 	phpqt_register_QAbstractEventDispatcher();
+	phpqt_register_QWindow();
 	phpqt_register_QWidget();
+	phpqt_register_QOpenGLWidget();
 	phpqt_register_QMenu();
 	phpqt_register_QtGlue();
 	phpqt_register_QLayout();

@@ -52,7 +52,7 @@ it('exposes every function, class, enum and method the stubs declare', function 
 });
 
 it('reports its version and the Qt runtime', function (): void {
-    expect(phpversion('qt'))->toBe('0.10.1')
+    expect(phpversion('qt'))->toBe('0.10.2')
         ->and(qVersion())->toStartWith('6.');
 });
 
@@ -65,6 +65,7 @@ it('keeps the native class hierarchy', function (): void {
         ->and(get_parent_class(QAbstractEventDispatcher::class))->toBe(QObject::class)
         ->and(get_parent_class(QtException::class))->toBe(RuntimeException::class)
         ->and(get_parent_class(QWidget::class))->toBe(QObject::class)
+        ->and(get_parent_class(QWindow::class))->toBe(QObject::class)
         ->and(get_parent_class(QMainWindow::class))->toBe(QWidget::class)
         ->and(get_parent_class(QMenuBar::class))->toBe(QWidget::class)
         ->and(get_parent_class(QMenu::class))->toBe(QWidget::class)

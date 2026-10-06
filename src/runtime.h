@@ -30,10 +30,17 @@ class QFont;
 class QPixmap;
 class QTableWidgetItem;
 
+/* One slot Qt is destroying: its parent, and the slot whose teardown freed this one (or none). */
+struct phpqt_teardown {
+	QObject *at;
+	struct phpqt_teardown *outer;
+};
+
 ZEND_BEGIN_MODULE_GLOBALS(qt)
 	HashTable boxes;               /* QObject address => zend_object*, not refcounted */
 	PhpSlot *slots_head;           /* every slot still attached this request */
 	uint32_t callout_depth;        /* > 0 while PHP runs inside a Qt callback */
+	struct phpqt_teardown *teardown; /* the slots Qt is destroying while their callables are freed, innermost first */
 ZEND_END_MODULE_GLOBALS(qt)
 
 ZEND_EXTERN_MODULE_GLOBALS(qt)
@@ -99,6 +106,13 @@ extern zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 extern zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
 extern zend_class_entry *phpqt_ce_QEvent_Type;
 extern zend_class_entry *phpqt_ce_Qt_WidgetAttribute;
+extern zend_class_entry *phpqt_ce_QWindow;
+extern zend_class_entry *phpqt_ce_QOpenGLWidget;
+extern zend_class_entry *phpqt_ce_QSurfaceFormat;
+extern zend_class_entry *phpqt_ce_QSurfaceFormat_OpenGLContextProfile;
+extern zend_class_entry *phpqt_ce_QSurfaceFormat_RenderableType;
+extern zend_class_entry *phpqt_ce_QOpenGLPainter;
+extern zend_class_entry *phpqt_ce_QSurface_SurfaceType;
 extern zend_class_entry *phpqt_ce_QWidget;
 extern zend_class_entry *phpqt_ce_QMainWindow;
 extern zend_class_entry *phpqt_ce_QDialog;
@@ -162,6 +176,8 @@ void phpqt_register_QCoreApplication();
 void phpqt_register_QTimer();
 void phpqt_register_QSocketNotifier();
 void phpqt_register_QAbstractEventDispatcher();
+void phpqt_register_QWindow();
+void phpqt_register_QOpenGLWidget();
 void phpqt_register_QWidget();
 void phpqt_register_QMenu();
 void phpqt_register_QtGlue();

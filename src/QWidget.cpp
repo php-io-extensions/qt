@@ -5,6 +5,7 @@
 
 #include <QtCore/QString>
 #include <QtGui/QFont>
+#include <QtGui/QWindow>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QSizePolicy>
@@ -38,6 +39,31 @@ void phpqt_register_QWidget()
 ZEND_METHOD(QWidget, __construct)
 {
 	phpqt_construct_widget<QWidget>(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+}
+
+ZEND_METHOD(QWidget, createWindowContainer)
+{
+	zend_object *window_obj;
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(window_obj, phpqt_ce_QWindow)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	QWindow *window = static_cast<QWindow *>(phpqt_arg(window_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_box(return_value, QWidget::createWindowContainer(window, qparent));
 }
 
 #define PHPQT_WIDGET_VOID(name, call) \

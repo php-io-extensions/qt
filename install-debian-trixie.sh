@@ -89,6 +89,7 @@ command -v cc >/dev/null 2>&1 || die "cc not found — install: apt install buil
 command -v pkg-config >/dev/null 2>&1 || die "pkg-config not found — install: apt install pkg-config"
 pkg-config --exists 'Qt6Widgets >= 6.5' || die "Qt 6.5+ development files not found — install: apt install qt6-base-dev"
 pkg-config --exists 'Qt6Multimedia >= 6.5 Qt6MultimediaWidgets >= 6.5' || die "Qt Multimedia not found — install: apt install qt6-multimedia-dev libqt6multimediawidgets6"
+pkg-config --exists 'Qt6OpenGL >= 6.5 Qt6OpenGLWidgets >= 6.5' || die "Qt OpenGL widgets not found — install: apt install qt6-base-dev (it carries Qt6OpenGL and Qt6OpenGLWidgets)"
 # QMediaPlayer builds without a backend and then plays nothing: require the plugin (FFmpeg, shipped in libqt6multimedia6).
 QT_PLUGIN_DIR="$(qtpaths6 --query QT_INSTALL_PLUGINS 2>/dev/null || true)"
 [ -n "$QT_PLUGIN_DIR" ] || die "qtpaths6 not found — install: apt install qt6-base-dev-tools"
