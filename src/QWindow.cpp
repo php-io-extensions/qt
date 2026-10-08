@@ -4,6 +4,11 @@
 #include <QtGui/QGuiApplication>
 #include <QtGui/QSurface>
 #include <QtGui/QWindow>
+#if QT_CONFIG(vulkan)
+#include <QtGui/QVulkanInstance>
+
+zend_object *phpqt_vulkan_wrapper(QVulkanInstance *instance);
+#endif
 
 /* RasterGLSurface (2) is deprecated in 6.11 and left out of the check: naming it is a warning. */
 static_assert(QSurface::RasterSurface == 0 && QSurface::OpenGLSurface == 1
@@ -80,6 +85,7 @@ ZEND_METHOD(QWindow, name) \
 PHPQT_WINDOW_VOID(create, create)
 PHPQT_WINDOW_VOID(show, show)
 PHPQT_WINDOW_VOID(hide, hide)
+PHPQT_WINDOW_VOID(destroy, destroy)
 
 ZEND_METHOD(QWindow, isExposed)
 {
@@ -112,3 +118,69 @@ ZEND_METHOD(QWindow, devicePixelRatio)
 
 	RETURN_DOUBLE(window->devicePixelRatio());
 }
+
+ZEND_METHOD(QWindow, resize)
+{
+	zend_long w, h;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(w)
+		Z_PARAM_LONG(h)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWindow, window);
+
+	window->resize(static_cast<int>(w), static_cast<int>(h));
+}
+
+ZEND_METHOD(QWindow, close)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWindow, window);
+
+	RETURN_BOOL(window->close());
+}
+
+#if QT_CONFIG(vulkan)
+ZEND_METHOD(QWindow, setVulkanInstance)
+{
+	zend_object *instance_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(instance_obj, phpqt_ce_QVulkanInstance)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWindow, window);
+
+	QVulkanInstance *instance = nullptr;
+	if (instance_obj != nullptr) {
+		instance = static_cast<QVulkanInstance *>(phpqt_value_arg(instance_obj, 1));
+		if (instance == nullptr) {
+			RETURN_THROWS();
+		}
+	}
+	window->setVulkanInstance(instance);
+}
+
+ZEND_METHOD(QWindow, vulkanInstance)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWindow, window);
+
+	zend_object *wrapper = window->vulkanInstance() != nullptr ? phpqt_vulkan_wrapper(window->vulkanInstance()) : nullptr;
+	if (wrapper == nullptr) {
+		RETURN_NULL();
+	}
+	GC_ADDREF(wrapper);
+	RETURN_OBJ(wrapper);
+}
+#else
+ZEND_METHOD(QWindow, setVulkanInstance)
+{
+	zend_throw_exception(phpqt_ce_QtException, "This Qt was built without Vulkan", 0);
+}
+
+ZEND_METHOD(QWindow, vulkanInstance)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	RETURN_NULL();
+}
+#endif

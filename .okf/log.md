@@ -2,6 +2,8 @@
 
 ## 2026-10-06
 
+* `QWindow::destroy()`; `QVulkanInstance` is made on the main thread only. Suite 108 on Homebrew PHP 8.4 NTS and ZTS, 107 + 1 skipped on the Pi. [surface](api/surface.md)
+* `QVulkanInstance` over an application's `VkInstance` and `QVulkanInstance::surfaceForWindow()`; `QWindow::setVulkanInstance()`/`vulkanInstance()`, `resize()`, `close()`. Freeing the instance destroys and detaches the windows using it; `create()` without a QGuiApplication is a QtException (Qt dereferenced a null platform). macOS needs `QT_VULKAN_LIB` naming the loader. Suite 107 on Homebrew PHP 8.4 NTS and ZTS, 106 + 1 skipped on the Pi (Qt on Wayland). [surface](api/surface.md)
 * `QOpenGLWidget` and the `QOpenGLPainter` trampoline (`paintGL()` runs PHP with the context current and the widget's framebuffer object bound); the build needs Qt6OpenGL and Qt6OpenGLWidgets. `QSurfaceFormat` and `QOpenGLWidget::setFormat()`/`format()`: macOS gives a widget a legacy 2.1 context unless it asks for 4.1 core; the Pi's default is desktop GL 3.1 (GLSL 1.40). A slot Qt destroys frees its callable with its ancestors marked as tearing down: an owned, parentless ancestor freed then goes to `deleteLater()` instead of being deleted under Qt (it segfaulted or deadlocked). Suite 101 on Homebrew PHP 8.4 NTS and ZTS, 100 + 1 skipped on the Pi. [surface](api/surface.md), [object model](architecture/object-model.md)
 
 ## 2026-10-05

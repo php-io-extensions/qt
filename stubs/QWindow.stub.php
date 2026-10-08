@@ -37,7 +37,19 @@ namespace {
 
         public function hide(): void {}
 
+        /** Releases the platform window and its native resources (a Vulkan surface Qt made for it); the QWindow stays. */
+        public function destroy(): void {}
+
         public function isExposed(): bool {}
+
+        public function resize(int $w, int $h): void {}
+
+        public function close(): bool {}
+
+        /** Qt keeps a pointer, not the PHP object: the instance's own release detaches it from every window first. */
+        public function setVulkanInstance(?QVulkanInstance $instance): void {}
+
+        public function vulkanInstance(): ?QVulkanInstance {}
 
         public function width(): int {}
 
