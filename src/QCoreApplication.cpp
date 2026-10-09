@@ -5,6 +5,8 @@
 #include <QtCore/QString>
 #include <QtGui/QGuiApplication>
 #include <QtWidgets/QApplication>
+#include <QtGui/QStyleHints>
+#include <QtCore/QEvent>
 
 void phpqt_register_QCoreApplication()
 {
@@ -95,6 +97,51 @@ ZEND_METHOD(QCoreApplication, instance)
 	ZEND_PARSE_PARAMETERS_NONE();
 
 	phpqt_box(return_value, QCoreApplication::instance());
+}
+
+ZEND_METHOD(QCoreApplication, sendEvent)
+{
+	zend_object *receiver_obj;
+	zend_object *event_obj;
+	bool failed = false;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_OBJ_OF_CLASS(receiver_obj, phpqt_ce_QObject)
+		Z_PARAM_OBJ_OF_CLASS(event_obj, phpqt_ce_QEvent)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	QObject *receiver = phpqt_arg(receiver_obj, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+	QEvent *event = static_cast<QEvent *>(phpqt_value_arg(event_obj, 2));
+	if (event == nullptr) {
+		RETURN_THROWS();
+	}
+
+	RETURN_BOOL(QCoreApplication::sendEvent(receiver, event));
+}
+
+ZEND_METHOD(QGuiApplication, styleHints)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	phpqt_box(return_value, QGuiApplication::styleHints());
+}
+
+ZEND_METHOD(QApplication, widgetAt)
+{
+	zend_long x;
+	zend_long y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(x)
+		Z_PARAM_LONG(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	phpqt_box(return_value, QApplication::widgetAt(int(x), int(y)));
 }
 
 ZEND_METHOD(QCoreApplication, processEvents)

@@ -12,6 +12,8 @@ class QCoreApplication extends QObject
 
     public static function instance(): ?QCoreApplication {}
 
+    public static function sendEvent(QObject $receiver, QEvent $event): bool {}
+
     /** processEvents(flags) or, with $maxtime, processEvents(flags, maxtime) */
     public static function processEvents(QEventLoop\ProcessEventsFlag|int $flags = 0, ?int $maxtime = null): void {}
 
@@ -54,6 +56,8 @@ class QGuiApplication extends QCoreApplication
 
     public static function quitOnLastWindowClosed(): bool {}
 
+    public static function styleHints(): QStyleHints {}
+
     public static function setQuitOnLastWindowClosed(bool $quit): void {}
 }
 
@@ -64,4 +68,7 @@ class QApplication extends QGuiApplication
 {
     /** @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life */
     public function __construct(array $argv) {}
+
+    /** The innermost visible widget at the global (screen) point, or null. */
+    public static function widgetAt(int $x, int $y): ?QWidget {}
 }

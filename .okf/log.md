@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-09
+
+* `QEventFilter` callbacks get the event as a third argument, alive only during the call; `QEvent`, `QInputEvent`, `QMouseEvent`, `QContextMenuEvent` (+ enums `QContextMenuEvent\Reason`, `QInputDevice\DeviceType`); `QCoreApplication::sendEvent`, `QApplication::widgetAt`, `QWidget::mapFromGlobal`, `QGuiApplication::styleHints()`/`QStyleHints`. For right-click mail (HumanInput slice 26). [surface](api/surface.md)
+
 ## 2026-10-06
 
 * `QWindow::destroy()`; `QVulkanInstance` is made on the main thread only. Suite 108 on Homebrew PHP 8.4 NTS and ZTS, 107 + 1 skipped on the Pi. [surface](api/surface.md)

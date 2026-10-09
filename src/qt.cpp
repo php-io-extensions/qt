@@ -170,6 +170,7 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QGui();
 	phpqt_register_QControls();
 	phpqt_register_QMultimedia();
+	phpqt_register_QInputEvents();
 
 	return SUCCESS;
 }

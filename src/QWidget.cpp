@@ -155,6 +155,23 @@ ZEND_METHOD(QWidget, parentWidget)
 	phpqt_box(return_value, widget->parentWidget());
 }
 
+ZEND_METHOD(QWidget, mapFromGlobal)
+{
+	double x;
+	double y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_DOUBLE(x)
+		Z_PARAM_DOUBLE(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QPointF local = widget->mapFromGlobal(QPointF(x, y));
+	array_init_size(return_value, 2);
+	add_next_index_double(return_value, local.x());
+	add_next_index_double(return_value, local.y());
+}
+
 ZEND_METHOD(QWidget, setAttribute)
 {
 	zend_object *attribute;

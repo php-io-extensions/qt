@@ -42,6 +42,9 @@ class QWidget extends QObject
 
     public function parentWidget(): ?QWidget {}
 
+    /** @return array{0: float, 1: float} the global (screen) point in this widget's coordinates */
+    public function mapFromGlobal(float $x, float $y): array {}
+
     public function setAttribute(Qt\WidgetAttribute $attribute, bool $on = true): void {}
 
     public function testAttribute(Qt\WidgetAttribute $attribute): bool {}

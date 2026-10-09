@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 5ad3d11bcce6c8ab4160131a6e63c8332ad0d43c */
+ * Stub hash: a398547d8bb994a1b25dcba4c3535fd099bdde98 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEventFilter___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, filter, IS_CALLABLE, 0)

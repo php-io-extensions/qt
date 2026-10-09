@@ -22,7 +22,7 @@ public:
 			return false;
 		}
 
-		zval argv[2];
+		zval argv[3];
 		zval retval;
 		bool stop = false;
 
@@ -31,14 +31,17 @@ public:
 		if (Z_TYPE(argv[1]) == IS_NULL) {
 			ZVAL_LONG(&argv[1], type);
 		}
+		phpqt_box_event(&argv[2], event);
 
-		if (call(2, argv, &retval)) {
+		if (call(3, argv, &retval)) {
 			stop = zend_is_true(&retval);
 		}
 
+		phpqt_event_release(&argv[2]);
 		zval_ptr_dtor(&retval);
 		zval_ptr_dtor(&argv[0]);
 		zval_ptr_dtor(&argv[1]);
+		zval_ptr_dtor(&argv[2]);
 
 		return stop;
 	}

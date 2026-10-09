@@ -1,11 +1,16 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: d9ff24c92501e9d4c7a2003c14895daae9b58ee7 */
+ * Stub hash: 9a4d0112012293a997deaf448f43c99e14992216 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCoreApplication___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, argv, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QCoreApplication_instance, 0, 0, QCoreApplication, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCoreApplication_sendEvent, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, receiver, QObject, 0)
+	ZEND_ARG_OBJ_INFO(0, event, QEvent, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCoreApplication_processEvents, 0, 0, IS_VOID, 0)
@@ -58,14 +63,23 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QGuiApplication_quitOnLastWindowClosed arginfo_class_QCoreApplication_closingDown
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QGuiApplication_styleHints, 0, 0, QStyleHints, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QGuiApplication_setQuitOnLastWindowClosed, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, quit, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QApplication___construct arginfo_class_QCoreApplication___construct
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QApplication_widgetAt, 0, 2, QWidget, 1)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QCoreApplication, __construct);
 ZEND_METHOD(QCoreApplication, instance);
+ZEND_METHOD(QCoreApplication, sendEvent);
 ZEND_METHOD(QCoreApplication, processEvents);
 ZEND_METHOD(QCoreApplication, sendPostedEvents);
 ZEND_METHOD(QCoreApplication, exec);
@@ -83,12 +97,15 @@ ZEND_METHOD(QGuiApplication, setDesktopFileName);
 ZEND_METHOD(QGuiApplication, applicationDisplayName);
 ZEND_METHOD(QGuiApplication, setApplicationDisplayName);
 ZEND_METHOD(QGuiApplication, quitOnLastWindowClosed);
+ZEND_METHOD(QGuiApplication, styleHints);
 ZEND_METHOD(QGuiApplication, setQuitOnLastWindowClosed);
 ZEND_METHOD(QApplication, __construct);
+ZEND_METHOD(QApplication, widgetAt);
 
 static const zend_function_entry class_QCoreApplication_methods[] = {
 	ZEND_ME(QCoreApplication, __construct, arginfo_class_QCoreApplication___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QCoreApplication, instance, arginfo_class_QCoreApplication_instance, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QCoreApplication, sendEvent, arginfo_class_QCoreApplication_sendEvent, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QCoreApplication, processEvents, arginfo_class_QCoreApplication_processEvents, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QCoreApplication, sendPostedEvents, arginfo_class_QCoreApplication_sendPostedEvents, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QCoreApplication, exec, arginfo_class_QCoreApplication_exec, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
@@ -110,12 +127,14 @@ static const zend_function_entry class_QGuiApplication_methods[] = {
 	ZEND_ME(QGuiApplication, applicationDisplayName, arginfo_class_QGuiApplication_applicationDisplayName, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QGuiApplication, setApplicationDisplayName, arginfo_class_QGuiApplication_setApplicationDisplayName, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QGuiApplication, quitOnLastWindowClosed, arginfo_class_QGuiApplication_quitOnLastWindowClosed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QGuiApplication, styleHints, arginfo_class_QGuiApplication_styleHints, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QGuiApplication, setQuitOnLastWindowClosed, arginfo_class_QGuiApplication_setQuitOnLastWindowClosed, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 
 static const zend_function_entry class_QApplication_methods[] = {
 	ZEND_ME(QApplication, __construct, arginfo_class_QApplication___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QApplication, widgetAt, arginfo_class_QApplication_widgetAt, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 

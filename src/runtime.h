@@ -187,6 +187,20 @@ void phpqt_register_QLayout();
 void phpqt_register_QControls();
 void phpqt_register_QGui();
 void phpqt_register_QMultimedia();
+void phpqt_register_QInputEvents();
+
+class QEvent;
+
+/* Qt's events in filter calls: borrowed for the call, then released (reading one afterwards throws). */
+void phpqt_box_event(zval *rv, QEvent *event);
+void phpqt_event_release(zval *boxed);
+extern zend_class_entry *phpqt_ce_QEvent;
+extern zend_class_entry *phpqt_ce_QInputEvent;
+extern zend_class_entry *phpqt_ce_QMouseEvent;
+extern zend_class_entry *phpqt_ce_QContextMenuEvent;
+extern zend_class_entry *phpqt_ce_QStyleHints;
+extern zend_class_entry *phpqt_ce_QContextMenuEvent_Reason;
+extern zend_class_entry *phpqt_ce_QInputDevice_DeviceType;
 
 /* Object model. */
 void phpqt_object_setup(zend_class_entry *ce);

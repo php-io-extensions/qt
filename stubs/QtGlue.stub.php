@@ -12,7 +12,7 @@
 final class QEventFilter extends QObject
 {
     /**
-     * @param callable $filter called as $filter(QObject $watched, QEvent\Type|int $type): bool
+     * @param callable $filter called as $filter(QObject $watched, QEvent\Type|int $type, QEvent $event): bool; $event lives only during the call
      * @param array|null $types QEvent\Type cases or ints to hand over; null hands over every event
      */
     public function __construct(callable $filter, ?array $types = null) {}

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 85e3e5a2444a49f4cbb65128490cca5fb3f21542 */
+ * Stub hash: 1d5c559cb68a9ea5e8073af699b6310dfdd4ee5f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -50,6 +50,11 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QWidget_height arginfo_class_QWidget_width
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_parentWidget, 0, 0, QWidget, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_mapFromGlobal, 0, 2, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setAttribute, 0, 1, IS_VOID, 0)
@@ -148,6 +153,7 @@ ZEND_METHOD(QWidget, resize);
 ZEND_METHOD(QWidget, width);
 ZEND_METHOD(QWidget, height);
 ZEND_METHOD(QWidget, parentWidget);
+ZEND_METHOD(QWidget, mapFromGlobal);
 ZEND_METHOD(QWidget, setAttribute);
 ZEND_METHOD(QWidget, testAttribute);
 ZEND_METHOD(QWidget, setLayout);
@@ -190,6 +196,7 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, width, arginfo_class_QWidget_width, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, height, arginfo_class_QWidget_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, parentWidget, arginfo_class_QWidget_parentWidget, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, mapFromGlobal, arginfo_class_QWidget_mapFromGlobal, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setAttribute, arginfo_class_QWidget_setAttribute, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, testAttribute, arginfo_class_QWidget_testAttribute, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setLayout, arginfo_class_QWidget_setLayout, ZEND_ACC_PUBLIC)
