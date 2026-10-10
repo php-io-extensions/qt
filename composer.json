@@ -31,6 +31,24 @@
     "extra": {
         "branch-alias": {
             "dev-main": "0.10.x-dev"
+        },
+        "venusian": {
+            "system": {
+                "apt": {
+                    "build": [
+                        "qt6-base-dev",
+                        "qt6-multimedia-dev"
+                    ],
+                    "depends": [
+                        "qt6-wayland"
+                    ]
+                },
+                "brew": {
+                    "build": [
+                        "qt"
+                    ]
+                }
+            }
         }
     },
     "php-ext": {

@@ -2,6 +2,7 @@
 #include "../stubs/QMenuBar_arginfo.h"
 #include "../stubs/QAction_arginfo.h"
 
+#include <QtCore/QPoint>
 #include <QtCore/QString>
 #include <QtGui/QAction>
 #include <QtGui/QKeySequence>
@@ -214,6 +215,20 @@ ZEND_METHOD(QMenu, isEmpty)
 	PHPQT_THIS(QMenu, menu);
 
 	RETURN_BOOL(menu->isEmpty());
+}
+
+ZEND_METHOD(QMenu, popup)
+{
+	zend_long x;
+	zend_long y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(x)
+		Z_PARAM_LONG(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMenu, menu);
+
+	menu->popup(QPoint((int) x, (int) y));
 }
 
 ZEND_METHOD(QMenu, menuAction)

@@ -23,7 +23,7 @@ sources:
 
 # Overview
 
-`config.m4`: `PHP_REQUIRE_CXX`, `PKG_CHECK_MODULES(Qt6Widgets Qt6Gui Qt6Core Qt6Multimedia Qt6MultimediaWidgets Qt6OpenGL Qt6OpenGLWidgets >= 6.5)`. `PHP_EVAL_INCLINE/LIBLINE` keep only `-I/-l/-L`, so Qt's full `QT_CFLAGS` (with `-D`, `-F`) go in as extension cflags and `QT_LIBS` (with `-framework`) as `QT_SHARED_LIBADD`. Compiled `-std=c++17 -DQT_NO_KEYWORDS`.[^config]
+`config.m4`: `PHP_REQUIRE_CXX`, `PKG_CHECK_MODULES(Qt6Widgets Qt6Gui Qt6Core Qt6Multimedia Qt6MultimediaWidgets Qt6OpenGL Qt6OpenGLWidgets >= 6.4)`. `PHP_EVAL_INCLINE/LIBLINE` keep only `-I/-l/-L`, so Qt's full `QT_CFLAGS` (with `-D`, `-F`) go in as extension cflags and, built shared, `QT_LIBS` (with `-framework`) as `QT_SHARED_LIBADD`; compiled into PHP (`venusian build`), `-l`/`-L` go through `PHP_EVAL_LIBLINE`, frameworks through `PHP_ADD_FRAMEWORK` and their `-F` into `EXTRA_LDFLAGS_PROGRAM` (PHP's program link lines never use `PHP_FRAMEWORKPATH`). Socket arguments need ext/sockets: inside php-src its header is always present, so `runtime.cpp` keys on `HAVE_SOCKETS`. Compiled `-std=c++17 -DQT_NO_KEYWORDS`.[^config]
 
 Linux (`install-debian-trixie.sh`): needs `qt6-base-dev`, `qt6-multimedia-dev`, `libqt6multimediawidgets6`, `g++`, php-dev; the preflight refuses to build when pkg-config lacks the Multimedia or OpenGL widget modules (`qt6-base-dev` carries Qt6OpenGL and Qt6OpenGLWidgets) or `$(qtpaths6 --query QT_INSTALL_PLUGINS)/multimedia` holds no backend plugin (`libqt6multimedia6`; `qtpaths6` is in `qt6-base-dev-tools`). Builds in place, installs `qt.so`, writes `30-qt.ini`, removes build artifacts. ≈ 12 s on a Pi 5.[^debian]
 

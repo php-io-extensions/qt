@@ -44,4 +44,7 @@ class QMenu extends QWidget
     public function isEmpty(): bool {}
 
     public function menuAction(): QAction {}
+
+    /** popup(QPoint(x, y)): shows the menu at a global point and returns at once; a chosen action emits triggered. */
+    public function popup(int $x, int $y): void {}
 }

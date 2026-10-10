@@ -7,7 +7,7 @@ PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,
 `QMetaObject\Connection`. No defaults, no composites: behaviour is composed by
 the caller.
 
-Linux first, macOS too. Qt 6.5+ with the Multimedia and MultimediaWidgets
+Linux first, macOS too. Qt 6.4+ with the Multimedia and MultimediaWidgets
 modules, PHP 8.4+, NTS and ZTS.
 
 ## What is bound
@@ -29,7 +29,7 @@ style them, drive the common controls and play video:
 | `QWindow`, `QSurface\SurfaceType` | constructor (needs a `QGuiApplication`), `setSurfaceType`, `surfaceType`, `winId` (the native handle: an `NSView` address on macOS; creates the platform window when it has none), `create`, `show`, `hide`, `destroy`, `isExposed`, `resize`, `close`, `width`, `height`, `devicePixelRatio`, `setVulkanInstance`, `vulkanInstance`; the seven surface types |
 | `QVulkanInstance` | constructor, `setVkInstance` (adopts a `VkInstance` address, e.g. ext-vulkan's `VkInstance::pointer()`), `create`, `isValid`, `errorCode`, `vkInstance`, `destroy`, static `surfaceForWindow` (a `VkSurfaceKHR` address). Present when Qt was built with Vulkan. On macOS set `QT_VULKAN_LIB` to the loader (`$(pkg-config --variable=libdir vulkan)/libvulkan.1.dylib`): Qt loads it by name and Homebrew's is outside dyld's search path |
 | `QMainWindow` | constructor, `menuBar`, `setMenuBar`, `centralWidget`, `setCentralWidget` |
-| `QMenuBar`, `QMenu` | constructors, `addMenu` (both overloads), `addAction`, `clear`, `isNativeMenuBar`, `setNativeMenuBar`; `title`, `setTitle`, `addSeparator`, `isEmpty`, `menuAction` |
+| `QMenuBar`, `QMenu` | constructors, `addMenu` (both overloads), `addAction`, `clear`, `isNativeMenuBar`, `setNativeMenuBar`; `title`, `setTitle`, `addSeparator`, `isEmpty`, `menuAction`, `popup(x, y)` |
 | `QAction` | constructor, `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `isEnabled`, `setEnabled`, `isSeparator`, `setSeparator`, `menuRole`, `setMenuRole`, `shortcut`, `setShortcut`, `trigger`, `toggle` |
 | `QDialog`, `QMessageBox` | constructors, `open`, `isModal`, `setModal`, `result`, `done`, `accept`, `reject`; `text`, `setText`, `informativeText`, `setInformativeText` |
 | `QObject` (filters) | `installEventFilter`, `removeEventFilter` |
@@ -100,6 +100,8 @@ bash install-macos.sh           # Homebrew php@8.4 and php@8.4-zts (needs brew i
 ```
 
 Or with PIE: `pie install php-io-extensions/qt`.
+
+`venusian build` reads the system packages from `extra.venusian.system` in composer.json: apt packages to build with and the run-time ones a `.deb` depends on or recommends, and the Homebrew ones.
 
 ## Test
 

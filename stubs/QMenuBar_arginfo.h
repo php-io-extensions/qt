@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 8c9b608ad208c3e5bc621705d24edfada3af7f8c */
+ * Stub hash: 575a06dafe8239a3ffe783eff9d7384e29617d6a */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QMenuBar___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -48,6 +48,11 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMenu_menuAction arginfo_class_QMenu_addSeparator
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMenu_popup, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QMenuBar, __construct);
 ZEND_METHOD(QMenuBar, addMenu);
 ZEND_METHOD(QMenuBar, addAction);
@@ -63,6 +68,7 @@ ZEND_METHOD(QMenu, addSeparator);
 ZEND_METHOD(QMenu, clear);
 ZEND_METHOD(QMenu, isEmpty);
 ZEND_METHOD(QMenu, menuAction);
+ZEND_METHOD(QMenu, popup);
 
 static const zend_function_entry class_QMenuBar_methods[] = {
 	ZEND_ME(QMenuBar, __construct, arginfo_class_QMenuBar___construct, ZEND_ACC_PUBLIC)
@@ -84,6 +90,7 @@ static const zend_function_entry class_QMenu_methods[] = {
 	ZEND_ME(QMenu, clear, arginfo_class_QMenu_clear, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMenu, isEmpty, arginfo_class_QMenu_isEmpty, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMenu, menuAction, arginfo_class_QMenu_menuAction, ZEND_ACC_PUBLIC)
+	ZEND_ME(QMenu, popup, arginfo_class_QMenu_popup, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

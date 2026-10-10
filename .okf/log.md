@@ -2,6 +2,10 @@
 
 ## 2026-10-09
 
+* `QMenu::popup(x, y)`: a menu at a global point, returning at once. For context menus (HumanInput slice 27). [surface](api/surface.md)
+* Compiled into PHP (`--enable-qt` in php-src, as `venusian build` does), the Qt libraries join PHP's link line (macOS frameworks and their `-F` included); before, only a shared build linked them and the static link failed on every Qt symbol. Compiled in without ext/sockets, `Socket` arguments are not accepted instead of failing to compile. [build](runbooks/build.md)
+* `extra.venusian.system` in composer.json: the apt packages `venusian build` installs to compile the extension, the run-time packages a `.deb` carrying it depends on or recommends beyond what `dpkg-shlibdeps` sees, and the Homebrew packages for a dev install.
+* Floor Qt 6.4 (Ubuntu 24.04): five `QEvent` checks guarded by `gen-enum.php --since`; build.json apps on the 24.04 image compile ext-qt. [generating enums](runbooks/generating-enums.md)
 * `QEventFilter` callbacks get the event as a third argument, alive only during the call; `QEvent`, `QInputEvent`, `QMouseEvent`, `QContextMenuEvent` (+ enums `QContextMenuEvent\Reason`, `QInputDevice\DeviceType`); `QCoreApplication::sendEvent`, `QApplication::widgetAt`, `QWidget::mapFromGlobal`, `QGuiApplication::styleHints()`/`QStyleHints`. For right-click mail (HumanInput slice 26). [surface](api/surface.md)
 
 ## 2026-10-06

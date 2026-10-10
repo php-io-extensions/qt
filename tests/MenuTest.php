@@ -43,6 +43,18 @@ it('adds a menu made separately and hands back its menu action', function (): vo
     $bar->clear();
 });
 
+it('pops a menu up at a global point without waiting for a choice', function (): void {
+    $menu = new QMenu();
+    $menu->addAction('Download');
+
+    $menu->popup(40, 60);
+    $shown = $menu->isVisible();
+    $menu->hide();
+
+    expect($shown)->toBeTrue()
+        ->and($menu->isVisible())->toBeFalse();
+});
+
 it('toggles a checkable action and reports it through toggled(bool)', function (): void {
     $action = new QAction('Show Grid');
     $states = [];
