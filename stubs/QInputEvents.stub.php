@@ -32,6 +32,9 @@ class QInputEvent extends QEvent
 
     public function timestamp(): int {}
 
+    /** Milliseconds, as Qt's own events carry them; not negative. */
+    public function setTimestamp(int $timestamp): void {}
+
     /** The kind of device the event came from: a touch synthesised into a mouse event reads TOUCH_SCREEN. */
     public function deviceType(): QInputDevice\DeviceType {}
 }

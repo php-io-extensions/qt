@@ -11,6 +11,8 @@
 #include <QtGui/QGuiApplication>
 #include <QtGui/QImage>
 #include <QtGui/QPixmap>
+#include <QtGui/QDesktopServices>
+#include <QtCore/QUrl>
 #include <QtWidgets/QTableWidgetItem>
 
 static_assert(QFont::Thin == 100 && QFont::ExtraLight == 200 && QFont::Light == 300 && QFont::Normal == 400
@@ -125,6 +127,7 @@ void phpqt_register_QGui()
 
 	phpqt_ce_QTableWidgetItem = register_class_QTableWidgetItem();
 	phpqt_value_setup(phpqt_ce_QTableWidgetItem);
+	phpqt_ce_QDesktopServices = register_class_QDesktopServices();
 }
 
 void phpqt_value_hold(zend_object *wrapper, void *ptr, bool owned, void (*destroy)(void *), void (*forget)(void *))
@@ -605,4 +608,23 @@ ZEND_METHOD(QTableWidgetItem, setText)
 	PHPQT_VALUE_THIS(QTableWidgetItem, item);
 
 	item->setText(phpqt_qstring(text));
+}
+
+/* ---- QDesktopServices -------------------------------------------------- */
+
+ZEND_METHOD(QDesktopServices, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QDesktopServices, openUrl)
+{
+	zend_string *url;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(url)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	RETURN_BOOL(QDesktopServices::openUrl(QUrl(QString::fromUtf8(ZSTR_VAL(url), static_cast<qsizetype>(ZSTR_LEN(url))))));
 }

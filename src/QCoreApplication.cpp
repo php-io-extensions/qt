@@ -144,6 +144,14 @@ ZEND_METHOD(QApplication, widgetAt)
 	phpqt_box(return_value, QApplication::widgetAt(int(x), int(y)));
 }
 
+ZEND_METHOD(QApplication, focusWidget)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	phpqt_box(return_value, QApplication::focusWidget());
+}
+
 ZEND_METHOD(QCoreApplication, processEvents)
 {
 	zend_object *flags_case = nullptr;

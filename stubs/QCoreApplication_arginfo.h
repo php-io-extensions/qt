@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 9a4d0112012293a997deaf448f43c99e14992216 */
+ * Stub hash: 0cea4ba4b850a86a8bcacca2c2619c1f5a845839 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCoreApplication___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, argv, IS_ARRAY, 0)
@@ -77,6 +77,9 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QApplication_widgetAt, 0, 2
 	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QApplication_focusWidget, 0, 0, QWidget, 1)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QCoreApplication, __construct);
 ZEND_METHOD(QCoreApplication, instance);
 ZEND_METHOD(QCoreApplication, sendEvent);
@@ -101,6 +104,7 @@ ZEND_METHOD(QGuiApplication, styleHints);
 ZEND_METHOD(QGuiApplication, setQuitOnLastWindowClosed);
 ZEND_METHOD(QApplication, __construct);
 ZEND_METHOD(QApplication, widgetAt);
+ZEND_METHOD(QApplication, focusWidget);
 
 static const zend_function_entry class_QCoreApplication_methods[] = {
 	ZEND_ME(QCoreApplication, __construct, arginfo_class_QCoreApplication___construct, ZEND_ACC_PUBLIC)
@@ -135,6 +139,7 @@ static const zend_function_entry class_QGuiApplication_methods[] = {
 static const zend_function_entry class_QApplication_methods[] = {
 	ZEND_ME(QApplication, __construct, arginfo_class_QApplication___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QApplication, widgetAt, arginfo_class_QApplication_widgetAt, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QApplication, focusWidget, arginfo_class_QApplication_focusWidget, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 

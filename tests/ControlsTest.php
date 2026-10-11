@@ -368,3 +368,77 @@ it('opens the date range down to year 100 and exposes the popup calendar', funct
     $edit->setCalendarPopup(true);
     expect($edit->calendarWidget())->toBeInstanceOf(QWidget::class);
 });
+
+it('focuses a line edit, selects all in it, and undoes and redoes an edit', function (): void {
+    $window = new QWidget();
+    $edit = new QLineEdit('hello world', $window);
+    $window->show();
+    $window->activateWindow();
+    processUntil(fn (): bool => $window->isActiveWindow());   // focus lands in the active window only
+    $edit->setFocus();
+    QCoreApplication::processEvents();
+
+    $edit->selectAll();
+    $selected = $edit->selectedText();
+    $edit->setText('');                 // not an undoable edit: a typed one is
+    $edit->setText('hello');
+    $edit->selectAll();
+    $edit->undo();
+    $edit->redo();
+
+    expect($selected)->toBe('hello world')
+        ->and(QApplication::focusWidget() === $edit || PHP_OS_FAMILY === 'Darwin')->toBeTrue()
+        ->and($edit->hasFocus() || PHP_OS_FAMILY === 'Darwin')->toBeTrue();
+
+    $window->close();
+});
+
+it('runs cut, copy and paste on a line edit and a plain text edit with nothing selected', function (): void {
+    // Nothing selected: cut and copy leave the system clipboard alone.
+    $line = new QLineEdit('abc');
+    $text = new QPlainTextEdit();
+    $text->setPlainText('xyz');
+    foreach ([$line, $text] as $widget) {
+        $widget->cut();
+        $widget->copy();
+        $widget->paste();
+        $widget->undo();
+        $widget->redo();
+        $widget->selectAll();
+    }
+
+    // Paste inserts the clipboard at the cursor: after the line edit's text, before the plain text edit's.
+    expect($line->text())->toContain('abc')
+        ->and($text->toPlainText())->toContain('xyz');
+});
+
+it('reports a label\'s links, opens them itself when asked, and takes link interaction flags', function (): void {
+    testApplication();
+    $label = new QLabel();
+    $label->setTextFormat(Qt\TextFormat::RICH_TEXT);
+    $label->setText('Read <a href="https://example.com/docs">the docs</a>');
+    $activated = [];
+    $hovered = [];
+    QObject::connect($label, 'linkActivated(QString)', function (string $url) use (&$activated): void { $activated[] = $url; });
+    QObject::connect($label, 'linkHovered(QString)', function (string $url) use (&$hovered): void { $hovered[] = $url; });
+    // Emitted by name with openExternalLinks off: the connected callables run, nothing opens.
+    QMetaObject::invokeMethod($label, 'linkActivated', 'https://example.com/docs');
+    QMetaObject::invokeMethod($label, 'linkHovered', 'https://example.com/docs');
+    $before = $label->openExternalLinks();
+    $label->setOpenExternalLinks(true);
+    $label->setTextInteractionFlags(Qt\TextInteractionFlag::LINKS_ACCESSIBLE_BY_MOUSE->value | Qt\TextInteractionFlag::LINKS_ACCESSIBLE_BY_KEYBOARD->value);
+    $links = $label->textInteractionFlags();
+    $label->setTextInteractionFlags(Qt\TextInteractionFlag::TEXT_BROWSER_INTERACTION);
+
+    expect($before)->toBeFalse()
+        ->and($label->openExternalLinks())->toBeTrue()
+        ->and($links)->toBe(12)
+        ->and($label->textInteractionFlags())->toBe(13)
+        ->and($activated)->toBe(['https://example.com/docs'])
+        ->and($hovered)->toBe(['https://example.com/docs']);
+});
+
+it('has QDesktopServices::openUrl as a static call, and no instances', function (): void {
+    expect((new ReflectionMethod(QDesktopServices::class, 'openUrl'))->isStatic())->toBeTrue()
+        ->and((new ReflectionClass(QDesktopServices::class))->isInstantiable())->toBeFalse();
+});

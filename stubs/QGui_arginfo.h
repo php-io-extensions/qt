@@ -1,5 +1,12 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: f0acd9f01ff818a1f2008c0cb15adc877915e092 */
+ * Stub hash: d2c51b3355b3fda47842c320d5cb9cfc61b936ae */
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QDesktopServices___construct, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDesktopServices_openUrl, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, url, IS_STRING, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QFont___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, family, IS_STRING, 0, "\"\"")
@@ -28,8 +35,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFont_setWeight, 0, 1, IS_
 	ZEND_ARG_OBJ_TYPE_MASK(0, weight, QFont\\Weight, MAY_BE_LONG, NULL)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QPixmap___construct, 0, 0, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QPixmap___construct arginfo_class_QDesktopServices___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_fromImage, 0, 1, QPixmap, 0)
 	ZEND_ARG_OBJ_INFO(0, image, QImage, 0)
@@ -89,6 +95,8 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTableWidgetItem_row arginfo_class_QPixmap_width
 
+ZEND_METHOD(QDesktopServices, __construct);
+ZEND_METHOD(QDesktopServices, openUrl);
 ZEND_METHOD(QFont, __construct);
 ZEND_METHOD(QFont, family);
 ZEND_METHOD(QFont, setFamily);
@@ -114,6 +122,12 @@ ZEND_METHOD(QTableWidgetItem, __construct);
 ZEND_METHOD(QTableWidgetItem, text);
 ZEND_METHOD(QTableWidgetItem, setText);
 ZEND_METHOD(QTableWidgetItem, row);
+
+static const zend_function_entry class_QDesktopServices_methods[] = {
+	ZEND_ME(QDesktopServices, __construct, arginfo_class_QDesktopServices___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QDesktopServices, openUrl, arginfo_class_QDesktopServices_openUrl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_FE_END
+};
 
 static const zend_function_entry class_QFont_methods[] = {
 	ZEND_ME(QFont, __construct, arginfo_class_QFont___construct, ZEND_ACC_PUBLIC)
@@ -234,6 +248,16 @@ static zend_class_entry *register_class_QImage_Format(void)
 	zval enum_case_BGR888_value;
 	ZVAL_LONG(&enum_case_BGR888_value, 29);
 	zend_enum_add_case_cstr(class_entry, "BGR888", &enum_case_BGR888_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QDesktopServices(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QDesktopServices", class_QDesktopServices_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

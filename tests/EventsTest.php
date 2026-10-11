@@ -57,3 +57,12 @@ it('finds the widget at a screen point, maps points from the screen, and reads t
         ->and($hints->mousePressAndHoldInterval())->toBeGreaterThan(0)
         ->and($hints->startDragDistance())->toBeGreaterThan(0);
 });
+
+it('sets an input event\'s timestamp', function (): void {
+    testApplication();
+    $event = new QMouseEvent(Type::MOUSE_BUTTON_PRESS, 1.0, 1.0, 1.0, 1.0, 1, 1, 0);
+    $event->setTimestamp(123456);
+
+    expect($event->timestamp())->toBe(123456)
+        ->and(fn () => $event->setTimestamp(-1))->toThrow(ValueError::class);
+});

@@ -30,6 +30,7 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/QEvent_Type.inc"
 #include "checks/Qt_WidgetAttribute.inc"
 #include "checks/Qt_AlignmentFlag.inc"
+#include "checks/Qt_TextInteractionFlag.inc"
 
 ZEND_DECLARE_MODULE_GLOBALS(qt)
 
@@ -66,6 +67,8 @@ zend_class_entry *phpqt_ce_QAction;
 zend_class_entry *phpqt_ce_QAction_MenuRole;
 zend_class_entry *phpqt_ce_QEventFilter;
 zend_class_entry *phpqt_ce_Qt_AlignmentFlag;
+zend_class_entry *phpqt_ce_Qt_TextInteractionFlag;
+zend_class_entry *phpqt_ce_QDesktopServices;
 zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 zend_class_entry *phpqt_ce_QLayout;
 zend_class_entry *phpqt_ce_QBoxLayout;
@@ -126,6 +129,7 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_WidgetAttribute = register_class_Qt_WidgetAttribute();
 	phpqt_ce_QEvent_Type = register_class_QEvent_Type();
 	phpqt_ce_Qt_AlignmentFlag = register_class_Qt_AlignmentFlag();
+	phpqt_ce_Qt_TextInteractionFlag = register_class_Qt_TextInteractionFlag();
 	phpqt_ce_Qt_Orientation = register_class_Qt_Orientation();
 	phpqt_ce_Qt_AspectRatioMode = register_class_Qt_AspectRatioMode();
 	phpqt_ce_Qt_ScrollBarPolicy = register_class_Qt_ScrollBarPolicy();

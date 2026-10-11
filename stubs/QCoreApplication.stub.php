@@ -71,4 +71,7 @@ class QApplication extends QGuiApplication
 
     /** The innermost visible widget at the global (screen) point, or null. */
     public static function widgetAt(int $x, int $y): ?QWidget {}
+
+    /** The widget with keyboard focus in the active window, or null. */
+    public static function focusWidget(): ?QWidget {}
 }

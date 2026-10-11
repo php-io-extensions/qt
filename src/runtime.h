@@ -124,6 +124,8 @@ extern zend_class_entry *phpqt_ce_QAction;
 extern zend_class_entry *phpqt_ce_QAction_MenuRole;
 extern zend_class_entry *phpqt_ce_QEventFilter;
 extern zend_class_entry *phpqt_ce_Qt_AlignmentFlag;
+extern zend_class_entry *phpqt_ce_Qt_TextInteractionFlag;
+extern zend_class_entry *phpqt_ce_QDesktopServices;
 extern zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 extern zend_class_entry *phpqt_ce_QLayout;
 extern zend_class_entry *phpqt_ce_QBoxLayout;

@@ -35,6 +35,17 @@ namespace QImage {
 
 namespace {
     /**
+     * @not-serializable
+     */
+    final class QDesktopServices
+    {
+        private function __construct() {}
+
+        /** QDesktopServices::openUrl(QUrl(url)): the URL in its handler (the browser for http and https). */
+        public static function openUrl(string $url): bool {}
+    }
+
+    /**
      * A value in Qt; here a heap copy owned by the PHP object.
      *
      * @not-serializable

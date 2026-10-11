@@ -253,6 +253,30 @@ ZEND_METHOD(QLabel, setTextFormat)
 	label->setTextFormat(static_cast<Qt::TextFormat>(phpqt_enum_value(format, Qt::AutoText)));
 }
 
+PHPQT_GETTER_BOOL(QLabel, openExternalLinks, openExternalLinks)
+PHPQT_SETTER_BOOL(QLabel, setOpenExternalLinks, setOpenExternalLinks)
+
+ZEND_METHOD(QLabel, textInteractionFlags)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QLabel, label);
+
+	RETURN_LONG(static_cast<zend_long>(label->textInteractionFlags().toInt()));
+}
+
+ZEND_METHOD(QLabel, setTextInteractionFlags)
+{
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_TextInteractionFlag, flags_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QLabel, label);
+
+	label->setTextInteractionFlags(Qt::TextInteractionFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long))));
+}
+
 /* ---- QAbstractButton, QPushButton, QCheckBox --------------------------- */
 
 ZEND_METHOD(QAbstractButton, __construct)
@@ -421,6 +445,22 @@ PHPQT_SETTER_STRING(QLineEdit, setPlaceholderText, setPlaceholderText)
 PHPQT_GETTER_BOOL(QLineEdit, isReadOnly, isReadOnly)
 PHPQT_SETTER_BOOL(QLineEdit, setReadOnly, setReadOnly)
 
+#define PHPQT_EDIT_SLOT(type, slot) \
+	ZEND_METHOD(type, slot) \
+	{ \
+		ZEND_PARSE_PARAMETERS_NONE(); \
+		PHPQT_THIS(type, edit); \
+		edit->slot(); \
+	}
+
+PHPQT_EDIT_SLOT(QLineEdit, cut)
+PHPQT_EDIT_SLOT(QLineEdit, copy)
+PHPQT_EDIT_SLOT(QLineEdit, paste)
+PHPQT_EDIT_SLOT(QLineEdit, selectAll)
+PHPQT_EDIT_SLOT(QLineEdit, undo)
+PHPQT_EDIT_SLOT(QLineEdit, redo)
+PHPQT_GETTER_STRING(QLineEdit, selectedText, selectedText)
+
 ZEND_METHOD(QLineEdit, echoMode)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
@@ -452,6 +492,13 @@ PHPQT_GETTER_STRING(QPlainTextEdit, toPlainText, toPlainText)
 PHPQT_SETTER_STRING(QPlainTextEdit, setPlainText, setPlainText)
 PHPQT_GETTER_BOOL(QPlainTextEdit, isReadOnly, isReadOnly)
 PHPQT_SETTER_BOOL(QPlainTextEdit, setReadOnly, setReadOnly)
+
+PHPQT_EDIT_SLOT(QPlainTextEdit, cut)
+PHPQT_EDIT_SLOT(QPlainTextEdit, copy)
+PHPQT_EDIT_SLOT(QPlainTextEdit, paste)
+PHPQT_EDIT_SLOT(QPlainTextEdit, selectAll)
+PHPQT_EDIT_SLOT(QPlainTextEdit, undo)
+PHPQT_EDIT_SLOT(QPlainTextEdit, redo)
 
 /* ---- QDateEdit --------------------------------------------------------- */
 

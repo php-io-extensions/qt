@@ -145,6 +145,23 @@ ZEND_METHOD(QInputEvent, timestamp)
 	RETURN_LONG((zend_long) event->timestamp());
 }
 
+ZEND_METHOD(QInputEvent, setTimestamp)
+{
+	zend_long timestamp;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(timestamp)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (timestamp < 0) {
+		zend_argument_value_error(1, "must be greater than or equal to 0");
+		RETURN_THROWS();
+	}
+	PHPQT_VALUE_THIS(QInputEvent, event);
+
+	event->setTimestamp(static_cast<quint64>(timestamp));
+}
+
 ZEND_METHOD(QInputEvent, deviceType)
 {
 	ZEND_PARSE_PARAMETERS_NONE();

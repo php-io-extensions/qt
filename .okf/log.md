@@ -1,5 +1,11 @@
 # Log
 
+## 2026-10-10
+
+* `QInputEvent::setTimestamp` (ms, not negative), so tests stamp events the way Qt stamps real ones. [surface](api/surface.md)
+* QLabel openExternalLinks and textInteractionFlags (`Qt\TextInteractionFlag`, generated), its linkActivated / linkHovered signals documented, QDesktopServices::openUrl (toolkit links). [surface](api/surface.md)
+* `QApplication::focusWidget`, `QWidget::setFocus`/`hasFocus`, and the edit slots (cut, copy, paste, selectAll, undo, redo) of `QLineEdit` and `QPlainTextEdit`, plus `QLineEdit::selectedText`, for the Edit menu (HumanInput slice 29). [surface](api/surface.md)
+
 ## 2026-10-09
 
 * `QMenu::popup(x, y)`: a menu at a global point, returning at once. For context menus (HumanInput slice 27). [surface](api/surface.md)

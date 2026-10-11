@@ -52,6 +52,8 @@ namespace QAbstractItemView {
 
 namespace {
     /**
+     * Signals linkActivated(QString), linkHovered(QString).
+     *
      * @not-serializable
      */
     class QLabel extends QWidget
@@ -76,6 +78,16 @@ namespace {
         public function textFormat(): Qt\TextFormat {}
 
         public function setTextFormat(Qt\TextFormat $format): void {}
+
+        public function openExternalLinks(): bool {}
+
+        /** True: Qt opens an activated link itself (QDesktopServices) instead of emitting linkActivated. */
+        public function setOpenExternalLinks(bool $open): void {}
+
+        /** Qt::TextInteractionFlags as an int. */
+        public function textInteractionFlags(): int {}
+
+        public function setTextInteractionFlags(Qt\TextInteractionFlag|int $flags): void {}
 
         /** null clears the pixmap, as setPixmap(QPixmap()) does. */
         public function setPixmap(?QPixmap $pixmap): void {}
@@ -218,6 +230,20 @@ namespace {
         public function isReadOnly(): bool {}
 
         public function setReadOnly(bool $readOnly): void {}
+
+        public function cut(): void {}
+
+        public function copy(): void {}
+
+        public function paste(): void {}
+
+        public function selectAll(): void {}
+
+        public function undo(): void {}
+
+        public function redo(): void {}
+
+        public function selectedText(): string {}
     }
 
     /**
@@ -236,6 +262,18 @@ namespace {
         public function isReadOnly(): bool {}
 
         public function setReadOnly(bool $readOnly): void {}
+
+        public function cut(): void {}
+
+        public function copy(): void {}
+
+        public function paste(): void {}
+
+        public function selectAll(): void {}
+
+        public function undo(): void {}
+
+        public function redo(): void {}
     }
 
     /**

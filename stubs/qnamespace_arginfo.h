@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 97ca88b033ab6f8de15917d79b4bd2871f119b10 */
+ * Stub hash: 5ef659add820d2732760e25df6f16fd2b9a9eec5 */
 
 static zend_class_entry *register_class_Qt_TimerType(void)
 {
@@ -581,6 +581,45 @@ static zend_class_entry *register_class_Qt_AlignmentFlag(void)
 	zval enum_case_CENTER_value;
 	ZVAL_LONG(&enum_case_CENTER_value, 132);
 	zend_enum_add_case_cstr(class_entry, "CENTER", &enum_case_CENTER_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_TextInteractionFlag(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\TextInteractionFlag", IS_LONG, NULL);
+
+	zval enum_case_NO_TEXT_INTERACTION_value;
+	ZVAL_LONG(&enum_case_NO_TEXT_INTERACTION_value, 0);
+	zend_enum_add_case_cstr(class_entry, "NO_TEXT_INTERACTION", &enum_case_NO_TEXT_INTERACTION_value);
+
+	zval enum_case_TEXT_SELECTABLE_BY_MOUSE_value;
+	ZVAL_LONG(&enum_case_TEXT_SELECTABLE_BY_MOUSE_value, 1);
+	zend_enum_add_case_cstr(class_entry, "TEXT_SELECTABLE_BY_MOUSE", &enum_case_TEXT_SELECTABLE_BY_MOUSE_value);
+
+	zval enum_case_TEXT_SELECTABLE_BY_KEYBOARD_value;
+	ZVAL_LONG(&enum_case_TEXT_SELECTABLE_BY_KEYBOARD_value, 2);
+	zend_enum_add_case_cstr(class_entry, "TEXT_SELECTABLE_BY_KEYBOARD", &enum_case_TEXT_SELECTABLE_BY_KEYBOARD_value);
+
+	zval enum_case_LINKS_ACCESSIBLE_BY_MOUSE_value;
+	ZVAL_LONG(&enum_case_LINKS_ACCESSIBLE_BY_MOUSE_value, 4);
+	zend_enum_add_case_cstr(class_entry, "LINKS_ACCESSIBLE_BY_MOUSE", &enum_case_LINKS_ACCESSIBLE_BY_MOUSE_value);
+
+	zval enum_case_LINKS_ACCESSIBLE_BY_KEYBOARD_value;
+	ZVAL_LONG(&enum_case_LINKS_ACCESSIBLE_BY_KEYBOARD_value, 8);
+	zend_enum_add_case_cstr(class_entry, "LINKS_ACCESSIBLE_BY_KEYBOARD", &enum_case_LINKS_ACCESSIBLE_BY_KEYBOARD_value);
+
+	zval enum_case_TEXT_EDITABLE_value;
+	ZVAL_LONG(&enum_case_TEXT_EDITABLE_value, 16);
+	zend_enum_add_case_cstr(class_entry, "TEXT_EDITABLE", &enum_case_TEXT_EDITABLE_value);
+
+	zval enum_case_TEXT_EDITOR_INTERACTION_value;
+	ZVAL_LONG(&enum_case_TEXT_EDITOR_INTERACTION_value, 19);
+	zend_enum_add_case_cstr(class_entry, "TEXT_EDITOR_INTERACTION", &enum_case_TEXT_EDITOR_INTERACTION_value);
+
+	zval enum_case_TEXT_BROWSER_INTERACTION_value;
+	ZVAL_LONG(&enum_case_TEXT_BROWSER_INTERACTION_value, 13);
+	zend_enum_add_case_cstr(class_entry, "TEXT_BROWSER_INTERACTION", &enum_case_TEXT_BROWSER_INTERACTION_value);
 
 	return class_entry;
 }

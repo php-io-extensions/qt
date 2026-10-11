@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 1d5c559cb68a9ea5e8073af699b6310dfdd4ee5f */
+ * Stub hash: d274f726ad8b40ffc6324ad14ae95b66ebd450c2 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -29,6 +29,10 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QWidget_isActiveWindow arginfo_class_QWidget_close
 
 #define arginfo_class_QWidget_activateWindow arginfo_class_QWidget_show
+
+#define arginfo_class_QWidget_setFocus arginfo_class_QWidget_show
+
+#define arginfo_class_QWidget_hasFocus arginfo_class_QWidget_close
 
 #define arginfo_class_QWidget_raise arginfo_class_QWidget_show
 
@@ -146,6 +150,8 @@ ZEND_METHOD(QWidget, setVisible);
 ZEND_METHOD(QWidget, isWindow);
 ZEND_METHOD(QWidget, isActiveWindow);
 ZEND_METHOD(QWidget, activateWindow);
+ZEND_METHOD(QWidget, setFocus);
+ZEND_METHOD(QWidget, hasFocus);
 ZEND_METHOD(QWidget, raise);
 ZEND_METHOD(QWidget, windowTitle);
 ZEND_METHOD(QWidget, setWindowTitle);
@@ -189,6 +195,8 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, isWindow, arginfo_class_QWidget_isWindow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, isActiveWindow, arginfo_class_QWidget_isActiveWindow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, activateWindow, arginfo_class_QWidget_activateWindow, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setFocus, arginfo_class_QWidget_setFocus, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, hasFocus, arginfo_class_QWidget_hasFocus, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, raise, arginfo_class_QWidget_raise, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, windowTitle, arginfo_class_QWidget_windowTitle, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setWindowTitle, arginfo_class_QWidget_setWindowTitle, ZEND_ACC_PUBLIC)

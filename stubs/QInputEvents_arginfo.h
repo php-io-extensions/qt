@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 4024742c0e245abfa397978c0f3c5bb1308aa44e */
+ * Stub hash: a7cb27a8c236fb03c7f1a56f8ab7bab2c2153b99 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_TYPE_MASK_EX(arginfo_class_QEvent_type, 0, 0, QEvent\\Type, MAY_BE_LONG)
 ZEND_END_ARG_INFO()
@@ -18,6 +18,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QInputEvent_modifiers, 0, 
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QInputEvent_timestamp arginfo_class_QInputEvent_modifiers
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QInputEvent_setTimestamp, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, timestamp, IS_LONG, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QInputEvent_deviceType, 0, 0, QInputDevice\\DeviceType, 0)
 ZEND_END_ARG_INFO()
@@ -69,6 +73,7 @@ ZEND_METHOD(QEvent, isAccepted);
 ZEND_METHOD(QEvent, spontaneous);
 ZEND_METHOD(QInputEvent, modifiers);
 ZEND_METHOD(QInputEvent, timestamp);
+ZEND_METHOD(QInputEvent, setTimestamp);
 ZEND_METHOD(QInputEvent, deviceType);
 ZEND_METHOD(QMouseEvent, __construct);
 ZEND_METHOD(QMouseEvent, button);
@@ -94,6 +99,7 @@ static const zend_function_entry class_QEvent_methods[] = {
 static const zend_function_entry class_QInputEvent_methods[] = {
 	ZEND_ME(QInputEvent, modifiers, arginfo_class_QInputEvent_modifiers, ZEND_ACC_PUBLIC)
 	ZEND_ME(QInputEvent, timestamp, arginfo_class_QInputEvent_timestamp, ZEND_ACC_PUBLIC)
+	ZEND_ME(QInputEvent, setTimestamp, arginfo_class_QInputEvent_setTimestamp, ZEND_ACC_PUBLIC)
 	ZEND_ME(QInputEvent, deviceType, arginfo_class_QInputEvent_deviceType, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };

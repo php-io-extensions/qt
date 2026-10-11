@@ -36,7 +36,7 @@ function stubDeclarations(): array
 it('exposes every function, class, enum and method the stubs declare', function (): void {
     $declared = stubDeclarations();
 
-    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole', 'Qt\AlignmentFlag', 'QSizePolicy\Policy', 'Qt\Orientation', 'QLineEdit\EchoMode', 'Qt\AspectRatioMode', 'Qt\ScrollBarPolicy', 'QFont\Weight', 'QFrame\Shape', 'QFrame\Shadow', 'QAbstractItemView\SelectionBehavior', 'QAbstractItemView\SelectionMode', 'QMediaPlayer\PlaybackState', 'QMediaPlayer\MediaStatus', 'QMediaPlayer\Error']);
+    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole', 'Qt\AlignmentFlag', 'Qt\TextInteractionFlag', 'QSizePolicy\Policy', 'Qt\Orientation', 'QLineEdit\EchoMode', 'Qt\AspectRatioMode', 'Qt\ScrollBarPolicy', 'QFont\Weight', 'QFrame\Shape', 'QFrame\Shadow', 'QAbstractItemView\SelectionBehavior', 'QAbstractItemView\SelectionMode', 'QMediaPlayer\PlaybackState', 'QMediaPlayer\MediaStatus', 'QMediaPlayer\Error']);
 
     foreach ($declared['functions'] as $function) {
         expect(function_exists($function))->toBeTrue("{$function}() is missing");

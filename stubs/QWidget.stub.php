@@ -28,6 +28,10 @@ class QWidget extends QObject
 
     public function activateWindow(): void {}
 
+    public function setFocus(): void {}
+
+    public function hasFocus(): bool {}
+
     public function raise(): void {}
 
     public function windowTitle(): string {}

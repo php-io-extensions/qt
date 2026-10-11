@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 37b49c8cdb9f0bc165eeda4c063458d53cab4259 */
+ * Stub hash: 7d67273b64b1e9997340c2fac38855f0fc11905f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -36,6 +36,18 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setTextFormat, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, format, Qt\\TextFormat, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QLabel_openExternalLinks arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setOpenExternalLinks, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, open, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QLabel_textInteractionFlags arginfo_class_QLabel_alignment
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setTextInteractionFlags, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, flags, Qt\\TextInteractionFlag, MAY_BE_LONG, NULL)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setPixmap, 0, 1, IS_VOID, 0)
@@ -161,6 +173,20 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLineEdit_setReadOnly, 0, 
 	ZEND_ARG_TYPE_INFO(0, readOnly, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QLineEdit_cut arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QLineEdit_copy arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QLineEdit_paste arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QLineEdit_selectAll arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QLineEdit_undo arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QLineEdit_redo arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QLineEdit_selectedText arginfo_class_QLabel_text
+
 #define arginfo_class_QPlainTextEdit___construct arginfo_class_QComboBox___construct
 
 #define arginfo_class_QPlainTextEdit_toPlainText arginfo_class_QLabel_text
@@ -170,6 +196,18 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QPlainTextEdit_isReadOnly arginfo_class_QLabel_wordWrap
 
 #define arginfo_class_QPlainTextEdit_setReadOnly arginfo_class_QLineEdit_setReadOnly
+
+#define arginfo_class_QPlainTextEdit_cut arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QPlainTextEdit_copy arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QPlainTextEdit_paste arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QPlainTextEdit_selectAll arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QPlainTextEdit_undo arginfo_class_QAbstractButton_click
+
+#define arginfo_class_QPlainTextEdit_redo arginfo_class_QAbstractButton_click
 
 #define arginfo_class_QDateEdit___construct arginfo_class_QComboBox___construct
 
@@ -322,6 +360,10 @@ ZEND_METHOD(QLabel, setWordWrap);
 ZEND_METHOD(QLabel, setScaledContents);
 ZEND_METHOD(QLabel, textFormat);
 ZEND_METHOD(QLabel, setTextFormat);
+ZEND_METHOD(QLabel, openExternalLinks);
+ZEND_METHOD(QLabel, setOpenExternalLinks);
+ZEND_METHOD(QLabel, textInteractionFlags);
+ZEND_METHOD(QLabel, setTextInteractionFlags);
 ZEND_METHOD(QLabel, setPixmap);
 ZEND_METHOD(QLabel, pixmap);
 ZEND_METHOD(QAbstractButton, __construct);
@@ -366,11 +408,24 @@ ZEND_METHOD(QLineEdit, echoMode);
 ZEND_METHOD(QLineEdit, setEchoMode);
 ZEND_METHOD(QLineEdit, isReadOnly);
 ZEND_METHOD(QLineEdit, setReadOnly);
+ZEND_METHOD(QLineEdit, cut);
+ZEND_METHOD(QLineEdit, copy);
+ZEND_METHOD(QLineEdit, paste);
+ZEND_METHOD(QLineEdit, selectAll);
+ZEND_METHOD(QLineEdit, undo);
+ZEND_METHOD(QLineEdit, redo);
+ZEND_METHOD(QLineEdit, selectedText);
 ZEND_METHOD(QPlainTextEdit, __construct);
 ZEND_METHOD(QPlainTextEdit, toPlainText);
 ZEND_METHOD(QPlainTextEdit, setPlainText);
 ZEND_METHOD(QPlainTextEdit, isReadOnly);
 ZEND_METHOD(QPlainTextEdit, setReadOnly);
+ZEND_METHOD(QPlainTextEdit, cut);
+ZEND_METHOD(QPlainTextEdit, copy);
+ZEND_METHOD(QPlainTextEdit, paste);
+ZEND_METHOD(QPlainTextEdit, selectAll);
+ZEND_METHOD(QPlainTextEdit, undo);
+ZEND_METHOD(QPlainTextEdit, redo);
 ZEND_METHOD(QDateEdit, __construct);
 ZEND_METHOD(QDateEdit, date);
 ZEND_METHOD(QDateEdit, setDate);
@@ -427,6 +482,10 @@ static const zend_function_entry class_QLabel_methods[] = {
 	ZEND_ME(QLabel, setScaledContents, arginfo_class_QLabel_setScaledContents, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, textFormat, arginfo_class_QLabel_textFormat, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, setTextFormat, arginfo_class_QLabel_setTextFormat, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLabel, openExternalLinks, arginfo_class_QLabel_openExternalLinks, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLabel, setOpenExternalLinks, arginfo_class_QLabel_setOpenExternalLinks, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLabel, textInteractionFlags, arginfo_class_QLabel_textInteractionFlags, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLabel, setTextInteractionFlags, arginfo_class_QLabel_setTextInteractionFlags, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, setPixmap, arginfo_class_QLabel_setPixmap, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, pixmap, arginfo_class_QLabel_pixmap, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
@@ -499,6 +558,13 @@ static const zend_function_entry class_QLineEdit_methods[] = {
 	ZEND_ME(QLineEdit, setEchoMode, arginfo_class_QLineEdit_setEchoMode, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLineEdit, isReadOnly, arginfo_class_QLineEdit_isReadOnly, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLineEdit, setReadOnly, arginfo_class_QLineEdit_setReadOnly, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, cut, arginfo_class_QLineEdit_cut, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, copy, arginfo_class_QLineEdit_copy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, paste, arginfo_class_QLineEdit_paste, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, selectAll, arginfo_class_QLineEdit_selectAll, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, undo, arginfo_class_QLineEdit_undo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, redo, arginfo_class_QLineEdit_redo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, selectedText, arginfo_class_QLineEdit_selectedText, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -508,6 +574,12 @@ static const zend_function_entry class_QPlainTextEdit_methods[] = {
 	ZEND_ME(QPlainTextEdit, setPlainText, arginfo_class_QPlainTextEdit_setPlainText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, isReadOnly, arginfo_class_QPlainTextEdit_isReadOnly, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, setReadOnly, arginfo_class_QPlainTextEdit_setReadOnly, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, cut, arginfo_class_QPlainTextEdit_cut, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, copy, arginfo_class_QPlainTextEdit_copy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, paste, arginfo_class_QPlainTextEdit_paste, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, selectAll, arginfo_class_QPlainTextEdit_selectAll, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, undo, arginfo_class_QPlainTextEdit_undo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, redo, arginfo_class_QPlainTextEdit_redo, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
