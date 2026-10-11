@@ -36,7 +36,7 @@ jobs:
 
       - name: Install Qt (macOS)
         if: runner.os == 'macOS'
-        run: brew install qt pkgconf
+        run: brew install qt pkgconf vulkan-headers
 
       - name: Build
         run: |
