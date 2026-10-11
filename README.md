@@ -1,5 +1,7 @@
 # ext-qt
 
+[![CI](https://img.shields.io/github/actions/workflow/status/php-io-extensions/qt/ci.yml?style=flat-square&label=CI)](https://github.com/php-io-extensions/qt/actions/workflows/ci.yml)
+
 1:1 PHP bindings of Qt 6, written directly in C++ against the Zend API. Each
 PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,
 …) and each method is one Qt call. Nested C++ scopes become PHP namespaces:
