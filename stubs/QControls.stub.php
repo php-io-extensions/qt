@@ -2,6 +2,14 @@
 
 /** @generate-class-entries */
 
+namespace QPlainTextEdit {
+    enum LineWrapMode: int
+    {
+        case NO_WRAP = 0;
+        case WIDGET_WIDTH = 1;
+    }
+}
+
 namespace QLineEdit {
     enum EchoMode: int
     {
@@ -171,6 +179,16 @@ namespace {
     }
 
     /**
+     * A scroll area's bar; signal valueChanged(int).
+     *
+     * @not-serializable
+     */
+    class QScrollBar extends QAbstractSlider
+    {
+        private function __construct() {}
+    }
+
+    /**
      * @not-serializable
      */
     class QSlider extends QAbstractSlider
@@ -247,7 +265,7 @@ namespace {
     }
 
     /**
-     * Signal textChanged().
+     * Signals textChanged(), cursorPositionChanged().
      *
      * @not-serializable
      */
@@ -274,6 +292,46 @@ namespace {
         public function undo(): void {}
 
         public function redo(): void {}
+
+        public function document(): QTextDocument {}
+
+        public function textCursor(): QTextCursor {}
+
+        /** A cursor on this edit's document (ValueError otherwise). */
+        public function setTextCursor(QTextCursor $cursor): void {}
+
+        public function ensureCursorVisible(): void {}
+
+        /**
+         * Cursors on this edit's document (ValueError otherwise).
+         *
+         * @param array $selections list of QTextEditExtraSelection
+         */
+        public function setExtraSelections(array $selections): void {}
+
+        /** @return list<QTextEditExtraSelection> */
+        public function extraSelections(): array {}
+
+        public function lineWrapMode(): QPlainTextEdit\LineWrapMode {}
+
+        public function setLineWrapMode(QPlainTextEdit\LineWrapMode $mode): void {}
+
+        /** Qt::TextInteractionFlags as an int. */
+        public function textInteractionFlags(): int {}
+
+        public function setTextInteractionFlags(Qt\TextInteractionFlag|int $flags): void {}
+
+        /** Its value counts lines (blocks' visual lines); pageStep is the lines in view. */
+        public function verticalScrollBar(): QScrollBar {}
+
+        /** Its value counts pixels. */
+        public function horizontalScrollBar(): QScrollBar {}
+
+        /**
+         * QAbstractScrollArea::viewport(): the widget the text is laid out in and drawn on; it
+         * resizes with the edit and as the scroll bars come and go.
+         */
+        public function viewport(): QWidget {}
     }
 
     /**

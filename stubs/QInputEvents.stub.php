@@ -11,6 +11,14 @@
  */
 class QEvent
 {
+    /**
+     * A plain QEvent of $type, for QCoreApplication::sendEvent(). Only a type Qt delivers as a
+     * plain QEvent (window activation, the *_CHANGE notices, LEAVE, POLISH, LAYOUT_REQUEST,
+     * UPDATE_REQUEST, QUIT, …): a receiver casts the others to their subclass, so they are a
+     * ValueError. QInputEvent and its subclasses have their own constructors (Error otherwise).
+     */
+    public function __construct(QEvent\Type $type) {}
+
     public function type(): QEvent\Type|int {}
 
     public function accept(): void {}

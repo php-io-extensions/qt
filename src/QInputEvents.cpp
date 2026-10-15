@@ -172,6 +172,50 @@ ZEND_METHOD(QInputEvent, deviceType)
 
 /* ---- QMouseEvent ------------------------------------------------------------ */
 
+/* Types Qt sends as a plain QEvent: no receiver casts them to a subclass. */
+static bool phpqt_event_type_is_plain(QEvent::Type type)
+{
+	switch (type) {
+		case QEvent::Leave: case QEvent::Quit:
+		case QEvent::WindowActivate: case QEvent::WindowDeactivate: case QEvent::ActivationChange:
+		case QEvent::ApplicationActivate: case QEvent::ApplicationDeactivate:
+		case QEvent::ShowToParent: case QEvent::HideToParent:
+		case QEvent::WindowTitleChange: case QEvent::WindowIconChange: case QEvent::ApplicationWindowIconChange:
+		case QEvent::ApplicationFontChange: case QEvent::ApplicationLayoutDirectionChange: case QEvent::ApplicationPaletteChange:
+		case QEvent::PaletteChange: case QEvent::FontChange: case QEvent::StyleChange: case QEvent::EnabledChange:
+		case QEvent::LocaleChange: case QEvent::LanguageChange: case QEvent::LayoutDirectionChange:
+		case QEvent::ModifiedChange: case QEvent::MouseTrackingChange: case QEvent::ReadOnlyChange:
+		case QEvent::ZOrderChange: case QEvent::AcceptDropsChange:
+		case QEvent::PolishRequest: case QEvent::Polish: case QEvent::LayoutRequest:
+		case QEvent::UpdateRequest:
+		case QEvent::EnterWhatsThisMode: case QEvent::LeaveWhatsThisMode:
+			return true;
+		default:
+			return false;
+	}
+}
+
+ZEND_METHOD(QEvent, __construct)
+{
+	zend_object *type_case;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(type_case, phpqt_ce_QEvent_Type)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (instanceof_function(Z_OBJCE_P(ZEND_THIS), phpqt_ce_QInputEvent)) {
+		zend_throw_error(nullptr, "%s is not made by QEvent::__construct()", ZSTR_VAL(Z_OBJCE_P(ZEND_THIS)->name));
+		RETURN_THROWS();
+	}
+	QEvent::Type type = static_cast<QEvent::Type>(Z_LVAL_P(zend_enum_fetch_case_value(type_case)));
+	if (!phpqt_event_type_is_plain(type)) {
+		zend_argument_value_error(1, "is a type Qt delivers as a QEvent subclass");
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QEvent(type), true, phpqt_destroy_event);
+}
+
 ZEND_METHOD(QMouseEvent, __construct)
 {
 	zend_object *type_case;

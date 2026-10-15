@@ -1,4 +1,5 @@
 #include "runtime.h"
+#include "qtext.h"
 
 #include <QtCore/QDate>
 #include <QtCore/QStringList>
@@ -18,11 +19,14 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSlider>
 
 /* After the Qt headers: the generated class registration spells QAbstractItemView::NoEditTriggers. */
 #include "../stubs/QControls_arginfo.h"
 
+static_assert(QPlainTextEdit::NoWrap == 0 && QPlainTextEdit::WidgetWidth == 1,
+	"QPlainTextEdit::LineWrapMode values differ from the stub's QPlainTextEdit\\LineWrapMode enum");
 static_assert(QLineEdit::Normal == 0 && QLineEdit::NoEcho == 1 && QLineEdit::Password == 2 && QLineEdit::PasswordEchoOnEdit == 3,
 	"QLineEdit::EchoMode values differ from the stub's QLineEdit\\EchoMode enum");
 static_assert(QFrame::NoFrame == 0 && QFrame::Box == 1 && QFrame::Panel == 2 && QFrame::WinPanel == 3 && QFrame::HLine == 4
@@ -37,6 +41,7 @@ static_assert(QAbstractItemView::NoSelection == 0 && QAbstractItemView::SingleSe
 void phpqt_register_QControls()
 {
 	phpqt_ce_QLineEdit_EchoMode = register_class_QLineEdit_EchoMode();
+	phpqt_ce_QPlainTextEdit_LineWrapMode = register_class_QPlainTextEdit_LineWrapMode();
 	phpqt_ce_QFrame_Shape = register_class_QFrame_Shape();
 	phpqt_ce_QFrame_Shadow = register_class_QFrame_Shadow();
 	phpqt_ce_QAbstractItemView_SelectionBehavior = register_class_QAbstractItemView_SelectionBehavior();
@@ -61,6 +66,10 @@ void phpqt_register_QControls()
 	phpqt_ce_QAbstractSlider = register_class_QAbstractSlider(phpqt_ce_QWidget);
 	phpqt_object_setup(phpqt_ce_QAbstractSlider);
 	phpqt_map_class("QAbstractSlider", phpqt_ce_QAbstractSlider);
+
+	phpqt_ce_QScrollBar = register_class_QScrollBar(phpqt_ce_QAbstractSlider);
+	phpqt_object_setup(phpqt_ce_QScrollBar);
+	phpqt_map_class("QScrollBar", phpqt_ce_QScrollBar);
 
 	phpqt_ce_QSlider = register_class_QSlider(phpqt_ce_QAbstractSlider);
 	phpqt_object_setup(phpqt_ce_QSlider);
@@ -357,6 +366,13 @@ ZEND_METHOD(QAbstractSlider, setOrientation)
 	slider->setOrientation(static_cast<Qt::Orientation>(phpqt_enum_value(orientation, Qt::Horizontal)));
 }
 
+ZEND_METHOD(QScrollBar, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	zend_throw_error(nullptr, "QScrollBar is its scroll area's: QPlainTextEdit::verticalScrollBar()");
+}
+
 ZEND_METHOD(QSlider, __construct)
 {
 	zend_object *orientation = nullptr;
@@ -499,6 +515,155 @@ PHPQT_EDIT_SLOT(QPlainTextEdit, paste)
 PHPQT_EDIT_SLOT(QPlainTextEdit, selectAll)
 PHPQT_EDIT_SLOT(QPlainTextEdit, undo)
 PHPQT_EDIT_SLOT(QPlainTextEdit, redo)
+
+ZEND_METHOD(QPlainTextEdit, document)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	phpqt_box(return_value, edit->document());
+}
+
+ZEND_METHOD(QPlainTextEdit, textCursor)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	phpqt_return_text_cursor(return_value, edit->textCursor());
+}
+
+ZEND_METHOD(QPlainTextEdit, setTextCursor)
+{
+	zend_object *cursor_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(cursor_obj, phpqt_ce_QTextCursor)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	QTextCursor *cursor = static_cast<QTextCursor *>(phpqt_value_arg(cursor_obj, 1));
+	if (cursor == nullptr) {
+		RETURN_THROWS();
+	}
+	if (cursor->document() != edit->document()) {
+		zend_argument_value_error(1, "must be a cursor on this edit's document (a cursor whose document has been deleted is refused)");
+		RETURN_THROWS();
+	}
+	edit->setTextCursor(*cursor);
+}
+
+PHPQT_VOID(QPlainTextEdit, ensureCursorVisible, ensureCursorVisible)
+
+ZEND_METHOD(QPlainTextEdit, setExtraSelections)
+{
+	HashTable *selections;
+	zval *entry;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ARRAY_HT(selections)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	QList<QTextEdit::ExtraSelection> list;
+	list.reserve((qsizetype) zend_hash_num_elements(selections));
+	ZEND_HASH_FOREACH_VAL(selections, entry) {
+		ZVAL_DEREF(entry);
+		if (Z_TYPE_P(entry) != IS_OBJECT || !instanceof_function(Z_OBJCE_P(entry), phpqt_ce_QTextEditExtraSelection)) {
+			zend_argument_type_error(1, "must contain only QTextEditExtraSelection, %s given", zend_zval_value_name(entry));
+			RETURN_THROWS();
+		}
+		QTextEdit::ExtraSelection *selection = static_cast<QTextEdit::ExtraSelection *>(phpqt_value_arg(Z_OBJ_P(entry), 1));
+		if (selection == nullptr) {
+			RETURN_THROWS();
+		}
+		if (selection->cursor.document() != edit->document()) {
+			zend_argument_value_error(1, "must hold cursors on this edit's document");
+			RETURN_THROWS();
+		}
+		list.append(*selection);
+	} ZEND_HASH_FOREACH_END();
+
+	edit->setExtraSelections(list);
+}
+
+ZEND_METHOD(QPlainTextEdit, extraSelections)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	const QList<QTextEdit::ExtraSelection> list = edit->extraSelections();
+	array_init_size(return_value, (uint32_t) list.size());
+	for (const QTextEdit::ExtraSelection &selection : list) {
+		zval boxed;
+		phpqt_return_extra_selection(&boxed, selection);
+		add_next_index_zval(return_value, &boxed);
+	}
+}
+
+ZEND_METHOD(QPlainTextEdit, lineWrapMode)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	phpqt_return_enum(return_value, phpqt_ce_QPlainTextEdit_LineWrapMode, static_cast<zend_long>(edit->lineWrapMode()));
+}
+
+ZEND_METHOD(QPlainTextEdit, setLineWrapMode)
+{
+	zend_object *mode;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QPlainTextEdit_LineWrapMode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	edit->setLineWrapMode(static_cast<QPlainTextEdit::LineWrapMode>(phpqt_enum_value(mode, QPlainTextEdit::WidgetWidth)));
+}
+
+ZEND_METHOD(QPlainTextEdit, textInteractionFlags)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	RETURN_LONG(static_cast<zend_long>(edit->textInteractionFlags().toInt()));
+}
+
+ZEND_METHOD(QPlainTextEdit, setTextInteractionFlags)
+{
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_TextInteractionFlag, flags_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	edit->setTextInteractionFlags(Qt::TextInteractionFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long))));
+}
+
+ZEND_METHOD(QPlainTextEdit, verticalScrollBar)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	phpqt_box(return_value, edit->verticalScrollBar());
+}
+
+ZEND_METHOD(QPlainTextEdit, horizontalScrollBar)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	phpqt_box(return_value, edit->horizontalScrollBar());
+}
+
+ZEND_METHOD(QPlainTextEdit, viewport)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	phpqt_box(return_value, edit->viewport());
+}
 
 /* ---- QDateEdit --------------------------------------------------------- */
 

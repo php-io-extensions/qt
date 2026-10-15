@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 7d67273b64b1e9997340c2fac38855f0fc11905f */
+ * Stub hash: 3850b04e12b5fada3a9a6955530991b2843682ce */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -119,6 +119,8 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QAbstractSlider_setPageStep arginfo_class_QAbstractSlider_setSingleStep
 
+#define arginfo_class_QScrollBar___construct arginfo_class_QAbstractButton___construct
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QSlider___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, orientation, Qt\\Orientation, 0, "Qt\\Orientation::VERTICAL")
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -208,6 +210,44 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QPlainTextEdit_undo arginfo_class_QAbstractButton_click
 
 #define arginfo_class_QPlainTextEdit_redo arginfo_class_QAbstractButton_click
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPlainTextEdit_document, 0, 0, QTextDocument, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPlainTextEdit_textCursor, 0, 0, QTextCursor, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setTextCursor, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, cursor, QTextCursor, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPlainTextEdit_ensureCursorVisible arginfo_class_QAbstractButton_click
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setExtraSelections, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, selections, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_extraSelections, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPlainTextEdit_lineWrapMode, 0, 0, QPlainTextEdit\\LineWrapMode, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setLineWrapMode, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, mode, QPlainTextEdit\\LineWrapMode, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPlainTextEdit_textInteractionFlags arginfo_class_QLabel_alignment
+
+#define arginfo_class_QPlainTextEdit_setTextInteractionFlags arginfo_class_QLabel_setTextInteractionFlags
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPlainTextEdit_verticalScrollBar, 0, 0, QScrollBar, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPlainTextEdit_horizontalScrollBar arginfo_class_QPlainTextEdit_verticalScrollBar
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPlainTextEdit_viewport, 0, 0, QWidget, 0)
+ZEND_END_ARG_INFO()
 
 #define arginfo_class_QDateEdit___construct arginfo_class_QComboBox___construct
 
@@ -335,8 +375,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTableWidget_item, 0, 2, QT
 	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidget_selectedItems, 0, 0, IS_ARRAY, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QTableWidget_selectedItems arginfo_class_QPlainTextEdit_extraSelections
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTableWidget_horizontalHeaderItem, 0, 1, QTableWidgetItem, 1)
 	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
@@ -389,6 +428,7 @@ ZEND_METHOD(QAbstractSlider, singleStep);
 ZEND_METHOD(QAbstractSlider, setSingleStep);
 ZEND_METHOD(QAbstractSlider, pageStep);
 ZEND_METHOD(QAbstractSlider, setPageStep);
+ZEND_METHOD(QScrollBar, __construct);
 ZEND_METHOD(QSlider, __construct);
 ZEND_METHOD(QComboBox, __construct);
 ZEND_METHOD(QComboBox, addItem);
@@ -426,6 +466,19 @@ ZEND_METHOD(QPlainTextEdit, paste);
 ZEND_METHOD(QPlainTextEdit, selectAll);
 ZEND_METHOD(QPlainTextEdit, undo);
 ZEND_METHOD(QPlainTextEdit, redo);
+ZEND_METHOD(QPlainTextEdit, document);
+ZEND_METHOD(QPlainTextEdit, textCursor);
+ZEND_METHOD(QPlainTextEdit, setTextCursor);
+ZEND_METHOD(QPlainTextEdit, ensureCursorVisible);
+ZEND_METHOD(QPlainTextEdit, setExtraSelections);
+ZEND_METHOD(QPlainTextEdit, extraSelections);
+ZEND_METHOD(QPlainTextEdit, lineWrapMode);
+ZEND_METHOD(QPlainTextEdit, setLineWrapMode);
+ZEND_METHOD(QPlainTextEdit, textInteractionFlags);
+ZEND_METHOD(QPlainTextEdit, setTextInteractionFlags);
+ZEND_METHOD(QPlainTextEdit, verticalScrollBar);
+ZEND_METHOD(QPlainTextEdit, horizontalScrollBar);
+ZEND_METHOD(QPlainTextEdit, viewport);
 ZEND_METHOD(QDateEdit, __construct);
 ZEND_METHOD(QDateEdit, date);
 ZEND_METHOD(QDateEdit, setDate);
@@ -530,6 +583,11 @@ static const zend_function_entry class_QAbstractSlider_methods[] = {
 	ZEND_FE_END
 };
 
+static const zend_function_entry class_QScrollBar_methods[] = {
+	ZEND_ME(QScrollBar, __construct, arginfo_class_QScrollBar___construct, ZEND_ACC_PRIVATE)
+	ZEND_FE_END
+};
+
 static const zend_function_entry class_QSlider_methods[] = {
 	ZEND_ME(QSlider, __construct, arginfo_class_QSlider___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
@@ -580,6 +638,19 @@ static const zend_function_entry class_QPlainTextEdit_methods[] = {
 	ZEND_ME(QPlainTextEdit, selectAll, arginfo_class_QPlainTextEdit_selectAll, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, undo, arginfo_class_QPlainTextEdit_undo, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, redo, arginfo_class_QPlainTextEdit_redo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, document, arginfo_class_QPlainTextEdit_document, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, textCursor, arginfo_class_QPlainTextEdit_textCursor, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, setTextCursor, arginfo_class_QPlainTextEdit_setTextCursor, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, ensureCursorVisible, arginfo_class_QPlainTextEdit_ensureCursorVisible, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, setExtraSelections, arginfo_class_QPlainTextEdit_setExtraSelections, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, extraSelections, arginfo_class_QPlainTextEdit_extraSelections, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, lineWrapMode, arginfo_class_QPlainTextEdit_lineWrapMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, setLineWrapMode, arginfo_class_QPlainTextEdit_setLineWrapMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, textInteractionFlags, arginfo_class_QPlainTextEdit_textInteractionFlags, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, setTextInteractionFlags, arginfo_class_QPlainTextEdit_setTextInteractionFlags, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, verticalScrollBar, arginfo_class_QPlainTextEdit_verticalScrollBar, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, horizontalScrollBar, arginfo_class_QPlainTextEdit_horizontalScrollBar, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, viewport, arginfo_class_QPlainTextEdit_viewport, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -650,6 +721,21 @@ static const zend_function_entry class_QTableWidget_methods[] = {
 	ZEND_ME(QTableWidget, selectRow, arginfo_class_QTableWidget_selectRow, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
+
+static zend_class_entry *register_class_QPlainTextEdit_LineWrapMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QPlainTextEdit\\LineWrapMode", IS_LONG, NULL);
+
+	zval enum_case_NO_WRAP_value;
+	ZVAL_LONG(&enum_case_NO_WRAP_value, 0);
+	zend_enum_add_case_cstr(class_entry, "NO_WRAP", &enum_case_NO_WRAP_value);
+
+	zval enum_case_WIDGET_WIDTH_value;
+	ZVAL_LONG(&enum_case_WIDGET_WIDTH_value, 1);
+	zend_enum_add_case_cstr(class_entry, "WIDGET_WIDTH", &enum_case_WIDGET_WIDTH_value);
+
+	return class_entry;
+}
 
 static zend_class_entry *register_class_QLineEdit_EchoMode(void)
 {
@@ -820,6 +906,16 @@ static zend_class_entry *register_class_QAbstractSlider(zend_class_entry *class_
 
 	INIT_CLASS_ENTRY(ce, "QAbstractSlider", class_QAbstractSlider_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QWidget, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QScrollBar(zend_class_entry *class_entry_QAbstractSlider)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QScrollBar", class_QScrollBar_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QAbstractSlider, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

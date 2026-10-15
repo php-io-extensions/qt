@@ -66,3 +66,22 @@ it('sets an input event\'s timestamp', function (): void {
     expect($event->timestamp())->toBe(123456)
         ->and(fn () => $event->setTimestamp(-1))->toThrow(ValueError::class);
 });
+
+it('makes a plain event of a type Qt sends as one, and refuses the rest', function (): void {
+    $widget = new QWidget();
+    $seen = [];
+    $filter = new QEventFilter(function (QObject $watched, Type|int $type, QEvent $event) use (&$seen): bool {
+        $seen[] = [$event::class, $event->type()];
+
+        return false;
+    }, [Type::WINDOW_ACTIVATE]);
+    $widget->installEventFilter($filter);
+    $event = new QEvent(Type::WINDOW_ACTIVATE);
+    QCoreApplication::sendEvent($widget, $event);
+
+    expect($seen)->toBe([[QEvent::class, Type::WINDOW_ACTIVATE]])
+        ->and($event->type())->toBe(Type::WINDOW_ACTIVATE)
+        ->and(fn () => new QEvent(Type::MOUSE_BUTTON_PRESS))->toThrow(ValueError::class, 'subclass')
+        ->and(fn () => new QEvent(Type::UPDATE_LATER))->toThrow(ValueError::class, 'subclass')
+        ->and(fn () => new QInputEvent(Type::LEAVE))->toThrow(Error::class, 'QInputEvent');
+});

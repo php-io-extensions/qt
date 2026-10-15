@@ -37,7 +37,7 @@ style them, drive the common controls and play video:
 | `QObject` (filters) | `installEventFilter`, `removeEventFilter` |
 | `QOpenGLWidget`, `QOpenGLPainter`, `QSurfaceFormat` | constructor, `makeCurrent`, `doneCurrent`, `isValid`, `defaultFramebufferObject`, `update`, `setFormat`, `format`; `QSurfaceFormat` version, profile and renderable type (`defaultFormat`); trampoline: `new QOpenGLPainter(callable, ?QWidget)` runs PHP from `paintGL()` |
 | `QEventFilter` | trampoline: `new QEventFilter(callable, ?array $types)`; hands the listed event types of each watched object to PHP as `($watched, $type, QEvent $event)`, the event alive only during the call |
-| `QEvent`, `QInputEvent`, `QMouseEvent`, `QContextMenuEvent` | `type`, `accept`, `ignore`, `isAccepted`, `spontaneous`; `modifiers`, `timestamp`, `deviceType` (`QInputDevice\DeviceType`); mouse `button`, `buttons`, `position`, `globalPosition`; context menu `reason` (`QContextMenuEvent\Reason`), `pos`, `globalPos`; constructors for the mouse and context-menu events, sent with `QCoreApplication::sendEvent` |
+| `QEvent`, `QInputEvent`, `QMouseEvent`, `QContextMenuEvent` | `type`, `accept`, `ignore`, `isAccepted`, `spontaneous`; `modifiers`, `timestamp`, `deviceType` (`QInputDevice\DeviceType`); mouse `button`, `buttons`, `position`, `globalPosition`; context menu `reason` (`QContextMenuEvent\Reason`), `pos`, `globalPos`; constructors for the mouse and context-menu events, and a plain `QEvent` of a type Qt sends as one (window activation, the change notices, …; other types are a ValueError), sent with `QCoreApplication::sendEvent` |
 | Hit tests, hints | `QApplication::widgetAt`, `QApplication::focusWidget`, `QWidget::mapFromGlobal`, `QGuiApplication::styleHints()` → `QStyleHints` `mousePressAndHoldInterval`, `startDragDistance` |
 | `QLayout` | `setSpacing`, `spacing`, `setContentsMargins`, `count`, `removeWidget`, `indexOf`, `itemAtWidget` (`itemAt(i)->widget()`) |
 | `QBoxLayout`, `QVBoxLayout`, `QHBoxLayout` | constructors (optional parent widget), `addWidget(widget, stretch, alignment)`, `insertWidget`, `addLayout`, `addStretch`, `setStretch`, `setAlignment`; widgets added before the layout is installed are held until it is |
@@ -46,10 +46,13 @@ style them, drive the common controls and play video:
 | `QLabel` | constructor, `text`, `setText`, `alignment`, `setAlignment`, `wordWrap`, `setWordWrap`, `setScaledContents`, `pixmap`, `setPixmap`, `textFormat`, `setTextFormat`, `openExternalLinks`, `setOpenExternalLinks`, `textInteractionFlags`, `setTextInteractionFlags`; signals `linkActivated(QString)`, `linkHovered(QString)` |
 | `QDesktopServices` | `openUrl` |
 | `QAbstractButton`, `QPushButton`, `QCheckBox` | constructors (text, parent), `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `click`, `toggle`; signals `clicked(bool)`, `toggled(bool)` |
-| `QAbstractSlider`, `QSlider` | constructor (orientation, vertical by default as in Qt, parent), `minimum`, `maximum`, `setRange`, `value`, `setValue`, `orientation`, `setOrientation`; signal `valueChanged(int)` |
+| `QAbstractSlider`, `QSlider`, `QScrollBar` | QScrollBar has no public constructor (`verticalScrollBar`, `horizontalScrollBar`); QSlider constructor (orientation, vertical by default as in Qt, parent), `minimum`, `maximum`, `setRange`, `value`, `setValue`, `orientation`, `setOrientation`; signal `valueChanged(int)` |
 | `QComboBox` | constructor, `addItem`, `addItems`, `clear`, `count`, `currentIndex`, `setCurrentIndex`, `currentText`, `itemText`; signal `currentIndexChanged(int)` |
 | `QLineEdit` | constructor (text, parent), `text`, `setText`, `placeholderText`, `setPlaceholderText`, `echoMode`, `setEchoMode`, `isReadOnly`, `setReadOnly`, `cut`, `copy`, `paste`, `selectAll`, `undo`, `redo`, `selectedText`; signals `textChanged(QString)`, `returnPressed()` |
-| `QPlainTextEdit` | constructor, `toPlainText`, `setPlainText`, `isReadOnly`, `setReadOnly`, `cut`, `copy`, `paste`, `selectAll`, `undo`, `redo`; signal `textChanged()` |
+| `QPlainTextEdit` | constructor, `toPlainText`, `setPlainText`, `isReadOnly`, `setReadOnly`, `cut`, `copy`, `paste`, `selectAll`, `undo`, `redo`, `document`, `textCursor`, `setTextCursor`, `ensureCursorVisible`, `setExtraSelections`, `extraSelections`, `lineWrapMode`, `setLineWrapMode`, `textInteractionFlags`, `setTextInteractionFlags`, `verticalScrollBar`, `horizontalScrollBar`, `viewport`; signals `textChanged()`, `cursorPositionChanged()` |
+| `QTextDocument` | a text edit's: `findBlockByNumber` (null past the end), `blockCount`, `characterCount` |
+| `QColor`, `QBrush`, `QTextCharFormat`, `QTextCursor`, `QTextBlock`, `QTextEditExtraSelection` | values: `QColor` (0..255 components), `QBrush`, `QTextCharFormat` (`setForeground`, `setBackground`, `setProperty`, `boolProperty`, `hasProperty`; `QTextFormat::FULL_WIDTH_SELECTION`), `QTextCursor` (UTF-16 positions, `setPosition` checked against the document, `movePosition` by `QTextCursor\MoveOperation`), `QTextBlock`, `QTextEditExtraSelection` |
+| `QFontDatabase` | `systemFont`, after a QGuiApplication |
 | `QDateEdit` | constructor, `date`, `setDate` (ISO 8601 strings), `setCalendarPopup`, `setDisplayFormat`; signal `dateChanged(QDate)` as the ISO string |
 | `QProgressBar` | constructor, `minimum`, `maximum`, `setRange`, `value`, `setValue`, `setTextVisible`, `reset` |
 | `QFrame`, `QScrollArea` | constructors, `frameShape`, `setFrameShape`, `setFrameShadow`; `setWidget`, `widget`, `setWidgetResizable`, `setHorizontalScrollBarPolicy`, `setVerticalScrollBarPolicy` |
@@ -63,7 +66,8 @@ style them, drive the common controls and play video:
 
 Enums: `QEventLoop\ProcessEventsFlag`, `Qt\TimerType`, `QSocketNotifier\Type`,
 `QAction\MenuRole`, `Qt\Orientation`, `Qt\AspectRatioMode`, `Qt\ScrollBarPolicy`,
-`QSizePolicy\Policy`, `QLineEdit\EchoMode`, `QFont\Weight`, `QFrame\Shape`,
+`QSizePolicy\Policy`, `QLineEdit\EchoMode`, `QFont\Weight`, `QTextCursor\MoveMode`, `QTextCursor\MoveOperation`, `QPlainTextEdit\LineWrapMode`,
+`QFontDatabase\SystemFont`, `Qt\TextInteractionFlag`, `QFrame\Shape`,
 `QFrame\Shadow`, `QAbstractItemView\SelectionBehavior`,
 `QAbstractItemView\SelectionMode`, `QMediaPlayer\PlaybackState`,
 `QMediaPlayer\MediaStatus`, `QMediaPlayer\Error`, and, generated from the Qt

@@ -1,5 +1,9 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: a7cb27a8c236fb03c7f1a56f8ab7bab2c2153b99 */
+ * Stub hash: f16e062282336fd92f616f1df6ccc0c6cbd2e776 */
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEvent___construct, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_TYPE_MASK_EX(arginfo_class_QEvent_type, 0, 0, QEvent\\Type, MAY_BE_LONG)
 ZEND_END_ARG_INFO()
@@ -66,6 +70,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QStyleHints_startDragDistance arginfo_class_QInputEvent_modifiers
 
+ZEND_METHOD(QEvent, __construct);
 ZEND_METHOD(QEvent, type);
 ZEND_METHOD(QEvent, accept);
 ZEND_METHOD(QEvent, ignore);
@@ -88,6 +93,7 @@ ZEND_METHOD(QStyleHints, mousePressAndHoldInterval);
 ZEND_METHOD(QStyleHints, startDragDistance);
 
 static const zend_function_entry class_QEvent_methods[] = {
+	ZEND_ME(QEvent, __construct, arginfo_class_QEvent___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QEvent, type, arginfo_class_QEvent_type, ZEND_ACC_PUBLIC)
 	ZEND_ME(QEvent, accept, arginfo_class_QEvent_accept, ZEND_ACC_PUBLIC)
 	ZEND_ME(QEvent, ignore, arginfo_class_QEvent_ignore, ZEND_ACC_PUBLIC)

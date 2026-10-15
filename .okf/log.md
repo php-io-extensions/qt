@@ -1,5 +1,12 @@
 # Log
 
+## 2026-10-14
+
+* QColor, QBrush, QTextCharFormat, QTextCursor, QTextBlock, QTextEditExtraSelection values; QTextDocument; QScrollBar; QFontDatabase::systemFont; QPlainTextEdit cursor, extra selections, wrap mode, interaction flags and scroll bars (compare-app text panes, C1). 0.10.3. [surface](api/surface.md)
+* QTextCursor::movePosition and the QTextCursor\MoveOperation enum (C1 final review: a wrapped line's last row). [surface](api/surface.md)
+* QPlainTextEdit::viewport, whose resizes re-wrap the text (C1 final review). [surface](api/surface.md)
+* QEvent constructor for the types Qt sends as a plain QEvent, so a test can deliver window activation without the OS granting it (C1 final review). [surface](api/surface.md)
+
 ## 2026-10-10
 
 * `QInputEvent::setTimestamp` (ms, not negative), so tests stamp events the way Qt stamps real ones. [surface](api/surface.md)

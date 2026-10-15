@@ -17,6 +17,16 @@ namespace QFont {
     }
 }
 
+namespace QFontDatabase {
+    enum SystemFont: int
+    {
+        case GENERAL_FONT = 0;
+        case FIXED_FONT = 1;
+        case TITLE_FONT = 2;
+        case SMALLEST_READABLE_FONT = 3;
+    }
+}
+
 namespace QImage {
     /** The QImage::Format layouts with 8 bits a channel. */
     enum Format: int
@@ -43,6 +53,14 @@ namespace {
 
         /** QDesktopServices::openUrl(QUrl(url)): the URL in its handler (the browser for http and https). */
         public static function openUrl(string $url): bool {}
+    }
+
+    final class QFontDatabase
+    {
+        private function __construct() {}
+
+        /** Needs a QGuiApplication (QtException otherwise). */
+        public static function systemFont(QFontDatabase\SystemFont $type): QFont {}
     }
 
     /**

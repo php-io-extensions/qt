@@ -1,11 +1,17 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: d2c51b3355b3fda47842c320d5cb9cfc61b936ae */
+ * Stub hash: f5c0dfcdbd360344978eb68b852c4256709a4a40 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QDesktopServices___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDesktopServices_openUrl, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_TYPE_INFO(0, url, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QFontDatabase___construct arginfo_class_QDesktopServices___construct
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QFontDatabase_systemFont, 0, 1, QFont, 0)
+	ZEND_ARG_OBJ_INFO(0, type, QFontDatabase\\SystemFont, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QFont___construct, 0, 0, 0)
@@ -97,6 +103,8 @@ ZEND_END_ARG_INFO()
 
 ZEND_METHOD(QDesktopServices, __construct);
 ZEND_METHOD(QDesktopServices, openUrl);
+ZEND_METHOD(QFontDatabase, __construct);
+ZEND_METHOD(QFontDatabase, systemFont);
 ZEND_METHOD(QFont, __construct);
 ZEND_METHOD(QFont, family);
 ZEND_METHOD(QFont, setFamily);
@@ -126,6 +134,12 @@ ZEND_METHOD(QTableWidgetItem, row);
 static const zend_function_entry class_QDesktopServices_methods[] = {
 	ZEND_ME(QDesktopServices, __construct, arginfo_class_QDesktopServices___construct, ZEND_ACC_PRIVATE)
 	ZEND_ME(QDesktopServices, openUrl, arginfo_class_QDesktopServices_openUrl, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QFontDatabase_methods[] = {
+	ZEND_ME(QFontDatabase, __construct, arginfo_class_QFontDatabase___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QFontDatabase, systemFont, arginfo_class_QFontDatabase_systemFont, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 
@@ -213,6 +227,29 @@ static zend_class_entry *register_class_QFont_Weight(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QFontDatabase_SystemFont(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QFontDatabase\\SystemFont", IS_LONG, NULL);
+
+	zval enum_case_GENERAL_FONT_value;
+	ZVAL_LONG(&enum_case_GENERAL_FONT_value, 0);
+	zend_enum_add_case_cstr(class_entry, "GENERAL_FONT", &enum_case_GENERAL_FONT_value);
+
+	zval enum_case_FIXED_FONT_value;
+	ZVAL_LONG(&enum_case_FIXED_FONT_value, 1);
+	zend_enum_add_case_cstr(class_entry, "FIXED_FONT", &enum_case_FIXED_FONT_value);
+
+	zval enum_case_TITLE_FONT_value;
+	ZVAL_LONG(&enum_case_TITLE_FONT_value, 2);
+	zend_enum_add_case_cstr(class_entry, "TITLE_FONT", &enum_case_TITLE_FONT_value);
+
+	zval enum_case_SMALLEST_READABLE_FONT_value;
+	ZVAL_LONG(&enum_case_SMALLEST_READABLE_FONT_value, 3);
+	zend_enum_add_case_cstr(class_entry, "SMALLEST_READABLE_FONT", &enum_case_SMALLEST_READABLE_FONT_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QImage_Format(void)
 {
 	zend_class_entry *class_entry = zend_register_internal_enum("QImage\\Format", IS_LONG, NULL);
@@ -258,6 +295,16 @@ static zend_class_entry *register_class_QDesktopServices(void)
 
 	INIT_CLASS_ENTRY(ce, "QDesktopServices", class_QDesktopServices_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QFontDatabase(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QFontDatabase", class_QFontDatabase_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL);
 
 	return class_entry;
 }

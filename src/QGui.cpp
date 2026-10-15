@@ -8,6 +8,7 @@
 #include "../stubs/QGui_arginfo.h"
 
 #include <QtGui/QFont>
+#include <QtGui/QFontDatabase>
 #include <QtGui/QGuiApplication>
 #include <QtGui/QImage>
 #include <QtGui/QPixmap>
@@ -15,6 +16,8 @@
 #include <QtCore/QUrl>
 #include <QtWidgets/QTableWidgetItem>
 
+static_assert(QFontDatabase::GeneralFont == 0 && QFontDatabase::FixedFont == 1 && QFontDatabase::TitleFont == 2
+	&& QFontDatabase::SmallestReadableFont == 3, "QFontDatabase::SystemFont values differ from the stub's QFontDatabase\\SystemFont enum");
 static_assert(QFont::Thin == 100 && QFont::ExtraLight == 200 && QFont::Light == 300 && QFont::Normal == 400
 	&& QFont::Medium == 500 && QFont::DemiBold == 600 && QFont::Bold == 700 && QFont::ExtraBold == 800 && QFont::Black == 900,
 	"QFont::Weight values differ from the stub's QFont\\Weight enum");
@@ -114,6 +117,8 @@ void phpqt_value_setup(zend_class_entry *ce)
 void phpqt_register_QGui()
 {
 	phpqt_ce_QFont_Weight = register_class_QFont_Weight();
+	phpqt_ce_QFontDatabase_SystemFont = register_class_QFontDatabase_SystemFont();
+	phpqt_ce_QFontDatabase = register_class_QFontDatabase();
 
 	phpqt_ce_QFont = register_class_QFont();
 	phpqt_value_setup(phpqt_ce_QFont);
@@ -218,6 +223,31 @@ static bool phpqt_font_weight_valid(zend_long weight, uint32_t arg_num)
 void phpqt_value_taken(zend_object *wrapper)
 {
 	phpqt_value_from(wrapper)->owned = false;
+}
+
+/* ---- QFontDatabase ----------------------------------------------------- */
+
+ZEND_METHOD(QFontDatabase, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	zend_throw_error(nullptr, "QFontDatabase is static: call QFontDatabase::systemFont()");
+}
+
+ZEND_METHOD(QFontDatabase, systemFont)
+{
+	zend_object *type;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(type, phpqt_ce_QFontDatabase_SystemFont)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
+		zend_throw_exception(phpqt_ce_QtException, "QFontDatabase::systemFont() needs a QGuiApplication first", 0);
+		RETURN_THROWS();
+	}
+	phpqt_return_font(return_value, QFontDatabase::systemFont(static_cast<QFontDatabase::SystemFont>(phpqt_enum_value(type, QFontDatabase::GeneralFont))));
 }
 
 /* ---- QFont ------------------------------------------------------------- */

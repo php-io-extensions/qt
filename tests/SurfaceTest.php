@@ -36,7 +36,7 @@ function stubDeclarations(): array
 it('exposes every function, class, enum and method the stubs declare', function (): void {
     $declared = stubDeclarations();
 
-    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole', 'Qt\AlignmentFlag', 'Qt\TextInteractionFlag', 'QSizePolicy\Policy', 'Qt\Orientation', 'QLineEdit\EchoMode', 'Qt\AspectRatioMode', 'Qt\ScrollBarPolicy', 'QFont\Weight', 'QFrame\Shape', 'QFrame\Shadow', 'QAbstractItemView\SelectionBehavior', 'QAbstractItemView\SelectionMode', 'QMediaPlayer\PlaybackState', 'QMediaPlayer\MediaStatus', 'QMediaPlayer\Error']);
+    expect($declared['classes'])->toHaveKeys(['QObject', 'QMetaObject\Connection', 'Qt\TimerType', 'QSocketNotifier\Type', 'QEventLoop\ProcessEventsFlag', 'QEvent\Type', 'Qt\WidgetAttribute', 'QAction\MenuRole', 'Qt\AlignmentFlag', 'Qt\TextInteractionFlag', 'QSizePolicy\Policy', 'Qt\Orientation', 'QLineEdit\EchoMode', 'Qt\AspectRatioMode', 'Qt\ScrollBarPolicy', 'QFont\Weight', 'QFrame\Shape', 'QFrame\Shadow', 'QAbstractItemView\SelectionBehavior', 'QAbstractItemView\SelectionMode', 'QMediaPlayer\PlaybackState', 'QMediaPlayer\MediaStatus', 'QMediaPlayer\Error', 'QTextCursor\MoveMode', 'QPlainTextEdit\LineWrapMode', 'QFontDatabase\SystemFont']);
 
     foreach ($declared['functions'] as $function) {
         expect(function_exists($function))->toBeTrue("{$function}() is missing");
@@ -52,7 +52,7 @@ it('exposes every function, class, enum and method the stubs declare', function 
 });
 
 it('reports its version and the Qt runtime', function (): void {
-    expect(phpversion('qt'))->toBe('0.10.2')
+    expect(phpversion('qt'))->toBe('0.10.3')
         ->and(qVersion())->toStartWith('6.');
 });
 
@@ -94,6 +94,16 @@ it('keeps the native class hierarchy', function (): void {
         ->and(get_parent_class(QAbstractItemView::class))->toBe(QFrame::class)
         ->and(get_parent_class(QTableWidget::class))->toBe(QAbstractItemView::class)
         ->and(get_parent_class(QFont::class))->toBeFalse()
+        ->and(get_parent_class(QScrollBar::class))->toBe(QAbstractSlider::class)
+        ->and(get_parent_class(QTextDocument::class))->toBe(QObject::class)
+        ->and(get_parent_class(QColor::class))->toBeFalse()
+        ->and(get_parent_class(QBrush::class))->toBeFalse()
+        ->and(get_parent_class(QTextFormat::class))->toBeFalse()
+        ->and(get_parent_class(QTextCharFormat::class))->toBeFalse()
+        ->and(get_parent_class(QTextCursor::class))->toBeFalse()
+        ->and(get_parent_class(QTextBlock::class))->toBeFalse()
+        ->and(get_parent_class(QTextEditExtraSelection::class))->toBeFalse()
+        ->and(get_parent_class(QFontDatabase::class))->toBeFalse()
         ->and(get_parent_class(QPixmap::class))->toBeFalse()
         ->and(get_parent_class(QTableWidgetItem::class))->toBeFalse()
         ->and(get_parent_class(QUrl::class))->toBeFalse()
