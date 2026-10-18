@@ -19,6 +19,14 @@ it('creates, names and parents objects', function (): void {
     expect($child->parent())->toBeNull();
 });
 
+it('names the thread an object lives in', function (): void {
+    $object = new QObject();
+
+    expect($object->thread())->toBeInstanceOf(QThread::class)
+        ->and($object->thread())->toBe(QThread::currentThread())
+        ->and((new QThread())->thread())->toBe(QThread::currentThread());
+});
+
 it('throws on a wrapper whose object Qt deleted', function (): void {
     $parent = new QObject();
     $child = new QObject($parent);
@@ -71,8 +79,12 @@ it('boxes QObject* signal arguments as the same PHP object', function (): void {
     expect($seen)->toBe($object);
 });
 
-it('rejects a signal the class does not have', function (): void {
-    expect(fn () => QObject::connect(new QObject(), 'timeout()', fn () => null))->toThrow(ValueError::class)
+it('answers a signal the class does not have with Qt\'s invalid connection', function (): void {
+    $connection = QObject::connect(new QObject(), 'timeout()', fn () => null);
+
+    expect($connection)->toBeInstanceOf(QMetaObject\Connection::class)
+        ->and($connection->isValid())->toBeFalse()
+        ->and(QObject::disconnect($connection))->toBeFalse()
         ->and(fn () => QObject::connect(new QObject(), 'destroyed(QObject*)', 'no_such_function'))->toThrow(TypeError::class);
 });
 
@@ -98,11 +110,25 @@ it('invokes a method or emits a signal by name', function (): void {
     $returns = 0;
     QObject::connect($edit, 'returnPressed()', function () use (&$returns): void { $returns++; });
 
-    expect(QMetaObject::invokeMethod($edit, 'returnPressed'))->toBeTrue()
+    $direct = Qt\ConnectionType::DIRECT_CONNECTION;
+
+    expect(QMetaObject::invokeMethod($edit, 'returnPressed', $direct))->toBeTrue()
         ->and($returns)->toBe(1)
-        ->and(QMetaObject::invokeMethod($edit, 'clear'))->toBeTrue()
-        ->and(QMetaObject::invokeMethod($edit, 'noSuchMember'))->toBeFalse()
+        ->and(QMetaObject::invokeMethod($edit, 'clear', $direct))->toBeTrue()
+        ->and(QMetaObject::invokeMethod($edit, 'noSuchMember', $direct))->toBeFalse()
         ->and(fn () => new QMetaObject())->toThrow(Error::class);
+});
+
+it('queues an invocation for the event loop', function (): void {
+    testApplication();
+    $slider = new QSlider(Qt\Orientation::HORIZONTAL);
+
+    expect(QMetaObject::invokeMethod($slider, 'setValue', Qt\ConnectionType::QUEUED_CONNECTION, 42))->toBeTrue()
+        ->and($slider->value())->toBe(0);
+
+    QCoreApplication::processEvents();
+
+    expect($slider->value())->toBe(42);
 });
 
 it('invokes a member with arguments converted to its parameter types', function (): void {
@@ -111,13 +137,30 @@ it('invokes a member with arguments converted to its parameter types', function 
     $edit = new QDateEdit();
     $edit->setCalendarPopup(true);
     $clicked = [];
-    QObject::connect($edit->calendarWidget(), 'clicked(QDate)', function (string $date) use (&$clicked): void { $clicked[] = $date; });
+    QObject::connect($edit->calendarWidget(), 'clicked(QDate)', function (QDate $date) use (&$clicked): void { $clicked[] = $date->toString(Qt\DateFormat::ISO_DATE); });
 
-    expect(QMetaObject::invokeMethod($slider, 'setValue', 42))->toBeTrue()
+    $direct = Qt\ConnectionType::DIRECT_CONNECTION;
+
+    expect(QMetaObject::invokeMethod($slider, 'setValue', $direct, 42))->toBeTrue()
         ->and($slider->value())->toBe(42)
-        ->and(QMetaObject::invokeMethod($edit->calendarWidget(), 'clicked', '2026-10-02'))->toBeTrue()
+        ->and(QMetaObject::invokeMethod($edit->calendarWidget(), 'clicked', $direct, new QDate(2026, 10, 2)))->toBeTrue()
         ->and($clicked)->toBe(['2026-10-02'])
-        ->and(QMetaObject::invokeMethod($slider, 'setValue', 1, 2))->toBeFalse()
-        ->and(fn () => QMetaObject::invokeMethod($slider, 'setValue', 'many'))->toThrow(TypeError::class)
-        ->and(fn () => QMetaObject::invokeMethod($edit->calendarWidget(), 'clicked', 'someday'))->toThrow(ValueError::class, 'ISO 8601');
+        ->and(QMetaObject::invokeMethod($slider, 'setValue', $direct, 1, 2))->toBeFalse()
+        ->and(fn () => QMetaObject::invokeMethod($slider, 'setValue', $direct, 'many'))->toThrow(TypeError::class)
+        ->and(fn () => QMetaObject::invokeMethod($edit->calendarWidget(), 'clicked', $direct, '2026-10-02'))->toThrow(TypeError::class, 'must be of type QDate');
+});
+
+it('hands value-class signal arguments over as their classes, both ways', function (): void {
+    testApplication();
+    $direct = Qt\ConnectionType::DIRECT_CONNECTION;
+    $widget = new QWidget();
+    $player = new QMediaPlayer();
+    $got = [];
+    QObject::connect($widget, 'customContextMenuRequested(QPoint)', function (QPoint $pos) use (&$got): void { $got[] = [$pos->x(), $pos->y()]; });
+    QObject::connect($player, 'sourceChanged(QUrl)', function (QUrl $url) use (&$got): void { $got[] = $url->toString(); });
+
+    expect(QMetaObject::invokeMethod($widget, 'customContextMenuRequested', $direct, new QPoint(3, 4)))->toBeTrue()
+        ->and(QMetaObject::invokeMethod($player, 'sourceChanged', $direct, new QUrl('https://example.com/clip.mp4')))->toBeTrue()
+        ->and($got)->toBe([[3, 4], 'https://example.com/clip.mp4'])
+        ->and(fn () => QMetaObject::invokeMethod($widget, 'customContextMenuRequested', $direct, new QPointF(3.0, 4.0)))->toThrow(TypeError::class, 'must be of type QPoint');
 });

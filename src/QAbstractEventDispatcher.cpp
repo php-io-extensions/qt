@@ -2,6 +2,7 @@
 #include "../stubs/QAbstractEventDispatcher_arginfo.h"
 
 #include <QtCore/QAbstractEventDispatcher>
+#include <QtCore/QThread>
 
 void phpqt_register_QAbstractEventDispatcher()
 {
@@ -12,9 +13,20 @@ void phpqt_register_QAbstractEventDispatcher()
 
 ZEND_METHOD(QAbstractEventDispatcher, instance)
 {
-	ZEND_PARSE_PARAMETERS_NONE();
+	zend_object *thread_obj = nullptr;
+	bool failed;
 
-	phpqt_box(return_value, QAbstractEventDispatcher::instance());
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(thread_obj, phpqt_ce_QThread)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QThread *thread = static_cast<QThread *>(phpqt_arg(thread_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_box(return_value, QAbstractEventDispatcher::instance(thread));
 }
 
 ZEND_METHOD(QAbstractEventDispatcher, processEvents)

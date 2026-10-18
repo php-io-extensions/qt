@@ -1,12 +1,18 @@
 #include "runtime.h"
 
 #include <QtCore/QDate>
+#include <QtCore/QPoint>
+#include <QtCore/QRect>
+#include <QtCore/QSize>
+#include <QtCore/QUrl>
 #include <QtCore/QVariant>
+#include <QtGui/QKeySequence>
 #include "../stubs/QObject_arginfo.h"
 #include "../stubs/QMetaObject_arginfo.h"
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QString>
+#include <QtCore/QThread>
 
 static zend_object_handlers phpqt_connection_handlers;
 
@@ -34,11 +40,17 @@ static void phpqt_connection_free(zend_object *object)
 	zend_object_std_dtor(object);
 }
 
+zend_class_entry *phpqt_ce_QThread;
+
 void phpqt_register_QObject()
 {
 	phpqt_ce_QObject = register_class_QObject();
 	phpqt_object_setup(phpqt_ce_QObject);
 	phpqt_map_class("QObject", phpqt_ce_QObject);
+
+	phpqt_ce_QThread = register_class_QThread(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QThread);
+	phpqt_map_class("QThread", phpqt_ce_QThread);
 }
 
 void phpqt_register_QMetaObject()
@@ -67,11 +79,6 @@ ZEND_METHOD(QObject, __construct)
 
 	QObject *qparent = phpqt_arg(parent, 1, &failed);
 	if (failed) {
-		RETURN_THROWS();
-	}
-
-	if (phpqt_object_from(Z_OBJ_P(ZEND_THIS))->guard != nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QObject::__construct() called twice", 0);
 		RETURN_THROWS();
 	}
 
@@ -195,6 +202,39 @@ ZEND_METHOD(QObject, children)
 	}
 }
 
+ZEND_METHOD(QObject, thread)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QObject, object);
+
+	phpqt_box(return_value, object->thread());
+}
+
+ZEND_METHOD(QThread, __construct)
+{
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QObject *qparent = phpqt_arg(parent, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QThread(qparent));
+}
+
+ZEND_METHOD(QThread, currentThread)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	phpqt_box(return_value, QThread::currentThread());
+}
+
 ZEND_METHOD(QObject, pointer)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
@@ -227,10 +267,15 @@ ZEND_METHOD(QObject, connect)
 	QByteArray signature = QMetaObject::normalizedSignature(ZSTR_VAL(signal_name));
 	int index = sender->metaObject()->indexOfSignal(signature.constData());
 
+	object_init_ex(return_value, phpqt_ce_QMetaObject_Connection);
+	phpqt_connection *intern = phpqt_connection_from(Z_OBJ_P(return_value));
+
+	/* As Qt's string connect: a signal the metaobject lacks warns and gives the invalid connection. */
 	if (index < 0) {
-		zend_argument_value_error(2, "is not a signal of %s (signals are named by signature, e.g. \"timeout()\")",
-			sender->metaObject()->className());
-		RETURN_THROWS();
+		qWarning("QObject::connect: No such signal %s::%s", sender->metaObject()->className(), signature.constData());
+		intern->connection = new QMetaObject::Connection();
+		intern->slot = new QPointer<PhpSlot>();
+		return;
 	}
 
 	PhpSlot *slot = new PhpSlot(functor, sender->metaObject()->method(index));
@@ -238,18 +283,15 @@ ZEND_METHOD(QObject, connect)
 		sender, index, slot, QObject::staticMetaObject.methodCount(), Qt::DirectConnection
 	);
 
+	intern->connection = new QMetaObject::Connection(connection);
 	if (!connection) {
 		delete slot;
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "Qt refused to connect %s", signature.constData());
-		RETURN_THROWS();
+		intern->slot = new QPointer<PhpSlot>();
+		return;
 	}
 
 	/* The sender going away ends the connection; the slot and its callable follow it out. */
 	QObject::connect(sender, &QObject::destroyed, slot, &QObject::deleteLater);
-
-	object_init_ex(return_value, phpqt_ce_QMetaObject_Connection);
-	phpqt_connection *intern = phpqt_connection_from(Z_OBJ_P(return_value));
-	intern->connection = new QMetaObject::Connection(connection);
 	intern->slot = new QPointer<PhpSlot>(slot);
 }
 
@@ -284,12 +326,57 @@ ZEND_METHOD(QMetaObject, __construct)
 	ZEND_PARSE_PARAMETERS_NONE();
 }
 
+/* Qt's value classes and their PHP classes, which cross as copies both ways. */
+static const struct {
+	QMetaType type;
+	zend_class_entry **ce;
+} phpqt_value_types[] = {
+	{QMetaType::fromType<QDate>(), &phpqt_ce_QDate},
+	{QMetaType::fromType<QPoint>(), &phpqt_ce_QPoint},
+	{QMetaType::fromType<QPointF>(), &phpqt_ce_QPointF},
+	{QMetaType::fromType<QSize>(), &phpqt_ce_QSize},
+	{QMetaType::fromType<QRect>(), &phpqt_ce_QRect},
+	{QMetaType::fromType<QUrl>(), &phpqt_ce_QUrl},
+	{QMetaType::fromType<QKeySequence>(), &phpqt_ce_QKeySequence},
+};
+
 /*
  * One PHP argument as a value of the member's parameter type: the inverse of how signal
  * arguments reach PHP. False (with a TypeError or ValueError thrown) when it cannot be.
+ * With no type (a QVariant parameter), the value's own kind decides: null, bool, int, float,
+ * string, or one of Qt's value classes.
  */
-static bool phpqt_zval_to_variant(zval *arg, QMetaType type, QVariant *out, uint32_t arg_num)
+bool phpqt_zval_to_variant(zval *arg, QMetaType type, QVariant *out, uint32_t arg_num)
 {
+	for (const auto &value_type : phpqt_value_types) {
+		bool ours = Z_TYPE_P(arg) == IS_OBJECT && Z_OBJCE_P(arg) == *value_type.ce;
+		if (ours && (!type.isValid() || type == value_type.type)) {
+			void *value = phpqt_value_arg(Z_OBJ_P(arg), arg_num);
+			if (value == nullptr) {
+				return false;
+			}
+			*out = QVariant(value_type.type, value);
+			return true;
+		}
+		if (type.isValid() && type == value_type.type) {
+			zend_argument_type_error(arg_num, "must be of type %s for %s, %s given", ZSTR_VAL((*value_type.ce)->name), type.name(), zend_zval_value_name(arg));
+			return false;
+		}
+	}
+
+	if (!type.isValid()) {
+		switch (Z_TYPE_P(arg)) {
+			case IS_NULL:   *out = QVariant(); return true;
+			case IS_TRUE:   *out = QVariant(true); return true;
+			case IS_FALSE:  *out = QVariant(false); return true;
+			case IS_LONG:   *out = QVariant(static_cast<qlonglong>(Z_LVAL_P(arg))); return true;
+			case IS_DOUBLE: *out = QVariant(Z_DVAL_P(arg)); return true;
+			case IS_STRING: *out = QVariant(phpqt_qstring(Z_STR_P(arg))); return true;
+		}
+		zend_argument_type_error(arg_num, "must be of type ?scalar or a Qt value class for QVariant, %s given", zend_zval_value_name(arg));
+		return false;
+	}
+
 	*out = QVariant(type);
 	void *data = out->data();
 
@@ -328,20 +415,6 @@ static bool phpqt_zval_to_variant(zval *arg, QMetaType type, QVariant *out, uint
 			}
 			*static_cast<QString *>(data) = phpqt_qstring(Z_STR_P(arg));
 			return true;
-
-		case QMetaType::QDate: {
-			if (Z_TYPE_P(arg) != IS_STRING) {
-				zend_argument_type_error(arg_num, "must be of type string (an ISO 8601 date) for QDate, %s given", zend_zval_value_name(arg));
-				return false;
-			}
-			QDate date = QDate::fromString(phpqt_qstring(Z_STR_P(arg)), Qt::ISODate);
-			if (!date.isValid()) {
-				zend_argument_value_error(arg_num, "must be an ISO 8601 date (yyyy-MM-dd)");
-				return false;
-			}
-			*static_cast<QDate *>(data) = date;
-			return true;
-		}
 	}
 
 	if (type.flags() & QMetaType::IsEnumeration) {
@@ -388,13 +461,15 @@ ZEND_METHOD(QMetaObject, invokeMethod)
 {
 	zend_object *object_obj;
 	zend_string *member;
+	zend_object *type_case;
 	zval *args = nullptr;
 	uint32_t argc = 0;
 	bool failed;
 
-	ZEND_PARSE_PARAMETERS_START(2, -1)
+	ZEND_PARSE_PARAMETERS_START(3, -1)
 		Z_PARAM_OBJ_OF_CLASS(object_obj, phpqt_ce_QObject)
 		Z_PARAM_STR(member)
+		Z_PARAM_OBJ_OF_CLASS(type_case, phpqt_ce_Qt_ConnectionType)
 		Z_PARAM_VARIADIC('*', args, argc)
 	ZEND_PARSE_PARAMETERS_END();
 
@@ -402,16 +477,21 @@ ZEND_METHOD(QMetaObject, invokeMethod)
 	if (failed) {
 		RETURN_THROWS();
 	}
+	Qt::ConnectionType type = static_cast<Qt::ConnectionType>(phpqt_enum_value(type_case, 0));
 
 	if (argc == 0) {
-		RETURN_BOOL(QMetaObject::invokeMethod(object, ZSTR_VAL(member)));
+		RETURN_BOOL(QMetaObject::invokeMethod(object, ZSTR_VAL(member), type));
 	}
 	if (argc > 10) {
 		zend_argument_count_error("QMetaObject::invokeMethod() passes at most 10 arguments, %u given", argc);
 		RETURN_THROWS();
 	}
 
-	/* The member of that name taking that many arguments; the most derived class's wins. */
+	/*
+	 * Arguments convert to the parameter types of the member of that name taking that many
+	 * arguments (the most derived class's); with no such member each takes the type of its
+	 * PHP value, and Qt's lookup answers.
+	 */
 	const QMetaObject *meta = object->metaObject();
 	QMetaMethod method;
 	for (int i = meta->methodCount() - 1; i >= 0; i--) {
@@ -421,21 +501,18 @@ ZEND_METHOD(QMetaObject, invokeMethod)
 			break;
 		}
 	}
-	if (!method.isValid()) {
-		RETURN_FALSE;
-	}
 
 	QVariant values[10];
 	QGenericArgument generic[10];
 	for (uint32_t i = 0; i < argc; i++) {
-		QMetaType type = method.parameterMetaType(static_cast<int>(i));
-		if (!phpqt_zval_to_variant(&args[i], type, &values[i], i + 3)) {
+		QMetaType param = method.isValid() ? method.parameterMetaType(static_cast<int>(i)) : QMetaType();
+		if (!phpqt_zval_to_variant(&args[i], param, &values[i], i + 4)) {
 			RETURN_THROWS();
 		}
-		generic[i] = QGenericArgument(type.name(), values[i].constData());
+		generic[i] = QGenericArgument(values[i].metaType().name(), values[i].constData());
 	}
 
-	RETURN_BOOL(method.invoke(object, Qt::DirectConnection,
+	RETURN_BOOL(QMetaObject::invokeMethod(object, ZSTR_VAL(member), type,
 		generic[0], generic[1], generic[2], generic[3], generic[4],
 		generic[5], generic[6], generic[7], generic[8], generic[9]));
 }

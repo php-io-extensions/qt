@@ -30,7 +30,6 @@ static void phpqt_destroy_char_format(void *ptr) { delete static_cast<QTextCharF
 static void phpqt_destroy_text_cursor(void *ptr) { delete static_cast<QTextCursor *>(ptr); }
 /* A block is held as a cursor at its start: the cursor follows the document's edits and goes null with it. */
 static void phpqt_destroy_text_block(void *ptr) { delete static_cast<QTextCursor *>(ptr); }
-static void phpqt_destroy_extra_selection(void *ptr) { delete static_cast<QTextEdit::ExtraSelection *>(ptr); }
 
 void phpqt_register_QText()
 {
@@ -48,22 +47,11 @@ void phpqt_register_QText()
 	phpqt_value_setup(phpqt_ce_QTextCursor);
 	phpqt_ce_QTextBlock = register_class_QTextBlock();
 	phpqt_value_setup(phpqt_ce_QTextBlock);
-	phpqt_ce_QTextEditExtraSelection = register_class_QTextEditExtraSelection();
-	phpqt_value_setup(phpqt_ce_QTextEditExtraSelection);
+	phpqt_ce_QTextEdit_ExtraSelection = register_class_QTextEdit_ExtraSelection();
 
 	phpqt_ce_QTextDocument = register_class_QTextDocument(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QTextDocument);
 	phpqt_map_class("QTextDocument", phpqt_ce_QTextDocument);
-}
-
-/* A second __construct() on a value wrapper. */
-static bool phpqt_value_fresh(zend_object *wrapper)
-{
-	if (phpqt_value_from(wrapper)->constructed) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s::__construct() called twice", ZSTR_VAL(wrapper->ce->name));
-		return false;
-	}
-	return true;
 }
 
 static void phpqt_return_color(zval *rv, const QColor &color)
@@ -87,7 +75,8 @@ static void phpqt_return_char_format(zval *rv, const QTextCharFormat &format)
 static void phpqt_return_text_block(zval *rv, const QTextBlock &block)
 {
 	object_init_ex(rv, phpqt_ce_QTextBlock);
-	phpqt_value_hold(Z_OBJ_P(rv), new QTextCursor(block), true, phpqt_destroy_text_block);
+	/* Qt's invalid block may still name its document; a cursor there would land on block 0, so it is the null cursor. */
+	phpqt_value_hold(Z_OBJ_P(rv), block.isValid() ? new QTextCursor(block) : new QTextCursor(), true, phpqt_destroy_text_block);
 }
 
 void phpqt_return_text_cursor(zval *rv, const QTextCursor &cursor)
@@ -96,10 +85,23 @@ void phpqt_return_text_cursor(zval *rv, const QTextCursor &cursor)
 	phpqt_value_hold(Z_OBJ_P(rv), new QTextCursor(cursor), true, phpqt_destroy_text_cursor);
 }
 
+/* The struct's two fields, each a copy of Qt's, as the PHP object's properties. */
+static void phpqt_extra_selection_fields(zend_object *obj, zval *cursor, zval *format)
+{
+	zend_update_property(phpqt_ce_QTextEdit_ExtraSelection, obj, "cursor", sizeof("cursor") - 1, cursor);
+	zend_update_property(phpqt_ce_QTextEdit_ExtraSelection, obj, "format", sizeof("format") - 1, format);
+}
+
 void phpqt_return_extra_selection(zval *rv, const QTextEdit::ExtraSelection &selection)
 {
-	object_init_ex(rv, phpqt_ce_QTextEditExtraSelection);
-	phpqt_value_hold(Z_OBJ_P(rv), new QTextEdit::ExtraSelection(selection), true, phpqt_destroy_extra_selection);
+	zval cursor, format;
+
+	object_init_ex(rv, phpqt_ce_QTextEdit_ExtraSelection);
+	phpqt_return_text_cursor(&cursor, selection.cursor);
+	phpqt_return_char_format(&format, selection.format);
+	phpqt_extra_selection_fields(Z_OBJ_P(rv), &cursor, &format);
+	zval_ptr_dtor(&cursor);
+	zval_ptr_dtor(&format);
 }
 
 /* ---- QColor ------------------------------------------------------------ */
@@ -120,8 +122,7 @@ ZEND_METHOD(QColor, __construct)
 		RETURN_THROWS();
 	}
 	for (int i = 0; i < 4; i++) {
-		if (parts[i] < 0 || parts[i] > 255) {
-			zend_argument_value_error(i + 1, "must be between 0 and 255");
+		if (!phpqt_long_fits(parts[i], INT_MIN, INT_MAX, (uint32_t) i + 1)) {
 			RETURN_THROWS();
 		}
 	}
@@ -142,14 +143,25 @@ PHPQT_COLOR_PART(green)
 PHPQT_COLOR_PART(blue)
 PHPQT_COLOR_PART(alpha)
 
+ZEND_METHOD(QColor, isValid)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QColor, color);
+
+	RETURN_BOOL(color->isValid());
+}
+
 /* ---- QBrush ------------------------------------------------------------ */
 
 ZEND_METHOD(QBrush, __construct)
 {
 	zend_object *color_obj;
+	zend_object *style = nullptr;
 
-	ZEND_PARSE_PARAMETERS_START(1, 1)
+	ZEND_PARSE_PARAMETERS_START(1, 2)
 		Z_PARAM_OBJ_OF_CLASS(color_obj, phpqt_ce_QColor)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(style, phpqt_ce_Qt_BrushStyle)
 	ZEND_PARSE_PARAMETERS_END();
 
 	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
@@ -160,7 +172,16 @@ ZEND_METHOD(QBrush, __construct)
 		RETURN_THROWS();
 	}
 
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QBrush(*color), true, phpqt_destroy_brush);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QBrush(*color, static_cast<Qt::BrushStyle>(phpqt_enum_value(style, Qt::SolidPattern))),
+		true, phpqt_destroy_brush);
+}
+
+ZEND_METHOD(QBrush, style)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QBrush, brush);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_BrushStyle, static_cast<zend_long>(brush->style()));
 }
 
 ZEND_METHOD(QBrush, color)
@@ -173,11 +194,10 @@ ZEND_METHOD(QBrush, color)
 
 /* ---- QTextFormat (property ids) ---------------------------------------- */
 
+/* Private: the class holds QTextFormat's property ids; formats are QTextCharFormat values. */
 ZEND_METHOD(QTextFormat, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QTextFormat holds property ids: construct a QTextCharFormat");
 }
 
 /* ---- QTextCharFormat --------------------------------------------------- */
@@ -228,15 +248,8 @@ ZEND_METHOD(QTextCharFormat, setProperty)
 	PHPQT_VALUE_THIS(QTextCharFormat, format);
 
 	QVariant variant;
-	switch (Z_TYPE_P(value)) {
-		case IS_TRUE:   variant = QVariant(true); break;
-		case IS_FALSE:  variant = QVariant(false); break;
-		case IS_LONG:   variant = QVariant((qlonglong) Z_LVAL_P(value)); break;
-		case IS_DOUBLE: variant = QVariant(Z_DVAL_P(value)); break;
-		case IS_STRING: variant = QVariant(phpqt_qstring(Z_STR_P(value))); break;
-		default:
-			zend_argument_type_error(2, "must be of type bool|int|float|string, %s given", zend_zval_value_name(value));
-			RETURN_THROWS();
+	if (!phpqt_long_fits(id, INT_MIN, INT_MAX, 1) || !phpqt_zval_to_variant(value, QMetaType(), &variant, 2)) {
+		RETURN_THROWS();
 	}
 	format->setProperty((int) id, variant);
 }
@@ -298,14 +311,7 @@ ZEND_METHOD(QTextCursor, setPosition)
 		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QTextCursor_MoveMode)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QTextCursor, cursor);
-
-	if (cursor->isNull()) {
-		zend_throw_exception(phpqt_ce_QtException, "QTextCursor's document has been deleted", 0);
-		RETURN_THROWS();
-	}
-	int last = cursor->document()->characterCount() - 1;
-	if (position < 0 || position > last) {
-		zend_argument_value_error(1, "must be a position between 0 and %d", last);
+	if (!phpqt_long_fits(position, INT_MIN, INT_MAX, 1)) {
 		RETURN_THROWS();
 	}
 
@@ -325,13 +331,7 @@ ZEND_METHOD(QTextCursor, movePosition)
 		Z_PARAM_LONG(n)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QTextCursor, cursor);
-
-	if (cursor->isNull()) {
-		zend_throw_exception(phpqt_ce_QtException, "QTextCursor's document has been deleted", 0);
-		RETURN_THROWS();
-	}
-	if (n < INT_MIN || n > INT_MAX) {
-		zend_argument_value_error(3, "must be between %d and %d", INT_MIN, INT_MAX);
+	if (!phpqt_long_fits(n, INT_MIN, INT_MAX, 3)) {
 		RETURN_THROWS();
 	}
 
@@ -362,13 +362,20 @@ ZEND_METHOD(QTextCursor, hasSelection)
 	RETURN_BOOL(cursor->hasSelection());
 }
 
+ZEND_METHOD(QTextCursor, isNull)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTextCursor, cursor);
+
+	RETURN_BOOL(cursor->isNull());
+}
+
 /* ---- QTextBlock -------------------------------------------------------- */
 
+/* Private: QTextDocument::findBlockByNumber() hands blocks out. */
 ZEND_METHOD(QTextBlock, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QTextBlock is handed out by QTextDocument::findBlockByNumber()");
 }
 
 #define PHPQT_BLOCK_INT(name) \
@@ -376,10 +383,6 @@ ZEND_METHOD(QTextBlock, name) \
 { \
 	ZEND_PARSE_PARAMETERS_NONE(); \
 	PHPQT_VALUE_THIS(QTextCursor, start); \
-	if (start->isNull()) { \
-		zend_throw_exception(phpqt_ce_QtException, "QTextBlock's document has been deleted", 0); \
-		RETURN_THROWS(); \
-	} \
 	RETURN_LONG(start->block().name()); \
 }
 
@@ -388,55 +391,34 @@ PHPQT_BLOCK_INT(length)
 PHPQT_BLOCK_INT(blockNumber)
 PHPQT_BLOCK_INT(firstLineNumber)
 
-/* ---- QTextEditExtraSelection ------------------------------------------- */
-
-ZEND_METHOD(QTextEditExtraSelection, __construct)
+ZEND_METHOD(QTextBlock, isValid)
 {
-	zend_object *cursor_obj, *format_obj;
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTextCursor, start);
+
+	RETURN_BOOL(start->block().isValid());
+}
+
+/* ---- QTextEdit\ExtraSelection ------------------------------------------ */
+
+ZEND_METHOD(QTextEdit_ExtraSelection, __construct)
+{
+	zval *cursor, *format;
 
 	ZEND_PARSE_PARAMETERS_START(2, 2)
-		Z_PARAM_OBJ_OF_CLASS(cursor_obj, phpqt_ce_QTextCursor)
-		Z_PARAM_OBJ_OF_CLASS(format_obj, phpqt_ce_QTextCharFormat)
+		Z_PARAM_OBJECT_OF_CLASS(cursor, phpqt_ce_QTextCursor)
+		Z_PARAM_OBJECT_OF_CLASS(format, phpqt_ce_QTextCharFormat)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
-		RETURN_THROWS();
-	}
-	QTextCursor *cursor = static_cast<QTextCursor *>(phpqt_value_arg(cursor_obj, 1));
-	QTextCharFormat *format = cursor != nullptr ? static_cast<QTextCharFormat *>(phpqt_value_arg(format_obj, 2)) : nullptr;
-	if (format == nullptr) {
-		RETURN_THROWS();
-	}
-
-	QTextEdit::ExtraSelection *selection = new QTextEdit::ExtraSelection();
-	selection->cursor = *cursor;
-	selection->format = *format;
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), selection, true, phpqt_destroy_extra_selection);
-}
-
-ZEND_METHOD(QTextEditExtraSelection, cursor)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_VALUE_THIS(QTextEdit::ExtraSelection, selection);
-
-	phpqt_return_text_cursor(return_value, selection->cursor);
-}
-
-ZEND_METHOD(QTextEditExtraSelection, format)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_VALUE_THIS(QTextEdit::ExtraSelection, selection);
-
-	phpqt_return_char_format(return_value, selection->format);
+	phpqt_extra_selection_fields(Z_OBJ_P(ZEND_THIS), cursor, format);
 }
 
 /* ---- QTextDocument ----------------------------------------------------- */
 
+/* Private: a text edit's own, QPlainTextEdit::document(). */
 ZEND_METHOD(QTextDocument, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QTextDocument is a text edit's: QPlainTextEdit::document()");
 }
 
 ZEND_METHOD(QTextDocument, findBlockByNumber)
@@ -447,12 +429,11 @@ ZEND_METHOD(QTextDocument, findBlockByNumber)
 		Z_PARAM_LONG(number)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QTextDocument, document);
-
-	QTextBlock block = number >= 0 && number <= INT_MAX ? document->findBlockByNumber((int) number) : QTextBlock();
-	if (!block.isValid()) {
-		RETURN_NULL();
+	if (!phpqt_long_fits(number, INT_MIN, INT_MAX, 1)) {
+		RETURN_THROWS();
 	}
-	phpqt_return_text_block(return_value, block);
+
+	phpqt_return_text_block(return_value, document->findBlockByNumber((int) number));
 }
 
 ZEND_METHOD(QTextDocument, blockCount)

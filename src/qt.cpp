@@ -23,6 +23,8 @@ static_assert(Qt::ScrollBarAsNeeded == 0 && Qt::ScrollBarAlwaysOff == 1 && Qt::S
 	"Qt::ScrollBarPolicy values differ from the stub's Qt\\ScrollBarPolicy enum");
 static_assert(Qt::PlainText == 0 && Qt::RichText == 1 && Qt::AutoText == 2 && Qt::MarkdownText == 3,
 	"Qt::TextFormat values differ from the stub's Qt\\TextFormat enum");
+static_assert(Qt::TextDate == 0 && Qt::ISODate == 1 && Qt::RFC2822Date == 8 && Qt::ISODateWithMs == 9,
+	"Qt::DateFormat values differ from the stub's Qt\\DateFormat enum");
 static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 	"Qt::TransformationMode values differ from the stub's Qt\\TransformationMode enum");
 
@@ -31,6 +33,11 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/Qt_WidgetAttribute.inc"
 #include "checks/Qt_AlignmentFlag.inc"
 #include "checks/Qt_TextInteractionFlag.inc"
+#include "checks/Qt_WindowType.inc"
+#include "checks/Qt_ImageConversionFlag.inc"
+#include "checks/Qt_BrushStyle.inc"
+#include "checks/Qt_ConnectionType.inc"
+#include "checks/Qt_ApplicationAttribute.inc"
 
 ZEND_DECLARE_MODULE_GLOBALS(qt)
 
@@ -49,6 +56,7 @@ zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
 zend_class_entry *phpqt_ce_QEvent_Type;
 zend_class_entry *phpqt_ce_Qt_WidgetAttribute;
+zend_class_entry *phpqt_ce_Qt_ApplicationAttribute;
 zend_class_entry *phpqt_ce_QWindow;
 zend_class_entry *phpqt_ce_QOpenGLWidget;
 zend_class_entry *phpqt_ce_QVulkanInstance;
@@ -98,7 +106,7 @@ zend_class_entry *phpqt_ce_QTextCursor;
 zend_class_entry *phpqt_ce_QTextCursor_MoveMode;
 zend_class_entry *phpqt_ce_QTextCursor_MoveOperation;
 zend_class_entry *phpqt_ce_QTextBlock;
-zend_class_entry *phpqt_ce_QTextEditExtraSelection;
+zend_class_entry *phpqt_ce_QTextEdit_ExtraSelection;
 zend_class_entry *phpqt_ce_QTextDocument;
 zend_class_entry *phpqt_ce_QScrollBar;
 zend_class_entry *phpqt_ce_QPlainTextEdit_LineWrapMode;
@@ -116,6 +124,9 @@ zend_class_entry *phpqt_ce_QDateEdit;
 zend_class_entry *phpqt_ce_QProgressBar;
 zend_class_entry *phpqt_ce_QFrame;
 zend_class_entry *phpqt_ce_QScrollArea;
+zend_class_entry *phpqt_ce_QSplitter;
+zend_class_entry *phpqt_ce_QSplitterHandle;
+zend_class_entry *phpqt_ce_QTabWidget;
 zend_class_entry *phpqt_ce_QAbstractItemView;
 zend_class_entry *phpqt_ce_QTableWidget;
 zend_class_entry *phpqt_ce_QMediaPlayer_PlaybackState;
@@ -128,6 +139,11 @@ zend_class_entry *phpqt_ce_QVideoWidget;
 zend_class_entry *phpqt_ce_QSpacerItem;
 zend_class_entry *phpqt_ce_Qt_TextFormat;
 zend_class_entry *phpqt_ce_Qt_TransformationMode;
+zend_class_entry *phpqt_ce_Qt_DateFormat;
+zend_class_entry *phpqt_ce_Qt_WindowType;
+zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
+zend_class_entry *phpqt_ce_Qt_BrushStyle;
+zend_class_entry *phpqt_ce_Qt_ConnectionType;
 
 ZEND_FUNCTION(qVersion)
 {
@@ -141,6 +157,7 @@ void phpqt_register_enums()
 	phpqt_ce_QEventLoop_ProcessEventsFlag = register_class_QEventLoop_ProcessEventsFlag();
 	phpqt_ce_Qt_TimerType = register_class_Qt_TimerType();
 	phpqt_ce_Qt_WidgetAttribute = register_class_Qt_WidgetAttribute();
+	phpqt_ce_Qt_ApplicationAttribute = register_class_Qt_ApplicationAttribute();
 	phpqt_ce_QEvent_Type = register_class_QEvent_Type();
 	phpqt_ce_Qt_AlignmentFlag = register_class_Qt_AlignmentFlag();
 	phpqt_ce_Qt_TextInteractionFlag = register_class_Qt_TextInteractionFlag();
@@ -149,6 +166,11 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_ScrollBarPolicy = register_class_Qt_ScrollBarPolicy();
 	phpqt_ce_Qt_TextFormat = register_class_Qt_TextFormat();
 	phpqt_ce_Qt_TransformationMode = register_class_Qt_TransformationMode();
+	phpqt_ce_Qt_DateFormat = register_class_Qt_DateFormat();
+	phpqt_ce_Qt_WindowType = register_class_Qt_WindowType();
+	phpqt_ce_Qt_ImageConversionFlag = register_class_Qt_ImageConversionFlag();
+	phpqt_ce_Qt_BrushStyle = register_class_Qt_BrushStyle();
+	phpqt_ce_Qt_ConnectionType = register_class_Qt_ConnectionType();
 }
 
 static PHP_GINIT_FUNCTION(qt)
@@ -190,6 +212,12 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QControls();
 	phpqt_register_QMultimedia();
 	phpqt_register_QInputEvents();
+	phpqt_register_QValues();
+
+#ifdef PHPQT_PROBES
+	/* A probe build: tests/Probes runs only where env PHPQT_PROBE_OFF can turn a kept refusal off. */
+	REGISTER_BOOL_CONSTANT("PHPQT_PROBES", true, CONST_PERSISTENT);
+#endif
 
 	return SUCCESS;
 }

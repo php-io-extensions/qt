@@ -1,10 +1,14 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 0aaeb110c4c09598b5b47844c13593e93872fa78 */
+ * Stub hash: 23ffb1c356c9aac19091ff6b3d782ed0de99343b */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QSurfaceFormat___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QSurfaceFormat_defaultFormat, 0, 0, QSurfaceFormat, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QSurfaceFormat_setDefaultFormat, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, format, QSurfaceFormat, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QSurfaceFormat_majorVersion, 0, 0, IS_LONG, 0)
@@ -33,6 +37,7 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QOpenGLWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+	ZEND_ARG_OBJ_TYPE_MASK(0, f, Qt\\WindowType, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QOpenGLWidget_makeCurrent, 0, 0, IS_VOID, 0)
@@ -47,9 +52,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QOpenGLWidget_update arginfo_class_QOpenGLWidget_makeCurrent
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QOpenGLWidget_setFormat, 0, 1, IS_VOID, 0)
-	ZEND_ARG_OBJ_INFO(0, format, QSurfaceFormat, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QOpenGLWidget_setFormat arginfo_class_QSurfaceFormat_setDefaultFormat
 
 #define arginfo_class_QOpenGLWidget_format arginfo_class_QSurfaceFormat_defaultFormat
 
@@ -60,6 +63,7 @@ ZEND_END_ARG_INFO()
 
 ZEND_METHOD(QSurfaceFormat, __construct);
 ZEND_METHOD(QSurfaceFormat, defaultFormat);
+ZEND_METHOD(QSurfaceFormat, setDefaultFormat);
 ZEND_METHOD(QSurfaceFormat, majorVersion);
 ZEND_METHOD(QSurfaceFormat, minorVersion);
 ZEND_METHOD(QSurfaceFormat, setVersion);
@@ -80,6 +84,7 @@ ZEND_METHOD(QOpenGLPainter, __construct);
 static const zend_function_entry class_QSurfaceFormat_methods[] = {
 	ZEND_ME(QSurfaceFormat, __construct, arginfo_class_QSurfaceFormat___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QSurfaceFormat, defaultFormat, arginfo_class_QSurfaceFormat_defaultFormat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QSurfaceFormat, setDefaultFormat, arginfo_class_QSurfaceFormat_setDefaultFormat, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QSurfaceFormat, majorVersion, arginfo_class_QSurfaceFormat_majorVersion, ZEND_ACC_PUBLIC)
 	ZEND_ME(QSurfaceFormat, minorVersion, arginfo_class_QSurfaceFormat_minorVersion, ZEND_ACC_PUBLIC)
 	ZEND_ME(QSurfaceFormat, setVersion, arginfo_class_QSurfaceFormat_setVersion, ZEND_ACC_PUBLIC)

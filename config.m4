@@ -3,7 +3,18 @@ PHP_ARG_ENABLE([qt],
   [AS_HELP_STRING([--enable-qt], [Enable Qt 6 bindings])],
   [no])
 
+PHP_ARG_ENABLE([qt-probes],
+  [whether to build the qt probe switch],
+  [AS_HELP_STRING([--enable-qt-probes],
+    [Build the PHPQT_PROBE_OFF switch that tests/Probes drives: env PHPQT_PROBE_OFF=<site id> turns that kept refusal off. Never for a release build])],
+  [no],
+  [no])
+
 if test "$PHP_QT" != "no"; then
+  if test "$PHP_QT_PROBES" != "no"; then
+    AC_DEFINE([PHPQT_PROBES], [1], [Kept refusal sites can be turned off through env PHPQT_PROBE_OFF])
+  fi
+
   PHP_REQUIRE_CXX()
   PKG_CHECK_MODULES([QT], [Qt6Widgets >= 6.4 Qt6Gui >= 6.4 Qt6Core >= 6.4 Qt6Multimedia >= 6.4 Qt6MultimediaWidgets >= 6.4 Qt6OpenGL >= 6.4 Qt6OpenGLWidgets >= 6.4])
 
@@ -31,7 +42,7 @@ if test "$PHP_QT" != "no"; then
   fi
 
   PHP_NEW_EXTENSION([qt],
-    [src/qt.cpp src/runtime.cpp src/QObject.cpp src/QCoreApplication.cpp src/QTimer.cpp src/QSocketNotifier.cpp src/QAbstractEventDispatcher.cpp src/QWidget.cpp src/QMenu.cpp src/QtGlue.cpp src/QLayout.cpp src/QControls.cpp src/QGui.cpp src/QText.cpp src/QMultimedia.cpp src/QWindow.cpp src/QVulkan.cpp src/QOpenGLWidget.cpp src/QInputEvents.cpp],
+    [src/qt.cpp src/runtime.cpp src/QObject.cpp src/QCoreApplication.cpp src/QTimer.cpp src/QSocketNotifier.cpp src/QAbstractEventDispatcher.cpp src/QWidget.cpp src/QMenu.cpp src/QtGlue.cpp src/QLayout.cpp src/QControls.cpp src/QGui.cpp src/QText.cpp src/QMultimedia.cpp src/QWindow.cpp src/QVulkan.cpp src/QOpenGLWidget.cpp src/QInputEvents.cpp src/QValues.cpp],
     [$ext_shared],, [$QT_CFLAGS -std=c++17 -fPIC -DQT_NO_KEYWORDS -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1], [cxx])
   PHP_ADD_BUILD_DIR([$ext_builddir/src])
 fi

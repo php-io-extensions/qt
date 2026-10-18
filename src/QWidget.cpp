@@ -45,14 +45,16 @@ ZEND_METHOD(QWidget, createWindowContainer)
 {
 	zend_object *window_obj;
 	zend_object *parent = nullptr;
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = 0;
 	bool failed;
 
-	ZEND_PARSE_PARAMETERS_START(1, 2)
+	ZEND_PARSE_PARAMETERS_START(1, 3)
 		Z_PARAM_OBJ_OF_CLASS(window_obj, phpqt_ce_QWindow)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_WindowType, flags_long)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	QWindow *window = static_cast<QWindow *>(phpqt_arg(window_obj, 1, &failed));
 	if (failed) {
@@ -63,7 +65,8 @@ ZEND_METHOD(QWidget, createWindowContainer)
 		RETURN_THROWS();
 	}
 
-	phpqt_box(return_value, QWidget::createWindowContainer(window, qparent));
+	phpqt_box(return_value, QWidget::createWindowContainer(window, qparent,
+		Qt::WindowFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long)))));
 }
 
 #define PHPQT_WIDGET_VOID(name, call) \
@@ -159,19 +162,19 @@ ZEND_METHOD(QWidget, parentWidget)
 
 ZEND_METHOD(QWidget, mapFromGlobal)
 {
-	double x;
-	double y;
+	zend_object *pos_obj;
 
-	ZEND_PARSE_PARAMETERS_START(2, 2)
-		Z_PARAM_DOUBLE(x)
-		Z_PARAM_DOUBLE(y)
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(pos_obj, phpqt_ce_QPointF)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QWidget, widget);
 
-	QPointF local = widget->mapFromGlobal(QPointF(x, y));
-	array_init_size(return_value, 2);
-	add_next_index_double(return_value, local.x());
-	add_next_index_double(return_value, local.y());
+	QPointF *pos = static_cast<QPointF *>(phpqt_value_arg(pos_obj, 1));
+	if (pos == nullptr) {
+		RETURN_THROWS();
+	}
+
+	phpqt_return_qpointf(return_value, widget->mapFromGlobal(*pos));
 }
 
 ZEND_METHOD(QWidget, setAttribute)
@@ -247,19 +250,12 @@ PHPQT_WIDGET_INT(minimumWidth, minimumWidth)
 PHPQT_WIDGET_INT(minimumHeight, minimumHeight)
 PHPQT_WIDGET_BOOL(isEnabled, isEnabled)
 
-static void phpqt_return_size(zval *rv, const QSize &size)
-{
-	array_init_size(rv, 2);
-	add_next_index_long(rv, size.width());
-	add_next_index_long(rv, size.height());
-}
-
 ZEND_METHOD(QWidget, sizeHint)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QWidget, widget);
 
-	phpqt_return_size(return_value, widget->sizeHint());
+	phpqt_return_qsize(return_value, widget->sizeHint());
 }
 
 ZEND_METHOD(QWidget, size)
@@ -267,7 +263,7 @@ ZEND_METHOD(QWidget, size)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QWidget, widget);
 
-	phpqt_return_size(return_value, widget->size());
+	phpqt_return_qsize(return_value, widget->size());
 }
 
 ZEND_METHOD(QWidget, pos)
@@ -275,10 +271,7 @@ ZEND_METHOD(QWidget, pos)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QWidget, widget);
 
-	QPoint pos = widget->pos();
-	array_init_size(return_value, 2);
-	add_next_index_long(return_value, pos.x());
-	add_next_index_long(return_value, pos.y());
+	phpqt_return_qpoint(return_value, widget->pos());
 }
 
 ZEND_METHOD(QWidget, geometry)
@@ -286,12 +279,7 @@ ZEND_METHOD(QWidget, geometry)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QWidget, widget);
 
-	QRect rect = widget->geometry();
-	array_init_size(return_value, 4);
-	add_assoc_long(return_value, "x", rect.x());
-	add_assoc_long(return_value, "y", rect.y());
-	add_assoc_long(return_value, "width", rect.width());
-	add_assoc_long(return_value, "height", rect.height());
+	phpqt_return_qrect(return_value, widget->geometry());
 }
 
 ZEND_METHOD(QWidget, setGeometry)
@@ -390,7 +378,20 @@ ZEND_METHOD(QWidget, font)
 	phpqt_return_font(return_value, widget->font());
 }
 
-/* QWidget::setParent(QWidget *): the QObject overload is hidden, so a non-widget parent is refused. */
+/*
+ * QWidget::setParent(QWidget *parent): PHP inheritance keeps QObject::setParent's ?QObject
+ * parameter, so a non-widget parent is a TypeError of the native QWidget * parameter.
+ */
+static bool phpqt_widget_parent(zend_object *parent, uint32_t arg_num)
+{
+	if (parent != nullptr && !instanceof_function(parent->ce, phpqt_ce_QWidget)) {
+		zend_argument_type_error(arg_num, "must be of type ?QWidget, %s given", ZSTR_VAL(parent->ce->name));
+		return false;
+	}
+
+	return true;
+}
+
 ZEND_METHOD(QWidget, setParent)
 {
 	zend_object *parent = nullptr;
@@ -401,8 +402,7 @@ ZEND_METHOD(QWidget, setParent)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QWidget, widget);
 
-	if (parent != nullptr && !instanceof_function(parent->ce, phpqt_ce_QWidget)) {
-		zend_argument_type_error(1, "must be of type ?QWidget, %s given", ZSTR_VAL(parent->ce->name));
+	if (!phpqt_widget_parent(parent, 1)) {
 		RETURN_THROWS();
 	}
 

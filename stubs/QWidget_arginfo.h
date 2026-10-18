@@ -1,13 +1,15 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: d274f726ad8b40ffc6324ad14ae95b66ebd450c2 */
+ * Stub hash: 757e908fb4099f1ea890216e1cfed1ab86e55bd4 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+	ZEND_ARG_OBJ_TYPE_MASK(0, f, Qt\\WindowType, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_createWindowContainer, 0, 1, QWidget, 0)
 	ZEND_ARG_OBJ_INFO(0, window, QWindow, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+	ZEND_ARG_OBJ_TYPE_MASK(0, flags, Qt\\WindowType, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_show, 0, 0, IS_VOID, 0)
@@ -56,9 +58,8 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_parentWidget, 0, 0, QWidget, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_mapFromGlobal, 0, 2, IS_ARRAY, 0)
-	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
-	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_mapFromGlobal, 0, 1, QPointF, 0)
+	ZEND_ARG_OBJ_INFO(0, pos, QPointF, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setAttribute, 0, 1, IS_VOID, 0)
@@ -88,7 +89,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_setFixedSize arginfo_class_QWidget_resize
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_sizeHint, 0, 0, IS_ARRAY, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_sizeHint, 0, 0, QSize, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_size arginfo_class_QWidget_sizeHint
@@ -110,9 +111,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setGeometry, 0, 4,
 	ZEND_ARG_TYPE_INFO(0, h, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QWidget_geometry arginfo_class_QWidget_sizeHint
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_geometry, 0, 0, QRect, 0)
+ZEND_END_ARG_INFO()
 
-#define arginfo_class_QWidget_pos arginfo_class_QWidget_sizeHint
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_pos, 0, 0, QPoint, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setEnabled, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, enabled, _IS_BOOL, 0)

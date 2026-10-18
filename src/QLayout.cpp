@@ -34,7 +34,9 @@ void phpqt_register_QLayout()
 	phpqt_object_setup(phpqt_ce_QHBoxLayout);
 	phpqt_map_class("QHBoxLayout", phpqt_ce_QHBoxLayout);
 
-	phpqt_ce_QSpacerItem = register_class_QSpacerItem();
+	phpqt_ce_QLayoutItem = register_class_QLayoutItem();
+	phpqt_value_setup(phpqt_ce_QLayoutItem);
+	phpqt_ce_QSpacerItem = register_class_QSpacerItem(phpqt_ce_QLayoutItem);
 	phpqt_value_setup(phpqt_ce_QSpacerItem);
 
 	phpqt_ce_QGridLayout = register_class_QGridLayout(phpqt_ce_QLayout);
@@ -56,12 +58,6 @@ static void phpqt_construct_layout(INTERNAL_FUNCTION_PARAMETERS)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
-
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QApplication first", ZSTR_VAL(EX(func)->common.scope->name));
-		RETURN_THROWS();
-	}
 
 	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 1, &failed));
 	if (failed) {
@@ -113,12 +109,6 @@ static void phpqt_release_hold(QLayout *layout, QWidget *widget)
 	}
 }
 
-/* The widget of a layout item: null for a spacer, a nested layout or no item. */
-static void phpqt_return_item_widget(zval *rv, QLayoutItem *item)
-{
-	phpqt_box(rv, item != nullptr ? item->widget() : nullptr);
-}
-
 /*
  * A spacer PHP made: the layout that takes it deletes it, and the destructor tells the wrapper.
  */
@@ -136,17 +126,38 @@ public:
 	zend_object *wrapper = nullptr;
 };
 
+zend_class_entry *phpqt_ce_QLayoutItem;
+
+static bool phpqt_layout_holds(void *item, QObject *owner)
+{
+	QLayout *layout = qobject_cast<QLayout *>(owner);
+
+	return layout != nullptr && layout->indexOf(static_cast<QLayoutItem *>(item)) >= 0;
+}
+
+/* An item the layout holds: a spacer PHP made comes back as its own wrapper, any other item is lent while the layout holds it. */
+static void phpqt_return_layout_item(zval *rv, QLayout *layout, QLayoutItem *item)
+{
+	if (item == nullptr) {
+		ZVAL_NULL(rv);
+		return;
+	}
+
+	auto *ours = dynamic_cast<PhpSpacerItem *>(item);
+	if (ours != nullptr && ours->wrapper != nullptr) {
+		ZVAL_OBJ_COPY(rv, ours->wrapper);
+		return;
+	}
+
+	object_init_ex(rv, item->spacerItem() != nullptr ? phpqt_ce_QSpacerItem : phpqt_ce_QLayoutItem);
+	phpqt_value_borrow(Z_OBJ_P(rv), item, layout, phpqt_layout_holds);
+}
+
 static void phpqt_destroy_spacer(void *ptr) { delete static_cast<PhpSpacerItem *>(ptr); }
 static void phpqt_forget_spacer(void *ptr) { static_cast<PhpSpacerItem *>(ptr)->wrapper = nullptr; }
 
 /* ---- QLayout ----------------------------------------------------------- */
 
-ZEND_METHOD(QLayout, __construct)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QLayout is abstract: construct a QVBoxLayout, QHBoxLayout or QGridLayout");
-}
 
 ZEND_METHOD(QLayout, setSpacing)
 {
@@ -228,7 +239,7 @@ ZEND_METHOD(QLayout, indexOf)
 	RETURN_LONG(layout->indexOf(widget));
 }
 
-ZEND_METHOD(QLayout, itemAtWidget)
+ZEND_METHOD(QLayout, itemAt)
 {
 	zend_long index;
 
@@ -237,16 +248,57 @@ ZEND_METHOD(QLayout, itemAtWidget)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QLayout, layout);
 
-	phpqt_return_item_widget(return_value, layout->itemAt(static_cast<int>(index)));
+	phpqt_return_layout_item(return_value, layout, layout->itemAt(static_cast<int>(index)));
+}
+
+/* ---- QLayoutItem ------------------------------------------------------- */
+
+ZEND_METHOD(QLayoutItem, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QLayoutItem, widget)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QLayoutItem, item);
+
+	phpqt_box(return_value, item->widget());
+}
+
+ZEND_METHOD(QLayoutItem, layout)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QLayoutItem, item);
+
+	phpqt_box(return_value, item->layout());
+}
+
+ZEND_METHOD(QLayoutItem, spacerItem)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QLayoutItem, item);
+
+	if (item->spacerItem() == nullptr) {
+		RETURN_NULL();
+	}
+	auto *ours = dynamic_cast<PhpSpacerItem *>(item);
+	if (ours != nullptr && ours->wrapper != nullptr) {
+		RETURN_OBJ_COPY(ours->wrapper);
+	}
+
+	/* Lent by the same layout as this item, or by none when PHP holds the spacer itself. */
+	phpqt_value_object *intern = phpqt_value_from(Z_OBJ_P(ZEND_THIS));
+	object_init_ex(return_value, phpqt_ce_QSpacerItem);
+	phpqt_value_borrow(Z_OBJ_P(return_value), item->spacerItem(), intern->owner != nullptr ? intern->owner->data() : nullptr, phpqt_layout_holds);
 }
 
 /* ---- QBoxLayout -------------------------------------------------------- */
 
+/* Private: only QVBoxLayout and QHBoxLayout make one here. */
 ZEND_METHOD(QBoxLayout, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QBoxLayout is made through QVBoxLayout or QHBoxLayout");
 }
 
 ZEND_METHOD(QBoxLayout, addWidget)
@@ -293,12 +345,7 @@ ZEND_METHOD(QBoxLayout, insertWidget)
 	PHPQT_THIS(QBoxLayout, box);
 
 	QWidget *widget = static_cast<QWidget *>(phpqt_arg(widget_obj, 2, &failed));
-	if (failed) {
-		RETURN_THROWS();
-	}
-	/* Qt maps only a negative index to "append" and inserts anything else unchecked. */
-	if (index > box->count()) {
-		zend_argument_value_error(1, "must be between -1 and %d (a negative index appends)", box->count());
+	if (failed || !phpqt_long_fits(index, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(stretch, INT_MIN, INT_MAX, 3)) {
 		RETURN_THROWS();
 	}
 
@@ -475,7 +522,7 @@ ZEND_METHOD(QGridLayout, itemAtPosition)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QGridLayout, grid);
 
-	phpqt_return_item_widget(return_value, grid->itemAtPosition(static_cast<int>(row), static_cast<int>(column)));
+	phpqt_return_layout_item(return_value, grid, grid->itemAtPosition(static_cast<int>(row), static_cast<int>(column)));
 }
 
 ZEND_METHOD(QLayout, invalidate)
@@ -552,8 +599,9 @@ ZEND_METHOD(QGridLayout, addItem)
 	if (spacer == nullptr) {
 		RETURN_THROWS();
 	}
-	if (!phpqt_value_from(item_obj)->owned) {
-		zend_argument_value_error(1, "already belongs to a layout");
+	/* A second layout takes the item too: both delete it, the second time freed memory. */
+	if (!PHPQT_PROBE_OFF("spacer-owned") && (!phpqt_value_from(item_obj)->owned)) {
+		zend_argument_value_error(1, "already belongs to a layout"); /* binding:spacer-owned */
 		RETURN_THROWS();
 	}
 
@@ -579,8 +627,7 @@ ZEND_METHOD(QSpacerItem, __construct)
 		Z_PARAM_OBJ_OF_CLASS(v_policy, phpqt_ce_QSizePolicy_Policy)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QSpacerItem::__construct() called twice", 0);
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
 
@@ -605,7 +652,7 @@ ZEND_METHOD(QSpacerItem, changeSize)
 		Z_PARAM_OBJ_OF_CLASS(h_policy, phpqt_ce_QSizePolicy_Policy)
 		Z_PARAM_OBJ_OF_CLASS(v_policy, phpqt_ce_QSizePolicy_Policy)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_VALUE_THIS(PhpSpacerItem, spacer);
+	PHPQT_VALUE_THIS(QSpacerItem, spacer);
 
 	spacer->changeSize(static_cast<int>(w), static_cast<int>(h),
 		static_cast<QSizePolicy::Policy>(phpqt_enum_value(h_policy, QSizePolicy::Minimum)),
@@ -615,10 +662,7 @@ ZEND_METHOD(QSpacerItem, changeSize)
 ZEND_METHOD(QSpacerItem, sizeHint)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_VALUE_THIS(PhpSpacerItem, spacer);
+	PHPQT_VALUE_THIS(QSpacerItem, spacer);
 
-	QSize size = spacer->sizeHint();
-	array_init_size(return_value, 2);
-	add_next_index_long(return_value, size.width());
-	add_next_index_long(return_value, size.height());
+	phpqt_return_qsize(return_value, spacer->sizeHint());
 }

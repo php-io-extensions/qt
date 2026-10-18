@@ -66,7 +66,7 @@ namespace {
      */
     class QLabel extends QWidget
     {
-        public function __construct(string $text = "", ?QWidget $parent = null) {}
+        public function __construct(string $text = "", ?QWidget $parent = null, Qt\WindowType|int $f = 0) {}
 
         public function text(): string {}
 
@@ -109,10 +109,8 @@ namespace {
      *
      * @not-serializable
      */
-    class QAbstractButton extends QWidget
+    abstract class QAbstractButton extends QWidget
     {
-        private function __construct() {}
-
         public function text(): string {}
 
         public function setText(string $text): void {}
@@ -206,7 +204,8 @@ namespace {
     {
         public function __construct(?QWidget $parent = null) {}
 
-        public function addItem(string $text): void {}
+        /** @param mixed $userData null, bool, int, float or string, held as a QVariant */
+        public function addItem(string $text, mixed $userData = null): void {}
 
         /** @param string[] $texts */
         public function addItems(array $texts): void {}
@@ -302,14 +301,10 @@ namespace {
 
         public function ensureCursorVisible(): void {}
 
-        /**
-         * Cursors on this edit's document (ValueError otherwise).
-         *
-         * @param array $selections list of QTextEditExtraSelection
-         */
+        /** @param array $selections list of QTextEdit\ExtraSelection */
         public function setExtraSelections(array $selections): void {}
 
-        /** @return list<QTextEditExtraSelection> */
+        /** @return list<QTextEdit\ExtraSelection> */
         public function extraSelections(): array {}
 
         public function lineWrapMode(): QPlainTextEdit\LineWrapMode {}
@@ -335,28 +330,33 @@ namespace {
     }
 
     /**
-     * Dates cross as ISO 8601 strings (yyyy-MM-dd): date(), setDate(), and the dateChanged(QDate) signal.
+     * A date edit's calendar popup (QDateEdit::calendarWidget()).
      *
+     * @not-serializable
+     */
+    class QCalendarWidget extends QWidget
+    {
+        private function __construct() {}
+    }
+
+    /**
      * @not-serializable
      */
     class QDateEdit extends QWidget
     {
         public function __construct(?QWidget $parent = null) {}
 
-        public function date(): string {}
+        public function date(): QDate {}
 
-        /** @param string $date an ISO 8601 date; anything else is a ValueError */
-        public function setDate(string $date): void {}
+        public function setDate(QDate $date): void {}
 
         public function setCalendarPopup(bool $enable): void {}
 
-        /** The popup's QCalendarWidget (boxed as QWidget, the nearest bound class); null until setCalendarPopup(true). */
-        public function calendarWidget(): ?QWidget {}
+        public function calendarWidget(): ?QCalendarWidget {}
 
-        public function minimumDate(): string {}
+        public function minimumDate(): QDate {}
 
-        /** @param string $min an ISO 8601 date */
-        public function setMinimumDate(string $min): void {}
+        public function setMinimumDate(QDate $min): void {}
 
         public function setDisplayFormat(string $format): void {}
     }
@@ -388,7 +388,7 @@ namespace {
      */
     class QFrame extends QWidget
     {
-        public function __construct(?QWidget $parent = null) {}
+        public function __construct(?QWidget $parent = null, Qt\WindowType|int $f = 0) {}
 
         public function frameShape(): QFrame\Shape {}
 
@@ -421,12 +421,10 @@ namespace {
      *
      * @not-serializable
      */
-    class QAbstractItemView extends QFrame
+    abstract class QAbstractItemView extends QFrame
     {
         /** @cvalue QAbstractItemView::NoEditTriggers */
         public const int NO_EDIT_TRIGGERS = UNKNOWN;
-
-        private function __construct() {}
 
         public function setSelectionBehavior(QAbstractItemView\SelectionBehavior $behavior): void {}
 
@@ -477,5 +475,109 @@ namespace {
         public function currentRow(): int {}
 
         public function selectRow(int $row): void {}
+    }
+
+    /**
+     * Signal splitterMoved(int pos, int index): emitted for the user's handle drags only, not setSizes().
+     *
+     * @not-serializable
+     */
+    class QSplitter extends QFrame
+    {
+        public function __construct(Qt\Orientation $orientation, ?QWidget $parent = null) {}
+
+        public function orientation(): Qt\Orientation {}
+
+        public function setOrientation(Qt\Orientation $orientation): void {}
+
+        /** The splitter takes ownership of the widget; one already here moves to the end. */
+        public function addWidget(QWidget $widget): void {}
+
+        /** An index outside 0 .. count() appends */
+        public function insertWidget(int $index, QWidget $widget): void {}
+
+        public function count(): int {}
+
+        public function widget(int $index): ?QWidget {}
+
+        /** -1 when $widget is not here */
+        public function indexOf(QWidget $widget): int {}
+
+        /** @param int[] $sizes negative sizes count as 0 */
+        public function setSizes(array $sizes): void {}
+
+        /** @return int[] */
+        public function sizes(): array {}
+
+        public function handleWidth(): int {}
+
+        public function setHandleWidth(int $width): void {}
+
+        public function opaqueResize(): bool {}
+
+        public function setOpaqueResize(bool $opaque): void {}
+
+        public function childrenCollapsible(): bool {}
+
+        public function setChildrenCollapsible(bool $collapsible): void {}
+
+        /** An index that is not a widget does nothing */
+        public function setStretchFactor(int $index, int $stretch): void {}
+
+        /** null outside 0 .. count() - 1; handle 0 exists and is hidden */
+        public function handle(int $index): ?QSplitterHandle {}
+    }
+
+    /**
+     * Made by its QSplitter, one before each widget.
+     *
+     * @not-serializable
+     */
+    class QSplitterHandle extends QWidget
+    {
+        private function __construct() {}
+
+        public function splitter(): ?QSplitter {}
+    }
+
+    /**
+     * Signal currentChanged(int index): emitted for every change of the current page, programmatic too.
+     *
+     * @not-serializable
+     */
+    class QTabWidget extends QWidget
+    {
+        public function __construct(?QWidget $parent = null) {}
+
+        /** The tab widget takes ownership of the page; the new tab's index. */
+        public function addTab(QWidget $page, string $label): int {}
+
+        /** An index that is not a tab does nothing; the page is not deleted */
+        public function removeTab(int $index): void {}
+
+        /** -1 when $page is not here */
+        public function indexOf(QWidget $page): int {}
+
+        public function count(): int {}
+
+        /** -1 with no tabs */
+        public function currentIndex(): int {}
+
+        /** An index that is not a tab does nothing */
+        public function setCurrentIndex(int $index): void {}
+
+        public function currentWidget(): ?QWidget {}
+
+        /** An index that is not a tab does nothing */
+        public function setTabText(int $index, string $label): void {}
+
+        /** "" for an index that is not a tab */
+        public function tabText(int $index): string {}
+
+        public function widget(int $index): ?QWidget {}
+
+        public function documentMode(): bool {}
+
+        public function setDocumentMode(bool $set): void {}
     }
 }

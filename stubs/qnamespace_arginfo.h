@@ -1,5 +1,28 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 5ef659add820d2732760e25df6f16fd2b9a9eec5 */
+ * Stub hash: 1c4515fe72dd1e2eadb40a33b47464f577bd43c7 */
+
+static zend_class_entry *register_class_Qt_DateFormat(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\DateFormat", IS_LONG, NULL);
+
+	zval enum_case_TEXT_DATE_value;
+	ZVAL_LONG(&enum_case_TEXT_DATE_value, 0);
+	zend_enum_add_case_cstr(class_entry, "TEXT_DATE", &enum_case_TEXT_DATE_value);
+
+	zval enum_case_ISO_DATE_value;
+	ZVAL_LONG(&enum_case_ISO_DATE_value, 1);
+	zend_enum_add_case_cstr(class_entry, "ISO_DATE", &enum_case_ISO_DATE_value);
+
+	zval enum_case_RFC2822_DATE_value;
+	ZVAL_LONG(&enum_case_RFC2822_DATE_value, 8);
+	zend_enum_add_case_cstr(class_entry, "RFC2822_DATE", &enum_case_RFC2822_DATE_value);
+
+	zval enum_case_ISO_DATE_WITH_MS_value;
+	ZVAL_LONG(&enum_case_ISO_DATE_WITH_MS_value, 9);
+	zend_enum_add_case_cstr(class_entry, "ISO_DATE_WITH_MS", &enum_case_ISO_DATE_WITH_MS_value);
+
+	return class_entry;
+}
 
 static zend_class_entry *register_class_Qt_TimerType(void)
 {
@@ -39,17 +62,17 @@ static zend_class_entry *register_class_Qt_AspectRatioMode(void)
 {
 	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\AspectRatioMode", IS_LONG, NULL);
 
-	zval enum_case_IGNORE_value;
-	ZVAL_LONG(&enum_case_IGNORE_value, 0);
-	zend_enum_add_case_cstr(class_entry, "IGNORE", &enum_case_IGNORE_value);
+	zval enum_case_IGNORE_ASPECT_RATIO_value;
+	ZVAL_LONG(&enum_case_IGNORE_ASPECT_RATIO_value, 0);
+	zend_enum_add_case_cstr(class_entry, "IGNORE_ASPECT_RATIO", &enum_case_IGNORE_ASPECT_RATIO_value);
 
-	zval enum_case_KEEP_value;
-	ZVAL_LONG(&enum_case_KEEP_value, 1);
-	zend_enum_add_case_cstr(class_entry, "KEEP", &enum_case_KEEP_value);
+	zval enum_case_KEEP_ASPECT_RATIO_value;
+	ZVAL_LONG(&enum_case_KEEP_ASPECT_RATIO_value, 1);
+	zend_enum_add_case_cstr(class_entry, "KEEP_ASPECT_RATIO", &enum_case_KEEP_ASPECT_RATIO_value);
 
-	zval enum_case_KEEP_BY_EXPANDING_value;
-	ZVAL_LONG(&enum_case_KEEP_BY_EXPANDING_value, 2);
-	zend_enum_add_case_cstr(class_entry, "KEEP_BY_EXPANDING", &enum_case_KEEP_BY_EXPANDING_value);
+	zval enum_case_KEEP_ASPECT_RATIO_BY_EXPANDING_value;
+	ZVAL_LONG(&enum_case_KEEP_ASPECT_RATIO_BY_EXPANDING_value, 2);
+	zend_enum_add_case_cstr(class_entry, "KEEP_ASPECT_RATIO_BY_EXPANDING", &enum_case_KEEP_ASPECT_RATIO_BY_EXPANDING_value);
 
 	return class_entry;
 }
@@ -530,6 +553,137 @@ static zend_class_entry *register_class_Qt_WidgetAttribute(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_Qt_ApplicationAttribute(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ApplicationAttribute", IS_LONG, NULL);
+
+	zval enum_case_QT_QUICK_USE_DEFAULT_SIZE_POLICY_value;
+	ZVAL_LONG(&enum_case_QT_QUICK_USE_DEFAULT_SIZE_POLICY_value, 1);
+	zend_enum_add_case_cstr(class_entry, "QT_QUICK_USE_DEFAULT_SIZE_POLICY", &enum_case_QT_QUICK_USE_DEFAULT_SIZE_POLICY_value);
+
+	zval enum_case_DONT_SHOW_ICONS_IN_MENUS_value;
+	ZVAL_LONG(&enum_case_DONT_SHOW_ICONS_IN_MENUS_value, 2);
+	zend_enum_add_case_cstr(class_entry, "DONT_SHOW_ICONS_IN_MENUS", &enum_case_DONT_SHOW_ICONS_IN_MENUS_value);
+
+	zval enum_case_NATIVE_WINDOWS_value;
+	ZVAL_LONG(&enum_case_NATIVE_WINDOWS_value, 3);
+	zend_enum_add_case_cstr(class_entry, "NATIVE_WINDOWS", &enum_case_NATIVE_WINDOWS_value);
+
+	zval enum_case_DONT_CREATE_NATIVE_WIDGET_SIBLINGS_value;
+	ZVAL_LONG(&enum_case_DONT_CREATE_NATIVE_WIDGET_SIBLINGS_value, 4);
+	zend_enum_add_case_cstr(class_entry, "DONT_CREATE_NATIVE_WIDGET_SIBLINGS", &enum_case_DONT_CREATE_NATIVE_WIDGET_SIBLINGS_value);
+
+	zval enum_case_PLUGIN_APPLICATION_value;
+	ZVAL_LONG(&enum_case_PLUGIN_APPLICATION_value, 5);
+	zend_enum_add_case_cstr(class_entry, "PLUGIN_APPLICATION", &enum_case_PLUGIN_APPLICATION_value);
+
+	zval enum_case_DONT_USE_NATIVE_MENU_BAR_value;
+	ZVAL_LONG(&enum_case_DONT_USE_NATIVE_MENU_BAR_value, 6);
+	zend_enum_add_case_cstr(class_entry, "DONT_USE_NATIVE_MENU_BAR", &enum_case_DONT_USE_NATIVE_MENU_BAR_value);
+
+	zval enum_case_MAC_DONT_SWAP_CTRL_AND_META_value;
+	ZVAL_LONG(&enum_case_MAC_DONT_SWAP_CTRL_AND_META_value, 7);
+	zend_enum_add_case_cstr(class_entry, "MAC_DONT_SWAP_CTRL_AND_META", &enum_case_MAC_DONT_SWAP_CTRL_AND_META_value);
+
+	zval enum_case_USE96_DPI_value;
+	ZVAL_LONG(&enum_case_USE96_DPI_value, 8);
+	zend_enum_add_case_cstr(class_entry, "USE96_DPI", &enum_case_USE96_DPI_value);
+
+	zval enum_case_DISABLE_NATIVE_VIRTUAL_KEYBOARD_value;
+	ZVAL_LONG(&enum_case_DISABLE_NATIVE_VIRTUAL_KEYBOARD_value, 9);
+	zend_enum_add_case_cstr(class_entry, "DISABLE_NATIVE_VIRTUAL_KEYBOARD", &enum_case_DISABLE_NATIVE_VIRTUAL_KEYBOARD_value);
+
+	zval enum_case_DONT_USE_NATIVE_MENU_WINDOWS_value;
+	ZVAL_LONG(&enum_case_DONT_USE_NATIVE_MENU_WINDOWS_value, 10);
+	zend_enum_add_case_cstr(class_entry, "DONT_USE_NATIVE_MENU_WINDOWS", &enum_case_DONT_USE_NATIVE_MENU_WINDOWS_value);
+
+	zval enum_case_SYNTHESIZE_TOUCH_FOR_UNHANDLED_MOUSE_EVENTS_value;
+	ZVAL_LONG(&enum_case_SYNTHESIZE_TOUCH_FOR_UNHANDLED_MOUSE_EVENTS_value, 11);
+	zend_enum_add_case_cstr(class_entry, "SYNTHESIZE_TOUCH_FOR_UNHANDLED_MOUSE_EVENTS", &enum_case_SYNTHESIZE_TOUCH_FOR_UNHANDLED_MOUSE_EVENTS_value);
+
+	zval enum_case_SYNTHESIZE_MOUSE_FOR_UNHANDLED_TOUCH_EVENTS_value;
+	ZVAL_LONG(&enum_case_SYNTHESIZE_MOUSE_FOR_UNHANDLED_TOUCH_EVENTS_value, 12);
+	zend_enum_add_case_cstr(class_entry, "SYNTHESIZE_MOUSE_FOR_UNHANDLED_TOUCH_EVENTS", &enum_case_SYNTHESIZE_MOUSE_FOR_UNHANDLED_TOUCH_EVENTS_value);
+
+	zval enum_case_USE_HIGH_DPI_PIXMAPS_value;
+	ZVAL_LONG(&enum_case_USE_HIGH_DPI_PIXMAPS_value, 13);
+	zend_enum_add_case_cstr(class_entry, "USE_HIGH_DPI_PIXMAPS", &enum_case_USE_HIGH_DPI_PIXMAPS_value);
+
+	zval enum_case_FORCE_RASTER_WIDGETS_value;
+	ZVAL_LONG(&enum_case_FORCE_RASTER_WIDGETS_value, 14);
+	zend_enum_add_case_cstr(class_entry, "FORCE_RASTER_WIDGETS", &enum_case_FORCE_RASTER_WIDGETS_value);
+
+	zval enum_case_USE_DESKTOP_OPEN_GL_value;
+	ZVAL_LONG(&enum_case_USE_DESKTOP_OPEN_GL_value, 15);
+	zend_enum_add_case_cstr(class_entry, "USE_DESKTOP_OPEN_GL", &enum_case_USE_DESKTOP_OPEN_GL_value);
+
+	zval enum_case_USE_OPEN_GLES_value;
+	ZVAL_LONG(&enum_case_USE_OPEN_GLES_value, 16);
+	zend_enum_add_case_cstr(class_entry, "USE_OPEN_GLES", &enum_case_USE_OPEN_GLES_value);
+
+	zval enum_case_USE_SOFTWARE_OPEN_GL_value;
+	ZVAL_LONG(&enum_case_USE_SOFTWARE_OPEN_GL_value, 17);
+	zend_enum_add_case_cstr(class_entry, "USE_SOFTWARE_OPEN_GL", &enum_case_USE_SOFTWARE_OPEN_GL_value);
+
+	zval enum_case_SHARE_OPEN_GL_CONTEXTS_value;
+	ZVAL_LONG(&enum_case_SHARE_OPEN_GL_CONTEXTS_value, 18);
+	zend_enum_add_case_cstr(class_entry, "SHARE_OPEN_GL_CONTEXTS", &enum_case_SHARE_OPEN_GL_CONTEXTS_value);
+
+	zval enum_case_SET_PALETTE_value;
+	ZVAL_LONG(&enum_case_SET_PALETTE_value, 19);
+	zend_enum_add_case_cstr(class_entry, "SET_PALETTE", &enum_case_SET_PALETTE_value);
+
+	zval enum_case_ENABLE_HIGH_DPI_SCALING_value;
+	ZVAL_LONG(&enum_case_ENABLE_HIGH_DPI_SCALING_value, 20);
+	zend_enum_add_case_cstr(class_entry, "ENABLE_HIGH_DPI_SCALING", &enum_case_ENABLE_HIGH_DPI_SCALING_value);
+
+	zval enum_case_DISABLE_HIGH_DPI_SCALING_value;
+	ZVAL_LONG(&enum_case_DISABLE_HIGH_DPI_SCALING_value, 21);
+	zend_enum_add_case_cstr(class_entry, "DISABLE_HIGH_DPI_SCALING", &enum_case_DISABLE_HIGH_DPI_SCALING_value);
+
+	zval enum_case_USE_STYLE_SHEET_PROPAGATION_IN_WIDGET_STYLES_value;
+	ZVAL_LONG(&enum_case_USE_STYLE_SHEET_PROPAGATION_IN_WIDGET_STYLES_value, 22);
+	zend_enum_add_case_cstr(class_entry, "USE_STYLE_SHEET_PROPAGATION_IN_WIDGET_STYLES", &enum_case_USE_STYLE_SHEET_PROPAGATION_IN_WIDGET_STYLES_value);
+
+	zval enum_case_DONT_USE_NATIVE_DIALOGS_value;
+	ZVAL_LONG(&enum_case_DONT_USE_NATIVE_DIALOGS_value, 23);
+	zend_enum_add_case_cstr(class_entry, "DONT_USE_NATIVE_DIALOGS", &enum_case_DONT_USE_NATIVE_DIALOGS_value);
+
+	zval enum_case_SYNTHESIZE_MOUSE_FOR_UNHANDLED_TABLET_EVENTS_value;
+	ZVAL_LONG(&enum_case_SYNTHESIZE_MOUSE_FOR_UNHANDLED_TABLET_EVENTS_value, 24);
+	zend_enum_add_case_cstr(class_entry, "SYNTHESIZE_MOUSE_FOR_UNHANDLED_TABLET_EVENTS", &enum_case_SYNTHESIZE_MOUSE_FOR_UNHANDLED_TABLET_EVENTS_value);
+
+	zval enum_case_COMPRESS_HIGH_FREQUENCY_EVENTS_value;
+	ZVAL_LONG(&enum_case_COMPRESS_HIGH_FREQUENCY_EVENTS_value, 25);
+	zend_enum_add_case_cstr(class_entry, "COMPRESS_HIGH_FREQUENCY_EVENTS", &enum_case_COMPRESS_HIGH_FREQUENCY_EVENTS_value);
+
+	zval enum_case_DONT_CHECK_OPEN_GL_CONTEXT_THREAD_AFFINITY_value;
+	ZVAL_LONG(&enum_case_DONT_CHECK_OPEN_GL_CONTEXT_THREAD_AFFINITY_value, 26);
+	zend_enum_add_case_cstr(class_entry, "DONT_CHECK_OPEN_GL_CONTEXT_THREAD_AFFINITY", &enum_case_DONT_CHECK_OPEN_GL_CONTEXT_THREAD_AFFINITY_value);
+
+	zval enum_case_DISABLE_SHADER_DISK_CACHE_value;
+	ZVAL_LONG(&enum_case_DISABLE_SHADER_DISK_CACHE_value, 27);
+	zend_enum_add_case_cstr(class_entry, "DISABLE_SHADER_DISK_CACHE", &enum_case_DISABLE_SHADER_DISK_CACHE_value);
+
+	zval enum_case_DONT_SHOW_SHORTCUTS_IN_CONTEXT_MENUS_value;
+	ZVAL_LONG(&enum_case_DONT_SHOW_SHORTCUTS_IN_CONTEXT_MENUS_value, 28);
+	zend_enum_add_case_cstr(class_entry, "DONT_SHOW_SHORTCUTS_IN_CONTEXT_MENUS", &enum_case_DONT_SHOW_SHORTCUTS_IN_CONTEXT_MENUS_value);
+
+	zval enum_case_COMPRESS_TABLET_EVENTS_value;
+	ZVAL_LONG(&enum_case_COMPRESS_TABLET_EVENTS_value, 29);
+	zend_enum_add_case_cstr(class_entry, "COMPRESS_TABLET_EVENTS", &enum_case_COMPRESS_TABLET_EVENTS_value);
+
+	zval enum_case_DISABLE_SESSION_MANAGER_value;
+	ZVAL_LONG(&enum_case_DISABLE_SESSION_MANAGER_value, 31);
+	zend_enum_add_case_cstr(class_entry, "DISABLE_SESSION_MANAGER", &enum_case_DISABLE_SESSION_MANAGER_value);
+
+	zval enum_case_ATTRIBUTE_COUNT_value;
+	ZVAL_LONG(&enum_case_ATTRIBUTE_COUNT_value, 32);
+	zend_enum_add_case_cstr(class_entry, "ATTRIBUTE_COUNT", &enum_case_ATTRIBUTE_COUNT_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_Qt_AlignmentFlag(void)
 {
 	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\AlignmentFlag", IS_LONG, NULL);
@@ -620,6 +774,342 @@ static zend_class_entry *register_class_Qt_TextInteractionFlag(void)
 	zval enum_case_TEXT_BROWSER_INTERACTION_value;
 	ZVAL_LONG(&enum_case_TEXT_BROWSER_INTERACTION_value, 13);
 	zend_enum_add_case_cstr(class_entry, "TEXT_BROWSER_INTERACTION", &enum_case_TEXT_BROWSER_INTERACTION_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_WindowType(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\WindowType", IS_LONG, NULL);
+
+	zval enum_case_WIDGET_value;
+	ZVAL_LONG(&enum_case_WIDGET_value, 0);
+	zend_enum_add_case_cstr(class_entry, "WIDGET", &enum_case_WIDGET_value);
+
+	zval enum_case_WINDOW_value;
+	ZVAL_LONG(&enum_case_WINDOW_value, 1);
+	zend_enum_add_case_cstr(class_entry, "WINDOW", &enum_case_WINDOW_value);
+
+	zval enum_case_DIALOG_value;
+	ZVAL_LONG(&enum_case_DIALOG_value, 3);
+	zend_enum_add_case_cstr(class_entry, "DIALOG", &enum_case_DIALOG_value);
+
+	zval enum_case_SHEET_value;
+	ZVAL_LONG(&enum_case_SHEET_value, 5);
+	zend_enum_add_case_cstr(class_entry, "SHEET", &enum_case_SHEET_value);
+
+	zval enum_case_DRAWER_value;
+	ZVAL_LONG(&enum_case_DRAWER_value, 7);
+	zend_enum_add_case_cstr(class_entry, "DRAWER", &enum_case_DRAWER_value);
+
+	zval enum_case_POPUP_value;
+	ZVAL_LONG(&enum_case_POPUP_value, 9);
+	zend_enum_add_case_cstr(class_entry, "POPUP", &enum_case_POPUP_value);
+
+	zval enum_case_TOOL_value;
+	ZVAL_LONG(&enum_case_TOOL_value, 11);
+	zend_enum_add_case_cstr(class_entry, "TOOL", &enum_case_TOOL_value);
+
+	zval enum_case_TOOL_TIP_value;
+	ZVAL_LONG(&enum_case_TOOL_TIP_value, 13);
+	zend_enum_add_case_cstr(class_entry, "TOOL_TIP", &enum_case_TOOL_TIP_value);
+
+	zval enum_case_SPLASH_SCREEN_value;
+	ZVAL_LONG(&enum_case_SPLASH_SCREEN_value, 15);
+	zend_enum_add_case_cstr(class_entry, "SPLASH_SCREEN", &enum_case_SPLASH_SCREEN_value);
+
+	zval enum_case_DESKTOP_value;
+	ZVAL_LONG(&enum_case_DESKTOP_value, 17);
+	zend_enum_add_case_cstr(class_entry, "DESKTOP", &enum_case_DESKTOP_value);
+
+	zval enum_case_SUB_WINDOW_value;
+	ZVAL_LONG(&enum_case_SUB_WINDOW_value, 18);
+	zend_enum_add_case_cstr(class_entry, "SUB_WINDOW", &enum_case_SUB_WINDOW_value);
+
+	zval enum_case_FOREIGN_WINDOW_value;
+	ZVAL_LONG(&enum_case_FOREIGN_WINDOW_value, 33);
+	zend_enum_add_case_cstr(class_entry, "FOREIGN_WINDOW", &enum_case_FOREIGN_WINDOW_value);
+
+	zval enum_case_COVER_WINDOW_value;
+	ZVAL_LONG(&enum_case_COVER_WINDOW_value, 65);
+	zend_enum_add_case_cstr(class_entry, "COVER_WINDOW", &enum_case_COVER_WINDOW_value);
+
+	zval enum_case_WINDOW_TYPE_MASK_value;
+	ZVAL_LONG(&enum_case_WINDOW_TYPE_MASK_value, 255);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_TYPE_MASK", &enum_case_WINDOW_TYPE_MASK_value);
+
+	zval enum_case_MS_WINDOWS_FIXED_SIZE_DIALOG_HINT_value;
+	ZVAL_LONG(&enum_case_MS_WINDOWS_FIXED_SIZE_DIALOG_HINT_value, 256);
+	zend_enum_add_case_cstr(class_entry, "MS_WINDOWS_FIXED_SIZE_DIALOG_HINT", &enum_case_MS_WINDOWS_FIXED_SIZE_DIALOG_HINT_value);
+
+	zval enum_case_MS_WINDOWS_OWN_DC_value;
+	ZVAL_LONG(&enum_case_MS_WINDOWS_OWN_DC_value, 512);
+	zend_enum_add_case_cstr(class_entry, "MS_WINDOWS_OWN_DC", &enum_case_MS_WINDOWS_OWN_DC_value);
+
+	zval enum_case_BYPASS_WINDOW_MANAGER_HINT_value;
+	ZVAL_LONG(&enum_case_BYPASS_WINDOW_MANAGER_HINT_value, 1024);
+	zend_enum_add_case_cstr(class_entry, "BYPASS_WINDOW_MANAGER_HINT", &enum_case_BYPASS_WINDOW_MANAGER_HINT_value);
+
+	zval enum_case_FRAMELESS_WINDOW_HINT_value;
+	ZVAL_LONG(&enum_case_FRAMELESS_WINDOW_HINT_value, 2048);
+	zend_enum_add_case_cstr(class_entry, "FRAMELESS_WINDOW_HINT", &enum_case_FRAMELESS_WINDOW_HINT_value);
+
+	zval enum_case_WINDOW_TITLE_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_TITLE_HINT_value, 4096);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_TITLE_HINT", &enum_case_WINDOW_TITLE_HINT_value);
+
+	zval enum_case_WINDOW_SYSTEM_MENU_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_SYSTEM_MENU_HINT_value, 8192);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_SYSTEM_MENU_HINT", &enum_case_WINDOW_SYSTEM_MENU_HINT_value);
+
+	zval enum_case_WINDOW_MINIMIZE_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_MINIMIZE_BUTTON_HINT_value, 16384);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_MINIMIZE_BUTTON_HINT", &enum_case_WINDOW_MINIMIZE_BUTTON_HINT_value);
+
+	zval enum_case_WINDOW_MAXIMIZE_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_MAXIMIZE_BUTTON_HINT_value, 32768);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_MAXIMIZE_BUTTON_HINT", &enum_case_WINDOW_MAXIMIZE_BUTTON_HINT_value);
+
+	zval enum_case_WINDOW_MIN_MAX_BUTTONS_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_MIN_MAX_BUTTONS_HINT_value, 49152);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_MIN_MAX_BUTTONS_HINT", &enum_case_WINDOW_MIN_MAX_BUTTONS_HINT_value);
+
+	zval enum_case_WINDOW_CONTEXT_HELP_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_CONTEXT_HELP_BUTTON_HINT_value, 65536);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_CONTEXT_HELP_BUTTON_HINT", &enum_case_WINDOW_CONTEXT_HELP_BUTTON_HINT_value);
+
+	zval enum_case_WINDOW_SHADE_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_SHADE_BUTTON_HINT_value, 131072);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_SHADE_BUTTON_HINT", &enum_case_WINDOW_SHADE_BUTTON_HINT_value);
+
+	zval enum_case_WINDOW_STAYS_ON_TOP_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_STAYS_ON_TOP_HINT_value, 262144);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_STAYS_ON_TOP_HINT", &enum_case_WINDOW_STAYS_ON_TOP_HINT_value);
+
+	zval enum_case_WINDOW_TRANSPARENT_FOR_INPUT_value;
+	ZVAL_LONG(&enum_case_WINDOW_TRANSPARENT_FOR_INPUT_value, 524288);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_TRANSPARENT_FOR_INPUT", &enum_case_WINDOW_TRANSPARENT_FOR_INPUT_value);
+
+	zval enum_case_WINDOW_OVERRIDES_SYSTEM_GESTURES_value;
+	ZVAL_LONG(&enum_case_WINDOW_OVERRIDES_SYSTEM_GESTURES_value, 1048576);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_OVERRIDES_SYSTEM_GESTURES", &enum_case_WINDOW_OVERRIDES_SYSTEM_GESTURES_value);
+
+	zval enum_case_WINDOW_DOES_NOT_ACCEPT_FOCUS_value;
+	ZVAL_LONG(&enum_case_WINDOW_DOES_NOT_ACCEPT_FOCUS_value, 2097152);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_DOES_NOT_ACCEPT_FOCUS", &enum_case_WINDOW_DOES_NOT_ACCEPT_FOCUS_value);
+
+	zval enum_case_MAXIMIZE_USING_FULLSCREEN_GEOMETRY_HINT_value;
+	ZVAL_LONG(&enum_case_MAXIMIZE_USING_FULLSCREEN_GEOMETRY_HINT_value, 4194304);
+	zend_enum_add_case_cstr(class_entry, "MAXIMIZE_USING_FULLSCREEN_GEOMETRY_HINT", &enum_case_MAXIMIZE_USING_FULLSCREEN_GEOMETRY_HINT_value);
+
+	zval enum_case_NO_TITLE_BAR_BACKGROUND_HINT_value;
+	ZVAL_LONG(&enum_case_NO_TITLE_BAR_BACKGROUND_HINT_value, 8388608);
+	zend_enum_add_case_cstr(class_entry, "NO_TITLE_BAR_BACKGROUND_HINT", &enum_case_NO_TITLE_BAR_BACKGROUND_HINT_value);
+
+	zval enum_case_CUSTOMIZE_WINDOW_HINT_value;
+	ZVAL_LONG(&enum_case_CUSTOMIZE_WINDOW_HINT_value, 33554432);
+	zend_enum_add_case_cstr(class_entry, "CUSTOMIZE_WINDOW_HINT", &enum_case_CUSTOMIZE_WINDOW_HINT_value);
+
+	zval enum_case_WINDOW_STAYS_ON_BOTTOM_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_STAYS_ON_BOTTOM_HINT_value, 67108864);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_STAYS_ON_BOTTOM_HINT", &enum_case_WINDOW_STAYS_ON_BOTTOM_HINT_value);
+
+	zval enum_case_WINDOW_CLOSE_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_CLOSE_BUTTON_HINT_value, 134217728);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_CLOSE_BUTTON_HINT", &enum_case_WINDOW_CLOSE_BUTTON_HINT_value);
+
+	zval enum_case_MAC_WINDOW_TOOL_BAR_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_MAC_WINDOW_TOOL_BAR_BUTTON_HINT_value, 268435456);
+	zend_enum_add_case_cstr(class_entry, "MAC_WINDOW_TOOL_BAR_BUTTON_HINT", &enum_case_MAC_WINDOW_TOOL_BAR_BUTTON_HINT_value);
+
+	zval enum_case_BYPASS_GRAPHICS_PROXY_WIDGET_value;
+	ZVAL_LONG(&enum_case_BYPASS_GRAPHICS_PROXY_WIDGET_value, 536870912);
+	zend_enum_add_case_cstr(class_entry, "BYPASS_GRAPHICS_PROXY_WIDGET", &enum_case_BYPASS_GRAPHICS_PROXY_WIDGET_value);
+
+	zval enum_case_NO_DROP_SHADOW_WINDOW_HINT_value;
+	ZVAL_LONG(&enum_case_NO_DROP_SHADOW_WINDOW_HINT_value, 1073741824);
+	zend_enum_add_case_cstr(class_entry, "NO_DROP_SHADOW_WINDOW_HINT", &enum_case_NO_DROP_SHADOW_WINDOW_HINT_value);
+
+	zval enum_case_WINDOW_FULLSCREEN_BUTTON_HINT_value;
+	ZVAL_LONG(&enum_case_WINDOW_FULLSCREEN_BUTTON_HINT_value, 2147483648);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_FULLSCREEN_BUTTON_HINT", &enum_case_WINDOW_FULLSCREEN_BUTTON_HINT_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_ImageConversionFlag(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ImageConversionFlag", IS_LONG, NULL);
+
+	zval enum_case_COLOR_MODE_MASK_value;
+	ZVAL_LONG(&enum_case_COLOR_MODE_MASK_value, 3);
+	zend_enum_add_case_cstr(class_entry, "COLOR_MODE_MASK", &enum_case_COLOR_MODE_MASK_value);
+
+	zval enum_case_AUTO_COLOR_value;
+	ZVAL_LONG(&enum_case_AUTO_COLOR_value, 0);
+	zend_enum_add_case_cstr(class_entry, "AUTO_COLOR", &enum_case_AUTO_COLOR_value);
+
+	zval enum_case_MONO_ONLY_value;
+	ZVAL_LONG(&enum_case_MONO_ONLY_value, 2);
+	zend_enum_add_case_cstr(class_entry, "MONO_ONLY", &enum_case_MONO_ONLY_value);
+
+	zval enum_case_ALPHA_DITHER_MASK_value;
+	ZVAL_LONG(&enum_case_ALPHA_DITHER_MASK_value, 12);
+	zend_enum_add_case_cstr(class_entry, "ALPHA_DITHER_MASK", &enum_case_ALPHA_DITHER_MASK_value);
+
+	zval enum_case_ORDERED_ALPHA_DITHER_value;
+	ZVAL_LONG(&enum_case_ORDERED_ALPHA_DITHER_value, 4);
+	zend_enum_add_case_cstr(class_entry, "ORDERED_ALPHA_DITHER", &enum_case_ORDERED_ALPHA_DITHER_value);
+
+	zval enum_case_DIFFUSE_ALPHA_DITHER_value;
+	ZVAL_LONG(&enum_case_DIFFUSE_ALPHA_DITHER_value, 8);
+	zend_enum_add_case_cstr(class_entry, "DIFFUSE_ALPHA_DITHER", &enum_case_DIFFUSE_ALPHA_DITHER_value);
+
+	zval enum_case_DITHER_MASK_value;
+	ZVAL_LONG(&enum_case_DITHER_MASK_value, 48);
+	zend_enum_add_case_cstr(class_entry, "DITHER_MASK", &enum_case_DITHER_MASK_value);
+
+	zval enum_case_ORDERED_DITHER_value;
+	ZVAL_LONG(&enum_case_ORDERED_DITHER_value, 16);
+	zend_enum_add_case_cstr(class_entry, "ORDERED_DITHER", &enum_case_ORDERED_DITHER_value);
+
+	zval enum_case_THRESHOLD_DITHER_value;
+	ZVAL_LONG(&enum_case_THRESHOLD_DITHER_value, 32);
+	zend_enum_add_case_cstr(class_entry, "THRESHOLD_DITHER", &enum_case_THRESHOLD_DITHER_value);
+
+	zval enum_case_DITHER_MODE_MASK_value;
+	ZVAL_LONG(&enum_case_DITHER_MODE_MASK_value, 192);
+	zend_enum_add_case_cstr(class_entry, "DITHER_MODE_MASK", &enum_case_DITHER_MODE_MASK_value);
+
+	zval enum_case_PREFER_DITHER_value;
+	ZVAL_LONG(&enum_case_PREFER_DITHER_value, 64);
+	zend_enum_add_case_cstr(class_entry, "PREFER_DITHER", &enum_case_PREFER_DITHER_value);
+
+	zval enum_case_AVOID_DITHER_value;
+	ZVAL_LONG(&enum_case_AVOID_DITHER_value, 128);
+	zend_enum_add_case_cstr(class_entry, "AVOID_DITHER", &enum_case_AVOID_DITHER_value);
+
+	zval enum_case_NO_OPAQUE_DETECTION_value;
+	ZVAL_LONG(&enum_case_NO_OPAQUE_DETECTION_value, 256);
+	zend_enum_add_case_cstr(class_entry, "NO_OPAQUE_DETECTION", &enum_case_NO_OPAQUE_DETECTION_value);
+
+	zval enum_case_NO_FORMAT_CONVERSION_value;
+	ZVAL_LONG(&enum_case_NO_FORMAT_CONVERSION_value, 512);
+	zend_enum_add_case_cstr(class_entry, "NO_FORMAT_CONVERSION", &enum_case_NO_FORMAT_CONVERSION_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_BrushStyle(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\BrushStyle", IS_LONG, NULL);
+
+	zval enum_case_NO_BRUSH_value;
+	ZVAL_LONG(&enum_case_NO_BRUSH_value, 0);
+	zend_enum_add_case_cstr(class_entry, "NO_BRUSH", &enum_case_NO_BRUSH_value);
+
+	zval enum_case_SOLID_PATTERN_value;
+	ZVAL_LONG(&enum_case_SOLID_PATTERN_value, 1);
+	zend_enum_add_case_cstr(class_entry, "SOLID_PATTERN", &enum_case_SOLID_PATTERN_value);
+
+	zval enum_case_DENSE1_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE1_PATTERN_value, 2);
+	zend_enum_add_case_cstr(class_entry, "DENSE1_PATTERN", &enum_case_DENSE1_PATTERN_value);
+
+	zval enum_case_DENSE2_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE2_PATTERN_value, 3);
+	zend_enum_add_case_cstr(class_entry, "DENSE2_PATTERN", &enum_case_DENSE2_PATTERN_value);
+
+	zval enum_case_DENSE3_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE3_PATTERN_value, 4);
+	zend_enum_add_case_cstr(class_entry, "DENSE3_PATTERN", &enum_case_DENSE3_PATTERN_value);
+
+	zval enum_case_DENSE4_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE4_PATTERN_value, 5);
+	zend_enum_add_case_cstr(class_entry, "DENSE4_PATTERN", &enum_case_DENSE4_PATTERN_value);
+
+	zval enum_case_DENSE5_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE5_PATTERN_value, 6);
+	zend_enum_add_case_cstr(class_entry, "DENSE5_PATTERN", &enum_case_DENSE5_PATTERN_value);
+
+	zval enum_case_DENSE6_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE6_PATTERN_value, 7);
+	zend_enum_add_case_cstr(class_entry, "DENSE6_PATTERN", &enum_case_DENSE6_PATTERN_value);
+
+	zval enum_case_DENSE7_PATTERN_value;
+	ZVAL_LONG(&enum_case_DENSE7_PATTERN_value, 8);
+	zend_enum_add_case_cstr(class_entry, "DENSE7_PATTERN", &enum_case_DENSE7_PATTERN_value);
+
+	zval enum_case_HOR_PATTERN_value;
+	ZVAL_LONG(&enum_case_HOR_PATTERN_value, 9);
+	zend_enum_add_case_cstr(class_entry, "HOR_PATTERN", &enum_case_HOR_PATTERN_value);
+
+	zval enum_case_VER_PATTERN_value;
+	ZVAL_LONG(&enum_case_VER_PATTERN_value, 10);
+	zend_enum_add_case_cstr(class_entry, "VER_PATTERN", &enum_case_VER_PATTERN_value);
+
+	zval enum_case_CROSS_PATTERN_value;
+	ZVAL_LONG(&enum_case_CROSS_PATTERN_value, 11);
+	zend_enum_add_case_cstr(class_entry, "CROSS_PATTERN", &enum_case_CROSS_PATTERN_value);
+
+	zval enum_case_B_DIAG_PATTERN_value;
+	ZVAL_LONG(&enum_case_B_DIAG_PATTERN_value, 12);
+	zend_enum_add_case_cstr(class_entry, "B_DIAG_PATTERN", &enum_case_B_DIAG_PATTERN_value);
+
+	zval enum_case_F_DIAG_PATTERN_value;
+	ZVAL_LONG(&enum_case_F_DIAG_PATTERN_value, 13);
+	zend_enum_add_case_cstr(class_entry, "F_DIAG_PATTERN", &enum_case_F_DIAG_PATTERN_value);
+
+	zval enum_case_DIAG_CROSS_PATTERN_value;
+	ZVAL_LONG(&enum_case_DIAG_CROSS_PATTERN_value, 14);
+	zend_enum_add_case_cstr(class_entry, "DIAG_CROSS_PATTERN", &enum_case_DIAG_CROSS_PATTERN_value);
+
+	zval enum_case_LINEAR_GRADIENT_PATTERN_value;
+	ZVAL_LONG(&enum_case_LINEAR_GRADIENT_PATTERN_value, 15);
+	zend_enum_add_case_cstr(class_entry, "LINEAR_GRADIENT_PATTERN", &enum_case_LINEAR_GRADIENT_PATTERN_value);
+
+	zval enum_case_RADIAL_GRADIENT_PATTERN_value;
+	ZVAL_LONG(&enum_case_RADIAL_GRADIENT_PATTERN_value, 16);
+	zend_enum_add_case_cstr(class_entry, "RADIAL_GRADIENT_PATTERN", &enum_case_RADIAL_GRADIENT_PATTERN_value);
+
+	zval enum_case_CONICAL_GRADIENT_PATTERN_value;
+	ZVAL_LONG(&enum_case_CONICAL_GRADIENT_PATTERN_value, 17);
+	zend_enum_add_case_cstr(class_entry, "CONICAL_GRADIENT_PATTERN", &enum_case_CONICAL_GRADIENT_PATTERN_value);
+
+	zval enum_case_TEXTURE_PATTERN_value;
+	ZVAL_LONG(&enum_case_TEXTURE_PATTERN_value, 24);
+	zend_enum_add_case_cstr(class_entry, "TEXTURE_PATTERN", &enum_case_TEXTURE_PATTERN_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_ConnectionType(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ConnectionType", IS_LONG, NULL);
+
+	zval enum_case_AUTO_CONNECTION_value;
+	ZVAL_LONG(&enum_case_AUTO_CONNECTION_value, 0);
+	zend_enum_add_case_cstr(class_entry, "AUTO_CONNECTION", &enum_case_AUTO_CONNECTION_value);
+
+	zval enum_case_DIRECT_CONNECTION_value;
+	ZVAL_LONG(&enum_case_DIRECT_CONNECTION_value, 1);
+	zend_enum_add_case_cstr(class_entry, "DIRECT_CONNECTION", &enum_case_DIRECT_CONNECTION_value);
+
+	zval enum_case_QUEUED_CONNECTION_value;
+	ZVAL_LONG(&enum_case_QUEUED_CONNECTION_value, 2);
+	zend_enum_add_case_cstr(class_entry, "QUEUED_CONNECTION", &enum_case_QUEUED_CONNECTION_value);
+
+	zval enum_case_BLOCKING_QUEUED_CONNECTION_value;
+	ZVAL_LONG(&enum_case_BLOCKING_QUEUED_CONNECTION_value, 3);
+	zend_enum_add_case_cstr(class_entry, "BLOCKING_QUEUED_CONNECTION", &enum_case_BLOCKING_QUEUED_CONNECTION_value);
+
+	zval enum_case_UNIQUE_CONNECTION_value;
+	ZVAL_LONG(&enum_case_UNIQUE_CONNECTION_value, 128);
+	zend_enum_add_case_cstr(class_entry, "UNIQUE_CONNECTION", &enum_case_UNIQUE_CONNECTION_value);
+
+	zval enum_case_SINGLE_SHOT_CONNECTION_value;
+	ZVAL_LONG(&enum_case_SINGLE_SHOT_CONNECTION_value, 256);
+	zend_enum_add_case_cstr(class_entry, "SINGLE_SHOT_CONNECTION", &enum_case_SINGLE_SHOT_CONNECTION_value);
 
 	return class_entry;
 }

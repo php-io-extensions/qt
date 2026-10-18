@@ -21,10 +21,8 @@ namespace {
      *
      * @not-serializable
      */
-    class QLayout extends QObject
+    abstract class QLayout extends QObject
     {
-        private function __construct() {}
-
         public function setSpacing(int $spacing): void {}
 
         public function spacing(): int {}
@@ -38,26 +36,40 @@ namespace {
 
         public function indexOf(QWidget $widget): int {}
 
-        /** itemAt(index)->widget(): the widget at that position, or null for a spacer, a nested layout or an index out of range. */
-        public function itemAtWidget(int $index): ?QWidget {}
+        public function itemAt(int $index): ?QLayoutItem {}
 
         public function invalidate(): void {}
     }
 
     /**
-     * A layout item that only takes space. PHP owns it until a layout takes it; it reports
+     * An item a layout holds and lends: it reads as deleted once the layout no longer holds it.
+     *
+     * @not-serializable
+     */
+    class QLayoutItem
+    {
+        private function __construct() {}
+
+        public function widget(): ?QWidget {}
+
+        public function layout(): ?QLayout {}
+
+        public function spacerItem(): ?QSpacerItem {}
+    }
+
+    /**
+     * A layout item that only takes space. PHP owns one it made until a layout takes it; it reports
      * "deleted" once the layout deletes it.
      *
      * @not-serializable
      */
-    final class QSpacerItem
+    final class QSpacerItem extends QLayoutItem
     {
         public function __construct(int $w, int $h, QSizePolicy\Policy $hPolicy = QSizePolicy\Policy::MINIMUM, QSizePolicy\Policy $vPolicy = QSizePolicy\Policy::MINIMUM) {}
 
         public function changeSize(int $w, int $h, QSizePolicy\Policy $hPolicy = QSizePolicy\Policy::MINIMUM, QSizePolicy\Policy $vPolicy = QSizePolicy\Policy::MINIMUM): void {}
 
-        /** @return array{int, int} width, height */
-        public function sizeHint(): array {}
+        public function sizeHint(): QSize {}
     }
 
     /**
@@ -116,8 +128,7 @@ namespace {
 
         public function setVerticalSpacing(int $spacing): void {}
 
-        /** itemAtPosition(row, column)->widget(): the widget there, or null. */
-        public function itemAtPosition(int $row, int $column): ?QWidget {}
+        public function itemAtPosition(int $row, int $column): ?QLayoutItem {}
 
         public function setRowStretch(int $row, int $stretch): void {}
 

@@ -7,7 +7,7 @@
  */
 class QDialog extends QWidget
 {
-    public function __construct(?QWidget $parent = null) {}
+    public function __construct(?QWidget $parent = null, Qt\WindowType|int $f = 0) {}
 
     /** Shows the dialog window-modal and returns at once. */
     public function open(): void {}

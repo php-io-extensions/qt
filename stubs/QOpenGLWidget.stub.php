@@ -31,6 +31,8 @@ final class QSurfaceFormat
 
     public static function defaultFormat(): QSurfaceFormat {}
 
+    public static function setDefaultFormat(QSurfaceFormat $format): void {}
+
     public function majorVersion(): int {}
 
     public function minorVersion(): int {}
@@ -51,7 +53,7 @@ final class QSurfaceFormat
  */
 class QOpenGLWidget extends QWidget
 {
-    public function __construct(?QWidget $parent = null) {}
+    public function __construct(?QWidget $parent = null, Qt\WindowType|int $f = 0) {}
 
     public function makeCurrent(): void {}
 

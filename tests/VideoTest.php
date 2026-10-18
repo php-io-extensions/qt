@@ -54,7 +54,11 @@ it('pauses, seeks and loops', function (): void {
     expect($states)->toBe([QMediaPlayer\PlaybackState::PLAYING->value, QMediaPlayer\PlaybackState::PAUSED->value])
         ->and($player->position())->toBeGreaterThanOrEqual(500)
         ->and($audio->volume())->toBe(0.0)
-        ->and(QUrl::fromLocalFile('/x.mp4')->isValid())->toBeTrue();
+        ->and(QUrl::fromLocalFile('/x.mp4')->isValid())->toBeTrue()
+        ->and((new QUrl('https://example.com/a b'))->toString())->toBe('https://example.com/a b')
+        ->and((new QUrl('https://example.com/a b'))->toString(QUrl::FULLY_ENCODED))->toBe('https://example.com/a%20b')
+        ->and((new QUrl('https://user@example.com:8080/a?q#f'))->toString(QUrl::REMOVE_USER_INFO | QUrl::REMOVE_PORT | QUrl::REMOVE_QUERY | QUrl::REMOVE_FRAGMENT))->toBe('https://example.com/a')
+        ->and((new QUrl('https://example.com/a b', QUrl\ParsingMode::STRICT_MODE))->isValid())->toBeFalse();
 
     $player->stop();
     expect($player->playbackState())->toBe(QMediaPlayer\PlaybackState::STOPPED);

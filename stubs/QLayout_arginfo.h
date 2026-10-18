@@ -1,8 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 121adf3758e0c47827089a9b90d508992db1230c */
-
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLayout___construct, 0, 0, 0)
-ZEND_END_ARG_INFO()
+ * Stub hash: 3ffcc3b5d44f547095d53e393b6bd2f8c2597a84 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_setSpacing, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)
@@ -28,11 +25,23 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_indexOf, 0, 1, IS_
 	ZEND_ARG_OBJ_INFO(0, widget, QWidget, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLayout_itemAtWidget, 0, 1, QWidget, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLayout_itemAt, 0, 1, QLayoutItem, 1)
 	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_invalidate, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLayoutItem___construct, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLayoutItem_widget, 0, 0, QWidget, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLayoutItem_layout, 0, 0, QLayout, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLayoutItem_spacerItem, 0, 0, QSpacerItem, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QSpacerItem___construct, 0, 0, 2)
@@ -49,10 +58,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QSpacerItem_changeSize, 0,
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, vPolicy, QSizePolicy\\Policy, 0, "QSizePolicy\\Policy::MINIMUM")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QSpacerItem_sizeHint, 0, 0, IS_ARRAY, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QSpacerItem_sizeHint, 0, 0, QSize, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QBoxLayout___construct arginfo_class_QLayout___construct
+#define arginfo_class_QBoxLayout___construct arginfo_class_QLayoutItem___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QBoxLayout_addWidget, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, widget, QWidget, 0)
@@ -115,7 +124,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QGridLayout_setVerticalSpacing arginfo_class_QLayout_setSpacing
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QGridLayout_itemAtPosition, 0, 2, QWidget, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QGridLayout_itemAtPosition, 0, 2, QLayoutItem, 1)
 	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
 ZEND_END_ARG_INFO()
@@ -147,15 +156,18 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QGridLayout_addItem, 0, 3,
 	ZEND_ARG_OBJ_TYPE_MASK(0, alignment, Qt\\AlignmentFlag, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
-ZEND_METHOD(QLayout, __construct);
 ZEND_METHOD(QLayout, setSpacing);
 ZEND_METHOD(QLayout, spacing);
 ZEND_METHOD(QLayout, setContentsMargins);
 ZEND_METHOD(QLayout, count);
 ZEND_METHOD(QLayout, removeWidget);
 ZEND_METHOD(QLayout, indexOf);
-ZEND_METHOD(QLayout, itemAtWidget);
+ZEND_METHOD(QLayout, itemAt);
 ZEND_METHOD(QLayout, invalidate);
+ZEND_METHOD(QLayoutItem, __construct);
+ZEND_METHOD(QLayoutItem, widget);
+ZEND_METHOD(QLayoutItem, layout);
+ZEND_METHOD(QLayoutItem, spacerItem);
 ZEND_METHOD(QSpacerItem, __construct);
 ZEND_METHOD(QSpacerItem, changeSize);
 ZEND_METHOD(QSpacerItem, sizeHint);
@@ -183,15 +195,22 @@ ZEND_METHOD(QGridLayout, columnStretch);
 ZEND_METHOD(QGridLayout, addItem);
 
 static const zend_function_entry class_QLayout_methods[] = {
-	ZEND_ME(QLayout, __construct, arginfo_class_QLayout___construct, ZEND_ACC_PRIVATE)
 	ZEND_ME(QLayout, setSpacing, arginfo_class_QLayout_setSpacing, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, spacing, arginfo_class_QLayout_spacing, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, setContentsMargins, arginfo_class_QLayout_setContentsMargins, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, count, arginfo_class_QLayout_count, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, removeWidget, arginfo_class_QLayout_removeWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, indexOf, arginfo_class_QLayout_indexOf, ZEND_ACC_PUBLIC)
-	ZEND_ME(QLayout, itemAtWidget, arginfo_class_QLayout_itemAtWidget, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLayout, itemAt, arginfo_class_QLayout_itemAt, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, invalidate, arginfo_class_QLayout_invalidate, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QLayoutItem_methods[] = {
+	ZEND_ME(QLayoutItem, __construct, arginfo_class_QLayoutItem___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QLayoutItem, widget, arginfo_class_QLayoutItem_widget, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLayoutItem, layout, arginfo_class_QLayoutItem_layout, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLayoutItem, spacerItem, arginfo_class_QLayoutItem_spacerItem, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -280,17 +299,27 @@ static zend_class_entry *register_class_QLayout(zend_class_entry *class_entry_QO
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QLayout", class_QLayout_methods);
-	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_ABSTRACT|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }
 
-static zend_class_entry *register_class_QSpacerItem(void)
+static zend_class_entry *register_class_QLayoutItem(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QLayoutItem", class_QLayoutItem_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QSpacerItem(zend_class_entry *class_entry_QLayoutItem)
 {
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QSpacerItem", class_QSpacerItem_methods);
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QLayoutItem, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

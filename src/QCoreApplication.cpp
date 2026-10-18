@@ -30,31 +30,25 @@ static zend_string *phpqt_utf8(const QString &value)
 }
 
 /*
- * The three constructors share one shape: Qt takes argc by reference and keeps
- * argv, so both live in the PHP object and outlive the application.
+ * int &argc and char **argv as C holds them: argv copied into persistent storage
+ * the PHP object keeps, argc stored beside it. Qt keeps both for the
+ * application's life and rewrites them as it strips its own options.
  */
-template <typename App>
-static void phpqt_construct_application(INTERNAL_FUNCTION_PARAMETERS)
+static bool phpqt_application_argv(zval *argc_zv, HashTable *argv_ht, phpqt_object *intern)
 {
-	HashTable *argv_ht;
-
-	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_ARRAY_HT(argv_ht)
-	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
-
-	if (zend_hash_num_elements(argv_ht) == 0) {
-		zend_argument_value_error(1, "must hold at least argv[0]");
-		RETURN_THROWS();
-	}
-	if (QCoreApplication::instance() != nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "A QCoreApplication already exists in this process", 0);
-		RETURN_THROWS();
+	zval *argc_val = argc_zv;
+	ZVAL_DEREF(argc_val);
+	if (Z_TYPE_P(argc_val) != IS_LONG) {
+		zend_argument_type_error(1, "must be of type int, %s given", zend_zval_value_name(argc_val));
+		return false;
 	}
 
-	phpqt_object *intern = phpqt_object_from(Z_OBJ_P(ZEND_THIS));
-	int argc = (int) zend_hash_num_elements(argv_ht);
-	char **argv = static_cast<char **>(pecalloc((size_t) argc + 1, sizeof(char *), 1));
+	int count = (int) zend_hash_num_elements(argv_ht);
+	if (!phpqt_long_fits(Z_LVAL_P(argc_val), 0, count, 1)) {
+		return false;
+	}
+
+	char **strings = static_cast<char **>(pecalloc((size_t) count + 1, sizeof(char *), 1));
 	zval *arg;
 	int i = 0;
 
@@ -62,19 +56,58 @@ static void phpqt_construct_application(INTERNAL_FUNCTION_PARAMETERS)
 		zend_string *str = zval_try_get_string(arg);
 		if (str == nullptr) {
 			for (int j = 0; j < i; j++) {
-				pefree(argv[j], 1);
+				pefree(strings[j], 1);
 			}
-			pefree(argv, 1);
-			RETURN_THROWS();
+			pefree(strings, 1);
+			return false;
 		}
-		argv[i++] = pestrndup(ZSTR_VAL(str), ZSTR_LEN(str), 1);
+		strings[i++] = pestrndup(ZSTR_VAL(str), ZSTR_LEN(str), 1);
 		zend_string_release(str);
 	} ZEND_HASH_FOREACH_END();
 
-	intern->argc = argc;
-	intern->argv = argv;
+	intern->strings = strings;
+	intern->string_count = count;
+	intern->argv = static_cast<char **>(pecalloc((size_t) count + 1, sizeof(char *), 1));
+	memcpy(intern->argv, strings, sizeof(char *) * (size_t) count);
+	intern->argc = (int) Z_LVAL_P(argc_val);
 
-	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new App(intern->argc, intern->argv));
+	return true;
+}
+
+/*
+ * The three constructors share one shape, QCoreApplication(int &argc, char **argv,
+ * int flags): Qt's argc after it parsed its options is written back to $argc.
+ */
+template <typename App>
+static void phpqt_construct_application(INTERNAL_FUNCTION_PARAMETERS)
+{
+	zval *argc_zv;
+	HashTable *argv_ht;
+	zend_long flags = QCoreApplication::ApplicationFlags;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_ZVAL(argc_zv)
+		Z_PARAM_ARRAY_HT(argv_ht)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(flags)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+#ifdef __APPLE__
+	/* A second application in the process: on macOS Qt dies at teardown. Elsewhere Qt answers for itself. */
+	if (!PHPQT_PROBE_OFF("second-application-macos") && (QCoreApplication::instance() != nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "A QCoreApplication already exists in this process", 0); /* binding:second-application-macos */
+		RETURN_THROWS();
+	}
+#endif
+
+	phpqt_object *intern = phpqt_object_from(Z_OBJ_P(ZEND_THIS));
+	if (!phpqt_long_fits(flags, INT_MIN, INT_MAX, 3) || !phpqt_application_argv(argc_zv, argv_ht, intern)) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new App(intern->argc, intern->argv, static_cast<int>(flags)));
+	ZEND_TRY_ASSIGN_REF_LONG(argc_zv, intern->argc);
 }
 
 ZEND_METHOD(QCoreApplication, __construct)
@@ -109,7 +142,6 @@ ZEND_METHOD(QCoreApplication, sendEvent)
 		Z_PARAM_OBJ_OF_CLASS(receiver_obj, phpqt_ce_QObject)
 		Z_PARAM_OBJ_OF_CLASS(event_obj, phpqt_ce_QEvent)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	QObject *receiver = phpqt_arg(receiver_obj, 1, &failed);
 	if (failed) {
@@ -139,7 +171,6 @@ ZEND_METHOD(QApplication, widgetAt)
 		Z_PARAM_LONG(x)
 		Z_PARAM_LONG(y)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	phpqt_box(return_value, QApplication::widgetAt(int(x), int(y)));
 }
@@ -147,7 +178,6 @@ ZEND_METHOD(QApplication, widgetAt)
 ZEND_METHOD(QApplication, focusWidget)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	phpqt_box(return_value, QApplication::focusWidget());
 }
@@ -170,8 +200,7 @@ ZEND_METHOD(QCoreApplication, processEvents)
 	if (maxtime_null) {
 		QCoreApplication::processEvents(flags);
 	} else {
-		if (maxtime < 0 || maxtime > INT_MAX) {
-			zend_argument_value_error(2, "must be between 0 and %d", INT_MAX);
+		if (!phpqt_long_fits(maxtime, INT_MIN, INT_MAX, 2)) {
 			RETURN_THROWS();
 		}
 		QCoreApplication::processEvents(flags, static_cast<int>(maxtime));
@@ -201,7 +230,6 @@ ZEND_METHOD(QCoreApplication, sendPostedEvents)
 ZEND_METHOD(QCoreApplication, exec)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	RETURN_LONG(QCoreApplication::exec());
 }
@@ -262,6 +290,31 @@ ZEND_METHOD(QCoreApplication, startingUp)
 	ZEND_PARSE_PARAMETERS_NONE();
 
 	RETURN_BOOL(QCoreApplication::startingUp());
+}
+
+ZEND_METHOD(QCoreApplication, setAttribute)
+{
+	zend_object *attribute;
+	bool on = true;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(attribute, phpqt_ce_Qt_ApplicationAttribute)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_BOOL(on)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QCoreApplication::setAttribute(static_cast<Qt::ApplicationAttribute>(phpqt_enum_value(attribute, 0)), on);
+}
+
+ZEND_METHOD(QCoreApplication, testAttribute)
+{
+	zend_object *attribute;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(attribute, phpqt_ce_Qt_ApplicationAttribute)
+	ZEND_PARSE_PARAMETERS_END();
+
+	RETURN_BOOL(QCoreApplication::testAttribute(static_cast<Qt::ApplicationAttribute>(phpqt_enum_value(attribute, 0))));
 }
 
 ZEND_METHOD(QGuiApplication, platformName)

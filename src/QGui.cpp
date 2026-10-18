@@ -5,7 +5,6 @@
  */
 
 #include "runtime.h"
-#include "../stubs/QGui_arginfo.h"
 
 #include <QtGui/QFont>
 #include <QtGui/QFontDatabase>
@@ -14,7 +13,12 @@
 #include <QtGui/QPixmap>
 #include <QtGui/QDesktopServices>
 #include <QtCore/QUrl>
+#include <QtCore/QPointer>
+#include <QtCore/QThread>
 #include <QtWidgets/QTableWidgetItem>
+
+/* After the Qt headers: the class constants spell QTableWidgetItem::Type and UserType. */
+#include "../stubs/QGui_arginfo.h"
 
 static_assert(QFontDatabase::GeneralFont == 0 && QFontDatabase::FixedFont == 1 && QFontDatabase::TitleFont == 2
 	&& QFontDatabase::SmallestReadableFont == 3, "QFontDatabase::SystemFont values differ from the stub's QFontDatabase\\SystemFont enum");
@@ -76,6 +80,8 @@ static zend_object *phpqt_value_create(zend_class_entry *ce)
 	intern->owned = false;
 	intern->destroy = nullptr;
 	intern->forget = nullptr;
+	intern->owner = nullptr;
+	intern->alive = nullptr;
 
 	return &intern->std;
 }
@@ -93,6 +99,8 @@ static void phpqt_value_free(zend_object *object)
 		}
 		intern->ptr = nullptr;
 	}
+	delete intern->owner;
+	intern->owner = nullptr;
 
 	zend_object_std_dtor(object);
 }
@@ -146,10 +154,31 @@ void phpqt_value_hold(zend_object *wrapper, void *ptr, bool owned, void (*destro
 	intern->forget = forget;
 }
 
+/*
+ * A value Qt owns and PHP borrows (a layout's item): the PHP object holds no copy, so it reads
+ * Qt's only while the owner still holds it; once the owner lets it go the wrapper reads as deleted.
+ */
+void phpqt_value_borrow(zend_object *wrapper, void *ptr, QObject *owner, bool (*alive)(void *ptr, QObject *owner))
+{
+	phpqt_value_object *intern = phpqt_value_from(wrapper);
+
+	phpqt_value_hold(wrapper, ptr, false, nullptr);
+	intern->owner = new QPointer<QObject>(owner);
+	intern->alive = alive;
+}
+
+static void phpqt_value_check_alive(phpqt_value_object *intern)
+{
+	if (intern->ptr != nullptr && intern->alive != nullptr && !intern->alive(intern->ptr, intern->owner->data())) {
+		intern->ptr = nullptr;
+	}
+}
+
 void *phpqt_value_this(zend_object *wrapper)
 {
 	phpqt_value_object *intern = phpqt_value_from(wrapper);
 
+	phpqt_value_check_alive(intern);
 	if (intern->ptr == nullptr) {
 		zend_throw_exception_ex(phpqt_ce_QtException, 0,
 			intern->constructed ? "%s has been deleted by Qt" : "%s was never constructed",
@@ -163,6 +192,7 @@ void *phpqt_value_arg(zend_object *wrapper, uint32_t arg_num)
 {
 	phpqt_value_object *intern = phpqt_value_from(wrapper);
 
+	phpqt_value_check_alive(intern);
 	if (intern->ptr == nullptr) {
 		zend_argument_value_error(arg_num, "is a %s that no longer exists", ZSTR_VAL(wrapper->ce->name));
 	}
@@ -209,16 +239,6 @@ QTableWidgetItem *phpqt_table_item_prototype()
 	return new PhpTableWidgetItem();
 }
 
-/* Qt's weight scale. */
-static bool phpqt_font_weight_valid(zend_long weight, uint32_t arg_num)
-{
-	if (weight < 1 || weight > 1000) {
-		zend_argument_value_error(arg_num, "must be between 1 and 1000 (QFont's weight scale)");
-		return false;
-	}
-	return true;
-}
-
 /* An owner (a table, a layout) took the item: PHP no longer deletes it. */
 void phpqt_value_taken(zend_object *wrapper)
 {
@@ -227,11 +247,10 @@ void phpqt_value_taken(zend_object *wrapper)
 
 /* ---- QFontDatabase ----------------------------------------------------- */
 
+/* Private: QFontDatabase is static in Qt 6. */
 ZEND_METHOD(QFontDatabase, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QFontDatabase is static: call QFontDatabase::systemFont()");
 }
 
 ZEND_METHOD(QFontDatabase, systemFont)
@@ -241,12 +260,7 @@ ZEND_METHOD(QFontDatabase, systemFont)
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_OBJ_OF_CLASS(type, phpqt_ce_QFontDatabase_SystemFont)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
-	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QFontDatabase::systemFont() needs a QGuiApplication first", 0);
-		RETURN_THROWS();
-	}
 	phpqt_return_font(return_value, QFontDatabase::systemFont(static_cast<QFontDatabase::SystemFont>(phpqt_enum_value(type, QFontDatabase::GeneralFont))));
 }
 
@@ -254,41 +268,26 @@ ZEND_METHOD(QFontDatabase, systemFont)
 
 ZEND_METHOD(QFont, __construct)
 {
-	zend_string *family = nullptr;
-	double point_size = -1.0;
+	zend_string *family;
+	zend_long point_size = -1;
 	zend_long weight = -1;
+	bool italic = false;
 
-	ZEND_PARSE_PARAMETERS_START(0, 3)
-		Z_PARAM_OPTIONAL
+	ZEND_PARSE_PARAMETERS_START(1, 4)
 		Z_PARAM_STR(family)
-		Z_PARAM_DOUBLE(point_size)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(point_size)
 		Z_PARAM_LONG(weight)
+		Z_PARAM_BOOL(italic)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QFont::__construct() called twice", 0);
-		RETURN_THROWS();
-	}
-	/* -1 is Qt's "default" for both; anything else must be a real size and weight. */
-	if (point_size != -1.0 && point_size <= 0) {
-		zend_argument_value_error(2, "must be greater than 0, or -1 for the default size");
-		RETURN_THROWS();
-	}
-	if (weight != -1 && !phpqt_font_weight_valid(weight, 3)) {
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))
+		|| !phpqt_long_fits(point_size, INT_MIN, INT_MAX, 2) || !phpqt_long_fits(weight, INT_MIN, INT_MAX, 3)) {
 		RETURN_THROWS();
 	}
 
-	QFont *font = (family != nullptr && ZSTR_LEN(family) > 0)
-		? new QFont(phpqt_qstring(family), -1, static_cast<int>(weight))
-		: new QFont();
-	if ((family == nullptr || ZSTR_LEN(family) == 0) && weight >= 0) {
-		font->setWeight(static_cast<QFont::Weight>(weight));
-	}
-	if (point_size > 0) {
-		font->setPointSizeF(point_size);
-	}
-
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), font, true, phpqt_destroy_font);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QFont(phpqt_qstring(family), static_cast<int>(point_size), static_cast<int>(weight), italic),
+		true, phpqt_destroy_font);
 }
 
 ZEND_METHOD(QFont, family)
@@ -328,11 +327,6 @@ ZEND_METHOD(QFont, setPointSizeF)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QFont, font);
 
-	if (point_size <= 0) {
-		zend_argument_value_error(1, "must be greater than 0");
-		RETURN_THROWS();
-	}
-
 	font->setPointSizeF(point_size);
 }
 
@@ -359,7 +353,7 @@ ZEND_METHOD(QFont, setWeight)
 	PHPQT_VALUE_THIS(QFont, font);
 
 	zend_long weight = phpqt_enum_value(weight_case, weight_long);
-	if (!phpqt_font_weight_valid(weight, 1)) {
+	if (!phpqt_long_fits(weight, INT_MIN, INT_MAX, 1)) {
 		RETURN_THROWS();
 	}
 
@@ -371,16 +365,14 @@ ZEND_METHOD(QFont, setWeight)
 ZEND_METHOD(QPixmap, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
-	/* Qt aborts the process (qFatal) on a pixmap made before a QGuiApplication. */
-	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QPixmap needs a QGuiApplication first", 0);
+	/* Qt aborts with qFatal ("Must construct a QGuiApplication before a QPixmap"). */
+	if (!PHPQT_PROBE_OFF("qguiapp-pixmap") && (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QPixmap needs a QGuiApplication first", 0); /* binding:qguiapp-pixmap */
 		RETURN_THROWS();
 	}
 
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QPixmap::__construct() called twice", 0);
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
 
@@ -390,15 +382,18 @@ ZEND_METHOD(QPixmap, __construct)
 ZEND_METHOD(QPixmap, fromImage)
 {
 	zend_object *image_obj;
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = Qt::AutoColor;
 
-	ZEND_PARSE_PARAMETERS_START(1, 1)
+	ZEND_PARSE_PARAMETERS_START(1, 2)
 		Z_PARAM_OBJ_OF_CLASS(image_obj, phpqt_ce_QImage)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_ImageConversionFlag, flags_long)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
-	/* Qt aborts the process (qFatal) on a pixmap made before a QGuiApplication. */
-	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QPixmap needs a QGuiApplication first", 0);
+	/* Qt aborts with qFatal ("Must construct a QGuiApplication before a QPixmap"). */
+	if (!PHPQT_PROBE_OFF("qguiapp-pixmap-from-image") && (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QPixmap needs a QGuiApplication first", 0); /* binding:qguiapp-pixmap-from-image */
 		RETURN_THROWS();
 	}
 
@@ -407,7 +402,7 @@ ZEND_METHOD(QPixmap, fromImage)
 		RETURN_THROWS();
 	}
 
-	phpqt_return_pixmap(return_value, QPixmap::fromImage(*image));
+	phpqt_return_pixmap(return_value, QPixmap::fromImage(*image, Qt::ImageConversionFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long)))));
 }
 
 /* ---- QImage ------------------------------------------------------------ */
@@ -417,62 +412,85 @@ static_assert(QImage::Format_RGB32 == 4 && QImage::Format_ARGB32 == 5 && QImage:
 	&& QImage::Format_RGBA8888_Premultiplied == 18 && QImage::Format_BGR888 == 29,
 	"QImage::Format values differ from the stub's QImage\\Format enum");
 
+/*
+ * QImageCleanupFunction: Qt calls it with cleanupInfo once the last image sharing the buffer goes.
+ * cleanupInfo is a QPointer to the slot holding the PHP callable and its argument; the slot runs
+ * on its own thread, queued there from any other, and after request end it is gone and nothing runs.
+ */
+static void phpqt_image_cleanup(void *info)
+{
+	QPointer<PhpSlot> *held = static_cast<QPointer<PhpSlot> *>(info);
+	PhpSlot *slot = held->data();
+	delete held;
+	if (slot == nullptr) {
+		return;
+	}
+
+	auto run = [slot]() {
+		slot->fire();
+		slot->detach();
+		slot->deleteLater();
+	};
+	if (QThread::currentThread() == slot->thread()) {
+		run();
+	} else {
+		QMetaObject::invokeMethod(slot, run, Qt::QueuedConnection);
+	}
+}
+
 ZEND_METHOD(QImage, __construct)
 {
-	zend_string *data = NULL;
-	zend_long address = 0;
+	zend_long address;
 	zend_long width;
 	zend_long height;
 	zend_long bytes_per_line;
 	zend_object *format_obj;
+	zval *cleanup = nullptr;
+	zval *cleanup_info = nullptr;
 
-	ZEND_PARSE_PARAMETERS_START(5, 5)
-		Z_PARAM_STR_OR_LONG(data, address)
+	ZEND_PARSE_PARAMETERS_START(5, 7)
+		Z_PARAM_LONG(address)
 		Z_PARAM_LONG(width)
 		Z_PARAM_LONG(height)
 		Z_PARAM_LONG(bytes_per_line)
 		Z_PARAM_OBJ_OF_CLASS(format_obj, phpqt_ce_QImage_Format)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_ZVAL_OR_NULL(cleanup)
+		Z_PARAM_ZVAL(cleanup_info)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QImage::__construct() called twice", 0);
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))
+		|| !phpqt_long_fits(width, INT_MIN, INT_MAX, 2) || !phpqt_long_fits(height, INT_MIN, INT_MAX, 3)
+		|| (cleanup != nullptr && !phpqt_require_callable(cleanup, 6))) {
 		RETURN_THROWS();
 	}
 
-	QImage::Format format = static_cast<QImage::Format>(phpqt_enum_value(format_obj, QImage::Format_Invalid));
-	/* RGB888 and BGR888 take three bytes a pixel; every other format bound here takes four. */
-	zend_long pixel = format == QImage::Format_RGB888 || format == QImage::Format_BGR888 ? 3 : 4;
-
-	/* Qt reads width x height pixels from the pointer it is handed and trusts the description. */
-	if (width < 1 || width > 32767) {
-		zend_argument_value_error(2, "must be between 1 and 32767");
-		RETURN_THROWS();
-	}
-	if (height < 1 || height > 32767) {
-		zend_argument_value_error(3, "must be between 1 and 32767");
-		RETURN_THROWS();
-	}
-	if (bytes_per_line < width * pixel) {
-		zend_argument_value_error(4, "must hold a line: at least " ZEND_LONG_FMT " bytes", width * pixel);
-		RETURN_THROWS();
-	}
-	if (data != NULL) {
-		if (static_cast<zend_long>(ZSTR_LEN(data)) < bytes_per_line * (height - 1) + width * pixel) {
-			zend_argument_value_error(1, "must hold every line (" ZEND_LONG_FMT " bytes), " ZEND_LONG_FMT " given",
-				bytes_per_line * (height - 1) + width * pixel, static_cast<zend_long>(ZSTR_LEN(data)));
-			RETURN_THROWS();
-		}
-	} else if (address == 0) {
-		zend_argument_value_error(1, "must not be a null address");
-		RETURN_THROWS();
+	QImageCleanupFunction function = nullptr;
+	void *info = nullptr;
+	if (cleanup != nullptr) {
+		zval null_info;
+		ZVAL_NULL(&null_info);
+		PhpSlot *slot = new PhpSlot(cleanup, QMetaMethod());
+		slot->bind(cleanup_info != nullptr ? cleanup_info : &null_info);
+		function = phpqt_image_cleanup;
+		info = new QPointer<PhpSlot>(slot);
 	}
 
-	/* The address is trusted: an ext-fb buffer's pointer(), which holds $bytesPerLine × $height readable bytes. */
-	QImage borrowed(data != NULL ? reinterpret_cast<const uchar *>(ZSTR_VAL(data))
-			: reinterpret_cast<const uchar *>(static_cast<uintptr_t>(address)),
-		static_cast<int>(width), static_cast<int>(height), static_cast<qsizetype>(bytes_per_line), format);
+	/* The address is the caller's: Qt borrows the buffer, which must outlive every image sharing it. */
+	QImage *image = new QImage(reinterpret_cast<uchar *>(static_cast<uintptr_t>(address)),
+		static_cast<int>(width), static_cast<int>(height), static_cast<qsizetype>(bytes_per_line),
+		static_cast<QImage::Format>(phpqt_enum_value(format_obj, QImage::Format_Invalid)), function, info);
 
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QImage(borrowed.copy()), true, phpqt_destroy_image);
+	/* A null image shares no buffer, so Qt never calls the cleanup function: its slot goes now. */
+	if (image->isNull() && info != nullptr) {
+		QPointer<PhpSlot> *held = static_cast<QPointer<PhpSlot> *>(info);
+		PhpSlot *slot = held->data();
+		delete held;
+		slot->detach();
+		delete slot;
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), image, true, phpqt_destroy_image);
 }
 
 ZEND_METHOD(QImage, isNull)
@@ -507,18 +525,48 @@ ZEND_METHOD(QImage, format)
 	phpqt_return_enum(return_value, phpqt_ce_QImage_Format, static_cast<zend_long>(image->format()));
 }
 
+ZEND_METHOD(QImage, copy)
+{
+	zend_object *rect_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(rect_obj, phpqt_ce_QRect)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	QRect rect;
+	if (rect_obj != nullptr) {
+		QRect *given = static_cast<QRect *>(phpqt_value_arg(rect_obj, 1));
+		if (given == nullptr) {
+			RETURN_THROWS();
+		}
+		rect = *given;
+	}
+
+	object_init_ex(return_value, phpqt_ce_QImage);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QImage(image->copy(rect)), true, phpqt_destroy_image);
+}
+
 /* ---- QPixmap, continued ------------------------------------------------ */
 
 ZEND_METHOD(QPixmap, load)
 {
 	zend_string *file_name;
+	zend_string *format = nullptr;
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = Qt::AutoColor;
 
-	ZEND_PARSE_PARAMETERS_START(1, 1)
+	ZEND_PARSE_PARAMETERS_START(1, 3)
 		Z_PARAM_STR(file_name)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_STR_OR_NULL(format)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_ImageConversionFlag, flags_long)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QPixmap, pixmap);
 
-	RETURN_BOOL(pixmap->load(phpqt_qstring(file_name)));
+	RETURN_BOOL(pixmap->load(phpqt_qstring(file_name), format != nullptr ? ZSTR_VAL(format) : nullptr,
+		Qt::ImageConversionFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long)))));
 }
 
 ZEND_METHOD(QPixmap, isNull)
@@ -549,17 +597,20 @@ ZEND_METHOD(QPixmap, scaled)
 {
 	zend_long width;
 	zend_long height;
-	zend_object *mode;
+	zend_object *mode = nullptr;
 	zend_object *transformation = nullptr;
 
-	ZEND_PARSE_PARAMETERS_START(3, 4)
+	ZEND_PARSE_PARAMETERS_START(2, 4)
 		Z_PARAM_LONG(width)
 		Z_PARAM_LONG(height)
-		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_Qt_AspectRatioMode)
 		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_Qt_AspectRatioMode)
 		Z_PARAM_OBJ_OF_CLASS(transformation, phpqt_ce_Qt_TransformationMode)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QPixmap, pixmap);
+	if (!phpqt_long_fits(width, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(height, INT_MIN, INT_MAX, 2)) {
+		RETURN_THROWS();
+	}
 
 	phpqt_return_pixmap(return_value, pixmap->scaled(static_cast<int>(width), static_cast<int>(height),
 		static_cast<Qt::AspectRatioMode>(phpqt_enum_value(mode, Qt::IgnoreAspectRatio)),
@@ -583,11 +634,6 @@ ZEND_METHOD(QPixmap, setDevicePixelRatio)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QPixmap, pixmap);
 
-	if (ratio <= 0) {
-		zend_argument_value_error(1, "must be greater than 0");
-		RETURN_THROWS();
-	}
-
 	pixmap->setDevicePixelRatio(ratio);
 }
 
@@ -596,18 +642,19 @@ ZEND_METHOD(QPixmap, setDevicePixelRatio)
 ZEND_METHOD(QTableWidgetItem, __construct)
 {
 	zend_string *text = nullptr;
+	zend_long type = QTableWidgetItem::Type;
 
-	ZEND_PARSE_PARAMETERS_START(0, 1)
+	ZEND_PARSE_PARAMETERS_START(0, 2)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_STR(text)
+		Z_PARAM_LONG(type)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QTableWidgetItem::__construct() called twice", 0);
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
 
-	auto *item = new PhpTableWidgetItem(text != nullptr ? phpqt_qstring(text) : QString());
+	auto *item = new PhpTableWidgetItem(text != nullptr ? phpqt_qstring(text) : QString(), static_cast<int>(type));
 	item->wrapper = Z_OBJ_P(ZEND_THIS);
 	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), item, true, phpqt_destroy_table_item, phpqt_forget_table_item);
 }
@@ -618,6 +665,14 @@ ZEND_METHOD(QTableWidgetItem, text)
 	PHPQT_VALUE_THIS(QTableWidgetItem, item);
 
 	phpqt_return_qstring(return_value, item->text());
+}
+
+ZEND_METHOD(QTableWidgetItem, type)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTableWidgetItem, item);
+
+	RETURN_LONG(item->type());
 }
 
 ZEND_METHOD(QTableWidgetItem, row)
@@ -649,12 +704,16 @@ ZEND_METHOD(QDesktopServices, __construct)
 
 ZEND_METHOD(QDesktopServices, openUrl)
 {
-	zend_string *url;
+	zend_object *url;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_STR(url)
+		Z_PARAM_OBJ_OF_CLASS(url, phpqt_ce_QUrl)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
-	RETURN_BOOL(QDesktopServices::openUrl(QUrl(QString::fromUtf8(ZSTR_VAL(url), static_cast<qsizetype>(ZSTR_LEN(url))))));
+	QUrl *given = static_cast<QUrl *>(phpqt_value_arg(url, 1));
+	if (given == nullptr) {
+		RETURN_THROWS();
+	}
+
+	RETURN_BOOL(QDesktopServices::openUrl(*given));
 }

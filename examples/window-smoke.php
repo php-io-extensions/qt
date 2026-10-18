@@ -42,7 +42,8 @@ function process(float $seconds): void
     }
 }
 
-$app = new QApplication([PHP_BINARY]);
+$argc = 1;
+$app = new QApplication($argc, [PHP_BINARY]);
 QGuiApplication::setQuitOnLastWindowClosed(false);
 $log = [];
 
@@ -53,11 +54,14 @@ $window->resize(480, 320);
 $window->setAttribute(Qt\WidgetAttribute::DELETE_ON_CLOSE);
 $window->setCentralWidget(new QWidget());
 
-$filter = new QEventFilter(function (QObject $watched, QEvent\Type|int $type) use (&$log): bool {
-    $log[] = $type instanceof QEvent\Type ? $type->name : (string) $type;
+$filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$log): bool {
+    $type = $event->type();
+    if ($type === QEvent\Type::WINDOW_ACTIVATE || $type === QEvent\Type::CLOSE) {
+        $log[] = $type->name;
+    }
 
     return false;
-}, [QEvent\Type::WINDOW_ACTIVATE, QEvent\Type::CLOSE]);
+});
 $window->installEventFilter($filter);
 QObject::connect($window, 'destroyed(QObject*)', function () use (&$log): void {
     $log[] = 'destroyed';
@@ -71,11 +75,11 @@ $about->setMenuRole(QAction\MenuRole::ABOUT_ROLE);
 $appMenu->addSeparator();
 $quit = $appMenu->addAction('Quit');
 $quit->setMenuRole(QAction\MenuRole::QUIT_ROLE);
-$quit->setShortcut('Ctrl+Q');
+$quit->setShortcut(new QKeySequence('Ctrl+Q', QKeySequence\SequenceFormat::PORTABLE_TEXT));
 
 $view = $bar->addMenu('View');
 $refresh = $view->addAction('Refresh');
-$refresh->setShortcut('Ctrl+R');
+$refresh->setShortcut(new QKeySequence('Ctrl+R', QKeySequence\SequenceFormat::PORTABLE_TEXT));
 $grid = $view->addAction('Show Grid');
 $grid->setCheckable(true);
 

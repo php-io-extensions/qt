@@ -80,7 +80,6 @@ ZEND_METHOD(QOpenGLWidget, __construct)
 ZEND_METHOD(QOpenGLWidget, makeCurrent)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_REQUIRE_MAIN_THREAD();
 	PHPQT_THIS(QOpenGLWidget, widget);
 
 	widget->makeCurrent();
@@ -89,7 +88,6 @@ ZEND_METHOD(QOpenGLWidget, makeCurrent)
 ZEND_METHOD(QOpenGLWidget, doneCurrent)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_REQUIRE_MAIN_THREAD();
 	PHPQT_THIS(QOpenGLWidget, widget);
 
 	widget->doneCurrent();
@@ -114,7 +112,6 @@ ZEND_METHOD(QOpenGLWidget, defaultFramebufferObject)
 ZEND_METHOD(QOpenGLWidget, update)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_REQUIRE_MAIN_THREAD();
 	PHPQT_THIS(QOpenGLWidget, widget);
 
 	widget->update();
@@ -136,12 +133,9 @@ ZEND_METHOD(QOpenGLPainter, __construct)
 	if (!phpqt_require_callable(paint, 1)) {
 		RETURN_THROWS();
 	}
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QOpenGLPainter needs a QApplication first", 0);
-		RETURN_THROWS();
-	}
-	if (phpqt_object_from(Z_OBJ_P(ZEND_THIS))->guard != nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QOpenGLPainter::__construct() called twice", 0);
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-gl-painter") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QOpenGLPainter needs a QApplication first", 0); /* binding:qapp-gl-painter */
 		RETURN_THROWS();
 	}
 
@@ -160,7 +154,6 @@ ZEND_METHOD(QOpenGLWidget, setFormat)
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_OBJ_OF_CLASS(format_obj, phpqt_ce_QSurfaceFormat)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 	PHPQT_THIS(QOpenGLWidget, widget);
 
 	QSurfaceFormat *format = static_cast<QSurfaceFormat *>(phpqt_value_arg(format_obj, 1));
@@ -184,8 +177,7 @@ ZEND_METHOD(QSurfaceFormat, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QSurfaceFormat::__construct() called twice", 0);
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
 	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QSurfaceFormat(), true, phpqt_destroy_surface_format);
@@ -196,6 +188,21 @@ ZEND_METHOD(QSurfaceFormat, defaultFormat)
 	ZEND_PARSE_PARAMETERS_NONE();
 
 	phpqt_return_surface_format(return_value, QSurfaceFormat::defaultFormat());
+}
+
+ZEND_METHOD(QSurfaceFormat, setDefaultFormat)
+{
+	zend_object *format_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(format_obj, phpqt_ce_QSurfaceFormat)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QSurfaceFormat *format = static_cast<QSurfaceFormat *>(phpqt_value_arg(format_obj, 1));
+	if (!format) {
+		RETURN_THROWS();
+	}
+	QSurfaceFormat::setDefaultFormat(*format);
 }
 
 ZEND_METHOD(QSurfaceFormat, majorVersion)

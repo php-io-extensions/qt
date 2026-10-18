@@ -1,8 +1,10 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 0cea4ba4b850a86a8bcacca2c2619c1f5a845839 */
+ * Stub hash: 2dd9c85ee80f3b0a7e9d99ef29cff3db28851fdf */
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCoreApplication___construct, 0, 0, 1)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCoreApplication___construct, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(1, argc, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, argv, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "QCoreApplication::APPLICATION_FLAGS")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QCoreApplication_instance, 0, 0, QCoreApplication, 1)
@@ -46,6 +48,15 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCoreApplication_closingDo
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QCoreApplication_startingUp arginfo_class_QCoreApplication_closingDown
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCoreApplication_setAttribute, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, attribute, Qt\\ApplicationAttribute, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, on, _IS_BOOL, 0, "true")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCoreApplication_testAttribute, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, attribute, Qt\\ApplicationAttribute, 0)
+ZEND_END_ARG_INFO()
 
 #define arginfo_class_QGuiApplication___construct arginfo_class_QCoreApplication___construct
 
@@ -93,6 +104,8 @@ ZEND_METHOD(QCoreApplication, setApplicationName);
 ZEND_METHOD(QCoreApplication, applicationPid);
 ZEND_METHOD(QCoreApplication, closingDown);
 ZEND_METHOD(QCoreApplication, startingUp);
+ZEND_METHOD(QCoreApplication, setAttribute);
+ZEND_METHOD(QCoreApplication, testAttribute);
 ZEND_METHOD(QGuiApplication, __construct);
 ZEND_METHOD(QGuiApplication, platformName);
 ZEND_METHOD(QGuiApplication, desktopFileName);
@@ -120,6 +133,8 @@ static const zend_function_entry class_QCoreApplication_methods[] = {
 	ZEND_ME(QCoreApplication, applicationPid, arginfo_class_QCoreApplication_applicationPid, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QCoreApplication, closingDown, arginfo_class_QCoreApplication_closingDown, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QCoreApplication, startingUp, arginfo_class_QCoreApplication_startingUp, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QCoreApplication, setAttribute, arginfo_class_QCoreApplication_setAttribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QCoreApplication, testAttribute, arginfo_class_QCoreApplication_testAttribute, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 
@@ -149,6 +164,12 @@ static zend_class_entry *register_class_QCoreApplication(zend_class_entry *class
 
 	INIT_CLASS_ENTRY(ce, "QCoreApplication", class_QCoreApplication_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval const_APPLICATION_FLAGS_value;
+	ZVAL_LONG(&const_APPLICATION_FLAGS_value, QCoreApplication::ApplicationFlags);
+	zend_string *const_APPLICATION_FLAGS_name = zend_string_init_interned("APPLICATION_FLAGS", sizeof("APPLICATION_FLAGS") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_APPLICATION_FLAGS_name, &const_APPLICATION_FLAGS_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_APPLICATION_FLAGS_name);
 
 	return class_entry;
 }

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: c039dbb23ee23b8bba3fa37422d74fd202303617 */
+ * Stub hash: ab14baae4120db6debbfc8322d58678d11efbf33 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QObject___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
@@ -50,6 +50,13 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QObject_disconnect, 0, 1, 
 	ZEND_ARG_OBJ_INFO(0, connection, QMetaObject\\Connection, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QObject_thread, 0, 0, QThread, 1)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QThread___construct arginfo_class_QObject___construct
+
+#define arginfo_class_QThread_currentThread arginfo_class_QObject_thread
+
 ZEND_METHOD(QObject, __construct);
 ZEND_METHOD(QObject, objectName);
 ZEND_METHOD(QObject, setObjectName);
@@ -63,6 +70,9 @@ ZEND_METHOD(QObject, removeEventFilter);
 ZEND_METHOD(QObject, pointer);
 ZEND_METHOD(QObject, connect);
 ZEND_METHOD(QObject, disconnect);
+ZEND_METHOD(QObject, thread);
+ZEND_METHOD(QThread, __construct);
+ZEND_METHOD(QThread, currentThread);
 
 static const zend_function_entry class_QObject_methods[] = {
 	ZEND_ME(QObject, __construct, arginfo_class_QObject___construct, ZEND_ACC_PUBLIC)
@@ -78,6 +88,13 @@ static const zend_function_entry class_QObject_methods[] = {
 	ZEND_ME(QObject, pointer, arginfo_class_QObject_pointer, ZEND_ACC_PUBLIC)
 	ZEND_ME(QObject, connect, arginfo_class_QObject_connect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QObject, disconnect, arginfo_class_QObject_disconnect, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QObject, thread, arginfo_class_QObject_thread, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QThread_methods[] = {
+	ZEND_ME(QThread, __construct, arginfo_class_QThread___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QThread, currentThread, arginfo_class_QThread_currentThread, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 
@@ -87,6 +104,16 @@ static zend_class_entry *register_class_QObject(void)
 
 	INIT_CLASS_ENTRY(ce, "QObject", class_QObject_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QThread(zend_class_entry *class_entry_QObject)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QThread", class_QThread_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

@@ -1,8 +1,9 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 9885e71eaef2f9c4f7e9a88399e732e9dcee9169 */
+ * Stub hash: df0eefa9cbfcc7e834deb57b7f8610694a0ab906 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QMainWindow___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+	ZEND_ARG_OBJ_TYPE_MASK(0, flags, Qt\\WindowType, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMainWindow_menuBar, 0, 0, QMenuBar, 0)

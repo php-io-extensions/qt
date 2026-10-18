@@ -11,10 +11,13 @@
 # include "config.h"
 #endif
 
+#include <type_traits>
+
 #include <QtCore/QByteArray>
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
 #include <QtCore/QString>
+#include <QtCore/QStringList>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
 #include <QtCore/QMetaMethod>
@@ -52,7 +55,9 @@ typedef struct {
 	QObject *raw;                  /* the address the identity map is keyed by */
 	bool owned;                    /* PHP created it: deleted with the PHP object unless it has a parent */
 	int argc;                      /* QCoreApplication family: storage Qt keeps referencing */
-	char **argv;
+	char **argv;                   /* the array Qt holds and rearranges as it strips its own options */
+	char **strings;                /* every argv string, freed from here: Qt may drop some from argv */
+	int string_count;
 	zend_object std;
 } phpqt_object;
 
@@ -71,6 +76,8 @@ typedef struct {
 	bool owned;
 	void (*destroy)(void *ptr);
 	void (*forget)(void *ptr);     /* owner-held kinds: stop the native writing back to this wrapper; may be NULL */
+	QPointer<QObject> *owner;      /* borrowed kinds: the object that holds ptr; NULL otherwise */
+	bool (*alive)(void *ptr, QObject *owner); /* borrowed kinds: whether the owner still holds ptr */
 	zend_object std;
 } phpqt_value_object;
 
@@ -106,6 +113,7 @@ extern zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 extern zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
 extern zend_class_entry *phpqt_ce_QEvent_Type;
 extern zend_class_entry *phpqt_ce_Qt_WidgetAttribute;
+extern zend_class_entry *phpqt_ce_Qt_ApplicationAttribute;
 extern zend_class_entry *phpqt_ce_QWindow;
 extern zend_class_entry *phpqt_ce_QOpenGLWidget;
 extern zend_class_entry *phpqt_ce_QVulkanInstance;
@@ -155,7 +163,7 @@ extern zend_class_entry *phpqt_ce_QTextCursor;
 extern zend_class_entry *phpqt_ce_QTextCursor_MoveMode;
 extern zend_class_entry *phpqt_ce_QTextCursor_MoveOperation;
 extern zend_class_entry *phpqt_ce_QTextBlock;
-extern zend_class_entry *phpqt_ce_QTextEditExtraSelection;
+extern zend_class_entry *phpqt_ce_QTextEdit_ExtraSelection;
 extern zend_class_entry *phpqt_ce_QTextDocument;
 extern zend_class_entry *phpqt_ce_QScrollBar;
 extern zend_class_entry *phpqt_ce_QPlainTextEdit_LineWrapMode;
@@ -173,6 +181,9 @@ extern zend_class_entry *phpqt_ce_QDateEdit;
 extern zend_class_entry *phpqt_ce_QProgressBar;
 extern zend_class_entry *phpqt_ce_QFrame;
 extern zend_class_entry *phpqt_ce_QScrollArea;
+extern zend_class_entry *phpqt_ce_QSplitter;
+extern zend_class_entry *phpqt_ce_QSplitterHandle;
+extern zend_class_entry *phpqt_ce_QTabWidget;
 extern zend_class_entry *phpqt_ce_QAbstractItemView;
 extern zend_class_entry *phpqt_ce_QTableWidget;
 extern zend_class_entry *phpqt_ce_QMediaPlayer_PlaybackState;
@@ -230,13 +241,49 @@ QObject *phpqt_arg(zend_object *wrapper_or_null, uint32_t arg_num, bool *failed)
 /* Qt values: copies in, copies out; the item keeps its identity through its wrapper. */
 void phpqt_value_setup(zend_class_entry *ce);
 void phpqt_value_hold(zend_object *wrapper, void *ptr, bool owned, void (*destroy)(void *), void (*forget)(void *) = nullptr);
+void phpqt_value_borrow(zend_object *wrapper, void *ptr, QObject *owner, bool (*alive)(void *ptr, QObject *owner));
 void *phpqt_value_this(zend_object *wrapper);
 void *phpqt_value_arg(zend_object *wrapper, uint32_t arg_num);
 void phpqt_return_font(zval *rv, const QFont &font);
 void phpqt_return_pixmap(zval *rv, const QPixmap &pixmap);
 void phpqt_return_table_item(zval *rv, QTableWidgetItem *item);
 void phpqt_value_taken(zend_object *wrapper);
+bool phpqt_value_fresh(zend_object *wrapper);
 QTableWidgetItem *phpqt_table_item_prototype();
+
+/* Qt value classes, copies both ways (QValues.cpp). */
+class QDate;
+class QKeySequence;
+class QPoint;
+class QPointF;
+class QRect;
+class QSize;
+void phpqt_return_qpoint(zval *rv, const QPoint &point);
+void phpqt_return_qpointf(zval *rv, const QPointF &point);
+void phpqt_return_qsize(zval *rv, const QSize &size);
+void phpqt_return_qrect(zval *rv, const QRect &rect);
+void phpqt_return_qdate(zval *rv, const QDate &date);
+void phpqt_return_qkeysequence(zval *rv, const QKeySequence &sequence);
+class QUrl;
+void phpqt_return_url(zval *rv, const QUrl &url);
+extern zend_class_entry *phpqt_ce_QThread;
+extern zend_class_entry *phpqt_ce_QCalendarWidget;
+extern zend_class_entry *phpqt_ce_QInputDevice;
+extern zend_class_entry *phpqt_ce_QPointingDevice;
+extern zend_class_entry *phpqt_ce_QLayoutItem;
+extern zend_class_entry *phpqt_ce_QPoint;
+extern zend_class_entry *phpqt_ce_QPointF;
+extern zend_class_entry *phpqt_ce_QSize;
+extern zend_class_entry *phpqt_ce_QRect;
+extern zend_class_entry *phpqt_ce_QDate;
+extern zend_class_entry *phpqt_ce_QKeySequence;
+extern zend_class_entry *phpqt_ce_QKeySequence_SequenceFormat;
+extern zend_class_entry *phpqt_ce_Qt_DateFormat;
+extern zend_class_entry *phpqt_ce_Qt_WindowType;
+extern zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
+extern zend_class_entry *phpqt_ce_Qt_BrushStyle;
+extern zend_class_entry *phpqt_ce_Qt_ConnectionType;
+void phpqt_register_QValues();
 
 /* The wrapped value, or a QtException when it is gone. */
 #define PHPQT_VALUE_THIS(type, var) \
@@ -261,9 +308,27 @@ zend_long phpqt_enum_value(zend_object *obj_or_null, zend_long fallback);
 void phpqt_return_enum(zval *rv, zend_class_entry *ce, zend_long value);
 bool phpqt_fd_from_zval(zval *zfd, uint32_t arg_num, int *fd);
 bool phpqt_require_callable(zval *callable, uint32_t arg_num);
+bool phpqt_long_fits(zend_long value, zend_long min, zend_long max, uint32_t arg_num);
+bool phpqt_string_list(HashTable *ht, QStringList *out, uint32_t arg_num);
+bool phpqt_int_list(HashTable *ht, QList<int> *out, uint32_t arg_num);
+class QVariant;
+bool phpqt_zval_to_variant(zval *arg, QMetaType type, QVariant *out, uint32_t arg_num);
 
 /* Threads. */
 bool phpqt_on_main_thread();
+
+/*
+ * The probe switch. A kept refusal site reads `if (!PHPQT_PROBE_OFF("<id>") && (<check>))`.
+ * A build configured with --enable-qt-probes lets env PHPQT_PROBE_OFF=<id> turn that one
+ * site off, so tests/Probes can show the crash the site prevents; any other build compiles
+ * the switch out.
+ */
+#ifdef PHPQT_PROBES
+bool phpqt_probe_off(const char *id);
+# define PHPQT_PROBE_OFF(id) phpqt_probe_off(id)
+#else
+# define PHPQT_PROBE_OFF(id) 0
+#endif
 
 /* Slots. */
 void phpqt_slots_detach_all();
@@ -280,8 +345,10 @@ public:
 
 	int qt_metacall(QMetaObject::Call call, int id, void **argv) override;
 
-	/* Called with no signal arguments: the functor overload of QTimer::singleShot. */
+	/* Called with no signal arguments (the functor overload of QTimer::singleShot), or with the bound one. */
 	void fire();
+	/* The one argument fire() passes: QImage's cleanupInfo. */
+	void bind(zval *argument);
 	void detach();
 
 	PhpSlot *prev = nullptr;
@@ -295,18 +362,25 @@ private:
 	void invoke(void **argv);
 
 	zval callable;
+	zval bound;
 	QMetaMethod signal;
 };
 
-/* Qt asserts its applications are made on the main thread; this refuses other threads. */
+/*
+ * Site main-thread-macos: on macOS an application, a widget or a QWindow made off the process
+ * main thread has Qt's cocoa platform call AppKit there, which raises an uncaught NSException
+ * (abort). Those constructors refuse it; elsewhere Qt answers for itself.
+ */
+#ifdef __APPLE__
 #define PHPQT_REQUIRE_MAIN_THREAD() do { \
-	if (!phpqt_on_main_thread()) { \
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, \
-			"%s::%s() must be called on the main thread", \
-			ZSTR_VAL(EX(func)->common.scope->name), ZSTR_VAL(EX(func)->common.function_name)); \
+	if (!PHPQT_PROBE_OFF("main-thread-macos") && (!phpqt_on_main_thread())) { \
+		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s::%s() must be called on the main thread", ZSTR_VAL(EX(func)->common.scope->name), ZSTR_VAL(EX(func)->common.function_name)); /* binding:main-thread-macos */ \
 		RETURN_THROWS(); \
 	} \
 } while (0)
+#else
+#define PHPQT_REQUIRE_MAIN_THREAD() do { } while (0)
+#endif
 
 /* The wrapped QObject, or a QtException when Qt has deleted it. */
 #define PHPQT_THIS(type, var) \
@@ -315,25 +389,35 @@ private:
 		RETURN_THROWS(); \
 	}
 
+/* The native constructor takes Qt::WindowFlags after the parent (QWidget, QFrame, QDialog, …), so the stub does too. */
+template <typename Widget, typename... Leading>
+inline constexpr bool phpqt_takes_window_flags = std::is_constructible_v<Widget, Leading..., QWidget *, Qt::WindowFlags>;
+
 /*
- * The widget constructors share one shape: an optional parent widget, a new object
- * PHP owns until the parent (or a later setParent) takes it. Widgets are made on the
- * main thread, after a QApplication.
+ * The widget constructors share one shape: an optional parent widget, and the window flags
+ * where the native constructor takes them; a new object PHP owns until the parent (or a later
+ * setParent) takes it. Widgets are made on the main thread, after a QApplication.
  */
 template <typename Widget>
 static inline void phpqt_construct_widget(INTERNAL_FUNCTION_PARAMETERS)
 {
 	zend_object *parent = nullptr;
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = 0;
 	bool failed;
 
-	ZEND_PARSE_PARAMETERS_START(0, 1)
+	ZEND_PARSE_PARAMETERS_START(0, phpqt_takes_window_flags<Widget> ? 2 : 1)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+		if constexpr (phpqt_takes_window_flags<Widget>) {
+			Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_WindowType, flags_long)
+		}
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QApplication first", ZSTR_VAL(EX(func)->common.scope->name));
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-widget") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QApplication first", ZSTR_VAL(EX(func)->common.scope->name)); /* binding:qapp-widget */
 		RETURN_THROWS();
 	}
 
@@ -342,7 +426,11 @@ static inline void phpqt_construct_widget(INTERNAL_FUNCTION_PARAMETERS)
 		RETURN_THROWS();
 	}
 
-	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(qparent));
+	if constexpr (phpqt_takes_window_flags<Widget>) {
+		phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(qparent, Qt::WindowFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long)))));
+	} else {
+		phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(qparent));
+	}
 }
 
 /* Same shape with a leading text argument: QLabel, QPushButton, QCheckBox, QLineEdit. */
@@ -351,17 +439,23 @@ static inline void phpqt_construct_text_widget(INTERNAL_FUNCTION_PARAMETERS)
 {
 	zend_string *text = nullptr;
 	zend_object *parent = nullptr;
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = 0;
 	bool failed;
 
-	ZEND_PARSE_PARAMETERS_START(0, 2)
+	ZEND_PARSE_PARAMETERS_START(0, (phpqt_takes_window_flags<Widget, QString> ? 3 : 2))
 		Z_PARAM_OPTIONAL
 		Z_PARAM_STR(text)
 		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+		if constexpr (phpqt_takes_window_flags<Widget, QString>) {
+			Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_WindowType, flags_long)
+		}
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QApplication first", ZSTR_VAL(EX(func)->common.scope->name));
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-text-widget") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QApplication first", ZSTR_VAL(EX(func)->common.scope->name)); /* binding:qapp-text-widget */
 		RETURN_THROWS();
 	}
 
@@ -370,7 +464,12 @@ static inline void phpqt_construct_text_widget(INTERNAL_FUNCTION_PARAMETERS)
 		RETURN_THROWS();
 	}
 
-	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(text != nullptr ? phpqt_qstring(text) : QString(), qparent));
+	QString qtext = text != nullptr ? phpqt_qstring(text) : QString();
+	if constexpr (phpqt_takes_window_flags<Widget, QString>) {
+		phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(qtext, qparent, Qt::WindowFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long)))));
+	} else {
+		phpqt_adopt(Z_OBJ_P(ZEND_THIS), new Widget(qtext, qparent));
+	}
 }
 
 #endif

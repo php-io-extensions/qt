@@ -24,11 +24,13 @@ namespace {
         private function __construct() {}
 
         /**
-         * QMetaObject::invokeMethod(object, member, Q_ARG…): call a slot or invokable, or emit a signal, by name.
-         * Arguments convert to the member's parameter types as signal arguments come out: int/bool/float
-         * scalars, QString as string, QDate as an ISO 8601 string, enums as their case or int, QObject
-         * pointers as wrappers. False when the object has no member of that name taking that many arguments.
+         * QMetaObject::invokeMethod(obj, member, c, arguments…): call a slot or invokable, or emit a signal, by name.
+         * Arguments convert to the parameter types of the member of that name taking that many arguments, as
+         * signal arguments come out: int/bool/float scalars, QString as string, QDate, QPoint, QPointF,
+         * QSize, QRect, QUrl and QKeySequence as their classes, enums as their case or int, QObject
+         * pointers as wrappers. With no such member each argument takes
+         * its PHP value's type and Qt's own lookup answers (false, with Qt's warning).
          */
-        public static function invokeMethod(QObject $object, string $member, mixed ...$args): bool {}
+        public static function invokeMethod(QObject $obj, string $member, Qt\ConnectionType $c, mixed ...$arguments): bool {}
     }
 }

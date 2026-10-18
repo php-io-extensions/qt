@@ -17,6 +17,10 @@ static_assert(QMediaPlayer::NoMedia == 0 && QMediaPlayer::LoadingMedia == 1 && Q
 static_assert(QMediaPlayer::NoError == 0 && QMediaPlayer::ResourceError == 1 && QMediaPlayer::FormatError == 2
 	&& QMediaPlayer::NetworkError == 3 && QMediaPlayer::AccessDeniedError == 4,
 	"QMediaPlayer::Error values differ from the stub's enum");
+static_assert(QUrl::TolerantMode == 0 && QUrl::StrictMode == 1 && QUrl::DecodedMode == 2,
+	"QUrl::ParsingMode values differ from the stub's QUrl\\ParsingMode enum");
+
+zend_class_entry *phpqt_ce_QUrl_ParsingMode;
 
 void phpqt_register_QMultimedia()
 {
@@ -24,6 +28,7 @@ void phpqt_register_QMultimedia()
 	phpqt_ce_QMediaPlayer_MediaStatus = register_class_QMediaPlayer_MediaStatus();
 	phpqt_ce_QMediaPlayer_Error = register_class_QMediaPlayer_Error();
 
+	phpqt_ce_QUrl_ParsingMode = register_class_QUrl_ParsingMode();
 	phpqt_ce_QUrl = register_class_QUrl();
 	phpqt_value_setup(phpqt_ce_QUrl);
 
@@ -44,7 +49,7 @@ void phpqt_register_QMultimedia()
 
 static void phpqt_destroy_url(void *ptr) { delete static_cast<QUrl *>(ptr); }
 
-static void phpqt_return_url(zval *rv, const QUrl &url)
+void phpqt_return_url(zval *rv, const QUrl &url)
 {
 	object_init_ex(rv, phpqt_ce_QUrl);
 	phpqt_value_hold(Z_OBJ_P(rv), new QUrl(url), true, phpqt_destroy_url);
@@ -52,9 +57,20 @@ static void phpqt_return_url(zval *rv, const QUrl &url)
 
 ZEND_METHOD(QUrl, __construct)
 {
-	ZEND_PARSE_PARAMETERS_NONE();
+	zend_string *url;
+	zend_object *mode = nullptr;
 
-	zend_throw_error(nullptr, "QUrl is made by QUrl::fromLocalFile()");
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_STR(url)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QUrl_ParsingMode)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QUrl(phpqt_qstring(url), static_cast<QUrl::ParsingMode>(phpqt_enum_value(mode, QUrl::TolerantMode))),
+		true, phpqt_destroy_url);
 }
 
 ZEND_METHOD(QUrl, fromLocalFile)
@@ -70,10 +86,18 @@ ZEND_METHOD(QUrl, fromLocalFile)
 
 ZEND_METHOD(QUrl, toString)
 {
-	ZEND_PARSE_PARAMETERS_NONE();
-	PHPQT_VALUE_THIS(QUrl, url);
+	zend_long options = QUrl::PrettyDecoded;
 
-	phpqt_return_qstring(return_value, url->toString());
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(options)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QUrl, url);
+	if (!phpqt_long_fits(options, 0, UINT_MAX, 1)) {
+		RETURN_THROWS();
+	}
+
+	phpqt_return_qstring(return_value, url->toString(QUrl::FormattingOptions(QFlag(static_cast<uint>(options)))));
 }
 
 ZEND_METHOD(QUrl, isValid)
@@ -97,12 +121,6 @@ static void phpqt_construct_object(INTERNAL_FUNCTION_PARAMETERS)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
-
-	if (QCoreApplication::instance() == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s needs a QCoreApplication first", ZSTR_VAL(EX(func)->common.scope->name));
-		RETURN_THROWS();
-	}
 
 	QObject *qparent = phpqt_arg(parent, 1, &failed);
 	if (failed) {

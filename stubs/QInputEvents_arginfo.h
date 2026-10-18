@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: f16e062282336fd92f616f1df6ccc0c6cbd2e776 */
+ * Stub hash: 4016be82437fdf87f5a080c2b23e3c856f22ae80 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEvent___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
@@ -32,39 +32,37 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QMouseEvent___construct, 0, 0, 7)
 	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
-	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
-	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
-	ZEND_ARG_TYPE_INFO(0, globalX, IS_DOUBLE, 0)
-	ZEND_ARG_TYPE_INFO(0, globalY, IS_DOUBLE, 0)
+	ZEND_ARG_OBJ_INFO(0, localPos, QPointF, 0)
+	ZEND_ARG_OBJ_INFO(0, globalPos, QPointF, 0)
 	ZEND_ARG_TYPE_INFO(0, button, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, buttons, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, modifiers, IS_LONG, 0, "0")
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, device, QPointingDevice, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMouseEvent_button arginfo_class_QInputEvent_modifiers
 
 #define arginfo_class_QMouseEvent_buttons arginfo_class_QInputEvent_modifiers
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMouseEvent_position, 0, 0, IS_ARRAY, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMouseEvent_position, 0, 0, QPointF, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMouseEvent_globalPosition arginfo_class_QMouseEvent_position
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QContextMenuEvent___construct, 0, 0, 5)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QContextMenuEvent___construct, 0, 0, 3)
 	ZEND_ARG_OBJ_INFO(0, reason, QContextMenuEvent\\Reason, 0)
-	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO(0, globalX, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO(0, globalY, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, pos, QPoint, 0)
+	ZEND_ARG_OBJ_INFO(0, globalPos, QPoint, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, modifiers, IS_LONG, 0, "0")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QContextMenuEvent_reason, 0, 0, QContextMenuEvent\\Reason, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QContextMenuEvent_pos arginfo_class_QMouseEvent_position
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QContextMenuEvent_pos, 0, 0, QPoint, 0)
+ZEND_END_ARG_INFO()
 
-#define arginfo_class_QContextMenuEvent_globalPos arginfo_class_QMouseEvent_position
+#define arginfo_class_QContextMenuEvent_globalPos arginfo_class_QContextMenuEvent_pos
 
 #define arginfo_class_QStyleHints_mousePressAndHoldInterval arginfo_class_QInputEvent_modifiers
 

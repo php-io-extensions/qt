@@ -7,10 +7,10 @@
  */
 class QWidget extends QObject
 {
-    public function __construct(?QWidget $parent = null) {}
+    public function __construct(?QWidget $parent = null, Qt\WindowType|int $f = 0) {}
 
-    /** QWidget::createWindowContainer: a widget that embeds $window; the container owns the window. */
-    public static function createWindowContainer(QWindow $window, ?QWidget $parent = null): QWidget {}
+    /** A widget that embeds $window; the container owns the window. */
+    public static function createWindowContainer(QWindow $window, ?QWidget $parent = null, Qt\WindowType|int $flags = 0): QWidget {}
 
     public function show(): void {}
 
@@ -46,8 +46,8 @@ class QWidget extends QObject
 
     public function parentWidget(): ?QWidget {}
 
-    /** @return array{0: float, 1: float} the global (screen) point in this widget's coordinates */
-    public function mapFromGlobal(float $x, float $y): array {}
+    /** The global (screen) point in this widget's coordinates. */
+    public function mapFromGlobal(QPointF $pos): QPointF {}
 
     public function setAttribute(Qt\WidgetAttribute $attribute, bool $on = true): void {}
 
@@ -65,11 +65,9 @@ class QWidget extends QObject
 
     public function setFixedSize(int $w, int $h): void {}
 
-    /** @return array{int, int} width, height */
-    public function sizeHint(): array {}
+    public function sizeHint(): QSize {}
 
-    /** @return array{int, int} width, height */
-    public function size(): array {}
+    public function size(): QSize {}
 
     public function setSizePolicy(QSizePolicy\Policy $horizontal, QSizePolicy\Policy $vertical): void {}
 
@@ -77,11 +75,9 @@ class QWidget extends QObject
 
     public function setGeometry(int $x, int $y, int $w, int $h): void {}
 
-    /** @return array{x: int, y: int, width: int, height: int} */
-    public function geometry(): array {}
+    public function geometry(): QRect {}
 
-    /** @return array{int, int} x, y */
-    public function pos(): array {}
+    public function pos(): QPoint {}
 
     public function setEnabled(bool $enabled): void {}
 

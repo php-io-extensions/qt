@@ -32,6 +32,15 @@ namespace QMediaPlayer {
     }
 }
 
+namespace QUrl {
+    enum ParsingMode: int
+    {
+        case TOLERANT_MODE = 0;
+        case STRICT_MODE = 1;
+        case DECODED_MODE = 2;
+    }
+}
+
 namespace {
     /**
      * A value in Qt; here a heap copy owned by the PHP object. Made by fromLocalFile() or returned by QMediaPlayer::source().
@@ -40,11 +49,55 @@ namespace {
      */
     final class QUrl
     {
-        private function __construct() {}
+        /** @cvalue QUrl::None */
+        public const int NONE = UNKNOWN;
+        /** @cvalue QUrl::RemoveScheme */
+        public const int REMOVE_SCHEME = UNKNOWN;
+        /** @cvalue QUrl::RemovePassword */
+        public const int REMOVE_PASSWORD = UNKNOWN;
+        /** @cvalue QUrl::RemoveUserInfo */
+        public const int REMOVE_USER_INFO = UNKNOWN;
+        /** @cvalue QUrl::RemovePort */
+        public const int REMOVE_PORT = UNKNOWN;
+        /** @cvalue QUrl::RemoveAuthority */
+        public const int REMOVE_AUTHORITY = UNKNOWN;
+        /** @cvalue QUrl::RemovePath */
+        public const int REMOVE_PATH = UNKNOWN;
+        /** @cvalue QUrl::RemoveQuery */
+        public const int REMOVE_QUERY = UNKNOWN;
+        /** @cvalue QUrl::RemoveFragment */
+        public const int REMOVE_FRAGMENT = UNKNOWN;
+        /** @cvalue QUrl::PreferLocalFile */
+        public const int PREFER_LOCAL_FILE = UNKNOWN;
+        /** @cvalue QUrl::StripTrailingSlash */
+        public const int STRIP_TRAILING_SLASH = UNKNOWN;
+        /** @cvalue QUrl::RemoveFilename */
+        public const int REMOVE_FILENAME = UNKNOWN;
+        /** @cvalue QUrl::NormalizePathSegments */
+        public const int NORMALIZE_PATH_SEGMENTS = UNKNOWN;
+        /** @cvalue QUrl::PrettyDecoded */
+        public const int PRETTY_DECODED = UNKNOWN;
+        /** @cvalue QUrl::EncodeSpaces */
+        public const int ENCODE_SPACES = UNKNOWN;
+        /** @cvalue QUrl::EncodeUnicode */
+        public const int ENCODE_UNICODE = UNKNOWN;
+        /** @cvalue QUrl::EncodeDelimiters */
+        public const int ENCODE_DELIMITERS = UNKNOWN;
+        /** @cvalue QUrl::EncodeReserved */
+        public const int ENCODE_RESERVED = UNKNOWN;
+        /** @cvalue QUrl::DecodeReserved */
+        public const int DECODE_RESERVED = UNKNOWN;
+        /** @cvalue QUrl::FullyEncoded */
+        public const int FULLY_ENCODED = UNKNOWN;
+        /** @cvalue QUrl::FullyDecoded */
+        public const int FULLY_DECODED = UNKNOWN;
+
+        public function __construct(string $url, QUrl\ParsingMode $mode = QUrl\ParsingMode::TOLERANT_MODE) {}
 
         public static function fromLocalFile(string $localFile): QUrl {}
 
-        public function toString(): string {}
+        /** QUrl::FormattingOptions: QUrl's UrlFormattingOption and ComponentFormattingOption constants, OR'd. */
+        public function toString(int $options = QUrl::PRETTY_DECODED): string {}
 
         public function isValid(): bool {}
     }

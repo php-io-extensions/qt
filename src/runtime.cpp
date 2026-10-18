@@ -12,6 +12,11 @@
 #include <QtCore/QByteArray>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDate>
+#include <QtCore/QPoint>
+#include <QtCore/QRect>
+#include <QtCore/QSize>
+#include <QtCore/QUrl>
+#include <QtGui/QKeySequence>
 #include <QtCore/QSocketDescriptor>
 #include <QtCore/QString>
 
@@ -84,10 +89,12 @@ static void phpqt_free_object(zend_object *object)
 
 	/* An application's argv outlives the application, which kept pointers into it. */
 	if (intern->argv != nullptr) {
-		for (int i = 0; i < intern->argc; i++) {
-			pefree(intern->argv[i], 1);
+		for (int i = 0; i < intern->string_count; i++) {
+			pefree(intern->strings[i], 1);
 		}
+		pefree(intern->strings, 1);
 		pefree(intern->argv, 1);
+		intern->strings = nullptr;
 		intern->argv = nullptr;
 	}
 
@@ -177,6 +184,16 @@ void phpqt_adopt(zend_object *wrapper, QObject *created)
 	}
 
 	phpqt_track(wrapper, created, true);
+}
+
+/* A value wrapper constructed once already holds its native value: a second __construct() has nowhere to put another. */
+bool phpqt_value_fresh(zend_object *wrapper)
+{
+	if (phpqt_value_from(wrapper)->constructed) {
+		zend_throw_exception_ex(phpqt_ce_QtException, 0, "%s::__construct() called twice", ZSTR_VAL(wrapper->ce->name));
+		return false;
+	}
+	return true;
 }
 
 QObject *phpqt_this(zend_object *wrapper)
@@ -296,6 +313,64 @@ bool phpqt_require_callable(zval *callable, uint32_t arg_num)
 	return true;
 }
 
+/* A PHP int handed to a narrower C type: values the C type cannot hold are a ValueError. */
+bool phpqt_long_fits(zend_long value, zend_long min, zend_long max, uint32_t arg_num)
+{
+	if (value < min || value > max) {
+		zend_argument_value_error(arg_num, "must be between " ZEND_LONG_FMT " and " ZEND_LONG_FMT, min, max);
+		return false;
+	}
+
+	return true;
+}
+
+/* A PHP list of strings as a QStringList. */
+bool phpqt_string_list(HashTable *ht, QStringList *out, uint32_t arg_num)
+{
+	zval *entry;
+
+	ZEND_HASH_FOREACH_VAL(ht, entry) {
+		ZVAL_DEREF(entry);
+		if (Z_TYPE_P(entry) != IS_STRING) {
+			zend_argument_type_error(arg_num, "must be a list of strings, %s found", zend_zval_value_name(entry));
+			return false;
+		}
+		out->append(phpqt_qstring(Z_STR_P(entry)));
+	} ZEND_HASH_FOREACH_END();
+
+	return true;
+}
+
+/* A PHP list of ints as a QList<int>: each held by a C int. */
+bool phpqt_int_list(HashTable *ht, QList<int> *out, uint32_t arg_num)
+{
+	zval *entry;
+
+	ZEND_HASH_FOREACH_VAL(ht, entry) {
+		ZVAL_DEREF(entry);
+		if (Z_TYPE_P(entry) != IS_LONG) {
+			zend_argument_type_error(arg_num, "must contain only ints, %s given", zend_zval_value_name(entry));
+			return false;
+		}
+		if (!phpqt_long_fits(Z_LVAL_P(entry), INT_MIN, INT_MAX, arg_num)) {
+			return false;
+		}
+		out->append(static_cast<int>(Z_LVAL_P(entry)));
+	} ZEND_HASH_FOREACH_END();
+
+	return true;
+}
+
+#ifdef PHPQT_PROBES
+/* True when env PHPQT_PROBE_OFF names this site id. */
+bool phpqt_probe_off(const char *id)
+{
+	const char *off = getenv("PHPQT_PROBE_OFF");
+
+	return off != nullptr && strcmp(off, id) == 0;
+}
+#endif
+
 bool phpqt_on_main_thread()
 {
 #ifdef __APPLE__
@@ -361,12 +436,14 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 			return;
 		}
 
-		/* Dates cross as ISO 8601 strings, as QDateEdit::date() hands them out. */
-		case QMetaType::QDate: {
-			QByteArray iso = static_cast<QDate *>(value)->toString(Qt::ISODate).toUtf8();
-			ZVAL_STRINGL(rv, iso.constData(), iso.size());
-			return;
-		}
+		/* Qt's value classes cross as copies in their PHP classes. */
+		case QMetaType::QDate:   phpqt_return_qdate(rv, *static_cast<QDate *>(value)); return;
+		case QMetaType::QPoint:  phpqt_return_qpoint(rv, *static_cast<QPoint *>(value)); return;
+		case QMetaType::QPointF: phpqt_return_qpointf(rv, *static_cast<QPointF *>(value)); return;
+		case QMetaType::QSize:   phpqt_return_qsize(rv, *static_cast<QSize *>(value)); return;
+		case QMetaType::QRect:   phpqt_return_qrect(rv, *static_cast<QRect *>(value)); return;
+		case QMetaType::QUrl:    phpqt_return_url(rv, *static_cast<QUrl *>(value)); return;
+		case QMetaType::QKeySequence: phpqt_return_qkeysequence(rv, *static_cast<QKeySequence *>(value)); return;
 	}
 
 	if (type == QMetaType::fromType<QSocketDescriptor>()) {
@@ -400,6 +477,7 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 PhpSlot::PhpSlot(zval *functor, QMetaMethod signal_) : QObject(nullptr), signal(signal_)
 {
 	ZVAL_COPY(&callable, functor);
+	ZVAL_UNDEF(&bound);
 
 	next = PHPQT_G(slots_head);
 	if (next != nullptr) {
@@ -444,6 +522,18 @@ void PhpSlot::detach()
 		ZVAL_UNDEF(&callable);
 		zval_ptr_dtor(&held);
 	}
+	if (!Z_ISUNDEF(bound)) {
+		zval held;
+
+		ZVAL_COPY_VALUE(&held, &bound);
+		ZVAL_UNDEF(&bound);
+		zval_ptr_dtor(&held);
+	}
+}
+
+void PhpSlot::bind(zval *argument)
+{
+	ZVAL_COPY(&bound, argument);
 }
 
 int PhpSlot::qt_metacall(QMetaObject::Call call, int id, void **argv)
@@ -463,7 +553,18 @@ int PhpSlot::qt_metacall(QMetaObject::Call call, int id, void **argv)
 
 void PhpSlot::fire()
 {
-	invoke(nullptr);
+	if (Z_ISUNDEF(bound)) {
+		invoke(nullptr);
+		return;
+	}
+
+	/* The callable may detach this slot and so free the bound value: pass our own reference. */
+	zval argument, retval;
+
+	ZVAL_COPY(&argument, &bound);
+	call(1, &argument, &retval);
+	zval_ptr_dtor(&retval);
+	zval_ptr_dtor(&argument);
 }
 
 void PhpSlot::invoke(void **argv)

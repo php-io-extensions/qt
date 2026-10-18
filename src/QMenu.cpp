@@ -30,32 +30,6 @@ void phpqt_register_QMenu()
 	phpqt_map_class("QAction", phpqt_ce_QAction);
 }
 
-/* addMenu(const QString &) or addMenu(QMenu *), on a QMenuBar or a QMenu. */
-template <typename Owner>
-static void phpqt_add_menu(Owner *owner, zval *menu_or_title, zval *return_value)
-{
-	if (Z_TYPE_P(menu_or_title) == IS_STRING) {
-		phpqt_box(return_value, owner->addMenu(phpqt_qstring(Z_STR_P(menu_or_title))));
-		return;
-	}
-
-	bool failed;
-	QMenu *menu = static_cast<QMenu *>(phpqt_arg(Z_OBJ_P(menu_or_title), 1, &failed));
-	if (failed) {
-		return;
-	}
-
-	phpqt_box(return_value, owner->addMenu(menu));
-}
-
-#define PHPQT_PARSE_MENU_OR_TITLE(zv) \
-	ZEND_PARSE_PARAMETERS_START(1, 1) \
-		Z_PARAM_ZVAL(zv) \
-	ZEND_PARSE_PARAMETERS_END(); \
-	if (Z_TYPE_P(zv) != IS_STRING && !(Z_TYPE_P(zv) == IS_OBJECT && instanceof_function(Z_OBJCE_P(zv), phpqt_ce_QMenu))) { \
-		zend_argument_type_error(1, "must be of type QMenu|string, %s given", zend_zval_value_name(zv)); \
-		RETURN_THROWS(); \
-	}
 
 /* ---- QMenuBar ---------------------------------------------------------- */
 
@@ -70,6 +44,12 @@ ZEND_METHOD(QMenuBar, __construct)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-menubar") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QMenuBar needs a QApplication first", 0); /* binding:qapp-menubar */
+		RETURN_THROWS();
+	}
+
 	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 1, &failed));
 	if (failed) {
 		RETURN_THROWS();
@@ -80,12 +60,14 @@ ZEND_METHOD(QMenuBar, __construct)
 
 ZEND_METHOD(QMenuBar, addMenu)
 {
-	zval *menu_or_title;
+	zend_string *title;
 
-	PHPQT_PARSE_MENU_OR_TITLE(menu_or_title);
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(title)
+	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QMenuBar, bar);
 
-	phpqt_add_menu(bar, menu_or_title, return_value);
+	phpqt_box(return_value, bar->addMenu(phpqt_qstring(title)));
 }
 
 ZEND_METHOD(QMenuBar, addAction)
@@ -143,6 +125,12 @@ ZEND_METHOD(QMenu, __construct)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-menu") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QMenu needs a QApplication first", 0); /* binding:qapp-menu */
+		RETURN_THROWS();
+	}
+
 	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 2, &failed));
 	if (failed) {
 		RETURN_THROWS();
@@ -185,12 +173,14 @@ ZEND_METHOD(QMenu, addAction)
 
 ZEND_METHOD(QMenu, addMenu)
 {
-	zval *menu_or_title;
+	zend_string *title;
 
-	PHPQT_PARSE_MENU_OR_TITLE(menu_or_title);
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(title)
+	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QMenu, menu);
 
-	phpqt_add_menu(menu, menu_or_title, return_value);
+	phpqt_box(return_value, menu->addMenu(phpqt_qstring(title)));
 }
 
 ZEND_METHOD(QMenu, addSeparator)
@@ -219,16 +209,27 @@ ZEND_METHOD(QMenu, isEmpty)
 
 ZEND_METHOD(QMenu, popup)
 {
-	zend_long x;
-	zend_long y;
+	zend_object *pos_obj;
+	zend_object *at_obj = nullptr;
+	bool failed;
 
-	ZEND_PARSE_PARAMETERS_START(2, 2)
-		Z_PARAM_LONG(x)
-		Z_PARAM_LONG(y)
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(pos_obj, phpqt_ce_QPoint)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(at_obj, phpqt_ce_QAction)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QMenu, menu);
 
-	menu->popup(QPoint((int) x, (int) y));
+	QPoint *pos = static_cast<QPoint *>(phpqt_value_arg(pos_obj, 1));
+	if (pos == nullptr) {
+		RETURN_THROWS();
+	}
+	QAction *at = static_cast<QAction *>(phpqt_arg(at_obj, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	menu->popup(*pos, at);
 }
 
 ZEND_METHOD(QMenu, menuAction)
@@ -334,26 +335,24 @@ ZEND_METHOD(QAction, shortcut)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QAction, action);
 
-	phpqt_return_qstring(return_value, action->shortcut().toString(QKeySequence::PortableText));
+	phpqt_return_qkeysequence(return_value, action->shortcut());
 }
 
 ZEND_METHOD(QAction, setShortcut)
 {
-	zend_string *shortcut;
+	zend_object *shortcut_obj;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_STR(shortcut)
+		Z_PARAM_OBJ_OF_CLASS(shortcut_obj, phpqt_ce_QKeySequence)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QAction, action);
 
-	QKeySequence sequence = QKeySequence::fromString(phpqt_qstring(shortcut), QKeySequence::PortableText);
-	/* An unreadable string becomes a sequence of unknown keys, which prints back as nothing. */
-	if (ZSTR_LEN(shortcut) > 0 && sequence.toString(QKeySequence::PortableText).isEmpty()) {
-		zend_argument_value_error(1, "must be a key sequence QKeySequence can read, e.g. \"Ctrl+Q\"");
+	QKeySequence *shortcut = static_cast<QKeySequence *>(phpqt_value_arg(shortcut_obj, 1));
+	if (shortcut == nullptr) {
 		RETURN_THROWS();
 	}
 
-	action->setShortcut(sequence);
+	action->setShortcut(*shortcut);
 }
 
 ZEND_METHOD(QAction, trigger)

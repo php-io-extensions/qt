@@ -46,10 +46,12 @@ namespace {
 
         public function close(): bool {}
 
+#if QT_CONFIG(vulkan)
         /** Qt keeps a pointer, not the PHP object: the instance's own release detaches it from every window first. */
         public function setVulkanInstance(?QVulkanInstance $instance): void {}
 
         public function vulkanInstance(): ?QVulkanInstance {}
+#endif
 
         public function width(): int {}
 

@@ -10,6 +10,8 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QScrollArea>
+#include <QtWidgets/QSplitter>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QAbstractSlider>
@@ -87,6 +89,10 @@ void phpqt_register_QControls()
 	phpqt_object_setup(phpqt_ce_QPlainTextEdit);
 	phpqt_map_class("QPlainTextEdit", phpqt_ce_QPlainTextEdit);
 
+	phpqt_ce_QCalendarWidget = register_class_QCalendarWidget(phpqt_ce_QWidget);
+	phpqt_object_setup(phpqt_ce_QCalendarWidget);
+	phpqt_map_class("QCalendarWidget", phpqt_ce_QCalendarWidget);
+
 	phpqt_ce_QDateEdit = register_class_QDateEdit(phpqt_ce_QWidget);
 	phpqt_object_setup(phpqt_ce_QDateEdit);
 	phpqt_map_class("QDateEdit", phpqt_ce_QDateEdit);
@@ -110,6 +116,18 @@ void phpqt_register_QControls()
 	phpqt_ce_QTableWidget = register_class_QTableWidget(phpqt_ce_QAbstractItemView);
 	phpqt_object_setup(phpqt_ce_QTableWidget);
 	phpqt_map_class("QTableWidget", phpqt_ce_QTableWidget);
+
+	phpqt_ce_QSplitter = register_class_QSplitter(phpqt_ce_QFrame);
+	phpqt_object_setup(phpqt_ce_QSplitter);
+	phpqt_map_class("QSplitter", phpqt_ce_QSplitter);
+
+	phpqt_ce_QSplitterHandle = register_class_QSplitterHandle(phpqt_ce_QWidget);
+	phpqt_object_setup(phpqt_ce_QSplitterHandle);
+	phpqt_map_class("QSplitterHandle", phpqt_ce_QSplitterHandle);
+
+	phpqt_ce_QTabWidget = register_class_QTabWidget(phpqt_ce_QWidget);
+	phpqt_object_setup(phpqt_ce_QTabWidget);
+	phpqt_map_class("QTabWidget", phpqt_ce_QTabWidget);
 }
 
 /* One-liners shared by every class here: no-arg getters and one-arg setters. */
@@ -288,12 +306,6 @@ ZEND_METHOD(QLabel, setTextInteractionFlags)
 
 /* ---- QAbstractButton, QPushButton, QCheckBox --------------------------- */
 
-ZEND_METHOD(QAbstractButton, __construct)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QAbstractButton is abstract: construct a QPushButton or QCheckBox");
-}
 
 PHPQT_GETTER_STRING(QAbstractButton, text, text)
 PHPQT_SETTER_STRING(QAbstractButton, setText, setText)
@@ -316,11 +328,10 @@ ZEND_METHOD(QCheckBox, __construct)
 
 /* ---- QAbstractSlider, QSlider ------------------------------------------ */
 
+/* Private: a QSlider or a scroll area's QScrollBar is one. */
 ZEND_METHOD(QAbstractSlider, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QAbstractSlider is abstract: construct a QSlider");
 }
 
 PHPQT_GETTER_INT(QAbstractSlider, minimum, minimum)
@@ -366,11 +377,10 @@ ZEND_METHOD(QAbstractSlider, setOrientation)
 	slider->setOrientation(static_cast<Qt::Orientation>(phpqt_enum_value(orientation, Qt::Horizontal)));
 }
 
+/* Private: a scroll area's own, QPlainTextEdit::verticalScrollBar(). */
 ZEND_METHOD(QScrollBar, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QScrollBar is its scroll area's: QPlainTextEdit::verticalScrollBar()");
 }
 
 ZEND_METHOD(QSlider, __construct)
@@ -386,8 +396,9 @@ ZEND_METHOD(QSlider, __construct)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QSlider needs a QApplication first", 0);
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-slider") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QSlider needs a QApplication first", 0); /* binding:qapp-slider */
 		RETURN_THROWS();
 	}
 
@@ -406,7 +417,26 @@ ZEND_METHOD(QComboBox, __construct)
 	phpqt_construct_widget<QComboBox>(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
-PHPQT_SETTER_STRING(QComboBox, addItem, addItem)
+ZEND_METHOD(QComboBox, addItem)
+{
+	zend_string *text;
+	zval *user_data = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_STR(text)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_ZVAL(user_data)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QComboBox, combo);
+
+	QVariant data;
+	if (user_data != nullptr && !phpqt_zval_to_variant(user_data, QMetaType(), &data, 2)) {
+		RETURN_THROWS();
+	}
+
+	combo->addItem(phpqt_qstring(text), data);
+}
+
 PHPQT_VOID(QComboBox, clear, clear)
 PHPQT_GETTER_INT(QComboBox, count, count)
 PHPQT_GETTER_INT(QComboBox, currentIndex, currentIndex)
@@ -423,14 +453,9 @@ ZEND_METHOD(QComboBox, addItems)
 	PHPQT_THIS(QComboBox, combo);
 
 	QStringList list;
-	zval *text;
-	ZEND_HASH_FOREACH_VAL(texts, text) {
-		if (Z_TYPE_P(text) != IS_STRING) {
-			zend_argument_type_error(1, "must be a list of strings, %s found", zend_zval_value_name(text));
-			RETURN_THROWS();
-		}
-		list.append(phpqt_qstring(Z_STR_P(text)));
-	} ZEND_HASH_FOREACH_END();
+	if (!phpqt_string_list(texts, &list, 1)) {
+		RETURN_THROWS();
+	}
 
 	combo->addItems(list);
 }
@@ -545,19 +570,42 @@ ZEND_METHOD(QPlainTextEdit, setTextCursor)
 	if (cursor == nullptr) {
 		RETURN_THROWS();
 	}
-	if (cursor->document() != edit->document()) {
-		zend_argument_value_error(1, "must be a cursor on this edit's document (a cursor whose document has been deleted is refused)");
-		RETURN_THROWS();
-	}
 	edit->setTextCursor(*cursor);
 }
 
 PHPQT_VOID(QPlainTextEdit, ensureCursorVisible, ensureCursorVisible)
 
+/* A PHP list of QTextEdit\ExtraSelection as QList<QTextEdit::ExtraSelection>: each struct's fields copied. */
+static bool phpqt_extra_selections(HashTable *selections, QList<QTextEdit::ExtraSelection> *out, uint32_t arg_num)
+{
+	zval *entry;
+
+	out->reserve((qsizetype) zend_hash_num_elements(selections));
+	ZEND_HASH_FOREACH_VAL(selections, entry) {
+		ZVAL_DEREF(entry);
+		if (Z_TYPE_P(entry) != IS_OBJECT || !instanceof_function(Z_OBJCE_P(entry), phpqt_ce_QTextEdit_ExtraSelection)) {
+			zend_argument_type_error(arg_num, "must contain only QTextEdit\\ExtraSelection, %s given", zend_zval_value_name(entry));
+			return false;
+		}
+		zval *cursor_zv = zend_read_property(phpqt_ce_QTextEdit_ExtraSelection, Z_OBJ_P(entry), "cursor", sizeof("cursor") - 1, false, nullptr);
+		zval *format_zv = EG(exception) == nullptr ? zend_read_property(phpqt_ce_QTextEdit_ExtraSelection, Z_OBJ_P(entry), "format", sizeof("format") - 1, false, nullptr) : nullptr;
+		if (EG(exception) != nullptr) {
+			return false;
+		}
+		QTextCursor *cursor = static_cast<QTextCursor *>(phpqt_value_arg(Z_OBJ_P(cursor_zv), arg_num));
+		QTextCharFormat *format = cursor != nullptr ? static_cast<QTextCharFormat *>(phpqt_value_arg(Z_OBJ_P(format_zv), arg_num)) : nullptr;
+		if (format == nullptr) {
+			return false;
+		}
+		out->append(QTextEdit::ExtraSelection{*cursor, *format});
+	} ZEND_HASH_FOREACH_END();
+
+	return true;
+}
+
 ZEND_METHOD(QPlainTextEdit, setExtraSelections)
 {
 	HashTable *selections;
-	zval *entry;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_ARRAY_HT(selections)
@@ -565,23 +613,9 @@ ZEND_METHOD(QPlainTextEdit, setExtraSelections)
 	PHPQT_THIS(QPlainTextEdit, edit);
 
 	QList<QTextEdit::ExtraSelection> list;
-	list.reserve((qsizetype) zend_hash_num_elements(selections));
-	ZEND_HASH_FOREACH_VAL(selections, entry) {
-		ZVAL_DEREF(entry);
-		if (Z_TYPE_P(entry) != IS_OBJECT || !instanceof_function(Z_OBJCE_P(entry), phpqt_ce_QTextEditExtraSelection)) {
-			zend_argument_type_error(1, "must contain only QTextEditExtraSelection, %s given", zend_zval_value_name(entry));
-			RETURN_THROWS();
-		}
-		QTextEdit::ExtraSelection *selection = static_cast<QTextEdit::ExtraSelection *>(phpqt_value_arg(Z_OBJ_P(entry), 1));
-		if (selection == nullptr) {
-			RETURN_THROWS();
-		}
-		if (selection->cursor.document() != edit->document()) {
-			zend_argument_value_error(1, "must hold cursors on this edit's document");
-			RETURN_THROWS();
-		}
-		list.append(*selection);
-	} ZEND_HASH_FOREACH_END();
+	if (!phpqt_extra_selections(selections, &list, 1)) {
+		RETURN_THROWS();
+	}
 
 	edit->setExtraSelections(list);
 }
@@ -665,7 +699,14 @@ ZEND_METHOD(QPlainTextEdit, viewport)
 	phpqt_box(return_value, edit->viewport());
 }
 
-/* ---- QDateEdit --------------------------------------------------------- */
+/* ---- QCalendarWidget, QDateEdit ---------------------------------------- */
+
+zend_class_entry *phpqt_ce_QCalendarWidget;
+
+ZEND_METHOD(QCalendarWidget, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
 
 ZEND_METHOD(QDateEdit, __construct)
 {
@@ -680,25 +721,24 @@ ZEND_METHOD(QDateEdit, date)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QDateEdit, edit);
 
-	phpqt_return_qstring(return_value, edit->date().toString(Qt::ISODate));
+	phpqt_return_qdate(return_value, edit->date());
 }
 
 ZEND_METHOD(QDateEdit, setDate)
 {
-	zend_string *iso;
+	zend_object *date_obj;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_STR(iso)
+		Z_PARAM_OBJ_OF_CLASS(date_obj, phpqt_ce_QDate)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QDateEdit, edit);
 
-	QDate date = QDate::fromString(phpqt_qstring(iso), Qt::ISODate);
-	if (!date.isValid()) {
-		zend_argument_value_error(1, "must be an ISO 8601 date (yyyy-MM-dd)");
+	QDate *date = static_cast<QDate *>(phpqt_value_arg(date_obj, 1));
+	if (date == nullptr) {
 		RETURN_THROWS();
 	}
 
-	edit->setDate(date);
+	edit->setDate(*date);
 }
 
 ZEND_METHOD(QDateEdit, calendarWidget)
@@ -706,7 +746,7 @@ ZEND_METHOD(QDateEdit, calendarWidget)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QDateEdit, edit);
 
-	phpqt_box(return_value, edit->calendarPopup() ? edit->calendarWidget() : nullptr);
+	phpqt_box(return_value, edit->calendarWidget());
 }
 
 ZEND_METHOD(QDateEdit, minimumDate)
@@ -714,25 +754,24 @@ ZEND_METHOD(QDateEdit, minimumDate)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_THIS(QDateEdit, edit);
 
-	phpqt_return_qstring(return_value, edit->minimumDate().toString(Qt::ISODate));
+	phpqt_return_qdate(return_value, edit->minimumDate());
 }
 
 ZEND_METHOD(QDateEdit, setMinimumDate)
 {
-	zend_string *iso;
+	zend_object *min_obj;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_STR(iso)
+		Z_PARAM_OBJ_OF_CLASS(min_obj, phpqt_ce_QDate)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_THIS(QDateEdit, edit);
 
-	QDate date = QDate::fromString(phpqt_qstring(iso), Qt::ISODate);
-	if (!date.isValid()) {
-		zend_argument_value_error(1, "must be an ISO 8601 date (yyyy-MM-dd)");
+	QDate *min = static_cast<QDate *>(phpqt_value_arg(min_obj, 1));
+	if (min == nullptr) {
 		RETURN_THROWS();
 	}
 
-	edit->setMinimumDate(date);
+	edit->setMinimumDate(*min);
 }
 
 /* ---- QProgressBar ------------------------------------------------------ */
@@ -851,12 +890,6 @@ PHPQT_SCROLLBAR_POLICY(setVerticalScrollBarPolicy, setVerticalScrollBarPolicy)
 
 /* ---- QAbstractItemView, QTableWidget ----------------------------------- */
 
-ZEND_METHOD(QAbstractItemView, __construct)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
-
-	zend_throw_error(nullptr, "QAbstractItemView is abstract: construct a QTableWidget");
-}
 
 ZEND_METHOD(QAbstractItemView, setSelectionBehavior)
 {
@@ -917,8 +950,9 @@ ZEND_METHOD(QTableWidget, __construct)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
-	if (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception(phpqt_ce_QtException, "QTableWidget needs a QApplication first", 0);
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-table") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QTableWidget needs a QApplication first", 0); /* binding:qapp-table */
 		RETURN_THROWS();
 	}
 
@@ -951,14 +985,9 @@ ZEND_METHOD(QTableWidget, setHorizontalHeaderLabels)
 	PHPQT_THIS(QTableWidget, table);
 
 	QStringList list;
-	zval *label;
-	ZEND_HASH_FOREACH_VAL(labels, label) {
-		if (Z_TYPE_P(label) != IS_STRING) {
-			zend_argument_type_error(1, "must be a list of strings, %s found", zend_zval_value_name(label));
-			RETURN_THROWS();
-		}
-		list.append(phpqt_qstring(Z_STR_P(label)));
-	} ZEND_HASH_FOREACH_END();
+	if (!phpqt_string_list(labels, &list, 1)) {
+		RETURN_THROWS();
+	}
 
 	table->setHorizontalHeaderLabels(list);
 }
@@ -980,22 +1009,21 @@ ZEND_METHOD(QTableWidget, setItem)
 	if (item == nullptr) {
 		RETURN_THROWS();
 	}
-	if (item->tableWidget() != nullptr) {
-		zend_argument_value_error(3, "already belongs to a table");
-		RETURN_THROWS();
-	}
-	/* Qt drops an out-of-range item without storing it (leaked, its view pointer left dangling) and folds a column overflow into the next row. */
-	if (row < 0 || row >= table->rowCount()) {
-		zend_argument_value_error(1, "must be a row of the table (it has %d)", table->rowCount());
-		RETURN_THROWS();
-	}
-	if (column < 0 || column >= table->columnCount()) {
-		zend_argument_value_error(2, "must be a column of the table (it has %d)", table->columnCount());
+	/*
+	 * Qt drops an item outside the table without storing it, but leaves the item's view pointer
+	 * on the table: once the table goes, the item reads freed memory.
+	 */
+	bool row_in = row >= 0 && row < table->rowCount();
+	if (!PHPQT_PROBE_OFF("table-item-range") && (!row_in || column < 0 || column >= table->columnCount())) {
+		zend_argument_value_error(row_in ? 2 : 1, "must be a %s of the table (it has %d)", row_in ? "column" : "row", row_in ? table->columnCount() : table->rowCount()); /* binding:table-item-range */
 		RETURN_THROWS();
 	}
 
-	phpqt_value_taken(item_obj);
 	table->setItem(static_cast<int>(row), static_cast<int>(column), item);
+	/* The table owns the item once Qt stored it; an item of another table stays that table's. */
+	if (item->tableWidget() == table) {
+		phpqt_value_taken(item_obj);
+	}
 }
 
 ZEND_METHOD(QTableWidget, item)
@@ -1036,4 +1064,316 @@ ZEND_METHOD(QTableWidget, horizontalHeaderItem)
 	PHPQT_THIS(QTableWidget, table);
 
 	phpqt_return_table_item(return_value, table->horizontalHeaderItem(static_cast<int>(column)));
+}
+
+/* ---- QSplitter, QSplitterHandle ---------------------------------------- */
+
+ZEND_METHOD(QSplitter, __construct)
+{
+	zend_object *orientation;
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(orientation, phpqt_ce_Qt_Orientation)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-splitter") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QSplitter needs a QApplication first", 0); /* binding:qapp-splitter */
+		RETURN_THROWS();
+	}
+
+	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QSplitter(static_cast<Qt::Orientation>(phpqt_enum_value(orientation, Qt::Horizontal)), qparent));
+}
+
+ZEND_METHOD(QSplitter, orientation)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QSplitter, splitter);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_Orientation, static_cast<zend_long>(splitter->orientation()));
+}
+
+ZEND_METHOD(QSplitter, setOrientation)
+{
+	zend_object *orientation;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(orientation, phpqt_ce_Qt_Orientation)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	splitter->setOrientation(static_cast<Qt::Orientation>(phpqt_enum_value(orientation, Qt::Horizontal)));
+}
+
+ZEND_METHOD(QSplitter, addWidget)
+{
+	zend_object *widget_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(widget_obj, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	QWidget *widget = static_cast<QWidget *>(phpqt_arg(widget_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	splitter->addWidget(widget);
+}
+
+ZEND_METHOD(QSplitter, insertWidget)
+{
+	zend_long index;
+	zend_object *widget_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(index)
+		Z_PARAM_OBJ_OF_CLASS(widget_obj, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	QWidget *widget = static_cast<QWidget *>(phpqt_arg(widget_obj, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	splitter->insertWidget(static_cast<int>(index), widget);
+}
+
+PHPQT_GETTER_INT(QSplitter, count, count)
+PHPQT_GETTER_INT(QSplitter, handleWidth, handleWidth)
+PHPQT_SETTER_INT(QSplitter, setHandleWidth, setHandleWidth)
+PHPQT_GETTER_BOOL(QSplitter, opaqueResize, opaqueResize)
+PHPQT_SETTER_BOOL(QSplitter, setOpaqueResize, setOpaqueResize)
+PHPQT_GETTER_BOOL(QSplitter, childrenCollapsible, childrenCollapsible)
+PHPQT_SETTER_BOOL(QSplitter, setChildrenCollapsible, setChildrenCollapsible)
+
+ZEND_METHOD(QSplitter, widget)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	phpqt_box(return_value, splitter->widget(static_cast<int>(index)));
+}
+
+ZEND_METHOD(QSplitter, indexOf)
+{
+	zend_object *widget_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(widget_obj, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	QWidget *widget = static_cast<QWidget *>(phpqt_arg(widget_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	RETURN_LONG(splitter->indexOf(widget));
+}
+
+ZEND_METHOD(QSplitter, setSizes)
+{
+	HashTable *sizes;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ARRAY_HT(sizes)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	QList<int> list;
+	if (!phpqt_int_list(sizes, &list, 1)) {
+		RETURN_THROWS();
+	}
+
+	splitter->setSizes(list);
+}
+
+ZEND_METHOD(QSplitter, sizes)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QSplitter, splitter);
+
+	array_init(return_value);
+	for (int size : splitter->sizes()) {
+		add_next_index_long(return_value, size);
+	}
+}
+
+ZEND_METHOD(QSplitter, setStretchFactor)
+{
+	zend_long index;
+	zend_long stretch;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(index)
+		Z_PARAM_LONG(stretch)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	splitter->setStretchFactor(static_cast<int>(index), static_cast<int>(stretch));
+}
+
+ZEND_METHOD(QSplitter, handle)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QSplitter, splitter);
+
+	phpqt_box(return_value, splitter->handle(static_cast<int>(index)));
+}
+
+/* Private: its QSplitter makes it, QSplitter::handle(). */
+ZEND_METHOD(QSplitterHandle, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QSplitterHandle, splitter)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QSplitterHandle, handle);
+
+	phpqt_box(return_value, handle->splitter());
+}
+
+/* ---- QTabWidget -------------------------------------------------------- */
+
+ZEND_METHOD(QTabWidget, __construct)
+{
+	phpqt_construct_widget<QTabWidget>(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+}
+
+ZEND_METHOD(QTabWidget, addTab)
+{
+	zend_object *page_obj;
+	zend_string *label;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_OBJ_OF_CLASS(page_obj, phpqt_ce_QWidget)
+		Z_PARAM_STR(label)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	QWidget *page = static_cast<QWidget *>(phpqt_arg(page_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	RETURN_LONG(tabs->addTab(page, phpqt_qstring(label)));
+}
+
+ZEND_METHOD(QTabWidget, removeTab)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	tabs->removeTab(static_cast<int>(index));
+}
+
+ZEND_METHOD(QTabWidget, indexOf)
+{
+	zend_object *page_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(page_obj, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	QWidget *page = static_cast<QWidget *>(phpqt_arg(page_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	RETURN_LONG(tabs->indexOf(page));
+}
+
+PHPQT_GETTER_INT(QTabWidget, count, count)
+PHPQT_GETTER_INT(QTabWidget, currentIndex, currentIndex)
+PHPQT_GETTER_BOOL(QTabWidget, documentMode, documentMode)
+PHPQT_SETTER_BOOL(QTabWidget, setDocumentMode, setDocumentMode)
+
+ZEND_METHOD(QTabWidget, setCurrentIndex)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	tabs->setCurrentIndex(static_cast<int>(index));
+}
+
+ZEND_METHOD(QTabWidget, currentWidget)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	phpqt_box(return_value, tabs->currentWidget());
+}
+
+ZEND_METHOD(QTabWidget, setTabText)
+{
+	zend_long index;
+	zend_string *label;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(index)
+		Z_PARAM_STR(label)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	tabs->setTabText(static_cast<int>(index), phpqt_qstring(label));
+}
+
+ZEND_METHOD(QTabWidget, tabText)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	phpqt_return_qstring(return_value, tabs->tabText(static_cast<int>(index)));
+}
+
+ZEND_METHOD(QTabWidget, widget)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	phpqt_box(return_value, tabs->widget(static_cast<int>(index)));
 }

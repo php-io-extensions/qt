@@ -1,12 +1,12 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 575a06dafe8239a3ffe783eff9d7384e29617d6a */
+ * Stub hash: 7ea35a36ffdabb8a2b46e5b1c6b5a568745119d5 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QMenuBar___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_TYPE_MASK_EX(arginfo_class_QMenuBar_addMenu, 0, 1, QMenu|QAction, 0)
-	ZEND_ARG_OBJ_TYPE_MASK(0, menuOrTitle, QMenu, MAY_BE_STRING, NULL)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMenuBar_addMenu, 0, 1, QMenu, 0)
+	ZEND_ARG_TYPE_INFO(0, title, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMenuBar_addAction, 0, 1, QAction, 0)
@@ -48,9 +48,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMenu_menuAction arginfo_class_QMenu_addSeparator
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMenu_popup, 0, 2, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMenu_popup, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, pos, QPoint, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, at, QAction, 1, "null")
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(QMenuBar, __construct);

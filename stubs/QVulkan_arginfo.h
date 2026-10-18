@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 29bf38b5f060b18e26d15d417d351b0eecaae374 */
+ * Stub hash: 4cc8a6b69d47b65fb0404129721dabb0ac58e366 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QVulkanInstance___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()

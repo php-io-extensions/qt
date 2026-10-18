@@ -1,9 +1,8 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: a398547d8bb994a1b25dcba4c3535fd099bdde98 */
+ * Stub hash: 8b77cc00005c65ffabc51128a905f879821b0495 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEventFilter___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, filter, IS_CALLABLE, 0)
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, types, IS_ARRAY, 1, "null")
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(QEventFilter, __construct);

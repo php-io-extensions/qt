@@ -47,11 +47,9 @@ namespace {
 
         public function setMenuRole(QAction\MenuRole $menuRole): void {}
 
-        /** The shortcut as QKeySequence::toString(PortableText) spells it, e.g. "Ctrl+Q". */
-        public function shortcut(): string {}
+        public function shortcut(): QKeySequence {}
 
-        /** @param string $shortcut a QKeySequence string, e.g. "Ctrl+Q" */
-        public function setShortcut(string $shortcut): void {}
+        public function setShortcut(QKeySequence $shortcut): void {}
 
         public function trigger(): void {}
 

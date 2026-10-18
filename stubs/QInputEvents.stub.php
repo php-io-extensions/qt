@@ -53,7 +53,7 @@ class QInputEvent extends QEvent
 class QMouseEvent extends QInputEvent
 {
     /** $button and $buttons: Qt::MouseButton(s) as ints; $modifiers Qt::KeyboardModifiers. */
-    public function __construct(QEvent\Type $type, float $x, float $y, float $globalX, float $globalY, int $button, int $buttons, int $modifiers = 0) {}
+    public function __construct(QEvent\Type $type, QPointF $localPos, QPointF $globalPos, int $button, int $buttons, int $modifiers, QPointingDevice $device) {}
 
     /** Qt::MouseButton as an int. */
     public function button(): int {}
@@ -61,11 +61,11 @@ class QMouseEvent extends QInputEvent
     /** Qt::MouseButtons as an int. */
     public function buttons(): int {}
 
-    /** @return array{0: float, 1: float} in the receiving widget */
-    public function position(): array {}
+    /** In the receiving widget. */
+    public function position(): QPointF {}
 
-    /** @return array{0: float, 1: float} on the screen */
-    public function globalPosition(): array {}
+    /** On the screen. */
+    public function globalPosition(): QPointF {}
 }
 
 /**
@@ -73,15 +73,15 @@ class QMouseEvent extends QInputEvent
  */
 class QContextMenuEvent extends QInputEvent
 {
-    public function __construct(QContextMenuEvent\Reason $reason, int $x, int $y, int $globalX, int $globalY, int $modifiers = 0) {}
+    public function __construct(QContextMenuEvent\Reason $reason, QPoint $pos, QPoint $globalPos, int $modifiers = 0) {}
 
     public function reason(): QContextMenuEvent\Reason {}
 
-    /** @return array{0: int, 1: int} in the receiving widget */
-    public function pos(): array {}
+    /** In the receiving widget. */
+    public function pos(): QPoint {}
 
-    /** @return array{0: int, 1: int} on the screen */
-    public function globalPos(): array {}
+    /** On the screen. */
+    public function globalPos(): QPoint {}
 }
 
 /**

@@ -94,7 +94,8 @@ $mac = PHP_OS_FAMILY === 'Darwin';
 // 1. connect
 QCoreApplication::setApplicationName('QtSmoke');
 QGuiApplication::setDesktopFileName('com.projectsaturnstudios.QtSmoke');
-$app = new QApplication([PHP_BINARY]);
+$argc = 1;
+$app = new QApplication($argc, [PHP_BINARY]);
 QGuiApplication::setQuitOnLastWindowClosed(false);
 
 check(QCoreApplication::instance() === $app, sprintf('QApplication up on the "%s" platform, Qt %s', QGuiApplication::platformName(), qVersion()));

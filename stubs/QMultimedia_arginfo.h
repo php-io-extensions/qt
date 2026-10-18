@@ -1,7 +1,9 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 16a2b5fd620fce95c94aad31924af4f6008a3bff */
+ * Stub hash: 8a2194135b4f1131120827472f3a76339eb40e81 */
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QUrl___construct, 0, 0, 0)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QUrl___construct, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, url, IS_STRING, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, QUrl\\ParsingMode, 0, "QUrl\\ParsingMode::TOLERANT_MODE")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QUrl_fromLocalFile, 0, 1, QUrl, 0)
@@ -9,6 +11,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QUrl_fromLocalFile, 0, 1, Q
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QUrl_toString, 0, 0, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, options, IS_LONG, 0, "QUrl::PRETTY_DECODED")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QUrl_isValid, 0, 0, _IS_BOOL, 0)
@@ -74,7 +77,8 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMediaPlayer_setLoops, 0, 
 	ZEND_ARG_TYPE_INFO(0, loops, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QMediaPlayer_errorString arginfo_class_QUrl_toString
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMediaPlayer_errorString, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMediaPlayer_hasVideo arginfo_class_QUrl_isValid
 
@@ -113,7 +117,7 @@ ZEND_METHOD(QMediaPlayer, isAvailable);
 ZEND_METHOD(QVideoWidget, __construct);
 
 static const zend_function_entry class_QUrl_methods[] = {
-	ZEND_ME(QUrl, __construct, arginfo_class_QUrl___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QUrl, __construct, arginfo_class_QUrl___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QUrl, fromLocalFile, arginfo_class_QUrl_fromLocalFile, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QUrl, toString, arginfo_class_QUrl_toString, ZEND_ACC_PUBLIC)
 	ZEND_ME(QUrl, isValid, arginfo_class_QUrl_isValid, ZEND_ACC_PUBLIC)
@@ -240,12 +244,157 @@ static zend_class_entry *register_class_QMediaPlayer_Error(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QUrl_ParsingMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QUrl\\ParsingMode", IS_LONG, NULL);
+
+	zval enum_case_TOLERANT_MODE_value;
+	ZVAL_LONG(&enum_case_TOLERANT_MODE_value, 0);
+	zend_enum_add_case_cstr(class_entry, "TOLERANT_MODE", &enum_case_TOLERANT_MODE_value);
+
+	zval enum_case_STRICT_MODE_value;
+	ZVAL_LONG(&enum_case_STRICT_MODE_value, 1);
+	zend_enum_add_case_cstr(class_entry, "STRICT_MODE", &enum_case_STRICT_MODE_value);
+
+	zval enum_case_DECODED_MODE_value;
+	ZVAL_LONG(&enum_case_DECODED_MODE_value, 2);
+	zend_enum_add_case_cstr(class_entry, "DECODED_MODE", &enum_case_DECODED_MODE_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QUrl(void)
 {
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QUrl", class_QUrl_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval const_NONE_value;
+	ZVAL_LONG(&const_NONE_value, QUrl::None);
+	zend_string *const_NONE_name = zend_string_init_interned("NONE", sizeof("NONE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_NONE_name, &const_NONE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_NONE_name);
+
+	zval const_REMOVE_SCHEME_value;
+	ZVAL_LONG(&const_REMOVE_SCHEME_value, QUrl::RemoveScheme);
+	zend_string *const_REMOVE_SCHEME_name = zend_string_init_interned("REMOVE_SCHEME", sizeof("REMOVE_SCHEME") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_SCHEME_name, &const_REMOVE_SCHEME_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_SCHEME_name);
+
+	zval const_REMOVE_PASSWORD_value;
+	ZVAL_LONG(&const_REMOVE_PASSWORD_value, QUrl::RemovePassword);
+	zend_string *const_REMOVE_PASSWORD_name = zend_string_init_interned("REMOVE_PASSWORD", sizeof("REMOVE_PASSWORD") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_PASSWORD_name, &const_REMOVE_PASSWORD_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_PASSWORD_name);
+
+	zval const_REMOVE_USER_INFO_value;
+	ZVAL_LONG(&const_REMOVE_USER_INFO_value, QUrl::RemoveUserInfo);
+	zend_string *const_REMOVE_USER_INFO_name = zend_string_init_interned("REMOVE_USER_INFO", sizeof("REMOVE_USER_INFO") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_USER_INFO_name, &const_REMOVE_USER_INFO_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_USER_INFO_name);
+
+	zval const_REMOVE_PORT_value;
+	ZVAL_LONG(&const_REMOVE_PORT_value, QUrl::RemovePort);
+	zend_string *const_REMOVE_PORT_name = zend_string_init_interned("REMOVE_PORT", sizeof("REMOVE_PORT") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_PORT_name, &const_REMOVE_PORT_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_PORT_name);
+
+	zval const_REMOVE_AUTHORITY_value;
+	ZVAL_LONG(&const_REMOVE_AUTHORITY_value, QUrl::RemoveAuthority);
+	zend_string *const_REMOVE_AUTHORITY_name = zend_string_init_interned("REMOVE_AUTHORITY", sizeof("REMOVE_AUTHORITY") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_AUTHORITY_name, &const_REMOVE_AUTHORITY_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_AUTHORITY_name);
+
+	zval const_REMOVE_PATH_value;
+	ZVAL_LONG(&const_REMOVE_PATH_value, QUrl::RemovePath);
+	zend_string *const_REMOVE_PATH_name = zend_string_init_interned("REMOVE_PATH", sizeof("REMOVE_PATH") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_PATH_name, &const_REMOVE_PATH_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_PATH_name);
+
+	zval const_REMOVE_QUERY_value;
+	ZVAL_LONG(&const_REMOVE_QUERY_value, QUrl::RemoveQuery);
+	zend_string *const_REMOVE_QUERY_name = zend_string_init_interned("REMOVE_QUERY", sizeof("REMOVE_QUERY") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_QUERY_name, &const_REMOVE_QUERY_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_QUERY_name);
+
+	zval const_REMOVE_FRAGMENT_value;
+	ZVAL_LONG(&const_REMOVE_FRAGMENT_value, QUrl::RemoveFragment);
+	zend_string *const_REMOVE_FRAGMENT_name = zend_string_init_interned("REMOVE_FRAGMENT", sizeof("REMOVE_FRAGMENT") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_FRAGMENT_name, &const_REMOVE_FRAGMENT_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_FRAGMENT_name);
+
+	zval const_PREFER_LOCAL_FILE_value;
+	ZVAL_LONG(&const_PREFER_LOCAL_FILE_value, QUrl::PreferLocalFile);
+	zend_string *const_PREFER_LOCAL_FILE_name = zend_string_init_interned("PREFER_LOCAL_FILE", sizeof("PREFER_LOCAL_FILE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_PREFER_LOCAL_FILE_name, &const_PREFER_LOCAL_FILE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_PREFER_LOCAL_FILE_name);
+
+	zval const_STRIP_TRAILING_SLASH_value;
+	ZVAL_LONG(&const_STRIP_TRAILING_SLASH_value, QUrl::StripTrailingSlash);
+	zend_string *const_STRIP_TRAILING_SLASH_name = zend_string_init_interned("STRIP_TRAILING_SLASH", sizeof("STRIP_TRAILING_SLASH") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_STRIP_TRAILING_SLASH_name, &const_STRIP_TRAILING_SLASH_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_STRIP_TRAILING_SLASH_name);
+
+	zval const_REMOVE_FILENAME_value;
+	ZVAL_LONG(&const_REMOVE_FILENAME_value, QUrl::RemoveFilename);
+	zend_string *const_REMOVE_FILENAME_name = zend_string_init_interned("REMOVE_FILENAME", sizeof("REMOVE_FILENAME") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_REMOVE_FILENAME_name, &const_REMOVE_FILENAME_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_REMOVE_FILENAME_name);
+
+	zval const_NORMALIZE_PATH_SEGMENTS_value;
+	ZVAL_LONG(&const_NORMALIZE_PATH_SEGMENTS_value, QUrl::NormalizePathSegments);
+	zend_string *const_NORMALIZE_PATH_SEGMENTS_name = zend_string_init_interned("NORMALIZE_PATH_SEGMENTS", sizeof("NORMALIZE_PATH_SEGMENTS") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_NORMALIZE_PATH_SEGMENTS_name, &const_NORMALIZE_PATH_SEGMENTS_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_NORMALIZE_PATH_SEGMENTS_name);
+
+	zval const_PRETTY_DECODED_value;
+	ZVAL_LONG(&const_PRETTY_DECODED_value, QUrl::PrettyDecoded);
+	zend_string *const_PRETTY_DECODED_name = zend_string_init_interned("PRETTY_DECODED", sizeof("PRETTY_DECODED") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_PRETTY_DECODED_name, &const_PRETTY_DECODED_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_PRETTY_DECODED_name);
+
+	zval const_ENCODE_SPACES_value;
+	ZVAL_LONG(&const_ENCODE_SPACES_value, QUrl::EncodeSpaces);
+	zend_string *const_ENCODE_SPACES_name = zend_string_init_interned("ENCODE_SPACES", sizeof("ENCODE_SPACES") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_ENCODE_SPACES_name, &const_ENCODE_SPACES_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_ENCODE_SPACES_name);
+
+	zval const_ENCODE_UNICODE_value;
+	ZVAL_LONG(&const_ENCODE_UNICODE_value, QUrl::EncodeUnicode);
+	zend_string *const_ENCODE_UNICODE_name = zend_string_init_interned("ENCODE_UNICODE", sizeof("ENCODE_UNICODE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_ENCODE_UNICODE_name, &const_ENCODE_UNICODE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_ENCODE_UNICODE_name);
+
+	zval const_ENCODE_DELIMITERS_value;
+	ZVAL_LONG(&const_ENCODE_DELIMITERS_value, QUrl::EncodeDelimiters);
+	zend_string *const_ENCODE_DELIMITERS_name = zend_string_init_interned("ENCODE_DELIMITERS", sizeof("ENCODE_DELIMITERS") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_ENCODE_DELIMITERS_name, &const_ENCODE_DELIMITERS_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_ENCODE_DELIMITERS_name);
+
+	zval const_ENCODE_RESERVED_value;
+	ZVAL_LONG(&const_ENCODE_RESERVED_value, QUrl::EncodeReserved);
+	zend_string *const_ENCODE_RESERVED_name = zend_string_init_interned("ENCODE_RESERVED", sizeof("ENCODE_RESERVED") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_ENCODE_RESERVED_name, &const_ENCODE_RESERVED_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_ENCODE_RESERVED_name);
+
+	zval const_DECODE_RESERVED_value;
+	ZVAL_LONG(&const_DECODE_RESERVED_value, QUrl::DecodeReserved);
+	zend_string *const_DECODE_RESERVED_name = zend_string_init_interned("DECODE_RESERVED", sizeof("DECODE_RESERVED") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_DECODE_RESERVED_name, &const_DECODE_RESERVED_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_DECODE_RESERVED_name);
+
+	zval const_FULLY_ENCODED_value;
+	ZVAL_LONG(&const_FULLY_ENCODED_value, QUrl::FullyEncoded);
+	zend_string *const_FULLY_ENCODED_name = zend_string_init_interned("FULLY_ENCODED", sizeof("FULLY_ENCODED") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_FULLY_ENCODED_name, &const_FULLY_ENCODED_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_FULLY_ENCODED_name);
+
+	zval const_FULLY_DECODED_value;
+	ZVAL_LONG(&const_FULLY_DECODED_value, QUrl::FullyDecoded);
+	zend_string *const_FULLY_DECODED_name = zend_string_init_interned("FULLY_DECODED", sizeof("FULLY_DECODED") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_FULLY_DECODED_name, &const_FULLY_DECODED_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_FULLY_DECODED_name);
 
 	return class_entry;
 }

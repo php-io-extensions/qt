@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: b536f1e6473e072d77cf681c22a638d59d85e127 */
+ * Stub hash: 1845a520113eec231f7ce3a83bb024915d521661 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QMetaObject_Connection___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
@@ -9,10 +9,11 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMetaObject___construct arginfo_class_QMetaObject_Connection___construct
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMetaObject_invokeMethod, 0, 2, _IS_BOOL, 0)
-	ZEND_ARG_OBJ_INFO(0, object, QObject, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMetaObject_invokeMethod, 0, 3, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, obj, QObject, 0)
 	ZEND_ARG_TYPE_INFO(0, member, IS_STRING, 0)
-	ZEND_ARG_VARIADIC_TYPE_INFO(0, args, IS_MIXED, 0)
+	ZEND_ARG_OBJ_INFO(0, c, Qt\\ConnectionType, 0)
+	ZEND_ARG_VARIADIC_TYPE_INFO(0, arguments, IS_MIXED, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_METHOD(QMetaObject_Connection, __construct);

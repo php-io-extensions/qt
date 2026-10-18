@@ -1,0 +1,176 @@
+{
+    "symbols": {},
+    "glue": {
+        "QtException": {
+            "methods": []
+        },
+        "QObject": {
+            "methods": [
+                "pointer"
+            ],
+            "forwards": "address hand-off"
+        },
+        "QMetaObject\\Connection": {
+            "methods": [
+                "isValid"
+            ],
+            "forwards": "QMetaObject::Connection::operator bool"
+        },
+        "QEventFilter": {
+            "methods": [
+                "__construct"
+            ],
+            "forwards": "QObject::eventFilter(watched, event) trampoline"
+        },
+        "QOpenGLPainter": {
+            "methods": [
+                "__construct"
+            ],
+            "forwards": "QOpenGLWidget::paintGL trampoline"
+        },
+        "QByteArray": {
+            "methods": [
+                "pointer"
+            ],
+            "forwards": "address hand-off"
+        }
+    },
+    "helpers": {
+        "marshal": [
+            "phpqt_this",
+            "phpqt_arg",
+            "phpqt_value_this",
+            "phpqt_value_arg",
+            "PHPQT_THIS",
+            "PHPQT_VALUE_THIS",
+            "phpqt_adopt",
+            "phpqt_value_fresh",
+            "phpqt_fd_from_zval",
+            "phpqt_require_callable",
+            "phpqt_zval_to_variant",
+            "phpqt_long_fits",
+            "phpqt_string_list",
+            "phpqt_int_list",
+            "phpqt_extra_selections",
+            "phpqt_application_argv",
+            "phpqt_widget_parent",
+            "phpqt_event_class"
+        ],
+        "translate": []
+    },
+    "sites": {
+        "main-thread-macos": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/MainThreadTest.php"
+        },
+        "qapp-widget": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-text-widget": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-slider": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-table": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-splitter": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-gl-painter": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-menubar": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qapp-menu": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qguiapp-window": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qguiapp-pixmap": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qguiapp-pixmap-from-image": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "qguiapp-vulkan-create": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/ApplicationFirstTest.php"
+        },
+        "second-application-macos": {
+            "kind": "refusal",
+            "outcome": 2,
+            "probe": "tests/Probes/SecondApplicationTest.php"
+        },
+        "table-item-range": {
+            "kind": "refusal",
+            "outcome": 1,
+            "probe": "tests/Probes/TableItemRangeTest.php"
+        },
+        "spacer-owned": {
+            "kind": "refusal",
+            "outcome": 1,
+            "probe": "tests/Probes/SpacerOwnedTest.php"
+        },
+        "qevent-plain-type": {
+            "kind": "refusal",
+            "outcome": 1,
+            "probe": "tests/Probes/PlainEventTypeTest.php"
+        },
+        "qbytearray-string-length": {
+            "kind": "refusal",
+            "outcome": 1,
+            "probe": "tests/Probes/ByteArrayLengthTest.php"
+        }
+    },
+    "typemap": {
+        "QImageCleanupFunction": [
+            "callable"
+        ],
+        "GLuint": [
+            "int"
+        ],
+        "VkInstance": [
+            "int"
+        ],
+        "VkSurfaceKHR": [
+            "int"
+        ],
+        "VkResult": [
+            "int"
+        ],
+        "QUrl::FormattingOptions": [
+            "int"
+        ],
+        "qintptr": [
+            "mixed"
+        ]
+    }
+}

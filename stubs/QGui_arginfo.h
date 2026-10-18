@@ -1,11 +1,11 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: f5c0dfcdbd360344978eb68b852c4256709a4a40 */
+ * Stub hash: aea6bf064d468f6fc949fae14d4f4fe1b00372dc */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QDesktopServices___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDesktopServices_openUrl, 0, 1, _IS_BOOL, 0)
-	ZEND_ARG_TYPE_INFO(0, url, IS_STRING, 0)
+	ZEND_ARG_OBJ_INFO(0, url, QUrl, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QFontDatabase___construct arginfo_class_QDesktopServices___construct
@@ -14,10 +14,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QFontDatabase_systemFont, 0
 	ZEND_ARG_OBJ_INFO(0, type, QFontDatabase\\SystemFont, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QFont___construct, 0, 0, 0)
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, family, IS_STRING, 0, "\"\"")
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, pointSize, IS_DOUBLE, 0, "-1.0")
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QFont___construct, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, family, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, pointSize, IS_LONG, 0, "-1")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, weight, IS_LONG, 0, "-1")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, italic, _IS_BOOL, 0, "false")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFont_family, 0, 0, IS_STRING, 0)
@@ -45,10 +46,13 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_fromImage, 0, 1, QPixmap, 0)
 	ZEND_ARG_OBJ_INFO(0, image, QImage, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, flags, Qt\\ImageConversionFlag, MAY_BE_LONG, "Qt\\ImageConversionFlag::AUTO_COLOR")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_load, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_TYPE_INFO(0, fileName, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, format, IS_STRING, 1, "null")
+	ZEND_ARG_OBJ_TYPE_MASK(0, flags, Qt\\ImageConversionFlag, MAY_BE_LONG, "Qt\\ImageConversionFlag::AUTO_COLOR")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_isNull, 0, 0, _IS_BOOL, 0)
@@ -59,10 +63,10 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QPixmap_height arginfo_class_QPixmap_width
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_scaled, 0, 3, QPixmap, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_scaled, 0, 2, QPixmap, 0)
 	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
-	ZEND_ARG_OBJ_INFO(0, aspectRatioMode, Qt\\AspectRatioMode, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, aspectRatioMode, Qt\\AspectRatioMode, 0, "Qt\\AspectRatioMode::IGNORE_ASPECT_RATIO")
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, transformMode, Qt\\TransformationMode, 0, "Qt\\TransformationMode::FAST_TRANSFORMATION")
 ZEND_END_ARG_INFO()
 
@@ -73,11 +77,13 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_setDevicePixelRati
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QImage___construct, 0, 0, 5)
-	ZEND_ARG_TYPE_MASK(0, data, MAY_BE_STRING|MAY_BE_LONG, NULL)
+	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, width, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
 	ZEND_ARG_TYPE_INFO(0, bytesPerLine, IS_LONG, 0)
 	ZEND_ARG_OBJ_INFO(0, format, QImage\\Format, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, cleanupFunction, IS_CALLABLE, 1, "null")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, cleanupInfo, IS_MIXED, 0, "null")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QImage_isNull arginfo_class_QPixmap_isNull
@@ -89,8 +95,13 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QImage_format, 0, 0, QImage\\Format, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QImage_copy, 0, 0, QImage, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, rect, QRect, 1, "null")
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTableWidgetItem___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, type, IS_LONG, 0, "QTableWidgetItem::TYPE")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTableWidgetItem_text arginfo_class_QFont_family
@@ -98,6 +109,8 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidgetItem_setText, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
 ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTableWidgetItem_type arginfo_class_QPixmap_width
 
 #define arginfo_class_QTableWidgetItem_row arginfo_class_QPixmap_width
 
@@ -126,9 +139,11 @@ ZEND_METHOD(QImage, isNull);
 ZEND_METHOD(QImage, width);
 ZEND_METHOD(QImage, height);
 ZEND_METHOD(QImage, format);
+ZEND_METHOD(QImage, copy);
 ZEND_METHOD(QTableWidgetItem, __construct);
 ZEND_METHOD(QTableWidgetItem, text);
 ZEND_METHOD(QTableWidgetItem, setText);
+ZEND_METHOD(QTableWidgetItem, type);
 ZEND_METHOD(QTableWidgetItem, row);
 
 static const zend_function_entry class_QDesktopServices_methods[] = {
@@ -173,6 +188,7 @@ static const zend_function_entry class_QImage_methods[] = {
 	ZEND_ME(QImage, width, arginfo_class_QImage_width, ZEND_ACC_PUBLIC)
 	ZEND_ME(QImage, height, arginfo_class_QImage_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QImage, format, arginfo_class_QImage_format, ZEND_ACC_PUBLIC)
+	ZEND_ME(QImage, copy, arginfo_class_QImage_copy, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -180,6 +196,7 @@ static const zend_function_entry class_QTableWidgetItem_methods[] = {
 	ZEND_ME(QTableWidgetItem, __construct, arginfo_class_QTableWidgetItem___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidgetItem, text, arginfo_class_QTableWidgetItem_text, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidgetItem, setText, arginfo_class_QTableWidgetItem_setText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTableWidgetItem, type, arginfo_class_QTableWidgetItem_type, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidgetItem, row, arginfo_class_QTableWidgetItem_row, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
@@ -345,6 +362,18 @@ static zend_class_entry *register_class_QTableWidgetItem(void)
 
 	INIT_CLASS_ENTRY(ce, "QTableWidgetItem", class_QTableWidgetItem_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval const_TYPE_value;
+	ZVAL_LONG(&const_TYPE_value, QTableWidgetItem::Type);
+	zend_string *const_TYPE_name = zend_string_init_interned("TYPE", sizeof("TYPE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_TYPE_name, &const_TYPE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_TYPE_name);
+
+	zval const_USER_TYPE_value;
+	ZVAL_LONG(&const_USER_TYPE_value, QTableWidgetItem::UserType);
+	zend_string *const_USER_TYPE_name = zend_string_init_interned("USER_TYPE", sizeof("USER_TYPE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_USER_TYPE_name, &const_USER_TYPE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_USER_TYPE_name);
 
 	return class_entry;
 }

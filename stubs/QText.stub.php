@@ -48,8 +48,8 @@ namespace {
      */
     final class QColor
     {
-        /** Each component 0..255 (ValueError otherwise). */
-        public function __construct(int $red, int $green, int $blue, int $alpha = 255) {}
+        /** Each component 0..255; Qt makes an invalid colour of any other. */
+        public function __construct(int $r, int $g, int $b, int $a = 255) {}
 
         public function red(): int {}
 
@@ -58,6 +58,8 @@ namespace {
         public function blue(): int {}
 
         public function alpha(): int {}
+
+        public function isValid(): bool {}
     }
 
     /**
@@ -67,9 +69,11 @@ namespace {
      */
     final class QBrush
     {
-        public function __construct(QColor $color) {}
+        public function __construct(QColor $color, Qt\BrushStyle $bs = Qt\BrushStyle::SOLID_PATTERN) {}
 
         public function color(): QColor {}
+
+        public function style(): Qt\BrushStyle {}
     }
 
     /** QTextFormat's property ids; the formats themselves are QTextCharFormat values. */
@@ -97,7 +101,8 @@ namespace {
         public function background(): QBrush {}
 
         /** A QTextFormat property (QTextFormat::FULL_WIDTH_SELECTION, …). */
-        public function setProperty(int $propertyId, bool|int|float|string $value): void {}
+        /** $value as QVariant: null, bool, int, float or string. */
+        public function setProperty(int $propertyId, mixed $value): void {}
 
         public function boolProperty(int $propertyId): bool {}
 
@@ -133,6 +138,8 @@ namespace {
 
         /** A cursor whose document is gone reads -1 positions; hasSelection() may still say true. */
         public function hasSelection(): bool {}
+
+        public function isNull(): bool {}
     }
 
     /**
@@ -156,21 +163,8 @@ namespace {
 
         /** The first visual line's number: equal to the block number when no block wraps. */
         public function firstLineNumber(): int {}
-    }
 
-    /**
-     * QTextEdit::ExtraSelection: a format painted over a cursor's selection, or over its line with
-     * QTextFormat::FULL_WIDTH_SELECTION; the document is not changed.
-     *
-     * @not-serializable
-     */
-    final class QTextEditExtraSelection
-    {
-        public function __construct(QTextCursor $cursor, QTextCharFormat $format) {}
-
-        public function cursor(): QTextCursor {}
-
-        public function format(): QTextCharFormat {}
+        public function isValid(): bool {}
     }
 
     /**
@@ -182,12 +176,30 @@ namespace {
     {
         private function __construct() {}
 
-        /** Null past the last block. */
-        public function findBlockByNumber(int $blockNumber): ?QTextBlock {}
+        /** Qt's invalid block (isValid() false) past the last block. */
+        public function findBlockByNumber(int $blockNumber): QTextBlock {}
 
         public function blockCount(): int {}
 
         /** Characters, the final paragraph separator included. */
         public function characterCount(): int {}
+    }
+}
+
+namespace QTextEdit {
+    /**
+     * QTextEdit::ExtraSelection, the struct: a format painted over a cursor's selection, or over its
+     * line with QTextFormat::FULL_WIDTH_SELECTION; the document is not changed. The constructor is the
+     * struct's aggregate initialisation; setExtraSelections() copies the fields as they are then.
+     *
+     * @not-serializable
+     */
+    final class ExtraSelection
+    {
+        public \QTextCursor $cursor;
+
+        public \QTextCharFormat $format;
+
+        public function __construct(\QTextCursor $cursor, \QTextCharFormat $format) {}
     }
 }

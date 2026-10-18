@@ -8,19 +8,22 @@ use QInputDevice\DeviceType;
 
 beforeEach(fn () => testApplication());
 
-it('hands a filter the event as its third argument, alive only during the call', function (): void {
+it('hands a filter the event, alive only during the call', function (): void {
     $widget = new QWidget();
     $seen = null;
-    $filter = new QEventFilter(function (QObject $watched, Type|int $type, QEvent $event) use (&$seen): bool {
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$seen): bool {
+        if ($event->type() !== Type::CONTEXT_MENU) {
+            return false;
+        }
         $seen = $event;
-        $read = [$event::class, $event->type(), $event->reason(), $event->pos(), $event->globalPos()];
+        $read = [$event::class, $event->type(), $event->reason(), [$event->pos()->x(), $event->pos()->y()], [$event->globalPos()->x(), $event->globalPos()->y()]];
         $event->accept();
         $seen = [$event, $read, $event->isAccepted()];
 
         return false;
-    }, [Type::CONTEXT_MENU]);
+    });
     $widget->installEventFilter($filter);
-    QCoreApplication::sendEvent($widget, new QContextMenuEvent(Reason::MOUSE, 3, 4, 103, 104));
+    QCoreApplication::sendEvent($widget, new QContextMenuEvent(Reason::MOUSE, new QPoint(3, 4), new QPoint(103, 104)));
     [$event, $read, $accepted] = $seen;
 
     expect($read)->toBe([QContextMenuEvent::class, Type::CONTEXT_MENU, Reason::MOUSE, [3, 4], [103, 104]])
@@ -31,15 +34,25 @@ it('hands a filter the event as its third argument, alive only during the call',
 it('reads a mouse event\'s button, buttons, positions and device type', function (): void {
     $widget = new QWidget();
     $read = null;
-    $filter = new QEventFilter(function (QObject $watched, Type|int $type, QEvent $event) use (&$read): bool {
-        $read = [$event::class, $event->button(), $event->buttons(), $event->position(), $event->globalPosition(), $event->modifiers(), $event->deviceType() instanceof DeviceType];
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$read): bool {
+        if ($event->type() !== Type::MOUSE_BUTTON_PRESS) {
+            return false;
+        }
+        $read = [$event::class, $event->button(), $event->buttons(), [$event->position()->x(), $event->position()->y()],
+            [$event->globalPosition()->x(), $event->globalPosition()->y()], $event->modifiers(), $event->deviceType() instanceof DeviceType];
 
         return false;
-    }, [Type::MOUSE_BUTTON_PRESS]);
+    });
     $widget->installEventFilter($filter);
-    QCoreApplication::sendEvent($widget, new QMouseEvent(Type::MOUSE_BUTTON_PRESS, 5.0, 6.0, 105.0, 106.0, 2, 2, 0));
+    QCoreApplication::sendEvent($widget, new QMouseEvent(Type::MOUSE_BUTTON_PRESS, new QPointF(5.0, 6.0), new QPointF(105.0, 106.0), 2, 2, 0,
+        QPointingDevice::primaryPointingDevice()));
 
     expect($read)->toBe([QMouseEvent::class, 2, 2, [5.0, 6.0], [105.0, 106.0], 0, true]);
+});
+
+it('hands out the primary pointing device Qt registered', function (): void {
+    expect(QPointingDevice::primaryPointingDevice())->toBeInstanceOf(QPointingDevice::class)
+        ->and(QPointingDevice::primaryPointingDevice())->toBe(QPointingDevice::primaryPointingDevice());
 });
 
 it('names the context-menu reasons and input device types at their C values', function (): void {
@@ -52,7 +65,7 @@ it('finds the widget at a screen point, maps points from the screen, and reads t
     $widget = new QWidget();
 
     expect(QApplication::widgetAt(-100000, -100000))->toBeNull()
-        ->and($widget->mapFromGlobal(10.0, 20.0))->toHaveCount(2)
+        ->and($widget->mapFromGlobal(new QPointF(10.0, 20.0)))->toBeInstanceOf(QPointF::class)
         ->and($hints)->toBeInstanceOf(QStyleHints::class)
         ->and($hints->mousePressAndHoldInterval())->toBeGreaterThan(0)
         ->and($hints->startDragDistance())->toBeGreaterThan(0);
@@ -60,7 +73,7 @@ it('finds the widget at a screen point, maps points from the screen, and reads t
 
 it('sets an input event\'s timestamp', function (): void {
     testApplication();
-    $event = new QMouseEvent(Type::MOUSE_BUTTON_PRESS, 1.0, 1.0, 1.0, 1.0, 1, 1, 0);
+    $event = new QMouseEvent(Type::MOUSE_BUTTON_PRESS, new QPointF(1.0, 1.0), new QPointF(1.0, 1.0), 1, 1, 0, QPointingDevice::primaryPointingDevice());
     $event->setTimestamp(123456);
 
     expect($event->timestamp())->toBe(123456)
@@ -70,11 +83,13 @@ it('sets an input event\'s timestamp', function (): void {
 it('makes a plain event of a type Qt sends as one, and refuses the rest', function (): void {
     $widget = new QWidget();
     $seen = [];
-    $filter = new QEventFilter(function (QObject $watched, Type|int $type, QEvent $event) use (&$seen): bool {
-        $seen[] = [$event::class, $event->type()];
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$seen): bool {
+        if ($event->type() === Type::WINDOW_ACTIVATE) {
+            $seen[] = [$event::class, $event->type()];
+        }
 
         return false;
-    }, [Type::WINDOW_ACTIVATE]);
+    });
     $widget->installEventFilter($filter);
     $event = new QEvent(Type::WINDOW_ACTIVATE);
     QCoreApplication::sendEvent($widget, $event);

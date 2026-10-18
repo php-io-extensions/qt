@@ -70,11 +70,13 @@ it('hands the listed events of a watched object to the filter', function (): voi
     $window = new QWidget();
     $other = new QWidget();
     $seen = [];
-    $filter = new QEventFilter(function (QObject $watched, QEvent\Type|int $type) use (&$seen, $window): bool {
-        $seen[] = [$watched === $window, $type];
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$seen, $window): bool {
+        if ($event->type() === QEvent\Type::CLOSE) {
+            $seen[] = [$watched === $window, $event->type()];
+        }
 
         return false;
-    }, [QEvent\Type::CLOSE]);
+    });
     $window->installEventFilter($filter);
 
     $window->show();
@@ -91,11 +93,11 @@ it('hands the listed events of a watched object to the filter', function (): voi
     expect($seen)->toHaveCount(1);
 });
 
-it('hands every event over when no types are listed', function (): void {
+it('hands every event over', function (): void {
     $window = new QWidget();
     $types = [];
-    $filter = new QEventFilter(function (QObject $watched, QEvent\Type|int $type) use (&$types): bool {
-        $types[] = $type;
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$types): bool {
+        $types[] = $event->type();
 
         return false;
     });
@@ -109,8 +111,27 @@ it('hands every event over when no types are listed', function (): void {
         ->and($types)->toContain(QEvent\Type::CLOSE);
 });
 
-it('refuses filter types that are not event types', function (): void {
-    expect(fn () => new QEventFilter(fn () => false, ['close']))->toThrow(TypeError::class)
+it('stops the event its filter returns true for', function (): void {
+    $click = function (QPushButton $button): int {
+        $clicks = 0;
+        $connection = QObject::connect($button, 'clicked(bool)', function () use (&$clicks): void { $clicks++; });
+        $device = QPointingDevice::primaryPointingDevice();
+        foreach ([QEvent\Type::MOUSE_BUTTON_PRESS, QEvent\Type::MOUSE_BUTTON_RELEASE] as $type) {
+            QCoreApplication::sendEvent($button, new QMouseEvent($type, new QPointF(5.0, 5.0), new QPointF(5.0, 5.0), 1, $type === QEvent\Type::MOUSE_BUTTON_PRESS ? 1 : 0, 0, $device));
+        }
+        QObject::disconnect($connection);
+
+        return $clicks;
+    };
+    $plain = new QPushButton('plain');
+    $plain->resize(80, 30);
+    $stopped = new QPushButton('stopped');
+    $stopped->resize(80, 30);
+    $filter = new QEventFilter(fn (QObject $watched, QEvent $event): bool => $event->type() === QEvent\Type::MOUSE_BUTTON_PRESS);
+    $stopped->installEventFilter($filter);
+
+    expect($click($plain))->toBe(1)
+        ->and($click($stopped))->toBe(0)
         ->and(fn () => new QEventFilter('no_such_function'))->toThrow(TypeError::class);
 });
 

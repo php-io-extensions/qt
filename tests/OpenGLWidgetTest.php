@@ -61,6 +61,20 @@ it('holds a surface format\'s version, profile and renderable type', function ()
         ->and(QSurfaceFormat::defaultFormat()->majorVersion())->toBeGreaterThanOrEqual(2);
 });
 
+it('sets the default surface format', function (): void {
+    $before = QSurfaceFormat::defaultFormat();
+    $format = new QSurfaceFormat;
+    $format->setVersion(3, 2);
+    $format->setProfile(QSurfaceFormat\OpenGLContextProfile::CORE_PROFILE);
+
+    QSurfaceFormat::setDefaultFormat($format);
+    $default = QSurfaceFormat::defaultFormat();
+    QSurfaceFormat::setDefaultFormat($before);
+
+    expect([$default->majorVersion(), $default->minorVersion()])->toBe([3, 2])
+        ->and($default->profile())->toBe(QSurfaceFormat\OpenGLContextProfile::CORE_PROFILE);
+});
+
 it('makes the context the format asks for', function (): void {
     $widget = new QOpenGLWidget;
     $asked = new QSurfaceFormat;
@@ -96,7 +110,8 @@ it('lets Qt delete a painter whose callable holds the last reference to its pare
     // wrapper: the host (owned, parentless) must wait for Qt's loop, not be deleted mid-destruction.
     $script = tempnam(sys_get_temp_dir(), 'qt').'.php';
     file_put_contents($script, '<?php
-        $app = new QApplication([PHP_BINARY]);
+        $argc = 1;
+        $app = new QApplication($argc, [PHP_BINARY]);
         $host = new QWidget();
         $cell = new QGridLayout($host);
         $host->resize(200, 150);
@@ -133,7 +148,8 @@ it('defers deleting an ancestor of an outer slot that an inner slot\'s teardown 
     // is still tearing down around P1. A must wait for Qt's loop.
     $script = tempnam(sys_get_temp_dir(), 'qt').'.php';
     file_put_contents($script, '<?php
-        $app = new QApplication([PHP_BINARY]);
+        $argc = 1;
+        $app = new QApplication($argc, [PHP_BINARY]);
         $a = new QWidget();
         $b = new QWidget();
         $outer = new stdClass();

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 1dec320225616945456b756dccdb4b386441fe1d */
+ * Stub hash: 8ee1bf926569562bff1fdcaa79abb82480763314 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWindow___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWindow, 1, "null")
@@ -34,12 +34,14 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWindow_close arginfo_class_QWindow_isExposed
 
+#if QT_CONFIG(vulkan)
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWindow_setVulkanInstance, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, instance, QVulkanInstance, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWindow_vulkanInstance, 0, 0, QVulkanInstance, 1)
 ZEND_END_ARG_INFO()
+#endif
 
 #define arginfo_class_QWindow_width arginfo_class_QWindow_winId
 
@@ -59,8 +61,10 @@ ZEND_METHOD(QWindow, destroy);
 ZEND_METHOD(QWindow, isExposed);
 ZEND_METHOD(QWindow, resize);
 ZEND_METHOD(QWindow, close);
+#if QT_CONFIG(vulkan)
 ZEND_METHOD(QWindow, setVulkanInstance);
 ZEND_METHOD(QWindow, vulkanInstance);
+#endif
 ZEND_METHOD(QWindow, width);
 ZEND_METHOD(QWindow, height);
 ZEND_METHOD(QWindow, devicePixelRatio);
@@ -77,8 +81,10 @@ static const zend_function_entry class_QWindow_methods[] = {
 	ZEND_ME(QWindow, isExposed, arginfo_class_QWindow_isExposed, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWindow, resize, arginfo_class_QWindow_resize, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWindow, close, arginfo_class_QWindow_close, ZEND_ACC_PUBLIC)
+#if QT_CONFIG(vulkan)
 	ZEND_ME(QWindow, setVulkanInstance, arginfo_class_QWindow_setVulkanInstance, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWindow, vulkanInstance, arginfo_class_QWindow_vulkanInstance, ZEND_ACC_PUBLIC)
+#endif
 	ZEND_ME(QWindow, width, arginfo_class_QWindow_width, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWindow, height, arginfo_class_QWindow_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWindow, devicePixelRatio, arginfo_class_QWindow_devicePixelRatio, ZEND_ACC_PUBLIC)

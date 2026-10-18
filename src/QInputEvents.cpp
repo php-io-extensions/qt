@@ -42,6 +42,41 @@ void phpqt_register_QInputEvents()
 	phpqt_ce_QStyleHints = register_class_QStyleHints(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QStyleHints);
 	phpqt_map_class("QStyleHints", phpqt_ce_QStyleHints);
+
+	phpqt_ce_QInputDevice = register_class_QInputDevice(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QInputDevice);
+	phpqt_map_class("QInputDevice", phpqt_ce_QInputDevice);
+	phpqt_ce_QPointingDevice = register_class_QPointingDevice(phpqt_ce_QInputDevice);
+	phpqt_object_setup(phpqt_ce_QPointingDevice);
+	phpqt_map_class("QPointingDevice", phpqt_ce_QPointingDevice);
+}
+
+/* ---- QInputDevice, QPointingDevice ------------------------------------------ */
+
+zend_class_entry *phpqt_ce_QInputDevice;
+zend_class_entry *phpqt_ce_QPointingDevice;
+
+ZEND_METHOD(QInputDevice, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QPointingDevice, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QPointingDevice, primaryPointingDevice)
+{
+	zend_string *seat_name = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_STR(seat_name)
+	ZEND_PARSE_PARAMETERS_END();
+
+	/* Qt's registry keeps the device: PHP boxes it unowned, as const as Qt hands it out. */
+	phpqt_box(return_value, const_cast<QPointingDevice *>(QPointingDevice::primaryPointingDevice(seat_name != nullptr ? phpqt_qstring(seat_name) : QString())));
 }
 
 /* Qt's event, borrowed for a filter call: the most specific class, released by phpqt_event_release(). */
@@ -65,20 +100,6 @@ void phpqt_box_event(zval *rv, QEvent *event)
 void phpqt_event_release(zval *boxed)
 {
 	phpqt_value_from(Z_OBJ_P(boxed))->ptr = nullptr;
-}
-
-static void phpqt_return_point(zval *rv, double x, double y)
-{
-	array_init_size(rv, 2);
-	add_next_index_double(rv, x);
-	add_next_index_double(rv, y);
-}
-
-static void phpqt_return_ipoint(zval *rv, int x, int y)
-{
-	array_init_size(rv, 2);
-	add_next_index_long(rv, x);
-	add_next_index_long(rv, y);
 }
 
 /* ---- QEvent ---------------------------------------------------------------- */
@@ -153,8 +174,8 @@ ZEND_METHOD(QInputEvent, setTimestamp)
 		Z_PARAM_LONG(timestamp)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (timestamp < 0) {
-		zend_argument_value_error(1, "must be greater than or equal to 0");
+	/* quint64: a negative PHP int has no value there. */
+	if (!phpqt_long_fits(timestamp, 0, ZEND_LONG_MAX, 1)) {
 		RETURN_THROWS();
 	}
 	PHPQT_VALUE_THIS(QInputEvent, event);
@@ -195,6 +216,17 @@ static bool phpqt_event_type_is_plain(QEvent::Type type)
 	}
 }
 
+/* QEvent::__construct() makes a plain QEvent: a subclass wrapper would hold a native object of the wrong class. */
+static bool phpqt_event_class(zend_object *wrapper)
+{
+	if (instanceof_function(wrapper->ce, phpqt_ce_QInputEvent)) {
+		zend_throw_error(nullptr, "%s is not made by QEvent::__construct()", ZSTR_VAL(wrapper->ce->name));
+		return false;
+	}
+
+	return true;
+}
+
 ZEND_METHOD(QEvent, __construct)
 {
 	zend_object *type_case;
@@ -203,13 +235,13 @@ ZEND_METHOD(QEvent, __construct)
 		Z_PARAM_OBJ_OF_CLASS(type_case, phpqt_ce_QEvent_Type)
 	ZEND_PARSE_PARAMETERS_END();
 
-	if (instanceof_function(Z_OBJCE_P(ZEND_THIS), phpqt_ce_QInputEvent)) {
-		zend_throw_error(nullptr, "%s is not made by QEvent::__construct()", ZSTR_VAL(Z_OBJCE_P(ZEND_THIS)->name));
+	if (!phpqt_event_class(Z_OBJ_P(ZEND_THIS)) || !phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
+	/* A receiver casts an event of such a type to its subclass and reads past the plain QEvent. */
 	QEvent::Type type = static_cast<QEvent::Type>(Z_LVAL_P(zend_enum_fetch_case_value(type_case)));
-	if (!phpqt_event_type_is_plain(type)) {
-		zend_argument_value_error(1, "is a type Qt delivers as a QEvent subclass");
+	if (!PHPQT_PROBE_OFF("qevent-plain-type") && (!phpqt_event_type_is_plain(type))) {
+		zend_argument_value_error(1, "is a type Qt delivers as a QEvent subclass"); /* binding:qevent-plain-type */
 		RETURN_THROWS();
 	}
 
@@ -219,29 +251,43 @@ ZEND_METHOD(QEvent, __construct)
 ZEND_METHOD(QMouseEvent, __construct)
 {
 	zend_object *type_case;
-	double x;
-	double y;
-	double gx;
-	double gy;
+	zend_object *local_obj;
+	zend_object *global_obj;
 	zend_long button;
 	zend_long buttons;
-	zend_long modifiers = 0;
+	zend_long modifiers;
+	zend_object *device_obj;
+	bool failed;
 
-	ZEND_PARSE_PARAMETERS_START(7, 8)
+	ZEND_PARSE_PARAMETERS_START(7, 7)
 		Z_PARAM_OBJ_OF_CLASS(type_case, phpqt_ce_QEvent_Type)
-		Z_PARAM_DOUBLE(x)
-		Z_PARAM_DOUBLE(y)
-		Z_PARAM_DOUBLE(gx)
-		Z_PARAM_DOUBLE(gy)
+		Z_PARAM_OBJ_OF_CLASS(local_obj, phpqt_ce_QPointF)
+		Z_PARAM_OBJ_OF_CLASS(global_obj, phpqt_ce_QPointF)
 		Z_PARAM_LONG(button)
 		Z_PARAM_LONG(buttons)
-		Z_PARAM_OPTIONAL
 		Z_PARAM_LONG(modifiers)
+		Z_PARAM_OBJ_OF_CLASS(device_obj, phpqt_ce_QPointingDevice)
 	ZEND_PARSE_PARAMETERS_END();
 
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	QPointF *local = static_cast<QPointF *>(phpqt_value_arg(local_obj, 2));
+	if (local == nullptr) {
+		RETURN_THROWS();
+	}
+	QPointF *global = static_cast<QPointF *>(phpqt_value_arg(global_obj, 3));
+	if (global == nullptr) {
+		RETURN_THROWS();
+	}
+	QPointingDevice *device = static_cast<QPointingDevice *>(phpqt_arg(device_obj, 7, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
 	QEvent::Type type = static_cast<QEvent::Type>(Z_LVAL_P(zend_enum_fetch_case_value(type_case)));
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QMouseEvent(type, QPointF(x, y), QPointF(gx, gy),
-		static_cast<Qt::MouseButton>(button), Qt::MouseButtons(int(buttons)), Qt::KeyboardModifiers(int(modifiers))), true, phpqt_destroy_event);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QMouseEvent(type, *local, *global,
+		static_cast<Qt::MouseButton>(button), Qt::MouseButtons(int(buttons)), Qt::KeyboardModifiers(int(modifiers)), device), true, phpqt_destroy_event);
 }
 
 ZEND_METHOD(QMouseEvent, button)
@@ -265,7 +311,7 @@ ZEND_METHOD(QMouseEvent, position)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_VALUE_THIS(QMouseEvent, event);
 
-	phpqt_return_point(return_value, event->position().x(), event->position().y());
+	phpqt_return_qpointf(return_value, event->position());
 }
 
 ZEND_METHOD(QMouseEvent, globalPosition)
@@ -273,7 +319,7 @@ ZEND_METHOD(QMouseEvent, globalPosition)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_VALUE_THIS(QMouseEvent, event);
 
-	phpqt_return_point(return_value, event->globalPosition().x(), event->globalPosition().y());
+	phpqt_return_qpointf(return_value, event->globalPosition());
 }
 
 /* ---- QContextMenuEvent ------------------------------------------------------- */
@@ -281,25 +327,32 @@ ZEND_METHOD(QMouseEvent, globalPosition)
 ZEND_METHOD(QContextMenuEvent, __construct)
 {
 	zend_object *reason_case;
-	zend_long x;
-	zend_long y;
-	zend_long gx;
-	zend_long gy;
+	zend_object *pos_obj;
+	zend_object *global_obj;
 	zend_long modifiers = 0;
 
-	ZEND_PARSE_PARAMETERS_START(5, 6)
+	ZEND_PARSE_PARAMETERS_START(3, 4)
 		Z_PARAM_OBJ_OF_CLASS(reason_case, phpqt_ce_QContextMenuEvent_Reason)
-		Z_PARAM_LONG(x)
-		Z_PARAM_LONG(y)
-		Z_PARAM_LONG(gx)
-		Z_PARAM_LONG(gy)
+		Z_PARAM_OBJ_OF_CLASS(pos_obj, phpqt_ce_QPoint)
+		Z_PARAM_OBJ_OF_CLASS(global_obj, phpqt_ce_QPoint)
 		Z_PARAM_OPTIONAL
 		Z_PARAM_LONG(modifiers)
 	ZEND_PARSE_PARAMETERS_END();
 
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	QPoint *pos = static_cast<QPoint *>(phpqt_value_arg(pos_obj, 2));
+	if (pos == nullptr) {
+		RETURN_THROWS();
+	}
+	QPoint *global = static_cast<QPoint *>(phpqt_value_arg(global_obj, 3));
+	if (global == nullptr) {
+		RETURN_THROWS();
+	}
+
 	auto reason = static_cast<QContextMenuEvent::Reason>(Z_LVAL_P(zend_enum_fetch_case_value(reason_case)));
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QContextMenuEvent(reason, QPoint(int(x), int(y)), QPoint(int(gx), int(gy)),
-		Qt::KeyboardModifiers(int(modifiers))), true, phpqt_destroy_event);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QContextMenuEvent(reason, *pos, *global, Qt::KeyboardModifiers(int(modifiers))), true, phpqt_destroy_event);
 }
 
 ZEND_METHOD(QContextMenuEvent, reason)
@@ -315,7 +368,7 @@ ZEND_METHOD(QContextMenuEvent, pos)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_VALUE_THIS(QContextMenuEvent, event);
 
-	phpqt_return_ipoint(return_value, event->pos().x(), event->pos().y());
+	phpqt_return_qpoint(return_value, event->pos());
 }
 
 ZEND_METHOD(QContextMenuEvent, globalPos)
@@ -323,7 +376,7 @@ ZEND_METHOD(QContextMenuEvent, globalPos)
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_VALUE_THIS(QContextMenuEvent, event);
 
-	phpqt_return_ipoint(return_value, event->globalPos().x(), event->globalPos().y());
+	phpqt_return_qpoint(return_value, event->globalPos());
 }
 
 /* ---- QStyleHints --------------------------------------------------------------- */

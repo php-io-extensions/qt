@@ -51,8 +51,8 @@ namespace {
     {
         private function __construct() {}
 
-        /** QDesktopServices::openUrl(QUrl(url)): the URL in its handler (the browser for http and https). */
-        public static function openUrl(string $url): bool {}
+        /** The URL in its handler (the browser for http and https). */
+        public static function openUrl(QUrl $url): bool {}
     }
 
     final class QFontDatabase
@@ -70,11 +70,7 @@ namespace {
      */
     final class QFont
     {
-        /**
-         * @param float $pointSize greater than 0, or -1 for the default size
-         * @param int $weight 1 to 1000 (QFont\Weight values are points on that scale), or -1 for the default
-         */
-        public function __construct(string $family = "", float $pointSize = -1.0, int $weight = -1) {}
+        public function __construct(string $family, int $pointSize = -1, int $weight = -1, bool $italic = false) {}
 
         public function family(): string {}
 
@@ -103,9 +99,9 @@ namespace {
         public function __construct() {}
 
         /** Needs a QGuiApplication (or QApplication) first. */
-        public static function fromImage(QImage $image): QPixmap {}
+        public static function fromImage(QImage $image, Qt\ImageConversionFlag|int $flags = Qt\ImageConversionFlag::AUTO_COLOR): QPixmap {}
 
-        public function load(string $fileName): bool {}
+        public function load(string $fileName, ?string $format = null, Qt\ImageConversionFlag|int $flags = Qt\ImageConversionFlag::AUTO_COLOR): bool {}
 
         public function isNull(): bool {}
 
@@ -113,7 +109,7 @@ namespace {
 
         public function height(): int {}
 
-        public function scaled(int $width, int $height, Qt\AspectRatioMode $aspectRatioMode, Qt\TransformationMode $transformMode = Qt\TransformationMode::FAST_TRANSFORMATION): QPixmap {}
+        public function scaled(int $width, int $height, Qt\AspectRatioMode $aspectRatioMode = Qt\AspectRatioMode::IGNORE_ASPECT_RATIO, Qt\TransformationMode $transformMode = Qt\TransformationMode::FAST_TRANSFORMATION): QPixmap {}
 
         public function devicePixelRatio(): float {}
 
@@ -129,11 +125,13 @@ namespace {
     final class QImage
     {
         /**
-         * QImage(data, width, height, bytesPerLine, format), then a deep copy: Qt only borrows
-         * the bytes it is handed, and the PHP string may go away. $data must hold every line,
-         * or $bytesPerLine × $height bytes read at the address $data (trusted).
+         * QImage(data, width, height, bytesPerLine, format, cleanupFunction, cleanupInfo): Qt borrows
+         * the buffer at the address $data (a QByteArray's or a framebuffer's pointer()), which must
+         * outlive every image sharing it; copy() makes an image of its own. Once the last image
+         * sharing the buffer goes, Qt calls $cleanupFunction($cleanupInfo), on the thread that
+         * made the image. A null address or bad dimensions make Qt's null image.
          */
-        public function __construct(string|int $data, int $width, int $height, int $bytesPerLine, QImage\Format $format) {}
+        public function __construct(int $data, int $width, int $height, int $bytesPerLine, QImage\Format $format, ?callable $cleanupFunction = null, mixed $cleanupInfo = null) {}
 
         public function isNull(): bool {}
 
@@ -142,6 +140,9 @@ namespace {
         public function height(): int {}
 
         public function format(): QImage\Format {}
+
+        /** $rect null is Qt's default QRect(): the whole image. */
+        public function copy(?QRect $rect = null): QImage {}
     }
 
     /**
@@ -151,11 +152,18 @@ namespace {
      */
     final class QTableWidgetItem
     {
-        public function __construct(string $text = "") {}
+        /** @cvalue QTableWidgetItem::Type */
+        public const int TYPE = UNKNOWN;
+        /** @cvalue QTableWidgetItem::UserType */
+        public const int USER_TYPE = UNKNOWN;
+
+        public function __construct(string $text = "", int $type = QTableWidgetItem::TYPE) {}
 
         public function text(): string {}
 
         public function setText(string $text): void {}
+
+        public function type(): int {}
 
         /** The item's row in its table; -1 when no table holds it. */
         public function row(): int {}

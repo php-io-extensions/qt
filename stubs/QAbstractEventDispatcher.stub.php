@@ -7,7 +7,7 @@
  */
 class QAbstractEventDispatcher extends QObject
 {
-    public static function instance(): ?QAbstractEventDispatcher {}
+    public static function instance(?QThread $thread = null): ?QAbstractEventDispatcher {}
 
     public function processEvents(QEventLoop\ProcessEventsFlag|int $flags): bool {}
 

@@ -1,7 +1,8 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 817ea68c28e92e1b623b28fba670c5ee97de2196 */
+ * Stub hash: 570cbbb85e550954f7cdfd3fb8220e7b59569baa */
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractEventDispatcher_instance, 0, 0, QAbstractEventDispatcher, 1)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, thread, QThread, 1, "null")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractEventDispatcher_processEvents, 0, 1, _IS_BOOL, 0)

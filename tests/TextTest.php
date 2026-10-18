@@ -19,24 +19,35 @@ it('paints extra selections over a plain text edit\'s document without changing 
     $range->setPosition(11, QTextCursor\MoveMode::KEEP_ANCHOR);
     $green = new QTextCharFormat();
     $green->setForeground(new QBrush(new QColor(0, 255, 0, 128)));
-    $edit->setExtraSelections([new QTextEditExtraSelection($line, $full), new QTextEditExtraSelection($range, $green)]);
+    $edit->setExtraSelections([new QTextEdit\ExtraSelection($line, $full), new QTextEdit\ExtraSelection($range, $green)]);
     $back = $edit->extraSelections();
 
     expect($doc)->toBeInstanceOf(QTextDocument::class)
         ->and([$doc->blockCount(), $doc->characterCount()])->toBe([3, 14])
         ->and([$block->position(), $block->length(), $block->blockNumber()])->toBe([4, 4, 1])
-        ->and($doc->findBlockByNumber(3))->toBeNull()
+        ->and($block->isValid())->toBeTrue()
+        ->and($doc->findBlockByNumber(3)->isValid())->toBeFalse()
+        ->and($doc->findBlockByNumber(-1)->isValid())->toBeFalse()
         ->and($back)->toHaveCount(2)
-        ->and($back[0]->format()->boolProperty(QTextFormat::FULL_WIDTH_SELECTION))->toBeTrue()
-        ->and($back[0]->format()->hasProperty(QTextFormat::FULL_WIDTH_SELECTION))->toBeTrue()
-        ->and($back[0]->format()->background()->color()->red())->toBe(255)
-        ->and([$back[1]->cursor()->selectionStart(), $back[1]->cursor()->selectionEnd(), $back[1]->cursor()->hasSelection()])->toBe([9, 11, true])
-        ->and($back[1]->format()->foreground()->color()->alpha())->toBe(128)
+        ->and($back[0]->format->boolProperty(QTextFormat::FULL_WIDTH_SELECTION))->toBeTrue()
+        ->and($back[0]->format->hasProperty(QTextFormat::FULL_WIDTH_SELECTION))->toBeTrue()
+        ->and($back[0]->format->background()->color()->red())->toBe(255)
+        ->and([$back[1]->cursor->selectionStart(), $back[1]->cursor->selectionEnd(), $back[1]->cursor->hasSelection()])->toBe([9, 11, true])
+        ->and($back[1]->format->foreground()->color()->alpha())->toBe(128)
         ->and($edit->toPlainText())->toBe("one\ntwo\nthree")
-        ->and(fn () => $range->setPosition(99))->toThrow(ValueError::class, 'position')
-        ->and(fn () => new QColor(256, 0, 0))->toThrow(ValueError::class, '0 and 255')
-        ->and(fn () => $edit->setExtraSelections(['x']))->toThrow(TypeError::class, 'QTextEditExtraSelection')
-        ->and(fn () => (new QPlainTextEdit())->setTextCursor($line))->toThrow(ValueError::class, 'document');
+        ->and(fn () => $edit->setExtraSelections(['x']))->toThrow(TypeError::class, 'QTextEdit\ExtraSelection');
+
+    // Qt answers these itself: a position past the document warns and leaves the cursor where it
+    // was, a component past 255 makes an invalid colour, and an edit takes a cursor of another document.
+    $range->setPosition(99);
+    $foreign = new QPlainTextEdit();
+    $foreign->setTextCursor($line);
+
+    expect([$range->anchor(), $range->position()])->toBe([9, 11])
+        ->and((new QColor(256, 0, 0))->isValid())->toBeFalse()
+        ->and((new QColor(255, 0, 0))->isValid())->toBeTrue()
+        ->and($foreign->textCursor()->position())->toBe($line->position())
+        ->and($foreign->toPlainText())->toBe('');
 });
 
 it('moves a plain text edit\'s cursor, stops wrapping, and scrolls by its scroll bars', function (): void {
@@ -75,7 +86,7 @@ it('names the fixed-pitch system font', function (): void {
         ->and($fixed->family())->not->toBe('');
 });
 
-it('keeps values safe when the document they came from changes or goes away', function (): void {
+it('reads Qt\'s null cursor and invalid block once their document goes away', function (): void {
     $edit = new QPlainTextEdit();
     $edit->setPlainText("one\ntwo\nthree");
     $doc = $edit->document();
@@ -83,7 +94,7 @@ it('keeps values safe when the document they came from changes or goes away', fu
     $cursor = new QTextCursor($doc);
     $cursor->setPosition(5);
     $cursor->setPosition(7, QTextCursor\MoveMode::KEEP_ANCHOR);
-    $selection = new QTextEditExtraSelection($cursor, new QTextCharFormat());
+    $selection = new QTextEdit\ExtraSelection($cursor, new QTextCharFormat());
     $other = new QPlainTextEdit();
 
     $edit->setPlainText("zero\none\ntwo\nthree");
@@ -92,17 +103,40 @@ it('keeps values safe when the document they came from changes or goes away', fu
     $edit->deleteLater();
     QCoreApplication::sendPostedEvents(null, QEvent\Type::DEFERRED_DELETE->value);
 
+    $cursor->setPosition(0);
+    $other->setTextCursor($cursor);
+
     expect($after[0])->toBeInt()
         ->and($after[1])->toBeInt()
-        ->and(fn () => $block->position())->toThrow(QtException::class, 'document has been deleted')
-        ->and(fn () => $block->length())->toThrow(QtException::class, 'document has been deleted')
-        ->and(fn () => $block->blockNumber())->toThrow(QtException::class, 'document has been deleted')
-        ->and(fn () => $block->firstLineNumber())->toThrow(QtException::class, 'document has been deleted')
+        ->and($block->isValid())->toBeFalse()
+        ->and([$block->position(), $block->length(), $block->blockNumber(), $block->firstLineNumber()])->toBe([0, 0, -1, -1])
+        ->and($cursor->isNull())->toBeTrue()
         ->and([$cursor->position(), $cursor->anchor(), $cursor->selectionStart(), $cursor->selectionEnd()])->toBe([-1, -1, -1, -1])
-        ->and($selection->cursor()->position())->toBe(-1)
-        ->and(fn () => $cursor->setPosition(0))->toThrow(QtException::class, 'deleted')
-        ->and(fn () => $other->setTextCursor($cursor))->toThrow(ValueError::class, 'document')
-        ->and(fn () => $other->setExtraSelections([$selection]))->toThrow(ValueError::class, 'document');
+        ->and($selection->cursor->position())->toBe(-1)
+        ->and($other->toPlainText())->toBe('');
+
+    // Qt takes a cursor of a deleted document as the null cursor it now is.
+    $other->setExtraSelections([$selection]);
+
+    expect($other->extraSelections())->toHaveCount(1)
+        ->and($other->extraSelections()[0]->cursor->isNull())->toBeTrue();
+});
+
+it('holds the struct fields as properties a caller may replace', function (): void {
+    $edit = new QPlainTextEdit();
+    $edit->setPlainText('one two');
+    $first = new QTextCursor($edit->document());
+    $first->setPosition(1);
+    $second = new QTextCursor($edit->document());
+    $second->setPosition(4);
+    $second->setPosition(7, QTextCursor\MoveMode::KEEP_ANCHOR);
+    $selection = new QTextEdit\ExtraSelection($first, new QTextCharFormat());
+    $selection->cursor = $second;
+    $edit->setExtraSelections([$selection]);
+
+    expect([$edit->extraSelections()[0]->cursor->selectionStart(), $edit->extraSelections()[0]->cursor->selectionEnd()])->toBe([4, 7])
+        ->and(fn () => $edit->setExtraSelections([(new ReflectionClass(QTextEdit\ExtraSelection::class))->newInstanceWithoutConstructor()]))
+        ->toThrow(Error::class, 'must not be accessed before initialization');
 });
 
 it('moves a cursor by blocks, characters and laid-out rows', function (): void {
@@ -139,7 +173,7 @@ it('moves a cursor by blocks, characters and laid-out rows', function (): void {
 
     $edit->deleteLater();
     QCoreApplication::sendPostedEvents(null, QEvent\Type::DEFERRED_DELETE->value);
-    expect(fn () => $cursor->movePosition(QTextCursor\MoveOperation::START))->toThrow(QtException::class, 'deleted');
+    expect($cursor->movePosition(QTextCursor\MoveOperation::START))->toBeFalse();
 });
 
 it('hands out a plain text edit\'s viewport, which resizes with it', function (): void {
@@ -148,15 +182,17 @@ it('hands out a plain text edit\'s viewport, which resizes with it', function ()
     $edit->show();
     $viewport = $edit->viewport();
     $resized = 0;
-    $filter = new QEventFilter(function (QObject $watched, QEvent\Type|int $type) use (&$resized): bool {
-        $resized++;
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$resized): bool {
+        if ($event->type() === QEvent\Type::RESIZE) {
+            $resized++;
+        }
 
         return false;
-    }, [QEvent\Type::RESIZE]);
+    });
     $viewport->installEventFilter($filter);
     $edit->resize(260, 120);
     processUntil(fn (): bool => $resized > 0);
-    [$width] = $viewport->size();
+    $width = $viewport->size()->width();
     $edit->close();
 
     expect($viewport)->toBeInstanceOf(QWidget::class)

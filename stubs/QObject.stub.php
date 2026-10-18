@@ -38,4 +38,16 @@ class QObject
     public static function connect(QObject $sender, string $signal, callable $functor): QMetaObject\Connection {}
 
     public static function disconnect(QMetaObject\Connection $connection): bool {}
+
+    public function thread(): ?QThread {}
+}
+
+/**
+ * @not-serializable
+ */
+class QThread extends QObject
+{
+    public function __construct(?QObject $parent = null) {}
+
+    public static function currentThread(): ?QThread {}
 }

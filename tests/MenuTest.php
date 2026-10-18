@@ -27,18 +27,15 @@ it('builds a menu bar with menus, actions and separators', function (): void {
     expect($app->isEmpty())->toBeTrue();
 });
 
-it('adds a menu made separately and hands back its menu action', function (): void {
+it('nests a menu under a menu by title', function (): void {
     $bar = new QMenuBar();
-    $menu = new QMenu('Tools');
-
-    $action = $bar->addMenu($menu);
+    $menu = $bar->addMenu('Tools');
     $sub = $menu->addMenu('Nested');
 
-    expect($action)->toBeInstanceOf(QAction::class)
-        ->and($action)->toBe($menu->menuAction())
-        ->and($sub)->toBeInstanceOf(QMenu::class)
+    expect($sub)->toBeInstanceOf(QMenu::class)
         ->and($sub->title())->toBe('Nested')
-        ->and(fn () => $bar->addMenu(new QWidget()))->toThrow(TypeError::class);
+        ->and($sub->parentWidget())->toBe($menu)
+        ->and($menu->isEmpty())->toBeFalse();
 
     $bar->clear();
 });
@@ -47,7 +44,7 @@ it('pops a menu up at a global point without waiting for a choice', function ():
     $menu = new QMenu();
     $menu->addAction('Download');
 
-    $menu->popup(40, 60);
+    $menu->popup(new QPoint(40, 60));
     $shown = $menu->isVisible();
     $menu->hide();
 
@@ -91,14 +88,12 @@ it('sets roles, shortcuts and text', function (): void {
     $action = new QAction();
     $action->setText('Quit');
     $action->setMenuRole(QAction\MenuRole::QUIT_ROLE);
-    $action->setShortcut('Ctrl+Q');
+    $action->setShortcut(QKeySequence::fromString('Ctrl+Q'));
 
     expect($action->text())->toBe('Quit')
         ->and($action->menuRole())->toBe(QAction\MenuRole::QUIT_ROLE)
-        ->and($action->shortcut())->toBe('Ctrl+Q')
-        ->and(fn () => $action->setShortcut('Ctrl+Nope'))->toThrow(ValueError::class)
-        ->and($action->shortcut())->toBe('Ctrl+Q');
+        ->and($action->shortcut()->toString())->toBe('Ctrl+Q');
 
-    $action->setShortcut('');
-    expect($action->shortcut())->toBe('');
+    $action->setShortcut(new QKeySequence(''));
+    expect($action->shortcut()->isEmpty())->toBeTrue();
 });

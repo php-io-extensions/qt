@@ -66,7 +66,10 @@ it('lets an exception thrown by a slot surface from processEvents', function ():
     expect(fn () => processUntil(fn (): bool => false, 200))->toThrow(LogicException::class, 'from the slot');
 });
 
-it('rejects out-of-range intervals', function (): void {
-    expect(fn () => (new QTimer())->start(-1))->toThrow(ValueError::class)
-        ->and(fn () => QTimer::singleShot(-1, fn () => null))->toThrow(ValueError::class);
+it('hands Qt a negative interval and rejects one beyond an int', function (): void {
+    // Qt answers a negative interval itself (6.4 refuses to start, 6.11 starts at 1 ms), warning either way.
+    expect(fn () => (new QTimer())->start(-1))->not->toThrow(Throwable::class)
+        ->and(fn () => QTimer::singleShot(-1, fn () => null))->not->toThrow(Throwable::class)
+        ->and(fn () => (new QTimer())->start(2 ** 40))->toThrow(ValueError::class, 'between')
+        ->and(fn () => QTimer::singleShot(2 ** 40, fn () => null))->toThrow(ValueError::class, 'between');
 });

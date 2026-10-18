@@ -9,8 +9,8 @@ class QMenuBar extends QWidget
 {
     public function __construct(?QWidget $parent = null) {}
 
-    /** addMenu(const QString &) returns the new QMenu; addMenu(QMenu *) returns its menu action. */
-    public function addMenu(QMenu|string $menuOrTitle): QMenu|QAction {}
+    /** addMenu(const QString &title): the new QMenu. */
+    public function addMenu(string $title): QMenu {}
 
     public function addAction(string $text): QAction {}
 
@@ -34,8 +34,8 @@ class QMenu extends QWidget
 
     public function addAction(string $text): QAction {}
 
-    /** addMenu(const QString &) returns the new QMenu; addMenu(QMenu *) returns its menu action. */
-    public function addMenu(QMenu|string $menuOrTitle): QMenu|QAction {}
+    /** addMenu(const QString &title): the new QMenu. */
+    public function addMenu(string $title): QMenu {}
 
     public function addSeparator(): QAction {}
 
@@ -45,6 +45,6 @@ class QMenu extends QWidget
 
     public function menuAction(): QAction {}
 
-    /** popup(QPoint(x, y)): shows the menu at a global point and returns at once; a chosen action emits triggered. */
-    public function popup(int $x, int $y): void {}
+    /** Shows the menu at a global point and returns at once; a chosen action emits triggered. */
+    public function popup(QPoint $pos, ?QAction $at = null): void {}
 }

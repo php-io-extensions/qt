@@ -7,8 +7,14 @@
  */
 class QCoreApplication extends QObject
 {
-    /** @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life */
-    public function __construct(array $argv) {}
+    /** @cvalue QCoreApplication::ApplicationFlags */
+    public const int APPLICATION_FLAGS = UNKNOWN;
+
+    /**
+     * @param int $argc the count of $argv entries Qt reads; Qt's count after it strips its own options is written back
+     * @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life
+     */
+    public function __construct(int &$argc, array $argv, int $flags = QCoreApplication::APPLICATION_FLAGS) {}
 
     public static function instance(): ?QCoreApplication {}
 
@@ -34,6 +40,10 @@ class QCoreApplication extends QObject
     public static function closingDown(): bool {}
 
     public static function startingUp(): bool {}
+
+    public static function setAttribute(Qt\ApplicationAttribute $attribute, bool $on = true): void {}
+
+    public static function testAttribute(Qt\ApplicationAttribute $attribute): bool {}
 }
 
 /**
@@ -41,8 +51,11 @@ class QCoreApplication extends QObject
  */
 class QGuiApplication extends QCoreApplication
 {
-    /** @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life */
-    public function __construct(array $argv) {}
+    /**
+     * @param int $argc the count of $argv entries Qt reads; Qt's count after it strips its own options is written back
+     * @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life
+     */
+    public function __construct(int &$argc, array $argv, int $flags = QCoreApplication::APPLICATION_FLAGS) {}
 
     public static function platformName(): string {}
 
@@ -66,8 +79,11 @@ class QGuiApplication extends QCoreApplication
  */
 class QApplication extends QGuiApplication
 {
-    /** @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life */
-    public function __construct(array $argv) {}
+    /**
+     * @param int $argc the count of $argv entries Qt reads; Qt's count after it strips its own options is written back
+     * @param array $argv string arguments, argv[0] first; Qt keeps them for the application's life
+     */
+    public function __construct(int &$argc, array $argv, int $flags = QCoreApplication::APPLICATION_FLAGS) {}
 
     /** The innermost visible widget at the global (screen) point, or null. */
     public static function widgetAt(int $x, int $y): ?QWidget {}

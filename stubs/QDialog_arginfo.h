@@ -1,8 +1,9 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 6de55395367beb37c9b712793b6b4de156159393 */
+ * Stub hash: ec104385e754304ee4ffe42424a9a3eb828d8478 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QDialog___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+	ZEND_ARG_OBJ_TYPE_MASK(0, f, Qt\\WindowType, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDialog_open, 0, 0, IS_VOID, 0)
@@ -26,7 +27,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QDialog_reject arginfo_class_QDialog_open
 
-#define arginfo_class_QMessageBox___construct arginfo_class_QDialog___construct
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QMessageBox___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMessageBox_text, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()

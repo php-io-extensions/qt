@@ -1,11 +1,11 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 920e95eb461584066457f325545c585f5cb6a32a */
+ * Stub hash: 08521e77680124052ab2a5a52ff2678628212408 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QColor___construct, 0, 0, 3)
-	ZEND_ARG_TYPE_INFO(0, red, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO(0, green, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO(0, blue, IS_LONG, 0)
-	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, alpha, IS_LONG, 0, "255")
+	ZEND_ARG_TYPE_INFO(0, r, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, g, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, b, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, a, IS_LONG, 0, "255")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QColor_red, 0, 0, IS_LONG, 0)
@@ -17,11 +17,18 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QColor_alpha arginfo_class_QColor_red
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QColor_isValid, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QBrush___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, color, QColor, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, bs, Qt\\BrushStyle, 0, "Qt\\BrushStyle::SOLID_PATTERN")
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QBrush_color, 0, 0, QColor, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QBrush_style, 0, 0, Qt\\BrushStyle, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextFormat___construct, 0, 0, 0)
@@ -42,7 +49,7 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextCharFormat_setProperty, 0, 2, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, propertyId, IS_LONG, 0)
-	ZEND_ARG_TYPE_MASK(0, value, MAY_BE_BOOL|MAY_BE_LONG|MAY_BE_DOUBLE|MAY_BE_STRING, NULL)
+	ZEND_ARG_TYPE_INFO(0, value, IS_MIXED, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextCharFormat_boolProperty, 0, 1, _IS_BOOL, 0)
@@ -74,8 +81,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTextCursor_selectionEnd arginfo_class_QColor_red
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextCursor_hasSelection, 0, 0, _IS_BOOL, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QTextCursor_hasSelection arginfo_class_QColor_isValid
+
+#define arginfo_class_QTextCursor_isNull arginfo_class_QColor_isValid
 
 #define arginfo_class_QTextBlock___construct arginfo_class_QTextFormat___construct
 
@@ -87,20 +95,11 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTextBlock_firstLineNumber arginfo_class_QColor_red
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextEditExtraSelection___construct, 0, 0, 2)
-	ZEND_ARG_OBJ_INFO(0, cursor, QTextCursor, 0)
-	ZEND_ARG_OBJ_INFO(0, format, QTextCharFormat, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextEditExtraSelection_cursor, 0, 0, QTextCursor, 0)
-ZEND_END_ARG_INFO()
-
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextEditExtraSelection_format, 0, 0, QTextCharFormat, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QTextBlock_isValid arginfo_class_QColor_isValid
 
 #define arginfo_class_QTextDocument___construct arginfo_class_QTextFormat___construct
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextDocument_findBlockByNumber, 0, 1, QTextBlock, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextDocument_findBlockByNumber, 0, 1, QTextBlock, 0)
 	ZEND_ARG_TYPE_INFO(0, blockNumber, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
@@ -108,13 +107,20 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTextDocument_characterCount arginfo_class_QColor_red
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextEdit_ExtraSelection___construct, 0, 0, 2)
+	ZEND_ARG_OBJ_INFO(0, cursor, QTextCursor, 0)
+	ZEND_ARG_OBJ_INFO(0, format, QTextCharFormat, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QColor, __construct);
 ZEND_METHOD(QColor, red);
 ZEND_METHOD(QColor, green);
 ZEND_METHOD(QColor, blue);
 ZEND_METHOD(QColor, alpha);
+ZEND_METHOD(QColor, isValid);
 ZEND_METHOD(QBrush, __construct);
 ZEND_METHOD(QBrush, color);
+ZEND_METHOD(QBrush, style);
 ZEND_METHOD(QTextFormat, __construct);
 ZEND_METHOD(QTextCharFormat, __construct);
 ZEND_METHOD(QTextCharFormat, setForeground);
@@ -132,18 +138,18 @@ ZEND_METHOD(QTextCursor, anchor);
 ZEND_METHOD(QTextCursor, selectionStart);
 ZEND_METHOD(QTextCursor, selectionEnd);
 ZEND_METHOD(QTextCursor, hasSelection);
+ZEND_METHOD(QTextCursor, isNull);
 ZEND_METHOD(QTextBlock, __construct);
 ZEND_METHOD(QTextBlock, position);
 ZEND_METHOD(QTextBlock, length);
 ZEND_METHOD(QTextBlock, blockNumber);
 ZEND_METHOD(QTextBlock, firstLineNumber);
-ZEND_METHOD(QTextEditExtraSelection, __construct);
-ZEND_METHOD(QTextEditExtraSelection, cursor);
-ZEND_METHOD(QTextEditExtraSelection, format);
+ZEND_METHOD(QTextBlock, isValid);
 ZEND_METHOD(QTextDocument, __construct);
 ZEND_METHOD(QTextDocument, findBlockByNumber);
 ZEND_METHOD(QTextDocument, blockCount);
 ZEND_METHOD(QTextDocument, characterCount);
+ZEND_METHOD(QTextEdit_ExtraSelection, __construct);
 
 static const zend_function_entry class_QColor_methods[] = {
 	ZEND_ME(QColor, __construct, arginfo_class_QColor___construct, ZEND_ACC_PUBLIC)
@@ -151,12 +157,14 @@ static const zend_function_entry class_QColor_methods[] = {
 	ZEND_ME(QColor, green, arginfo_class_QColor_green, ZEND_ACC_PUBLIC)
 	ZEND_ME(QColor, blue, arginfo_class_QColor_blue, ZEND_ACC_PUBLIC)
 	ZEND_ME(QColor, alpha, arginfo_class_QColor_alpha, ZEND_ACC_PUBLIC)
+	ZEND_ME(QColor, isValid, arginfo_class_QColor_isValid, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
 static const zend_function_entry class_QBrush_methods[] = {
 	ZEND_ME(QBrush, __construct, arginfo_class_QBrush___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBrush, color, arginfo_class_QBrush_color, ZEND_ACC_PUBLIC)
+	ZEND_ME(QBrush, style, arginfo_class_QBrush_style, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -186,6 +194,7 @@ static const zend_function_entry class_QTextCursor_methods[] = {
 	ZEND_ME(QTextCursor, selectionStart, arginfo_class_QTextCursor_selectionStart, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextCursor, selectionEnd, arginfo_class_QTextCursor_selectionEnd, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextCursor, hasSelection, arginfo_class_QTextCursor_hasSelection, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextCursor, isNull, arginfo_class_QTextCursor_isNull, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -195,13 +204,7 @@ static const zend_function_entry class_QTextBlock_methods[] = {
 	ZEND_ME(QTextBlock, length, arginfo_class_QTextBlock_length, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextBlock, blockNumber, arginfo_class_QTextBlock_blockNumber, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextBlock, firstLineNumber, arginfo_class_QTextBlock_firstLineNumber, ZEND_ACC_PUBLIC)
-	ZEND_FE_END
-};
-
-static const zend_function_entry class_QTextEditExtraSelection_methods[] = {
-	ZEND_ME(QTextEditExtraSelection, __construct, arginfo_class_QTextEditExtraSelection___construct, ZEND_ACC_PUBLIC)
-	ZEND_ME(QTextEditExtraSelection, cursor, arginfo_class_QTextEditExtraSelection_cursor, ZEND_ACC_PUBLIC)
-	ZEND_ME(QTextEditExtraSelection, format, arginfo_class_QTextEditExtraSelection_format, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextBlock, isValid, arginfo_class_QTextBlock_isValid, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -210,6 +213,11 @@ static const zend_function_entry class_QTextDocument_methods[] = {
 	ZEND_ME(QTextDocument, findBlockByNumber, arginfo_class_QTextDocument_findBlockByNumber, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextDocument, blockCount, arginfo_class_QTextDocument_blockCount, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextDocument, characterCount, arginfo_class_QTextDocument_characterCount, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QTextEdit_ExtraSelection_methods[] = {
+	ZEND_ME(QTextEdit_ExtraSelection, __construct, arginfo_class_QTextEdit_ExtraSelection___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -401,22 +409,36 @@ static zend_class_entry *register_class_QTextBlock(void)
 	return class_entry;
 }
 
-static zend_class_entry *register_class_QTextEditExtraSelection(void)
-{
-	zend_class_entry ce, *class_entry;
-
-	INIT_CLASS_ENTRY(ce, "QTextEditExtraSelection", class_QTextEditExtraSelection_methods);
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
-
-	return class_entry;
-}
-
 static zend_class_entry *register_class_QTextDocument(zend_class_entry *class_entry_QObject)
 {
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QTextDocument", class_QTextDocument_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QTextEdit_ExtraSelection(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_NS_CLASS_ENTRY(ce, "QTextEdit", "ExtraSelection", class_QTextEdit_ExtraSelection_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval property_cursor_default_value;
+	ZVAL_UNDEF(&property_cursor_default_value);
+	zend_string *property_cursor_name = zend_string_init("cursor", sizeof("cursor") - 1, 1);
+	zend_string *property_cursor_class_QTextCursor = zend_string_init("QTextCursor", sizeof("QTextCursor")-1, 1);
+	zend_declare_typed_property(class_entry, property_cursor_name, &property_cursor_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_cursor_class_QTextCursor, 0, 0));
+	zend_string_release(property_cursor_name);
+
+	zval property_format_default_value;
+	ZVAL_UNDEF(&property_format_default_value);
+	zend_string *property_format_name = zend_string_init("format", sizeof("format") - 1, 1);
+	zend_string *property_format_class_QTextCharFormat = zend_string_init("QTextCharFormat", sizeof("QTextCharFormat")-1, 1);
+	zend_declare_typed_property(class_entry, property_format_name, &property_format_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_format_class_QTextCharFormat, 0, 0));
+	zend_string_release(property_format_name);
 
 	return class_entry;
 }

@@ -19,7 +19,7 @@ function stubDeclarations(): array
                 $namespace = $m[1] . '\\';
             } elseif (preg_match('/^namespace\s*\{/', $line)) {
                 $namespace = '';
-            } elseif (preg_match('/^\s*(?:final\s+)?(?:class|enum)\s+(\w+)/', $line, $m)) {
+            } elseif (preg_match('/^\s*(?:final\s+|abstract\s+)?(?:class|enum)\s+(\w+)/', $line, $m)) {
                 $class = $namespace . $m[1];
                 $declared['classes'][$class] ??= [];
             } elseif (preg_match('/^function\s+(\w+)/', $line, $m)) {
@@ -52,7 +52,7 @@ it('exposes every function, class, enum and method the stubs declare', function 
 });
 
 it('reports its version and the Qt runtime', function (): void {
-    expect(phpversion('qt'))->toBe('0.10.3')
+    expect(phpversion('qt'))->toBe('0.10.1')
         ->and(qVersion())->toStartWith('6.');
 });
 
@@ -91,6 +91,9 @@ it('keeps the native class hierarchy', function (): void {
         ->and(get_parent_class(QProgressBar::class))->toBe(QWidget::class)
         ->and(get_parent_class(QFrame::class))->toBe(QWidget::class)
         ->and(get_parent_class(QScrollArea::class))->toBe(QFrame::class)
+        ->and(get_parent_class(QSplitter::class))->toBe(QFrame::class)
+        ->and(get_parent_class(QSplitterHandle::class))->toBe(QWidget::class)
+        ->and(get_parent_class(QTabWidget::class))->toBe(QWidget::class)
         ->and(get_parent_class(QAbstractItemView::class))->toBe(QFrame::class)
         ->and(get_parent_class(QTableWidget::class))->toBe(QAbstractItemView::class)
         ->and(get_parent_class(QFont::class))->toBeFalse()
@@ -102,7 +105,7 @@ it('keeps the native class hierarchy', function (): void {
         ->and(get_parent_class(QTextCharFormat::class))->toBeFalse()
         ->and(get_parent_class(QTextCursor::class))->toBeFalse()
         ->and(get_parent_class(QTextBlock::class))->toBeFalse()
-        ->and(get_parent_class(QTextEditExtraSelection::class))->toBeFalse()
+        ->and(get_parent_class(QTextEdit\ExtraSelection::class))->toBeFalse()
         ->and(get_parent_class(QFontDatabase::class))->toBeFalse()
         ->and(get_parent_class(QPixmap::class))->toBeFalse()
         ->and(get_parent_class(QTableWidgetItem::class))->toBeFalse()
@@ -119,6 +122,26 @@ it('refuses to clone or serialize a wrapper', function (): void {
     expect(fn () => clone $object)->toThrow(Error::class)
         ->and(fn () => serialize($object))->toThrow(Exception::class)
         ->and(fn () => new QMetaObject\Connection())->toThrow(Error::class)
-        ->and(fn () => clone new QFont())->toThrow(Error::class)
+        ->and(fn () => clone new QFont('Helvetica'))->toThrow(Error::class)
         ->and(fn () => serialize(new QPixmap()))->toThrow(Exception::class);
 });
+
+it('declares Qt\'s abstract classes abstract and keeps the constructors only Qt calls private', function (string $class, bool $abstract): void {
+    $reflection = new ReflectionClass($class);
+
+    expect($reflection->isAbstract())->toBe($abstract)
+        ->and($abstract ? $reflection->getConstructor() === null || $reflection->getConstructor()->class !== $class : $reflection->getConstructor()?->isPrivate())->toBeTrue()
+        ->and(fn () => new $class())->toThrow(Error::class);
+})->with([
+    'QAbstractButton' => [QAbstractButton::class, true],
+    'QAbstractItemView' => [QAbstractItemView::class, true],
+    'QLayout' => [QLayout::class, true],
+    'QAbstractSlider' => [QAbstractSlider::class, false],
+    'QScrollBar' => [QScrollBar::class, false],
+    'QSplitterHandle' => [QSplitterHandle::class, false],
+    'QBoxLayout' => [QBoxLayout::class, false],
+    'QFontDatabase' => [QFontDatabase::class, false],
+    'QTextFormat' => [QTextFormat::class, false],
+    'QTextBlock' => [QTextBlock::class, false],
+    'QTextDocument' => [QTextDocument::class, false],
+]);

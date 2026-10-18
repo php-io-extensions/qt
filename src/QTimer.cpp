@@ -28,14 +28,10 @@ ZEND_METHOD(QTimer, __construct)
 	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QTimer(qparent));
 }
 
+/* msec as Qt's int: Qt answers a negative interval itself. */
 static bool phpqt_msec(zend_long msec, uint32_t arg_num)
 {
-	if (msec < 0 || msec > INT_MAX) {
-		zend_argument_value_error(arg_num, "must be between 0 and %d", INT_MAX);
-		return false;
-	}
-
-	return true;
+	return phpqt_long_fits(msec, INT_MIN, INT_MAX, arg_num);
 }
 
 ZEND_METHOD(QTimer, start)

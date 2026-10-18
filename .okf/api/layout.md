@@ -1,11 +1,11 @@
 ---
 type: API
 title: Layout and geometry
-description: Qt owns geometry; PHP installs layouts, adds widgets with stretch and alignment, and reads sizes back as arrays.
+description: Qt owns geometry; PHP installs layouts, adds widgets with stretch and alignment, and reads sizes back as QSize, QPoint and QRect.
 resource: src/QLayout.cpp
 tags: [qt, layout, widgets]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-02T19:00:37Z }
+generated: { by: claude-opus/5.5, at: 2026-10-18T22:00:00Z }
 sources:
   - id: layout
     resource: src/QLayout.cpp
@@ -24,13 +24,13 @@ Three ways a child lands in a parent, each one Qt call:[^layout]
 
 | Arrangement | Calls |
 |---|---|
-| Column / row | `new QVBoxLayout($host)` / `new QHBoxLayout($host)` installs the layout on `$host`, which owns it; `addWidget($w, $stretch, $alignment)` reparents `$w` into the host; `insertWidget` (negative index appends, past `count()` is a ValueError), `addLayout`, `addStretch`, `setStretch`, `setAlignment` as in Qt |
+| Column / row | `new QVBoxLayout($host)` / `new QHBoxLayout($host)` installs the layout on `$host`, which owns it; `addWidget($w, $stretch, $alignment)` reparents `$w` into the host; `insertWidget` (negative index appends; past `count()` Qt warns and appends), `addLayout`, `addStretch`, `setStretch`, `setAlignment` as in Qt |
 | Grid | `new QGridLayout($host)`, `addWidget($w, $row, $col, $rowSpan, $colSpan, $alignment)`; `rowCount`/`columnCount` grow with what was added |
 | Absolute | no layout on the parent: `new QWidget($host)` then `move($x, $y)` / `setGeometry($x, $y, $w, $h)`; `$host->layout()` stays null |
 
-Removal: `removeWidget($w)` takes the item out of the layout only; the widget keeps its parent until `setParent(null)` (or deletion). `itemAtWidget($i)` and `itemAtPosition($r, $c)` return the widget at a slot, null for a spacer, a nested layout or an empty slot.[^layout]
+Removal: `removeWidget($w)` takes the item out of the layout only; the widget keeps its parent until `setParent(null)` (or deletion). `itemAt($i)` and `itemAtPosition($r, $c)` return the slot's `QLayoutItem` (null for an empty slot); its `widget()`, `layout()` or `spacerItem()` says what fills it. An item read from a layout reads as deleted once the layout no longer lists it.[^layout]
 
-Sizes come back as arrays, never computed in PHP: `size()`, `sizeHint()`, `pos()` as `[w, h]` / `[x, y]`, `geometry()` as `['x', 'y', 'width', 'height']`. Constraints: `setMinimumSize`, `setFixedSize`, `setSizePolicy(QSizePolicy\Policy $h, QSizePolicy\Policy $v)`. `Qt\AlignmentFlag` is a QFlags parameter: pass a case or an OR'd int (`Qt\AlignmentFlag::TOP->value | Qt\AlignmentFlag::LEFT->value`).[^widget]
+Sizes come back as Qt's values, never computed in PHP: `size()` and `sizeHint()` as `QSize`, `pos()` as `QPoint`, `geometry()` as `QRect`. Constraints: `setMinimumSize`, `setFixedSize`, `setSizePolicy(QSizePolicy\Policy $h, QSizePolicy\Policy $v)`. `Qt\AlignmentFlag` is a QFlags parameter: pass a case or an OR'd int (`Qt\AlignmentFlag::TOP->value | Qt\AlignmentFlag::LEFT->value`).[^widget]
 
 Ownership follows the [object model](/architecture/object-model.md): a layout made with a parent, or later passed to `setLayout()`/`addLayout()`, has a Qt parent and is not deleted by PHP; a parentless layout is deleted with its PHP object.
 

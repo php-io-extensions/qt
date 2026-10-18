@@ -110,7 +110,7 @@ it('labels text with wrap and alignment', function (): void {
 });
 
 it('describes a font and puts it on a widget', function (): void {
-    $font = new QFont('Helvetica', 13.5, QFont\Weight::BOLD->value);
+    $font = new QFont('Helvetica', 13, QFont\Weight::BOLD->value);
     $widget = new QWidget();
     $widget->setFont($font);
     $back = $widget->font();
@@ -119,13 +119,13 @@ it('describes a font and puts it on a widget', function (): void {
     $back->setWeight(QFont\Weight::LIGHT);
 
     expect($font->family())->toBe('Helvetica')
-        ->and($font->pointSizeF())->toBe(13.5)
+        ->and($font->pointSizeF())->toBe(13.0)
         ->and($font->weight())->toBe(QFont\Weight::BOLD)
         ->and($widget->font()->family())->toBe('Helvetica')
         ->and($back->family())->toBe('Courier')
         ->and($back->pointSizeF())->toBe(9.0)
         ->and($back->weight())->toBe(QFont\Weight::LIGHT)
-        ->and((new QFont())->weight())->toBe(QFont\Weight::NORMAL);
+        ->and((new QFont('Helvetica'))->weight())->toBe(QFont\Weight::NORMAL);
 });
 
 it('loads a pixmap, scales it and shows it in a label', function (): void {
@@ -139,13 +139,14 @@ it('loads a pixmap, scales it and shows it in a label', function (): void {
         ->and($pixmap->load('/nope.png'))->toBeFalse();
 
     $pixmap->load(__DIR__.'/fixtures/pixel.png');
-    $scaled = $pixmap->scaled(4, 8, Qt\AspectRatioMode::IGNORE);
+    $scaled = $pixmap->scaled(4, 8, Qt\AspectRatioMode::IGNORE_ASPECT_RATIO);
     $label = new QLabel();
     $label->setPixmap($scaled);
 
     expect($scaled->width())->toBe(4)
         ->and($scaled->height())->toBe(8)
-        ->and($label->pixmap()->width())->toBe(4);
+        ->and($label->pixmap()->width())->toBe(4)
+        ->and([$pixmap->scaled(3, 6)->width(), $pixmap->scaled(3, 6)->height()])->toBe([3, 6]);   // Qt's default: IgnoreAspectRatio
 
     $label->setPixmap(null);
     expect($label->pixmap()->isNull())->toBeTrue();
@@ -154,14 +155,14 @@ it('loads a pixmap, scales it and shows it in a label', function (): void {
 it('edits a date as an ISO string and refuses a bad one', function (): void {
     $edit = new QDateEdit();
     $dates = [];
-    QObject::connect($edit, 'dateChanged(QDate)', function (string $date) use (&$dates): void { $dates[] = $date; });
+    QObject::connect($edit, 'dateChanged(QDate)', function (QDate $date) use (&$dates): void { $dates[] = $date->toString(Qt\DateFormat::ISO_DATE); });
     $edit->setCalendarPopup(true);
     $edit->setDisplayFormat('yyyy-MM-dd');
-    $edit->setDate('2026-10-02');
+    $edit->setDate(new QDate(2026, 10, 2));
+    $edit->setDate(new QDate(2026, 2, 30));   // invalid: Qt keeps the date it has
 
     expect($dates)->toBe(['2026-10-02'])
-        ->and($edit->date())->toBe('2026-10-02')
-        ->and(fn () => $edit->setDate('yesterday'))->toThrow(ValueError::class, 'ISO 8601');
+        ->and($edit->date()->toString(Qt\DateFormat::ISO_DATE))->toBe('2026-10-02');
 });
 
 it('ranges a progress bar, including the busy range', function (): void {
@@ -195,6 +196,10 @@ it('shapes a frame and scrolls a widget', function (): void {
         ->and($area->widget())->toBe($inner)
         ->and((new QScrollArea())->widget())->toBeNull()
         ->and($area)->toBeInstanceOf(QFrame::class);
+});
+
+it('carries Qt\'s table item types', function (): void {
+    expect([QTableWidgetItem::TYPE, QTableWidgetItem::USER_TYPE])->toBe([0, 1000]);
 });
 
 it('fills a table and reports a row selection', function (): void {
@@ -232,7 +237,7 @@ it('fills a table and reports a row selection', function (): void {
     expect($table->rowCount())->toBe(3)->and($table->columnCount())->toBe(1);
 });
 
-it('refuses a cell outside the table and an item another table holds', function (): void {
+it('refuses a cell outside the table, and leaves an item another table holds to Qt', function (): void {
     $table = new QTableWidget(2, 2);
     $item = new QTableWidgetItem('loose');
 
@@ -242,8 +247,13 @@ it('refuses a cell outside the table and an item another table holds', function 
         ->and($table->item(1, 0))->toBeNull()
         ->and($item->text())->toBe('loose');
 
+    // Qt warns and stores nothing; the item stays the first table's.
     $table->setItem(0, 0, $item);
-    expect(fn () => (new QTableWidget(1, 1))->setItem(0, 0, $item))->toThrow(ValueError::class, 'already belongs');
+    $other = new QTableWidget(1, 1);
+    $other->setItem(0, 0, $item);
+
+    expect($other->item(0, 0))->toBeNull()
+        ->and($table->item(0, 0))->toBe($item);
 });
 
 it('ignores a row selection beyond the table', function (): void {
@@ -279,17 +289,21 @@ it('makes a vertical slider by default, as Qt does', function (): void {
     expect((new QSlider())->orientation())->toBe(Qt\Orientation::VERTICAL);
 });
 
-it('takes any weight on the font scale and refuses sizes and weights off it', function (): void {
-    $font = new QFont('Helvetica', -1.0, 450);
+it('takes any weight on the font scale, and Qt answers sizes and weights off it', function (): void {
+    $font = new QFont('Helvetica', 12, 450);
     $font->setWeight(650);
+    $weights = [$font->weight()];
+    $font->setWeight(0);
+    $weights[] = $font->weight();
+    $font->setWeight(1001);
+    $weights[] = $font->weight();
+    $font->setPointSizeF(0.0);
 
-    expect($font->weight())->toBe(650)
-        ->and((new QFont('Helvetica', -1.0, 450))->weight())->toBe(450)
-        ->and(fn () => $font->setWeight(0))->toThrow(ValueError::class, 'between 1 and 1000')
-        ->and(fn () => $font->setWeight(1001))->toThrow(ValueError::class, 'between 1 and 1000')
-        ->and(fn () => new QFont('Helvetica', -1.0, 1001))->toThrow(ValueError::class, 'between 1 and 1000')
-        ->and(fn () => new QFont('Helvetica', 0.0))->toThrow(ValueError::class, 'greater than 0')
-        ->and(fn () => $font->setPointSizeF(0.0))->toThrow(ValueError::class, 'greater than 0');
+    // Qt clamps a weight to its 1..1000 scale and keeps the size it had, warning for each.
+    expect($weights)->toBe([650, 1, 1000])
+        ->and($font->pointSizeF())->toBe(12.0)
+        ->and((new QFont('Helvetica', -1, 450))->weight())->toBe(450)
+        ->and(fn () => $font->setWeight(2 ** 40))->toThrow(ValueError::class, 'between');
 });
 
 it('refuses a pixmap before a QGuiApplication instead of aborting', function (): void {
@@ -345,7 +359,7 @@ it('steps a slider by its single and page steps', function (): void {
 it('scales a pixmap smoothly and carries a device pixel ratio', function (): void {
     $pixmap = new QPixmap();
     $pixmap->load(__DIR__.'/fixtures/pixel.png');
-    $smooth = $pixmap->scaled(8, 4, Qt\AspectRatioMode::IGNORE, Qt\TransformationMode::SMOOTH_TRANSFORMATION);
+    $smooth = $pixmap->scaled(8, 4, Qt\AspectRatioMode::IGNORE_ASPECT_RATIO, Qt\TransformationMode::SMOOTH_TRANSFORMATION);
     $smooth->setDevicePixelRatio(2.0);
 
     expect([$smooth->width(), $smooth->height()])->toBe([8, 4])
@@ -356,17 +370,16 @@ it('scales a pixmap smoothly and carries a device pixel ratio', function (): voi
 it('opens the date range down to year 100 and exposes the popup calendar', function (): void {
     $edit = new QDateEdit();
 
-    expect($edit->minimumDate())->toBe('1752-09-14')
+    expect($edit->minimumDate()->toString(Qt\DateFormat::ISO_DATE))->toBe('1752-09-14')
         ->and($edit->calendarWidget())->toBeNull();
 
-    $edit->setMinimumDate('0100-01-01');
-    $edit->setDate('1500-06-01');
-    expect($edit->minimumDate())->toBe('0100-01-01')
-        ->and($edit->date())->toBe('1500-06-01')
-        ->and(fn () => $edit->setMinimumDate('not a date'))->toThrow(ValueError::class, 'ISO 8601');
+    $edit->setMinimumDate(new QDate(100, 1, 1));
+    $edit->setDate(new QDate(1500, 6, 1));
+    expect($edit->minimumDate()->toString(Qt\DateFormat::ISO_DATE))->toBe('0100-01-01')
+        ->and($edit->date()->toString(Qt\DateFormat::ISO_DATE))->toBe('1500-06-01');
 
     $edit->setCalendarPopup(true);
-    expect($edit->calendarWidget())->toBeInstanceOf(QWidget::class);
+    expect($edit->calendarWidget())->toBeInstanceOf(QCalendarWidget::class);
 });
 
 it('focuses a line edit, selects all in it, and undoes and redoes an edit', function (): void {
@@ -422,8 +435,8 @@ it('reports a label\'s links, opens them itself when asked, and takes link inter
     QObject::connect($label, 'linkActivated(QString)', function (string $url) use (&$activated): void { $activated[] = $url; });
     QObject::connect($label, 'linkHovered(QString)', function (string $url) use (&$hovered): void { $hovered[] = $url; });
     // Emitted by name with openExternalLinks off: the connected callables run, nothing opens.
-    QMetaObject::invokeMethod($label, 'linkActivated', 'https://example.com/docs');
-    QMetaObject::invokeMethod($label, 'linkHovered', 'https://example.com/docs');
+    QMetaObject::invokeMethod($label, 'linkActivated', Qt\ConnectionType::DIRECT_CONNECTION, 'https://example.com/docs');
+    QMetaObject::invokeMethod($label, 'linkHovered', Qt\ConnectionType::DIRECT_CONNECTION, 'https://example.com/docs');
     $before = $label->openExternalLinks();
     $label->setOpenExternalLinks(true);
     $label->setTextInteractionFlags(Qt\TextInteractionFlag::LINKS_ACCESSIBLE_BY_MOUSE->value | Qt\TextInteractionFlag::LINKS_ACCESSIBLE_BY_KEYBOARD->value);
@@ -441,4 +454,68 @@ it('reports a label\'s links, opens them itself when asked, and takes link inter
 it('has QDesktopServices::openUrl as a static call, and no instances', function (): void {
     expect((new ReflectionMethod(QDesktopServices::class, 'openUrl'))->isStatic())->toBeTrue()
         ->and((new ReflectionClass(QDesktopServices::class))->isInstantiable())->toBeFalse();
+});
+
+it('lays widgets out in a splitter and reads sizes and handles back', function (): void {
+    $splitter = new QSplitter(Qt\Orientation::HORIZONTAL);
+    [$a, $b, $c] = [new QWidget(), new QWidget(), new QWidget()];
+    $splitter->addWidget($a);
+    $splitter->addWidget($c);
+    $splitter->insertWidget(1, $b);
+    $splitter->setOpaqueResize(true);
+    $splitter->setChildrenCollapsible(false);
+    $splitter->setHandleWidth(6);
+    $splitter->setStretchFactor(0, 1);
+    $splitter->resize(400, 100);
+    $splitter->setSizes([100, 150, 150]);
+    $moved = [];
+    QObject::connect($splitter, 'splitterMoved(int,int)', function (int $pos, int $index) use (&$moved): void { $moved[] = $index; });
+    $splitter->setSizes([120, 130, 150]);
+
+    expect($splitter->count())->toBe(3)->and($splitter->indexOf($b))->toBe(1)->and($splitter->indexOf(new QWidget()))->toBe(-1)
+        ->and($splitter->widget(2))->toBe($c)->and($splitter->widget(3))->toBeNull()
+        ->and($a->parentWidget())->toBe($splitter)
+        ->and($splitter->orientation())->toBe(Qt\Orientation::HORIZONTAL)
+        ->and($splitter->sizes())->toHaveCount(3)->and(array_sum($splitter->sizes()))->toBeGreaterThan(0)
+        ->and($splitter->opaqueResize())->toBeTrue()->and($splitter->childrenCollapsible())->toBeFalse()
+        ->and($splitter->handleWidth())->toBe(6)
+        ->and($splitter->handle(1))->toBeInstanceOf(QSplitterHandle::class)
+        ->and($splitter->handle(1)->splitter())->toBe($splitter)
+        ->and($splitter->handle(9))->toBeNull()->and($splitter->handle(-1))->toBeNull()
+        ->and($moved)->toBe([])
+        ->and(fn () => $splitter->setSizes([1, 'x']))->toThrow(TypeError::class)
+        ->and(fn () => new QSplitterHandle())->toThrow(Error::class);
+
+    $appended = new QWidget();
+    $splitter->insertWidget(9, $appended);
+    $splitter->setStretchFactor(9, 1);
+    expect($splitter->indexOf($appended))->toBe(3);
+
+    $splitter->setOrientation(Qt\Orientation::VERTICAL);
+    expect($splitter->orientation())->toBe(Qt\Orientation::VERTICAL);
+});
+
+it('holds tabs with text and switches pages', function (): void {
+    $tabs = new QTabWidget();
+    [$one, $two] = [new QWidget(), new QWidget()];
+    expect($tabs->currentIndex())->toBe(-1)
+        ->and($tabs->addTab($one, 'One'))->toBe(0)->and($tabs->addTab($two, 'Two'))->toBe(1);
+    $changed = [];
+    QObject::connect($tabs, 'currentChanged(int)', function (int $index) use (&$changed): void { $changed[] = $index; });
+    $tabs->setCurrentIndex(1);
+    $tabs->setTabText(0, 'Uno');
+    $tabs->setDocumentMode(true);
+
+    expect($tabs->count())->toBe(2)->and($tabs->currentIndex())->toBe(1)->and($changed)->toBe([1])
+        ->and($tabs->currentWidget())->toBe($two)
+        ->and($tabs->tabText(0))->toBe('Uno')->and($tabs->indexOf($two))->toBe(1)->and($tabs->indexOf(new QWidget()))->toBe(-1)
+        ->and($tabs->widget(0))->toBe($one)->and($tabs->widget(7))->toBeNull()
+        ->and($tabs->documentMode())->toBeTrue()
+        ->and($tabs->tabText(7))->toBe('');
+    $tabs->setCurrentIndex(7);
+    $tabs->setTabText(-1, 'x');
+    $tabs->removeTab(7);
+    expect($tabs->currentIndex())->toBe(1)->and($tabs->count())->toBe(2)->and($changed)->toBe([1]);
+    $tabs->removeTab(1);
+    expect($tabs->count())->toBe(1)->and($changed)->toBe([1, 0])->and($two->isWindow())->toBeFalse();
 });

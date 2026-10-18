@@ -44,10 +44,7 @@ zend_object *phpqt_vulkan_wrapper(QVulkanInstance *instance)
 ZEND_METHOD(QVulkanInstance, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
-	/* Windows and Qt's platform live on the main thread; every later call, and the free, inherit it. */
-	PHPQT_REQUIRE_MAIN_THREAD();
-	if (phpqt_value_from(Z_OBJ_P(ZEND_THIS))->constructed) {
-		zend_throw_exception(phpqt_ce_QtException, "QVulkanInstance::__construct() called twice", 0);
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
 
@@ -72,11 +69,10 @@ ZEND_METHOD(QVulkanInstance, create)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 	PHPQT_VALUE_THIS(QVulkanInstance, instance);
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	/* The platform's Vulkan instance comes from the QGuiApplication's platform integration: without one Qt dereferences null. */
-	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "QVulkanInstance::create() needs a QGuiApplication first");
+	if (!PHPQT_PROBE_OFF("qguiapp-vulkan-create") && (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QVulkanInstance::create() needs a QGuiApplication first", 0); /* binding:qguiapp-vulkan-create */
 		RETURN_THROWS();
 	}
 
@@ -123,7 +119,6 @@ ZEND_METHOD(QVulkanInstance, surfaceForWindow)
 	ZEND_PARSE_PARAMETERS_START(1, 1)
 		Z_PARAM_OBJ_OF_CLASS(window_obj, phpqt_ce_QWindow)
 	ZEND_PARSE_PARAMETERS_END();
-	PHPQT_REQUIRE_MAIN_THREAD();
 
 	QWindow *window = static_cast<QWindow *>(phpqt_arg(window_obj, 1, &failed));
 	if (failed) {

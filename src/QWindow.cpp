@@ -1,9 +1,11 @@
 #include "runtime.h"
-#include "../stubs/QWindow_arginfo.h"
 
 #include <QtGui/QGuiApplication>
 #include <QtGui/QSurface>
 #include <QtGui/QWindow>
+
+/* After the Qt headers: the Vulkan methods are declared #if QT_CONFIG(vulkan). */
+#include "../stubs/QWindow_arginfo.h"
 #if QT_CONFIG(vulkan)
 #include <QtGui/QVulkanInstance>
 
@@ -34,8 +36,9 @@ ZEND_METHOD(QWindow, __construct)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_REQUIRE_MAIN_THREAD();
 
-	if (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr) {
-		zend_throw_exception_ex(phpqt_ce_QtException, 0, "QWindow needs a QGuiApplication first");
+	/* Qt aborts with qFatal on a window made before its QGuiApplication. */
+	if (!PHPQT_PROBE_OFF("qguiapp-window") && (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QWindow needs a QGuiApplication first", 0); /* binding:qguiapp-window */
 		RETURN_THROWS();
 	}
 	QWindow *qparent = static_cast<QWindow *>(phpqt_arg(parent, 1, &failed));
@@ -171,16 +174,5 @@ ZEND_METHOD(QWindow, vulkanInstance)
 	}
 	GC_ADDREF(wrapper);
 	RETURN_OBJ(wrapper);
-}
-#else
-ZEND_METHOD(QWindow, setVulkanInstance)
-{
-	zend_throw_exception(phpqt_ce_QtException, "This Qt was built without Vulkan", 0);
-}
-
-ZEND_METHOD(QWindow, vulkanInstance)
-{
-	ZEND_PARSE_PARAMETERS_NONE();
-	RETURN_NULL();
 }
 #endif

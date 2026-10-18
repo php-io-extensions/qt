@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: e28144fdd1048bc60ce5a40ee0516d0c683625ba */
+ * Stub hash: e277e21db8b5ca036a4d6871ede543e439a63159 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QAction___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -45,10 +45,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAction_setMenuRole, 0, 1,
 	ZEND_ARG_OBJ_INFO(0, menuRole, QAction\\MenuRole, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QAction_shortcut arginfo_class_QAction_text
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAction_shortcut, 0, 0, QKeySequence, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAction_setShortcut, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, shortcut, IS_STRING, 0)
+	ZEND_ARG_OBJ_INFO(0, shortcut, QKeySequence, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAction_trigger, 0, 0, IS_VOID, 0)

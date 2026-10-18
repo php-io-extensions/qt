@@ -12,7 +12,6 @@
  */
 final class QVulkanInstance
 {
-    /** On the main thread only, as Qt's windows. */
     public function __construct() {}
 
     /** The VkInstance address (ext-vulkan's VkInstance::pointer()) Qt adopts on create(). */

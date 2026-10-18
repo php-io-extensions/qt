@@ -7,7 +7,7 @@
  */
 class QMainWindow extends QWidget
 {
-    public function __construct(?QWidget $parent = null) {}
+    public function __construct(?QWidget $parent = null, Qt\WindowType|int $flags = 0) {}
 
     /** The window's bar, made on first use and owned by the window. */
     public function menuBar(): QMenuBar {}
