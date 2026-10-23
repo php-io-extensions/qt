@@ -6,12 +6,16 @@
 #include <QtCore/QEvent>
 #include <QtGui/QContextMenuEvent>
 #include <QtGui/QInputDevice>
+#include <QtGui/QKeyEvent>
 #include <QtGui/QMouseEvent>
 #include <QtGui/QStyleHints>
+#include <QtGui/QWheelEvent>
 
 zend_class_entry *phpqt_ce_QEvent;
 zend_class_entry *phpqt_ce_QInputEvent;
 zend_class_entry *phpqt_ce_QMouseEvent;
+zend_class_entry *phpqt_ce_QKeyEvent;
+zend_class_entry *phpqt_ce_QWheelEvent;
 zend_class_entry *phpqt_ce_QContextMenuEvent;
 zend_class_entry *phpqt_ce_QStyleHints;
 zend_class_entry *phpqt_ce_QContextMenuEvent_Reason;
@@ -36,6 +40,10 @@ void phpqt_register_QInputEvents()
 	phpqt_value_setup(phpqt_ce_QInputEvent);
 	phpqt_ce_QMouseEvent = register_class_QMouseEvent(phpqt_ce_QInputEvent);
 	phpqt_value_setup(phpqt_ce_QMouseEvent);
+	phpqt_ce_QKeyEvent = register_class_QKeyEvent(phpqt_ce_QInputEvent);
+	phpqt_value_setup(phpqt_ce_QKeyEvent);
+	phpqt_ce_QWheelEvent = register_class_QWheelEvent(phpqt_ce_QInputEvent);
+	phpqt_value_setup(phpqt_ce_QWheelEvent);
 	phpqt_ce_QContextMenuEvent = register_class_QContextMenuEvent(phpqt_ce_QInputEvent);
 	phpqt_value_setup(phpqt_ce_QContextMenuEvent);
 
@@ -88,6 +96,11 @@ void phpqt_box_event(zval *rv, QEvent *event)
 		ce = phpqt_ce_QContextMenuEvent;
 	} else if (dynamic_cast<QMouseEvent *>(event) != nullptr) {
 		ce = phpqt_ce_QMouseEvent;
+	} else if (dynamic_cast<QKeyEvent *>(event) != nullptr) {
+		ce = phpqt_ce_QKeyEvent;
+	} else if (dynamic_cast<QWheelEvent *>(event) != nullptr) {
+		/* A QSinglePointEvent, not a QMouseEvent: its own branch, or it boxes as a QInputEvent. */
+		ce = phpqt_ce_QWheelEvent;
 	} else if (dynamic_cast<QInputEvent *>(event) != nullptr) {
 		ce = phpqt_ce_QInputEvent;
 	}
@@ -272,6 +285,10 @@ ZEND_METHOD(QMouseEvent, __construct)
 	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
+	/* 32-bit flag masks: signed or unsigned spellings of the same bits, nothing wider. */
+	if (!phpqt_long_fits(button, INT32_MIN, UINT32_MAX, 4) || !phpqt_long_fits(buttons, INT32_MIN, UINT32_MAX, 5) || !phpqt_long_fits(modifiers, INT32_MIN, UINT32_MAX, 6)) {
+		RETURN_THROWS();
+	}
 	QPointF *local = static_cast<QPointF *>(phpqt_value_arg(local_obj, 2));
 	if (local == nullptr) {
 		RETURN_THROWS();
@@ -287,7 +304,7 @@ ZEND_METHOD(QMouseEvent, __construct)
 
 	QEvent::Type type = static_cast<QEvent::Type>(Z_LVAL_P(zend_enum_fetch_case_value(type_case)));
 	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QMouseEvent(type, *local, *global,
-		static_cast<Qt::MouseButton>(button), Qt::MouseButtons(int(buttons)), Qt::KeyboardModifiers(int(modifiers)), device), true, phpqt_destroy_event);
+		static_cast<Qt::MouseButton>(static_cast<uint32_t>(button)), Qt::MouseButtons(int(static_cast<uint32_t>(buttons))), Qt::KeyboardModifiers(int(static_cast<uint32_t>(modifiers))), device), true, phpqt_destroy_event);
 }
 
 ZEND_METHOD(QMouseEvent, button)
@@ -322,6 +339,184 @@ ZEND_METHOD(QMouseEvent, globalPosition)
 	phpqt_return_qpointf(return_value, event->globalPosition());
 }
 
+/* ---- QKeyEvent --------------------------------------------------------------- */
+
+ZEND_METHOD(QKeyEvent, __construct)
+{
+	zend_object *type_case;
+	zend_long key;
+	zend_long modifiers;
+	zend_string *text = nullptr;
+	bool autorep = false;
+	zend_long count = 1;
+
+	ZEND_PARSE_PARAMETERS_START(3, 6)
+		Z_PARAM_OBJ_OF_CLASS(type_case, phpqt_ce_QEvent_Type)
+		Z_PARAM_LONG(key)
+		Z_PARAM_LONG(modifiers)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_STR(text)
+		Z_PARAM_BOOL(autorep)
+		Z_PARAM_LONG(count)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	/* int key, a 32-bit modifier mask, quint16 count: a value outside its C type has no value there. */
+	if (!phpqt_long_fits(key, INT_MIN, INT_MAX, 2) || !phpqt_long_fits(modifiers, INT32_MIN, UINT32_MAX, 3) || !phpqt_long_fits(count, 0, UINT16_MAX, 6)) {
+		RETURN_THROWS();
+	}
+
+	QEvent::Type type = static_cast<QEvent::Type>(Z_LVAL_P(zend_enum_fetch_case_value(type_case)));
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QKeyEvent(type, static_cast<int>(key), Qt::KeyboardModifiers(int(static_cast<uint32_t>(modifiers))),
+		text != nullptr ? phpqt_qstring(text) : QString(), autorep, static_cast<quint16>(count)), true, phpqt_destroy_event);
+}
+
+ZEND_METHOD(QKeyEvent, key)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QKeyEvent, event);
+
+	RETURN_LONG(event->key());
+}
+
+ZEND_METHOD(QKeyEvent, text)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QKeyEvent, event);
+
+	phpqt_return_qstring(return_value, event->text());
+}
+
+ZEND_METHOD(QKeyEvent, isAutoRepeat)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QKeyEvent, event);
+
+	RETURN_BOOL(event->isAutoRepeat());
+}
+
+ZEND_METHOD(QKeyEvent, nativeScanCode)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QKeyEvent, event);
+
+	RETURN_LONG(static_cast<zend_long>(event->nativeScanCode()));
+}
+
+ZEND_METHOD(QKeyEvent, nativeVirtualKey)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QKeyEvent, event);
+
+	RETURN_LONG(static_cast<zend_long>(event->nativeVirtualKey()));
+}
+
+/* ---- QWheelEvent ------------------------------------------------------------- */
+
+ZEND_METHOD(QWheelEvent, __construct)
+{
+	zend_object *pos_obj;
+	zend_object *global_obj;
+	zend_object *pixel_obj;
+	zend_object *angle_obj;
+	zend_long buttons;
+	zend_long modifiers;
+	zend_object *phase_case;
+	bool inverted;
+	zend_object *source_case;
+	zend_object *device_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(10, 10)
+		Z_PARAM_OBJ_OF_CLASS(pos_obj, phpqt_ce_QPointF)
+		Z_PARAM_OBJ_OF_CLASS(global_obj, phpqt_ce_QPointF)
+		Z_PARAM_OBJ_OF_CLASS(pixel_obj, phpqt_ce_QPoint)
+		Z_PARAM_OBJ_OF_CLASS(angle_obj, phpqt_ce_QPoint)
+		Z_PARAM_LONG(buttons)
+		Z_PARAM_LONG(modifiers)
+		Z_PARAM_OBJ_OF_CLASS(phase_case, phpqt_ce_Qt_ScrollPhase)
+		Z_PARAM_BOOL(inverted)
+		Z_PARAM_OBJ_OF_CLASS(source_case, phpqt_ce_Qt_MouseEventSource)
+		Z_PARAM_OBJ_OF_CLASS(device_obj, phpqt_ce_QPointingDevice)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	/* 32-bit flag masks: signed or unsigned spellings of the same bits, nothing wider. */
+	if (!phpqt_long_fits(buttons, INT32_MIN, UINT32_MAX, 5) || !phpqt_long_fits(modifiers, INT32_MIN, UINT32_MAX, 6)) {
+		RETURN_THROWS();
+	}
+	QPointF *pos = static_cast<QPointF *>(phpqt_value_arg(pos_obj, 1));
+	if (pos == nullptr) {
+		RETURN_THROWS();
+	}
+	QPointF *global = static_cast<QPointF *>(phpqt_value_arg(global_obj, 2));
+	if (global == nullptr) {
+		RETURN_THROWS();
+	}
+	QPoint *pixel = static_cast<QPoint *>(phpqt_value_arg(pixel_obj, 3));
+	if (pixel == nullptr) {
+		RETURN_THROWS();
+	}
+	QPoint *angle = static_cast<QPoint *>(phpqt_value_arg(angle_obj, 4));
+	if (angle == nullptr) {
+		RETURN_THROWS();
+	}
+	QPointingDevice *device = static_cast<QPointingDevice *>(phpqt_arg(device_obj, 10, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	auto phase = static_cast<Qt::ScrollPhase>(Z_LVAL_P(zend_enum_fetch_case_value(phase_case)));
+	auto source = static_cast<Qt::MouseEventSource>(Z_LVAL_P(zend_enum_fetch_case_value(source_case)));
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QWheelEvent(*pos, *global, *pixel, *angle,
+		Qt::MouseButtons(int(static_cast<uint32_t>(buttons))), Qt::KeyboardModifiers(int(static_cast<uint32_t>(modifiers))), phase, inverted, source, device),
+		true, phpqt_destroy_event);
+}
+
+ZEND_METHOD(QWheelEvent, pixelDelta)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QWheelEvent, event);
+
+	phpqt_return_qpoint(return_value, event->pixelDelta());
+}
+
+ZEND_METHOD(QWheelEvent, angleDelta)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QWheelEvent, event);
+
+	phpqt_return_qpoint(return_value, event->angleDelta());
+}
+
+ZEND_METHOD(QWheelEvent, position)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QWheelEvent, event);
+
+	phpqt_return_qpointf(return_value, event->position());
+}
+
+ZEND_METHOD(QWheelEvent, globalPosition)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QWheelEvent, event);
+
+	phpqt_return_qpointf(return_value, event->globalPosition());
+}
+
+ZEND_METHOD(QWheelEvent, source)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QWheelEvent, event);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_MouseEventSource, (zend_long) event->source());
+}
+
 /* ---- QContextMenuEvent ------------------------------------------------------- */
 
 ZEND_METHOD(QContextMenuEvent, __construct)
@@ -342,6 +537,9 @@ ZEND_METHOD(QContextMenuEvent, __construct)
 	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
 		RETURN_THROWS();
 	}
+	if (!phpqt_long_fits(modifiers, INT32_MIN, UINT32_MAX, 4)) {
+		RETURN_THROWS();
+	}
 	QPoint *pos = static_cast<QPoint *>(phpqt_value_arg(pos_obj, 2));
 	if (pos == nullptr) {
 		RETURN_THROWS();
@@ -352,7 +550,7 @@ ZEND_METHOD(QContextMenuEvent, __construct)
 	}
 
 	auto reason = static_cast<QContextMenuEvent::Reason>(Z_LVAL_P(zend_enum_fetch_case_value(reason_case)));
-	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QContextMenuEvent(reason, *pos, *global, Qt::KeyboardModifiers(int(modifiers))), true, phpqt_destroy_event);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QContextMenuEvent(reason, *pos, *global, Qt::KeyboardModifiers(int(static_cast<uint32_t>(modifiers)))), true, phpqt_destroy_event);
 }
 
 ZEND_METHOD(QContextMenuEvent, reason)
@@ -395,4 +593,20 @@ ZEND_METHOD(QStyleHints, startDragDistance)
 	PHPQT_THIS(QStyleHints, hints);
 
 	RETURN_LONG(hints->startDragDistance());
+}
+
+ZEND_METHOD(QStyleHints, mouseDoubleClickInterval)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QStyleHints, hints);
+
+	RETURN_LONG(hints->mouseDoubleClickInterval());
+}
+
+ZEND_METHOD(QStyleHints, mouseDoubleClickDistance)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QStyleHints, hints);
+
+	RETURN_LONG(hints->mouseDoubleClickDistance());
 }

@@ -4,6 +4,29 @@ declare(strict_types=1);
 
 beforeEach(fn () => testApplication());
 
+it('puts text on the application clipboard and reads it back', function (): void {
+    $clipboard = QGuiApplication::clipboard();
+    // The test writes the user's clipboard: it keeps the text there and puts it back.
+    $kept = $clipboard->text();
+    $text = 'c7 ' . uniqid();
+    $clipboard->setText($text);
+    $read = $clipboard->text(QClipboard\Mode::CLIPBOARD);
+    $clipboard->setText($kept);
+
+    expect($clipboard)->toBeInstanceOf(QClipboard::class)
+        ->and(QGuiApplication::clipboard())->toBe($clipboard)
+        ->and($read)->toBe($text);
+});
+
+it('gives no clipboard before an application', function (): void {
+    $child = qtChild('return QGuiApplication::clipboard();', app: false);
+
+    expect($child['threw'])->toBeNull()
+        ->and($child['survived'])->toBeTrue()
+        ->and($child['result'])->toBeNull()
+        ->and($child['signal'])->toBeNull();
+});
+
 it('is the one instance', function (): void {
     expect(QCoreApplication::instance())->toBe(testApplication())
         ->and(testApplication()->inherits('QGuiApplication'))->toBeTrue()

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 2dd9c85ee80f3b0a7e9d99ef29cff3db28851fdf */
+ * Stub hash: 7e75bf7e433ffd7f5f05728be52247e956a68888 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCoreApplication___construct, 0, 0, 2)
 	ZEND_ARG_TYPE_INFO(1, argc, IS_LONG, 0)
@@ -62,6 +62,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QGuiApplication_platformName arginfo_class_QCoreApplication_applicationName
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QGuiApplication_clipboard, 0, 0, QClipboard, 1)
+ZEND_END_ARG_INFO()
+
 #define arginfo_class_QGuiApplication_desktopFileName arginfo_class_QCoreApplication_applicationName
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QGuiApplication_setDesktopFileName, 0, 1, IS_VOID, 0)
@@ -91,6 +94,8 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QApplication_focusWidget, 0, 0, QWidget, 1)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QApplication_activeModalWidget arginfo_class_QApplication_focusWidget
+
 ZEND_METHOD(QCoreApplication, __construct);
 ZEND_METHOD(QCoreApplication, instance);
 ZEND_METHOD(QCoreApplication, sendEvent);
@@ -108,6 +113,7 @@ ZEND_METHOD(QCoreApplication, setAttribute);
 ZEND_METHOD(QCoreApplication, testAttribute);
 ZEND_METHOD(QGuiApplication, __construct);
 ZEND_METHOD(QGuiApplication, platformName);
+ZEND_METHOD(QGuiApplication, clipboard);
 ZEND_METHOD(QGuiApplication, desktopFileName);
 ZEND_METHOD(QGuiApplication, setDesktopFileName);
 ZEND_METHOD(QGuiApplication, applicationDisplayName);
@@ -118,6 +124,7 @@ ZEND_METHOD(QGuiApplication, setQuitOnLastWindowClosed);
 ZEND_METHOD(QApplication, __construct);
 ZEND_METHOD(QApplication, widgetAt);
 ZEND_METHOD(QApplication, focusWidget);
+ZEND_METHOD(QApplication, activeModalWidget);
 
 static const zend_function_entry class_QCoreApplication_methods[] = {
 	ZEND_ME(QCoreApplication, __construct, arginfo_class_QCoreApplication___construct, ZEND_ACC_PUBLIC)
@@ -141,6 +148,7 @@ static const zend_function_entry class_QCoreApplication_methods[] = {
 static const zend_function_entry class_QGuiApplication_methods[] = {
 	ZEND_ME(QGuiApplication, __construct, arginfo_class_QGuiApplication___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QGuiApplication, platformName, arginfo_class_QGuiApplication_platformName, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QGuiApplication, clipboard, arginfo_class_QGuiApplication_clipboard, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QGuiApplication, desktopFileName, arginfo_class_QGuiApplication_desktopFileName, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QGuiApplication, setDesktopFileName, arginfo_class_QGuiApplication_setDesktopFileName, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QGuiApplication, applicationDisplayName, arginfo_class_QGuiApplication_applicationDisplayName, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
@@ -155,6 +163,7 @@ static const zend_function_entry class_QApplication_methods[] = {
 	ZEND_ME(QApplication, __construct, arginfo_class_QApplication___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QApplication, widgetAt, arginfo_class_QApplication_widgetAt, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QApplication, focusWidget, arginfo_class_QApplication_focusWidget, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QApplication, activeModalWidget, arginfo_class_QApplication_activeModalWidget, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_FE_END
 };
 

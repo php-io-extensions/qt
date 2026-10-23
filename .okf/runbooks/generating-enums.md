@@ -5,7 +5,7 @@ description: scripts/gen-enum.php turns a Qt header enum into stub cases plus on
 resource: scripts/gen-enum.php
 tags: [qt, enums, contributing]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-01T20:03:11Z }
+generated: { by: claude-opus/5.5, at: 2026-10-19T02:24:03Z }
 sources:
   - id: gen
     resource: scripts/gen-enum.php
@@ -24,6 +24,9 @@ php scripts/gen-enum.php <header> <C++ enum> <C++ scope> <PHP enum> [strip-prefi
 php scripts/gen-enum.php $QT/QtCore/qcoreevent.h Type QEvent 'QEvent\Type' \
   --since=6.6:DevicePixelRatioChange --since=6.7:ChildWindowAdded,ChildWindowRemoved,ParentWindowAboutToChange,ParentWindowChange
 php scripts/gen-enum.php $QT/QtCore/qnamespace.h WidgetAttribute Qt 'Qt\WidgetAttribute' WA_
+php scripts/gen-enum.php $QT/QtCore/qnamespace.h ItemDataRole Qt 'Qt\ItemDataRole' \
+  --since=6.10:RangeModelDataRole,StandardItemFlagsRole,FileInfoRole --since=6.11:RangeModelAdapterRole
+php scripts/gen-enum.php $QT/QtCore/qnamespace.h Key Qt 'Qt\Key' Key_ --since=6.7:Key_micro --since=6.10:Key_Keyboard
 ```
 
 Output:
@@ -33,11 +36,11 @@ Output:
 
 Rules the generator applies:
 
-* Names: prefix stripped, CamelCase → SCREAMING_SNAKE.
+* Names: prefix stripped, CamelCase → SCREAMING_SNAKE. A name the strip would start with a digit keeps its prefix (`Key_0` → `KEY_0`). Names that differ only in case keep the case of their one-letter word (`Key_Dead_a` → `DEAD_a`, `Key_Dead_A` → `DEAD_A`).
 * Values: numbers, hex, earlier enumerators, `| + - <<` evaluated.
 * Repeated value → later name dropped (backed PHP enum holds each value once).
 * Preprocessor follows a default Qt build: `#ifndef` / `#if` blocks kept, `#ifdef` blocks skipped, `#else` flips.
-* `Q_DECL_ENUMERATOR_DEPRECATED` names kept.
+* `Q_DECL_ENUMERATOR_DEPRECATED` names kept; the macro and its message (which may hold a comma, as `Key_mu`'s does) are dropped before the body is split.
 * `--since` wraps the named checks in `#if QT_VERSION >= QT_VERSION_CHECK(major, minor, 0)`: values newer than the floor (Qt 6.4) are proven on a Qt that has them, skipped on one that does not. Repeat per version.
 
 Guards in force (`QEvent_Type.inc`, generated from Qt 6.8.2's `qcoreevent.h`; Qt 6.11 adds nothing the stub carries):
@@ -46,6 +49,14 @@ Guards in force (`QEvent_Type.inc`, generated from Qt 6.8.2's `qcoreevent.h`; Qt
 |---|---|
 | `DevicePixelRatioChange` | 6.6 |
 | `ChildWindowAdded`, `ChildWindowRemoved`, `ParentWindowAboutToChange`, `ParentWindowChange` | 6.7 |
+
+`Qt_ItemDataRole.inc` and `Qt_Key.inc` were generated from Qt 6.11.2's `qnamespace.h`. Each was diffed against Qt 6.4.2's, and the Pi's 6.8.2 and the qtbase 6.6/6.7 and 6.9/6.10 sources fixed each version:
+
+| Enumerator | Since |
+|---|---|
+| `Key_micro` (6.4 spells 0xb5 `Key_mu`) | 6.7 |
+| `Key_Keyboard`, `RangeModelDataRole`, `StandardItemFlagsRole`, `FileInfoRole` | 6.10 |
+| `RangeModelAdapterRole` | 6.11 |
 
 [^gen]: scripts/gen-enum.php
 [^module]: src/qt.cpp

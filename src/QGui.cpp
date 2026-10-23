@@ -1,7 +1,8 @@
 /*
- * Qt values and the one non-QObject widget item. Each PHP object owns a heap
- * copy; a QTableWidgetItem handed to a table is the table's from then on and
- * its wrapper learns of the deletion through the item's destructor.
+ * Qt values and the non-QObject widget items. Each PHP object owns a heap
+ * copy; a QTableWidgetItem handed to a table, or a QTreeWidgetItem handed to a
+ * tree or a parent item, is the owner's from then on and its wrapper learns of
+ * the deletion through the item's destructor.
  */
 
 #include "runtime.h"
@@ -12,13 +13,20 @@
 #include <QtGui/QImage>
 #include <QtGui/QPixmap>
 #include <QtGui/QDesktopServices>
+#include <QtGui/QClipboard>
 #include <QtCore/QUrl>
 #include <QtCore/QPointer>
 #include <QtCore/QThread>
 #include <QtWidgets/QTableWidgetItem>
+#include <QtWidgets/QTreeWidgetItem>
+#include <QtGui/QBrush>
+#include <QtCore/QVariant>
 
-/* After the Qt headers: the class constants spell QTableWidgetItem::Type and UserType. */
+/* After the Qt headers: the class constants spell QTableWidgetItem::Type and UserType, QTreeWidgetItem's the same. */
 #include "../stubs/QGui_arginfo.h"
+
+static_assert(QTreeWidgetItem::ShowIndicator == 0 && QTreeWidgetItem::DontShowIndicator == 1 && QTreeWidgetItem::DontShowIndicatorWhenChildless == 2,
+	"QTreeWidgetItem::ChildIndicatorPolicy values differ from the stub's QTreeWidgetItem\\ChildIndicatorPolicy enum");
 
 static_assert(QFontDatabase::GeneralFont == 0 && QFontDatabase::FixedFont == 1 && QFontDatabase::TitleFont == 2
 	&& QFontDatabase::SmallestReadableFont == 3, "QFontDatabase::SystemFont values differ from the stub's QFontDatabase\\SystemFont enum");
@@ -54,6 +62,26 @@ public:
 	zend_object *wrapper = nullptr;
 };
 
+/*
+ * Every item a tree holds is one of these: only PHP adds items, and Qt makes none of its own that a
+ * bound call reaches (its header item is not bound; it clones items only for drag and drop, which no
+ * bound call turns on). The destructor tells the wrapper, if any, that Qt deleted it, with its tree,
+ * its parent item, or clear(); Qt's own destructor then deletes the children, which tell theirs.
+ */
+class PhpTreeWidgetItem : public QTreeWidgetItem {
+public:
+	using QTreeWidgetItem::QTreeWidgetItem;
+
+	~PhpTreeWidgetItem() override
+	{
+		if (wrapper != nullptr) {
+			phpqt_value_from(wrapper)->ptr = nullptr;
+		}
+	}
+
+	zend_object *wrapper = nullptr;
+};
+
 static void phpqt_destroy_font(void *ptr) { delete static_cast<QFont *>(ptr); }
 static void phpqt_destroy_pixmap(void *ptr) { delete static_cast<QPixmap *>(ptr); }
 static void phpqt_destroy_image(void *ptr) { delete static_cast<QImage *>(ptr); }
@@ -63,6 +91,17 @@ static void phpqt_destroy_table_item(void *ptr) { delete static_cast<QTableWidge
 static void phpqt_forget_table_item(void *ptr)
 {
 	auto *item = dynamic_cast<PhpTableWidgetItem *>(static_cast<QTableWidgetItem *>(ptr));
+	if (item != nullptr) {
+		item->wrapper = nullptr;
+	}
+}
+
+static void phpqt_destroy_tree_item(void *ptr) { delete static_cast<QTreeWidgetItem *>(ptr); }
+
+/* The item outlives this wrapper when a tree or a parent item owns it: stop it from writing back. */
+static void phpqt_forget_tree_item(void *ptr)
+{
+	auto *item = dynamic_cast<PhpTreeWidgetItem *>(static_cast<QTreeWidgetItem *>(ptr));
 	if (item != nullptr) {
 		item->wrapper = nullptr;
 	}
@@ -140,7 +179,50 @@ void phpqt_register_QGui()
 
 	phpqt_ce_QTableWidgetItem = register_class_QTableWidgetItem();
 	phpqt_value_setup(phpqt_ce_QTableWidgetItem);
+	phpqt_ce_QTreeWidgetItem_ChildIndicatorPolicy = register_class_QTreeWidgetItem_ChildIndicatorPolicy();
+	phpqt_ce_QTreeWidgetItem = register_class_QTreeWidgetItem();
+	phpqt_value_setup(phpqt_ce_QTreeWidgetItem);
 	phpqt_ce_QDesktopServices = register_class_QDesktopServices();
+
+	phpqt_ce_QClipboard_Mode = register_class_QClipboard_Mode();
+	phpqt_ce_QClipboard = register_class_QClipboard(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QClipboard);
+	phpqt_map_class("QClipboard", phpqt_ce_QClipboard);
+}
+
+/* ---- QClipboard -------------------------------------------------------- */
+
+ZEND_METHOD(QClipboard, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QClipboard, setText)
+{
+	zend_string *text;
+	zend_object *mode = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_STR(text)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QClipboard_Mode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QClipboard, clipboard);
+
+	clipboard->setText(phpqt_qstring(text), static_cast<QClipboard::Mode>(phpqt_enum_value(mode, QClipboard::Clipboard)));
+}
+
+ZEND_METHOD(QClipboard, text)
+{
+	zend_object *mode = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QClipboard_Mode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QClipboard, clipboard);
+
+	phpqt_return_qstring(return_value, clipboard->text(static_cast<QClipboard::Mode>(phpqt_enum_value(mode, QClipboard::Clipboard))));
 }
 
 void phpqt_value_hold(zend_object *wrapper, void *ptr, bool owned, void (*destroy)(void *), void (*forget)(void *))
@@ -228,6 +310,27 @@ void phpqt_return_table_item(zval *rv, QTableWidgetItem *item)
 
 	object_init_ex(rv, phpqt_ce_QTableWidgetItem);
 	phpqt_value_hold(Z_OBJ_P(rv), item, false, phpqt_destroy_table_item, phpqt_forget_table_item);
+	if (ours != nullptr) {
+		ours->wrapper = Z_OBJ_P(rv);
+	}
+}
+
+/* The wrapper the item already has, or a new tree-owned one; null stays null. */
+void phpqt_return_tree_item(zval *rv, QTreeWidgetItem *item)
+{
+	if (item == nullptr) {
+		ZVAL_NULL(rv);
+		return;
+	}
+
+	auto *ours = dynamic_cast<PhpTreeWidgetItem *>(item);
+	if (ours != nullptr && ours->wrapper != nullptr) {
+		ZVAL_OBJ_COPY(rv, ours->wrapper);
+		return;
+	}
+
+	object_init_ex(rv, phpqt_ce_QTreeWidgetItem);
+	phpqt_value_hold(Z_OBJ_P(rv), item, false, phpqt_destroy_tree_item, phpqt_forget_tree_item);
 	if (ours != nullptr) {
 		ours->wrapper = Z_OBJ_P(rv);
 	}
@@ -693,6 +796,207 @@ ZEND_METHOD(QTableWidgetItem, setText)
 	PHPQT_VALUE_THIS(QTableWidgetItem, item);
 
 	item->setText(phpqt_qstring(text));
+}
+
+/* ---- QTreeWidgetItem --------------------------------------------------- */
+
+ZEND_METHOD(QTreeWidgetItem, __construct)
+{
+	zend_long type = QTreeWidgetItem::Type;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(type)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	auto *item = new PhpTreeWidgetItem(static_cast<int>(type));
+	item->wrapper = Z_OBJ_P(ZEND_THIS);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), item, true, phpqt_destroy_tree_item, phpqt_forget_tree_item);
+}
+
+ZEND_METHOD(QTreeWidgetItem, text)
+{
+	zend_long column;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(column)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	phpqt_return_qstring(return_value, item->text(static_cast<int>(column)));
+}
+
+ZEND_METHOD(QTreeWidgetItem, setText)
+{
+	zend_long column;
+	zend_string *text;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(column)
+		Z_PARAM_STR(text)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	item->setText(static_cast<int>(column), phpqt_qstring(text));
+}
+
+ZEND_METHOD(QTreeWidgetItem, foreground)
+{
+	zend_long column;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(column)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	phpqt_return_brush(return_value, item->foreground(static_cast<int>(column)));
+}
+
+ZEND_METHOD(QTreeWidgetItem, setForeground)
+{
+	zend_long column;
+	zend_object *brush_obj;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(column)
+		Z_PARAM_OBJ_OF_CLASS(brush_obj, phpqt_ce_QBrush)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	QBrush *brush = static_cast<QBrush *>(phpqt_value_arg(brush_obj, 2));
+	if (brush == nullptr) {
+		RETURN_THROWS();
+	}
+
+	item->setForeground(static_cast<int>(column), *brush);
+}
+
+ZEND_METHOD(QTreeWidgetItem, data)
+{
+	zend_long column;
+	zend_long role;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(column)
+		Z_PARAM_LONG(role)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	phpqt_variant_to_zval(return_value, item->data(static_cast<int>(column), static_cast<int>(role)));
+}
+
+ZEND_METHOD(QTreeWidgetItem, setData)
+{
+	zend_long column;
+	zend_long role;
+	zval *value;
+
+	ZEND_PARSE_PARAMETERS_START(3, 3)
+		Z_PARAM_LONG(column)
+		Z_PARAM_LONG(role)
+		Z_PARAM_ZVAL(value)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	QVariant variant;
+	if (!phpqt_zval_to_variant(value, QMetaType(), &variant, 3)) {
+		RETURN_THROWS();
+	}
+
+	item->setData(static_cast<int>(column), static_cast<int>(role), variant);
+}
+
+ZEND_METHOD(QTreeWidgetItem, addChild)
+{
+	zend_object *child_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(child_obj, phpqt_ce_QTreeWidgetItem)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	QTreeWidgetItem *child = static_cast<QTreeWidgetItem *>(phpqt_value_arg(child_obj, 1));
+	if (child == nullptr) {
+		RETURN_THROWS();
+	}
+
+	item->addChild(child);
+	/* The parent owns the child once Qt stored it; a child that already had a tree or a parent stays where it was. */
+	if (child->parent() == item) {
+		phpqt_value_taken(child_obj);
+	}
+}
+
+ZEND_METHOD(QTreeWidgetItem, childCount)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	RETURN_LONG(item->childCount());
+}
+
+ZEND_METHOD(QTreeWidgetItem, child)
+{
+	zend_long index;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(index)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	phpqt_return_tree_item(return_value, item->child(static_cast<int>(index)));
+}
+
+ZEND_METHOD(QTreeWidgetItem, parent)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	phpqt_return_tree_item(return_value, item->parent());
+}
+
+ZEND_METHOD(QTreeWidgetItem, isExpanded)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	RETURN_BOOL(item->isExpanded());
+}
+
+ZEND_METHOD(QTreeWidgetItem, setExpanded)
+{
+	bool expand;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_BOOL(expand)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	item->setExpanded(expand);
+}
+
+ZEND_METHOD(QTreeWidgetItem, childIndicatorPolicy)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	phpqt_return_enum(return_value, phpqt_ce_QTreeWidgetItem_ChildIndicatorPolicy, static_cast<zend_long>(item->childIndicatorPolicy()));
+}
+
+ZEND_METHOD(QTreeWidgetItem, setChildIndicatorPolicy)
+{
+	zend_object *policy;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(policy, phpqt_ce_QTreeWidgetItem_ChildIndicatorPolicy)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTreeWidgetItem, item);
+
+	item->setChildIndicatorPolicy(static_cast<QTreeWidgetItem::ChildIndicatorPolicy>(phpqt_enum_value(policy, QTreeWidgetItem::ShowIndicator)));
 }
 
 /* ---- QDesktopServices -------------------------------------------------- */

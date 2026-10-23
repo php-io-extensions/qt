@@ -15,6 +15,9 @@
 #include <QtCore/QtGlobal>
 #include <QtCore/QEvent>
 #include <QtCore/qnamespace.h>
+#include <QtGui/QClipboard>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 
 static_assert(Qt::Horizontal == 1 && Qt::Vertical == 2, "Qt::Orientation values differ from the stub's Qt\\Orientation enum");
 static_assert(Qt::IgnoreAspectRatio == 0 && Qt::KeepAspectRatio == 1 && Qt::KeepAspectRatioByExpanding == 2,
@@ -34,10 +37,21 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/Qt_AlignmentFlag.inc"
 #include "checks/Qt_TextInteractionFlag.inc"
 #include "checks/Qt_WindowType.inc"
+#include "checks/Qt_WindowModality.inc"
+#include "checks/Qt_FocusPolicy.inc"
+#include "checks/QMessageBox_ButtonRole.inc"
+#include "checks/QFileDialog_FileMode.inc"
+#include "checks/QFileDialog_AcceptMode.inc"
+#include "checks/QFileDialog_Option.inc"
+#include "checks/QClipboard_Mode.inc"
 #include "checks/Qt_ImageConversionFlag.inc"
 #include "checks/Qt_BrushStyle.inc"
 #include "checks/Qt_ConnectionType.inc"
 #include "checks/Qt_ApplicationAttribute.inc"
+#include "checks/Qt_ItemDataRole.inc"
+#include "checks/Qt_Key.inc"
+#include "checks/Qt_ScrollPhase.inc"
+#include "checks/Qt_MouseEventSource.inc"
 
 ZEND_DECLARE_MODULE_GLOBALS(qt)
 
@@ -77,6 +91,13 @@ zend_class_entry *phpqt_ce_QEventFilter;
 zend_class_entry *phpqt_ce_Qt_AlignmentFlag;
 zend_class_entry *phpqt_ce_Qt_TextInteractionFlag;
 zend_class_entry *phpqt_ce_QDesktopServices;
+zend_class_entry *phpqt_ce_QMessageBox_ButtonRole;
+zend_class_entry *phpqt_ce_QFileDialog;
+zend_class_entry *phpqt_ce_QFileDialog_FileMode;
+zend_class_entry *phpqt_ce_QFileDialog_AcceptMode;
+zend_class_entry *phpqt_ce_QFileDialog_Option;
+zend_class_entry *phpqt_ce_QClipboard;
+zend_class_entry *phpqt_ce_QClipboard_Mode;
 zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 zend_class_entry *phpqt_ce_QLayout;
 zend_class_entry *phpqt_ce_QBoxLayout;
@@ -116,10 +137,13 @@ zend_class_entry *phpqt_ce_QPixmap;
 zend_class_entry *phpqt_ce_QImage;
 zend_class_entry *phpqt_ce_QImage_Format;
 zend_class_entry *phpqt_ce_QTableWidgetItem;
+zend_class_entry *phpqt_ce_QTreeWidgetItem;
+zend_class_entry *phpqt_ce_QTreeWidgetItem_ChildIndicatorPolicy;
 zend_class_entry *phpqt_ce_QFrame_Shape;
 zend_class_entry *phpqt_ce_QFrame_Shadow;
 zend_class_entry *phpqt_ce_QAbstractItemView_SelectionBehavior;
 zend_class_entry *phpqt_ce_QAbstractItemView_SelectionMode;
+zend_class_entry *phpqt_ce_QAbstractItemView_ScrollHint;
 zend_class_entry *phpqt_ce_QDateEdit;
 zend_class_entry *phpqt_ce_QProgressBar;
 zend_class_entry *phpqt_ce_QFrame;
@@ -129,6 +153,7 @@ zend_class_entry *phpqt_ce_QSplitterHandle;
 zend_class_entry *phpqt_ce_QTabWidget;
 zend_class_entry *phpqt_ce_QAbstractItemView;
 zend_class_entry *phpqt_ce_QTableWidget;
+zend_class_entry *phpqt_ce_QTreeWidget;
 zend_class_entry *phpqt_ce_QMediaPlayer_PlaybackState;
 zend_class_entry *phpqt_ce_QMediaPlayer_MediaStatus;
 zend_class_entry *phpqt_ce_QMediaPlayer_Error;
@@ -141,9 +166,15 @@ zend_class_entry *phpqt_ce_Qt_TextFormat;
 zend_class_entry *phpqt_ce_Qt_TransformationMode;
 zend_class_entry *phpqt_ce_Qt_DateFormat;
 zend_class_entry *phpqt_ce_Qt_WindowType;
+zend_class_entry *phpqt_ce_Qt_WindowModality;
+zend_class_entry *phpqt_ce_Qt_FocusPolicy;
 zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
 zend_class_entry *phpqt_ce_Qt_BrushStyle;
 zend_class_entry *phpqt_ce_Qt_ConnectionType;
+zend_class_entry *phpqt_ce_Qt_ItemDataRole;
+zend_class_entry *phpqt_ce_Qt_Key;
+zend_class_entry *phpqt_ce_Qt_ScrollPhase;
+zend_class_entry *phpqt_ce_Qt_MouseEventSource;
 
 ZEND_FUNCTION(qVersion)
 {
@@ -168,9 +199,15 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_TransformationMode = register_class_Qt_TransformationMode();
 	phpqt_ce_Qt_DateFormat = register_class_Qt_DateFormat();
 	phpqt_ce_Qt_WindowType = register_class_Qt_WindowType();
+	phpqt_ce_Qt_WindowModality = register_class_Qt_WindowModality();
+	phpqt_ce_Qt_FocusPolicy = register_class_Qt_FocusPolicy();
 	phpqt_ce_Qt_ImageConversionFlag = register_class_Qt_ImageConversionFlag();
 	phpqt_ce_Qt_BrushStyle = register_class_Qt_BrushStyle();
 	phpqt_ce_Qt_ConnectionType = register_class_Qt_ConnectionType();
+	phpqt_ce_Qt_ItemDataRole = register_class_Qt_ItemDataRole();
+	phpqt_ce_Qt_Key = register_class_Qt_Key();
+	phpqt_ce_Qt_ScrollPhase = register_class_Qt_ScrollPhase();
+	phpqt_ce_Qt_MouseEventSource = register_class_Qt_MouseEventSource();
 }
 
 static PHP_GINIT_FUNCTION(qt)

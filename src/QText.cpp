@@ -54,13 +54,13 @@ void phpqt_register_QText()
 	phpqt_map_class("QTextDocument", phpqt_ce_QTextDocument);
 }
 
-static void phpqt_return_color(zval *rv, const QColor &color)
+void phpqt_return_color(zval *rv, const QColor &color)
 {
 	object_init_ex(rv, phpqt_ce_QColor);
 	phpqt_value_hold(Z_OBJ_P(rv), new QColor(color), true, phpqt_destroy_color);
 }
 
-static void phpqt_return_brush(zval *rv, const QBrush &brush)
+void phpqt_return_brush(zval *rv, const QBrush &brush)
 {
 	object_init_ex(rv, phpqt_ce_QBrush);
 	phpqt_value_hold(Z_OBJ_P(rv), new QBrush(brush), true, phpqt_destroy_brush);

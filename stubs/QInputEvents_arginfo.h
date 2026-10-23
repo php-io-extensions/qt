@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 4016be82437fdf87f5a080c2b23e3c856f22ae80 */
+ * Stub hash: de9f5486d9d2d5020531d0075a43ce135a894a54 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEvent___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
@@ -49,6 +49,51 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QMouseEvent_globalPosition arginfo_class_QMouseEvent_position
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QKeyEvent___construct, 0, 0, 3)
+	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
+	ZEND_ARG_TYPE_INFO(0, key, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, autorep, _IS_BOOL, 0, "false")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, count, IS_LONG, 0, "1")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QKeyEvent_key arginfo_class_QInputEvent_modifiers
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QKeyEvent_text, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QKeyEvent_isAutoRepeat arginfo_class_QEvent_isAccepted
+
+#define arginfo_class_QKeyEvent_nativeScanCode arginfo_class_QInputEvent_modifiers
+
+#define arginfo_class_QKeyEvent_nativeVirtualKey arginfo_class_QInputEvent_modifiers
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWheelEvent___construct, 0, 0, 10)
+	ZEND_ARG_OBJ_INFO(0, pos, QPointF, 0)
+	ZEND_ARG_OBJ_INFO(0, globalPos, QPointF, 0)
+	ZEND_ARG_OBJ_INFO(0, pixelDelta, QPoint, 0)
+	ZEND_ARG_OBJ_INFO(0, angleDelta, QPoint, 0)
+	ZEND_ARG_TYPE_INFO(0, buttons, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, modifiers, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, phase, Qt\\ScrollPhase, 0)
+	ZEND_ARG_TYPE_INFO(0, inverted, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, source, Qt\\MouseEventSource, 0)
+	ZEND_ARG_OBJ_INFO(0, device, QPointingDevice, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWheelEvent_pixelDelta, 0, 0, QPoint, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWheelEvent_angleDelta arginfo_class_QWheelEvent_pixelDelta
+
+#define arginfo_class_QWheelEvent_position arginfo_class_QMouseEvent_position
+
+#define arginfo_class_QWheelEvent_globalPosition arginfo_class_QMouseEvent_position
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWheelEvent_source, 0, 0, Qt\\MouseEventSource, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QContextMenuEvent___construct, 0, 0, 3)
 	ZEND_ARG_OBJ_INFO(0, reason, QContextMenuEvent\\Reason, 0)
 	ZEND_ARG_OBJ_INFO(0, pos, QPoint, 0)
@@ -59,14 +104,17 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QContextMenuEvent_reason, 0, 0, QContextMenuEvent\\Reason, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QContextMenuEvent_pos, 0, 0, QPoint, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QContextMenuEvent_pos arginfo_class_QWheelEvent_pixelDelta
 
-#define arginfo_class_QContextMenuEvent_globalPos arginfo_class_QContextMenuEvent_pos
+#define arginfo_class_QContextMenuEvent_globalPos arginfo_class_QWheelEvent_pixelDelta
 
 #define arginfo_class_QStyleHints_mousePressAndHoldInterval arginfo_class_QInputEvent_modifiers
 
 #define arginfo_class_QStyleHints_startDragDistance arginfo_class_QInputEvent_modifiers
+
+#define arginfo_class_QStyleHints_mouseDoubleClickInterval arginfo_class_QInputEvent_modifiers
+
+#define arginfo_class_QStyleHints_mouseDoubleClickDistance arginfo_class_QInputEvent_modifiers
 
 ZEND_METHOD(QEvent, __construct);
 ZEND_METHOD(QEvent, type);
@@ -83,12 +131,26 @@ ZEND_METHOD(QMouseEvent, button);
 ZEND_METHOD(QMouseEvent, buttons);
 ZEND_METHOD(QMouseEvent, position);
 ZEND_METHOD(QMouseEvent, globalPosition);
+ZEND_METHOD(QKeyEvent, __construct);
+ZEND_METHOD(QKeyEvent, key);
+ZEND_METHOD(QKeyEvent, text);
+ZEND_METHOD(QKeyEvent, isAutoRepeat);
+ZEND_METHOD(QKeyEvent, nativeScanCode);
+ZEND_METHOD(QKeyEvent, nativeVirtualKey);
+ZEND_METHOD(QWheelEvent, __construct);
+ZEND_METHOD(QWheelEvent, pixelDelta);
+ZEND_METHOD(QWheelEvent, angleDelta);
+ZEND_METHOD(QWheelEvent, position);
+ZEND_METHOD(QWheelEvent, globalPosition);
+ZEND_METHOD(QWheelEvent, source);
 ZEND_METHOD(QContextMenuEvent, __construct);
 ZEND_METHOD(QContextMenuEvent, reason);
 ZEND_METHOD(QContextMenuEvent, pos);
 ZEND_METHOD(QContextMenuEvent, globalPos);
 ZEND_METHOD(QStyleHints, mousePressAndHoldInterval);
 ZEND_METHOD(QStyleHints, startDragDistance);
+ZEND_METHOD(QStyleHints, mouseDoubleClickInterval);
+ZEND_METHOD(QStyleHints, mouseDoubleClickDistance);
 
 static const zend_function_entry class_QEvent_methods[] = {
 	ZEND_ME(QEvent, __construct, arginfo_class_QEvent___construct, ZEND_ACC_PUBLIC)
@@ -117,6 +179,26 @@ static const zend_function_entry class_QMouseEvent_methods[] = {
 	ZEND_FE_END
 };
 
+static const zend_function_entry class_QKeyEvent_methods[] = {
+	ZEND_ME(QKeyEvent, __construct, arginfo_class_QKeyEvent___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QKeyEvent, key, arginfo_class_QKeyEvent_key, ZEND_ACC_PUBLIC)
+	ZEND_ME(QKeyEvent, text, arginfo_class_QKeyEvent_text, ZEND_ACC_PUBLIC)
+	ZEND_ME(QKeyEvent, isAutoRepeat, arginfo_class_QKeyEvent_isAutoRepeat, ZEND_ACC_PUBLIC)
+	ZEND_ME(QKeyEvent, nativeScanCode, arginfo_class_QKeyEvent_nativeScanCode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QKeyEvent, nativeVirtualKey, arginfo_class_QKeyEvent_nativeVirtualKey, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QWheelEvent_methods[] = {
+	ZEND_ME(QWheelEvent, __construct, arginfo_class_QWheelEvent___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWheelEvent, pixelDelta, arginfo_class_QWheelEvent_pixelDelta, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWheelEvent, angleDelta, arginfo_class_QWheelEvent_angleDelta, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWheelEvent, position, arginfo_class_QWheelEvent_position, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWheelEvent, globalPosition, arginfo_class_QWheelEvent_globalPosition, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWheelEvent, source, arginfo_class_QWheelEvent_source, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
 static const zend_function_entry class_QContextMenuEvent_methods[] = {
 	ZEND_ME(QContextMenuEvent, __construct, arginfo_class_QContextMenuEvent___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QContextMenuEvent, reason, arginfo_class_QContextMenuEvent_reason, ZEND_ACC_PUBLIC)
@@ -128,6 +210,8 @@ static const zend_function_entry class_QContextMenuEvent_methods[] = {
 static const zend_function_entry class_QStyleHints_methods[] = {
 	ZEND_ME(QStyleHints, mousePressAndHoldInterval, arginfo_class_QStyleHints_mousePressAndHoldInterval, ZEND_ACC_PUBLIC)
 	ZEND_ME(QStyleHints, startDragDistance, arginfo_class_QStyleHints_startDragDistance, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStyleHints, mouseDoubleClickInterval, arginfo_class_QStyleHints_mouseDoubleClickInterval, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStyleHints, mouseDoubleClickDistance, arginfo_class_QStyleHints_mouseDoubleClickDistance, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -156,6 +240,26 @@ static zend_class_entry *register_class_QMouseEvent(zend_class_entry *class_entr
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QMouseEvent", class_QMouseEvent_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QInputEvent, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QKeyEvent(zend_class_entry *class_entry_QInputEvent)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QKeyEvent", class_QKeyEvent_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QInputEvent, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QWheelEvent(zend_class_entry *class_entry_QInputEvent)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QWheelEvent", class_QWheelEvent_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QInputEvent, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

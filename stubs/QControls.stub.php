@@ -56,6 +56,14 @@ namespace QAbstractItemView {
         case EXTENDED_SELECTION = 3;
         case CONTIGUOUS_SELECTION = 4;
     }
+
+    enum ScrollHint: int
+    {
+        case ENSURE_VISIBLE = 0;
+        case POSITION_AT_TOP = 1;
+        case POSITION_AT_BOTTOM = 2;
+        case POSITION_AT_CENTER = 3;
+    }
 }
 
 namespace {
@@ -134,6 +142,10 @@ namespace {
     class QPushButton extends QAbstractButton
     {
         public function __construct(string $text = "", ?QWidget $parent = null) {}
+
+        public function isDefault(): bool {}
+
+        public function setDefault(bool $default): void {}
     }
 
     /**
@@ -475,6 +487,47 @@ namespace {
         public function currentRow(): int {}
 
         public function selectRow(int $row): void {}
+    }
+
+    /**
+     * Signals currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*), itemSelectionChanged(), itemActivated(QTreeWidgetItem*,int),
+     * itemExpanded(QTreeWidgetItem*), itemCollapsed(QTreeWidgetItem*); their items arrive as the wrappers PHP already holds.
+     * Parented to QAbstractItemView here because QTreeView is not bound.
+     *
+     * @not-serializable
+     */
+    class QTreeWidget extends QAbstractItemView
+    {
+        public function __construct(?QWidget $parent = null) {}
+
+        public function columnCount(): int {}
+
+        public function setColumnCount(int $columns): void {}
+
+        /** @param string[] $labels */
+        public function setHeaderLabels(array $labels): void {}
+
+        /**
+         * The tree owns the item once Qt stored it; its wrapper reports "deleted" once Qt deletes it.
+         * Qt ignores an item that already has a tree or a parent item, which then stays where it is.
+         */
+        public function addTopLevelItem(QTreeWidgetItem $item): void {}
+
+        /** Qt deletes every item the tree holds. */
+        public function clear(): void {}
+
+        public function currentItem(): ?QTreeWidgetItem {}
+
+        public function setCurrentItem(?QTreeWidgetItem $item): void {}
+
+        public function scrollToItem(QTreeWidgetItem $item, QAbstractItemView\ScrollHint $hint = QAbstractItemView\ScrollHint::ENSURE_VISIBLE): void {}
+
+        public function expandItem(QTreeWidgetItem $item): void {}
+
+        public function collapseItem(QTreeWidgetItem $item): void {}
+
+        /** @return QTreeWidgetItem[] the selected items, as Qt lists them */
+        public function selectedItems(): array {}
     }
 
     /**

@@ -7,6 +7,10 @@
 #include <QtCore/QUrl>
 #include <QtCore/QVariant>
 #include <QtGui/QKeySequence>
+#include <QtGui/QBrush>
+#include <QtGui/QColor>
+#include <QtGui/QFont>
+#include <QtGui/QPixmap>
 #include "../stubs/QObject_arginfo.h"
 #include "../stubs/QMetaObject_arginfo.h"
 
@@ -338,6 +342,10 @@ static const struct {
 	{QMetaType::fromType<QRect>(), &phpqt_ce_QRect},
 	{QMetaType::fromType<QUrl>(), &phpqt_ce_QUrl},
 	{QMetaType::fromType<QKeySequence>(), &phpqt_ce_QKeySequence},
+	{QMetaType::fromType<QBrush>(), &phpqt_ce_QBrush},
+	{QMetaType::fromType<QColor>(), &phpqt_ce_QColor},
+	{QMetaType::fromType<QFont>(), &phpqt_ce_QFont},
+	{QMetaType::fromType<QPixmap>(), &phpqt_ce_QPixmap},
 };
 
 /*

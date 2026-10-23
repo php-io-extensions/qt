@@ -1,14 +1,25 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: aea6bf064d468f6fc949fae14d4f4fe1b00372dc */
+ * Stub hash: 73402992aaca65c178607c5b2831a52a16a60863 */
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QDesktopServices___construct, 0, 0, 0)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QClipboard___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QClipboard_setText, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, QClipboard\\Mode, 0, "QClipboard\\Mode::CLIPBOARD")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QClipboard_text, 0, 0, IS_STRING, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, QClipboard\\Mode, 0, "QClipboard\\Mode::CLIPBOARD")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QDesktopServices___construct arginfo_class_QClipboard___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDesktopServices_openUrl, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, url, QUrl, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QFontDatabase___construct arginfo_class_QDesktopServices___construct
+#define arginfo_class_QFontDatabase___construct arginfo_class_QClipboard___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QFontDatabase_systemFont, 0, 1, QFont, 0)
 	ZEND_ARG_OBJ_INFO(0, type, QFontDatabase\\SystemFont, 0)
@@ -42,7 +53,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFont_setWeight, 0, 1, IS_
 	ZEND_ARG_OBJ_TYPE_MASK(0, weight, QFont\\Weight, MAY_BE_LONG, NULL)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QPixmap___construct arginfo_class_QDesktopServices___construct
+#define arginfo_class_QPixmap___construct arginfo_class_QClipboard___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_fromImage, 0, 1, QPixmap, 0)
 	ZEND_ARG_OBJ_INFO(0, image, QImage, 0)
@@ -114,6 +125,68 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTableWidgetItem_row arginfo_class_QPixmap_width
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTreeWidgetItem___construct, 0, 0, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, type, IS_LONG, 0, "QTreeWidgetItem::TYPE")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_text, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setText, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTreeWidgetItem_foreground, 0, 1, QBrush, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setForeground, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, brush, QBrush, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_data, 0, 2, IS_MIXED, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, role, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setData, 0, 3, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, role, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_MIXED, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_addChild, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, child, QTreeWidgetItem, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTreeWidgetItem_childCount arginfo_class_QPixmap_width
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTreeWidgetItem_child, 0, 1, QTreeWidgetItem, 1)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTreeWidgetItem_parent, 0, 0, QTreeWidgetItem, 1)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTreeWidgetItem_isExpanded arginfo_class_QPixmap_isNull
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setExpanded, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, expand, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTreeWidgetItem_childIndicatorPolicy, 0, 0, QTreeWidgetItem\\ChildIndicatorPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setChildIndicatorPolicy, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, policy, QTreeWidgetItem\\ChildIndicatorPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_METHOD(QClipboard, __construct);
+ZEND_METHOD(QClipboard, setText);
+ZEND_METHOD(QClipboard, text);
 ZEND_METHOD(QDesktopServices, __construct);
 ZEND_METHOD(QDesktopServices, openUrl);
 ZEND_METHOD(QFontDatabase, __construct);
@@ -145,6 +218,28 @@ ZEND_METHOD(QTableWidgetItem, text);
 ZEND_METHOD(QTableWidgetItem, setText);
 ZEND_METHOD(QTableWidgetItem, type);
 ZEND_METHOD(QTableWidgetItem, row);
+ZEND_METHOD(QTreeWidgetItem, __construct);
+ZEND_METHOD(QTreeWidgetItem, text);
+ZEND_METHOD(QTreeWidgetItem, setText);
+ZEND_METHOD(QTreeWidgetItem, foreground);
+ZEND_METHOD(QTreeWidgetItem, setForeground);
+ZEND_METHOD(QTreeWidgetItem, data);
+ZEND_METHOD(QTreeWidgetItem, setData);
+ZEND_METHOD(QTreeWidgetItem, addChild);
+ZEND_METHOD(QTreeWidgetItem, childCount);
+ZEND_METHOD(QTreeWidgetItem, child);
+ZEND_METHOD(QTreeWidgetItem, parent);
+ZEND_METHOD(QTreeWidgetItem, isExpanded);
+ZEND_METHOD(QTreeWidgetItem, setExpanded);
+ZEND_METHOD(QTreeWidgetItem, childIndicatorPolicy);
+ZEND_METHOD(QTreeWidgetItem, setChildIndicatorPolicy);
+
+static const zend_function_entry class_QClipboard_methods[] = {
+	ZEND_ME(QClipboard, __construct, arginfo_class_QClipboard___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QClipboard, setText, arginfo_class_QClipboard_setText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QClipboard, text, arginfo_class_QClipboard_text, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
 
 static const zend_function_entry class_QDesktopServices_methods[] = {
 	ZEND_ME(QDesktopServices, __construct, arginfo_class_QDesktopServices___construct, ZEND_ACC_PRIVATE)
@@ -198,6 +293,25 @@ static const zend_function_entry class_QTableWidgetItem_methods[] = {
 	ZEND_ME(QTableWidgetItem, setText, arginfo_class_QTableWidgetItem_setText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidgetItem, type, arginfo_class_QTableWidgetItem_type, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidgetItem, row, arginfo_class_QTableWidgetItem_row, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QTreeWidgetItem_methods[] = {
+	ZEND_ME(QTreeWidgetItem, __construct, arginfo_class_QTreeWidgetItem___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, text, arginfo_class_QTreeWidgetItem_text, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, setText, arginfo_class_QTreeWidgetItem_setText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, foreground, arginfo_class_QTreeWidgetItem_foreground, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, setForeground, arginfo_class_QTreeWidgetItem_setForeground, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, data, arginfo_class_QTreeWidgetItem_data, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, setData, arginfo_class_QTreeWidgetItem_setData, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, addChild, arginfo_class_QTreeWidgetItem_addChild, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, childCount, arginfo_class_QTreeWidgetItem_childCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, child, arginfo_class_QTreeWidgetItem_child, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, parent, arginfo_class_QTreeWidgetItem_parent, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, isExpanded, arginfo_class_QTreeWidgetItem_isExpanded, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, setExpanded, arginfo_class_QTreeWidgetItem_setExpanded, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, childIndicatorPolicy, arginfo_class_QTreeWidgetItem_childIndicatorPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidgetItem, setChildIndicatorPolicy, arginfo_class_QTreeWidgetItem_setChildIndicatorPolicy, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -267,6 +381,25 @@ static zend_class_entry *register_class_QFontDatabase_SystemFont(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QClipboard_Mode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QClipboard\\Mode", IS_LONG, NULL);
+
+	zval enum_case_CLIPBOARD_value;
+	ZVAL_LONG(&enum_case_CLIPBOARD_value, 0);
+	zend_enum_add_case_cstr(class_entry, "CLIPBOARD", &enum_case_CLIPBOARD_value);
+
+	zval enum_case_SELECTION_value;
+	ZVAL_LONG(&enum_case_SELECTION_value, 1);
+	zend_enum_add_case_cstr(class_entry, "SELECTION", &enum_case_SELECTION_value);
+
+	zval enum_case_FIND_BUFFER_value;
+	ZVAL_LONG(&enum_case_FIND_BUFFER_value, 2);
+	zend_enum_add_case_cstr(class_entry, "FIND_BUFFER", &enum_case_FIND_BUFFER_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QImage_Format(void)
 {
 	zend_class_entry *class_entry = zend_register_internal_enum("QImage\\Format", IS_LONG, NULL);
@@ -302,6 +435,35 @@ static zend_class_entry *register_class_QImage_Format(void)
 	zval enum_case_BGR888_value;
 	ZVAL_LONG(&enum_case_BGR888_value, 29);
 	zend_enum_add_case_cstr(class_entry, "BGR888", &enum_case_BGR888_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QTreeWidgetItem_ChildIndicatorPolicy(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QTreeWidgetItem\\ChildIndicatorPolicy", IS_LONG, NULL);
+
+	zval enum_case_SHOW_INDICATOR_value;
+	ZVAL_LONG(&enum_case_SHOW_INDICATOR_value, 0);
+	zend_enum_add_case_cstr(class_entry, "SHOW_INDICATOR", &enum_case_SHOW_INDICATOR_value);
+
+	zval enum_case_DONT_SHOW_INDICATOR_value;
+	ZVAL_LONG(&enum_case_DONT_SHOW_INDICATOR_value, 1);
+	zend_enum_add_case_cstr(class_entry, "DONT_SHOW_INDICATOR", &enum_case_DONT_SHOW_INDICATOR_value);
+
+	zval enum_case_DONT_SHOW_INDICATOR_WHEN_CHILDLESS_value;
+	ZVAL_LONG(&enum_case_DONT_SHOW_INDICATOR_WHEN_CHILDLESS_value, 2);
+	zend_enum_add_case_cstr(class_entry, "DONT_SHOW_INDICATOR_WHEN_CHILDLESS", &enum_case_DONT_SHOW_INDICATOR_WHEN_CHILDLESS_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QClipboard(zend_class_entry *class_entry_QObject)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QClipboard", class_QClipboard_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }
@@ -371,6 +533,28 @@ static zend_class_entry *register_class_QTableWidgetItem(void)
 
 	zval const_USER_TYPE_value;
 	ZVAL_LONG(&const_USER_TYPE_value, QTableWidgetItem::UserType);
+	zend_string *const_USER_TYPE_name = zend_string_init_interned("USER_TYPE", sizeof("USER_TYPE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_USER_TYPE_name, &const_USER_TYPE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_USER_TYPE_name);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QTreeWidgetItem(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QTreeWidgetItem", class_QTreeWidgetItem_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval const_TYPE_value;
+	ZVAL_LONG(&const_TYPE_value, QTreeWidgetItem::Type);
+	zend_string *const_TYPE_name = zend_string_init_interned("TYPE", sizeof("TYPE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_TYPE_name, &const_TYPE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_TYPE_name);
+
+	zval const_USER_TYPE_value;
+	ZVAL_LONG(&const_USER_TYPE_value, QTreeWidgetItem::UserType);
 	zend_string *const_USER_TYPE_name = zend_string_init_interned("USER_TYPE", sizeof("USER_TYPE") - 1, 1);
 	zend_declare_typed_class_constant(class_entry, const_USER_TYPE_name, &const_USER_TYPE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
 	zend_string_release(const_USER_TYPE_name);

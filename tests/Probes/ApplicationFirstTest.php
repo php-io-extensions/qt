@@ -20,6 +20,8 @@ it('refuses the call before an application, which Qt dies on without the refusal
     'a text widget' => ['qapp-text-widget', 'new QLabel("x"); return "built";', PROBE_SIGABRT],
     'a slider' => ['qapp-slider', 'new QSlider(); return "built";', PROBE_SIGABRT],
     'a table' => ['qapp-table', 'new QTableWidget(); return "built";', PROBE_SIGABRT],
+    'a tree' => ['qapp-tree-widget', 'new QTreeWidget(); return "built";', PROBE_SIGABRT],
+    'a file dialog' => ['qapp-file-dialog', 'new QFileDialog(); return "built";', PROBE_SIGABRT],
     'a splitter' => ['qapp-splitter', 'new QSplitter(Qt\Orientation::HORIZONTAL); return "built";', PROBE_SIGABRT],
     'an OpenGL painter' => ['qapp-gl-painter', 'new QOpenGLPainter(fn () => null); return "built";', PROBE_SIGABRT],
     'a menu bar' => ['qapp-menubar', 'new QMenuBar(); return "built";', PROBE_SIGABRT],

@@ -100,3 +100,111 @@ it('makes a plain event of a type Qt sends as one, and refuses the rest', functi
         ->and(fn () => new QEvent(Type::UPDATE_LATER))->toThrow(ValueError::class, 'subclass')
         ->and(fn () => new QInputEvent(Type::LEAVE))->toThrow(Error::class, 'QInputEvent');
 });
+
+it('makes key events and hands a filter Qt\'s key press and release as QKeyEvents', function (): void {
+    $made = new QKeyEvent(Type::KEY_PRESS, Qt\Key::RETURN->value, 0);
+    $widget = new QWidget();
+    $read = [];
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$read): bool {
+        if ($event->type() === Type::KEY_PRESS || $event->type() === Type::KEY_RELEASE) {
+            $read[] = [$event::class, $event->type(), $event->key(), $event->modifiers()];
+        }
+
+        return false;
+    });
+    $widget->installEventFilter($filter);
+    QCoreApplication::sendEvent($widget, new QKeyEvent(Type::KEY_PRESS, Qt\Key::ENTER->value, 0x04000000, "\r", true, 2));
+    QCoreApplication::sendEvent($widget, new QKeyEvent(Type::KEY_RELEASE, Qt\Key::ENTER->value, 0));
+
+    expect($made->key())->toBe(Qt\Key::RETURN->value)
+        ->and($read)->toBe([[QKeyEvent::class, Type::KEY_PRESS, Qt\Key::ENTER->value, 0x04000000], [QKeyEvent::class, Type::KEY_RELEASE, Qt\Key::ENTER->value, 0]])
+        ->and(fn () => new QKeyEvent(Type::KEY_PRESS, 0, 0, '', false, 65536))->toThrow(ValueError::class);
+});
+
+it('reads a key event\'s text, repeat flag and native codes', function (): void {
+    $event = new QKeyEvent(Type::KEY_PRESS, Qt\Key::A->value, 0, 'a', true);
+
+    expect($event->text())->toBe('a')
+        ->and($event->isAutoRepeat())->toBeTrue()
+        ->and($event->nativeScanCode())->toBe(0)
+        ->and($event->nativeVirtualKey())->toBe(0)
+        ->and((new QKeyEvent(Type::KEY_PRESS, Qt\Key::F5->value, 0))->text())->toBe('');
+});
+
+it('refuses event ints wider than the C int they become, rather than truncating them', function (): void {
+    $wide = (1 << 32) | Qt\Key::RETURN->value;
+    $device = QPointingDevice::primaryPointingDevice();
+    $at = new QPointF(1.0, 1.0);
+
+    expect(fn () => new QKeyEvent(Type::KEY_PRESS, $wide, 0))->toThrow(ValueError::class)
+        ->and(fn () => new QKeyEvent(Type::KEY_PRESS, 0, 1 << 32))->toThrow(ValueError::class)
+        ->and(fn () => new QMouseEvent(Type::MOUSE_BUTTON_PRESS, $at, $at, 1 << 32, 1, 0, $device))->toThrow(ValueError::class)
+        ->and(fn () => new QMouseEvent(Type::MOUSE_BUTTON_PRESS, $at, $at, 1, 1 << 32, 0, $device))->toThrow(ValueError::class)
+        ->and(fn () => new QMouseEvent(Type::MOUSE_BUTTON_PRESS, $at, $at, 1, 1, 1 << 32, $device))->toThrow(ValueError::class)
+        ->and(fn () => new QContextMenuEvent(Reason::MOUSE, new QPoint(0, 0), new QPoint(0, 0), 1 << 32))->toThrow(ValueError::class)
+        ->and((new QKeyEvent(Type::KEY_PRESS, Qt\Key::RETURN->value, 0x04000000))->modifiers())->toBe(0x04000000);
+});
+
+it('names Qt\'s keys at their C values, digits and case-only pairs included', function (): void {
+    expect([Qt\Key::ESCAPE->value, Qt\Key::RETURN->value, Qt\Key::ENTER->value, Qt\Key::A->value, Qt\Key::F1->value])
+        ->toBe([0x01000000, 0x01000004, 0x01000005, 0x41, 0x01000030])
+        ->and([Qt\Key::KEY_0->value, Qt\Key::KEY_9->value])->toBe([0x30, 0x39])
+        ->and([Qt\Key::DEAD_a->value, Qt\Key::DEAD_A->value])->toBe([0x01001280, 0x01001281])
+        ->and(Qt\Key::MICRO->value)->toBe(0xb5);
+});
+
+it('makes a wheel event and reads its deltas, positions, source and modifiers', function (): void {
+    $event = new QWheelEvent(new QPointF(5.0, 6.0), new QPointF(105.0, 106.0), new QPoint(0, -3), new QPoint(0, -120), 0, 0x02000000,
+        Qt\ScrollPhase::SCROLL_UPDATE, false, Qt\MouseEventSource::MOUSE_EVENT_SYNTHESIZED_BY_SYSTEM, QPointingDevice::primaryPointingDevice());
+
+    expect([$event->pixelDelta()->x(), $event->pixelDelta()->y()])->toBe([0, -3])
+        ->and([$event->angleDelta()->x(), $event->angleDelta()->y()])->toBe([0, -120])
+        ->and([$event->position()->x(), $event->position()->y()])->toBe([5.0, 6.0])
+        ->and([$event->globalPosition()->x(), $event->globalPosition()->y()])->toBe([105.0, 106.0])
+        ->and($event->source())->toBe(Qt\MouseEventSource::MOUSE_EVENT_SYNTHESIZED_BY_SYSTEM)
+        ->and($event->modifiers())->toBe(0x02000000)
+        ->and($event->type())->toBe(Type::WHEEL);
+});
+
+it('refuses wheel buttons and modifiers wider than 32 bits', function (): void {
+    $at = new QPointF(0.0, 0.0);
+    $none = new QPoint(0, 0);
+    $wheel = fn (int $buttons, int $modifiers) => new QWheelEvent($at, $at, $none, $none, $buttons, $modifiers, Qt\ScrollPhase::NO_SCROLL_PHASE, false,
+        Qt\MouseEventSource::MOUSE_EVENT_NOT_SYNTHESIZED, QPointingDevice::primaryPointingDevice());
+
+    expect(fn () => $wheel(1 << 32, 0))->toThrow(ValueError::class)
+        ->and(fn () => $wheel(0, 1 << 32))->toThrow(ValueError::class)
+        ->and($wheel(0, 0x04000000)->modifiers())->toBe(0x04000000);
+});
+
+it('hands a filter a wheel event as a QWheelEvent', function (): void {
+    $widget = new QWidget();
+    $read = null;
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$read): bool {
+        if ($event->type() === Type::WHEEL) {
+            $read = [$event::class, $event->angleDelta()->y(), $event->source()];
+        }
+
+        return false;
+    });
+    $widget->installEventFilter($filter);
+    QCoreApplication::sendEvent($widget, new QWheelEvent(new QPointF(1.0, 1.0), new QPointF(1.0, 1.0), new QPoint(0, 0), new QPoint(0, -120), 0, 0,
+        Qt\ScrollPhase::NO_SCROLL_PHASE, false, Qt\MouseEventSource::MOUSE_EVENT_NOT_SYNTHESIZED, QPointingDevice::primaryPointingDevice()));
+
+    expect($read)->toBe([QWheelEvent::class, -120, Qt\MouseEventSource::MOUSE_EVENT_NOT_SYNTHESIZED]);
+});
+
+it('reads the double-click hints', function (): void {
+    $hints = QGuiApplication::styleHints();
+
+    expect($hints->mouseDoubleClickInterval())->toBeGreaterThan(0)
+        ->and($hints->mouseDoubleClickDistance())->toBeGreaterThanOrEqual(0);
+});
+
+it('names the scroll phases and mouse event sources at their C values', function (): void {
+    expect(array_map(fn (Qt\ScrollPhase $p): int => $p->value, Qt\ScrollPhase::cases()))->toBe([0, 1, 2, 3, 4])
+        ->and([Qt\ScrollPhase::NO_SCROLL_PHASE, Qt\ScrollPhase::SCROLL_MOMENTUM])->toBe([Qt\ScrollPhase::from(0), Qt\ScrollPhase::from(4)])
+        ->and(array_map(fn (Qt\MouseEventSource $s): string => $s->name, Qt\MouseEventSource::cases()))
+        ->toBe(['MOUSE_EVENT_NOT_SYNTHESIZED', 'MOUSE_EVENT_SYNTHESIZED_BY_SYSTEM', 'MOUSE_EVENT_SYNTHESIZED_BY_QT', 'MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION'])
+        ->and(Qt\MouseEventSource::MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION->value)->toBe(3);
+});

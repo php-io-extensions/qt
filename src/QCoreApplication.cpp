@@ -4,6 +4,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QString>
 #include <QtGui/QGuiApplication>
+#include <QtGui/QClipboard>
 #include <QtWidgets/QApplication>
 #include <QtGui/QStyleHints>
 #include <QtCore/QEvent>
@@ -182,6 +183,13 @@ ZEND_METHOD(QApplication, focusWidget)
 	phpqt_box(return_value, QApplication::focusWidget());
 }
 
+ZEND_METHOD(QApplication, activeModalWidget)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	phpqt_box(return_value, QApplication::activeModalWidget());
+}
+
 ZEND_METHOD(QCoreApplication, processEvents)
 {
 	zend_object *flags_case = nullptr;
@@ -322,6 +330,15 @@ ZEND_METHOD(QGuiApplication, platformName)
 	ZEND_PARSE_PARAMETERS_NONE();
 
 	RETURN_STR(phpqt_utf8(QGuiApplication::platformName()));
+}
+
+ZEND_METHOD(QGuiApplication, clipboard)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	/* Before a QGuiApplication, Qt warns and returns nullptr: boxed as null. */
+	phpqt_box(return_value, QGuiApplication::clipboard());
 }
 
 ZEND_METHOD(QGuiApplication, desktopFileName)

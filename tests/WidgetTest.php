@@ -154,3 +154,134 @@ it('shows a non-modal message box', function (): void {
     expect($box->result())->toBe(1)
         ->and($box->isVisible())->toBeFalse();
 });
+
+it('makes a child window with window flags and a window modality', function (): void {
+    $main = new QMainWindow();
+    $child = new QMainWindow();
+    $child->setParent($main);
+
+    expect($child->isWindow())->toBeFalse();
+
+    $child->setWindowFlags(Qt\WindowType::DIALOG);
+    $child->setWindowModality(Qt\WindowModality::WINDOW_MODAL);
+
+    expect($child->isWindow())->toBeTrue()
+        ->and($child->parentWidget())->toBe($main)
+        ->and($child->windowFlags() & Qt\WindowType::WINDOW_TYPE_MASK->value)->toBe(Qt\WindowType::DIALOG->value)
+        ->and($child->windowModality())->toBe(Qt\WindowModality::WINDOW_MODAL);
+});
+
+it('reads the active modal widget: a shown window-modal child, then none', function (): void {
+    $main = new QMainWindow();
+    $main->show();
+    $child = new QMainWindow();
+    $child->setParent($main);
+    $child->setWindowFlags(Qt\WindowType::DIALOG);
+    $child->setWindowModality(Qt\WindowModality::WINDOW_MODAL);
+
+    expect(QApplication::activeModalWidget())->toBeNull();
+
+    $child->show();
+    expect(processUntil(fn (): bool => QApplication::activeModalWidget() === $child))->toBeTrue();
+
+    $child->hide();
+    expect(processUntil(fn (): bool => is_null(QApplication::activeModalWidget())))->toBeTrue();
+    $main->close();
+});
+
+it('adds message box buttons, sets the default and reads the clicked one', function (): void {
+    $box = new QMessageBox();
+    $save = $box->addButton('Save', QMessageBox\ButtonRole::ACTION_ROLE);
+    $box->addButton('Cancel', QMessageBox\ButtonRole::ACTION_ROLE);
+    $box->setDefaultButton($save);
+    $box->setEscapeButton(null);
+
+    expect($save)->toBeInstanceOf(QPushButton::class)
+        ->and($save->text())->toBe('Save')
+        ->and($save->isDefault())->toBeTrue()
+        ->and($box->clickedButton())->toBeNull();
+
+    $box->setDefaultButton(null);
+    $save->click();
+
+    expect($box->clickedButton())->toBe($save);
+});
+
+it('backs the dialog enums with the Qt values', function (): void {
+    expect(QMessageBox\ButtonRole::cases())->toHaveCount(11)
+        ->and(QMessageBox\ButtonRole::INVALID_ROLE->value)->toBe(-1)
+        ->and(QMessageBox\ButtonRole::N_ROLES->value)->toBe(9)
+        ->and(QFileDialog\FileMode::DIRECTORY->value)->toBe(2)
+        ->and(QFileDialog\FileMode::EXISTING_FILES->value)->toBe(3)
+        ->and(QFileDialog\AcceptMode::ACCEPT_SAVE->value)->toBe(1)
+        ->and(QFileDialog\Option::SHOW_DIRS_ONLY->value)->toBe(1)
+        ->and(QClipboard\Mode::CLIPBOARD->value)->toBe(0);
+});
+
+it('sets a file dialog and reads back the file it selects', function (): void {
+    $dialog = new QFileDialog(null, 'Pick', __DIR__);
+    foreach (QFileDialog\FileMode::cases() as $mode) {
+        $dialog->setFileMode($mode);
+    }
+    $dialog->setOption(QFileDialog\Option::SHOW_DIRS_ONLY);
+    $dialog->setOption(QFileDialog\Option::SHOW_DIRS_ONLY, false);
+    $dialog->setFileMode(QFileDialog\FileMode::ANY_FILE);
+    // An unshown native dialog keeps no selection; Qt's own dialog holds it at once.
+    $dialog->setOption(QFileDialog\Option::DONT_USE_NATIVE_DIALOG);
+    $dialog->setDirectory(__DIR__);
+    $dialog->setAcceptMode(QFileDialog\AcceptMode::ACCEPT_SAVE);
+    $dialog->selectFile('a.txt');
+
+    expect($dialog)->toBeInstanceOf(QDialog::class)
+        ->and($dialog->selectedFiles())->toBe([__DIR__ . '/a.txt']);
+});
+
+it('finds the window of a widget', function (): void {
+    $window = new QMainWindow();
+    $central = new QWidget();
+    $label = new QLabel('x', $central);
+    $window->setCentralWidget($central);
+
+    expect($label->window())->toBe($window)
+        ->and($window->window())->toBe($window);
+});
+
+it('sets and reads a focus policy', function (): void {
+    $widget = new QWidget();
+
+    expect($widget->focusPolicy())->toBe(Qt\FocusPolicy::NO_FOCUS);
+    $widget->setFocusPolicy(Qt\FocusPolicy::STRONG_FOCUS);
+    expect($widget->focusPolicy())->toBe(Qt\FocusPolicy::STRONG_FOCUS);
+});
+
+it('moves Tab focus in the order setTabOrder gives', function (): void {
+    $window = new QWidget();
+    $a = new QLineEdit('', $window);
+    $b = new QLineEdit('', $window);
+    $c = new QLineEdit('', $window);
+    QWidget::setTabOrder($a, $c);
+    $window->show();
+    $window->activateWindow();
+    $a->setFocus();
+    processUntil(fn (): bool => QApplication::focusWidget() === $a);
+
+    QCoreApplication::sendEvent($a, new QKeyEvent(QEvent\Type::KEY_PRESS, Qt\Key::TAB->value, 0));
+
+    expect(QApplication::focusWidget())->toBe($c)
+        ->and($b->hasFocus())->toBeFalse();
+    $window->close();
+});
+
+it('takes keyboard focus away with clearFocus', function (): void {
+    $window = new QWidget();
+    $edit = new QLineEdit('', $window);
+    $window->show();
+    $window->activateWindow();
+    $edit->setFocus();
+    processUntil(fn (): bool => $edit->hasFocus());
+
+    $edit->clearFocus();
+
+    expect($edit->hasFocus())->toBeFalse();
+    $window->close();
+});

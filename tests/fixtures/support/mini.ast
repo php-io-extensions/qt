@@ -1,0 +1,47 @@
+TranslationUnitDecl 0x100000000 <<invalid sloc>> <invalid sloc>
+|-CXXRecordDecl 0x100000010 </SDK/usr/include/c++/v1/vector:10:1, line:20:1> line:10:7 class vector definition
+| |-AccessSpecDecl 0x100000020 <line:11:1, col:7> col:1 public
+| `-CXXMethodDecl 0x100000030 <line:12:5, col:20> col:10 size 'int () const'
+|-CXXRecordDecl 0x100000040 </opt/homebrew/lib/QtCore.framework/Headers/qstring.h:10:1, line:90:1> line:10:7 class QString definition
+| |-AccessSpecDecl 0x100000050 <line:11:1, col:7> col:1 public
+| `-CXXMethodDecl 0x100000060 <line:12:5, col:20> col:10 size 'qsizetype () const'
+|-CXXRecordDecl 0x100000065 </opt/homebrew/lib/QtGui.framework/Headers/qpaintdevice.h:10:1, line:90:1> line:10:7 class QPaintDevice definition
+| |-AccessSpecDecl 0x100000066 <line:11:1, col:7> col:1 public
+| `-CXXMethodDecl 0x100000067 <line:12:5, col:20> col:10 used constexpr devicePixelRatioF 'qreal () const' inline
+|-CXXRecordDecl 0x100000070 </opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h:10:1, line:400:1> line:10:7 class QWidget definition
+| |-public 'QObject'
+| |-public 'QPaintDevice'
+| |-AccessSpecDecl 0x100000080 <line:11:1, col:7> col:1 public
+| `-CXXMethodDecl 0x100000090 <line:12:5, col:20> col:10 setFocus 'void ()'
+|-CXXRecordDecl 0x1000000a0 </opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h:20:1, line:146:1> line:20:24 class QTabWidget definition
+| |-DefinitionData polymorphic has_user_declared_ctor
+| | `-Destructor non_trivial user_declared
+| |-public 'QWidget'
+| |-CXXRecordDecl 0x1000000b0 <col:1, col:24> col:24 implicit referenced class QTabWidget
+| |-AccessSpecDecl 0x1000000c0 </opt/homebrew/lib/QtCore.framework/Headers/qtmetamacros.h:134:18, line:135:7> line:134:18 public
+| |-CXXMethodDecl 0x1000000d0 <line:139:5, col:45> col:32 metaObject 'const QMetaObject *() const' virtual
+| |-AccessSpecDecl 0x1000000e0 </opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h:35:1, col:7> col:1 public
+| |-CXXConstructorDecl 0x1000000f0 <line:37:5, col:50> col:14 QTabWidget 'void (QWidget *)' explicit
+| | `-ParmVarDecl 0x100000100 <col:25, col:48> col:34 parent 'QWidget *' cinit
+| |-CXXDestructorDecl 0x100000110 <line:38:5, col:18> col:5 ~QTabWidget 'void () noexcept'
+| |-CXXMethodDecl 0x100000120 <line:73:5, col:17> col:9 count 'int () const'
+| |-CXXMethodDecl 0x100000125 <line:74:5, col:17> col:9 count 'int (int) const'
+| | `-DeprecatedAttr 0x100000126 <col:5> "Use count()"
+| |-CXXMethodDecl 0x100000130 <line:80:5, col:40> col:17 operator= 'QTabWidget &(const QTabWidget &)'
+| |-CXXMethodDecl 0x100000140 <line:85:5, col:30> col:10 setTabShape 'void (int)'
+| | `-DeprecatedAttr 0x100000150 <col:5> "Use setTabPosition"
+| |-AccessSpecDecl 0x100000160 <line:118:1, col:15> col:1 public
+| | `-AnnotateAttr 0x100000170 <<command line>:1:56, col:67> "qt_slot"
+| |-CXXMethodDecl 0x100000180 </opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h:119:5, col:35> col:10 setCurrentIndex 'void (int)'
+| | |-ParmVarDecl 0x100000190 <col:26, col:30> col:30 index 'int'
+| | `-AnnotateAttr 0x1000001a0 <<command line>:1:56, col:67> "qt_slot"
+| |-AccessSpecDecl 0x1000001b0 </opt/homebrew/lib/QtCore.framework/Headers/qtmetamacros.h:48:20, /opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h:122:10> /opt/homebrew/lib/QtCore.framework/Headers/qtmetamacros.h:48:20 public
+| | `-AnnotateAttr 0x1000001c0 <<command line>:1:56, col:67> "qt_signal"
+| |-CXXMethodDecl 0x1000001d0 </opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h:123:5, col:34> col:10 currentChanged 'void (int)'
+| | |-ParmVarDecl 0x1000001e0 <col:25, col:29> col:29 index 'int'
+| | `-AnnotateAttr 0x1000001f0 <<command line>:1:56, col:67> "qt_signal"
+| |-AccessSpecDecl 0x100000200 <line:130:1, col:10> col:1 protected
+| |-CXXMethodDecl 0x100000210 <line:131:5, col:40> col:10 initStyleOption 'void (int *) const'
+| `-CXXMethodDecl 0x100000220 <line:140:5, col:40> col:10 implicit tabBarMini 'void ()'
+`-CXXRecordDecl 0x100000230 </opt/homebrew/lib/QtCore.framework/Headers/qobject.h:10:1, line:20:1> line:10:7 class QObjectMini definition
+  `-CXXMethodDecl 0x100000240 <line:12:5, col:20> col:10 privateByDefault 'void ()'

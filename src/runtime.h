@@ -32,6 +32,9 @@ class PhpSlot;
 class QFont;
 class QPixmap;
 class QTableWidgetItem;
+class QTreeWidgetItem;
+class QBrush;
+class QColor;
 
 /* One slot Qt is destroying: its parent, and the slot whose teardown freed this one (or none). */
 struct phpqt_teardown {
@@ -67,8 +70,8 @@ static inline phpqt_object *phpqt_object_from(zend_object *obj)
 }
 
 /*
- * Qt values (QFont, QPixmap) and the non-QObject QTableWidgetItem: a heap object
- * the PHP object owns, unless a table took the item; destroy() knows its type.
+ * Qt values (QFont, QPixmap) and the non-QObject QTableWidgetItem and QTreeWidgetItem: a heap
+ * object the PHP object owns, unless a table, tree or parent item took the item; destroy() knows its type.
  */
 typedef struct {
 	void *ptr;                     /* NULL before construction and once Qt deleted the item */
@@ -134,6 +137,13 @@ extern zend_class_entry *phpqt_ce_QEventFilter;
 extern zend_class_entry *phpqt_ce_Qt_AlignmentFlag;
 extern zend_class_entry *phpqt_ce_Qt_TextInteractionFlag;
 extern zend_class_entry *phpqt_ce_QDesktopServices;
+extern zend_class_entry *phpqt_ce_QMessageBox_ButtonRole;
+extern zend_class_entry *phpqt_ce_QFileDialog;
+extern zend_class_entry *phpqt_ce_QFileDialog_FileMode;
+extern zend_class_entry *phpqt_ce_QFileDialog_AcceptMode;
+extern zend_class_entry *phpqt_ce_QFileDialog_Option;
+extern zend_class_entry *phpqt_ce_QClipboard;
+extern zend_class_entry *phpqt_ce_QClipboard_Mode;
 extern zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 extern zend_class_entry *phpqt_ce_QLayout;
 extern zend_class_entry *phpqt_ce_QBoxLayout;
@@ -173,10 +183,13 @@ extern zend_class_entry *phpqt_ce_QPixmap;
 extern zend_class_entry *phpqt_ce_QImage;
 extern zend_class_entry *phpqt_ce_QImage_Format;
 extern zend_class_entry *phpqt_ce_QTableWidgetItem;
+extern zend_class_entry *phpqt_ce_QTreeWidgetItem;
+extern zend_class_entry *phpqt_ce_QTreeWidgetItem_ChildIndicatorPolicy;
 extern zend_class_entry *phpqt_ce_QFrame_Shape;
 extern zend_class_entry *phpqt_ce_QFrame_Shadow;
 extern zend_class_entry *phpqt_ce_QAbstractItemView_SelectionBehavior;
 extern zend_class_entry *phpqt_ce_QAbstractItemView_SelectionMode;
+extern zend_class_entry *phpqt_ce_QAbstractItemView_ScrollHint;
 extern zend_class_entry *phpqt_ce_QDateEdit;
 extern zend_class_entry *phpqt_ce_QProgressBar;
 extern zend_class_entry *phpqt_ce_QFrame;
@@ -186,6 +199,7 @@ extern zend_class_entry *phpqt_ce_QSplitterHandle;
 extern zend_class_entry *phpqt_ce_QTabWidget;
 extern zend_class_entry *phpqt_ce_QAbstractItemView;
 extern zend_class_entry *phpqt_ce_QTableWidget;
+extern zend_class_entry *phpqt_ce_QTreeWidget;
 extern zend_class_entry *phpqt_ce_QMediaPlayer_PlaybackState;
 extern zend_class_entry *phpqt_ce_QMediaPlayer_MediaStatus;
 extern zend_class_entry *phpqt_ce_QMediaPlayer_Error;
@@ -225,6 +239,8 @@ void phpqt_event_release(zval *boxed);
 extern zend_class_entry *phpqt_ce_QEvent;
 extern zend_class_entry *phpqt_ce_QInputEvent;
 extern zend_class_entry *phpqt_ce_QMouseEvent;
+extern zend_class_entry *phpqt_ce_QKeyEvent;
+extern zend_class_entry *phpqt_ce_QWheelEvent;
 extern zend_class_entry *phpqt_ce_QContextMenuEvent;
 extern zend_class_entry *phpqt_ce_QStyleHints;
 extern zend_class_entry *phpqt_ce_QContextMenuEvent_Reason;
@@ -247,6 +263,9 @@ void *phpqt_value_arg(zend_object *wrapper, uint32_t arg_num);
 void phpqt_return_font(zval *rv, const QFont &font);
 void phpqt_return_pixmap(zval *rv, const QPixmap &pixmap);
 void phpqt_return_table_item(zval *rv, QTableWidgetItem *item);
+void phpqt_return_tree_item(zval *rv, QTreeWidgetItem *item);
+void phpqt_return_color(zval *rv, const QColor &color);
+void phpqt_return_brush(zval *rv, const QBrush &brush);
 void phpqt_value_taken(zend_object *wrapper);
 bool phpqt_value_fresh(zend_object *wrapper);
 QTableWidgetItem *phpqt_table_item_prototype();
@@ -280,9 +299,15 @@ extern zend_class_entry *phpqt_ce_QKeySequence;
 extern zend_class_entry *phpqt_ce_QKeySequence_SequenceFormat;
 extern zend_class_entry *phpqt_ce_Qt_DateFormat;
 extern zend_class_entry *phpqt_ce_Qt_WindowType;
+extern zend_class_entry *phpqt_ce_Qt_WindowModality;
+extern zend_class_entry *phpqt_ce_Qt_FocusPolicy;
 extern zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
 extern zend_class_entry *phpqt_ce_Qt_BrushStyle;
 extern zend_class_entry *phpqt_ce_Qt_ConnectionType;
+extern zend_class_entry *phpqt_ce_Qt_ItemDataRole;
+extern zend_class_entry *phpqt_ce_Qt_Key;
+extern zend_class_entry *phpqt_ce_Qt_ScrollPhase;
+extern zend_class_entry *phpqt_ce_Qt_MouseEventSource;
 void phpqt_register_QValues();
 
 /* The wrapped value, or a QtException when it is gone. */
@@ -313,6 +338,8 @@ bool phpqt_string_list(HashTable *ht, QStringList *out, uint32_t arg_num);
 bool phpqt_int_list(HashTable *ht, QList<int> *out, uint32_t arg_num);
 class QVariant;
 bool phpqt_zval_to_variant(zval *arg, QMetaType type, QVariant *out, uint32_t arg_num);
+/* The value a QVariant holds, as a signal argument of its type reaches PHP; an empty QVariant is null. */
+void phpqt_variant_to_zval(zval *rv, const QVariant &value);
 
 /* Threads. */
 bool phpqt_on_main_thread();

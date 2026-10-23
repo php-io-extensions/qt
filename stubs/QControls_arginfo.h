@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 10f2cd1df0932955f595f6d5ef6bc55bde0caff6 */
+ * Stub hash: 06f531f062ac8af384c7af6c269bd025046ed7bd */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -82,6 +82,12 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QPushButton___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPushButton_isDefault arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPushButton_setDefault, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, default, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QCheckBox___construct arginfo_class_QPushButton___construct
@@ -399,6 +405,38 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidget_selectRow, 0,
 	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QTreeWidget___construct arginfo_class_QComboBox___construct
+
+#define arginfo_class_QTreeWidget_columnCount arginfo_class_QLabel_alignment
+
+#define arginfo_class_QTreeWidget_setColumnCount arginfo_class_QTableWidget_setColumnCount
+
+#define arginfo_class_QTreeWidget_setHeaderLabels arginfo_class_QTableWidget_setHorizontalHeaderLabels
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidget_addTopLevelItem, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, item, QTreeWidgetItem, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTreeWidget_clear arginfo_class_QAbstractButton_click
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTreeWidget_currentItem, 0, 0, QTreeWidgetItem, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidget_setCurrentItem, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, item, QTreeWidgetItem, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidget_scrollToItem, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, item, QTreeWidgetItem, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, hint, QAbstractItemView\\ScrollHint, 0, "QAbstractItemView\\ScrollHint::ENSURE_VISIBLE")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTreeWidget_expandItem arginfo_class_QTreeWidget_addTopLevelItem
+
+#define arginfo_class_QTreeWidget_collapseItem arginfo_class_QTreeWidget_addTopLevelItem
+
+#define arginfo_class_QTreeWidget_selectedItems arginfo_class_QPlainTextEdit_extraSelections
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QSplitter___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, orientation, Qt\\Orientation, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -524,6 +562,8 @@ ZEND_METHOD(QAbstractButton, setChecked);
 ZEND_METHOD(QAbstractButton, click);
 ZEND_METHOD(QAbstractButton, toggle);
 ZEND_METHOD(QPushButton, __construct);
+ZEND_METHOD(QPushButton, isDefault);
+ZEND_METHOD(QPushButton, setDefault);
 ZEND_METHOD(QCheckBox, __construct);
 ZEND_METHOD(QAbstractSlider, __construct);
 ZEND_METHOD(QAbstractSlider, minimum);
@@ -632,6 +672,18 @@ ZEND_METHOD(QTableWidget, horizontalHeaderItem);
 ZEND_METHOD(QTableWidget, clearContents);
 ZEND_METHOD(QTableWidget, currentRow);
 ZEND_METHOD(QTableWidget, selectRow);
+ZEND_METHOD(QTreeWidget, __construct);
+ZEND_METHOD(QTreeWidget, columnCount);
+ZEND_METHOD(QTreeWidget, setColumnCount);
+ZEND_METHOD(QTreeWidget, setHeaderLabels);
+ZEND_METHOD(QTreeWidget, addTopLevelItem);
+ZEND_METHOD(QTreeWidget, clear);
+ZEND_METHOD(QTreeWidget, currentItem);
+ZEND_METHOD(QTreeWidget, setCurrentItem);
+ZEND_METHOD(QTreeWidget, scrollToItem);
+ZEND_METHOD(QTreeWidget, expandItem);
+ZEND_METHOD(QTreeWidget, collapseItem);
+ZEND_METHOD(QTreeWidget, selectedItems);
 ZEND_METHOD(QSplitter, __construct);
 ZEND_METHOD(QSplitter, orientation);
 ZEND_METHOD(QSplitter, setOrientation);
@@ -700,6 +752,8 @@ static const zend_function_entry class_QAbstractButton_methods[] = {
 
 static const zend_function_entry class_QPushButton_methods[] = {
 	ZEND_ME(QPushButton, __construct, arginfo_class_QPushButton___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPushButton, isDefault, arginfo_class_QPushButton_isDefault, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPushButton, setDefault, arginfo_class_QPushButton_setDefault, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -864,6 +918,22 @@ static const zend_function_entry class_QTableWidget_methods[] = {
 	ZEND_ME(QTableWidget, clearContents, arginfo_class_QTableWidget_clearContents, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidget, currentRow, arginfo_class_QTableWidget_currentRow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTableWidget, selectRow, arginfo_class_QTableWidget_selectRow, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QTreeWidget_methods[] = {
+	ZEND_ME(QTreeWidget, __construct, arginfo_class_QTreeWidget___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, columnCount, arginfo_class_QTreeWidget_columnCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, setColumnCount, arginfo_class_QTreeWidget_setColumnCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, setHeaderLabels, arginfo_class_QTreeWidget_setHeaderLabels, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, addTopLevelItem, arginfo_class_QTreeWidget_addTopLevelItem, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, clear, arginfo_class_QTreeWidget_clear, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, currentItem, arginfo_class_QTreeWidget_currentItem, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, setCurrentItem, arginfo_class_QTreeWidget_setCurrentItem, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, scrollToItem, arginfo_class_QTreeWidget_scrollToItem, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, expandItem, arginfo_class_QTreeWidget_expandItem, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, collapseItem, arginfo_class_QTreeWidget_collapseItem, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTreeWidget, selectedItems, arginfo_class_QTreeWidget_selectedItems, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -1050,6 +1120,29 @@ static zend_class_entry *register_class_QAbstractItemView_SelectionMode(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QAbstractItemView_ScrollHint(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QAbstractItemView\\ScrollHint", IS_LONG, NULL);
+
+	zval enum_case_ENSURE_VISIBLE_value;
+	ZVAL_LONG(&enum_case_ENSURE_VISIBLE_value, 0);
+	zend_enum_add_case_cstr(class_entry, "ENSURE_VISIBLE", &enum_case_ENSURE_VISIBLE_value);
+
+	zval enum_case_POSITION_AT_TOP_value;
+	ZVAL_LONG(&enum_case_POSITION_AT_TOP_value, 1);
+	zend_enum_add_case_cstr(class_entry, "POSITION_AT_TOP", &enum_case_POSITION_AT_TOP_value);
+
+	zval enum_case_POSITION_AT_BOTTOM_value;
+	ZVAL_LONG(&enum_case_POSITION_AT_BOTTOM_value, 2);
+	zend_enum_add_case_cstr(class_entry, "POSITION_AT_BOTTOM", &enum_case_POSITION_AT_BOTTOM_value);
+
+	zval enum_case_POSITION_AT_CENTER_value;
+	ZVAL_LONG(&enum_case_POSITION_AT_CENTER_value, 3);
+	zend_enum_add_case_cstr(class_entry, "POSITION_AT_CENTER", &enum_case_POSITION_AT_CENTER_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QLabel(zend_class_entry *class_entry_QWidget)
 {
 	zend_class_entry ce, *class_entry;
@@ -1221,6 +1314,16 @@ static zend_class_entry *register_class_QTableWidget(zend_class_entry *class_ent
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QTableWidget", class_QTableWidget_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QAbstractItemView, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QTreeWidget(zend_class_entry *class_entry_QAbstractItemView)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QTreeWidget", class_QTreeWidget_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QAbstractItemView, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

@@ -64,6 +64,7 @@
             "outcome": 2,
             "probe": "tests/Probes/MainThreadTest.php"
         },
+        "qapp-file-dialog": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
         "qapp-widget": {
             "kind": "refusal",
             "outcome": 2,
@@ -89,6 +90,7 @@
             "outcome": 2,
             "probe": "tests/Probes/ApplicationFirstTest.php"
         },
+        "qapp-tree-widget": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
         "qapp-gl-painter": {
             "kind": "refusal",
             "outcome": 2,

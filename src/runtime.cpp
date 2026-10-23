@@ -17,8 +17,14 @@
 #include <QtCore/QSize>
 #include <QtCore/QUrl>
 #include <QtGui/QKeySequence>
+#include <QtGui/QBrush>
+#include <QtGui/QColor>
+#include <QtGui/QFont>
+#include <QtGui/QPixmap>
 #include <QtCore/QSocketDescriptor>
 #include <QtCore/QString>
+#include <QtCore/QVariant>
+#include <QtWidgets/QTreeWidgetItem>
 
 #ifdef __APPLE__
 # include <pthread.h>
@@ -444,10 +450,20 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 		case QMetaType::QRect:   phpqt_return_qrect(rv, *static_cast<QRect *>(value)); return;
 		case QMetaType::QUrl:    phpqt_return_url(rv, *static_cast<QUrl *>(value)); return;
 		case QMetaType::QKeySequence: phpqt_return_qkeysequence(rv, *static_cast<QKeySequence *>(value)); return;
+		case QMetaType::QBrush:  phpqt_return_brush(rv, *static_cast<QBrush *>(value)); return;
+		case QMetaType::QColor:  phpqt_return_color(rv, *static_cast<QColor *>(value)); return;
+		case QMetaType::QFont:   phpqt_return_font(rv, *static_cast<QFont *>(value)); return;
+		case QMetaType::QPixmap: phpqt_return_pixmap(rv, *static_cast<QPixmap *>(value)); return;
 	}
 
 	if (type == QMetaType::fromType<QSocketDescriptor>()) {
 		ZVAL_LONG(rv, (zend_long) static_cast<QSocketDescriptor::DescriptorType>(*static_cast<QSocketDescriptor *>(value)));
+		return;
+	}
+
+	/* QTreeWidget's item signals: the wrapper PHP already holds for the item, or a new tree-owned one. */
+	if (type == QMetaType::fromType<QTreeWidgetItem *>()) {
+		phpqt_return_tree_item(rv, *static_cast<QTreeWidgetItem **>(value));
 		return;
 	}
 
@@ -470,6 +486,16 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 	}
 
 	ZVAL_NULL(rv);
+}
+
+void phpqt_variant_to_zval(zval *rv, const QVariant &value)
+{
+	if (!value.isValid()) {
+		ZVAL_NULL(rv);
+		return;
+	}
+
+	phpqt_arg_to_zval(rv, value.metaType(), const_cast<void *>(value.constData()), nullptr);
 }
 
 /* ---- PhpSlot ----------------------------------------------------------- */

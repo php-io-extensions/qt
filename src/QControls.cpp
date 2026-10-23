@@ -13,6 +13,7 @@
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QAbstractSlider>
 #include <QtWidgets/QCheckBox>
@@ -39,6 +40,8 @@ static_assert(QAbstractItemView::SelectItems == 0 && QAbstractItemView::SelectRo
 static_assert(QAbstractItemView::NoSelection == 0 && QAbstractItemView::SingleSelection == 1 && QAbstractItemView::MultiSelection == 2
 	&& QAbstractItemView::ExtendedSelection == 3 && QAbstractItemView::ContiguousSelection == 4,
 	"QAbstractItemView::SelectionMode values differ from the stub's enum");
+static_assert(QAbstractItemView::EnsureVisible == 0 && QAbstractItemView::PositionAtTop == 1 && QAbstractItemView::PositionAtBottom == 2
+	&& QAbstractItemView::PositionAtCenter == 3, "QAbstractItemView::ScrollHint values differ from the stub's enum");
 
 void phpqt_register_QControls()
 {
@@ -48,6 +51,7 @@ void phpqt_register_QControls()
 	phpqt_ce_QFrame_Shadow = register_class_QFrame_Shadow();
 	phpqt_ce_QAbstractItemView_SelectionBehavior = register_class_QAbstractItemView_SelectionBehavior();
 	phpqt_ce_QAbstractItemView_SelectionMode = register_class_QAbstractItemView_SelectionMode();
+	phpqt_ce_QAbstractItemView_ScrollHint = register_class_QAbstractItemView_ScrollHint();
 
 	phpqt_ce_QLabel = register_class_QLabel(phpqt_ce_QWidget);
 	phpqt_object_setup(phpqt_ce_QLabel);
@@ -116,6 +120,10 @@ void phpqt_register_QControls()
 	phpqt_ce_QTableWidget = register_class_QTableWidget(phpqt_ce_QAbstractItemView);
 	phpqt_object_setup(phpqt_ce_QTableWidget);
 	phpqt_map_class("QTableWidget", phpqt_ce_QTableWidget);
+
+	phpqt_ce_QTreeWidget = register_class_QTreeWidget(phpqt_ce_QAbstractItemView);
+	phpqt_object_setup(phpqt_ce_QTreeWidget);
+	phpqt_map_class("QTreeWidget", phpqt_ce_QTreeWidget);
 
 	phpqt_ce_QSplitter = register_class_QSplitter(phpqt_ce_QFrame);
 	phpqt_object_setup(phpqt_ce_QSplitter);
@@ -320,6 +328,9 @@ ZEND_METHOD(QPushButton, __construct)
 {
 	phpqt_construct_text_widget<QPushButton>(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
+
+PHPQT_GETTER_BOOL(QPushButton, isDefault, isDefault)
+PHPQT_SETTER_BOOL(QPushButton, setDefault, setDefault)
 
 ZEND_METHOD(QCheckBox, __construct)
 {
@@ -1064,6 +1075,156 @@ ZEND_METHOD(QTableWidget, horizontalHeaderItem)
 	PHPQT_THIS(QTableWidget, table);
 
 	phpqt_return_table_item(return_value, table->horizontalHeaderItem(static_cast<int>(column)));
+}
+
+/* ---- QTreeWidget ------------------------------------------------------- */
+
+ZEND_METHOD(QTreeWidget, __construct)
+{
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-tree-widget") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QTreeWidget needs a QApplication first", 0); /* binding:qapp-tree-widget */
+		RETURN_THROWS();
+	}
+
+	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QTreeWidget(qparent));
+}
+
+PHPQT_GETTER_INT(QTreeWidget, columnCount, columnCount)
+PHPQT_SETTER_INT(QTreeWidget, setColumnCount, setColumnCount)
+PHPQT_VOID(QTreeWidget, clear, clear)
+
+ZEND_METHOD(QTreeWidget, setHeaderLabels)
+{
+	HashTable *labels;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ARRAY_HT(labels)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTreeWidget, tree);
+
+	QStringList list;
+	if (!phpqt_string_list(labels, &list, 1)) {
+		RETURN_THROWS();
+	}
+
+	tree->setHeaderLabels(list);
+}
+
+ZEND_METHOD(QTreeWidget, addTopLevelItem)
+{
+	zend_object *item_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(item_obj, phpqt_ce_QTreeWidgetItem)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTreeWidget, tree);
+
+	QTreeWidgetItem *item = static_cast<QTreeWidgetItem *>(phpqt_value_arg(item_obj, 1));
+	if (item == nullptr) {
+		RETURN_THROWS();
+	}
+
+	tree->addTopLevelItem(item);
+	/* The tree owns the item once Qt stored it; an item that already had a tree or a parent stays where it was. */
+	if (item->treeWidget() == tree && item->parent() == nullptr) {
+		phpqt_value_taken(item_obj);
+	}
+}
+
+ZEND_METHOD(QTreeWidget, currentItem)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QTreeWidget, tree);
+
+	phpqt_return_tree_item(return_value, tree->currentItem());
+}
+
+ZEND_METHOD(QTreeWidget, setCurrentItem)
+{
+	zend_object *item_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(item_obj, phpqt_ce_QTreeWidgetItem)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTreeWidget, tree);
+
+	QTreeWidgetItem *item = nullptr;
+	if (item_obj != nullptr) {
+		item = static_cast<QTreeWidgetItem *>(phpqt_value_arg(item_obj, 1));
+		if (item == nullptr) {
+			RETURN_THROWS();
+		}
+	}
+
+	tree->setCurrentItem(item);
+}
+
+ZEND_METHOD(QTreeWidget, scrollToItem)
+{
+	zend_object *item_obj;
+	zend_object *hint = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(item_obj, phpqt_ce_QTreeWidgetItem)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(hint, phpqt_ce_QAbstractItemView_ScrollHint)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTreeWidget, tree);
+
+	QTreeWidgetItem *item = static_cast<QTreeWidgetItem *>(phpqt_value_arg(item_obj, 1));
+	if (item == nullptr) {
+		RETURN_THROWS();
+	}
+
+	tree->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(phpqt_enum_value(hint, QAbstractItemView::EnsureVisible)));
+}
+
+/* expandItem(), collapseItem(): one item argument each. */
+#define PHPQT_TREE_ITEM_CALL(name) \
+ZEND_METHOD(QTreeWidget, name) \
+{ \
+	zend_object *item_obj; \
+	ZEND_PARSE_PARAMETERS_START(1, 1) \
+		Z_PARAM_OBJ_OF_CLASS(item_obj, phpqt_ce_QTreeWidgetItem) \
+	ZEND_PARSE_PARAMETERS_END(); \
+	PHPQT_THIS(QTreeWidget, tree); \
+	QTreeWidgetItem *item = static_cast<QTreeWidgetItem *>(phpqt_value_arg(item_obj, 1)); \
+	if (item == nullptr) { \
+		RETURN_THROWS(); \
+	} \
+	tree->name(item); \
+}
+
+PHPQT_TREE_ITEM_CALL(expandItem)
+PHPQT_TREE_ITEM_CALL(collapseItem)
+
+ZEND_METHOD(QTreeWidget, selectedItems)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QTreeWidget, tree);
+
+	const QList<QTreeWidgetItem *> items = tree->selectedItems();
+	array_init_size(return_value, (uint32_t) items.size());
+	for (QTreeWidgetItem *item : items) {
+		zval boxed;
+		phpqt_return_tree_item(&boxed, item);
+		add_next_index_zval(return_value, &boxed);
+	}
 }
 
 /* ---- QSplitter, QSplitterHandle ---------------------------------------- */

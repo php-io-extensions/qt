@@ -18,6 +18,15 @@ it('clicks a push button into PHP and toggles a checkable one', function (): voi
         ->and($button)->toBeInstanceOf(QAbstractButton::class);
 });
 
+it('makes a push button the default button', function (): void {
+    $button = new QPushButton('OK');
+
+    expect($button->isDefault())->toBeFalse();
+
+    $button->setDefault(true);
+    expect($button->isDefault())->toBeTrue();
+});
+
 it('reports a checkbox toggle', function (): void {
     $box = new QCheckBox('Remember');
     $toggles = [];
@@ -518,4 +527,127 @@ it('holds tabs with text and switches pages', function (): void {
     expect($tabs->currentIndex())->toBe(1)->and($tabs->count())->toBe(2)->and($changed)->toBe([1]);
     $tabs->removeTab(1);
     expect($tabs->count())->toBe(1)->and($changed)->toBe([1, 0])->and($two->isWindow())->toBeFalse();
+});
+
+it('carries Qt\'s tree item types and holds text, colour and data per column', function (): void {
+    $item = new QTreeWidgetItem();
+    $item->setText(1, 'x');
+    $item->setForeground(0, new QBrush(new QColor(255, 0, 0)));
+    $color = $item->foreground(0)->color();
+    $role = Qt\ItemDataRole::USER_ROLE->value;
+    $data = [];
+    foreach (['id-1', 7, true, null] as $value) {
+        $item->setData(0, $role, $value);
+        $data[] = $item->data(0, $role);
+    }
+    $item->setData(1, $role, new QColor(1, 2, 3));
+    $stored = $item->data(1, $role);
+    $brush = $item->data(0, Qt\ItemDataRole::FOREGROUND_ROLE->value);
+
+    expect([QTreeWidgetItem::TYPE, QTreeWidgetItem::USER_TYPE])->toBe([0, 1000])
+        ->and([Qt\ItemDataRole::DISPLAY_ROLE->value, Qt\ItemDataRole::FOREGROUND_ROLE->value, $role])->toBe([0, 9, 256])
+        ->and($item->text(1))->toBe('x')->and($item->text(0))->toBe('')
+        ->and($item->data(1, Qt\ItemDataRole::DISPLAY_ROLE->value))->toBe('x')
+        ->and([$color->red(), $color->green(), $color->blue()])->toBe([255, 0, 0])
+        ->and($data)->toBe(['id-1', 7, true, null])
+        ->and([$stored::class, $stored->red(), $stored->green(), $stored->blue()])->toBe([QColor::class, 1, 2, 3])
+        ->and([$brush::class, $brush->color()->red()])->toBe([QBrush::class, 255])
+        ->and($item->data(5, $role))->toBeNull();
+});
+
+it('builds a tree of items, expands and collapses them, and keeps one wrapper per item', function (): void {
+    $tree = new QTreeWidget();
+    $tree->setColumnCount(3);
+    $columns = $tree->columnCount();
+    $tree->setHeaderLabels(['A', 'B', 'C', 'D']);
+    [$a, $a1] = [new QTreeWidgetItem(), new QTreeWidgetItem()];
+    $tree->addTopLevelItem($a);
+    $a->addChild($a1);
+    $tree->expandItem($a);
+    $expanded = $a->isExpanded();
+    $tree->collapseItem($a);
+    $collapsed = $a->isExpanded();
+    $a->setExpanded(true);
+    $a1->setChildIndicatorPolicy(QTreeWidgetItem\ChildIndicatorPolicy::DONT_SHOW_INDICATOR);
+
+    expect($columns)->toBe(3)->and($tree->columnCount())->toBe(4)
+        ->and($a->childCount())->toBe(1)->and($a1->childCount())->toBe(0)
+        ->and($a->child(0))->toBe($a1)->and($a->child(1))->toBeNull()
+        ->and($a1->parent())->toBe($a)->and($a->parent())->toBeNull()
+        ->and([$expanded, $collapsed, $a->isExpanded()])->toBe([true, false, true])
+        ->and($a1->childIndicatorPolicy())->toBe(QTreeWidgetItem\ChildIndicatorPolicy::DONT_SHOW_INDICATOR)
+        ->and($a->childIndicatorPolicy())->toBe(QTreeWidgetItem\ChildIndicatorPolicy::DONT_SHOW_INDICATOR_WHEN_CHILDLESS)
+        ->and(array_map(fn ($case) => $case->value, QTreeWidgetItem\ChildIndicatorPolicy::cases()))->toBe([0, 1, 2]);
+});
+
+it('reports expansion, the current item and the selection with the items themselves', function (): void {
+    $tree = new QTreeWidget();
+    [$a, $a1] = [new QTreeWidgetItem(), new QTreeWidgetItem()];
+    $tree->addTopLevelItem($a);
+    $a->addChild($a1);
+    $seen = [];
+    QObject::connect($tree, 'itemExpanded(QTreeWidgetItem*)', function (QTreeWidgetItem $item) use (&$seen): void { $seen[] = ['expanded', $item]; });
+    QObject::connect($tree, 'itemCollapsed(QTreeWidgetItem*)', function (QTreeWidgetItem $item) use (&$seen): void { $seen[] = ['collapsed', $item]; });
+    QObject::connect($tree, 'currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)', function (?QTreeWidgetItem $current, ?QTreeWidgetItem $previous) use (&$seen): void {
+        $seen[] = ['current', $current, $previous];
+    });
+    QObject::connect($tree, 'itemSelectionChanged()', function () use (&$seen): void { $seen[] = ['selection']; });
+    $activated = QObject::connect($tree, 'itemActivated(QTreeWidgetItem*,int)', function (QTreeWidgetItem $item, int $column): void {});
+
+    $tree->expandItem($a);
+    $tree->collapseItem($a);
+    $tree->setCurrentItem($a1);
+    $selected = $tree->selectedItems();
+    $current = $tree->currentItem();
+    $tree->clearSelection();
+
+    expect($seen)->toBe([['expanded', $a], ['collapsed', $a], ['selection'], ['current', $a1, null], ['selection']])
+        ->and($selected)->toBe([$a1])->and($current)->toBe($a1)
+        ->and($tree->selectedItems())->toBe([])
+        ->and($activated->isValid())->toBeTrue();
+
+    $tree->setCurrentItem(null);
+    expect($tree->currentItem())->toBeNull();
+});
+
+it('lets Qt delete the items a tree or a parent item holds, and leaves an item already placed where it is', function (): void {
+    $tree = new QTreeWidget();
+    $a = new QTreeWidgetItem();
+    $tree->addTopLevelItem($a);
+    $tree->clear();
+    expect(fn () => $a->text(0))->toThrow(QtException::class, 'deleted');
+
+    $parent = new QTreeWidgetItem();
+    $child = new QTreeWidgetItem();
+    $parent->addChild($child);
+    unset($parent);
+    expect(fn () => $child->text(0))->toThrow(QtException::class, 'deleted');
+
+    // Qt ignores an item that already has a tree or a parent; it stays where it was.
+    $placed = new QTreeWidgetItem();
+    $placed->setText(0, 'placed');
+    $tree->addTopLevelItem($placed);
+    $other = new QTreeWidget();
+    $other->addTopLevelItem($placed);
+    $holder = new QTreeWidgetItem();
+    $holder->addChild($placed);
+    $tree->setCurrentItem($placed);
+    $other->setCurrentItem($placed);
+
+    expect($placed->text(0))->toBe('placed')->and($placed->parent())->toBeNull()
+        ->and($holder->childCount())->toBe(0)
+        ->and($tree->currentItem())->toBe($placed)->and($other->currentItem())->toBeNull();
+});
+
+it('scrolls to an item with each scroll hint', function (): void {
+    $tree = new QTreeWidget();
+    $item = new QTreeWidgetItem();
+    $tree->addTopLevelItem($item);
+    $tree->scrollToItem($item);
+    foreach (QAbstractItemView\ScrollHint::cases() as $hint) {
+        $tree->scrollToItem($item, $hint);
+    }
+
+    expect(array_map(fn ($case) => $case->value, QAbstractItemView\ScrollHint::cases()))->toBe([0, 1, 2, 3])
+        ->and(QAbstractItemView\ScrollHint::POSITION_AT_TOP->value)->toBe(1);
 });

@@ -5,7 +5,7 @@ description: Qt answers for itself; kept refusals only where a probe shows a cra
 resource: src/runtime.h
 tags: [qt, errors, threads]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-18T22:00:00Z }
+generated: { by: claude-opus/5.5, at: 2026-10-19T02:24:03Z }
 sources:
   - id: header
     resource: src/runtime.h
@@ -25,7 +25,7 @@ Each reads `if (!PHPQT_PROBE_OFF("<id>") && (<check>))`, marks its throw line `/
 
 | Site | Calls | Outcome |
 |---|---|---|
-| `qapp-widget`, `qapp-text-widget`, `qapp-slider`, `qapp-table`, `qapp-splitter`, `qapp-gl-painter`, `qapp-menubar`, `qapp-menu` | widget constructors before a `QApplication` | qFatal abort |
+| `qapp-widget`, `qapp-text-widget`, `qapp-slider`, `qapp-table`, `qapp-tree-widget`, `qapp-splitter`, `qapp-gl-painter`, `qapp-menubar`, `qapp-menu` | widget constructors before a `QApplication` | qFatal abort |
 | `qguiapp-window`, `qguiapp-pixmap`, `qguiapp-pixmap-from-image` | `QWindow`, `QPixmap`, `QPixmap::fromImage` before a `QGuiApplication` | qFatal abort |
 | `qguiapp-vulkan-create` | `QVulkanInstance::create()` before a `QGuiApplication` | SIGSEGV |
 | `main-thread-macos` | an application, widget or `QWindow` constructor off the process main thread, macOS only | AppKit's uncaught NSException |

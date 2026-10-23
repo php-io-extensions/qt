@@ -4,7 +4,7 @@
 
 /**
  * A Qt event. One handed to a QEventFilter callback is Qt's own and lives only during the call:
- * reading it afterwards throws. One made in PHP (QMouseEvent, QContextMenuEvent) is PHP's, for
+ * reading it afterwards throws. One made in PHP (QMouseEvent, QKeyEvent, QWheelEvent, QContextMenuEvent) is PHP's, for
  * QCoreApplication::sendEvent().
  *
  * @not-serializable
@@ -52,7 +52,7 @@ class QInputEvent extends QEvent
  */
 class QMouseEvent extends QInputEvent
 {
-    /** $button and $buttons: Qt::MouseButton(s) as ints; $modifiers Qt::KeyboardModifiers. */
+    /** $button and $buttons: Qt::MouseButton(s) as 32-bit ints; $modifiers Qt::KeyboardModifiers. A wider value is a ValueError. */
     public function __construct(QEvent\Type $type, QPointF $localPos, QPointF $globalPos, int $button, int $buttons, int $modifiers, QPointingDevice $device) {}
 
     /** Qt::MouseButton as an int. */
@@ -66,6 +66,56 @@ class QMouseEvent extends QInputEvent
 
     /** On the screen. */
     public function globalPosition(): QPointF {}
+}
+
+/**
+ * @not-serializable
+ */
+class QKeyEvent extends QInputEvent
+{
+    /** $key: a Qt\Key value (a C int); $modifiers Qt::KeyboardModifiers as a 32-bit int; $count a quint16. A value wider than its C type is a ValueError. */
+    public function __construct(QEvent\Type $type, int $key, int $modifiers, string $text = "", bool $autorep = false, int $count = 1) {}
+
+    /** A Qt\Key value. */
+    public function key(): int {}
+
+    /** The Unicode text the key produced; '' for none. */
+    public function text(): string {}
+
+    public function isAutoRepeat(): bool {}
+
+    /** The platform's scan code (X11: the evdev code + 8); 0 when unknown, and 1 or 0 on macOS. */
+    public function nativeScanCode(): int {}
+
+    /** The platform's virtual key (macOS: the kVK_ key code); 0 when unknown. */
+    public function nativeVirtualKey(): int {}
+}
+
+/**
+ * @not-serializable
+ */
+class QWheelEvent extends QInputEvent
+{
+    /**
+     * $buttons: Qt::MouseButtons as a 32-bit int; $modifiers Qt::KeyboardModifiers. A wider value is a
+     * ValueError. $device is required, as QMouseEvent's: PHP cannot write primaryPointingDevice() as a
+     * default, so $source before it is required too.
+     */
+    public function __construct(QPointF $pos, QPointF $globalPos, QPoint $pixelDelta, QPoint $angleDelta, int $buttons, int $modifiers, Qt\ScrollPhase $phase, bool $inverted, Qt\MouseEventSource $source, QPointingDevice $device) {}
+
+    /** In screen pixels: (0, 0) when the device reports none. */
+    public function pixelDelta(): QPoint {}
+
+    /** In eighths of a degree: 120 is one notch of most mouse wheels. */
+    public function angleDelta(): QPoint {}
+
+    /** In the receiving widget. */
+    public function position(): QPointF {}
+
+    /** On the screen. */
+    public function globalPosition(): QPointF {}
+
+    public function source(): Qt\MouseEventSource {}
 }
 
 /**
@@ -92,4 +142,10 @@ class QStyleHints extends QObject
     public function mousePressAndHoldInterval(): int {}
 
     public function startDragDistance(): int {}
+
+    /** Milliseconds. */
+    public function mouseDoubleClickInterval(): int {}
+
+    /** Pixels. */
+    public function mouseDoubleClickDistance(): int {}
 }

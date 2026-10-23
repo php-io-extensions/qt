@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 757e908fb4099f1ea890216e1cfed1ab86e55bd4 */
+ * Stub hash: ae0dc5cb1701867cb15d6370543b9fcb4b7eda2e */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -34,7 +34,21 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_setFocus arginfo_class_QWidget_show
 
+#define arginfo_class_QWidget_clearFocus arginfo_class_QWidget_show
+
 #define arginfo_class_QWidget_hasFocus arginfo_class_QWidget_close
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_focusPolicy, 0, 0, Qt\\FocusPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setFocusPolicy, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, policy, Qt\\FocusPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setTabOrder, 0, 2, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, first, QWidget, 0)
+	ZEND_ARG_OBJ_INFO(0, second, QWidget, 0)
+ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_raise arginfo_class_QWidget_show
 
@@ -143,6 +157,22 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setParent, 0, 1, I
 	ZEND_ARG_OBJ_INFO(0, parent, QObject, 1)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QWidget_windowFlags arginfo_class_QWidget_width
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setWindowFlags, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, type, Qt\\WindowType, MAY_BE_LONG, NULL)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_windowModality, 0, 0, Qt\\WindowModality, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setWindowModality, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, windowModality, Qt\\WindowModality, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_window, 0, 0, QWidget, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QWidget, __construct);
 ZEND_METHOD(QWidget, createWindowContainer);
 ZEND_METHOD(QWidget, show);
@@ -154,7 +184,11 @@ ZEND_METHOD(QWidget, isWindow);
 ZEND_METHOD(QWidget, isActiveWindow);
 ZEND_METHOD(QWidget, activateWindow);
 ZEND_METHOD(QWidget, setFocus);
+ZEND_METHOD(QWidget, clearFocus);
 ZEND_METHOD(QWidget, hasFocus);
+ZEND_METHOD(QWidget, focusPolicy);
+ZEND_METHOD(QWidget, setFocusPolicy);
+ZEND_METHOD(QWidget, setTabOrder);
 ZEND_METHOD(QWidget, raise);
 ZEND_METHOD(QWidget, windowTitle);
 ZEND_METHOD(QWidget, setWindowTitle);
@@ -186,6 +220,11 @@ ZEND_METHOD(QWidget, devicePixelRatioF);
 ZEND_METHOD(QWidget, setFont);
 ZEND_METHOD(QWidget, font);
 ZEND_METHOD(QWidget, setParent);
+ZEND_METHOD(QWidget, windowFlags);
+ZEND_METHOD(QWidget, setWindowFlags);
+ZEND_METHOD(QWidget, windowModality);
+ZEND_METHOD(QWidget, setWindowModality);
+ZEND_METHOD(QWidget, window);
 
 static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, __construct, arginfo_class_QWidget___construct, ZEND_ACC_PUBLIC)
@@ -199,7 +238,11 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, isActiveWindow, arginfo_class_QWidget_isActiveWindow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, activateWindow, arginfo_class_QWidget_activateWindow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setFocus, arginfo_class_QWidget_setFocus, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, clearFocus, arginfo_class_QWidget_clearFocus, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, hasFocus, arginfo_class_QWidget_hasFocus, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, focusPolicy, arginfo_class_QWidget_focusPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setFocusPolicy, arginfo_class_QWidget_setFocusPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setTabOrder, arginfo_class_QWidget_setTabOrder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	ZEND_ME(QWidget, raise, arginfo_class_QWidget_raise, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, windowTitle, arginfo_class_QWidget_windowTitle, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setWindowTitle, arginfo_class_QWidget_setWindowTitle, ZEND_ACC_PUBLIC)
@@ -231,6 +274,11 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, setFont, arginfo_class_QWidget_setFont, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, font, arginfo_class_QWidget_font, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setParent, arginfo_class_QWidget_setParent, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, windowFlags, arginfo_class_QWidget_windowFlags, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setWindowFlags, arginfo_class_QWidget_setWindowFlags, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, windowModality, arginfo_class_QWidget_windowModality, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setWindowModality, arginfo_class_QWidget_setWindowModality, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, window, arginfo_class_QWidget_window, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

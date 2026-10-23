@@ -59,6 +59,9 @@ class QGuiApplication extends QCoreApplication
 
     public static function platformName(): string {}
 
+    /** Null, with Qt's warning, before a QGuiApplication exists. */
+    public static function clipboard(): ?QClipboard {}
+
     public static function desktopFileName(): string {}
 
     public static function setDesktopFileName(string $name): void {}
@@ -90,4 +93,7 @@ class QApplication extends QGuiApplication
 
     /** The widget with keyboard focus in the active window, or null. */
     public static function focusWidget(): ?QWidget {}
+
+    /** The top modal widget that is shown, or null. */
+    public static function activeModalWidget(): ?QWidget {}
 }

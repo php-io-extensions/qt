@@ -13,6 +13,8 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 void phpqt_register_QWidget()
@@ -29,9 +31,17 @@ void phpqt_register_QWidget()
 	phpqt_object_setup(phpqt_ce_QDialog);
 	phpqt_map_class("QDialog", phpqt_ce_QDialog);
 
+	phpqt_ce_QMessageBox_ButtonRole = register_class_QMessageBox_ButtonRole();
 	phpqt_ce_QMessageBox = register_class_QMessageBox(phpqt_ce_QDialog);
 	phpqt_object_setup(phpqt_ce_QMessageBox);
 	phpqt_map_class("QMessageBox", phpqt_ce_QMessageBox);
+
+	phpqt_ce_QFileDialog_FileMode = register_class_QFileDialog_FileMode();
+	phpqt_ce_QFileDialog_AcceptMode = register_class_QFileDialog_AcceptMode();
+	phpqt_ce_QFileDialog_Option = register_class_QFileDialog_Option();
+	phpqt_ce_QFileDialog = register_class_QFileDialog(phpqt_ce_QDialog);
+	phpqt_object_setup(phpqt_ce_QFileDialog);
+	phpqt_map_class("QFileDialog", phpqt_ce_QFileDialog);
 }
 
 /* ---- QWidget ----------------------------------------------------------- */
@@ -101,6 +111,7 @@ PHPQT_WIDGET_BOOL(isWindow, isWindow)
 PHPQT_WIDGET_BOOL(isActiveWindow, isActiveWindow)
 PHPQT_WIDGET_VOID(activateWindow, activateWindow)
 PHPQT_WIDGET_VOID(setFocus, setFocus)
+PHPQT_WIDGET_VOID(clearFocus, clearFocus)
 PHPQT_WIDGET_BOOL(hasFocus, hasFocus)
 PHPQT_WIDGET_VOID(raise, raise)
 PHPQT_WIDGET_INT(width, width)
@@ -414,6 +425,98 @@ ZEND_METHOD(QWidget, setParent)
 	widget->setParent(qparent);
 }
 
+ZEND_METHOD(QWidget, windowFlags)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	RETURN_LONG(static_cast<zend_long>(widget->windowFlags().toInt()));
+}
+
+ZEND_METHOD(QWidget, setWindowFlags)
+{
+	zend_object *flags_case = nullptr;
+	zend_long flags_long = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flags_case, phpqt_ce_Qt_WindowType, flags_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setWindowFlags(Qt::WindowFlags(static_cast<int>(phpqt_enum_value(flags_case, flags_long))));
+}
+
+ZEND_METHOD(QWidget, windowModality)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_WindowModality, static_cast<zend_long>(widget->windowModality()));
+}
+
+ZEND_METHOD(QWidget, setWindowModality)
+{
+	zend_object *modality;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(modality, phpqt_ce_Qt_WindowModality)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setWindowModality(static_cast<Qt::WindowModality>(phpqt_enum_value(modality, Qt::NonModal)));
+}
+
+ZEND_METHOD(QWidget, focusPolicy)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_FocusPolicy, static_cast<zend_long>(widget->focusPolicy()));
+}
+
+ZEND_METHOD(QWidget, setFocusPolicy)
+{
+	zend_object *policy;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(policy, phpqt_ce_Qt_FocusPolicy)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setFocusPolicy(static_cast<Qt::FocusPolicy>(phpqt_enum_value(policy, Qt::NoFocus)));
+}
+
+ZEND_METHOD(QWidget, setTabOrder)
+{
+	zend_object *first;
+	zend_object *second;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_OBJ_OF_CLASS(first, phpqt_ce_QWidget)
+		Z_PARAM_OBJ_OF_CLASS(second, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QWidget *qfirst = static_cast<QWidget *>(phpqt_arg(first, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	QWidget *qsecond = static_cast<QWidget *>(phpqt_arg(second, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	QWidget::setTabOrder(qfirst, qsecond);
+}
+
+ZEND_METHOD(QWidget, window)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->window());
+}
+
 /* ---- QMainWindow ------------------------------------------------------- */
 
 ZEND_METHOD(QMainWindow, __construct)
@@ -587,4 +690,172 @@ ZEND_METHOD(QMessageBox, setInformativeText)
 	PHPQT_THIS(QMessageBox, box);
 
 	box->setInformativeText(phpqt_qstring(text));
+}
+
+ZEND_METHOD(QMessageBox, addButton)
+{
+	zend_string *text;
+	zend_object *role;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_STR(text)
+		Z_PARAM_OBJ_OF_CLASS(role, phpqt_ce_QMessageBox_ButtonRole)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMessageBox, box);
+
+	phpqt_box(return_value, box->addButton(phpqt_qstring(text), static_cast<QMessageBox::ButtonRole>(phpqt_enum_value(role, QMessageBox::InvalidRole))));
+}
+
+ZEND_METHOD(QMessageBox, setDefaultButton)
+{
+	zend_object *button = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(button, phpqt_ce_QPushButton)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMessageBox, box);
+
+	QPushButton *qbutton = static_cast<QPushButton *>(phpqt_arg(button, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	box->setDefaultButton(qbutton);
+}
+
+ZEND_METHOD(QMessageBox, setEscapeButton)
+{
+	zend_object *button = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(button, phpqt_ce_QAbstractButton)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMessageBox, box);
+
+	QAbstractButton *qbutton = static_cast<QAbstractButton *>(phpqt_arg(button, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	box->setEscapeButton(qbutton);
+}
+
+ZEND_METHOD(QMessageBox, clickedButton)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMessageBox, box);
+
+	phpqt_box(return_value, box->clickedButton());
+}
+
+/* ---- QFileDialog ------------------------------------------------------- */
+
+ZEND_METHOD(QFileDialog, __construct)
+{
+	zend_object *parent = nullptr;
+	zend_string *caption = nullptr;
+	zend_string *directory = nullptr;
+	zend_string *filter = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(0, 4)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+		Z_PARAM_STR(caption)
+		Z_PARAM_STR(directory)
+		Z_PARAM_STR(filter)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-file-dialog") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QFileDialog needs a QApplication first", 0); /* binding:qapp-file-dialog */
+		RETURN_THROWS();
+	}
+
+	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QFileDialog(qparent,
+		caption != nullptr ? phpqt_qstring(caption) : QString(),
+		directory != nullptr ? phpqt_qstring(directory) : QString(),
+		filter != nullptr ? phpqt_qstring(filter) : QString()));
+}
+
+ZEND_METHOD(QFileDialog, setFileMode)
+{
+	zend_object *mode;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QFileDialog_FileMode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	dialog->setFileMode(static_cast<QFileDialog::FileMode>(phpqt_enum_value(mode, QFileDialog::AnyFile)));
+}
+
+ZEND_METHOD(QFileDialog, setAcceptMode)
+{
+	zend_object *mode;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QFileDialog_AcceptMode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	dialog->setAcceptMode(static_cast<QFileDialog::AcceptMode>(phpqt_enum_value(mode, QFileDialog::AcceptOpen)));
+}
+
+ZEND_METHOD(QFileDialog, setOption)
+{
+	zend_object *option;
+	bool on = true;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(option, phpqt_ce_QFileDialog_Option)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_BOOL(on)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	dialog->setOption(static_cast<QFileDialog::Option>(phpqt_enum_value(option, QFileDialog::ShowDirsOnly)), on);
+}
+
+ZEND_METHOD(QFileDialog, setDirectory)
+{
+	zend_string *directory;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(directory)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	dialog->setDirectory(phpqt_qstring(directory));
+}
+
+ZEND_METHOD(QFileDialog, selectFile)
+{
+	zend_string *filename;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(filename)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	dialog->selectFile(phpqt_qstring(filename));
+}
+
+ZEND_METHOD(QFileDialog, selectedFiles)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	array_init(return_value);
+	for (const QString &file : dialog->selectedFiles()) {
+		zval entry;
+		phpqt_return_qstring(&entry, file);
+		add_next_index_zval(return_value, &entry);
+	}
 }

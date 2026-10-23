@@ -1,6 +1,28 @@
 # Log
 
+## 2026-10-23
+
+* 0.10.3: `QWidget::clearFocus`. No new site. [surface](api/surface.md)
+
+## 2026-10-22
+
+* 0.10.3: `QWidget` `focusPolicy` / `setFocusPolicy` (`Qt\FocusPolicy`, generated with its checks) and static `setTabOrder`; `QKeyEvent` `text`, `isAutoRepeat`, `nativeScanCode`, `nativeVirtualKey`. No new site. [surface](api/surface.md)
+* Coverage: `scripts/support.php` writes `SUPPORT.md` (every public member function name of QtCore, QtGui and QtWidgets classes, from clang++'s AST dump of each public class header; signals found through `QT_ANNOTATE_ACCESS_SPECIFIER`; a stub method on a subclass counts for the base that declares it, through every public base) and the README API badge; `--check` compares without the date. 570 / 11435 on Qt 6.11.2.
+* `QMessageBox` `addButton`, `setDefaultButton`, `setEscapeButton`, `clickedButton`; `QFileDialog` (its constructor at site `qapp-file-dialog`), `setFileMode`, `setAcceptMode`, `setOption`, `setDirectory`, `selectFile`, `selectedFiles`; `QGuiApplication::clipboard` (`?QClipboard`: Qt warns and returns nullptr before an application, and lives, so no refusal), `QClipboard` `setText`, `text`; the generated `QMessageBox\ButtonRole`, `QFileDialog\FileMode`, `AcceptMode`, `Option`, `QClipboard\Mode`; in 0.10.3. An unshown native `QFileDialog` keeps no selection; Qt's own dialog (`DONT_USE_NATIVE_DIALOG`) does. [surface](api/surface.md)
+
+## 2026-10-20
+
+* `QWidget` `window`, `windowFlags`, `setWindowFlags`, `windowModality`, `setWindowModality`; the generated `Qt\WindowModality`; `QPushButton` `isDefault`, `setDefault`; in 0.10.3. `setParent` keeps its one-argument form: PHP holds it to `QObject::setParent(?QObject)`, so the flags of a child window go through `setWindowFlags`. [surface](api/surface.md)
+
+## 2026-10-19
+
+* `QWheelEvent` (constructor, `pixelDelta`, `angleDelta`, `position`, `globalPosition`, `source`; filters box wheels as it), the generated `Qt\ScrollPhase` and `Qt\MouseEventSource`, and `QStyleHints::mouseDoubleClickInterval` / `mouseDoubleClickDistance`, in 0.10.3. [surface](api/surface.md), [signals](architecture/signals.md)
+
 ## 2026-10-18
+
+* `QTreeWidget` and `QTreeWidgetItem`, 0.10.3. Item lifetime as for table items: `PhpTreeWidgetItem`, owned by the tree or parent once Qt stored it. `QTreeWidgetItem*` signal arguments arrive as the item's wrapper. `data()` reads a QVariant through the signal-argument conversion. `QBrush`, `QColor`, `QFont` and `QPixmap` now cross both ways as QVariants and as signal arguments. Also `QAbstractItemView\ScrollHint`, `QTreeWidgetItem\ChildIndicatorPolicy`, `QKeyEvent` (filters box key presses and releases as it), and the generated `Qt\ItemDataRole` and `Qt\Key`. The constructor carries the `qapp-tree-widget` site. [surface](api/surface.md), [object model](architecture/object-model.md), [signals](architecture/signals.md)
+* Event constructors refuse ints wider than their C type instead of truncating them: `QKeyEvent` key (int) and modifiers, `QMouseEvent` button, buttons and modifiers, `QContextMenuEvent` modifiers (32-bit masks). [surface](api/surface.md)
+* `scripts/gen-enum.php` handles three more cases: deprecation messages that hold commas, digit names (`KEY_0`), and names that differ only in case (`DEAD_a` / `DEAD_A`). Its output for the enums already generated is unchanged. [generating enums](runbooks/generating-enums.md)
 
 * Qt 1:1 (0.10.2): every method is one native call under Qt's name, parameters and defaults. Value classes `QPoint`, `QPointF`, `QSize`, `QRect`, `QDate`, `QKeySequence`, `QByteArray` replace arrays and strings; `QThread`, `QLayoutItem`, `QPointingDevice`, `QCalendarWidget`; window flags on the widget constructors; applications take `(int &$argc, array $argv, int $flags)`; `invokeMethod` takes the connection type; `QTextEdit\ExtraSelection` is the struct; `QImage` borrows its buffer with Qt's cleanup function; `QMenu::popup(QPoint)`, `addMenu(title)`, `QUrl::toString(options)`; abstract classes are abstract. `QSurfaceFormat::setDefaultFormat` and `QCoreApplication::setAttribute`/`testAttribute` with `Qt\ApplicationAttribute`: a GL widget composites only when its context shares with the window's, which on macOS means the same profile as Qt's default. [surface](api/surface.md), [layout](api/layout.md), [object model](architecture/object-model.md)
 * Qt answers for itself: refusals stay only where a probe showed a crash, each with its `bindings.json` site and a test in `tests/Probes` (`--enable-qt-probes`); the main-thread and second-application checks are macOS-only. [errors and threads](architecture/errors-and-threads.md), [build](runbooks/build.md)

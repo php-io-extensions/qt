@@ -30,7 +30,16 @@ class QWidget extends QObject
 
     public function setFocus(): void {}
 
+    public function clearFocus(): void {}
+
     public function hasFocus(): bool {}
+
+    public function focusPolicy(): Qt\FocusPolicy {}
+
+    public function setFocusPolicy(Qt\FocusPolicy $policy): void {}
+
+    /** QWidget::setTabOrder(first, second): Tab moves from $first to $second. */
+    public static function setTabOrder(QWidget $first, QWidget $second): void {}
 
     public function raise(): void {}
 
@@ -96,4 +105,16 @@ class QWidget extends QObject
 
     /** QWidget::setParent(QWidget *): a parent that is not a widget is a TypeError. */
     public function setParent(?QObject $parent): void {}
+
+    /** @return int Qt::WindowFlags: Qt\WindowType values or-ed together */
+    public function windowFlags(): int {}
+
+    public function setWindowFlags(Qt\WindowType|int $type): void {}
+
+    public function windowModality(): Qt\WindowModality {}
+
+    public function setWindowModality(Qt\WindowModality $windowModality): void {}
+
+    /** The window the widget is in: the widget itself when it is a window. */
+    public function window(): QWidget {}
 }
