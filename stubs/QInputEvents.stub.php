@@ -116,6 +116,8 @@ class QWheelEvent extends QInputEvent
     public function globalPosition(): QPointF {}
 
     public function source(): Qt\MouseEventSource {}
+
+    public function phase(): Qt\ScrollPhase {}
 }
 
 /**

@@ -18,6 +18,7 @@
 #include <QtGui/QClipboard>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QStyle>
 
 static_assert(Qt::Horizontal == 1 && Qt::Vertical == 2, "Qt::Orientation values differ from the stub's Qt\\Orientation enum");
 static_assert(Qt::IgnoreAspectRatio == 0 && Qt::KeepAspectRatio == 1 && Qt::KeepAspectRatioByExpanding == 2,
@@ -35,10 +36,13 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/QEvent_Type.inc"
 #include "checks/Qt_WidgetAttribute.inc"
 #include "checks/Qt_AlignmentFlag.inc"
+#include "checks/QStyle_SubElement.inc"
 #include "checks/Qt_TextInteractionFlag.inc"
 #include "checks/Qt_WindowType.inc"
 #include "checks/Qt_WindowModality.inc"
 #include "checks/Qt_FocusPolicy.inc"
+#include "checks/Qt_ToolButtonStyle.inc"
+#include "checks/Qt_CaseSensitivity.inc"
 #include "checks/QMessageBox_ButtonRole.inc"
 #include "checks/QFileDialog_FileMode.inc"
 #include "checks/QFileDialog_AcceptMode.inc"
@@ -100,6 +104,10 @@ zend_class_entry *phpqt_ce_QClipboard;
 zend_class_entry *phpqt_ce_QClipboard_Mode;
 zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 zend_class_entry *phpqt_ce_QLayout;
+zend_class_entry *phpqt_ce_QStyle;
+zend_class_entry *phpqt_ce_QStyle_SubElement;
+zend_class_entry *phpqt_ce_QStyleOption;
+zend_class_entry *phpqt_ce_QStyleOptionButton;
 zend_class_entry *phpqt_ce_QBoxLayout;
 zend_class_entry *phpqt_ce_QVBoxLayout;
 zend_class_entry *phpqt_ce_QHBoxLayout;
@@ -168,6 +176,17 @@ zend_class_entry *phpqt_ce_Qt_DateFormat;
 zend_class_entry *phpqt_ce_Qt_WindowType;
 zend_class_entry *phpqt_ce_Qt_WindowModality;
 zend_class_entry *phpqt_ce_Qt_FocusPolicy;
+zend_class_entry *phpqt_ce_Qt_ToolButtonStyle;
+zend_class_entry *phpqt_ce_Qt_CaseSensitivity;
+zend_class_entry *phpqt_ce_QComboBox_InsertPolicy;
+zend_class_entry *phpqt_ce_QCompleter_CompletionMode;
+zend_class_entry *phpqt_ce_QToolButton_ToolButtonPopupMode;
+zend_class_entry *phpqt_ce_QToolButton;
+zend_class_entry *phpqt_ce_QAbstractItemModel;
+zend_class_entry *phpqt_ce_QStringListModel;
+zend_class_entry *phpqt_ce_QCompleter;
+zend_class_entry *phpqt_ce_QIcon;
+zend_class_entry *phpqt_ce_QActionGroup;
 zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
 zend_class_entry *phpqt_ce_Qt_BrushStyle;
 zend_class_entry *phpqt_ce_Qt_ConnectionType;
@@ -201,6 +220,8 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_WindowType = register_class_Qt_WindowType();
 	phpqt_ce_Qt_WindowModality = register_class_Qt_WindowModality();
 	phpqt_ce_Qt_FocusPolicy = register_class_Qt_FocusPolicy();
+	phpqt_ce_Qt_ToolButtonStyle = register_class_Qt_ToolButtonStyle();
+	phpqt_ce_Qt_CaseSensitivity = register_class_Qt_CaseSensitivity();
 	phpqt_ce_Qt_ImageConversionFlag = register_class_Qt_ImageConversionFlag();
 	phpqt_ce_Qt_BrushStyle = register_class_Qt_BrushStyle();
 	phpqt_ce_Qt_ConnectionType = register_class_Qt_ConnectionType();
@@ -250,6 +271,7 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QMultimedia();
 	phpqt_register_QInputEvents();
 	phpqt_register_QValues();
+	phpqt_register_QStyle();
 
 #ifdef PHPQT_PROBES
 	/* A probe build: tests/Probes runs only where env PHPQT_PROBE_OFF can turn a kept refusal off. */

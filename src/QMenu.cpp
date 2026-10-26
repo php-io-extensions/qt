@@ -5,6 +5,7 @@
 #include <QtCore/QPoint>
 #include <QtCore/QString>
 #include <QtGui/QAction>
+#include <QtGui/QActionGroup>
 #include <QtGui/QKeySequence>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMenu>
@@ -28,6 +29,10 @@ void phpqt_register_QMenu()
 	phpqt_ce_QAction = register_class_QAction(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QAction);
 	phpqt_map_class("QAction", phpqt_ce_QAction);
+
+	phpqt_ce_QActionGroup = register_class_QActionGroup(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QActionGroup);
+	phpqt_map_class("QActionGroup", phpqt_ce_QActionGroup);
 }
 
 
@@ -369,4 +374,49 @@ ZEND_METHOD(QAction, toggle)
 	PHPQT_THIS(QAction, action);
 
 	action->toggle();
+}
+
+/* ---- QActionGroup ------------------------------------------------------ */
+
+ZEND_METHOD(QActionGroup, __construct)
+{
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QObject *qparent = phpqt_arg(parent, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QActionGroup(qparent));
+}
+
+ZEND_METHOD(QActionGroup, addAction)
+{
+	zend_object *action_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(action_obj, phpqt_ce_QAction)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QActionGroup, group);
+
+	QAction *action = static_cast<QAction *>(phpqt_arg(action_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_box(return_value, group->addAction(action));
+}
+
+ZEND_METHOD(QActionGroup, checkedAction)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QActionGroup, group);
+
+	phpqt_box(return_value, group->checkedAction());
 }

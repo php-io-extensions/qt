@@ -1,7 +1,7 @@
 # ext-qt
 
 [![CI](https://img.shields.io/github/actions/workflow/status/php-io-extensions/qt/ci.yml?style=flat-square&label=CI)](https://github.com/php-io-extensions/qt/actions/workflows/ci.yml)
-[![Qt API](https://img.shields.io/badge/Qt_API-5.1%25_%28578%2F11435%29-blue?style=flat-square)](SUPPORT.md)
+[![Qt API](https://img.shields.io/badge/Qt_API-5.5%25_%28628%2F11435%29-blue?style=flat-square)](SUPPORT.md)
 
 1:1 PHP bindings of Qt 6, written directly in C++ against the Zend API. Each
 PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,
@@ -52,8 +52,11 @@ style them, drive the common controls and play video:
 | `QLabel` | constructor, `text`, `setText`, `alignment`, `setAlignment`, `wordWrap`, `setWordWrap`, `setScaledContents`, `pixmap`, `setPixmap`, `textFormat`, `setTextFormat`, `openExternalLinks`, `setOpenExternalLinks`, `textInteractionFlags`, `setTextInteractionFlags`; signals `linkActivated(QString)`, `linkHovered(QString)` |
 | `QDesktopServices` | `openUrl(QUrl)` |
 | `QAbstractButton`, `QPushButton`, `QCheckBox` | constructors (text, parent), `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `click`, `toggle`, push button `isDefault`, `setDefault`; signals `clicked(bool)`, `toggled(bool)` |
-| `QAbstractSlider`, `QSlider`, `QScrollBar` | QScrollBar has no public constructor (`verticalScrollBar`, `horizontalScrollBar`); QSlider constructor (orientation, vertical by default as in Qt, parent), `minimum`, `maximum`, `setRange`, `value`, `setValue`, `orientation`, `setOrientation`; signal `valueChanged(int)` |
-| `QComboBox` | constructor, `addItem`, `addItems`, `clear`, `count`, `currentIndex`, `setCurrentIndex`, `currentText`, `itemText`; signal `currentIndexChanged(int)` |
+| `QAbstractSlider`, `QSlider`, `QScrollBar` | QScrollBar constructor (orientation, parent), or a scroll area's `verticalScrollBar`, `horizontalScrollBar`; QSlider constructor (orientation, vertical by default as in Qt, parent), `minimum`, `maximum`, `setRange`, `value`, `setValue`, `orientation`, `setOrientation`; signal `valueChanged(int)` |
+| `QComboBox` | constructor, `addItem`, `addItems`, `clear`, `count`, `currentIndex`, `setCurrentIndex`, `currentText`, `itemText`, `isEditable`, `setEditable`, `lineEdit`, `setCompleter`, `insertPolicy`, `setInsertPolicy`, `setEditText`; signal `currentIndexChanged(int)` |
+| `QCompleter`, `QAbstractItemModel`, `QStringListModel` | constructor (model, parent), `setWidget`, `completionMode`, `setCompletionMode`, `setCaseSensitivity`, `completionPrefix`, `setCompletionPrefix`, `complete(rect)`, `popup`; abstract, made through `QStringListModel`; constructor, `setStringList`, `stringList` |
+| `QToolButton`, `QIcon`, `QActionGroup` | constructor, `setMenu` (the menu is not taken: its owner outlives the button), `menu`, `popupMode`, `setPopupMode`, `toolButtonStyle`, `setToolButtonStyle`, `autoRaise`, `setAutoRaise`, `showMenu`; value: constructor (`QPixmap`), `isNull`; constructor, `addAction`, `checkedAction` |
+| Button icons, tab insert, wheel phase, widget points | `QAbstractButton` `setIcon`, `iconSize`, `setIconSize`; `QPushButton` `isFlat`, `setFlat`; `QTabWidget` `insertTab`; `QWheelEvent` `phase`; `QWidget` `mapToGlobal`, `accessibleName`, `setAccessibleName` |
 | `QLineEdit` | constructor (text, parent), `text`, `setText`, `placeholderText`, `setPlaceholderText`, `echoMode`, `setEchoMode`, `isReadOnly`, `setReadOnly`, `cut`, `copy`, `paste`, `selectAll`, `undo`, `redo`, `selectedText`; signals `textChanged(QString)`, `returnPressed()` |
 | `QPlainTextEdit` | constructor, `toPlainText`, `setPlainText`, `isReadOnly`, `setReadOnly`, `cut`, `copy`, `paste`, `selectAll`, `undo`, `redo`, `document`, `textCursor`, `setTextCursor`, `ensureCursorVisible`, `setExtraSelections`, `extraSelections`, `lineWrapMode`, `setLineWrapMode`, `textInteractionFlags`, `setTextInteractionFlags`, `verticalScrollBar`, `horizontalScrollBar`, `viewport`; signals `textChanged()`, `cursorPositionChanged()` |
 | `QTextDocument` | a text edit's: `findBlockByNumber` (Qt's invalid block past the end), `blockCount`, `characterCount` |
@@ -75,6 +78,7 @@ style them, drive the common controls and play video:
 
 Enums: `QEventLoop\ProcessEventsFlag`, `Qt\TimerType`, `QSocketNotifier\Type`,
 `QAction\MenuRole`, `Qt\Orientation`, `Qt\AspectRatioMode`, `Qt\ScrollBarPolicy`,
+`Qt\ToolButtonStyle`, `Qt\CaseSensitivity`, `QComboBox\InsertPolicy`, `QCompleter\CompletionMode`, `QToolButton\ToolButtonPopupMode`,
 `QSizePolicy\Policy`, `QLineEdit\EchoMode`, `QFont\Weight`, `QTextCursor\MoveMode`, `QTextCursor\MoveOperation`, `QPlainTextEdit\LineWrapMode`,
 `QFontDatabase\SystemFont`, `Qt\TextInteractionFlag`, `QFrame\Shape`,
 `QFrame\Shadow`, `QAbstractItemView\SelectionBehavior`,

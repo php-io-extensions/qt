@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 123dda99890db6f700d3c611b8d6899a74923fd6 */
+ * Stub hash: 96c20d5f4a1cf5b4f9859a372fd47365d1365aac */
 
 static zend_class_entry *register_class_Qt_DateFormat(void)
 {
@@ -960,6 +960,48 @@ static zend_class_entry *register_class_Qt_FocusPolicy(void)
 	zval enum_case_WHEEL_FOCUS_value;
 	ZVAL_LONG(&enum_case_WHEEL_FOCUS_value, 15);
 	zend_enum_add_case_cstr(class_entry, "WHEEL_FOCUS", &enum_case_WHEEL_FOCUS_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_ToolButtonStyle(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ToolButtonStyle", IS_LONG, NULL);
+
+	zval enum_case_TOOL_BUTTON_ICON_ONLY_value;
+	ZVAL_LONG(&enum_case_TOOL_BUTTON_ICON_ONLY_value, 0);
+	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_ICON_ONLY", &enum_case_TOOL_BUTTON_ICON_ONLY_value);
+
+	zval enum_case_TOOL_BUTTON_TEXT_ONLY_value;
+	ZVAL_LONG(&enum_case_TOOL_BUTTON_TEXT_ONLY_value, 1);
+	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_TEXT_ONLY", &enum_case_TOOL_BUTTON_TEXT_ONLY_value);
+
+	zval enum_case_TOOL_BUTTON_TEXT_BESIDE_ICON_value;
+	ZVAL_LONG(&enum_case_TOOL_BUTTON_TEXT_BESIDE_ICON_value, 2);
+	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_TEXT_BESIDE_ICON", &enum_case_TOOL_BUTTON_TEXT_BESIDE_ICON_value);
+
+	zval enum_case_TOOL_BUTTON_TEXT_UNDER_ICON_value;
+	ZVAL_LONG(&enum_case_TOOL_BUTTON_TEXT_UNDER_ICON_value, 3);
+	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_TEXT_UNDER_ICON", &enum_case_TOOL_BUTTON_TEXT_UNDER_ICON_value);
+
+	zval enum_case_TOOL_BUTTON_FOLLOW_STYLE_value;
+	ZVAL_LONG(&enum_case_TOOL_BUTTON_FOLLOW_STYLE_value, 4);
+	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_FOLLOW_STYLE", &enum_case_TOOL_BUTTON_FOLLOW_STYLE_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_CaseSensitivity(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\CaseSensitivity", IS_LONG, NULL);
+
+	zval enum_case_CASE_INSENSITIVE_value;
+	ZVAL_LONG(&enum_case_CASE_INSENSITIVE_value, 0);
+	zend_enum_add_case_cstr(class_entry, "CASE_INSENSITIVE", &enum_case_CASE_INSENSITIVE_value);
+
+	zval enum_case_CASE_SENSITIVE_value;
+	ZVAL_LONG(&enum_case_CASE_SENSITIVE_value, 1);
+	zend_enum_add_case_cstr(class_entry, "CASE_SENSITIVE", &enum_case_CASE_SENSITIVE_value);
 
 	return class_entry;
 }

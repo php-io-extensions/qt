@@ -509,6 +509,14 @@ ZEND_METHOD(QWheelEvent, globalPosition)
 	phpqt_return_qpointf(return_value, event->globalPosition());
 }
 
+ZEND_METHOD(QWheelEvent, phase)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QWheelEvent, event);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_ScrollPhase, (zend_long) event->phase());
+}
+
 ZEND_METHOD(QWheelEvent, source)
 {
 	ZEND_PARSE_PARAMETERS_NONE();

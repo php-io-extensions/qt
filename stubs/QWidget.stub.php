@@ -58,6 +58,13 @@ class QWidget extends QObject
     /** The global (screen) point in this widget's coordinates. */
     public function mapFromGlobal(QPointF $pos): QPointF {}
 
+    /** This widget's point in global (screen) coordinates. */
+    public function mapToGlobal(QPointF $pos): QPointF {}
+
+    public function accessibleName(): string {}
+
+    public function setAccessibleName(string $name): void {}
+
     public function setAttribute(Qt\WidgetAttribute $attribute, bool $on = true): void {}
 
     public function testAttribute(Qt\WidgetAttribute $attribute): bool {}
@@ -65,6 +72,8 @@ class QWidget extends QObject
     public function setLayout(QLayout $layout): void {}
 
     public function layout(): ?QLayout {}
+
+    public function style(): QStyle {}
 
     public function setMinimumSize(int $minw, int $minh): void {}
 

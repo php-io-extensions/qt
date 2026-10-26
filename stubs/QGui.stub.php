@@ -151,6 +151,19 @@ namespace {
     }
 
     /**
+     * A value in Qt; here a heap copy owned by the PHP object. Made from a pixmap only.
+     *
+     * @not-serializable
+     */
+    final class QIcon
+    {
+        /** Needs a QGuiApplication (or QApplication) first, as the pixmap did. */
+        public function __construct(QPixmap $pixmap) {}
+
+        public function isNull(): bool {}
+    }
+
+    /**
      * A value in Qt; here a heap copy owned by the PHP object.
      *
      * @not-serializable

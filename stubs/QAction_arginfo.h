@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: e277e21db8b5ca036a4d6871ede543e439a63159 */
+ * Stub hash: 441acee41714956aa5b87619ed4ec2a450f312ba */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QAction___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -57,6 +57,17 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QAction_toggle arginfo_class_QAction_trigger
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QActionGroup___construct, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, parent, QObject, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QActionGroup_addAction, 0, 1, QAction, 0)
+	ZEND_ARG_OBJ_INFO(0, action, QAction, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QActionGroup_checkedAction, 0, 0, QAction, 1)
+ZEND_END_ARG_INFO()
+
 ZEND_METHOD(QAction, __construct);
 ZEND_METHOD(QAction, text);
 ZEND_METHOD(QAction, setText);
@@ -74,6 +85,9 @@ ZEND_METHOD(QAction, shortcut);
 ZEND_METHOD(QAction, setShortcut);
 ZEND_METHOD(QAction, trigger);
 ZEND_METHOD(QAction, toggle);
+ZEND_METHOD(QActionGroup, __construct);
+ZEND_METHOD(QActionGroup, addAction);
+ZEND_METHOD(QActionGroup, checkedAction);
 
 static const zend_function_entry class_QAction_methods[] = {
 	ZEND_ME(QAction, __construct, arginfo_class_QAction___construct, ZEND_ACC_PUBLIC)
@@ -93,6 +107,13 @@ static const zend_function_entry class_QAction_methods[] = {
 	ZEND_ME(QAction, setShortcut, arginfo_class_QAction_setShortcut, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, trigger, arginfo_class_QAction_trigger, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, toggle, arginfo_class_QAction_toggle, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QActionGroup_methods[] = {
+	ZEND_ME(QActionGroup, __construct, arginfo_class_QActionGroup___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QActionGroup, addAction, arginfo_class_QActionGroup_addAction, ZEND_ACC_PUBLIC)
+	ZEND_ME(QActionGroup, checkedAction, arginfo_class_QActionGroup_checkedAction, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -136,6 +157,16 @@ static zend_class_entry *register_class_QAction(zend_class_entry *class_entry_QO
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QAction", class_QAction_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QActionGroup(zend_class_entry *class_entry_QObject)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QActionGroup", class_QActionGroup_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

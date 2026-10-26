@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 06f531f062ac8af384c7af6c269bd025046ed7bd */
+ * Stub hash: f496381fe6a21892d6f17b818ca2c1af2dfc50ec */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -79,6 +79,17 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QAbstractButton_toggle arginfo_class_QAbstractButton_click
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractButton_setIcon, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, icon, QIcon, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractButton_iconSize, 0, 0, QSize, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractButton_setIconSize, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, size, QSize, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QPushButton___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -89,6 +100,45 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPushButton_setDefault, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, default, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPushButton_isFlat arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPushButton_setFlat, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, flat, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QToolButton___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QToolButton_setMenu, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, menu, QMenu, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QToolButton_menu, 0, 0, QMenu, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QToolButton_popupMode, 0, 0, QToolButton\\ToolButtonPopupMode, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QToolButton_setPopupMode, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, mode, QToolButton\\ToolButtonPopupMode, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QToolButton_toolButtonStyle, 0, 0, Qt\\ToolButtonStyle, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QToolButton_setToolButtonStyle, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, style, Qt\\ToolButtonStyle, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QToolButton_autoRaise arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QToolButton_setAutoRaise, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QToolButton_showMenu arginfo_class_QAbstractButton_click
 
 #define arginfo_class_QCheckBox___construct arginfo_class_QPushButton___construct
 
@@ -127,16 +177,17 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QAbstractSlider_setPageStep arginfo_class_QAbstractSlider_setSingleStep
 
-#define arginfo_class_QScrollBar___construct arginfo_class_QAbstractSlider___construct
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QScrollBar___construct, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, orientation, Qt\\Orientation, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QSlider___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, orientation, Qt\\Orientation, 0, "Qt\\Orientation::VERTICAL")
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QComboBox___construct, 0, 0, 0)
-	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
-ZEND_END_ARG_INFO()
+#define arginfo_class_QComboBox___construct arginfo_class_QToolButton___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_addItem, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
@@ -161,6 +212,74 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_itemText, 0, 1, IS_STRING, 0)
 	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QComboBox_isEditable arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setEditable, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, editable, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QComboBox_lineEdit, 0, 0, QLineEdit, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setCompleter, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, c, QCompleter, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QComboBox_insertPolicy, 0, 0, QComboBox\\InsertPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setInsertPolicy, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, policy, QComboBox\\InsertPolicy, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QComboBox_setEditText arginfo_class_QLabel_setText
+
+#define arginfo_class_QAbstractItemModel___construct arginfo_class_QAbstractSlider___construct
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QStringListModel___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStringListModel_setStringList, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, strings, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStringListModel_stringList, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCompleter___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, model, QAbstractItemModel, 1, "null")
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCompleter_setWidget, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, widget, QWidget, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QCompleter_completionMode, 0, 0, QCompleter\\CompletionMode, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCompleter_setCompletionMode, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, mode, QCompleter\\CompletionMode, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCompleter_setCaseSensitivity, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, caseSensitivity, Qt\\CaseSensitivity, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QCompleter_completionPrefix arginfo_class_QLabel_text
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCompleter_setCompletionPrefix, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, prefix, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QCompleter_complete, 0, 0, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, rect, QRect, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QCompleter_popup, 0, 0, QAbstractItemView, 1)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QLineEdit___construct arginfo_class_QPushButton___construct
@@ -200,7 +319,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QLineEdit_selectedText arginfo_class_QLabel_text
 
-#define arginfo_class_QPlainTextEdit___construct arginfo_class_QComboBox___construct
+#define arginfo_class_QPlainTextEdit___construct arginfo_class_QToolButton___construct
 
 #define arginfo_class_QPlainTextEdit_toPlainText arginfo_class_QLabel_text
 
@@ -238,8 +357,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setExtraSel
 	ZEND_ARG_TYPE_INFO(0, selections, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_extraSelections, 0, 0, IS_ARRAY, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QPlainTextEdit_extraSelections arginfo_class_QStringListModel_stringList
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPlainTextEdit_lineWrapMode, 0, 0, QPlainTextEdit\\LineWrapMode, 0)
 ZEND_END_ARG_INFO()
@@ -262,7 +380,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QCalendarWidget___construct arginfo_class_QAbstractSlider___construct
 
-#define arginfo_class_QDateEdit___construct arginfo_class_QComboBox___construct
+#define arginfo_class_QDateEdit___construct arginfo_class_QToolButton___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QDateEdit_date, 0, 0, QDate, 0)
 ZEND_END_ARG_INFO()
@@ -271,9 +389,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDateEdit_setDate, 0, 1, I
 	ZEND_ARG_OBJ_INFO(0, date, QDate, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDateEdit_setCalendarPopup, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QDateEdit_setCalendarPopup arginfo_class_QToolButton_setAutoRaise
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QDateEdit_calendarWidget, 0, 0, QCalendarWidget, 1)
 ZEND_END_ARG_INFO()
@@ -288,7 +404,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QDateEdit_setDisplayFormat
 	ZEND_ARG_TYPE_INFO(0, format, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QProgressBar___construct arginfo_class_QComboBox___construct
+#define arginfo_class_QProgressBar___construct arginfo_class_QToolButton___construct
 
 #define arginfo_class_QProgressBar_minimum arginfo_class_QLabel_alignment
 
@@ -325,7 +441,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFrame_setFrameShadow, 0, 
 	ZEND_ARG_OBJ_INFO(0, shadow, QFrame\\Shadow, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QScrollArea___construct arginfo_class_QComboBox___construct
+#define arginfo_class_QScrollArea___construct arginfo_class_QToolButton___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QScrollArea_setWidget, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, widget, QWidget, 0)
@@ -391,7 +507,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTableWidget_item, 0, 2, QT
 	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTableWidget_selectedItems arginfo_class_QPlainTextEdit_extraSelections
+#define arginfo_class_QTableWidget_selectedItems arginfo_class_QStringListModel_stringList
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTableWidget_horizontalHeaderItem, 0, 1, QTableWidgetItem, 1)
 	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
@@ -405,7 +521,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidget_selectRow, 0,
 	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTreeWidget___construct arginfo_class_QComboBox___construct
+#define arginfo_class_QTreeWidget___construct arginfo_class_QToolButton___construct
 
 #define arginfo_class_QTreeWidget_columnCount arginfo_class_QLabel_alignment
 
@@ -435,12 +551,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTreeWidget_collapseItem arginfo_class_QTreeWidget_addTopLevelItem
 
-#define arginfo_class_QTreeWidget_selectedItems arginfo_class_QPlainTextEdit_extraSelections
+#define arginfo_class_QTreeWidget_selectedItems arginfo_class_QStringListModel_stringList
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QSplitter___construct, 0, 0, 1)
-	ZEND_ARG_OBJ_INFO(0, orientation, Qt\\Orientation, 0)
-	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
-ZEND_END_ARG_INFO()
+#define arginfo_class_QSplitter___construct arginfo_class_QScrollBar___construct
 
 #define arginfo_class_QSplitter_orientation arginfo_class_QAbstractSlider_orientation
 
@@ -467,7 +580,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QSplitter_setSizes, 0, 1, 
 	ZEND_ARG_TYPE_INFO(0, sizes, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QSplitter_sizes arginfo_class_QPlainTextEdit_extraSelections
+#define arginfo_class_QSplitter_sizes arginfo_class_QStringListModel_stringList
 
 #define arginfo_class_QSplitter_handleWidth arginfo_class_QLabel_alignment
 
@@ -501,9 +614,15 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QSplitterHandle_splitter, 0, 0, QSplitter, 1)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTabWidget___construct arginfo_class_QComboBox___construct
+#define arginfo_class_QTabWidget___construct arginfo_class_QToolButton___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTabWidget_addTab, 0, 2, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, page, QWidget, 0)
+	ZEND_ARG_TYPE_INFO(0, label, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTabWidget_insertTab, 0, 3, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
 	ZEND_ARG_OBJ_INFO(0, page, QWidget, 0)
 	ZEND_ARG_TYPE_INFO(0, label, IS_STRING, 0)
 ZEND_END_ARG_INFO()
@@ -561,9 +680,24 @@ ZEND_METHOD(QAbstractButton, isChecked);
 ZEND_METHOD(QAbstractButton, setChecked);
 ZEND_METHOD(QAbstractButton, click);
 ZEND_METHOD(QAbstractButton, toggle);
+ZEND_METHOD(QAbstractButton, setIcon);
+ZEND_METHOD(QAbstractButton, iconSize);
+ZEND_METHOD(QAbstractButton, setIconSize);
 ZEND_METHOD(QPushButton, __construct);
 ZEND_METHOD(QPushButton, isDefault);
 ZEND_METHOD(QPushButton, setDefault);
+ZEND_METHOD(QPushButton, isFlat);
+ZEND_METHOD(QPushButton, setFlat);
+ZEND_METHOD(QToolButton, __construct);
+ZEND_METHOD(QToolButton, setMenu);
+ZEND_METHOD(QToolButton, menu);
+ZEND_METHOD(QToolButton, popupMode);
+ZEND_METHOD(QToolButton, setPopupMode);
+ZEND_METHOD(QToolButton, toolButtonStyle);
+ZEND_METHOD(QToolButton, setToolButtonStyle);
+ZEND_METHOD(QToolButton, autoRaise);
+ZEND_METHOD(QToolButton, setAutoRaise);
+ZEND_METHOD(QToolButton, showMenu);
 ZEND_METHOD(QCheckBox, __construct);
 ZEND_METHOD(QAbstractSlider, __construct);
 ZEND_METHOD(QAbstractSlider, minimum);
@@ -588,6 +722,26 @@ ZEND_METHOD(QComboBox, currentIndex);
 ZEND_METHOD(QComboBox, setCurrentIndex);
 ZEND_METHOD(QComboBox, currentText);
 ZEND_METHOD(QComboBox, itemText);
+ZEND_METHOD(QComboBox, isEditable);
+ZEND_METHOD(QComboBox, setEditable);
+ZEND_METHOD(QComboBox, lineEdit);
+ZEND_METHOD(QComboBox, setCompleter);
+ZEND_METHOD(QComboBox, insertPolicy);
+ZEND_METHOD(QComboBox, setInsertPolicy);
+ZEND_METHOD(QComboBox, setEditText);
+ZEND_METHOD(QAbstractItemModel, __construct);
+ZEND_METHOD(QStringListModel, __construct);
+ZEND_METHOD(QStringListModel, setStringList);
+ZEND_METHOD(QStringListModel, stringList);
+ZEND_METHOD(QCompleter, __construct);
+ZEND_METHOD(QCompleter, setWidget);
+ZEND_METHOD(QCompleter, completionMode);
+ZEND_METHOD(QCompleter, setCompletionMode);
+ZEND_METHOD(QCompleter, setCaseSensitivity);
+ZEND_METHOD(QCompleter, completionPrefix);
+ZEND_METHOD(QCompleter, setCompletionPrefix);
+ZEND_METHOD(QCompleter, complete);
+ZEND_METHOD(QCompleter, popup);
 ZEND_METHOD(QLineEdit, __construct);
 ZEND_METHOD(QLineEdit, text);
 ZEND_METHOD(QLineEdit, setText);
@@ -706,6 +860,7 @@ ZEND_METHOD(QSplitterHandle, __construct);
 ZEND_METHOD(QSplitterHandle, splitter);
 ZEND_METHOD(QTabWidget, __construct);
 ZEND_METHOD(QTabWidget, addTab);
+ZEND_METHOD(QTabWidget, insertTab);
 ZEND_METHOD(QTabWidget, removeTab);
 ZEND_METHOD(QTabWidget, indexOf);
 ZEND_METHOD(QTabWidget, count);
@@ -747,6 +902,9 @@ static const zend_function_entry class_QAbstractButton_methods[] = {
 	ZEND_ME(QAbstractButton, setChecked, arginfo_class_QAbstractButton_setChecked, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, click, arginfo_class_QAbstractButton_click, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, toggle, arginfo_class_QAbstractButton_toggle, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractButton, setIcon, arginfo_class_QAbstractButton_setIcon, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractButton, iconSize, arginfo_class_QAbstractButton_iconSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractButton, setIconSize, arginfo_class_QAbstractButton_setIconSize, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -754,6 +912,22 @@ static const zend_function_entry class_QPushButton_methods[] = {
 	ZEND_ME(QPushButton, __construct, arginfo_class_QPushButton___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPushButton, isDefault, arginfo_class_QPushButton_isDefault, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPushButton, setDefault, arginfo_class_QPushButton_setDefault, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPushButton, isFlat, arginfo_class_QPushButton_isFlat, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPushButton, setFlat, arginfo_class_QPushButton_setFlat, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QToolButton_methods[] = {
+	ZEND_ME(QToolButton, __construct, arginfo_class_QToolButton___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, setMenu, arginfo_class_QToolButton_setMenu, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, menu, arginfo_class_QToolButton_menu, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, popupMode, arginfo_class_QToolButton_popupMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, setPopupMode, arginfo_class_QToolButton_setPopupMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, toolButtonStyle, arginfo_class_QToolButton_toolButtonStyle, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, setToolButtonStyle, arginfo_class_QToolButton_setToolButtonStyle, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, autoRaise, arginfo_class_QToolButton_autoRaise, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, setAutoRaise, arginfo_class_QToolButton_setAutoRaise, ZEND_ACC_PUBLIC)
+	ZEND_ME(QToolButton, showMenu, arginfo_class_QToolButton_showMenu, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -779,7 +953,7 @@ static const zend_function_entry class_QAbstractSlider_methods[] = {
 };
 
 static const zend_function_entry class_QScrollBar_methods[] = {
-	ZEND_ME(QScrollBar, __construct, arginfo_class_QScrollBar___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QScrollBar, __construct, arginfo_class_QScrollBar___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -798,6 +972,38 @@ static const zend_function_entry class_QComboBox_methods[] = {
 	ZEND_ME(QComboBox, setCurrentIndex, arginfo_class_QComboBox_setCurrentIndex, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, currentText, arginfo_class_QComboBox_currentText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, itemText, arginfo_class_QComboBox_itemText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, isEditable, arginfo_class_QComboBox_isEditable, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, setEditable, arginfo_class_QComboBox_setEditable, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, lineEdit, arginfo_class_QComboBox_lineEdit, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, setCompleter, arginfo_class_QComboBox_setCompleter, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, insertPolicy, arginfo_class_QComboBox_insertPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, setInsertPolicy, arginfo_class_QComboBox_setInsertPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, setEditText, arginfo_class_QComboBox_setEditText, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QAbstractItemModel_methods[] = {
+	ZEND_ME(QAbstractItemModel, __construct, arginfo_class_QAbstractItemModel___construct, ZEND_ACC_PRIVATE)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QStringListModel_methods[] = {
+	ZEND_ME(QStringListModel, __construct, arginfo_class_QStringListModel___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStringListModel, setStringList, arginfo_class_QStringListModel_setStringList, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStringListModel, stringList, arginfo_class_QStringListModel_stringList, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QCompleter_methods[] = {
+	ZEND_ME(QCompleter, __construct, arginfo_class_QCompleter___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, setWidget, arginfo_class_QCompleter_setWidget, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, completionMode, arginfo_class_QCompleter_completionMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, setCompletionMode, arginfo_class_QCompleter_setCompletionMode, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, setCaseSensitivity, arginfo_class_QCompleter_setCaseSensitivity, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, completionPrefix, arginfo_class_QCompleter_completionPrefix, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, setCompletionPrefix, arginfo_class_QCompleter_setCompletionPrefix, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, complete, arginfo_class_QCompleter_complete, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCompleter, popup, arginfo_class_QCompleter_popup, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -968,6 +1174,7 @@ static const zend_function_entry class_QSplitterHandle_methods[] = {
 static const zend_function_entry class_QTabWidget_methods[] = {
 	ZEND_ME(QTabWidget, __construct, arginfo_class_QTabWidget___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTabWidget, addTab, arginfo_class_QTabWidget_addTab, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTabWidget, insertTab, arginfo_class_QTabWidget_insertTab, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTabWidget, removeTab, arginfo_class_QTabWidget_removeTab, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTabWidget, indexOf, arginfo_class_QTabWidget_indexOf, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTabWidget, count, arginfo_class_QTabWidget_count, ZEND_ACC_PUBLIC)
@@ -1074,6 +1281,79 @@ static zend_class_entry *register_class_QFrame_Shadow(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QComboBox_InsertPolicy(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QComboBox\\InsertPolicy", IS_LONG, NULL);
+
+	zval enum_case_NO_INSERT_value;
+	ZVAL_LONG(&enum_case_NO_INSERT_value, 0);
+	zend_enum_add_case_cstr(class_entry, "NO_INSERT", &enum_case_NO_INSERT_value);
+
+	zval enum_case_INSERT_AT_TOP_value;
+	ZVAL_LONG(&enum_case_INSERT_AT_TOP_value, 1);
+	zend_enum_add_case_cstr(class_entry, "INSERT_AT_TOP", &enum_case_INSERT_AT_TOP_value);
+
+	zval enum_case_INSERT_AT_CURRENT_value;
+	ZVAL_LONG(&enum_case_INSERT_AT_CURRENT_value, 2);
+	zend_enum_add_case_cstr(class_entry, "INSERT_AT_CURRENT", &enum_case_INSERT_AT_CURRENT_value);
+
+	zval enum_case_INSERT_AT_BOTTOM_value;
+	ZVAL_LONG(&enum_case_INSERT_AT_BOTTOM_value, 3);
+	zend_enum_add_case_cstr(class_entry, "INSERT_AT_BOTTOM", &enum_case_INSERT_AT_BOTTOM_value);
+
+	zval enum_case_INSERT_AFTER_CURRENT_value;
+	ZVAL_LONG(&enum_case_INSERT_AFTER_CURRENT_value, 4);
+	zend_enum_add_case_cstr(class_entry, "INSERT_AFTER_CURRENT", &enum_case_INSERT_AFTER_CURRENT_value);
+
+	zval enum_case_INSERT_BEFORE_CURRENT_value;
+	ZVAL_LONG(&enum_case_INSERT_BEFORE_CURRENT_value, 5);
+	zend_enum_add_case_cstr(class_entry, "INSERT_BEFORE_CURRENT", &enum_case_INSERT_BEFORE_CURRENT_value);
+
+	zval enum_case_INSERT_ALPHABETICALLY_value;
+	ZVAL_LONG(&enum_case_INSERT_ALPHABETICALLY_value, 6);
+	zend_enum_add_case_cstr(class_entry, "INSERT_ALPHABETICALLY", &enum_case_INSERT_ALPHABETICALLY_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QCompleter_CompletionMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QCompleter\\CompletionMode", IS_LONG, NULL);
+
+	zval enum_case_POPUP_COMPLETION_value;
+	ZVAL_LONG(&enum_case_POPUP_COMPLETION_value, 0);
+	zend_enum_add_case_cstr(class_entry, "POPUP_COMPLETION", &enum_case_POPUP_COMPLETION_value);
+
+	zval enum_case_UNFILTERED_POPUP_COMPLETION_value;
+	ZVAL_LONG(&enum_case_UNFILTERED_POPUP_COMPLETION_value, 1);
+	zend_enum_add_case_cstr(class_entry, "UNFILTERED_POPUP_COMPLETION", &enum_case_UNFILTERED_POPUP_COMPLETION_value);
+
+	zval enum_case_INLINE_COMPLETION_value;
+	ZVAL_LONG(&enum_case_INLINE_COMPLETION_value, 2);
+	zend_enum_add_case_cstr(class_entry, "INLINE_COMPLETION", &enum_case_INLINE_COMPLETION_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QToolButton_ToolButtonPopupMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QToolButton\\ToolButtonPopupMode", IS_LONG, NULL);
+
+	zval enum_case_DELAYED_POPUP_value;
+	ZVAL_LONG(&enum_case_DELAYED_POPUP_value, 0);
+	zend_enum_add_case_cstr(class_entry, "DELAYED_POPUP", &enum_case_DELAYED_POPUP_value);
+
+	zval enum_case_MENU_BUTTON_POPUP_value;
+	ZVAL_LONG(&enum_case_MENU_BUTTON_POPUP_value, 1);
+	zend_enum_add_case_cstr(class_entry, "MENU_BUTTON_POPUP", &enum_case_MENU_BUTTON_POPUP_value);
+
+	zval enum_case_INSTANT_POPUP_value;
+	ZVAL_LONG(&enum_case_INSTANT_POPUP_value, 2);
+	zend_enum_add_case_cstr(class_entry, "INSTANT_POPUP", &enum_case_INSTANT_POPUP_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QAbstractItemView_SelectionBehavior(void)
 {
 	zend_class_entry *class_entry = zend_register_internal_enum("QAbstractItemView\\SelectionBehavior", IS_LONG, NULL);
@@ -1173,6 +1453,16 @@ static zend_class_entry *register_class_QPushButton(zend_class_entry *class_entr
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QToolButton(zend_class_entry *class_entry_QAbstractButton)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QToolButton", class_QToolButton_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QAbstractButton, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QCheckBox(zend_class_entry *class_entry_QAbstractButton)
 {
 	zend_class_entry ce, *class_entry;
@@ -1219,6 +1509,36 @@ static zend_class_entry *register_class_QComboBox(zend_class_entry *class_entry_
 
 	INIT_CLASS_ENTRY(ce, "QComboBox", class_QComboBox_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QWidget, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QAbstractItemModel(zend_class_entry *class_entry_QObject)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QAbstractItemModel", class_QAbstractItemModel_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QStringListModel(zend_class_entry *class_entry_QAbstractItemModel)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QStringListModel", class_QStringListModel_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QAbstractItemModel, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QCompleter(zend_class_entry *class_entry_QObject)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QCompleter", class_QCompleter_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

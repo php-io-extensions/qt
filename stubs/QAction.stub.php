@@ -55,4 +55,19 @@ namespace {
 
         public function toggle(): void {}
     }
+
+    /**
+     * Groups actions; exclusive by default: checking one unchecks the others.
+     *
+     * @not-serializable
+     */
+    class QActionGroup extends QObject
+    {
+        public function __construct(?QObject $parent) {}
+
+        /** The group takes the action; returns it. */
+        public function addAction(QAction $action): QAction {}
+
+        public function checkedAction(): ?QAction {}
+    }
 }

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 73402992aaca65c178607c5b2831a52a16a60863 */
+ * Stub hash: 5ea7e455dd6a883c89c27155fd98673d57ab917f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QClipboard___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
@@ -86,6 +86,12 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_setDevicePixelRatio, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, scaleFactor, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QIcon___construct, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, pixmap, QPixmap, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QIcon_isNull arginfo_class_QPixmap_isNull
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QImage___construct, 0, 0, 5)
 	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
@@ -207,6 +213,8 @@ ZEND_METHOD(QPixmap, height);
 ZEND_METHOD(QPixmap, scaled);
 ZEND_METHOD(QPixmap, devicePixelRatio);
 ZEND_METHOD(QPixmap, setDevicePixelRatio);
+ZEND_METHOD(QIcon, __construct);
+ZEND_METHOD(QIcon, isNull);
 ZEND_METHOD(QImage, __construct);
 ZEND_METHOD(QImage, isNull);
 ZEND_METHOD(QImage, width);
@@ -274,6 +282,12 @@ static const zend_function_entry class_QPixmap_methods[] = {
 	ZEND_ME(QPixmap, scaled, arginfo_class_QPixmap_scaled, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, devicePixelRatio, arginfo_class_QPixmap_devicePixelRatio, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, setDevicePixelRatio, arginfo_class_QPixmap_setDevicePixelRatio, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QIcon_methods[] = {
+	ZEND_ME(QIcon, __construct, arginfo_class_QIcon___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QIcon, isNull, arginfo_class_QIcon_isNull, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -503,6 +517,16 @@ static zend_class_entry *register_class_QPixmap(void)
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QPixmap", class_QPixmap_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QIcon(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QIcon", class_QIcon_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

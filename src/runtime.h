@@ -146,6 +146,10 @@ extern zend_class_entry *phpqt_ce_QClipboard;
 extern zend_class_entry *phpqt_ce_QClipboard_Mode;
 extern zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 extern zend_class_entry *phpqt_ce_QLayout;
+extern zend_class_entry *phpqt_ce_QStyle;
+extern zend_class_entry *phpqt_ce_QStyle_SubElement;
+extern zend_class_entry *phpqt_ce_QStyleOption;
+extern zend_class_entry *phpqt_ce_QStyleOptionButton;
 extern zend_class_entry *phpqt_ce_QBoxLayout;
 extern zend_class_entry *phpqt_ce_QVBoxLayout;
 extern zend_class_entry *phpqt_ce_QHBoxLayout;
@@ -301,6 +305,17 @@ extern zend_class_entry *phpqt_ce_Qt_DateFormat;
 extern zend_class_entry *phpqt_ce_Qt_WindowType;
 extern zend_class_entry *phpqt_ce_Qt_WindowModality;
 extern zend_class_entry *phpqt_ce_Qt_FocusPolicy;
+extern zend_class_entry *phpqt_ce_Qt_ToolButtonStyle;
+extern zend_class_entry *phpqt_ce_Qt_CaseSensitivity;
+extern zend_class_entry *phpqt_ce_QComboBox_InsertPolicy;
+extern zend_class_entry *phpqt_ce_QCompleter_CompletionMode;
+extern zend_class_entry *phpqt_ce_QToolButton_ToolButtonPopupMode;
+extern zend_class_entry *phpqt_ce_QToolButton;
+extern zend_class_entry *phpqt_ce_QAbstractItemModel;
+extern zend_class_entry *phpqt_ce_QStringListModel;
+extern zend_class_entry *phpqt_ce_QCompleter;
+extern zend_class_entry *phpqt_ce_QIcon;
+extern zend_class_entry *phpqt_ce_QActionGroup;
 extern zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
 extern zend_class_entry *phpqt_ce_Qt_BrushStyle;
 extern zend_class_entry *phpqt_ce_Qt_ConnectionType;
@@ -309,6 +324,7 @@ extern zend_class_entry *phpqt_ce_Qt_Key;
 extern zend_class_entry *phpqt_ce_Qt_ScrollPhase;
 extern zend_class_entry *phpqt_ce_Qt_MouseEventSource;
 void phpqt_register_QValues();
+void phpqt_register_QStyle();
 
 /* The wrapped value, or a QtException when it is gone. */
 #define PHPQT_VALUE_THIS(type, var) \

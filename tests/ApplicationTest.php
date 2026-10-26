@@ -4,6 +4,28 @@ declare(strict_types=1);
 
 beforeEach(fn () => testApplication());
 
+it('frees a window whose application went first, as PHP\'s shutdown can free them', function (): void {
+    // At shutdown PHP frees objects by handle, newest first, and a handle can be reused: a window can
+    // outlive the application object. Deleting a widget with no application crashes in ~QWidget.
+    $child = qtChild(<<<'CODE'
+        $argc = 1;
+        $app = new QApplication($argc, [PHP_BINARY]);
+        $window = new QMainWindow();
+        $window->setCentralWidget(new QLabel('x'));
+        $window->show();
+        QCoreApplication::processEvents();
+        unset($app);
+        gc_collect_cycles();
+        unset($window);
+        gc_collect_cycles();
+
+        return 'freed';
+        CODE, app: false);
+
+    expect($child['signal'])->toBeNull()
+        ->and($child['result'])->toBe('freed');
+});
+
 it('puts text on the application clipboard and reads it back', function (): void {
     $clipboard = QGuiApplication::clipboard();
     // The test writes the user's clipboard: it keeps the text there and puts it back.

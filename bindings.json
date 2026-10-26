@@ -65,6 +65,8 @@
             "probe": "tests/Probes/MainThreadTest.php"
         },
         "qapp-file-dialog": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
+        "qapp-scrollbar": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
+        "qapp-tool-button": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
         "qapp-widget": {
             "kind": "refusal",
             "outcome": 2,

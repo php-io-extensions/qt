@@ -81,8 +81,13 @@ static void phpqt_free_object(zend_object *object)
 		QObject *qobject = intern->guard->data();
 
 		if (intern->owned && qobject != nullptr && qobject->parent() == nullptr) {
-			/* Inside a Qt callback the object may be the one emitting: let Qt delete it once back in its loop. */
-			if ((PHPQT_G(callout_depth) > 0 || phpqt_tearing_down(qobject)) && qobject_cast<QCoreApplication *>(qobject) == nullptr) {
+			/* A widget or window is deleted only while its application lives (~QWidget dies on xcb without
+			 * one). At shutdown PHP frees objects newest handle first, and a reused handle can put a window
+			 * after the application: the process is ending, so the window is left to it. */
+			if (QCoreApplication::instance() == nullptr && (qobject->isWidgetType() || qobject->isWindowType())) {
+				/* left to the process exit */
+			} else if ((PHPQT_G(callout_depth) > 0 || phpqt_tearing_down(qobject)) && qobject_cast<QCoreApplication *>(qobject) == nullptr) {
+				/* Inside a Qt callback the object may be the one emitting: let Qt delete it once back in its loop. */
 				qobject->deleteLater();
 			} else {
 				delete qobject;

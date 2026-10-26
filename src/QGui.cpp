@@ -8,6 +8,7 @@
 #include "runtime.h"
 
 #include <QtGui/QFont>
+#include <QtGui/QIcon>
 #include <QtGui/QFontDatabase>
 #include <QtGui/QGuiApplication>
 #include <QtGui/QImage>
@@ -84,6 +85,7 @@ public:
 
 static void phpqt_destroy_font(void *ptr) { delete static_cast<QFont *>(ptr); }
 static void phpqt_destroy_pixmap(void *ptr) { delete static_cast<QPixmap *>(ptr); }
+static void phpqt_destroy_icon(void *ptr) { delete static_cast<QIcon *>(ptr); }
 static void phpqt_destroy_image(void *ptr) { delete static_cast<QImage *>(ptr); }
 static void phpqt_destroy_table_item(void *ptr) { delete static_cast<QTableWidgetItem *>(ptr); }
 
@@ -172,6 +174,9 @@ void phpqt_register_QGui()
 
 	phpqt_ce_QPixmap = register_class_QPixmap();
 	phpqt_value_setup(phpqt_ce_QPixmap);
+
+	phpqt_ce_QIcon = register_class_QIcon();
+	phpqt_value_setup(phpqt_ce_QIcon);
 
 	phpqt_ce_QImage_Format = register_class_QImage_Format();
 	phpqt_ce_QImage = register_class_QImage();
@@ -464,6 +469,35 @@ ZEND_METHOD(QFont, setWeight)
 }
 
 /* ---- QPixmap ----------------------------------------------------------- */
+
+/* ---- QIcon ------------------------------------------------------------- */
+
+ZEND_METHOD(QIcon, __construct)
+{
+	zend_object *pixmap_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(pixmap_obj, phpqt_ce_QPixmap)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QPixmap *pixmap = static_cast<QPixmap *>(phpqt_value_arg(pixmap_obj, 1));
+	if (pixmap == nullptr) {
+		RETURN_THROWS();
+	}
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QIcon(*pixmap), true, phpqt_destroy_icon);
+}
+
+ZEND_METHOD(QIcon, isNull)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QIcon, icon);
+
+	RETURN_BOOL(icon->isNull());
+}
 
 ZEND_METHOD(QPixmap, __construct)
 {

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: de9f5486d9d2d5020531d0075a43ce135a894a54 */
+ * Stub hash: 1bab8fea7f5ef81bc6f98caa5fc55a55eca7a5de */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEvent___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
@@ -94,6 +94,9 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWheelEvent_source, 0, 0, Qt\\MouseEventSource, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWheelEvent_phase, 0, 0, Qt\\ScrollPhase, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QContextMenuEvent___construct, 0, 0, 3)
 	ZEND_ARG_OBJ_INFO(0, reason, QContextMenuEvent\\Reason, 0)
 	ZEND_ARG_OBJ_INFO(0, pos, QPoint, 0)
@@ -143,6 +146,7 @@ ZEND_METHOD(QWheelEvent, angleDelta);
 ZEND_METHOD(QWheelEvent, position);
 ZEND_METHOD(QWheelEvent, globalPosition);
 ZEND_METHOD(QWheelEvent, source);
+ZEND_METHOD(QWheelEvent, phase);
 ZEND_METHOD(QContextMenuEvent, __construct);
 ZEND_METHOD(QContextMenuEvent, reason);
 ZEND_METHOD(QContextMenuEvent, pos);
@@ -196,6 +200,7 @@ static const zend_function_entry class_QWheelEvent_methods[] = {
 	ZEND_ME(QWheelEvent, position, arginfo_class_QWheelEvent_position, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWheelEvent, globalPosition, arginfo_class_QWheelEvent_globalPosition, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWheelEvent, source, arginfo_class_QWheelEvent_source, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWheelEvent, phase, arginfo_class_QWheelEvent_phase, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

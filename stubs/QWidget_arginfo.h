@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: ae0dc5cb1701867cb15d6370543b9fcb4b7eda2e */
+ * Stub hash: e0168e1e69c15ee02417cce4af9db0d6841d0aac */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -76,6 +76,14 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_mapFromGlobal, 0, 1
 	ZEND_ARG_OBJ_INFO(0, pos, QPointF, 0)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QWidget_mapToGlobal arginfo_class_QWidget_mapFromGlobal
+
+#define arginfo_class_QWidget_accessibleName arginfo_class_QWidget_windowTitle
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setAccessibleName, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setAttribute, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, attribute, Qt\\WidgetAttribute, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, on, _IS_BOOL, 0, "true")
@@ -90,6 +98,9 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setLayout, 0, 1, I
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_layout, 0, 0, QLayout, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_style, 0, 0, QStyle, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setMinimumSize, 0, 2, IS_VOID, 0)
@@ -197,10 +208,14 @@ ZEND_METHOD(QWidget, width);
 ZEND_METHOD(QWidget, height);
 ZEND_METHOD(QWidget, parentWidget);
 ZEND_METHOD(QWidget, mapFromGlobal);
+ZEND_METHOD(QWidget, mapToGlobal);
+ZEND_METHOD(QWidget, accessibleName);
+ZEND_METHOD(QWidget, setAccessibleName);
 ZEND_METHOD(QWidget, setAttribute);
 ZEND_METHOD(QWidget, testAttribute);
 ZEND_METHOD(QWidget, setLayout);
 ZEND_METHOD(QWidget, layout);
+ZEND_METHOD(QWidget, style);
 ZEND_METHOD(QWidget, setMinimumSize);
 ZEND_METHOD(QWidget, minimumWidth);
 ZEND_METHOD(QWidget, minimumHeight);
@@ -251,10 +266,14 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, height, arginfo_class_QWidget_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, parentWidget, arginfo_class_QWidget_parentWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, mapFromGlobal, arginfo_class_QWidget_mapFromGlobal, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, mapToGlobal, arginfo_class_QWidget_mapToGlobal, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, accessibleName, arginfo_class_QWidget_accessibleName, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setAccessibleName, arginfo_class_QWidget_setAccessibleName, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setAttribute, arginfo_class_QWidget_setAttribute, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, testAttribute, arginfo_class_QWidget_testAttribute, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setLayout, arginfo_class_QWidget_setLayout, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, layout, arginfo_class_QWidget_layout, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, style, arginfo_class_QWidget_style, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setMinimumSize, arginfo_class_QWidget_setMinimumSize, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, minimumWidth, arginfo_class_QWidget_minimumWidth, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, minimumHeight, arginfo_class_QWidget_minimumHeight, ZEND_ACC_PUBLIC)

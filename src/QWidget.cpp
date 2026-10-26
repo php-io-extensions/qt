@@ -15,6 +15,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QStyle>
 #include <QtWidgets/QWidget>
 
 void phpqt_register_QWidget()
@@ -188,6 +189,43 @@ ZEND_METHOD(QWidget, mapFromGlobal)
 	phpqt_return_qpointf(return_value, widget->mapFromGlobal(*pos));
 }
 
+ZEND_METHOD(QWidget, mapToGlobal)
+{
+	zend_object *pos_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(pos_obj, phpqt_ce_QPointF)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QPointF *pos = static_cast<QPointF *>(phpqt_value_arg(pos_obj, 1));
+	if (pos == nullptr) {
+		RETURN_THROWS();
+	}
+
+	phpqt_return_qpointf(return_value, widget->mapToGlobal(*pos));
+}
+
+ZEND_METHOD(QWidget, accessibleName)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_qstring(return_value, widget->accessibleName());
+}
+
+ZEND_METHOD(QWidget, setAccessibleName)
+{
+	zend_string *name;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(name)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setAccessibleName(phpqt_qstring(name));
+}
+
 ZEND_METHOD(QWidget, setAttribute)
 {
 	zend_object *attribute;
@@ -239,6 +277,14 @@ ZEND_METHOD(QWidget, layout)
 	PHPQT_THIS(QWidget, widget);
 
 	phpqt_box(return_value, widget->layout());
+}
+
+ZEND_METHOD(QWidget, style)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->style());
 }
 
 #define PHPQT_WIDGET_INT2(name, call) \

@@ -1,7 +1,13 @@
 # Log
 
+## 2026-10-24
+
+* `QWidget::style()`, `QStyle` (abstract, the application's style object) with `subElementRect()`, `QStyle\SubElement` (generated from qstyle.h, identical on Qt 6.4 and 6.11), and the value classes `QStyleOption` (`initFrom()`) and `QStyleOptionButton`, held as its `QStyleOption` base: a face laid out inside the rect the style draws a push button's contents into.
+
 ## 2026-10-23
 
+* Fix: a process that freed its `QApplication` before a widget or window segfaulted in `~QWidget` (xcb). PHP's shutdown does that when a reused object handle puts a window after the application. With no application, an owned parentless widget or window is left to the process exit. [surface](api/surface.md)
+* Compare-app toolkit C11–C13: `QCompleter`, `QAbstractItemModel` (abstract), `QStringListModel`, `QIcon`, `QToolButton`, `QActionGroup`; `QComboBox` editable, line edit, completer, insert policy, edit text; `QAbstractButton` icons, `QPushButton` flat; a public `QScrollBar` constructor; `QWheelEvent::phase`; `QWidget::mapToGlobal`, accessible name; `QTabWidget::insertTab`. Enums `Qt\ToolButtonStyle`, `Qt\CaseSensitivity`, `QComboBox\InsertPolicy`, `QCompleter\CompletionMode`, `QToolButton\ToolButtonPopupMode`. New sites `qapp-scrollbar`, `qapp-tool-button` (QToolButton through `phpqt_construct_widget`'s `qapp-widget` check). [surface](api/surface.md)
 * 0.10.3: `QWidget::clearFocus`. No new site. [surface](api/surface.md)
 
 ## 2026-10-22

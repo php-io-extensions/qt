@@ -24,9 +24,17 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSlider>
+#include <QtCore/QStringListModel>
+#include <QtGui/QIcon>
+#include <QtWidgets/QCompleter>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QToolButton>
 
 /* After the Qt headers: the generated class registration spells QAbstractItemView::NoEditTriggers. */
 #include "../stubs/QControls_arginfo.h"
+#include "checks/QComboBox_InsertPolicy.inc"
+#include "checks/QCompleter_CompletionMode.inc"
+#include "checks/QToolButton_ToolButtonPopupMode.inc"
 
 static_assert(QPlainTextEdit::NoWrap == 0 && QPlainTextEdit::WidgetWidth == 1,
 	"QPlainTextEdit::LineWrapMode values differ from the stub's QPlainTextEdit\\LineWrapMode enum");
@@ -52,6 +60,9 @@ void phpqt_register_QControls()
 	phpqt_ce_QAbstractItemView_SelectionBehavior = register_class_QAbstractItemView_SelectionBehavior();
 	phpqt_ce_QAbstractItemView_SelectionMode = register_class_QAbstractItemView_SelectionMode();
 	phpqt_ce_QAbstractItemView_ScrollHint = register_class_QAbstractItemView_ScrollHint();
+	phpqt_ce_QComboBox_InsertPolicy = register_class_QComboBox_InsertPolicy();
+	phpqt_ce_QCompleter_CompletionMode = register_class_QCompleter_CompletionMode();
+	phpqt_ce_QToolButton_ToolButtonPopupMode = register_class_QToolButton_ToolButtonPopupMode();
 
 	phpqt_ce_QLabel = register_class_QLabel(phpqt_ce_QWidget);
 	phpqt_object_setup(phpqt_ce_QLabel);
@@ -64,6 +75,22 @@ void phpqt_register_QControls()
 	phpqt_ce_QPushButton = register_class_QPushButton(phpqt_ce_QAbstractButton);
 	phpqt_object_setup(phpqt_ce_QPushButton);
 	phpqt_map_class("QPushButton", phpqt_ce_QPushButton);
+
+	phpqt_ce_QToolButton = register_class_QToolButton(phpqt_ce_QAbstractButton);
+	phpqt_object_setup(phpqt_ce_QToolButton);
+	phpqt_map_class("QToolButton", phpqt_ce_QToolButton);
+
+	phpqt_ce_QAbstractItemModel = register_class_QAbstractItemModel(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QAbstractItemModel);
+	phpqt_map_class("QAbstractItemModel", phpqt_ce_QAbstractItemModel);
+
+	phpqt_ce_QStringListModel = register_class_QStringListModel(phpqt_ce_QAbstractItemModel);
+	phpqt_object_setup(phpqt_ce_QStringListModel);
+	phpqt_map_class("QStringListModel", phpqt_ce_QStringListModel);
+
+	phpqt_ce_QCompleter = register_class_QCompleter(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QCompleter);
+	phpqt_map_class("QCompleter", phpqt_ce_QCompleter);
 
 	phpqt_ce_QCheckBox = register_class_QCheckBox(phpqt_ce_QAbstractButton);
 	phpqt_object_setup(phpqt_ce_QCheckBox);
@@ -324,6 +351,48 @@ PHPQT_SETTER_BOOL(QAbstractButton, setChecked, setChecked)
 PHPQT_VOID(QAbstractButton, click, click)
 PHPQT_VOID(QAbstractButton, toggle, toggle)
 
+ZEND_METHOD(QAbstractButton, setIcon)
+{
+	zend_object *icon_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(icon_obj, phpqt_ce_QIcon)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractButton, button);
+
+	QIcon *icon = static_cast<QIcon *>(phpqt_value_arg(icon_obj, 1));
+	if (icon == nullptr) {
+		RETURN_THROWS();
+	}
+
+	button->setIcon(*icon);
+}
+
+ZEND_METHOD(QAbstractButton, iconSize)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QAbstractButton, button);
+
+	phpqt_return_qsize(return_value, button->iconSize());
+}
+
+ZEND_METHOD(QAbstractButton, setIconSize)
+{
+	zend_object *size_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(size_obj, phpqt_ce_QSize)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractButton, button);
+
+	QSize *size = static_cast<QSize *>(phpqt_value_arg(size_obj, 1));
+	if (size == nullptr) {
+		RETURN_THROWS();
+	}
+
+	button->setIconSize(*size);
+}
+
 ZEND_METHOD(QPushButton, __construct)
 {
 	phpqt_construct_text_widget<QPushButton>(INTERNAL_FUNCTION_PARAM_PASSTHRU);
@@ -331,6 +400,85 @@ ZEND_METHOD(QPushButton, __construct)
 
 PHPQT_GETTER_BOOL(QPushButton, isDefault, isDefault)
 PHPQT_SETTER_BOOL(QPushButton, setDefault, setDefault)
+PHPQT_GETTER_BOOL(QPushButton, isFlat, isFlat)
+PHPQT_SETTER_BOOL(QPushButton, setFlat, setFlat)
+
+/* ---- QToolButton ------------------------------------------------------- */
+
+ZEND_METHOD(QToolButton, __construct)
+{
+	phpqt_construct_widget<QToolButton>(INTERNAL_FUNCTION_PARAM_PASSTHRU); /* binding:qapp-tool-button */
+}
+
+ZEND_METHOD(QToolButton, setMenu)
+{
+	zend_object *menu_obj = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(menu_obj, phpqt_ce_QMenu)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QToolButton, button);
+
+	QMenu *menu = static_cast<QMenu *>(phpqt_arg(menu_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	button->setMenu(menu);
+}
+
+ZEND_METHOD(QToolButton, menu)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QToolButton, button);
+
+	phpqt_box(return_value, button->menu());
+}
+
+ZEND_METHOD(QToolButton, popupMode)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QToolButton, button);
+
+	phpqt_return_enum(return_value, phpqt_ce_QToolButton_ToolButtonPopupMode, static_cast<zend_long>(button->popupMode()));
+}
+
+ZEND_METHOD(QToolButton, setPopupMode)
+{
+	zend_object *mode;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QToolButton_ToolButtonPopupMode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QToolButton, button);
+
+	button->setPopupMode(static_cast<QToolButton::ToolButtonPopupMode>(phpqt_enum_value(mode, QToolButton::DelayedPopup)));
+}
+
+ZEND_METHOD(QToolButton, toolButtonStyle)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QToolButton, button);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_ToolButtonStyle, static_cast<zend_long>(button->toolButtonStyle()));
+}
+
+ZEND_METHOD(QToolButton, setToolButtonStyle)
+{
+	zend_object *style;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(style, phpqt_ce_Qt_ToolButtonStyle)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QToolButton, button);
+
+	button->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(phpqt_enum_value(style, Qt::ToolButtonIconOnly)));
+}
+
+PHPQT_GETTER_BOOL(QToolButton, autoRaise, autoRaise)
+PHPQT_SETTER_BOOL(QToolButton, setAutoRaise, setAutoRaise)
+PHPQT_VOID(QToolButton, showMenu, showMenu)
 
 ZEND_METHOD(QCheckBox, __construct)
 {
@@ -388,10 +536,31 @@ ZEND_METHOD(QAbstractSlider, setOrientation)
 	slider->setOrientation(static_cast<Qt::Orientation>(phpqt_enum_value(orientation, Qt::Horizontal)));
 }
 
-/* Private: a scroll area's own, QPlainTextEdit::verticalScrollBar(). */
 ZEND_METHOD(QScrollBar, __construct)
 {
-	ZEND_PARSE_PARAMETERS_NONE();
+	zend_object *orientation;
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(orientation, phpqt_ce_Qt_Orientation)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	/* Qt aborts with qFatal ("Must construct a QApplication before a QWidget"). */
+	if (!PHPQT_PROBE_OFF("qapp-scrollbar") && (qobject_cast<QApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QScrollBar needs a QApplication first", 0); /* binding:qapp-scrollbar */
+		RETURN_THROWS();
+	}
+
+	QWidget *qparent = static_cast<QWidget *>(phpqt_arg(parent, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QScrollBar(static_cast<Qt::Orientation>(phpqt_enum_value(orientation, Qt::Vertical)), qparent));
 }
 
 ZEND_METHOD(QSlider, __construct)
@@ -481,6 +650,220 @@ ZEND_METHOD(QComboBox, itemText)
 	PHPQT_THIS(QComboBox, combo);
 
 	phpqt_return_qstring(return_value, combo->itemText(static_cast<int>(index)));
+}
+
+PHPQT_GETTER_BOOL(QComboBox, isEditable, isEditable)
+PHPQT_SETTER_BOOL(QComboBox, setEditable, setEditable)
+PHPQT_SETTER_STRING(QComboBox, setEditText, setEditText)
+
+ZEND_METHOD(QComboBox, lineEdit)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QComboBox, combo);
+
+	phpqt_box(return_value, combo->lineEdit());
+}
+
+ZEND_METHOD(QComboBox, setCompleter)
+{
+	zend_object *completer_obj = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(completer_obj, phpqt_ce_QCompleter)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QComboBox, combo);
+
+	QCompleter *completer = static_cast<QCompleter *>(phpqt_arg(completer_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	combo->setCompleter(completer);
+}
+
+ZEND_METHOD(QComboBox, insertPolicy)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QComboBox, combo);
+
+	phpqt_return_enum(return_value, phpqt_ce_QComboBox_InsertPolicy, static_cast<zend_long>(combo->insertPolicy()));
+}
+
+ZEND_METHOD(QComboBox, setInsertPolicy)
+{
+	zend_object *policy;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(policy, phpqt_ce_QComboBox_InsertPolicy)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QComboBox, combo);
+
+	combo->setInsertPolicy(static_cast<QComboBox::InsertPolicy>(phpqt_enum_value(policy, QComboBox::NoInsert)));
+}
+
+/* ---- QAbstractItemModel, QStringListModel ------------------------------ */
+
+/* Private: a QStringListModel is one. */
+ZEND_METHOD(QAbstractItemModel, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QStringListModel, __construct)
+{
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QObject *qparent = phpqt_arg(parent, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QStringListModel(qparent));
+}
+
+ZEND_METHOD(QStringListModel, setStringList)
+{
+	HashTable *strings;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ARRAY_HT(strings)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QStringListModel, model);
+
+	QStringList list;
+	if (!phpqt_string_list(strings, &list, 1)) {
+		RETURN_THROWS();
+	}
+
+	model->setStringList(list);
+}
+
+ZEND_METHOD(QStringListModel, stringList)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QStringListModel, model);
+
+	array_init(return_value);
+	for (const QString &text : model->stringList()) {
+		zval item;
+		phpqt_return_qstring(&item, text);
+		add_next_index_zval(return_value, &item);
+	}
+}
+
+/* ---- QCompleter -------------------------------------------------------- */
+
+ZEND_METHOD(QCompleter, __construct)
+{
+	zend_object *model_obj = nullptr;
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(0, 2)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(model_obj, phpqt_ce_QAbstractItemModel)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QAbstractItemModel *model = static_cast<QAbstractItemModel *>(phpqt_arg(model_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	QObject *qparent = phpqt_arg(parent, 2, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QCompleter(model, qparent));
+}
+
+ZEND_METHOD(QCompleter, setWidget)
+{
+	zend_object *widget_obj = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(widget_obj, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QCompleter, completer);
+
+	QWidget *widget = static_cast<QWidget *>(phpqt_arg(widget_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	completer->setWidget(widget);
+}
+
+ZEND_METHOD(QCompleter, completionMode)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QCompleter, completer);
+
+	phpqt_return_enum(return_value, phpqt_ce_QCompleter_CompletionMode, static_cast<zend_long>(completer->completionMode()));
+}
+
+ZEND_METHOD(QCompleter, setCompletionMode)
+{
+	zend_object *mode;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QCompleter_CompletionMode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QCompleter, completer);
+
+	completer->setCompletionMode(static_cast<QCompleter::CompletionMode>(phpqt_enum_value(mode, QCompleter::PopupCompletion)));
+}
+
+ZEND_METHOD(QCompleter, setCaseSensitivity)
+{
+	zend_object *sensitivity;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(sensitivity, phpqt_ce_Qt_CaseSensitivity)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QCompleter, completer);
+
+	completer->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(phpqt_enum_value(sensitivity, Qt::CaseSensitive)));
+}
+
+PHPQT_GETTER_STRING(QCompleter, completionPrefix, completionPrefix)
+PHPQT_SETTER_STRING(QCompleter, setCompletionPrefix, setCompletionPrefix)
+
+ZEND_METHOD(QCompleter, complete)
+{
+	zend_object *rect_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(rect_obj, phpqt_ce_QRect)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QCompleter, completer);
+
+	if (rect_obj == nullptr) {
+		completer->complete();
+		return;
+	}
+	QRect *rect = static_cast<QRect *>(phpqt_value_arg(rect_obj, 1));
+	if (rect == nullptr) {
+		RETURN_THROWS();
+	}
+	completer->complete(*rect);
+}
+
+ZEND_METHOD(QCompleter, popup)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QCompleter, completer);
+
+	phpqt_box(return_value, completer->popup());
 }
 
 /* ---- QLineEdit --------------------------------------------------------- */
@@ -1444,6 +1827,28 @@ ZEND_METHOD(QTabWidget, addTab)
 	}
 
 	RETURN_LONG(tabs->addTab(page, phpqt_qstring(label)));
+}
+
+ZEND_METHOD(QTabWidget, insertTab)
+{
+	zend_long index;
+	zend_object *page_obj;
+	zend_string *label;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(3, 3)
+		Z_PARAM_LONG(index)
+		Z_PARAM_OBJ_OF_CLASS(page_obj, phpqt_ce_QWidget)
+		Z_PARAM_STR(label)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTabWidget, tabs);
+
+	QWidget *page = static_cast<QWidget *>(phpqt_arg(page_obj, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	RETURN_LONG(tabs->insertTab(static_cast<int>(index), page, phpqt_qstring(label)));
 }
 
 ZEND_METHOD(QTabWidget, removeTab)

@@ -23,6 +23,9 @@ it('refuses the call before an application, which Qt dies on without the refusal
     'a tree' => ['qapp-tree-widget', 'new QTreeWidget(); return "built";', PROBE_SIGABRT],
     'a file dialog' => ['qapp-file-dialog', 'new QFileDialog(); return "built";', PROBE_SIGABRT],
     'a splitter' => ['qapp-splitter', 'new QSplitter(Qt\Orientation::HORIZONTAL); return "built";', PROBE_SIGABRT],
+    'a scroll bar' => ['qapp-scrollbar', 'new QScrollBar(Qt\Orientation::VERTICAL); return "built";', PROBE_SIGABRT],
+    // Site qapp-tool-button: QToolButton goes through phpqt_construct_widget's qapp-widget check.
+    'a tool button' => ['qapp-widget', 'new QToolButton(); return "built";', PROBE_SIGABRT],
     'an OpenGL painter' => ['qapp-gl-painter', 'new QOpenGLPainter(fn () => null); return "built";', PROBE_SIGABRT],
     'a menu bar' => ['qapp-menubar', 'new QMenuBar(); return "built";', PROBE_SIGABRT],
     'a menu' => ['qapp-menu', 'new QMenu("m"); return "built";', PROBE_SIGABRT],
