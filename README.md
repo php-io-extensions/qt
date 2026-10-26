@@ -136,8 +136,6 @@ bash install-macos.sh           # Homebrew php@8.4 and php@8.4-zts (needs brew i
 
 Or with PIE: `pie install php-io-extensions/qt`.
 
-`venusian build` reads the system packages from `extra.venusian.system` in composer.json: apt packages to build with and the run-time ones a `.deb` depends on or recommends, and the Homebrew ones.
-
 ## Test
 
 ```bash

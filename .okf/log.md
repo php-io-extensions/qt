@@ -7,7 +7,7 @@
 ## 2026-10-23
 
 * Fix: a process that freed its `QApplication` before a widget or window segfaulted in `~QWidget` (xcb). PHP's shutdown does that when a reused object handle puts a window after the application. With no application, an owned parentless widget or window is left to the process exit. [surface](api/surface.md)
-* Compare-app toolkit C11–C13: `QCompleter`, `QAbstractItemModel` (abstract), `QStringListModel`, `QIcon`, `QToolButton`, `QActionGroup`; `QComboBox` editable, line edit, completer, insert policy, edit text; `QAbstractButton` icons, `QPushButton` flat; a public `QScrollBar` constructor; `QWheelEvent::phase`; `QWidget::mapToGlobal`, accessible name; `QTabWidget::insertTab`. Enums `Qt\ToolButtonStyle`, `Qt\CaseSensitivity`, `QComboBox\InsertPolicy`, `QCompleter\CompletionMode`, `QToolButton\ToolButtonPopupMode`. New sites `qapp-scrollbar`, `qapp-tool-button` (QToolButton through `phpqt_construct_widget`'s `qapp-widget` check). [surface](api/surface.md)
+* `QCompleter`, `QAbstractItemModel` (abstract), `QStringListModel`, `QIcon`, `QToolButton`, `QActionGroup`; `QComboBox` editable, line edit, completer, insert policy, edit text; `QAbstractButton` icons, `QPushButton` flat; a public `QScrollBar` constructor; `QWheelEvent::phase`; `QWidget::mapToGlobal`, accessible name; `QTabWidget::insertTab`. Enums `Qt\ToolButtonStyle`, `Qt\CaseSensitivity`, `QComboBox\InsertPolicy`, `QCompleter\CompletionMode`, `QToolButton\ToolButtonPopupMode`. New sites `qapp-scrollbar`, `qapp-tool-button` (QToolButton through `phpqt_construct_widget`'s `qapp-widget` check). [surface](api/surface.md)
 * 0.10.3: `QWidget::clearFocus`. No new site. [surface](api/surface.md)
 
 ## 2026-10-22
@@ -37,15 +37,15 @@
 
 ## 2026-10-16
 
-* `QSplitter`, `QSplitterHandle` and `QTabWidget` (compare-app split and tabs, C2). 0.10.1. [surface](api/surface.md)
+* `QSplitter`, `QSplitterHandle` and `QTabWidget`. 0.10.1. [surface](api/surface.md)
 * The Debian/Ubuntu installer checks for Qt 6.4, the floor config.m4 builds against (Ubuntu 24.04 ships 6.4.2). 0.10.1.
 
 ## 2026-10-14
 
-* QColor, QBrush, QTextCharFormat, QTextCursor, QTextBlock, QTextEditExtraSelection values; QTextDocument; QScrollBar; QFontDatabase::systemFont; QPlainTextEdit cursor, extra selections, wrap mode, interaction flags and scroll bars (compare-app text panes, C1). 0.10.1. [surface](api/surface.md)
-* QTextCursor::movePosition and the QTextCursor\MoveOperation enum (C1 final review: a wrapped line's last row). [surface](api/surface.md)
-* QPlainTextEdit::viewport, whose resizes re-wrap the text (C1 final review). [surface](api/surface.md)
-* QEvent constructor for the types Qt sends as a plain QEvent, so a test can deliver window activation without the OS granting it (C1 final review). [surface](api/surface.md)
+* QColor, QBrush, QTextCharFormat, QTextCursor, QTextBlock, QTextEditExtraSelection values; QTextDocument; QScrollBar; QFontDatabase::systemFont; QPlainTextEdit cursor, extra selections, wrap mode, interaction flags and scroll bars. 0.10.1. [surface](api/surface.md)
+* QTextCursor::movePosition and the QTextCursor\MoveOperation enum. [surface](api/surface.md)
+* QPlainTextEdit::viewport, whose resizes re-wrap the text. [surface](api/surface.md)
+* QEvent constructor for the types Qt sends as a plain QEvent, so a test can deliver window activation without the OS granting it. [surface](api/surface.md)
 
 ## 2026-10-10
 
@@ -56,8 +56,7 @@
 ## 2026-10-09
 
 * `QMenu::popup(x, y)`: a menu at a global point, returning at once. For context menus (HumanInput slice 27). [surface](api/surface.md)
-* Compiled into PHP (`--enable-qt` in php-src, as `venusian build` does), the Qt libraries join PHP's link line (macOS frameworks and their `-F` included); before, only a shared build linked them and the static link failed on every Qt symbol. Compiled in without ext/sockets, `Socket` arguments are not accepted instead of failing to compile. [build](runbooks/build.md)
-* `extra.venusian.system` in composer.json: the apt packages `venusian build` installs to compile the extension, the run-time packages a `.deb` carrying it depends on or recommends beyond what `dpkg-shlibdeps` sees, and the Homebrew packages for a dev install.
+* Compiled into PHP (`--enable-qt` in php-src), the Qt libraries join PHP's link line (macOS frameworks and their `-F` included); before, only a shared build linked them and the static link failed on every Qt symbol. Compiled in without ext/sockets, `Socket` arguments are not accepted instead of failing to compile. [build](runbooks/build.md)
 * Floor Qt 6.4 (Ubuntu 24.04): five `QEvent` checks guarded by `gen-enum.php --since`; build.json apps on the 24.04 image compile ext-qt. [generating enums](runbooks/generating-enums.md)
 * `QEventFilter` callbacks get the event as a third argument, alive only during the call; `QEvent`, `QInputEvent`, `QMouseEvent`, `QContextMenuEvent` (+ enums `QContextMenuEvent\Reason`, `QInputDevice\DeviceType`); `QCoreApplication::sendEvent`, `QApplication::widgetAt`, `QWidget::mapFromGlobal`, `QGuiApplication::styleHints()`/`QStyleHints`. For right-click mail (HumanInput slice 26). [surface](api/surface.md)
 
