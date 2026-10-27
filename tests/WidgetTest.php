@@ -207,6 +207,33 @@ it('adds message box buttons, sets the default and reads the clicked one', funct
     expect($box->clickedButton())->toBe($save);
 });
 
+it('sets and reads back a message box icon and check box', function (): void {
+    $box = new QMessageBox();
+    expect($box->icon())->toBe(QMessageBox\Icon::NO_ICON)
+        ->and($box->checkBox())->toBeNull();
+
+    $box->setIcon(QMessageBox\Icon::WARNING);
+    $check = new QCheckBox('Don\'t ask again');
+    $box->setCheckBox($check);
+
+    expect($box->icon())->toBe(QMessageBox\Icon::WARNING)
+        ->and($box->checkBox())->toBe($check)
+        ->and($check->text())->toBe('Don\'t ask again');
+});
+
+it('sets and reads back a file dialog\'s name filters and QDir filter', function (): void {
+    $dialog = new QFileDialog();
+    $dialog->setNameFilters(['Text (*.txt *.md)', 'All (*)']);
+    $dialog->setFilter(QDir\Filter::ALL_ENTRIES->value | QDir\Filter::HIDDEN->value);
+
+    expect($dialog->nameFilters())->toBe(['Text (*.txt *.md)', 'All (*)'])
+        ->and($dialog->filter() & QDir\Filter::HIDDEN->value)->toBe(QDir\Filter::HIDDEN->value)
+        ->and($dialog->filter() & QDir\Filter::ALL_ENTRIES->value)->toBe(QDir\Filter::ALL_ENTRIES->value);
+
+    $dialog->setFilter(QDir\Filter::DIRS);
+    expect($dialog->filter())->toBe(QDir\Filter::DIRS->value);
+});
+
 it('backs the dialog enums with the Qt values', function (): void {
     expect(QMessageBox\ButtonRole::cases())->toHaveCount(11)
         ->and(QMessageBox\ButtonRole::INVALID_ROLE->value)->toBe(-1)

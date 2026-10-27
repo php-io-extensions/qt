@@ -15,6 +15,7 @@
 #include <QtGui/QPixmap>
 #include <QtGui/QDesktopServices>
 #include <QtGui/QClipboard>
+#include <QtCore/QMimeData>
 #include <QtCore/QUrl>
 #include <QtCore/QPointer>
 #include <QtCore/QThread>
@@ -196,6 +197,9 @@ void phpqt_register_QGui()
 	phpqt_ce_QClipboard = register_class_QClipboard(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QClipboard);
 	phpqt_map_class("QClipboard", phpqt_ce_QClipboard);
+	phpqt_ce_QMimeData = register_class_QMimeData(phpqt_ce_QObject);
+	phpqt_object_setup(phpqt_ce_QMimeData);
+	phpqt_map_class("QMimeData", phpqt_ce_QMimeData);
 }
 
 /* ---- QClipboard -------------------------------------------------------- */
@@ -231,6 +235,62 @@ ZEND_METHOD(QClipboard, text)
 	PHPQT_THIS(QClipboard, clipboard);
 
 	phpqt_return_qstring(return_value, clipboard->text(static_cast<QClipboard::Mode>(phpqt_enum_value(mode, QClipboard::Clipboard))));
+}
+
+ZEND_METHOD(QClipboard, clear)
+{
+	zend_object *mode = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QClipboard_Mode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QClipboard, clipboard);
+
+	clipboard->clear(static_cast<QClipboard::Mode>(phpqt_enum_value(mode, QClipboard::Clipboard)));
+}
+
+ZEND_METHOD(QClipboard, mimeData)
+{
+	zend_object *mode = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_QClipboard_Mode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QClipboard, clipboard);
+
+	phpqt_box(return_value, const_cast<QMimeData *>(clipboard->mimeData(static_cast<QClipboard::Mode>(phpqt_enum_value(mode, QClipboard::Clipboard)))));
+}
+
+/* ---- QMimeData --------------------------------------------------------- */
+
+ZEND_METHOD(QMimeData, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QMimeData());
+}
+
+ZEND_METHOD(QMimeData, hasText)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMimeData, data);
+
+	RETURN_BOOL(data->hasText());
+}
+
+ZEND_METHOD(QMimeData, formats)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMimeData, data);
+
+	array_init(return_value);
+	for (const QString &format : data->formats()) {
+		zval entry;
+		phpqt_return_qstring(&entry, format);
+		add_next_index_zval(return_value, &entry);
+	}
 }
 
 void phpqt_value_hold(zend_object *wrapper, void *ptr, bool owned, void (*destroy)(void *), void (*forget)(void *))

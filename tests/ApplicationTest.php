@@ -40,6 +40,32 @@ it('puts text on the application clipboard and reads it back', function (): void
         ->and($read)->toBe($text);
 });
 
+it('says whether the clipboard holds text, and clears it', function (): void {
+    $clipboard = QGuiApplication::clipboard();
+    $kept = $clipboard->text();
+    $clipboard->setText('x');
+    $held = $clipboard->mimeData();
+    $hadText = $held->hasText();
+    $clipboard->clear();
+    $cleared = $clipboard->mimeData()?->hasText();
+    $clipboard->setText($kept);
+
+    expect($held)->toBeInstanceOf(QMimeData::class)
+        ->and($hadText)->toBeTrue()
+        ->and($cleared)->not->toBeTrue();
+});
+
+it('lists the formats the clipboard holds', function (): void {
+    $clipboard = QGuiApplication::clipboard();
+    $kept = $clipboard->text();
+    $clipboard->setText('x');
+    $formats = $clipboard->mimeData()->formats();
+    $clipboard->setText($kept);
+
+    expect($formats)->toContain('text/plain')
+        ->and((new QMimeData())->formats())->toBe([]);
+});
+
 it('gives no clipboard before an application', function (): void {
     $child = qtChild('return QGuiApplication::clipboard();', app: false);
 

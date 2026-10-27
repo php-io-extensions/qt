@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-27
+
+* `QMessageBox` icon (`QMessageBox\Icon`, generated from qmessagebox.h) and checkBox (+set); `QFileDialog` nameFilters (+set) and filter (+set, `QDir\Filter` generated from qdir.h, or an int of or-ed bits); `QClipboard` clear and mimeData; `QMimeData` (constructor, hasText, formats). `scripts/gen-enum.php` reads an enumerator marked `QT_DEPRECATED_VERSION_X_*("…")`, as Qt 6.11 marks `QDir::Modified`. 647 / 11435.
+
 ## 2026-10-26
 
 * `QKeyEvent::matches()` with `QKeySequence\StandardKey` (generated from qkeysequence.h); `QInputMethodEvent` (constructor with the preedit text and an attribute list, `setCommitString`, `commitString`, `preeditString`), `QInputMethodEvent\AttributeType` and the struct `QInputMethodEvent\Attribute`; the event filter boxes an input method event as its class. 634 / 11435.

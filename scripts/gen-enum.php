@@ -74,7 +74,7 @@ $values = [];
 $next = 0;
 
 foreach (array_filter(array_map('trim', explode(',', $body))) as $entry) {
-    if (! preg_match('/^(\w+)(?:\s+Q_DECL_ENUMERATOR_DEPRECATED\w*(?:\([^)]*\))?)?\s*(?:=\s*(.+))?$/s', $entry, $e)) {
+    if (! preg_match('/^(\w+)(?:\s+(?:Q_DECL_ENUMERATOR_DEPRECATED|QT_DEPRECATED_VERSION_X)\w*(?:\([^)]*\))?)?\s*(?:=\s*(.+))?$/s', $entry, $e)) {
         fwrite(STDERR, "cannot parse enumerator: {$entry}\n");
         exit(1);
     }

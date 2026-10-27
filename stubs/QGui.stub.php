@@ -186,6 +186,24 @@ namespace {
         public function setText(string $text, QClipboard\Mode $mode = QClipboard\Mode::CLIPBOARD): void {}
 
         public function text(QClipboard\Mode $mode = QClipboard\Mode::CLIPBOARD): string {}
+
+        public function clear(QClipboard\Mode $mode = QClipboard\Mode::CLIPBOARD): void {}
+
+        /** The clipboard's current data, owned by the clipboard: read it now, it can change on the next event. */
+        public function mimeData(QClipboard\Mode $mode = QClipboard\Mode::CLIPBOARD): ?QMimeData {}
+    }
+
+    /**
+     * @not-serializable
+     */
+    class QMimeData extends QObject
+    {
+        public function __construct() {}
+
+        public function hasText(): bool {}
+
+        /** @return string[] the MIME types the data holds */
+        public function formats(): array {}
     }
 
     /**

@@ -4,6 +4,7 @@
 #include "../stubs/QDialog_arginfo.h"
 
 #include <QtCore/QString>
+#include <QtCore/QDir>
 #include <QtGui/QFont>
 #include <QtGui/QWindow>
 #include <QtWidgets/QApplication>
@@ -15,6 +16,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QStyle>
 #include <QtWidgets/QWidget>
 
@@ -33,6 +35,8 @@ void phpqt_register_QWidget()
 	phpqt_map_class("QDialog", phpqt_ce_QDialog);
 
 	phpqt_ce_QMessageBox_ButtonRole = register_class_QMessageBox_ButtonRole();
+	phpqt_ce_QMessageBox_Icon = register_class_QMessageBox_Icon();
+	phpqt_ce_QDir_Filter = register_class_QDir_Filter();
 	phpqt_ce_QMessageBox = register_class_QMessageBox(phpqt_ce_QDialog);
 	phpqt_object_setup(phpqt_ce_QMessageBox);
 	phpqt_map_class("QMessageBox", phpqt_ce_QMessageBox);
@@ -794,6 +798,51 @@ ZEND_METHOD(QMessageBox, clickedButton)
 	phpqt_box(return_value, box->clickedButton());
 }
 
+ZEND_METHOD(QMessageBox, icon)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMessageBox, box);
+
+	phpqt_return_enum(return_value, phpqt_ce_QMessageBox_Icon, static_cast<zend_long>(box->icon()));
+}
+
+ZEND_METHOD(QMessageBox, setIcon)
+{
+	zend_object *icon;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(icon, phpqt_ce_QMessageBox_Icon)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMessageBox, box);
+
+	box->setIcon(static_cast<QMessageBox::Icon>(phpqt_enum_value(icon, QMessageBox::NoIcon)));
+}
+
+ZEND_METHOD(QMessageBox, checkBox)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMessageBox, box);
+
+	phpqt_box(return_value, box->checkBox());
+}
+
+ZEND_METHOD(QMessageBox, setCheckBox)
+{
+	zend_object *cb = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(cb, phpqt_ce_QCheckBox)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMessageBox, box);
+
+	QCheckBox *qcb = static_cast<QCheckBox *>(phpqt_arg(cb, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	box->setCheckBox(qcb);
+}
+
 /* ---- QFileDialog ------------------------------------------------------- */
 
 ZEND_METHOD(QFileDialog, __construct)
@@ -904,4 +953,54 @@ ZEND_METHOD(QFileDialog, selectedFiles)
 		phpqt_return_qstring(&entry, file);
 		add_next_index_zval(return_value, &entry);
 	}
+}
+
+ZEND_METHOD(QFileDialog, nameFilters)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	array_init(return_value);
+	for (const QString &filter : dialog->nameFilters()) {
+		zval entry;
+		phpqt_return_qstring(&entry, filter);
+		add_next_index_zval(return_value, &entry);
+	}
+}
+
+ZEND_METHOD(QFileDialog, setNameFilters)
+{
+	HashTable *filters;
+	QStringList list;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ARRAY_HT(filters)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	if (!phpqt_string_list(filters, &list, 1)) {
+		RETURN_THROWS();
+	}
+	dialog->setNameFilters(list);
+}
+
+ZEND_METHOD(QFileDialog, filter)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	RETURN_LONG(static_cast<zend_long>(dialog->filter().toInt()));
+}
+
+ZEND_METHOD(QFileDialog, setFilter)
+{
+	zend_object *filters_case = nullptr;
+	zend_long filters_long = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(filters_case, phpqt_ce_QDir_Filter, filters_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QFileDialog, dialog);
+
+	dialog->setFilter(QDir::Filters(static_cast<int>(phpqt_enum_value(filters_case, filters_long))));
 }

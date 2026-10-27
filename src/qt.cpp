@@ -14,6 +14,7 @@
 
 #include <QtCore/QtGlobal>
 #include <QtCore/QEvent>
+#include <QtCore/QDir>
 #include <QtCore/qnamespace.h>
 #include <QtGui/QClipboard>
 #include <QtGui/QKeySequence>
@@ -48,6 +49,8 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/Qt_ToolButtonStyle.inc"
 #include "checks/Qt_CaseSensitivity.inc"
 #include "checks/QMessageBox_ButtonRole.inc"
+#include "checks/QMessageBox_Icon.inc"
+#include "checks/QDir_Filter.inc"
 #include "checks/QFileDialog_FileMode.inc"
 #include "checks/QFileDialog_AcceptMode.inc"
 #include "checks/QFileDialog_Option.inc"
@@ -100,6 +103,9 @@ zend_class_entry *phpqt_ce_Qt_AlignmentFlag;
 zend_class_entry *phpqt_ce_Qt_TextInteractionFlag;
 zend_class_entry *phpqt_ce_QDesktopServices;
 zend_class_entry *phpqt_ce_QMessageBox_ButtonRole;
+zend_class_entry *phpqt_ce_QMessageBox_Icon;
+zend_class_entry *phpqt_ce_QDir_Filter;
+zend_class_entry *phpqt_ce_QMimeData;
 zend_class_entry *phpqt_ce_QFileDialog;
 zend_class_entry *phpqt_ce_QFileDialog_FileMode;
 zend_class_entry *phpqt_ce_QFileDialog_AcceptMode;

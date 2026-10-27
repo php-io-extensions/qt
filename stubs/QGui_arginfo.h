@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 3ca1481efab32929168f563d43336f6e5d39347d */
+ * Stub hash: 61475b06226c9d013ab6f65d8314ca48450648eb */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent_Attribute___construct, 0, 0, 4)
 	ZEND_ARG_OBJ_INFO(0, type, QInputMethodEvent\\AttributeType, 0)
@@ -18,6 +18,22 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QClipboard_text, 0, 0, IS_STRING, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, QClipboard\\Mode, 0, "QClipboard\\Mode::CLIPBOARD")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QClipboard_clear, 0, 0, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, QClipboard\\Mode, 0, "QClipboard\\Mode::CLIPBOARD")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QClipboard_mimeData, 0, 0, QMimeData, 1)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, QClipboard\\Mode, 0, "QClipboard\\Mode::CLIPBOARD")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QMimeData___construct arginfo_class_QClipboard___construct
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMimeData_hasText, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMimeData_formats, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QDesktopServices___construct arginfo_class_QClipboard___construct
@@ -73,8 +89,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_load, 0, 1, _IS_BO
 	ZEND_ARG_OBJ_TYPE_MASK(0, flags, Qt\\ImageConversionFlag, MAY_BE_LONG, "Qt\\ImageConversionFlag::AUTO_COLOR")
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_isNull, 0, 0, _IS_BOOL, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QPixmap_isNull arginfo_class_QMimeData_hasText
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_width, 0, 0, IS_LONG, 0)
 ZEND_END_ARG_INFO()
@@ -98,7 +113,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QIcon___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, pixmap, QPixmap, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QIcon_isNull arginfo_class_QPixmap_isNull
+#define arginfo_class_QIcon_isNull arginfo_class_QMimeData_hasText
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QImage___construct, 0, 0, 5)
 	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
@@ -110,7 +125,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QImage___construct, 0, 0, 5)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, cleanupInfo, IS_MIXED, 0, "null")
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QImage_isNull arginfo_class_QPixmap_isNull
+#define arginfo_class_QImage_isNull arginfo_class_QMimeData_hasText
 
 #define arginfo_class_QImage_width arginfo_class_QPixmap_width
 
@@ -184,7 +199,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTreeWidgetItem_parent, 0, 0, QTreeWidgetItem, 1)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTreeWidgetItem_isExpanded arginfo_class_QPixmap_isNull
+#define arginfo_class_QTreeWidgetItem_isExpanded arginfo_class_QMimeData_hasText
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setExpanded, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, expand, _IS_BOOL, 0)
@@ -201,6 +216,11 @@ ZEND_METHOD(QInputMethodEvent_Attribute, __construct);
 ZEND_METHOD(QClipboard, __construct);
 ZEND_METHOD(QClipboard, setText);
 ZEND_METHOD(QClipboard, text);
+ZEND_METHOD(QClipboard, clear);
+ZEND_METHOD(QClipboard, mimeData);
+ZEND_METHOD(QMimeData, __construct);
+ZEND_METHOD(QMimeData, hasText);
+ZEND_METHOD(QMimeData, formats);
 ZEND_METHOD(QDesktopServices, __construct);
 ZEND_METHOD(QDesktopServices, openUrl);
 ZEND_METHOD(QFontDatabase, __construct);
@@ -259,6 +279,15 @@ static const zend_function_entry class_QClipboard_methods[] = {
 	ZEND_ME(QClipboard, __construct, arginfo_class_QClipboard___construct, ZEND_ACC_PRIVATE)
 	ZEND_ME(QClipboard, setText, arginfo_class_QClipboard_setText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QClipboard, text, arginfo_class_QClipboard_text, ZEND_ACC_PUBLIC)
+	ZEND_ME(QClipboard, clear, arginfo_class_QClipboard_clear, ZEND_ACC_PUBLIC)
+	ZEND_ME(QClipboard, mimeData, arginfo_class_QClipboard_mimeData, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QMimeData_methods[] = {
+	ZEND_ME(QMimeData, __construct, arginfo_class_QMimeData___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QMimeData, hasText, arginfo_class_QMimeData_hasText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QMimeData, formats, arginfo_class_QMimeData_formats, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -847,6 +876,16 @@ static zend_class_entry *register_class_QClipboard(zend_class_entry *class_entry
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QClipboard", class_QClipboard_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QMimeData(zend_class_entry *class_entry_QObject)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QMimeData", class_QMimeData_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
