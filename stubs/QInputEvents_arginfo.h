@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 1bab8fea7f5ef81bc6f98caa5fc55a55eca7a5de */
+ * Stub hash: f0a23e2b72d7966d592cdccbf96d0ab2c386ab6c */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEvent___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
@@ -68,6 +68,25 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QKeyEvent_nativeScanCode arginfo_class_QInputEvent_modifiers
 
 #define arginfo_class_QKeyEvent_nativeVirtualKey arginfo_class_QInputEvent_modifiers
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QKeyEvent_matches, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, key, QKeySequence\\StandardKey, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent___construct, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, preeditText, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, attributes, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QInputMethodEvent_setCommitString, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, commitString, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, replaceFrom, IS_LONG, 0, "0")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, replaceLength, IS_LONG, 0, "0")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QInputMethodEvent_commitString arginfo_class_QKeyEvent_text
+
+#define arginfo_class_QInputMethodEvent_preeditString arginfo_class_QKeyEvent_text
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWheelEvent___construct, 0, 0, 10)
 	ZEND_ARG_OBJ_INFO(0, pos, QPointF, 0)
@@ -140,6 +159,11 @@ ZEND_METHOD(QKeyEvent, text);
 ZEND_METHOD(QKeyEvent, isAutoRepeat);
 ZEND_METHOD(QKeyEvent, nativeScanCode);
 ZEND_METHOD(QKeyEvent, nativeVirtualKey);
+ZEND_METHOD(QKeyEvent, matches);
+ZEND_METHOD(QInputMethodEvent, __construct);
+ZEND_METHOD(QInputMethodEvent, setCommitString);
+ZEND_METHOD(QInputMethodEvent, commitString);
+ZEND_METHOD(QInputMethodEvent, preeditString);
 ZEND_METHOD(QWheelEvent, __construct);
 ZEND_METHOD(QWheelEvent, pixelDelta);
 ZEND_METHOD(QWheelEvent, angleDelta);
@@ -190,6 +214,15 @@ static const zend_function_entry class_QKeyEvent_methods[] = {
 	ZEND_ME(QKeyEvent, isAutoRepeat, arginfo_class_QKeyEvent_isAutoRepeat, ZEND_ACC_PUBLIC)
 	ZEND_ME(QKeyEvent, nativeScanCode, arginfo_class_QKeyEvent_nativeScanCode, ZEND_ACC_PUBLIC)
 	ZEND_ME(QKeyEvent, nativeVirtualKey, arginfo_class_QKeyEvent_nativeVirtualKey, ZEND_ACC_PUBLIC)
+	ZEND_ME(QKeyEvent, matches, arginfo_class_QKeyEvent_matches, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QInputMethodEvent_methods[] = {
+	ZEND_ME(QInputMethodEvent, __construct, arginfo_class_QInputMethodEvent___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QInputMethodEvent, setCommitString, arginfo_class_QInputMethodEvent_setCommitString, ZEND_ACC_PUBLIC)
+	ZEND_ME(QInputMethodEvent, commitString, arginfo_class_QInputMethodEvent_commitString, ZEND_ACC_PUBLIC)
+	ZEND_ME(QInputMethodEvent, preeditString, arginfo_class_QInputMethodEvent_preeditString, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -256,6 +289,16 @@ static zend_class_entry *register_class_QKeyEvent(zend_class_entry *class_entry_
 
 	INIT_CLASS_ENTRY(ce, "QKeyEvent", class_QKeyEvent_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QInputEvent, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QInputMethodEvent(zend_class_entry *class_entry_QEvent)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QInputMethodEvent", class_QInputMethodEvent_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QEvent, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

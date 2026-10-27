@@ -89,6 +89,27 @@ class QKeyEvent extends QInputEvent
 
     /** The platform's virtual key (macOS: the kVK_ key code); 0 when unknown. */
     public function nativeVirtualKey(): int {}
+
+    /** Whether the key and modifiers are the platform's sequence for $key (an exact match). */
+    public function matches(QKeySequence\StandardKey $key): bool {}
+}
+
+/**
+ * Text an input method composes (dead keys, candidate windows): Qt sends one to a widget with
+ * Qt\WidgetAttribute::INPUT_METHOD_ENABLED.
+ *
+ * @not-serializable
+ */
+class QInputMethodEvent extends QEvent
+{
+    /** @param QInputMethodEvent\Attribute[] $attributes */
+    public function __construct(string $preeditText, array $attributes) {}
+
+    public function setCommitString(string $commitString, int $replaceFrom = 0, int $replaceLength = 0): void {}
+
+    public function commitString(): string {}
+
+    public function preeditString(): string {}
 }
 
 /**

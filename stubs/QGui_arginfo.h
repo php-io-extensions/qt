@@ -1,5 +1,12 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 5ea7e455dd6a883c89c27155fd98673d57ab917f */
+ * Stub hash: 3ca1481efab32929168f563d43336f6e5d39347d */
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent_Attribute___construct, 0, 0, 4)
+	ZEND_ARG_OBJ_INFO(0, type, QInputMethodEvent\\AttributeType, 0)
+	ZEND_ARG_TYPE_INFO(0, start, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_MIXED, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QClipboard___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
@@ -190,6 +197,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTreeWidgetItem_setChildIn
 	ZEND_ARG_OBJ_INFO(0, policy, QTreeWidgetItem\\ChildIndicatorPolicy, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_METHOD(QInputMethodEvent_Attribute, __construct);
 ZEND_METHOD(QClipboard, __construct);
 ZEND_METHOD(QClipboard, setText);
 ZEND_METHOD(QClipboard, text);
@@ -241,6 +249,11 @@ ZEND_METHOD(QTreeWidgetItem, isExpanded);
 ZEND_METHOD(QTreeWidgetItem, setExpanded);
 ZEND_METHOD(QTreeWidgetItem, childIndicatorPolicy);
 ZEND_METHOD(QTreeWidgetItem, setChildIndicatorPolicy);
+
+static const zend_function_entry class_QInputMethodEvent_Attribute_methods[] = {
+	ZEND_ME(QInputMethodEvent_Attribute, __construct, arginfo_class_QInputMethodEvent_Attribute___construct, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
 
 static const zend_function_entry class_QClipboard_methods[] = {
 	ZEND_ME(QClipboard, __construct, arginfo_class_QClipboard___construct, ZEND_ACC_PRIVATE)
@@ -410,6 +423,363 @@ static zend_class_entry *register_class_QClipboard_Mode(void)
 	zval enum_case_FIND_BUFFER_value;
 	ZVAL_LONG(&enum_case_FIND_BUFFER_value, 2);
 	zend_enum_add_case_cstr(class_entry, "FIND_BUFFER", &enum_case_FIND_BUFFER_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QInputMethodEvent_AttributeType(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QInputMethodEvent\\AttributeType", IS_LONG, NULL);
+
+	zval enum_case_TEXT_FORMAT_value;
+	ZVAL_LONG(&enum_case_TEXT_FORMAT_value, 0);
+	zend_enum_add_case_cstr(class_entry, "TEXT_FORMAT", &enum_case_TEXT_FORMAT_value);
+
+	zval enum_case_CURSOR_value;
+	ZVAL_LONG(&enum_case_CURSOR_value, 1);
+	zend_enum_add_case_cstr(class_entry, "CURSOR", &enum_case_CURSOR_value);
+
+	zval enum_case_LANGUAGE_value;
+	ZVAL_LONG(&enum_case_LANGUAGE_value, 2);
+	zend_enum_add_case_cstr(class_entry, "LANGUAGE", &enum_case_LANGUAGE_value);
+
+	zval enum_case_RUBY_value;
+	ZVAL_LONG(&enum_case_RUBY_value, 3);
+	zend_enum_add_case_cstr(class_entry, "RUBY", &enum_case_RUBY_value);
+
+	zval enum_case_SELECTION_value;
+	ZVAL_LONG(&enum_case_SELECTION_value, 4);
+	zend_enum_add_case_cstr(class_entry, "SELECTION", &enum_case_SELECTION_value);
+
+	zval enum_case_MIME_DATA_value;
+	ZVAL_LONG(&enum_case_MIME_DATA_value, 5);
+	zend_enum_add_case_cstr(class_entry, "MIME_DATA", &enum_case_MIME_DATA_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QInputMethodEvent_Attribute(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_NS_CLASS_ENTRY(ce, "QInputMethodEvent", "Attribute", class_QInputMethodEvent_Attribute_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval property_type_default_value;
+	ZVAL_UNDEF(&property_type_default_value);
+	zend_string *property_type_name = zend_string_init("type", sizeof("type") - 1, 1);
+	zend_string *property_type_class_QInputMethodEvent_AttributeType = zend_string_init("QInputMethodEvent\\AttributeType", sizeof("QInputMethodEvent\\AttributeType")-1, 1);
+	zend_declare_typed_property(class_entry, property_type_name, &property_type_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_type_class_QInputMethodEvent_AttributeType, 0, 0));
+	zend_string_release(property_type_name);
+
+	zval property_start_default_value;
+	ZVAL_UNDEF(&property_start_default_value);
+	zend_string *property_start_name = zend_string_init("start", sizeof("start") - 1, 1);
+	zend_declare_typed_property(class_entry, property_start_name, &property_start_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(property_start_name);
+
+	zval property_length_default_value;
+	ZVAL_UNDEF(&property_length_default_value);
+	zend_string *property_length_name = zend_string_init("length", sizeof("length") - 1, 1);
+	zend_declare_typed_property(class_entry, property_length_name, &property_length_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(property_length_name);
+
+	zval property_value_default_value;
+	ZVAL_UNDEF(&property_value_default_value);
+	zend_string *property_value_name = zend_string_init("value", sizeof("value") - 1, 1);
+	zend_declare_typed_property(class_entry, property_value_name, &property_value_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_ANY));
+	zend_string_release(property_value_name);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QKeySequence_StandardKey(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QKeySequence\\StandardKey", IS_LONG, NULL);
+
+	zval enum_case_UNKNOWN_KEY_value;
+	ZVAL_LONG(&enum_case_UNKNOWN_KEY_value, 0);
+	zend_enum_add_case_cstr(class_entry, "UNKNOWN_KEY", &enum_case_UNKNOWN_KEY_value);
+
+	zval enum_case_HELP_CONTENTS_value;
+	ZVAL_LONG(&enum_case_HELP_CONTENTS_value, 1);
+	zend_enum_add_case_cstr(class_entry, "HELP_CONTENTS", &enum_case_HELP_CONTENTS_value);
+
+	zval enum_case_WHATS_THIS_value;
+	ZVAL_LONG(&enum_case_WHATS_THIS_value, 2);
+	zend_enum_add_case_cstr(class_entry, "WHATS_THIS", &enum_case_WHATS_THIS_value);
+
+	zval enum_case_OPEN_value;
+	ZVAL_LONG(&enum_case_OPEN_value, 3);
+	zend_enum_add_case_cstr(class_entry, "OPEN", &enum_case_OPEN_value);
+
+	zval enum_case_CLOSE_value;
+	ZVAL_LONG(&enum_case_CLOSE_value, 4);
+	zend_enum_add_case_cstr(class_entry, "CLOSE", &enum_case_CLOSE_value);
+
+	zval enum_case_SAVE_value;
+	ZVAL_LONG(&enum_case_SAVE_value, 5);
+	zend_enum_add_case_cstr(class_entry, "SAVE", &enum_case_SAVE_value);
+
+	zval enum_case_NEW_value;
+	ZVAL_LONG(&enum_case_NEW_value, 6);
+	zend_enum_add_case_cstr(class_entry, "NEW", &enum_case_NEW_value);
+
+	zval enum_case_DELETE_value;
+	ZVAL_LONG(&enum_case_DELETE_value, 7);
+	zend_enum_add_case_cstr(class_entry, "DELETE", &enum_case_DELETE_value);
+
+	zval enum_case_CUT_value;
+	ZVAL_LONG(&enum_case_CUT_value, 8);
+	zend_enum_add_case_cstr(class_entry, "CUT", &enum_case_CUT_value);
+
+	zval enum_case_COPY_value;
+	ZVAL_LONG(&enum_case_COPY_value, 9);
+	zend_enum_add_case_cstr(class_entry, "COPY", &enum_case_COPY_value);
+
+	zval enum_case_PASTE_value;
+	ZVAL_LONG(&enum_case_PASTE_value, 10);
+	zend_enum_add_case_cstr(class_entry, "PASTE", &enum_case_PASTE_value);
+
+	zval enum_case_UNDO_value;
+	ZVAL_LONG(&enum_case_UNDO_value, 11);
+	zend_enum_add_case_cstr(class_entry, "UNDO", &enum_case_UNDO_value);
+
+	zval enum_case_REDO_value;
+	ZVAL_LONG(&enum_case_REDO_value, 12);
+	zend_enum_add_case_cstr(class_entry, "REDO", &enum_case_REDO_value);
+
+	zval enum_case_BACK_value;
+	ZVAL_LONG(&enum_case_BACK_value, 13);
+	zend_enum_add_case_cstr(class_entry, "BACK", &enum_case_BACK_value);
+
+	zval enum_case_FORWARD_value;
+	ZVAL_LONG(&enum_case_FORWARD_value, 14);
+	zend_enum_add_case_cstr(class_entry, "FORWARD", &enum_case_FORWARD_value);
+
+	zval enum_case_REFRESH_value;
+	ZVAL_LONG(&enum_case_REFRESH_value, 15);
+	zend_enum_add_case_cstr(class_entry, "REFRESH", &enum_case_REFRESH_value);
+
+	zval enum_case_ZOOM_IN_value;
+	ZVAL_LONG(&enum_case_ZOOM_IN_value, 16);
+	zend_enum_add_case_cstr(class_entry, "ZOOM_IN", &enum_case_ZOOM_IN_value);
+
+	zval enum_case_ZOOM_OUT_value;
+	ZVAL_LONG(&enum_case_ZOOM_OUT_value, 17);
+	zend_enum_add_case_cstr(class_entry, "ZOOM_OUT", &enum_case_ZOOM_OUT_value);
+
+	zval enum_case_PRINT_value;
+	ZVAL_LONG(&enum_case_PRINT_value, 18);
+	zend_enum_add_case_cstr(class_entry, "PRINT", &enum_case_PRINT_value);
+
+	zval enum_case_ADD_TAB_value;
+	ZVAL_LONG(&enum_case_ADD_TAB_value, 19);
+	zend_enum_add_case_cstr(class_entry, "ADD_TAB", &enum_case_ADD_TAB_value);
+
+	zval enum_case_NEXT_CHILD_value;
+	ZVAL_LONG(&enum_case_NEXT_CHILD_value, 20);
+	zend_enum_add_case_cstr(class_entry, "NEXT_CHILD", &enum_case_NEXT_CHILD_value);
+
+	zval enum_case_PREVIOUS_CHILD_value;
+	ZVAL_LONG(&enum_case_PREVIOUS_CHILD_value, 21);
+	zend_enum_add_case_cstr(class_entry, "PREVIOUS_CHILD", &enum_case_PREVIOUS_CHILD_value);
+
+	zval enum_case_FIND_value;
+	ZVAL_LONG(&enum_case_FIND_value, 22);
+	zend_enum_add_case_cstr(class_entry, "FIND", &enum_case_FIND_value);
+
+	zval enum_case_FIND_NEXT_value;
+	ZVAL_LONG(&enum_case_FIND_NEXT_value, 23);
+	zend_enum_add_case_cstr(class_entry, "FIND_NEXT", &enum_case_FIND_NEXT_value);
+
+	zval enum_case_FIND_PREVIOUS_value;
+	ZVAL_LONG(&enum_case_FIND_PREVIOUS_value, 24);
+	zend_enum_add_case_cstr(class_entry, "FIND_PREVIOUS", &enum_case_FIND_PREVIOUS_value);
+
+	zval enum_case_REPLACE_value;
+	ZVAL_LONG(&enum_case_REPLACE_value, 25);
+	zend_enum_add_case_cstr(class_entry, "REPLACE", &enum_case_REPLACE_value);
+
+	zval enum_case_SELECT_ALL_value;
+	ZVAL_LONG(&enum_case_SELECT_ALL_value, 26);
+	zend_enum_add_case_cstr(class_entry, "SELECT_ALL", &enum_case_SELECT_ALL_value);
+
+	zval enum_case_BOLD_value;
+	ZVAL_LONG(&enum_case_BOLD_value, 27);
+	zend_enum_add_case_cstr(class_entry, "BOLD", &enum_case_BOLD_value);
+
+	zval enum_case_ITALIC_value;
+	ZVAL_LONG(&enum_case_ITALIC_value, 28);
+	zend_enum_add_case_cstr(class_entry, "ITALIC", &enum_case_ITALIC_value);
+
+	zval enum_case_UNDERLINE_value;
+	ZVAL_LONG(&enum_case_UNDERLINE_value, 29);
+	zend_enum_add_case_cstr(class_entry, "UNDERLINE", &enum_case_UNDERLINE_value);
+
+	zval enum_case_MOVE_TO_NEXT_CHAR_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_NEXT_CHAR_value, 30);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_NEXT_CHAR", &enum_case_MOVE_TO_NEXT_CHAR_value);
+
+	zval enum_case_MOVE_TO_PREVIOUS_CHAR_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_PREVIOUS_CHAR_value, 31);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_PREVIOUS_CHAR", &enum_case_MOVE_TO_PREVIOUS_CHAR_value);
+
+	zval enum_case_MOVE_TO_NEXT_WORD_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_NEXT_WORD_value, 32);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_NEXT_WORD", &enum_case_MOVE_TO_NEXT_WORD_value);
+
+	zval enum_case_MOVE_TO_PREVIOUS_WORD_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_PREVIOUS_WORD_value, 33);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_PREVIOUS_WORD", &enum_case_MOVE_TO_PREVIOUS_WORD_value);
+
+	zval enum_case_MOVE_TO_NEXT_LINE_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_NEXT_LINE_value, 34);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_NEXT_LINE", &enum_case_MOVE_TO_NEXT_LINE_value);
+
+	zval enum_case_MOVE_TO_PREVIOUS_LINE_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_PREVIOUS_LINE_value, 35);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_PREVIOUS_LINE", &enum_case_MOVE_TO_PREVIOUS_LINE_value);
+
+	zval enum_case_MOVE_TO_NEXT_PAGE_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_NEXT_PAGE_value, 36);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_NEXT_PAGE", &enum_case_MOVE_TO_NEXT_PAGE_value);
+
+	zval enum_case_MOVE_TO_PREVIOUS_PAGE_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_PREVIOUS_PAGE_value, 37);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_PREVIOUS_PAGE", &enum_case_MOVE_TO_PREVIOUS_PAGE_value);
+
+	zval enum_case_MOVE_TO_START_OF_LINE_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_START_OF_LINE_value, 38);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_START_OF_LINE", &enum_case_MOVE_TO_START_OF_LINE_value);
+
+	zval enum_case_MOVE_TO_END_OF_LINE_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_END_OF_LINE_value, 39);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_END_OF_LINE", &enum_case_MOVE_TO_END_OF_LINE_value);
+
+	zval enum_case_MOVE_TO_START_OF_BLOCK_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_START_OF_BLOCK_value, 40);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_START_OF_BLOCK", &enum_case_MOVE_TO_START_OF_BLOCK_value);
+
+	zval enum_case_MOVE_TO_END_OF_BLOCK_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_END_OF_BLOCK_value, 41);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_END_OF_BLOCK", &enum_case_MOVE_TO_END_OF_BLOCK_value);
+
+	zval enum_case_MOVE_TO_START_OF_DOCUMENT_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_START_OF_DOCUMENT_value, 42);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_START_OF_DOCUMENT", &enum_case_MOVE_TO_START_OF_DOCUMENT_value);
+
+	zval enum_case_MOVE_TO_END_OF_DOCUMENT_value;
+	ZVAL_LONG(&enum_case_MOVE_TO_END_OF_DOCUMENT_value, 43);
+	zend_enum_add_case_cstr(class_entry, "MOVE_TO_END_OF_DOCUMENT", &enum_case_MOVE_TO_END_OF_DOCUMENT_value);
+
+	zval enum_case_SELECT_NEXT_CHAR_value;
+	ZVAL_LONG(&enum_case_SELECT_NEXT_CHAR_value, 44);
+	zend_enum_add_case_cstr(class_entry, "SELECT_NEXT_CHAR", &enum_case_SELECT_NEXT_CHAR_value);
+
+	zval enum_case_SELECT_PREVIOUS_CHAR_value;
+	ZVAL_LONG(&enum_case_SELECT_PREVIOUS_CHAR_value, 45);
+	zend_enum_add_case_cstr(class_entry, "SELECT_PREVIOUS_CHAR", &enum_case_SELECT_PREVIOUS_CHAR_value);
+
+	zval enum_case_SELECT_NEXT_WORD_value;
+	ZVAL_LONG(&enum_case_SELECT_NEXT_WORD_value, 46);
+	zend_enum_add_case_cstr(class_entry, "SELECT_NEXT_WORD", &enum_case_SELECT_NEXT_WORD_value);
+
+	zval enum_case_SELECT_PREVIOUS_WORD_value;
+	ZVAL_LONG(&enum_case_SELECT_PREVIOUS_WORD_value, 47);
+	zend_enum_add_case_cstr(class_entry, "SELECT_PREVIOUS_WORD", &enum_case_SELECT_PREVIOUS_WORD_value);
+
+	zval enum_case_SELECT_NEXT_LINE_value;
+	ZVAL_LONG(&enum_case_SELECT_NEXT_LINE_value, 48);
+	zend_enum_add_case_cstr(class_entry, "SELECT_NEXT_LINE", &enum_case_SELECT_NEXT_LINE_value);
+
+	zval enum_case_SELECT_PREVIOUS_LINE_value;
+	ZVAL_LONG(&enum_case_SELECT_PREVIOUS_LINE_value, 49);
+	zend_enum_add_case_cstr(class_entry, "SELECT_PREVIOUS_LINE", &enum_case_SELECT_PREVIOUS_LINE_value);
+
+	zval enum_case_SELECT_NEXT_PAGE_value;
+	ZVAL_LONG(&enum_case_SELECT_NEXT_PAGE_value, 50);
+	zend_enum_add_case_cstr(class_entry, "SELECT_NEXT_PAGE", &enum_case_SELECT_NEXT_PAGE_value);
+
+	zval enum_case_SELECT_PREVIOUS_PAGE_value;
+	ZVAL_LONG(&enum_case_SELECT_PREVIOUS_PAGE_value, 51);
+	zend_enum_add_case_cstr(class_entry, "SELECT_PREVIOUS_PAGE", &enum_case_SELECT_PREVIOUS_PAGE_value);
+
+	zval enum_case_SELECT_START_OF_LINE_value;
+	ZVAL_LONG(&enum_case_SELECT_START_OF_LINE_value, 52);
+	zend_enum_add_case_cstr(class_entry, "SELECT_START_OF_LINE", &enum_case_SELECT_START_OF_LINE_value);
+
+	zval enum_case_SELECT_END_OF_LINE_value;
+	ZVAL_LONG(&enum_case_SELECT_END_OF_LINE_value, 53);
+	zend_enum_add_case_cstr(class_entry, "SELECT_END_OF_LINE", &enum_case_SELECT_END_OF_LINE_value);
+
+	zval enum_case_SELECT_START_OF_BLOCK_value;
+	ZVAL_LONG(&enum_case_SELECT_START_OF_BLOCK_value, 54);
+	zend_enum_add_case_cstr(class_entry, "SELECT_START_OF_BLOCK", &enum_case_SELECT_START_OF_BLOCK_value);
+
+	zval enum_case_SELECT_END_OF_BLOCK_value;
+	ZVAL_LONG(&enum_case_SELECT_END_OF_BLOCK_value, 55);
+	zend_enum_add_case_cstr(class_entry, "SELECT_END_OF_BLOCK", &enum_case_SELECT_END_OF_BLOCK_value);
+
+	zval enum_case_SELECT_START_OF_DOCUMENT_value;
+	ZVAL_LONG(&enum_case_SELECT_START_OF_DOCUMENT_value, 56);
+	zend_enum_add_case_cstr(class_entry, "SELECT_START_OF_DOCUMENT", &enum_case_SELECT_START_OF_DOCUMENT_value);
+
+	zval enum_case_SELECT_END_OF_DOCUMENT_value;
+	ZVAL_LONG(&enum_case_SELECT_END_OF_DOCUMENT_value, 57);
+	zend_enum_add_case_cstr(class_entry, "SELECT_END_OF_DOCUMENT", &enum_case_SELECT_END_OF_DOCUMENT_value);
+
+	zval enum_case_DELETE_START_OF_WORD_value;
+	ZVAL_LONG(&enum_case_DELETE_START_OF_WORD_value, 58);
+	zend_enum_add_case_cstr(class_entry, "DELETE_START_OF_WORD", &enum_case_DELETE_START_OF_WORD_value);
+
+	zval enum_case_DELETE_END_OF_WORD_value;
+	ZVAL_LONG(&enum_case_DELETE_END_OF_WORD_value, 59);
+	zend_enum_add_case_cstr(class_entry, "DELETE_END_OF_WORD", &enum_case_DELETE_END_OF_WORD_value);
+
+	zval enum_case_DELETE_END_OF_LINE_value;
+	ZVAL_LONG(&enum_case_DELETE_END_OF_LINE_value, 60);
+	zend_enum_add_case_cstr(class_entry, "DELETE_END_OF_LINE", &enum_case_DELETE_END_OF_LINE_value);
+
+	zval enum_case_INSERT_PARAGRAPH_SEPARATOR_value;
+	ZVAL_LONG(&enum_case_INSERT_PARAGRAPH_SEPARATOR_value, 61);
+	zend_enum_add_case_cstr(class_entry, "INSERT_PARAGRAPH_SEPARATOR", &enum_case_INSERT_PARAGRAPH_SEPARATOR_value);
+
+	zval enum_case_INSERT_LINE_SEPARATOR_value;
+	ZVAL_LONG(&enum_case_INSERT_LINE_SEPARATOR_value, 62);
+	zend_enum_add_case_cstr(class_entry, "INSERT_LINE_SEPARATOR", &enum_case_INSERT_LINE_SEPARATOR_value);
+
+	zval enum_case_SAVE_AS_value;
+	ZVAL_LONG(&enum_case_SAVE_AS_value, 63);
+	zend_enum_add_case_cstr(class_entry, "SAVE_AS", &enum_case_SAVE_AS_value);
+
+	zval enum_case_PREFERENCES_value;
+	ZVAL_LONG(&enum_case_PREFERENCES_value, 64);
+	zend_enum_add_case_cstr(class_entry, "PREFERENCES", &enum_case_PREFERENCES_value);
+
+	zval enum_case_QUIT_value;
+	ZVAL_LONG(&enum_case_QUIT_value, 65);
+	zend_enum_add_case_cstr(class_entry, "QUIT", &enum_case_QUIT_value);
+
+	zval enum_case_FULL_SCREEN_value;
+	ZVAL_LONG(&enum_case_FULL_SCREEN_value, 66);
+	zend_enum_add_case_cstr(class_entry, "FULL_SCREEN", &enum_case_FULL_SCREEN_value);
+
+	zval enum_case_DESELECT_value;
+	ZVAL_LONG(&enum_case_DESELECT_value, 67);
+	zend_enum_add_case_cstr(class_entry, "DESELECT", &enum_case_DESELECT_value);
+
+	zval enum_case_DELETE_COMPLETE_LINE_value;
+	ZVAL_LONG(&enum_case_DELETE_COMPLETE_LINE_value, 68);
+	zend_enum_add_case_cstr(class_entry, "DELETE_COMPLETE_LINE", &enum_case_DELETE_COMPLETE_LINE_value);
+
+	zval enum_case_BACKSPACE_value;
+	ZVAL_LONG(&enum_case_BACKSPACE_value, 69);
+	zend_enum_add_case_cstr(class_entry, "BACKSPACE", &enum_case_BACKSPACE_value);
+
+	zval enum_case_CANCEL_value;
+	ZVAL_LONG(&enum_case_CANCEL_value, 70);
+	zend_enum_add_case_cstr(class_entry, "CANCEL", &enum_case_CANCEL_value);
 
 	return class_entry;
 }

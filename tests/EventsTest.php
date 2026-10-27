@@ -208,3 +208,39 @@ it('names the scroll phases and mouse event sources at their C values', function
         ->toBe(['MOUSE_EVENT_NOT_SYNTHESIZED', 'MOUSE_EVENT_SYNTHESIZED_BY_SYSTEM', 'MOUSE_EVENT_SYNTHESIZED_BY_QT', 'MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION'])
         ->and(Qt\MouseEventSource::MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION->value)->toBe(3);
 });
+
+it('matches a key event against a standard key sequence', function (): void {
+    // Qt::ControlModifier 0x04000000 (Cmd on macOS), Qt::ShiftModifier 0x02000000.
+    $ctrlA = new QKeyEvent(Type::KEY_PRESS, Qt\Key::A->value, 0x04000000, 'a');
+    $shiftLeft = new QKeyEvent(Type::KEY_PRESS, Qt\Key::LEFT->value, 0x02000000);
+
+    expect($ctrlA->matches(QKeySequence\StandardKey::SELECT_ALL))->toBeTrue()
+        ->and($ctrlA->matches(QKeySequence\StandardKey::COPY))->toBeFalse()
+        ->and($shiftLeft->matches(QKeySequence\StandardKey::SELECT_PREVIOUS_CHAR))->toBeTrue()
+        ->and($shiftLeft->matches(QKeySequence\StandardKey::MOVE_TO_PREVIOUS_CHAR))->toBeFalse()
+        ->and(QKeySequence\StandardKey::UNKNOWN_KEY->value)->toBe(0)
+        ->and(QKeySequence\StandardKey::CANCEL->name)->toBe('CANCEL');
+});
+
+it('makes an input method event, sets its commit string and hands it to a filter as its class', function (): void {
+    $event = new QInputMethodEvent('e', [new QInputMethodEvent\Attribute(QInputMethodEvent\AttributeType::CURSOR, 1, 0, null)]);
+    expect($event->preeditString())->toBe('e')
+        ->and($event->commitString())->toBe('')
+        ->and($event->type())->toBe(Type::INPUT_METHOD);
+
+    $event->setCommitString('é');
+    expect($event->commitString())->toBe('é');
+
+    $widget = new QWidget();
+    $seen = [];
+    $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$seen): bool {
+        if ($event->type() === Type::INPUT_METHOD) {
+            $seen[] = [get_class($event), $event instanceof QInputMethodEvent ? $event->commitString() : null];
+        }
+
+        return false;
+    });
+    $widget->installEventFilter($filter);
+    QCoreApplication::sendEvent($widget, $event);
+    expect($seen)->toBe([[QInputMethodEvent::class, 'é']]);
+});

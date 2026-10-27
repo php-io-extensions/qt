@@ -16,6 +16,8 @@
 #include <QtCore/QEvent>
 #include <QtCore/qnamespace.h>
 #include <QtGui/QClipboard>
+#include <QtGui/QKeySequence>
+#include <QtGui/QInputMethodEvent>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QStyle>
@@ -37,6 +39,8 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/Qt_WidgetAttribute.inc"
 #include "checks/Qt_AlignmentFlag.inc"
 #include "checks/QStyle_SubElement.inc"
+#include "checks/QKeySequence_StandardKey.inc"
+#include "checks/QInputMethodEvent_AttributeType.inc"
 #include "checks/Qt_TextInteractionFlag.inc"
 #include "checks/Qt_WindowType.inc"
 #include "checks/Qt_WindowModality.inc"
@@ -102,6 +106,9 @@ zend_class_entry *phpqt_ce_QFileDialog_AcceptMode;
 zend_class_entry *phpqt_ce_QFileDialog_Option;
 zend_class_entry *phpqt_ce_QClipboard;
 zend_class_entry *phpqt_ce_QClipboard_Mode;
+zend_class_entry *phpqt_ce_QKeySequence_StandardKey;
+zend_class_entry *phpqt_ce_QInputMethodEvent_AttributeType;
+zend_class_entry *phpqt_ce_QInputMethodEvent_Attribute;
 zend_class_entry *phpqt_ce_QSizePolicy_Policy;
 zend_class_entry *phpqt_ce_QLayout;
 zend_class_entry *phpqt_ce_QStyle;

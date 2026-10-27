@@ -1,7 +1,63 @@
 # Agent guidance — php-io-extensions/qt
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Top-level tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
 
 1. **Read [`.okf/index.md`](.okf/index.md) first** before changing the API, the C++, or packaging. Open only the concepts the change touches.
-2. **Qt, 1:1.** One PHP method = one native call (Qt 6: QtCore, QtGui, QtWidgets, QtOpenGLWidgets, QtMultimedia), under its native name and signature: `QWidget::setWindowTitle(const QString &)` → `QWidget::setWindowTitle(string $title)`. A C++ scope is a PHP namespace (`QTextEdit::ExtraSelection` → `QTextEdit\ExtraSelection`, `Qt::WindowType` → `Qt\WindowType`). An overload set binds the overload the native name keeps; defaults are the native ones. Qt's value classes (`QPoint`, `QPointF`, `QSize`, `QRect`, `QDate`, `QKeySequence`, `QUrl`, `QByteArray`, …) are PHP value objects holding a copy, never arrays or strings. A native nullptr is `null`. Qt's behaviour passes through: invalid values, false, nullptr and qWarning output reach PHP as Qt produces them. See [`.okf/api/surface.md`](.okf/api/surface.md).
+2. **Qt, 1:1.** One PHP method = one native call (Qt 6: QtCore, QtGui, QtWidgets, QtOpenGLWidgets, QtMultimedia), under its native name and signature: `QWidget::setWindowTitle(const QString &)` → `QWidget::setWindowTitle(string $title)`. A C++ scope is a PHP namespace (`QTextEdit::ExtraSelection` → `QTextEdit\ExtraSelection`, `Qt::WindowType` → `Qt\WindowType`). An overload set binds the overload the native name keeps; defaults are the native ones. Qt's value classes (`QPoint`, `QPointF`, `QSize`, `QRect`, `QDate`, `QKeySequence`, `QUrl`, `QByteArray`, …) are PHP value objects holding a copy, never arrays or strings. A native nullptr is `null`. Qt's behavior passes through: invalid values, false, nullptr and qWarning output reach PHP as Qt produces them. See [`.okf/api/surfacee.md`](.okf/api/surfacee.md).
 3. **Refusals.** The rule, verbatim:
    > A refusal is the extension declining to make the native call. The extension may refuse only when making it would cause (1) memory unsafety — the call would dereference a native object the PHP wrapper no longer validly references; (2) uncatchable process death — SIGSEGV, SIGBUS, abort(), or an ObjC/C++ exception unwinding through Zend frames; (3) VM corruption — PHP code run on a non-PHP thread or illegal engine re-entry. Nothing else justifies a refusal: return codes, nil, clamping, logs, odd but documented results pass through. Every refusal needs a probe on a real build for that exact call. Translation (an NSException AppKit raised, after the native call, turned into AppKitException) is not a refusal. A need of code built on the extension is solved in that code, not here.
 
@@ -15,3 +71,5 @@
 10. **Build.** Mac: `bash install-macos.sh` into Homebrew `php@8.4` (`php84`) and `php@8.4-zts` (`zhp`). Linux: `bash install-debian-trixie.sh`. Pest v4 at `-d memory_limit=128M`, `XDEBUG_MODE=off`, in a logged-in GUI session (`DISPLAY` / `WAYLAND_DISPLAY` on Linux). Run the test files a change touches; gate a commit on the run's exit code. Probe steps: [`.okf/runbooks/build.md`](.okf/runbooks/build.md).
 11. **Durable facts go in `.okf`.** Update the matching concept, bump its `generated.at`, append `.okf/log.md`. The bundle documents the package, never a session.
 12. **Version** is `PHP_QT_VERSION` in `php_qt.h`: 0.10.5. It moves only past a published tag; tags drive Packagist. `os-families`: linux, darwin.
+
+

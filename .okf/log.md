@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-26
+
+* `QKeyEvent::matches()` with `QKeySequence\StandardKey` (generated from qkeysequence.h); `QInputMethodEvent` (constructor with the preedit text and an attribute list, `setCommitString`, `commitString`, `preeditString`), `QInputMethodEvent\AttributeType` and the struct `QInputMethodEvent\Attribute`; the event filter boxes an input method event as its class. 634 / 11435.
+
 ## 2026-10-24
 
 * `QWidget::style()`, `QStyle` (abstract, the application's style object) with `subElementRect()`, `QStyle\SubElement` (generated from qstyle.h, identical on Qt 6.4 and 6.11), and the value classes `QStyleOption` (`initFrom()`) and `QStyleOptionButton`, held as its `QStyleOption` base: a face laid out inside the rect the style draws a push button's contents into.

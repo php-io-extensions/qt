@@ -190,6 +190,9 @@ void phpqt_register_QGui()
 	phpqt_ce_QDesktopServices = register_class_QDesktopServices();
 
 	phpqt_ce_QClipboard_Mode = register_class_QClipboard_Mode();
+	phpqt_ce_QKeySequence_StandardKey = register_class_QKeySequence_StandardKey();
+	phpqt_ce_QInputMethodEvent_AttributeType = register_class_QInputMethodEvent_AttributeType();
+	phpqt_ce_QInputMethodEvent_Attribute = register_class_QInputMethodEvent_Attribute();
 	phpqt_ce_QClipboard = register_class_QClipboard(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QClipboard);
 	phpqt_map_class("QClipboard", phpqt_ce_QClipboard);
@@ -1054,4 +1057,24 @@ ZEND_METHOD(QDesktopServices, openUrl)
 	}
 
 	RETURN_BOOL(QDesktopServices::openUrl(*given));
+}
+
+/* ---- QInputMethodEvent\Attribute --------------------------------------------- */
+
+ZEND_METHOD(QInputMethodEvent_Attribute, __construct)
+{
+	zval *type, *value;
+	zend_long start, length;
+
+	ZEND_PARSE_PARAMETERS_START(4, 4)
+		Z_PARAM_OBJECT_OF_CLASS(type, phpqt_ce_QInputMethodEvent_AttributeType)
+		Z_PARAM_LONG(start)
+		Z_PARAM_LONG(length)
+		Z_PARAM_ZVAL(value)
+	ZEND_PARSE_PARAMETERS_END();
+
+	zend_update_property(phpqt_ce_QInputMethodEvent_Attribute, Z_OBJ_P(ZEND_THIS), "type", sizeof("type") - 1, type);
+	zend_update_property_long(phpqt_ce_QInputMethodEvent_Attribute, Z_OBJ_P(ZEND_THIS), "start", sizeof("start") - 1, start);
+	zend_update_property_long(phpqt_ce_QInputMethodEvent_Attribute, Z_OBJ_P(ZEND_THIS), "length", sizeof("length") - 1, length);
+	zend_update_property(phpqt_ce_QInputMethodEvent_Attribute, Z_OBJ_P(ZEND_THIS), "value", sizeof("value") - 1, value);
 }

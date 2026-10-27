@@ -7,6 +7,7 @@
 #include <QtGui/QContextMenuEvent>
 #include <QtGui/QInputDevice>
 #include <QtGui/QKeyEvent>
+#include <QtGui/QInputMethodEvent>
 #include <QtGui/QMouseEvent>
 #include <QtGui/QStyleHints>
 #include <QtGui/QWheelEvent>
@@ -17,6 +18,7 @@ zend_class_entry *phpqt_ce_QMouseEvent;
 zend_class_entry *phpqt_ce_QKeyEvent;
 zend_class_entry *phpqt_ce_QWheelEvent;
 zend_class_entry *phpqt_ce_QContextMenuEvent;
+zend_class_entry *phpqt_ce_QInputMethodEvent;
 zend_class_entry *phpqt_ce_QStyleHints;
 zend_class_entry *phpqt_ce_QContextMenuEvent_Reason;
 zend_class_entry *phpqt_ce_QInputDevice_DeviceType;
@@ -46,6 +48,8 @@ void phpqt_register_QInputEvents()
 	phpqt_value_setup(phpqt_ce_QWheelEvent);
 	phpqt_ce_QContextMenuEvent = register_class_QContextMenuEvent(phpqt_ce_QInputEvent);
 	phpqt_value_setup(phpqt_ce_QContextMenuEvent);
+	phpqt_ce_QInputMethodEvent = register_class_QInputMethodEvent(phpqt_ce_QEvent);
+	phpqt_value_setup(phpqt_ce_QInputMethodEvent);
 
 	phpqt_ce_QStyleHints = register_class_QStyleHints(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QStyleHints);
@@ -103,6 +107,8 @@ void phpqt_box_event(zval *rv, QEvent *event)
 		ce = phpqt_ce_QWheelEvent;
 	} else if (dynamic_cast<QInputEvent *>(event) != nullptr) {
 		ce = phpqt_ce_QInputEvent;
+	} else if (dynamic_cast<QInputMethodEvent *>(event) != nullptr) {
+		ce = phpqt_ce_QInputMethodEvent;
 	}
 
 	object_init_ex(rv, ce);
@@ -617,4 +623,102 @@ ZEND_METHOD(QStyleHints, mouseDoubleClickDistance)
 	PHPQT_THIS(QStyleHints, hints);
 
 	RETURN_LONG(hints->mouseDoubleClickDistance());
+}
+
+/* ---- QKeyEvent::matches ---------------------------------------------------- */
+
+ZEND_METHOD(QKeyEvent, matches)
+{
+	zend_object *key_case;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(key_case, phpqt_ce_QKeySequence_StandardKey)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QKeyEvent, event);
+
+	RETURN_BOOL(event->matches(static_cast<QKeySequence::StandardKey>(Z_LVAL_P(zend_enum_fetch_case_value(key_case)))));
+}
+
+/* ---- QInputMethodEvent ------------------------------------------------------- */
+
+/* The list's Attribute objects, each field as it is; an entry that is no Attribute is left out. */
+static QList<QInputMethodEvent::Attribute> phpqt_im_attributes(HashTable *attributes)
+{
+	QList<QInputMethodEvent::Attribute> list;
+	zval *entry;
+
+	list.reserve((qsizetype) zend_hash_num_elements(attributes));
+	ZEND_HASH_FOREACH_VAL(attributes, entry) {
+		ZVAL_DEREF(entry);
+		if (Z_TYPE_P(entry) != IS_OBJECT || !instanceof_function(Z_OBJCE_P(entry), phpqt_ce_QInputMethodEvent_Attribute)) {
+			continue;
+		}
+		zend_object *obj = Z_OBJ_P(entry);
+		zval *type = zend_read_property(phpqt_ce_QInputMethodEvent_Attribute, obj, "type", sizeof("type") - 1, true, nullptr);
+		zval *start = zend_read_property(phpqt_ce_QInputMethodEvent_Attribute, obj, "start", sizeof("start") - 1, true, nullptr);
+		zval *length = zend_read_property(phpqt_ce_QInputMethodEvent_Attribute, obj, "length", sizeof("length") - 1, true, nullptr);
+		zval *value = zend_read_property(phpqt_ce_QInputMethodEvent_Attribute, obj, "value", sizeof("value") - 1, true, nullptr);
+		QVariant variant;
+		if (Z_TYPE_P(type) != IS_OBJECT || !phpqt_zval_to_variant(value, QMetaType(), &variant, 2)) {
+			continue;
+		}
+		list.append(QInputMethodEvent::Attribute(
+			static_cast<QInputMethodEvent::AttributeType>(Z_LVAL_P(zend_enum_fetch_case_value(Z_OBJ_P(type)))),
+			static_cast<int>(Z_LVAL_P(start)), static_cast<int>(Z_LVAL_P(length)), variant));
+	} ZEND_HASH_FOREACH_END();
+
+	return list;
+}
+
+ZEND_METHOD(QInputMethodEvent, __construct)
+{
+	zend_string *preedit;
+	HashTable *attributes;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_STR(preedit)
+		Z_PARAM_ARRAY_HT(attributes)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	QList<QInputMethodEvent::Attribute> list = phpqt_im_attributes(attributes);
+	if (EG(exception) != nullptr) {
+		RETURN_THROWS();
+	}
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QInputMethodEvent(phpqt_qstring(preedit), list), true, phpqt_destroy_event);
+}
+
+ZEND_METHOD(QInputMethodEvent, setCommitString)
+{
+	zend_string *commit;
+	zend_long from = 0;
+	zend_long length = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 3)
+		Z_PARAM_STR(commit)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(from)
+		Z_PARAM_LONG(length)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QInputMethodEvent, event);
+
+	event->setCommitString(phpqt_qstring(commit), static_cast<int>(from), static_cast<int>(length));
+}
+
+ZEND_METHOD(QInputMethodEvent, commitString)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QInputMethodEvent, event);
+
+	phpqt_return_qstring(return_value, event->commitString());
+}
+
+ZEND_METHOD(QInputMethodEvent, preeditString)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QInputMethodEvent, event);
+
+	phpqt_return_qstring(return_value, event->preeditString());
 }
