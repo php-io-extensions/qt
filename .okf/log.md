@@ -3,6 +3,8 @@
 ## 2026-10-28
 
 * **Version**: 0.11.0 in `PHP_QT_VERSION` (`php_qt.h`); `branch-alias` `dev-main` is `0.11.x-dev`. Promoted with the Venusian 0.11 ecosystem. No API or behaviour change. SurfaceTest drops `QScrollBar` from the private-constructor rows: it has had a public constructor since 2026-10-23. Built and loaded on Homebrew PHP 8.4 NTS and ZTS (208 passed, 26 skipped each) and the Pi on 8.4 ZTS (206 passed, 28 skipped).
+* **Open — Socket on Debian-family PHP**: `src/runtime.cpp` sets `PHPQT_HAVE_SOCKETS` only when `HAVE_SOCKETS` is defined, and distribution PHP (Debian, Ubuntu, ondřej) builds ext/sockets shared and leaves it undefined. There a `Socket` reaches the `Socket|resource|int` check and is refused: `QSocketNotifier::__construct(): Argument #1 ($socket) must be of type Socket|resource|int, Socket given` on an x86_64 Ubuntu-family 8.4 NTS box. epoll fixed the same include in 0.10.6 by defining `HAVE_SOCKETS` itself when the header is present.
+* **Open — that box's other failures**: Qt 6.4.2 there; `LayoutTest`'s insert past the end, `OpenGLWidgetTest` (no GL context on its X session), `VideoTest` (no end of media) and `VulkanInstanceTest` (ext-vulkan 0.7.1 installed there) fail.
 
 ## 2026-10-27
 
