@@ -52,7 +52,7 @@ it('exposes every function, class, enum and method the stubs declare', function 
 });
 
 it('reports its version and the Qt runtime', function (): void {
-    expect(phpversion('qt'))->toBe('0.10.3')
+    expect(phpversion('qt'))->toBe('0.11.0')
         ->and(qVersion())->toStartWith('6.');
 });
 
@@ -137,7 +137,6 @@ it('declares Qt\'s abstract classes abstract and keeps the constructors only Qt 
     'QAbstractItemView' => [QAbstractItemView::class, true],
     'QLayout' => [QLayout::class, true],
     'QAbstractSlider' => [QAbstractSlider::class, false],
-    'QScrollBar' => [QScrollBar::class, false],
     'QSplitterHandle' => [QSplitterHandle::class, false],
     'QBoxLayout' => [QBoxLayout::class, false],
     'QFontDatabase' => [QFontDatabase::class, false],

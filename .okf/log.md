@@ -1,5 +1,9 @@
 # Log
 
+## 2026-10-28
+
+* **Version**: 0.11.0 in `PHP_QT_VERSION` (`php_qt.h`); `branch-alias` `dev-main` is `0.11.x-dev`. Promoted with the Venusian 0.11 ecosystem. No API or behaviour change. SurfaceTest drops `QScrollBar` from the private-constructor rows: it has had a public constructor since 2026-10-23. Built and loaded on Homebrew PHP 8.4 NTS and ZTS (208 passed, 26 skipped each) and the Pi on 8.4 ZTS (206 passed, 28 skipped).
+
 ## 2026-10-27
 
 * `QMessageBox` icon (`QMessageBox\Icon`, generated from qmessagebox.h) and checkBox (+set); `QFileDialog` nameFilters (+set) and filter (+set, `QDir\Filter` generated from qdir.h, or an int of or-ed bits); `QClipboard` clear and mimeData; `QMimeData` (constructor, hasText, formats). `scripts/gen-enum.php` reads an enumerator marked `QT_DEPRECATED_VERSION_X_*("…")`, as Qt 6.11 marks `QDir::Modified`. 647 / 11435.
