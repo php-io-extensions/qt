@@ -415,6 +415,11 @@ namespace {
         public function redo(): void {}
 
         public function selectedText(): string {}
+
+        /** Qt::Alignment flags as an int. */
+        public function alignment(): int {}
+
+        public function setAlignment(Qt\AlignmentFlag|int $flag): void {}
     }
 
     /**
@@ -454,6 +459,11 @@ namespace {
         public function setTextCursor(QTextCursor $cursor): void {}
 
         public function ensureCursorVisible(): void {}
+
+        /** Pixels between tab stops. */
+        public function tabStopDistance(): float {}
+
+        public function setTabStopDistance(float $distance): void {}
 
         /** @param array $selections list of QTextEdit\ExtraSelection */
         public function setExtraSelections(array $selections): void {}

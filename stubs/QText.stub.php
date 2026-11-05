@@ -82,6 +82,18 @@ namespace {
         /** @cvalue QTextFormat::FullWidthSelection */
         public const int FULL_WIDTH_SELECTION = UNKNOWN;
 
+        /** @cvalue QTextFormat::FontWeight */
+        public const int FONT_WEIGHT = UNKNOWN;
+
+        /** @cvalue QTextFormat::FontItalic */
+        public const int FONT_ITALIC = UNKNOWN;
+
+        /** @cvalue QTextFormat::FontStrikeOut */
+        public const int FONT_STRIKE_OUT = UNKNOWN;
+
+        /** @cvalue QTextFormat::TextUnderlineStyle */
+        public const int TEXT_UNDERLINE_STYLE = UNKNOWN;
+
         private function __construct() {}
     }
 
@@ -105,6 +117,8 @@ namespace {
         public function setProperty(int $propertyId, mixed $value): void {}
 
         public function boolProperty(int $propertyId): bool {}
+
+        public function intProperty(int $propertyId): int {}
 
         public function hasProperty(int $propertyId): bool {}
     }
@@ -165,6 +179,32 @@ namespace {
         public function firstLineNumber(): int {}
 
         public function isValid(): bool {}
+
+        /** Null for Qt's invalid block. */
+        public function layout(): ?QTextLayout {}
+    }
+
+    /**
+     * A block's layout (QTextBlock::layout()), held as its block is: by a cursor at the block's start,
+     * so it never outlives Qt's layout. Once the block is invalid there is no layout: setFormats() sets
+     * nothing and formats() is empty.
+     *
+     * @not-serializable
+     */
+    final class QTextLayout
+    {
+        private function __construct() {}
+
+        /**
+         * Formats laid out with the text (so font weight and italic apply, unlike an extra selection's).
+         * Qt redraws them after QTextDocument::markContentsDirty() over the block.
+         *
+         * @param array $overrides list of QTextLayout\FormatRange
+         */
+        public function setFormats(array $overrides): void {}
+
+        /** @return list<QTextLayout\FormatRange> */
+        public function formats(): array {}
     }
 
     /**
@@ -183,6 +223,29 @@ namespace {
 
         /** Characters, the final paragraph separator included. */
         public function characterCount(): int {}
+
+        /** A copy of the option every paragraph starts from. */
+        public function defaultTextOption(): QTextOption {}
+
+        public function setDefaultTextOption(QTextOption $option): void {}
+
+        /** Lays out and redraws the characters from $from for $length again. */
+        public function markContentsDirty(int $from, int $length): void {}
+    }
+
+    /**
+     * A value in Qt; here a heap copy owned by the PHP object.
+     *
+     * @not-serializable
+     */
+    final class QTextOption
+    {
+        public function __construct() {}
+
+        /** Qt::Alignment flags as an int. */
+        public function alignment(): int {}
+
+        public function setAlignment(Qt\AlignmentFlag|int $alignment): void {}
     }
 }
 
@@ -201,5 +264,25 @@ namespace QTextEdit {
         public \QTextCharFormat $format;
 
         public function __construct(\QTextCursor $cursor, \QTextCharFormat $format) {}
+    }
+}
+
+namespace QTextLayout {
+    /**
+     * QTextLayout::FormatRange, the struct: a format over $length characters from $start, counted from
+     * the block's start. The constructor is the struct's aggregate initialisation; setFormats() copies
+     * the fields as they are then.
+     *
+     * @not-serializable
+     */
+    final class FormatRange
+    {
+        public int $start;
+
+        public int $length;
+
+        public \QTextCharFormat $format;
+
+        public function __construct(int $start, int $length, \QTextCharFormat $format) {}
     }
 }

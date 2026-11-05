@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: f496381fe6a21892d6f17b818ca2c1af2dfc50ec */
+ * Stub hash: 3b29c26f139b0bc55b8ac7bb7a694296f2a3ceb4 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -319,6 +319,12 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QLineEdit_selectedText arginfo_class_QLabel_text
 
+#define arginfo_class_QLineEdit_alignment arginfo_class_QLabel_alignment
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLineEdit_setAlignment, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, flag, Qt\\AlignmentFlag, MAY_BE_LONG, NULL)
+ZEND_END_ARG_INFO()
+
 #define arginfo_class_QPlainTextEdit___construct arginfo_class_QToolButton___construct
 
 #define arginfo_class_QPlainTextEdit_toPlainText arginfo_class_QLabel_text
@@ -352,6 +358,13 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setTextCurs
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QPlainTextEdit_ensureCursorVisible arginfo_class_QAbstractButton_click
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_tabStopDistance, 0, 0, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setTabStopDistance, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, distance, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPlainTextEdit_setExtraSelections, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, selections, IS_ARRAY, 0)
@@ -758,6 +771,8 @@ ZEND_METHOD(QLineEdit, selectAll);
 ZEND_METHOD(QLineEdit, undo);
 ZEND_METHOD(QLineEdit, redo);
 ZEND_METHOD(QLineEdit, selectedText);
+ZEND_METHOD(QLineEdit, alignment);
+ZEND_METHOD(QLineEdit, setAlignment);
 ZEND_METHOD(QPlainTextEdit, __construct);
 ZEND_METHOD(QPlainTextEdit, toPlainText);
 ZEND_METHOD(QPlainTextEdit, setPlainText);
@@ -773,6 +788,8 @@ ZEND_METHOD(QPlainTextEdit, document);
 ZEND_METHOD(QPlainTextEdit, textCursor);
 ZEND_METHOD(QPlainTextEdit, setTextCursor);
 ZEND_METHOD(QPlainTextEdit, ensureCursorVisible);
+ZEND_METHOD(QPlainTextEdit, tabStopDistance);
+ZEND_METHOD(QPlainTextEdit, setTabStopDistance);
 ZEND_METHOD(QPlainTextEdit, setExtraSelections);
 ZEND_METHOD(QPlainTextEdit, extraSelections);
 ZEND_METHOD(QPlainTextEdit, lineWrapMode);
@@ -1024,6 +1041,8 @@ static const zend_function_entry class_QLineEdit_methods[] = {
 	ZEND_ME(QLineEdit, undo, arginfo_class_QLineEdit_undo, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLineEdit, redo, arginfo_class_QLineEdit_redo, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLineEdit, selectedText, arginfo_class_QLineEdit_selectedText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, alignment, arginfo_class_QLineEdit_alignment, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, setAlignment, arginfo_class_QLineEdit_setAlignment, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -1043,6 +1062,8 @@ static const zend_function_entry class_QPlainTextEdit_methods[] = {
 	ZEND_ME(QPlainTextEdit, textCursor, arginfo_class_QPlainTextEdit_textCursor, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, setTextCursor, arginfo_class_QPlainTextEdit_setTextCursor, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, ensureCursorVisible, arginfo_class_QPlainTextEdit_ensureCursorVisible, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, tabStopDistance, arginfo_class_QPlainTextEdit_tabStopDistance, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPlainTextEdit, setTabStopDistance, arginfo_class_QPlainTextEdit_setTabStopDistance, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, setExtraSelections, arginfo_class_QPlainTextEdit_setExtraSelections, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, extraSelections, arginfo_class_QPlainTextEdit_extraSelections, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPlainTextEdit, lineWrapMode, arginfo_class_QPlainTextEdit_lineWrapMode, ZEND_ACC_PUBLIC)

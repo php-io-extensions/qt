@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 61475b06226c9d013ab6f65d8314ca48450648eb */
+ * Stub hash: ee62ea46bb7bf278c4d0b0cd8a690ac8617706cf */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent_Attribute___construct, 0, 0, 4)
 	ZEND_ARG_OBJ_INFO(0, type, QInputMethodEvent\\AttributeType, 0)
@@ -75,6 +75,27 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFont_setWeight, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_TYPE_MASK(0, weight, QFont\\Weight, MAY_BE_LONG, NULL)
 ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QFontMetricsF___construct, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, font, QFont, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QFontMetricsF_ascent arginfo_class_QFont_pointSizeF
+
+#define arginfo_class_QFontMetricsF_descent arginfo_class_QFont_pointSizeF
+
+#define arginfo_class_QFontMetricsF_lineSpacing arginfo_class_QFont_pointSizeF
+
+#define arginfo_class_QFontMetricsF_averageCharWidth arginfo_class_QFont_pointSizeF
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFontMetricsF_horizontalAdvance, 0, 1, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, len, IS_LONG, 0, "-1")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QFontInfo___construct arginfo_class_QFontMetricsF___construct
+
+#define arginfo_class_QFontInfo_fixedPitch arginfo_class_QMimeData_hasText
 
 #define arginfo_class_QPixmap___construct arginfo_class_QClipboard___construct
 
@@ -232,6 +253,14 @@ ZEND_METHOD(QFont, pointSizeF);
 ZEND_METHOD(QFont, setPointSizeF);
 ZEND_METHOD(QFont, weight);
 ZEND_METHOD(QFont, setWeight);
+ZEND_METHOD(QFontMetricsF, __construct);
+ZEND_METHOD(QFontMetricsF, ascent);
+ZEND_METHOD(QFontMetricsF, descent);
+ZEND_METHOD(QFontMetricsF, lineSpacing);
+ZEND_METHOD(QFontMetricsF, averageCharWidth);
+ZEND_METHOD(QFontMetricsF, horizontalAdvance);
+ZEND_METHOD(QFontInfo, __construct);
+ZEND_METHOD(QFontInfo, fixedPitch);
 ZEND_METHOD(QPixmap, __construct);
 ZEND_METHOD(QPixmap, fromImage);
 ZEND_METHOD(QPixmap, load);
@@ -311,6 +340,22 @@ static const zend_function_entry class_QFont_methods[] = {
 	ZEND_ME(QFont, setPointSizeF, arginfo_class_QFont_setPointSizeF, ZEND_ACC_PUBLIC)
 	ZEND_ME(QFont, weight, arginfo_class_QFont_weight, ZEND_ACC_PUBLIC)
 	ZEND_ME(QFont, setWeight, arginfo_class_QFont_setWeight, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QFontMetricsF_methods[] = {
+	ZEND_ME(QFontMetricsF, __construct, arginfo_class_QFontMetricsF___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontMetricsF, ascent, arginfo_class_QFontMetricsF_ascent, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontMetricsF, descent, arginfo_class_QFontMetricsF_descent, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontMetricsF, lineSpacing, arginfo_class_QFontMetricsF_lineSpacing, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontMetricsF, averageCharWidth, arginfo_class_QFontMetricsF_averageCharWidth, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontMetricsF, horizontalAdvance, arginfo_class_QFontMetricsF_horizontalAdvance, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QFontInfo_methods[] = {
+	ZEND_ME(QFontInfo, __construct, arginfo_class_QFontInfo___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontInfo, fixedPitch, arginfo_class_QFontInfo_fixedPitch, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -916,6 +961,26 @@ static zend_class_entry *register_class_QFont(void)
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QFont", class_QFont_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QFontMetricsF(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QFontMetricsF", class_QFontMetricsF_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QFontInfo(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QFontInfo", class_QFontInfo_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

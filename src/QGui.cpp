@@ -10,6 +10,8 @@
 #include <QtGui/QFont>
 #include <QtGui/QIcon>
 #include <QtGui/QFontDatabase>
+#include <QtGui/QFontInfo>
+#include <QtGui/QFontMetricsF>
 #include <QtGui/QGuiApplication>
 #include <QtGui/QImage>
 #include <QtGui/QPixmap>
@@ -85,6 +87,8 @@ public:
 };
 
 static void phpqt_destroy_font(void *ptr) { delete static_cast<QFont *>(ptr); }
+static void phpqt_destroy_font_metrics(void *ptr) { delete static_cast<QFontMetricsF *>(ptr); }
+static void phpqt_destroy_font_info(void *ptr) { delete static_cast<QFontInfo *>(ptr); }
 static void phpqt_destroy_pixmap(void *ptr) { delete static_cast<QPixmap *>(ptr); }
 static void phpqt_destroy_icon(void *ptr) { delete static_cast<QIcon *>(ptr); }
 static void phpqt_destroy_image(void *ptr) { delete static_cast<QImage *>(ptr); }
@@ -172,6 +176,12 @@ void phpqt_register_QGui()
 
 	phpqt_ce_QFont = register_class_QFont();
 	phpqt_value_setup(phpqt_ce_QFont);
+
+	phpqt_ce_QFontMetricsF = register_class_QFontMetricsF();
+	phpqt_value_setup(phpqt_ce_QFontMetricsF);
+
+	phpqt_ce_QFontInfo = register_class_QFontInfo();
+	phpqt_value_setup(phpqt_ce_QFontInfo);
 
 	phpqt_ce_QPixmap = register_class_QPixmap();
 	phpqt_value_setup(phpqt_ce_QPixmap);
@@ -529,6 +539,112 @@ ZEND_METHOD(QFont, setWeight)
 	}
 
 	font->setWeight(static_cast<QFont::Weight>(weight));
+}
+
+/* ---- QFontMetricsF ----------------------------------------------------- */
+
+ZEND_METHOD(QFontMetricsF, __construct)
+{
+	zend_object *font_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(font_obj, phpqt_ce_QFont)
+	ZEND_PARSE_PARAMETERS_END();
+
+	/* Qt aborts with qFatal ("Must construct a QGuiApplication before accessing QFontDatabase"). */
+	if (!PHPQT_PROBE_OFF("qapp-font-metrics") && (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QFontMetricsF needs a QGuiApplication first", 0); /* binding:qapp-font-metrics */
+		RETURN_THROWS();
+	}
+
+	QFont *font = static_cast<QFont *>(phpqt_value_this(font_obj));
+	if (font == nullptr || !phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QFontMetricsF(*font), true, phpqt_destroy_font_metrics);
+}
+
+ZEND_METHOD(QFontMetricsF, ascent)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QFontMetricsF, metrics);
+
+	RETURN_DOUBLE(metrics->ascent());
+}
+
+ZEND_METHOD(QFontMetricsF, descent)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QFontMetricsF, metrics);
+
+	RETURN_DOUBLE(metrics->descent());
+}
+
+ZEND_METHOD(QFontMetricsF, lineSpacing)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QFontMetricsF, metrics);
+
+	RETURN_DOUBLE(metrics->lineSpacing());
+}
+
+ZEND_METHOD(QFontMetricsF, averageCharWidth)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QFontMetricsF, metrics);
+
+	RETURN_DOUBLE(metrics->averageCharWidth());
+}
+
+ZEND_METHOD(QFontMetricsF, horizontalAdvance)
+{
+	zend_string *text;
+	zend_long len = -1;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_STR(text)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(len)
+	ZEND_PARSE_PARAMETERS_END();
+	if (!phpqt_long_fits(len, INT_MIN, INT_MAX, 2)) {
+		RETURN_THROWS();
+	}
+	PHPQT_VALUE_THIS(QFontMetricsF, metrics);
+
+	RETURN_DOUBLE(metrics->horizontalAdvance(phpqt_qstring(text), static_cast<int>(len)));
+}
+
+/* ---- QFontInfo --------------------------------------------------------- */
+
+ZEND_METHOD(QFontInfo, __construct)
+{
+	zend_object *font_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(font_obj, phpqt_ce_QFont)
+	ZEND_PARSE_PARAMETERS_END();
+
+	/* Qt aborts with qFatal ("Must construct a QGuiApplication before accessing QFontDatabase"). */
+	if (!PHPQT_PROBE_OFF("qapp-font-info") && (qobject_cast<QGuiApplication *>(QCoreApplication::instance()) == nullptr)) {
+		zend_throw_exception(phpqt_ce_QtException, "QFontInfo needs a QGuiApplication first", 0); /* binding:qapp-font-info */
+		RETURN_THROWS();
+	}
+
+	QFont *font = static_cast<QFont *>(phpqt_value_this(font_obj));
+	if (font == nullptr || !phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QFontInfo(*font), true, phpqt_destroy_font_info);
+}
+
+ZEND_METHOD(QFontInfo, fixedPitch)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QFontInfo, info);
+
+	RETURN_BOOL(info->fixedPitch());
 }
 
 /* ---- QPixmap ----------------------------------------------------------- */

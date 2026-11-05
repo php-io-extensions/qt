@@ -251,6 +251,41 @@ namespace {
     }
 
     /**
+     * A value in Qt; here a heap copy owned by the PHP object. Sizes in points (fractional).
+     * Needs a QGuiApplication (or QApplication) first.
+     *
+     * @not-serializable
+     */
+    final class QFontMetricsF
+    {
+        public function __construct(QFont $font) {}
+
+        public function ascent(): float {}
+
+        public function descent(): float {}
+
+        public function lineSpacing(): float {}
+
+        public function averageCharWidth(): float {}
+
+        /** horizontalAdvance(const QString &, int len): the first $len characters; -1 = all. */
+        public function horizontalAdvance(string $text, int $len = -1): float {}
+    }
+
+    /**
+     * A value in Qt; here a heap copy owned by the PHP object: the font the window system matched.
+     * Needs a QGuiApplication (or QApplication) first.
+     *
+     * @not-serializable
+     */
+    final class QFontInfo
+    {
+        public function __construct(QFont $font) {}
+
+        public function fixedPitch(): bool {}
+    }
+
+    /**
      * A value in Qt; here a heap copy owned by the PHP object.
      *
      * @not-serializable

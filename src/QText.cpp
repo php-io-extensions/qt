@@ -6,6 +6,8 @@
 #include <QtGui/QTextCharFormat>
 #include <QtGui/QTextDocument>
 #include <QtGui/QTextFormat>
+#include <QtGui/QTextLayout>
+#include <QtGui/QTextOption>
 
 /* After the Qt headers: the class constant spells QTextFormat::FullWidthSelection. */
 #include "../stubs/QText_arginfo.h"
@@ -30,6 +32,7 @@ static void phpqt_destroy_char_format(void *ptr) { delete static_cast<QTextCharF
 static void phpqt_destroy_text_cursor(void *ptr) { delete static_cast<QTextCursor *>(ptr); }
 /* A block is held as a cursor at its start: the cursor follows the document's edits and goes null with it. */
 static void phpqt_destroy_text_block(void *ptr) { delete static_cast<QTextCursor *>(ptr); }
+static void phpqt_destroy_text_option(void *ptr) { delete static_cast<QTextOption *>(ptr); }
 
 void phpqt_register_QText()
 {
@@ -48,6 +51,12 @@ void phpqt_register_QText()
 	phpqt_ce_QTextBlock = register_class_QTextBlock();
 	phpqt_value_setup(phpqt_ce_QTextBlock);
 	phpqt_ce_QTextEdit_ExtraSelection = register_class_QTextEdit_ExtraSelection();
+	/* A layout is held as its block is: a cursor at the block's start (phpqt_destroy_text_block). */
+	phpqt_ce_QTextLayout = register_class_QTextLayout();
+	phpqt_value_setup(phpqt_ce_QTextLayout);
+	phpqt_ce_QTextLayout_FormatRange = register_class_QTextLayout_FormatRange();
+	phpqt_ce_QTextOption = register_class_QTextOption();
+	phpqt_value_setup(phpqt_ce_QTextOption);
 
 	phpqt_ce_QTextDocument = register_class_QTextDocument(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QTextDocument);
@@ -247,8 +256,11 @@ ZEND_METHOD(QTextCharFormat, setProperty)
 	ZEND_PARSE_PARAMETERS_END();
 	PHPQT_VALUE_THIS(QTextCharFormat, format);
 
+	/* QTextFormat stores and reads its int properties as QMetaType::Int (intProperty() is 0 for a qlonglong). */
+	bool as_int = Z_TYPE_P(value) == IS_LONG && Z_LVAL_P(value) >= INT_MIN && Z_LVAL_P(value) <= INT_MAX;
 	QVariant variant;
-	if (!phpqt_long_fits(id, INT_MIN, INT_MAX, 1) || !phpqt_zval_to_variant(value, QMetaType(), &variant, 2)) {
+	if (!phpqt_long_fits(id, INT_MIN, INT_MAX, 1)
+		|| !phpqt_zval_to_variant(value, as_int ? QMetaType::fromType<int>() : QMetaType(), &variant, 2)) {
 		RETURN_THROWS();
 	}
 	format->setProperty((int) id, variant);
@@ -264,6 +276,18 @@ ZEND_METHOD(QTextCharFormat, boolProperty)
 	PHPQT_VALUE_THIS(QTextCharFormat, format);
 
 	RETURN_BOOL(format->boolProperty((int) id));
+}
+
+ZEND_METHOD(QTextCharFormat, intProperty)
+{
+	zend_long id;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(id)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTextCharFormat, format);
+
+	RETURN_LONG(format->intProperty((int) id));
 }
 
 ZEND_METHOD(QTextCharFormat, hasProperty)
@@ -399,6 +423,105 @@ ZEND_METHOD(QTextBlock, isValid)
 	RETURN_BOOL(start->block().isValid());
 }
 
+ZEND_METHOD(QTextBlock, layout)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTextCursor, start);
+
+	if (start->block().layout() == nullptr) {
+		RETURN_NULL();
+	}
+	object_init_ex(return_value, phpqt_ce_QTextLayout);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QTextCursor(*start), true, phpqt_destroy_text_block);
+}
+
+/* ---- QTextLayout ------------------------------------------------------- */
+
+/* Private: QTextBlock::layout() hands layouts out. */
+ZEND_METHOD(QTextLayout, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QTextLayout, setFormats)
+{
+	HashTable *overrides;
+	zval *entry;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ARRAY_HT(overrides)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTextCursor, start);
+
+	QList<QTextLayout::FormatRange> list;
+	ZEND_HASH_FOREACH_VAL(overrides, entry) {
+		ZVAL_DEREF(entry);
+		/* Entries that are not QTextLayout\FormatRange are left out. */
+		if (Z_TYPE_P(entry) != IS_OBJECT || !instanceof_function(Z_OBJCE_P(entry), phpqt_ce_QTextLayout_FormatRange)) {
+			continue;
+		}
+		zval *fields[3];
+		const char *names[3] = {"start", "length", "format"};
+		for (int i = 0; i < 3; i++) {
+			fields[i] = zend_read_property(phpqt_ce_QTextLayout_FormatRange, Z_OBJ_P(entry), names[i], strlen(names[i]), false, nullptr);
+			if (EG(exception) != nullptr) {
+				RETURN_THROWS();
+			}
+		}
+		if (!phpqt_long_fits(Z_LVAL_P(fields[0]), INT_MIN, INT_MAX, 1) || !phpqt_long_fits(Z_LVAL_P(fields[1]), INT_MIN, INT_MAX, 1)) {
+			RETURN_THROWS();
+		}
+		QTextCharFormat *format = static_cast<QTextCharFormat *>(phpqt_value_arg(Z_OBJ_P(fields[2]), 1));
+		if (format == nullptr) {
+			RETURN_THROWS();
+		}
+		list.append(QTextLayout::FormatRange{(int) Z_LVAL_P(fields[0]), (int) Z_LVAL_P(fields[1]), *format});
+	} ZEND_HASH_FOREACH_END();
+
+	QTextLayout *layout = start->block().layout();
+	if (layout != nullptr) {
+		layout->setFormats(list);
+	}
+}
+
+ZEND_METHOD(QTextLayout, formats)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTextCursor, start);
+
+	QTextLayout *layout = start->block().layout();
+	const QList<QTextLayout::FormatRange> list = layout != nullptr ? layout->formats() : QList<QTextLayout::FormatRange>();
+	array_init_size(return_value, (uint32_t) list.size());
+	for (const QTextLayout::FormatRange &range : list) {
+		zval boxed, format;
+		object_init_ex(&boxed, phpqt_ce_QTextLayout_FormatRange);
+		phpqt_return_char_format(&format, range.format);
+		zend_update_property_long(phpqt_ce_QTextLayout_FormatRange, Z_OBJ(boxed), "start", sizeof("start") - 1, range.start);
+		zend_update_property_long(phpqt_ce_QTextLayout_FormatRange, Z_OBJ(boxed), "length", sizeof("length") - 1, range.length);
+		zend_update_property(phpqt_ce_QTextLayout_FormatRange, Z_OBJ(boxed), "format", sizeof("format") - 1, &format);
+		zval_ptr_dtor(&format);
+		add_next_index_zval(return_value, &boxed);
+	}
+}
+
+/* ---- QTextLayout\FormatRange ------------------------------------------- */
+
+ZEND_METHOD(QTextLayout_FormatRange, __construct)
+{
+	zend_long start, length;
+	zval *format;
+
+	ZEND_PARSE_PARAMETERS_START(3, 3)
+		Z_PARAM_LONG(start)
+		Z_PARAM_LONG(length)
+		Z_PARAM_OBJECT_OF_CLASS(format, phpqt_ce_QTextCharFormat)
+	ZEND_PARSE_PARAMETERS_END();
+
+	zend_update_property_long(phpqt_ce_QTextLayout_FormatRange, Z_OBJ_P(ZEND_THIS), "start", sizeof("start") - 1, start);
+	zend_update_property_long(phpqt_ce_QTextLayout_FormatRange, Z_OBJ_P(ZEND_THIS), "length", sizeof("length") - 1, length);
+	zend_update_property(phpqt_ce_QTextLayout_FormatRange, Z_OBJ_P(ZEND_THIS), "format", sizeof("format") - 1, format);
+}
+
 /* ---- QTextEdit\ExtraSelection ------------------------------------------ */
 
 ZEND_METHOD(QTextEdit_ExtraSelection, __construct)
@@ -450,4 +573,79 @@ ZEND_METHOD(QTextDocument, characterCount)
 	PHPQT_THIS(QTextDocument, document);
 
 	RETURN_LONG(document->characterCount());
+}
+
+ZEND_METHOD(QTextDocument, defaultTextOption)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QTextDocument, document);
+
+	object_init_ex(return_value, phpqt_ce_QTextOption);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QTextOption(document->defaultTextOption()), true, phpqt_destroy_text_option);
+}
+
+ZEND_METHOD(QTextDocument, setDefaultTextOption)
+{
+	zend_object *option_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(option_obj, phpqt_ce_QTextOption)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTextDocument, document);
+
+	QTextOption *option = static_cast<QTextOption *>(phpqt_value_this(option_obj));
+	if (option == nullptr) {
+		RETURN_THROWS();
+	}
+	document->setDefaultTextOption(*option);
+}
+
+ZEND_METHOD(QTextDocument, markContentsDirty)
+{
+	zend_long from, length;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(from)
+		Z_PARAM_LONG(length)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QTextDocument, document);
+	if (!phpqt_long_fits(from, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(length, INT_MIN, INT_MAX, 2)) {
+		RETURN_THROWS();
+	}
+
+	document->markContentsDirty((int) from, (int) length);
+}
+
+/* ---- QTextOption ------------------------------------------------------- */
+
+ZEND_METHOD(QTextOption, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QTextOption(), true, phpqt_destroy_text_option);
+}
+
+ZEND_METHOD(QTextOption, alignment)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QTextOption, option);
+
+	RETURN_LONG(static_cast<zend_long>(option->alignment().toInt()));
+}
+
+ZEND_METHOD(QTextOption, setAlignment)
+{
+	zend_object *alignment_case = nullptr;
+	zend_long alignment_long = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(alignment_case, phpqt_ce_Qt_AlignmentFlag, alignment_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QTextOption, option);
+
+	option->setAlignment(Qt::Alignment(static_cast<int>(phpqt_enum_value(alignment_case, alignment_long))));
 }

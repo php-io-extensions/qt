@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 08521e77680124052ab2a5a52ff2678628212408 */
+ * Stub hash: 55423c3032c5e28fc92b5e455ba37471cd556358 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QColor___construct, 0, 0, 3)
 	ZEND_ARG_TYPE_INFO(0, r, IS_LONG, 0)
@@ -56,6 +56,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextCharFormat_boolProper
 	ZEND_ARG_TYPE_INFO(0, propertyId, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextCharFormat_intProperty, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, propertyId, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
 #define arginfo_class_QTextCharFormat_hasProperty arginfo_class_QTextCharFormat_boolProperty
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextCursor___construct, 0, 0, 1)
@@ -97,6 +101,18 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTextBlock_isValid arginfo_class_QColor_isValid
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextBlock_layout, 0, 0, QTextLayout, 1)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTextLayout___construct arginfo_class_QTextFormat___construct
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextLayout_setFormats, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, overrides, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextLayout_formats, 0, 0, IS_ARRAY, 0)
+ZEND_END_ARG_INFO()
+
 #define arginfo_class_QTextDocument___construct arginfo_class_QTextFormat___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextDocument_findBlockByNumber, 0, 1, QTextBlock, 0)
@@ -107,8 +123,34 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTextDocument_characterCount arginfo_class_QColor_red
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextDocument_defaultTextOption, 0, 0, QTextOption, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextDocument_setDefaultTextOption, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, option, QTextOption, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextDocument_markContentsDirty, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, from, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTextOption___construct arginfo_class_QTextFormat___construct
+
+#define arginfo_class_QTextOption_alignment arginfo_class_QColor_red
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextOption_setAlignment, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, alignment, Qt\\AlignmentFlag, MAY_BE_LONG, NULL)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextEdit_ExtraSelection___construct, 0, 0, 2)
 	ZEND_ARG_OBJ_INFO(0, cursor, QTextCursor, 0)
+	ZEND_ARG_OBJ_INFO(0, format, QTextCharFormat, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextLayout_FormatRange___construct, 0, 0, 3)
+	ZEND_ARG_TYPE_INFO(0, start, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
 	ZEND_ARG_OBJ_INFO(0, format, QTextCharFormat, 0)
 ZEND_END_ARG_INFO()
 
@@ -129,6 +171,7 @@ ZEND_METHOD(QTextCharFormat, foreground);
 ZEND_METHOD(QTextCharFormat, background);
 ZEND_METHOD(QTextCharFormat, setProperty);
 ZEND_METHOD(QTextCharFormat, boolProperty);
+ZEND_METHOD(QTextCharFormat, intProperty);
 ZEND_METHOD(QTextCharFormat, hasProperty);
 ZEND_METHOD(QTextCursor, __construct);
 ZEND_METHOD(QTextCursor, setPosition);
@@ -145,11 +188,22 @@ ZEND_METHOD(QTextBlock, length);
 ZEND_METHOD(QTextBlock, blockNumber);
 ZEND_METHOD(QTextBlock, firstLineNumber);
 ZEND_METHOD(QTextBlock, isValid);
+ZEND_METHOD(QTextBlock, layout);
+ZEND_METHOD(QTextLayout, __construct);
+ZEND_METHOD(QTextLayout, setFormats);
+ZEND_METHOD(QTextLayout, formats);
 ZEND_METHOD(QTextDocument, __construct);
 ZEND_METHOD(QTextDocument, findBlockByNumber);
 ZEND_METHOD(QTextDocument, blockCount);
 ZEND_METHOD(QTextDocument, characterCount);
+ZEND_METHOD(QTextDocument, defaultTextOption);
+ZEND_METHOD(QTextDocument, setDefaultTextOption);
+ZEND_METHOD(QTextDocument, markContentsDirty);
+ZEND_METHOD(QTextOption, __construct);
+ZEND_METHOD(QTextOption, alignment);
+ZEND_METHOD(QTextOption, setAlignment);
 ZEND_METHOD(QTextEdit_ExtraSelection, __construct);
+ZEND_METHOD(QTextLayout_FormatRange, __construct);
 
 static const zend_function_entry class_QColor_methods[] = {
 	ZEND_ME(QColor, __construct, arginfo_class_QColor___construct, ZEND_ACC_PUBLIC)
@@ -181,6 +235,7 @@ static const zend_function_entry class_QTextCharFormat_methods[] = {
 	ZEND_ME(QTextCharFormat, background, arginfo_class_QTextCharFormat_background, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextCharFormat, setProperty, arginfo_class_QTextCharFormat_setProperty, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextCharFormat, boolProperty, arginfo_class_QTextCharFormat_boolProperty, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextCharFormat, intProperty, arginfo_class_QTextCharFormat_intProperty, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextCharFormat, hasProperty, arginfo_class_QTextCharFormat_hasProperty, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
@@ -205,6 +260,14 @@ static const zend_function_entry class_QTextBlock_methods[] = {
 	ZEND_ME(QTextBlock, blockNumber, arginfo_class_QTextBlock_blockNumber, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextBlock, firstLineNumber, arginfo_class_QTextBlock_firstLineNumber, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextBlock, isValid, arginfo_class_QTextBlock_isValid, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextBlock, layout, arginfo_class_QTextBlock_layout, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QTextLayout_methods[] = {
+	ZEND_ME(QTextLayout, __construct, arginfo_class_QTextLayout___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QTextLayout, setFormats, arginfo_class_QTextLayout_setFormats, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextLayout, formats, arginfo_class_QTextLayout_formats, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -213,11 +276,26 @@ static const zend_function_entry class_QTextDocument_methods[] = {
 	ZEND_ME(QTextDocument, findBlockByNumber, arginfo_class_QTextDocument_findBlockByNumber, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextDocument, blockCount, arginfo_class_QTextDocument_blockCount, ZEND_ACC_PUBLIC)
 	ZEND_ME(QTextDocument, characterCount, arginfo_class_QTextDocument_characterCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextDocument, defaultTextOption, arginfo_class_QTextDocument_defaultTextOption, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextDocument, setDefaultTextOption, arginfo_class_QTextDocument_setDefaultTextOption, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextDocument, markContentsDirty, arginfo_class_QTextDocument_markContentsDirty, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QTextOption_methods[] = {
+	ZEND_ME(QTextOption, __construct, arginfo_class_QTextOption___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextOption, alignment, arginfo_class_QTextOption_alignment, ZEND_ACC_PUBLIC)
+	ZEND_ME(QTextOption, setAlignment, arginfo_class_QTextOption_setAlignment, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
 static const zend_function_entry class_QTextEdit_ExtraSelection_methods[] = {
 	ZEND_ME(QTextEdit_ExtraSelection, __construct, arginfo_class_QTextEdit_ExtraSelection___construct, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QTextLayout_FormatRange_methods[] = {
+	ZEND_ME(QTextLayout_FormatRange, __construct, arginfo_class_QTextLayout_FormatRange___construct, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -376,6 +454,30 @@ static zend_class_entry *register_class_QTextFormat(void)
 	zend_declare_typed_class_constant(class_entry, const_FULL_WIDTH_SELECTION_name, &const_FULL_WIDTH_SELECTION_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
 	zend_string_release(const_FULL_WIDTH_SELECTION_name);
 
+	zval const_FONT_WEIGHT_value;
+	ZVAL_LONG(&const_FONT_WEIGHT_value, QTextFormat::FontWeight);
+	zend_string *const_FONT_WEIGHT_name = zend_string_init_interned("FONT_WEIGHT", sizeof("FONT_WEIGHT") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_FONT_WEIGHT_name, &const_FONT_WEIGHT_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_FONT_WEIGHT_name);
+
+	zval const_FONT_ITALIC_value;
+	ZVAL_LONG(&const_FONT_ITALIC_value, QTextFormat::FontItalic);
+	zend_string *const_FONT_ITALIC_name = zend_string_init_interned("FONT_ITALIC", sizeof("FONT_ITALIC") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_FONT_ITALIC_name, &const_FONT_ITALIC_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_FONT_ITALIC_name);
+
+	zval const_FONT_STRIKE_OUT_value;
+	ZVAL_LONG(&const_FONT_STRIKE_OUT_value, QTextFormat::FontStrikeOut);
+	zend_string *const_FONT_STRIKE_OUT_name = zend_string_init_interned("FONT_STRIKE_OUT", sizeof("FONT_STRIKE_OUT") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_FONT_STRIKE_OUT_name, &const_FONT_STRIKE_OUT_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_FONT_STRIKE_OUT_name);
+
+	zval const_TEXT_UNDERLINE_STYLE_value;
+	ZVAL_LONG(&const_TEXT_UNDERLINE_STYLE_value, QTextFormat::TextUnderlineStyle);
+	zend_string *const_TEXT_UNDERLINE_STYLE_name = zend_string_init_interned("TEXT_UNDERLINE_STYLE", sizeof("TEXT_UNDERLINE_STYLE") - 1, 1);
+	zend_declare_typed_class_constant(class_entry, const_TEXT_UNDERLINE_STYLE_name, &const_TEXT_UNDERLINE_STYLE_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(const_TEXT_UNDERLINE_STYLE_name);
+
 	return class_entry;
 }
 
@@ -409,12 +511,32 @@ static zend_class_entry *register_class_QTextBlock(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QTextLayout(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QTextLayout", class_QTextLayout_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QTextDocument(zend_class_entry *class_entry_QObject)
 {
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QTextDocument", class_QTextDocument_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QTextOption(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QTextOption", class_QTextOption_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }
@@ -432,6 +554,35 @@ static zend_class_entry *register_class_QTextEdit_ExtraSelection(void)
 	zend_string *property_cursor_class_QTextCursor = zend_string_init("QTextCursor", sizeof("QTextCursor")-1, 1);
 	zend_declare_typed_property(class_entry, property_cursor_name, &property_cursor_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_cursor_class_QTextCursor, 0, 0));
 	zend_string_release(property_cursor_name);
+
+	zval property_format_default_value;
+	ZVAL_UNDEF(&property_format_default_value);
+	zend_string *property_format_name = zend_string_init("format", sizeof("format") - 1, 1);
+	zend_string *property_format_class_QTextCharFormat = zend_string_init("QTextCharFormat", sizeof("QTextCharFormat")-1, 1);
+	zend_declare_typed_property(class_entry, property_format_name, &property_format_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_CLASS(property_format_class_QTextCharFormat, 0, 0));
+	zend_string_release(property_format_name);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QTextLayout_FormatRange(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_NS_CLASS_ENTRY(ce, "QTextLayout", "FormatRange", class_QTextLayout_FormatRange_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	zval property_start_default_value;
+	ZVAL_UNDEF(&property_start_default_value);
+	zend_string *property_start_name = zend_string_init("start", sizeof("start") - 1, 1);
+	zend_declare_typed_property(class_entry, property_start_name, &property_start_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(property_start_name);
+
+	zval property_length_default_value;
+	ZVAL_UNDEF(&property_length_default_value);
+	zend_string *property_length_name = zend_string_init("length", sizeof("length") - 1, 1);
+	zend_declare_typed_property(class_entry, property_length_name, &property_length_default_value, ZEND_ACC_PUBLIC, NULL, (zend_type) ZEND_TYPE_INIT_MASK(MAY_BE_LONG));
+	zend_string_release(property_length_name);
 
 	zval property_format_default_value;
 	ZVAL_UNDEF(&property_format_default_value);

@@ -1,5 +1,11 @@
 # Log
 
+## 2026-11-04
+
+* `QFontMetricsF` (ascent, descent, lineSpacing, averageCharWidth, horizontalAdvance(const QString &, int len)) and `QFontInfo` (fixedPitch), values owned by the PHP object; each constructor refuses before a QGuiApplication (sites qapp-font-metrics, qapp-font-info: Qt qFatals in QFontDatabase, SIGABRT). `QLineEdit` alignment (+set); `QPlainTextEdit` tabStopDistance (+set); `QTextOption` (alignment, +set) and `QTextDocument` defaultTextOption (+set, a copy each way). 664 / 11435.
+* `QTextFormat` FONT_WEIGHT, FONT_ITALIC, FONT_STRIKE_OUT, TEXT_UNDERLINE_STYLE; `QTextCharFormat::intProperty`. `setProperty` stores a PHP int that fits as `QMetaType::Int`, as C++ `setProperty(id, 700)` does: QTextFormat reads int properties only as Int (a qlonglong read as 0, so the weight was lost). 665 / 11435.
+* `QTextBlock::layout` (null for an invalid block) and `QTextLayout` (`setFormats`, `formats`), held by a cursor at the block's start so the PHP object never keeps Qt's layout pointer; once the block is invalid, `setFormats` sets nothing and `formats` is empty. `QTextLayout\FormatRange` (public `start`, `length`, `format`, as `QTextEdit\ExtraSelection`); `setFormats` leaves out entries that are not ranges. `QTextDocument::markContentsDirty`. Found by eye (C15): an extra selection's format is drawn over text already laid out, so its font weight and italic never show; layout formats are shaped with the text. 669 / 11435.
+
 ## 2026-10-28
 
 * **Version**: 0.11.0 in `PHP_QT_VERSION` (`php_qt.h`); `branch-alias` `dev-main` is `0.11.x-dev`. Promoted with the Venusian 0.11 ecosystem. No API or behaviour change. SurfaceTest drops `QScrollBar` from the private-constructor rows: it has had a public constructor since 2026-10-23. Built and loaded on Homebrew PHP 8.4 NTS and ZTS (208 passed, 26 skipped each) and the Pi on 8.4 ZTS (206 passed, 28 skipped).

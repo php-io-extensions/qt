@@ -31,6 +31,9 @@ it('refuses the call before an application, which Qt dies on without the refusal
     'a menu' => ['qapp-menu', 'new QMenu("m"); return "built";', PROBE_SIGABRT],
     'a window' => ['qguiapp-window', 'new QWindow(); return "built";', PROBE_SIGABRT],
     'a pixmap' => ['qguiapp-pixmap', 'new QPixmap(); return "built";', PROBE_SIGABRT],
+    // Sites qapp-font-metrics and qapp-font-info: both reach QFontDatabase, which qFatals with no QGuiApplication.
+    'font metrics' => ['qapp-font-metrics', 'new QFontMetricsF(new QFont("Menlo")); return "built";', PROBE_SIGABRT],
+    'font info' => ['qapp-font-info', 'new QFontInfo(new QFont("Menlo")); return "built";', PROBE_SIGABRT],
     'a pixmap from an image' => ['qguiapp-pixmap-from-image',
         '$bytes = new QByteArray(str_repeat("\0", 4), 4); QPixmap::fromImage(new QImage($bytes->pointer(), 1, 1, 4, QImage\Format::RGB32)); return "built";',
         PROBE_SIGABRT],

@@ -896,6 +896,27 @@ PHPQT_EDIT_SLOT(QLineEdit, undo)
 PHPQT_EDIT_SLOT(QLineEdit, redo)
 PHPQT_GETTER_STRING(QLineEdit, selectedText, selectedText)
 
+ZEND_METHOD(QLineEdit, alignment)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QLineEdit, edit);
+
+	RETURN_LONG(static_cast<zend_long>(edit->alignment().toInt()));
+}
+
+ZEND_METHOD(QLineEdit, setAlignment)
+{
+	zend_object *flag_case = nullptr;
+	zend_long flag_long = 0;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(flag_case, phpqt_ce_Qt_AlignmentFlag, flag_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QLineEdit, edit);
+
+	edit->setAlignment(Qt::Alignment(static_cast<int>(phpqt_enum_value(flag_case, flag_long))));
+}
+
 ZEND_METHOD(QLineEdit, echoMode)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
@@ -968,6 +989,26 @@ ZEND_METHOD(QPlainTextEdit, setTextCursor)
 }
 
 PHPQT_VOID(QPlainTextEdit, ensureCursorVisible, ensureCursorVisible)
+
+ZEND_METHOD(QPlainTextEdit, tabStopDistance)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	RETURN_DOUBLE(edit->tabStopDistance());
+}
+
+ZEND_METHOD(QPlainTextEdit, setTabStopDistance)
+{
+	double distance;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_DOUBLE(distance)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QPlainTextEdit, edit);
+
+	edit->setTabStopDistance(distance);
+}
 
 /* A PHP list of QTextEdit\ExtraSelection as QList<QTextEdit::ExtraSelection>: each struct's fields copied. */
 static bool phpqt_extra_selections(HashTable *selections, QList<QTextEdit::ExtraSelection> *out, uint32_t arg_num)
