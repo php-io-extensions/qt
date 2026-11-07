@@ -35,6 +35,7 @@ class QTableWidgetItem;
 class QTreeWidgetItem;
 class QBrush;
 class QColor;
+class QPalette;
 
 /* One slot Qt is destroying: its parent, and the slot whose teardown freed this one (or none). */
 struct phpqt_teardown {
@@ -181,6 +182,8 @@ extern zend_class_entry *phpqt_ce_QFontInfo;
 extern zend_class_entry *phpqt_ce_QTextOption;
 extern zend_class_entry *phpqt_ce_QColor;
 extern zend_class_entry *phpqt_ce_QBrush;
+extern zend_class_entry *phpqt_ce_QPalette;
+extern zend_class_entry *phpqt_ce_QPalette_ColorRole;
 extern zend_class_entry *phpqt_ce_QTextFormat;
 extern zend_class_entry *phpqt_ce_QTextCharFormat;
 extern zend_class_entry *phpqt_ce_QTextCursor;
@@ -282,6 +285,7 @@ void phpqt_return_table_item(zval *rv, QTableWidgetItem *item);
 void phpqt_return_tree_item(zval *rv, QTreeWidgetItem *item);
 void phpqt_return_color(zval *rv, const QColor &color);
 void phpqt_return_brush(zval *rv, const QBrush &brush);
+void phpqt_return_palette(zval *rv, const QPalette &palette);
 void phpqt_value_taken(zend_object *wrapper);
 bool phpqt_value_fresh(zend_object *wrapper);
 QTableWidgetItem *phpqt_table_item_prototype();

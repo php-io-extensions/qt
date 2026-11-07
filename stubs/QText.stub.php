@@ -40,6 +40,38 @@ namespace QTextCursor {
     }
 }
 
+namespace QPalette {
+    /**
+     * QPalette::ColorRole. ACCENT is Qt 6.6's; on an older Qt it names no role and color() reads past the
+     * palette (qVersion() tells; probed on Qt 6.4.2: no crash, an arbitrary colour).
+     */
+    enum ColorRole: int
+    {
+        case WINDOW_TEXT = 0;
+        case BUTTON = 1;
+        case LIGHT = 2;
+        case MIDLIGHT = 3;
+        case DARK = 4;
+        case MID = 5;
+        case TEXT = 6;
+        case BRIGHT_TEXT = 7;
+        case BUTTON_TEXT = 8;
+        case BASE = 9;
+        case WINDOW = 10;
+        case SHADOW = 11;
+        case HIGHLIGHT = 12;
+        case HIGHLIGHTED_TEXT = 13;
+        case LINK = 14;
+        case LINK_VISITED = 15;
+        case ALTERNATE_BASE = 16;
+        case NO_ROLE = 17;
+        case TOOL_TIP_BASE = 18;
+        case TOOL_TIP_TEXT = 19;
+        case PLACEHOLDER_TEXT = 20;
+        case ACCENT = 21;
+    }
+}
+
 namespace {
     /**
      * A value in Qt; here a heap copy owned by the PHP object.
@@ -74,6 +106,19 @@ namespace {
         public function color(): QColor {}
 
         public function style(): Qt\BrushStyle {}
+    }
+
+    /**
+     * A copy of a palette, as QGuiApplication::palette() returns it.
+     *
+     * @not-serializable
+     */
+    final class QPalette
+    {
+        private function __construct() {}
+
+        /** The colour of the role in the palette's current group. */
+        public function color(QPalette\ColorRole $cr): QColor {}
     }
 
     /** QTextFormat's property ids; the formats themselves are QTextCharFormat values. */

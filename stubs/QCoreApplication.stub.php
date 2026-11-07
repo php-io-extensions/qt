@@ -62,6 +62,9 @@ class QGuiApplication extends QCoreApplication
     /** Null, with Qt's warning, before a QGuiApplication exists. */
     public static function clipboard(): ?QClipboard {}
 
+    /** A copy of the application palette. */
+    public static function palette(): QPalette {}
+
     public static function desktopFileName(): string {}
 
     public static function setDesktopFileName(string $name): void {}

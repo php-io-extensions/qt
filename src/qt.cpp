@@ -18,6 +18,7 @@
 #include <QtCore/qnamespace.h>
 #include <QtGui/QClipboard>
 #include <QtGui/QKeySequence>
+#include <QtGui/QPalette>
 #include <QtGui/QInputMethodEvent>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QMessageBox>
@@ -57,6 +58,7 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/QClipboard_Mode.inc"
 #include "checks/Qt_ImageConversionFlag.inc"
 #include "checks/Qt_BrushStyle.inc"
+#include "checks/QPalette_ColorRole.inc"
 #include "checks/Qt_ConnectionType.inc"
 #include "checks/Qt_ApplicationAttribute.inc"
 #include "checks/Qt_ItemDataRole.inc"
@@ -145,6 +147,8 @@ zend_class_entry *phpqt_ce_QFontInfo;
 zend_class_entry *phpqt_ce_QTextOption;
 zend_class_entry *phpqt_ce_QColor;
 zend_class_entry *phpqt_ce_QBrush;
+zend_class_entry *phpqt_ce_QPalette;
+zend_class_entry *phpqt_ce_QPalette_ColorRole;
 zend_class_entry *phpqt_ce_QTextFormat;
 zend_class_entry *phpqt_ce_QTextCharFormat;
 zend_class_entry *phpqt_ce_QTextCursor;

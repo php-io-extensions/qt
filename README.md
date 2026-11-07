@@ -1,7 +1,7 @@
 # ext-qt
 
 [![CI](https://img.shields.io/github/actions/workflow/status/php-io-extensions/qt/ci.yml?style=flat-square&label=CI)](https://github.com/php-io-extensions/qt/actions/workflows/ci.yml)
-[![Qt API](https://img.shields.io/badge/Qt_API-5.9%25_%28669%2F11435%29-blue?style=flat-square)](SUPPORT.md)
+[![Qt API](https://img.shields.io/badge/Qt_API-5.9%25_%28671%2F11435%29-blue?style=flat-square)](SUPPORT.md)
 
 1:1 PHP bindings of Qt 6, written directly in C++ against the Zend API. Each
 PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,
@@ -61,7 +61,7 @@ style them, drive the common controls and play video:
 | `QPlainTextEdit` | constructor, `toPlainText`, `setPlainText`, `isReadOnly`, `setReadOnly`, `cut`, `copy`, `paste`, `selectAll`, `undo`, `redo`, `document`, `textCursor`, `setTextCursor`, `ensureCursorVisible`, `setExtraSelections`, `extraSelections`, `lineWrapMode`, `setLineWrapMode`, `textInteractionFlags`, `setTextInteractionFlags`, `verticalScrollBar`, `horizontalScrollBar`, `viewport`; signals `textChanged()`, `cursorPositionChanged()` |
 | `QTextDocument` | a text edit's: `findBlockByNumber` (Qt's invalid block past the end), `blockCount`, `characterCount`, `markContentsDirty` |
 | `QTextLayout` | a block's (`QTextBlock::layout`, held by a cursor at the block's start): `setFormats`, `formats` of `QTextLayout\FormatRange` (public `start`, `length`, `format`) |
-| `QColor`, `QBrush`, `QTextCharFormat`, `QTextCursor`, `QTextBlock`, `QTextEdit\ExtraSelection` | values: `QColor` (`isValid`), `QBrush` (colour, `Qt\BrushStyle`), `QTextCharFormat` (`setForeground`, `setBackground`, `setProperty`, `boolProperty`, `hasProperty`; `QTextFormat::FULL_WIDTH_SELECTION`), `QTextCursor` (UTF-16 positions, `setPosition`, `movePosition` by `QTextCursor\MoveOperation`, `isNull`), `QTextBlock` (`isValid`, `layout`), `QTextEdit\ExtraSelection` (public `cursor`, `format`) |
+| `QColor`, `QBrush`, `QPalette`, `QTextCharFormat`, `QTextCursor`, `QTextBlock`, `QTextEdit\ExtraSelection` | values: `QColor` (`isValid`), `QBrush` (colour, `Qt\BrushStyle`), `QPalette` (a copy from `QGuiApplication::palette()`; `color` by `QPalette\ColorRole`, whose `ACCENT` is Qt 6.6's), `QTextCharFormat` (`setForeground`, `setBackground`, `setProperty`, `boolProperty`, `hasProperty`; `QTextFormat::FULL_WIDTH_SELECTION`), `QTextCursor` (UTF-16 positions, `setPosition`, `movePosition` by `QTextCursor\MoveOperation`, `isNull`), `QTextBlock` (`isValid`, `layout`), `QTextEdit\ExtraSelection` (public `cursor`, `format`) |
 | `QFontDatabase` | `systemFont` |
 | `QDateEdit`, `QCalendarWidget` | constructor, `date`, `setDate`, `minimumDate`, `setMinimumDate` (`QDate`), `setCalendarPopup`, `calendarWidget`, `setDisplayFormat`; signal `dateChanged(QDate)` hands a `QDate` over |
 | `QProgressBar` | constructor, `minimum`, `maximum`, `setRange`, `value`, `setValue`, `setTextVisible`, `reset` |

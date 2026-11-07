@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 55423c3032c5e28fc92b5e455ba37471cd556358 */
+ * Stub hash: 89b870e7b69bc5f66a0bb65da4767e57375c0bee */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QColor___construct, 0, 0, 3)
 	ZEND_ARG_TYPE_INFO(0, r, IS_LONG, 0)
@@ -31,10 +31,16 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QBrush_style, 0, 0, Qt\\BrushStyle, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTextFormat___construct, 0, 0, 0)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QPalette___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTextCharFormat___construct arginfo_class_QTextFormat___construct
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPalette_color, 0, 1, QColor, 0)
+	ZEND_ARG_OBJ_INFO(0, cr, QPalette\\ColorRole, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QTextFormat___construct arginfo_class_QPalette___construct
+
+#define arginfo_class_QTextCharFormat___construct arginfo_class_QPalette___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextCharFormat_setForeground, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, brush, QBrush, 0)
@@ -89,7 +95,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTextCursor_isNull arginfo_class_QColor_isValid
 
-#define arginfo_class_QTextBlock___construct arginfo_class_QTextFormat___construct
+#define arginfo_class_QTextBlock___construct arginfo_class_QPalette___construct
 
 #define arginfo_class_QTextBlock_position arginfo_class_QColor_red
 
@@ -104,7 +110,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextBlock_layout, 0, 0, QTextLayout, 1)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTextLayout___construct arginfo_class_QTextFormat___construct
+#define arginfo_class_QTextLayout___construct arginfo_class_QPalette___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextLayout_setFormats, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, overrides, IS_ARRAY, 0)
@@ -113,7 +119,7 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextLayout_formats, 0, 0, IS_ARRAY, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTextDocument___construct arginfo_class_QTextFormat___construct
+#define arginfo_class_QTextDocument___construct arginfo_class_QPalette___construct
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QTextDocument_findBlockByNumber, 0, 1, QTextBlock, 0)
 	ZEND_ARG_TYPE_INFO(0, blockNumber, IS_LONG, 0)
@@ -135,7 +141,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTextDocument_markContents
 	ZEND_ARG_TYPE_INFO(0, length, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QTextOption___construct arginfo_class_QTextFormat___construct
+#define arginfo_class_QTextOption___construct arginfo_class_QPalette___construct
 
 #define arginfo_class_QTextOption_alignment arginfo_class_QColor_red
 
@@ -163,6 +169,8 @@ ZEND_METHOD(QColor, isValid);
 ZEND_METHOD(QBrush, __construct);
 ZEND_METHOD(QBrush, color);
 ZEND_METHOD(QBrush, style);
+ZEND_METHOD(QPalette, __construct);
+ZEND_METHOD(QPalette, color);
 ZEND_METHOD(QTextFormat, __construct);
 ZEND_METHOD(QTextCharFormat, __construct);
 ZEND_METHOD(QTextCharFormat, setForeground);
@@ -219,6 +227,12 @@ static const zend_function_entry class_QBrush_methods[] = {
 	ZEND_ME(QBrush, __construct, arginfo_class_QBrush___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBrush, color, arginfo_class_QBrush_color, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBrush, style, arginfo_class_QBrush_style, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QPalette_methods[] = {
+	ZEND_ME(QPalette, __construct, arginfo_class_QPalette___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QPalette, color, arginfo_class_QPalette_color, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -421,6 +435,101 @@ static zend_class_entry *register_class_QTextCursor_MoveOperation(void)
 	return class_entry;
 }
 
+static zend_class_entry *register_class_QPalette_ColorRole(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QPalette\\ColorRole", IS_LONG, NULL);
+
+	zval enum_case_WINDOW_TEXT_value;
+	ZVAL_LONG(&enum_case_WINDOW_TEXT_value, 0);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_TEXT", &enum_case_WINDOW_TEXT_value);
+
+	zval enum_case_BUTTON_value;
+	ZVAL_LONG(&enum_case_BUTTON_value, 1);
+	zend_enum_add_case_cstr(class_entry, "BUTTON", &enum_case_BUTTON_value);
+
+	zval enum_case_LIGHT_value;
+	ZVAL_LONG(&enum_case_LIGHT_value, 2);
+	zend_enum_add_case_cstr(class_entry, "LIGHT", &enum_case_LIGHT_value);
+
+	zval enum_case_MIDLIGHT_value;
+	ZVAL_LONG(&enum_case_MIDLIGHT_value, 3);
+	zend_enum_add_case_cstr(class_entry, "MIDLIGHT", &enum_case_MIDLIGHT_value);
+
+	zval enum_case_DARK_value;
+	ZVAL_LONG(&enum_case_DARK_value, 4);
+	zend_enum_add_case_cstr(class_entry, "DARK", &enum_case_DARK_value);
+
+	zval enum_case_MID_value;
+	ZVAL_LONG(&enum_case_MID_value, 5);
+	zend_enum_add_case_cstr(class_entry, "MID", &enum_case_MID_value);
+
+	zval enum_case_TEXT_value;
+	ZVAL_LONG(&enum_case_TEXT_value, 6);
+	zend_enum_add_case_cstr(class_entry, "TEXT", &enum_case_TEXT_value);
+
+	zval enum_case_BRIGHT_TEXT_value;
+	ZVAL_LONG(&enum_case_BRIGHT_TEXT_value, 7);
+	zend_enum_add_case_cstr(class_entry, "BRIGHT_TEXT", &enum_case_BRIGHT_TEXT_value);
+
+	zval enum_case_BUTTON_TEXT_value;
+	ZVAL_LONG(&enum_case_BUTTON_TEXT_value, 8);
+	zend_enum_add_case_cstr(class_entry, "BUTTON_TEXT", &enum_case_BUTTON_TEXT_value);
+
+	zval enum_case_BASE_value;
+	ZVAL_LONG(&enum_case_BASE_value, 9);
+	zend_enum_add_case_cstr(class_entry, "BASE", &enum_case_BASE_value);
+
+	zval enum_case_WINDOW_value;
+	ZVAL_LONG(&enum_case_WINDOW_value, 10);
+	zend_enum_add_case_cstr(class_entry, "WINDOW", &enum_case_WINDOW_value);
+
+	zval enum_case_SHADOW_value;
+	ZVAL_LONG(&enum_case_SHADOW_value, 11);
+	zend_enum_add_case_cstr(class_entry, "SHADOW", &enum_case_SHADOW_value);
+
+	zval enum_case_HIGHLIGHT_value;
+	ZVAL_LONG(&enum_case_HIGHLIGHT_value, 12);
+	zend_enum_add_case_cstr(class_entry, "HIGHLIGHT", &enum_case_HIGHLIGHT_value);
+
+	zval enum_case_HIGHLIGHTED_TEXT_value;
+	ZVAL_LONG(&enum_case_HIGHLIGHTED_TEXT_value, 13);
+	zend_enum_add_case_cstr(class_entry, "HIGHLIGHTED_TEXT", &enum_case_HIGHLIGHTED_TEXT_value);
+
+	zval enum_case_LINK_value;
+	ZVAL_LONG(&enum_case_LINK_value, 14);
+	zend_enum_add_case_cstr(class_entry, "LINK", &enum_case_LINK_value);
+
+	zval enum_case_LINK_VISITED_value;
+	ZVAL_LONG(&enum_case_LINK_VISITED_value, 15);
+	zend_enum_add_case_cstr(class_entry, "LINK_VISITED", &enum_case_LINK_VISITED_value);
+
+	zval enum_case_ALTERNATE_BASE_value;
+	ZVAL_LONG(&enum_case_ALTERNATE_BASE_value, 16);
+	zend_enum_add_case_cstr(class_entry, "ALTERNATE_BASE", &enum_case_ALTERNATE_BASE_value);
+
+	zval enum_case_NO_ROLE_value;
+	ZVAL_LONG(&enum_case_NO_ROLE_value, 17);
+	zend_enum_add_case_cstr(class_entry, "NO_ROLE", &enum_case_NO_ROLE_value);
+
+	zval enum_case_TOOL_TIP_BASE_value;
+	ZVAL_LONG(&enum_case_TOOL_TIP_BASE_value, 18);
+	zend_enum_add_case_cstr(class_entry, "TOOL_TIP_BASE", &enum_case_TOOL_TIP_BASE_value);
+
+	zval enum_case_TOOL_TIP_TEXT_value;
+	ZVAL_LONG(&enum_case_TOOL_TIP_TEXT_value, 19);
+	zend_enum_add_case_cstr(class_entry, "TOOL_TIP_TEXT", &enum_case_TOOL_TIP_TEXT_value);
+
+	zval enum_case_PLACEHOLDER_TEXT_value;
+	ZVAL_LONG(&enum_case_PLACEHOLDER_TEXT_value, 20);
+	zend_enum_add_case_cstr(class_entry, "PLACEHOLDER_TEXT", &enum_case_PLACEHOLDER_TEXT_value);
+
+	zval enum_case_ACCENT_value;
+	ZVAL_LONG(&enum_case_ACCENT_value, 21);
+	zend_enum_add_case_cstr(class_entry, "ACCENT", &enum_case_ACCENT_value);
+
+	return class_entry;
+}
+
 static zend_class_entry *register_class_QColor(void)
 {
 	zend_class_entry ce, *class_entry;
@@ -436,6 +545,16 @@ static zend_class_entry *register_class_QBrush(void)
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QBrush", class_QBrush_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QPalette(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QPalette", class_QPalette_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

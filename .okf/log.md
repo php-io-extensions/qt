@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-07
+
+* `QGuiApplication::palette` and `QPalette` (private constructor; `color(QPalette\ColorRole)` in the current group) with the `QPalette\ColorRole` enum, `ACCENT` being Qt 6.6's (its check is behind the version guard). No refusal site: `palette()` before an application returns Qt's default palette on macOS (probed, no crash). 671 / 11435.
+
 ## 2026-11-04
 
 * `QFontMetricsF` (ascent, descent, lineSpacing, averageCharWidth, horizontalAdvance(const QString &, int len)) and `QFontInfo` (fixedPitch), values owned by the PHP object; each constructor refuses before a QGuiApplication (sites qapp-font-metrics, qapp-font-info: Qt qFatals in QFontDatabase, SIGABRT). `QLineEdit` alignment (+set); `QPlainTextEdit` tabStopDistance (+set); `QTextOption` (alignment, +set) and `QTextDocument` defaultTextOption (+set, a copy each way). 664 / 11435.

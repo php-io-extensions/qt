@@ -5,6 +5,7 @@
 #include <QtCore/QString>
 #include <QtGui/QGuiApplication>
 #include <QtGui/QClipboard>
+#include <QtGui/QPalette>
 #include <QtWidgets/QApplication>
 #include <QtGui/QStyleHints>
 #include <QtCore/QEvent>
@@ -339,6 +340,14 @@ ZEND_METHOD(QGuiApplication, clipboard)
 
 	/* Before a QGuiApplication, Qt warns and returns nullptr: boxed as null. */
 	phpqt_box(return_value, QGuiApplication::clipboard());
+}
+
+ZEND_METHOD(QGuiApplication, palette)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_REQUIRE_MAIN_THREAD();
+
+	phpqt_return_palette(return_value, QGuiApplication::palette());
 }
 
 ZEND_METHOD(QGuiApplication, desktopFileName)

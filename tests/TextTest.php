@@ -200,3 +200,21 @@ it('hands out a plain text edit\'s viewport, which resizes with it', function ()
         ->and($width)->toBeGreaterThan(0)
         ->and($width)->toBeLessThanOrEqual(260);
 });
+
+it('copies the application palette and reads a role colour from it', function (): void {
+    $palette = QGuiApplication::palette();
+    $window = $palette->color(QPalette\ColorRole::WINDOW);
+
+    expect($palette)->toBeInstanceOf(QPalette::class)
+        ->and(get_parent_class(QPalette::class))->toBeFalse()
+        ->and($window->isValid())->toBeTrue()
+        ->and($window->alpha())->toBe(255)
+        ->and(fn () => new QPalette())->toThrow(Error::class);
+});
+
+it('reads the accent role of the application palette', function (): void {
+    $accent = QGuiApplication::palette()->color(QPalette\ColorRole::ACCENT);
+
+    expect($accent->isValid())->toBeTrue()
+        ->and($accent->alpha())->toBe(255);
+})->skip(version_compare(qVersion(), '6.6', '<'), 'QPalette::Accent is Qt 6.6 and later');

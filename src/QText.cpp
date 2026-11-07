@@ -2,6 +2,7 @@
 
 #include <QtGui/QBrush>
 #include <QtGui/QColor>
+#include <QtGui/QPalette>
 #include <QtGui/QTextBlock>
 #include <QtGui/QTextCharFormat>
 #include <QtGui/QTextDocument>
@@ -28,6 +29,7 @@ static_assert(QTextCursor::NoMove == 0 && QTextCursor::Start == 1 && QTextCursor
 
 static void phpqt_destroy_color(void *ptr) { delete static_cast<QColor *>(ptr); }
 static void phpqt_destroy_brush(void *ptr) { delete static_cast<QBrush *>(ptr); }
+static void phpqt_destroy_palette(void *ptr) { delete static_cast<QPalette *>(ptr); }
 static void phpqt_destroy_char_format(void *ptr) { delete static_cast<QTextCharFormat *>(ptr); }
 static void phpqt_destroy_text_cursor(void *ptr) { delete static_cast<QTextCursor *>(ptr); }
 /* A block is held as a cursor at its start: the cursor follows the document's edits and goes null with it. */
@@ -43,6 +45,9 @@ void phpqt_register_QText()
 	phpqt_value_setup(phpqt_ce_QColor);
 	phpqt_ce_QBrush = register_class_QBrush();
 	phpqt_value_setup(phpqt_ce_QBrush);
+	phpqt_ce_QPalette_ColorRole = register_class_QPalette_ColorRole();
+	phpqt_ce_QPalette = register_class_QPalette();
+	phpqt_value_setup(phpqt_ce_QPalette);
 	phpqt_ce_QTextFormat = register_class_QTextFormat();
 	phpqt_ce_QTextCharFormat = register_class_QTextCharFormat();
 	phpqt_value_setup(phpqt_ce_QTextCharFormat);
@@ -199,6 +204,32 @@ ZEND_METHOD(QBrush, color)
 	PHPQT_VALUE_THIS(QBrush, brush);
 
 	phpqt_return_color(return_value, brush->color());
+}
+
+/* ---- QPalette ----------------------------------------------------------- */
+
+void phpqt_return_palette(zval *rv, const QPalette &palette)
+{
+	object_init_ex(rv, phpqt_ce_QPalette);
+	phpqt_value_hold(Z_OBJ_P(rv), new QPalette(palette), true, phpqt_destroy_palette);
+}
+
+/* Private: a palette comes from QGuiApplication::palette(). */
+ZEND_METHOD(QPalette, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+ZEND_METHOD(QPalette, color)
+{
+	zend_object *role;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(role, phpqt_ce_QPalette_ColorRole)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPalette, palette);
+
+	phpqt_return_color(return_value, palette->color(static_cast<QPalette::ColorRole>(phpqt_enum_value(role, QPalette::NoRole))));
 }
 
 /* ---- QTextFormat (property ids) ---------------------------------------- */
