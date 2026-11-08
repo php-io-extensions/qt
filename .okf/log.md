@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-08
+
+* **Version**: 0.11.1 in `PHP_QT_VERSION` (`php_qt.h`) and the version test; nothing else changed.
+
 ## 2026-11-07
 
 * `QGuiApplication::palette` and `QPalette` (private constructor; `color(QPalette\ColorRole)` in the current group) with the `QPalette\ColorRole` enum, `ACCENT` being Qt 6.6's (its check is behind the version guard). No refusal site: `palette()` before an application returns Qt's default palette on macOS (probed, no crash). 671 / 11435.
