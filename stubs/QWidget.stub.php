@@ -22,6 +22,11 @@ class QWidget extends QObject
 
     public function setVisible(bool $visible): void {}
 
+    /** The widget takes ownership of $effect and deletes the one it held. */
+    public function setGraphicsEffect(?QGraphicsEffect $effect): void {}
+
+    public function graphicsEffect(): ?QGraphicsEffect {}
+
     public function isWindow(): bool {}
 
     public function isActiveWindow(): bool {}

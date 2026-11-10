@@ -1,5 +1,18 @@
 # Log
 
+## 2026-11-10
+
+* `QModelIndex` (row, column, isValid, data), also handed to PHP by signals such as `clicked(QModelIndex)`. `QAbstractItemModel` rowCount, columnCount, index, data, setData; `QStandardItemModel` (ctor, setRowCount, setColumnCount, insertRows, removeRows, clear). `QAbstractItemView` model, setModel, itemDelegate, setItemDelegate, iconSize, setIconSize, indexAt. `QMainWindow::addToolBar(QToolBar *)`.
+* `QListView` (view mode, flow, wrapping, resize mode, movement, grid size, spacing, uniform item sizes; enums `QListView\ViewMode`, `Flow`, `ResizeMode`, `Movement`) and `QToolBar` (addWidget, addSeparator, movable, floatable, icon size, tool button style). Both constructors go through `phpqt_construct_widget`'s qapp-widget check (sites qapp-list-view, qapp-tool-bar; probes in `tests/Probes/ApplicationFirstTest.php`).
+* `QPainter` (save, restore, setRenderHint, setOpacity, setPen(QColor), setBrush, setFont, fillRect, drawRect, drawRoundedRect with `Qt\SizeMode`, drawPixmap(QRect, QPixmap), drawText(QRect, int, QString, QRect *br)) and `QStyleOptionViewItem` (rect, state: the `QStyleOption` data members). Both are lent for one delegate call only, then read as gone.
+* Glue `QPaintDelegate`: a `QStyledItemDelegate` subclass whose paint, sizeHint and editorEvent call the PHP callables; a null callable leaves the call to `QStyledItemDelegate`. `QAbstractItemDelegate` (private ctor), `QStyledItemDelegate` (ctor).
+* `tests/ItemViewTest.php`: 5 passed (NTS). The probe build passes the list view and tool bar probes.
+* Probes qapp-font-metrics and qapp-font-info: Qt 6.11 builds `QFontMetricsF` and `QFontInfo` before an application and qFatals (SIGABRT) on the first read, not in the constructor. The probes now read `ascent()` and `fixedPitch()`; both sites stay. `tests/Probes/ApplicationFirstTest.php` 20 passed.
+
+## 2026-11-09
+
+* `QAbstractAnimation` (start with `QAbstractAnimation\DeletionPolicy`, stop, duration), `QVariantAnimation` (start/end value as QVariant, duration), `QPropertyAnimation` (ctor), `QGraphicsEffect` / `QGraphicsOpacityEffect` (ctor, opacity), and `QWidget::setGraphicsEffect` / `graphicsEffect`. No refusal beyond the argument conversion the QVariant marshalling already does. `tests/AnimationTest.php` (4 passed, NTS, with `WidgetTest.php`): an effect keeps its opacity and its widget hands it back, an animation takes an effect's opacity from 0 to 1 and a widget's `pos` between two points, and a value with no QVariant form is a TypeError.
+
 ## 2026-11-08
 
 * **Version**: 0.11.1 in `PHP_QT_VERSION` (`php_qt.h`) and the version test; nothing else changed.

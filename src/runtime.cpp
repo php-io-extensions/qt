@@ -22,6 +22,7 @@
 #include <QtGui/QFont>
 #include <QtGui/QPixmap>
 #include <QtCore/QSocketDescriptor>
+#include <QtCore/QModelIndex>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 #include <QtWidgets/QTreeWidgetItem>
@@ -463,6 +464,12 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 
 	if (type == QMetaType::fromType<QSocketDescriptor>()) {
 		ZVAL_LONG(rv, (zend_long) static_cast<QSocketDescriptor::DescriptorType>(*static_cast<QSocketDescriptor *>(value)));
+		return;
+	}
+
+	/* The item views' index signals (clicked, activated, …): a copy, as Qt's value classes cross. */
+	if (type == QMetaType::fromType<QModelIndex>()) {
+		phpqt_return_model_index(rv, *static_cast<QModelIndex *>(value));
 		return;
 	}
 

@@ -11,6 +11,7 @@
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QSizePolicy>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QToolBar>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
@@ -18,6 +19,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QStyle>
+#include <QtWidgets/QGraphicsEffect>
 #include <QtWidgets/QWidget>
 
 void phpqt_register_QWidget()
@@ -132,6 +134,32 @@ ZEND_METHOD(QWidget, setVisible)
 	PHPQT_THIS(QWidget, widget);
 
 	widget->setVisible(visible);
+}
+
+ZEND_METHOD(QWidget, setGraphicsEffect)
+{
+	zend_object *effect = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(effect, phpqt_ce_QGraphicsEffect)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QGraphicsEffect *qeffect = static_cast<QGraphicsEffect *>(phpqt_arg(effect, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	widget->setGraphicsEffect(qeffect);
+}
+
+ZEND_METHOD(QWidget, graphicsEffect)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->graphicsEffect());
 }
 
 ZEND_METHOD(QWidget, windowTitle)
@@ -624,6 +652,24 @@ ZEND_METHOD(QMainWindow, setCentralWidget)
 	}
 
 	window->setCentralWidget(widget);
+}
+
+ZEND_METHOD(QMainWindow, addToolBar)
+{
+	zend_object *toolbar_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(toolbar_obj, phpqt_ce_QToolBar)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMainWindow, window);
+
+	QToolBar *toolbar = static_cast<QToolBar *>(phpqt_arg(toolbar_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	window->addToolBar(toolbar);
 }
 
 /* ---- QDialog, QMessageBox ---------------------------------------------- */

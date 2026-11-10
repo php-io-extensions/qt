@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 3b29c26f139b0bc55b8ac7bb7a694296f2a3ceb4 */
+ * Stub hash: e711c8629696caa8d11a4c5a0e421b90ea57dbe6 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -237,6 +237,53 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QComboBox_setEditText arginfo_class_QLabel_setText
 
 #define arginfo_class_QAbstractItemModel___construct arginfo_class_QAbstractSlider___construct
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractItemModel_rowCount, 0, 0, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QModelIndex, 0, "new QModelIndex()")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QAbstractItemModel_columnCount arginfo_class_QAbstractItemModel_rowCount
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractItemModel_index, 0, 2, QModelIndex, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QModelIndex, 0, "new QModelIndex()")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractItemModel_data, 0, 1, IS_MIXED, 0)
+	ZEND_ARG_OBJ_INFO(0, index, QModelIndex, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, role, IS_LONG, 0, "0")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractItemModel_setData, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_OBJ_INFO(0, index, QModelIndex, 0)
+	ZEND_ARG_TYPE_INFO(0, value, IS_MIXED, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, role, IS_LONG, 0, "2")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QStandardItemModel___construct, 0, 0, 2)
+	ZEND_ARG_TYPE_INFO(0, rows, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, columns, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStandardItemModel_setRowCount, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, rows, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStandardItemModel_setColumnCount, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, columns, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStandardItemModel_insertRows, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, count, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QModelIndex, 0, "new QModelIndex()")
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QStandardItemModel_removeRows arginfo_class_QStandardItemModel_insertRows
+
+#define arginfo_class_QStandardItemModel_clear arginfo_class_QAbstractButton_click
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QStringListModel___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QObject, 1, "null")
@@ -487,6 +534,28 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QAbstractItemView_clearSelection arginfo_class_QAbstractButton_click
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractItemView_model, 0, 0, QAbstractItemModel, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractItemView_setModel, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, model, QAbstractItemModel, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractItemView_itemDelegate, 0, 0, QAbstractItemDelegate, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractItemView_setItemDelegate, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, delegate, QAbstractItemDelegate, 1)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QAbstractItemView_iconSize arginfo_class_QAbstractButton_iconSize
+
+#define arginfo_class_QAbstractItemView_setIconSize arginfo_class_QAbstractButton_setIconSize
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractItemView_indexAt, 0, 1, QModelIndex, 0)
+	ZEND_ARG_OBJ_INFO(0, point, QPoint, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTableWidget___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, rows, IS_LONG, 0, "0")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, columns, IS_LONG, 0, "0")
@@ -495,15 +564,11 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTableWidget_rowCount arginfo_class_QLabel_alignment
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidget_setRowCount, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, rows, IS_LONG, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QTableWidget_setRowCount arginfo_class_QStandardItemModel_setRowCount
 
 #define arginfo_class_QTableWidget_columnCount arginfo_class_QLabel_alignment
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidget_setColumnCount, 0, 1, IS_VOID, 0)
-	ZEND_ARG_TYPE_INFO(0, columns, IS_LONG, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QTableWidget_setColumnCount arginfo_class_QStandardItemModel_setColumnCount
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QTableWidget_setHorizontalHeaderLabels, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, labels, IS_ARRAY, 0)
@@ -538,7 +603,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QTreeWidget_columnCount arginfo_class_QLabel_alignment
 
-#define arginfo_class_QTreeWidget_setColumnCount arginfo_class_QTableWidget_setColumnCount
+#define arginfo_class_QTreeWidget_setColumnCount arginfo_class_QStandardItemModel_setColumnCount
 
 #define arginfo_class_QTreeWidget_setHeaderLabels arginfo_class_QTableWidget_setHorizontalHeaderLabels
 
@@ -743,6 +808,17 @@ ZEND_METHOD(QComboBox, insertPolicy);
 ZEND_METHOD(QComboBox, setInsertPolicy);
 ZEND_METHOD(QComboBox, setEditText);
 ZEND_METHOD(QAbstractItemModel, __construct);
+ZEND_METHOD(QAbstractItemModel, rowCount);
+ZEND_METHOD(QAbstractItemModel, columnCount);
+ZEND_METHOD(QAbstractItemModel, index);
+ZEND_METHOD(QAbstractItemModel, data);
+ZEND_METHOD(QAbstractItemModel, setData);
+ZEND_METHOD(QStandardItemModel, __construct);
+ZEND_METHOD(QStandardItemModel, setRowCount);
+ZEND_METHOD(QStandardItemModel, setColumnCount);
+ZEND_METHOD(QStandardItemModel, insertRows);
+ZEND_METHOD(QStandardItemModel, removeRows);
+ZEND_METHOD(QStandardItemModel, clear);
 ZEND_METHOD(QStringListModel, __construct);
 ZEND_METHOD(QStringListModel, setStringList);
 ZEND_METHOD(QStringListModel, stringList);
@@ -830,6 +906,13 @@ ZEND_METHOD(QAbstractItemView, setSelectionBehavior);
 ZEND_METHOD(QAbstractItemView, setSelectionMode);
 ZEND_METHOD(QAbstractItemView, setEditTriggers);
 ZEND_METHOD(QAbstractItemView, clearSelection);
+ZEND_METHOD(QAbstractItemView, model);
+ZEND_METHOD(QAbstractItemView, setModel);
+ZEND_METHOD(QAbstractItemView, itemDelegate);
+ZEND_METHOD(QAbstractItemView, setItemDelegate);
+ZEND_METHOD(QAbstractItemView, iconSize);
+ZEND_METHOD(QAbstractItemView, setIconSize);
+ZEND_METHOD(QAbstractItemView, indexAt);
 ZEND_METHOD(QTableWidget, __construct);
 ZEND_METHOD(QTableWidget, rowCount);
 ZEND_METHOD(QTableWidget, setRowCount);
@@ -1001,6 +1084,21 @@ static const zend_function_entry class_QComboBox_methods[] = {
 
 static const zend_function_entry class_QAbstractItemModel_methods[] = {
 	ZEND_ME(QAbstractItemModel, __construct, arginfo_class_QAbstractItemModel___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QAbstractItemModel, rowCount, arginfo_class_QAbstractItemModel_rowCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemModel, columnCount, arginfo_class_QAbstractItemModel_columnCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemModel, index, arginfo_class_QAbstractItemModel_index, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemModel, data, arginfo_class_QAbstractItemModel_data, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemModel, setData, arginfo_class_QAbstractItemModel_setData, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QStandardItemModel_methods[] = {
+	ZEND_ME(QStandardItemModel, __construct, arginfo_class_QStandardItemModel___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStandardItemModel, setRowCount, arginfo_class_QStandardItemModel_setRowCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStandardItemModel, setColumnCount, arginfo_class_QStandardItemModel_setColumnCount, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStandardItemModel, insertRows, arginfo_class_QStandardItemModel_insertRows, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStandardItemModel, removeRows, arginfo_class_QStandardItemModel_removeRows, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStandardItemModel, clear, arginfo_class_QStandardItemModel_clear, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -1128,6 +1226,13 @@ static const zend_function_entry class_QAbstractItemView_methods[] = {
 	ZEND_ME(QAbstractItemView, setSelectionMode, arginfo_class_QAbstractItemView_setSelectionMode, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractItemView, setEditTriggers, arginfo_class_QAbstractItemView_setEditTriggers, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractItemView, clearSelection, arginfo_class_QAbstractItemView_clearSelection, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, model, arginfo_class_QAbstractItemView_model, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, setModel, arginfo_class_QAbstractItemView_setModel, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, itemDelegate, arginfo_class_QAbstractItemView_itemDelegate, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, setItemDelegate, arginfo_class_QAbstractItemView_setItemDelegate, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, iconSize, arginfo_class_QAbstractItemView_iconSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, setIconSize, arginfo_class_QAbstractItemView_setIconSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, indexAt, arginfo_class_QAbstractItemView_indexAt, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -1540,6 +1645,16 @@ static zend_class_entry *register_class_QAbstractItemModel(zend_class_entry *cla
 
 	INIT_CLASS_ENTRY(ce, "QAbstractItemModel", class_QAbstractItemModel_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QObject, ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QStandardItemModel(zend_class_entry *class_entry_QAbstractItemModel)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QStandardItemModel", class_QStandardItemModel_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QAbstractItemModel, ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

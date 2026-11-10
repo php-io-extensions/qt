@@ -90,6 +90,25 @@ namespace {
     }
 
     /**
+     * A copy of a QModelIndex: valid while its model keeps the row (Qt's own rule for model indexes).
+     *
+     * @not-serializable
+     */
+    final class QModelIndex
+    {
+        public function __construct() {}
+
+        public function row(): int {}
+
+        public function column(): int {}
+
+        public function isValid(): bool {}
+
+        /** $role: a Qt\ItemDataRole value. */
+        public function data(int $role = 0): mixed {}
+    }
+
+    /**
      * A copy of a QDate.
      *
      * @not-serializable

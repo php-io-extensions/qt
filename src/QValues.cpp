@@ -10,6 +10,7 @@
 #include <QtCore/QRect>
 #include <QtCore/QSize>
 #include <QtGui/QKeySequence>
+#include <QtCore/QModelIndex>
 
 #include "../stubs/QValues_arginfo.h"
 
@@ -24,6 +25,7 @@ zend_class_entry *phpqt_ce_QDate;
 zend_class_entry *phpqt_ce_QKeySequence;
 zend_class_entry *phpqt_ce_QKeySequence_SequenceFormat;
 zend_class_entry *phpqt_ce_QByteArray;
+zend_class_entry *phpqt_ce_QModelIndex;
 
 template <typename T>
 static void phpqt_destroy(void *ptr)
@@ -44,6 +46,7 @@ void phpqt_return_qsize(zval *rv, const QSize &size) { phpqt_return_value(rv, ph
 void phpqt_return_qrect(zval *rv, const QRect &rect) { phpqt_return_value(rv, phpqt_ce_QRect, rect); }
 void phpqt_return_qdate(zval *rv, const QDate &date) { phpqt_return_value(rv, phpqt_ce_QDate, date); }
 void phpqt_return_qkeysequence(zval *rv, const QKeySequence &sequence) { phpqt_return_value(rv, phpqt_ce_QKeySequence, sequence); }
+void phpqt_return_model_index(zval *rv, const QModelIndex &index) { phpqt_return_value(rv, phpqt_ce_QModelIndex, index); }
 
 void phpqt_register_QValues()
 {
@@ -63,6 +66,8 @@ void phpqt_register_QValues()
 	phpqt_value_setup(phpqt_ce_QKeySequence);
 	phpqt_ce_QByteArray = register_class_QByteArray();
 	phpqt_value_setup(phpqt_ce_QByteArray);
+	phpqt_ce_QModelIndex = register_class_QModelIndex();
+	phpqt_value_setup(phpqt_ce_QModelIndex);
 }
 
 /* The new value in this wrapper; a second __construct() is refused by phpqt_value_fresh. */
@@ -212,6 +217,35 @@ PHPQT_VALUE_INT(QRect, y)
 PHPQT_VALUE_INT(QRect, width)
 PHPQT_VALUE_INT(QRect, height)
 PHPQT_VALUE_BOOL(QRect, isValid)
+
+/* ---- QModelIndex ------------------------------------------------------- */
+
+ZEND_METHOD(QModelIndex, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	phpqt_construct_value(Z_OBJ_P(ZEND_THIS), new QModelIndex());
+}
+
+PHPQT_VALUE_INT(QModelIndex, row)
+PHPQT_VALUE_INT(QModelIndex, column)
+PHPQT_VALUE_BOOL(QModelIndex, isValid)
+
+ZEND_METHOD(QModelIndex, data)
+{
+	zend_long role = Qt::DisplayRole;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(role)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QModelIndex, self);
+
+	phpqt_variant_to_zval(return_value, self->data(static_cast<int>(role)));
+}
 
 /* ---- QDate ------------------------------------------------------------- */
 

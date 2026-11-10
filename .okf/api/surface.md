@@ -5,7 +5,7 @@ description: Classes, enums and functions ext-qt binds, each one Qt call under i
 resource: stubs/
 tags: [qt, api]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-19T02:24:03Z }
+generated: { by: claude-opus/5.5, at: 2026-11-10T12:00:00Z }
 sources:
   - id: stubs
     resource: stubs/
@@ -34,6 +34,10 @@ Naming and shapes, all fixed:
 | `QThread` | ctor(?parent), static currentThread; `QObject::thread()` names the thread an object lives in |
 | `QCoreApplication` / `QGuiApplication` / `QApplication` | ctor(int &$argc, array $argv, int $flags = `QCoreApplication::APPLICATION_FLAGS`): Qt's argc after it strips its own options is written back; static instance, sendEvent, processEvents, sendPostedEvents, exec, quit, exit, applicationName/set, applicationPid, closingDown, startingUp, setAttribute/testAttribute(`Qt\ApplicationAttribute`); Gui: platformName, desktopFileName/set, applicationDisplayName/set, quitOnLastWindowClosed/set, styleHints; widgetAt, focusWidget, activeModalWidget |
 | `QTimer` | ctor(?parent), start(?msec), stop, isActive, interval/set, isSingleShot/set, timerType/set, remainingTime, timerId; static singleShot(msec, callable) |
+| `QAbstractAnimation` | start(`QAbstractAnimation\DeletionPolicy` = KEEP_WHEN_STOPPED), stop, duration |
+| `QVariantAnimation` | setStartValue / setEndValue (mixed: null, bool, int, float, string or a Qt value class, through the QVariant marshalling QObject uses), setDuration |
+| `QPropertyAnimation` | ctor(QObject target, string propertyName, ?parent): animates a Q_PROPERTY, e.g. a QGraphicsOpacityEffect's `opacity` or a QWidget's `pos` |
+| `QGraphicsEffect` / `QGraphicsOpacityEffect` | ctor(?parent), opacity / setOpacity. `QWidget::setGraphicsEffect(?QGraphicsEffect)` gives the widget ownership (it deletes the one it held); `graphicsEffect()` reads it back |
 | `QSocketNotifier` | ctor(int\|resource\|Socket, Type, ?parent), socket, type, isEnabled, setEnabled, isValid |
 | `QAbstractEventDispatcher` | static instance(?QThread), processEvents(flags), wakeUp, interrupt |
 | `QMetaObject\Connection` | isValid (operator bool) |

@@ -48,6 +48,7 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/Qt_WindowModality.inc"
 #include "checks/Qt_FocusPolicy.inc"
 #include "checks/Qt_ToolButtonStyle.inc"
+#include "checks/Qt_SizeMode.inc"
 #include "checks/Qt_CaseSensitivity.inc"
 #include "checks/QMessageBox_ButtonRole.inc"
 #include "checks/QMessageBox_Icon.inc"
@@ -78,6 +79,12 @@ zend_class_entry *phpqt_ce_QCoreApplication;
 zend_class_entry *phpqt_ce_QGuiApplication;
 zend_class_entry *phpqt_ce_QApplication;
 zend_class_entry *phpqt_ce_QTimer;
+zend_class_entry *phpqt_ce_QAbstractAnimation;
+zend_class_entry *phpqt_ce_QAbstractAnimation_DeletionPolicy;
+zend_class_entry *phpqt_ce_QVariantAnimation;
+zend_class_entry *phpqt_ce_QPropertyAnimation;
+zend_class_entry *phpqt_ce_QGraphicsEffect;
+zend_class_entry *phpqt_ce_QGraphicsOpacityEffect;
 zend_class_entry *phpqt_ce_QSocketNotifier;
 zend_class_entry *phpqt_ce_QSocketNotifier_Type;
 zend_class_entry *phpqt_ce_QAbstractEventDispatcher;
@@ -199,12 +206,14 @@ zend_class_entry *phpqt_ce_Qt_WindowType;
 zend_class_entry *phpqt_ce_Qt_WindowModality;
 zend_class_entry *phpqt_ce_Qt_FocusPolicy;
 zend_class_entry *phpqt_ce_Qt_ToolButtonStyle;
+zend_class_entry *phpqt_ce_Qt_SizeMode;
 zend_class_entry *phpqt_ce_Qt_CaseSensitivity;
 zend_class_entry *phpqt_ce_QComboBox_InsertPolicy;
 zend_class_entry *phpqt_ce_QCompleter_CompletionMode;
 zend_class_entry *phpqt_ce_QToolButton_ToolButtonPopupMode;
 zend_class_entry *phpqt_ce_QToolButton;
 zend_class_entry *phpqt_ce_QAbstractItemModel;
+zend_class_entry *phpqt_ce_QStandardItemModel;
 zend_class_entry *phpqt_ce_QStringListModel;
 zend_class_entry *phpqt_ce_QCompleter;
 zend_class_entry *phpqt_ce_QIcon;
@@ -243,6 +252,7 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_WindowModality = register_class_Qt_WindowModality();
 	phpqt_ce_Qt_FocusPolicy = register_class_Qt_FocusPolicy();
 	phpqt_ce_Qt_ToolButtonStyle = register_class_Qt_ToolButtonStyle();
+	phpqt_ce_Qt_SizeMode = register_class_Qt_SizeMode();
 	phpqt_ce_Qt_CaseSensitivity = register_class_Qt_CaseSensitivity();
 	phpqt_ce_Qt_ImageConversionFlag = register_class_Qt_ImageConversionFlag();
 	phpqt_ce_Qt_BrushStyle = register_class_Qt_BrushStyle();
@@ -278,6 +288,8 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QMetaObject();
 	phpqt_register_QCoreApplication();
 	phpqt_register_QTimer();
+	phpqt_register_QAnimation();
+	phpqt_register_QGraphicsEffect();
 	phpqt_register_QSocketNotifier();
 	phpqt_register_QAbstractEventDispatcher();
 	phpqt_register_QWindow();
@@ -285,11 +297,13 @@ PHP_MINIT_FUNCTION(qt)
 	phpqt_register_QWidget();
 	phpqt_register_QOpenGLWidget();
 	phpqt_register_QMenu();
-	phpqt_register_QtGlue();
 	phpqt_register_QLayout();
 	phpqt_register_QGui();
 	phpqt_register_QText();
 	phpqt_register_QControls();
+	phpqt_register_QItemView();
+	/* After QItemView: QPaintDelegate extends QStyledItemDelegate. */
+	phpqt_register_QtGlue();
 	phpqt_register_QMultimedia();
 	phpqt_register_QInputEvents();
 	phpqt_register_QValues();

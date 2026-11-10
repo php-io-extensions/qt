@@ -52,7 +52,7 @@ it('exposes every function, class, enum and method the stubs declare', function 
 });
 
 it('reports its version and the Qt runtime', function (): void {
-    expect(phpversion('qt'))->toBe('0.11.1')
+    expect(phpversion('qt'))->toBe('0.11.2')
         ->and(qVersion())->toStartWith('6.');
 });
 

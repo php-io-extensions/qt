@@ -334,6 +334,38 @@ namespace {
     class QAbstractItemModel extends QObject
     {
         private function __construct() {}
+
+        public function rowCount(QModelIndex $parent = new QModelIndex()): int {}
+
+        public function columnCount(QModelIndex $parent = new QModelIndex()): int {}
+
+        public function index(int $row, int $column, QModelIndex $parent = new QModelIndex()): QModelIndex {}
+
+        /** $role: a Qt\ItemDataRole value. */
+        public function data(QModelIndex $index, int $role = 0): mixed {}
+
+        /** $role: a Qt\ItemDataRole value. */
+        public function setData(QModelIndex $index, mixed $value, int $role = 2): bool {}
+    }
+
+    /**
+     * Rows of QStandardItems, set and read through QAbstractItemModel's index/data/setData.
+     *
+     * @not-serializable
+     */
+    class QStandardItemModel extends QAbstractItemModel
+    {
+        public function __construct(int $rows, int $columns, ?QObject $parent = null) {}
+
+        public function setRowCount(int $rows): void {}
+
+        public function setColumnCount(int $columns): void {}
+
+        public function insertRows(int $row, int $count, QModelIndex $parent = new QModelIndex()): bool {}
+
+        public function removeRows(int $row, int $count, QModelIndex $parent = new QModelIndex()): bool {}
+
+        public function clear(): void {}
     }
 
     /**
@@ -598,6 +630,22 @@ namespace {
         public function setEditTriggers(int $triggers): void {}
 
         public function clearSelection(): void {}
+
+        public function model(): ?QAbstractItemModel {}
+
+        /** The view does not take ownership: keep the model alive while it is set. */
+        public function setModel(?QAbstractItemModel $model): void {}
+
+        public function itemDelegate(): ?QAbstractItemDelegate {}
+
+        /** The view does not take ownership: keep the delegate alive while it is set. */
+        public function setItemDelegate(?QAbstractItemDelegate $delegate): void {}
+
+        public function iconSize(): QSize {}
+
+        public function setIconSize(QSize $size): void {}
+
+        public function indexAt(QPoint $point): QModelIndex {}
     }
 
     /**

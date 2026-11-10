@@ -26,14 +26,18 @@ it('refuses the call before an application, which Qt dies on without the refusal
     'a scroll bar' => ['qapp-scrollbar', 'new QScrollBar(Qt\Orientation::VERTICAL); return "built";', PROBE_SIGABRT],
     // Site qapp-tool-button: QToolButton goes through phpqt_construct_widget's qapp-widget check.
     'a tool button' => ['qapp-widget', 'new QToolButton(); return "built";', PROBE_SIGABRT],
+    // Sites qapp-list-view and qapp-tool-bar: the same qapp-widget check.
+    'a list view' => ['qapp-widget', 'new QListView(); return "built";', PROBE_SIGABRT],
+    'a tool bar' => ['qapp-widget', 'new QToolBar(); return "built";', PROBE_SIGABRT],
     'an OpenGL painter' => ['qapp-gl-painter', 'new QOpenGLPainter(fn () => null); return "built";', PROBE_SIGABRT],
     'a menu bar' => ['qapp-menubar', 'new QMenuBar(); return "built";', PROBE_SIGABRT],
     'a menu' => ['qapp-menu', 'new QMenu("m"); return "built";', PROBE_SIGABRT],
     'a window' => ['qguiapp-window', 'new QWindow(); return "built";', PROBE_SIGABRT],
     'a pixmap' => ['qguiapp-pixmap', 'new QPixmap(); return "built";', PROBE_SIGABRT],
     // Sites qapp-font-metrics and qapp-font-info: both reach QFontDatabase, which qFatals with no QGuiApplication.
-    'font metrics' => ['qapp-font-metrics', 'new QFontMetricsF(new QFont("Menlo")); return "built";', PROBE_SIGABRT],
-    'font info' => ['qapp-font-info', 'new QFontInfo(new QFont("Menlo")); return "built";', PROBE_SIGABRT],
+    // Qt 6.11 builds the object and reaches QFontDatabase on the first read, so the probe reads one value.
+    'font metrics' => ['qapp-font-metrics', 'return (new QFontMetricsF(new QFont("Menlo")))->ascent();', PROBE_SIGABRT],
+    'font info' => ['qapp-font-info', 'return (new QFontInfo(new QFont("Menlo")))->fixedPitch();', PROBE_SIGABRT],
     'a pixmap from an image' => ['qguiapp-pixmap-from-image',
         '$bytes = new QByteArray(str_repeat("\0", 4), 4); QPixmap::fromImage(new QImage($bytes->pointer(), 1, 1, 4, QImage\Format::RGB32)); return "built";',
         PROBE_SIGABRT],

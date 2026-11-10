@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 96c20d5f4a1cf5b4f9859a372fd47365d1365aac */
+ * Stub hash: 421ff537f2e9a0e05ec7cae6c69043fb3aeac957 */
 
 static zend_class_entry *register_class_Qt_DateFormat(void)
 {
@@ -987,6 +987,21 @@ static zend_class_entry *register_class_Qt_ToolButtonStyle(void)
 	zval enum_case_TOOL_BUTTON_FOLLOW_STYLE_value;
 	ZVAL_LONG(&enum_case_TOOL_BUTTON_FOLLOW_STYLE_value, 4);
 	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_FOLLOW_STYLE", &enum_case_TOOL_BUTTON_FOLLOW_STYLE_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_SizeMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\SizeMode", IS_LONG, NULL);
+
+	zval enum_case_ABSOLUTE_SIZE_value;
+	ZVAL_LONG(&enum_case_ABSOLUTE_SIZE_value, 0);
+	zend_enum_add_case_cstr(class_entry, "ABSOLUTE_SIZE", &enum_case_ABSOLUTE_SIZE_value);
+
+	zval enum_case_RELATIVE_SIZE_value;
+	ZVAL_LONG(&enum_case_RELATIVE_SIZE_value, 1);
+	zend_enum_add_case_cstr(class_entry, "RELATIVE_SIZE", &enum_case_RELATIVE_SIZE_value);
 
 	return class_entry;
 }

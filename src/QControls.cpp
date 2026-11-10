@@ -25,6 +25,8 @@
 #include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSlider>
 #include <QtCore/QStringListModel>
+#include <QtGui/QStandardItemModel>
+#include <QtWidgets/QAbstractItemDelegate>
 #include <QtGui/QIcon>
 #include <QtWidgets/QCompleter>
 #include <QtWidgets/QMenu>
@@ -87,6 +89,10 @@ void phpqt_register_QControls()
 	phpqt_ce_QStringListModel = register_class_QStringListModel(phpqt_ce_QAbstractItemModel);
 	phpqt_object_setup(phpqt_ce_QStringListModel);
 	phpqt_map_class("QStringListModel", phpqt_ce_QStringListModel);
+
+	phpqt_ce_QStandardItemModel = register_class_QStandardItemModel(phpqt_ce_QAbstractItemModel);
+	phpqt_object_setup(phpqt_ce_QStandardItemModel);
+	phpqt_map_class("QStandardItemModel", phpqt_ce_QStandardItemModel);
 
 	phpqt_ce_QCompleter = register_class_QCompleter(phpqt_ce_QObject);
 	phpqt_object_setup(phpqt_ce_QCompleter);
@@ -708,6 +714,197 @@ ZEND_METHOD(QComboBox, setInsertPolicy)
 ZEND_METHOD(QAbstractItemModel, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
+}
+
+/* An optional parent index: the root (QModelIndex()) when not given, as Qt's default. */
+#define PHPQT_PARENT_INDEX(obj, arg_num, out) \
+	QModelIndex out; \
+	if ((obj) != nullptr) { \
+		QModelIndex *given = static_cast<QModelIndex *>(phpqt_value_arg((obj), (arg_num))); \
+		if (given == nullptr) { \
+			RETURN_THROWS(); \
+		} \
+		out = *given; \
+	}
+
+ZEND_METHOD(QAbstractItemModel, rowCount)
+{
+	zend_object *parent_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(parent_obj, phpqt_ce_QModelIndex)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemModel, model);
+	PHPQT_PARENT_INDEX(parent_obj, 1, parent);
+
+	RETURN_LONG(model->rowCount(parent));
+}
+
+ZEND_METHOD(QAbstractItemModel, columnCount)
+{
+	zend_object *parent_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(parent_obj, phpqt_ce_QModelIndex)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemModel, model);
+	PHPQT_PARENT_INDEX(parent_obj, 1, parent);
+
+	RETURN_LONG(model->columnCount(parent));
+}
+
+ZEND_METHOD(QAbstractItemModel, index)
+{
+	zend_long row, column;
+	zend_object *parent_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_LONG(row)
+		Z_PARAM_LONG(column)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(parent_obj, phpqt_ce_QModelIndex)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemModel, model);
+	PHPQT_PARENT_INDEX(parent_obj, 3, parent);
+
+	phpqt_return_model_index(return_value, model->index(static_cast<int>(row), static_cast<int>(column), parent));
+}
+
+ZEND_METHOD(QAbstractItemModel, data)
+{
+	zend_object *index_obj;
+	zend_long role = Qt::DisplayRole;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(index_obj, phpqt_ce_QModelIndex)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(role)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemModel, model);
+
+	QModelIndex *index = static_cast<QModelIndex *>(phpqt_value_arg(index_obj, 1));
+	if (index == nullptr) {
+		RETURN_THROWS();
+	}
+
+	phpqt_variant_to_zval(return_value, model->data(*index, static_cast<int>(role)));
+}
+
+ZEND_METHOD(QAbstractItemModel, setData)
+{
+	zend_object *index_obj;
+	zval *value;
+	zend_long role = Qt::EditRole;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_OBJ_OF_CLASS(index_obj, phpqt_ce_QModelIndex)
+		Z_PARAM_ZVAL(value)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(role)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemModel, model);
+
+	QModelIndex *index = static_cast<QModelIndex *>(phpqt_value_arg(index_obj, 1));
+	if (index == nullptr) {
+		RETURN_THROWS();
+	}
+	QVariant variant;
+	if (!phpqt_zval_to_variant(value, QMetaType(), &variant, 2)) {
+		RETURN_THROWS();
+	}
+
+	RETURN_BOOL(model->setData(*index, variant, static_cast<int>(role)));
+}
+
+/* ---- QStandardItemModel ------------------------------------------------ */
+
+ZEND_METHOD(QStandardItemModel, __construct)
+{
+	zend_long rows, columns;
+	zend_object *parent = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_LONG(rows)
+		Z_PARAM_LONG(columns)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(parent, phpqt_ce_QObject)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QObject *qparent = phpqt_arg(parent, 3, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	phpqt_adopt(Z_OBJ_P(ZEND_THIS), new QStandardItemModel(static_cast<int>(rows), static_cast<int>(columns), qparent));
+}
+
+ZEND_METHOD(QStandardItemModel, setRowCount)
+{
+	zend_long rows;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(rows)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QStandardItemModel, model);
+
+	model->setRowCount(static_cast<int>(rows));
+}
+
+ZEND_METHOD(QStandardItemModel, setColumnCount)
+{
+	zend_long columns;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(columns)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QStandardItemModel, model);
+
+	model->setColumnCount(static_cast<int>(columns));
+}
+
+ZEND_METHOD(QStandardItemModel, insertRows)
+{
+	zend_long row, count;
+	zend_object *parent_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_LONG(row)
+		Z_PARAM_LONG(count)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(parent_obj, phpqt_ce_QModelIndex)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QStandardItemModel, model);
+	PHPQT_PARENT_INDEX(parent_obj, 3, parent);
+
+	RETURN_BOOL(model->insertRows(static_cast<int>(row), static_cast<int>(count), parent));
+}
+
+ZEND_METHOD(QStandardItemModel, removeRows)
+{
+	zend_long row, count;
+	zend_object *parent_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_LONG(row)
+		Z_PARAM_LONG(count)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(parent_obj, phpqt_ce_QModelIndex)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QStandardItemModel, model);
+	PHPQT_PARENT_INDEX(parent_obj, 3, parent);
+
+	RETURN_BOOL(model->removeRows(static_cast<int>(row), static_cast<int>(count), parent));
+}
+
+ZEND_METHOD(QStandardItemModel, clear)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QStandardItemModel, model);
+
+	model->clear();
 }
 
 ZEND_METHOD(QStringListModel, __construct)
@@ -1368,6 +1565,100 @@ ZEND_METHOD(QAbstractItemView, clearSelection)
 	PHPQT_THIS(QAbstractItemView, view);
 
 	view->clearSelection();
+}
+
+ZEND_METHOD(QAbstractItemView, model)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	phpqt_box(return_value, view->model());
+}
+
+ZEND_METHOD(QAbstractItemView, setModel)
+{
+	zend_object *model = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(model, phpqt_ce_QAbstractItemModel)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	QObject *qmodel = phpqt_arg(model, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	view->setModel(static_cast<QAbstractItemModel *>(qmodel));
+}
+
+ZEND_METHOD(QAbstractItemView, itemDelegate)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	phpqt_box(return_value, view->itemDelegate());
+}
+
+ZEND_METHOD(QAbstractItemView, setItemDelegate)
+{
+	zend_object *delegate = nullptr;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(delegate, phpqt_ce_QAbstractItemDelegate)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	QObject *qdelegate = phpqt_arg(delegate, 1, &failed);
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	view->setItemDelegate(static_cast<QAbstractItemDelegate *>(qdelegate));
+}
+
+ZEND_METHOD(QAbstractItemView, iconSize)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	phpqt_return_qsize(return_value, view->iconSize());
+}
+
+ZEND_METHOD(QAbstractItemView, setIconSize)
+{
+	zend_object *size_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(size_obj, phpqt_ce_QSize)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	QSize *size = static_cast<QSize *>(phpqt_value_arg(size_obj, 1));
+	if (size == nullptr) {
+		RETURN_THROWS();
+	}
+
+	view->setIconSize(*size);
+}
+
+ZEND_METHOD(QAbstractItemView, indexAt)
+{
+	zend_object *point_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(point_obj, phpqt_ce_QPoint)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	QPoint *point = static_cast<QPoint *>(phpqt_value_arg(point_obj, 1));
+	if (point == nullptr) {
+		RETURN_THROWS();
+	}
+
+	phpqt_return_model_index(return_value, view->indexAt(*point));
 }
 
 ZEND_METHOD(QTableWidget, __construct)

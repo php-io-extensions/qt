@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: e0168e1e69c15ee02417cce4af9db0d6841d0aac */
+ * Stub hash: b7d468a13cce5bcc6271d3657a3131496537ce56 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -24,6 +24,13 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setVisible, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, visible, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setGraphicsEffect, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, effect, QGraphicsEffect, 1)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_graphicsEffect, 0, 0, QGraphicsEffect, 1)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_isWindow arginfo_class_QWidget_close
@@ -191,6 +198,8 @@ ZEND_METHOD(QWidget, hide);
 ZEND_METHOD(QWidget, close);
 ZEND_METHOD(QWidget, isVisible);
 ZEND_METHOD(QWidget, setVisible);
+ZEND_METHOD(QWidget, setGraphicsEffect);
+ZEND_METHOD(QWidget, graphicsEffect);
 ZEND_METHOD(QWidget, isWindow);
 ZEND_METHOD(QWidget, isActiveWindow);
 ZEND_METHOD(QWidget, activateWindow);
@@ -249,6 +258,8 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, close, arginfo_class_QWidget_close, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, isVisible, arginfo_class_QWidget_isVisible, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setVisible, arginfo_class_QWidget_setVisible, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setGraphicsEffect, arginfo_class_QWidget_setGraphicsEffect, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, graphicsEffect, arginfo_class_QWidget_graphicsEffect, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, isWindow, arginfo_class_QWidget_isWindow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, isActiveWindow, arginfo_class_QWidget_isActiveWindow, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, activateWindow, arginfo_class_QWidget_activateWindow, ZEND_ACC_PUBLIC)

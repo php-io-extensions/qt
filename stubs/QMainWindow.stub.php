@@ -17,4 +17,6 @@ class QMainWindow extends QWidget
     public function centralWidget(): ?QWidget {}
 
     public function setCentralWidget(QWidget $widget): void {}
+
+    public function addToolBar(QToolBar $toolbar): void {}
 }
