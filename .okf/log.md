@@ -2,6 +2,12 @@
 
 ## 2026-11-10
 
+* New: [Web engine](api/web-engine.md) — `QWebEngineView` (Qt WebEngine linked): constructor (site `qapp-web-engine-view`), load, setHtml, title, url, stop, back, forward, reload. `tests/WebEngineTest.php` (2 passed).
+
+* `QPixmap::copy(?QRect)` (null copies the whole pixmap), no refusal. `tests/ImageTest.php`.
+
+* `QAbstractButton` autoExclusive / setAutoExclusive. `QAbstractItemView` verticalScrollBar / horizontalScrollBar (QAbstractScrollArea's, bound here as QAbstractScrollArea is not). Tests in `tests/ControlsTest.php` and `tests/ItemViewTest.php`; no refusal.
+
 * `QModelIndex` (row, column, isValid, data), also handed to PHP by signals such as `clicked(QModelIndex)`. `QAbstractItemModel` rowCount, columnCount, index, data, setData; `QStandardItemModel` (ctor, setRowCount, setColumnCount, insertRows, removeRows, clear). `QAbstractItemView` model, setModel, itemDelegate, setItemDelegate, iconSize, setIconSize, indexAt. `QMainWindow::addToolBar(QToolBar *)`.
 * `QListView` (view mode, flow, wrapping, resize mode, movement, grid size, spacing, uniform item sizes; enums `QListView\ViewMode`, `Flow`, `ResizeMode`, `Movement`) and `QToolBar` (addWidget, addSeparator, movable, floatable, icon size, tool button style). Both constructors go through `phpqt_construct_widget`'s qapp-widget check (sites qapp-list-view, qapp-tool-bar; probes in `tests/Probes/ApplicationFirstTest.php`).
 * `QPainter` (save, restore, setRenderHint, setOpacity, setPen(QColor), setBrush, setFont, fillRect, drawRect, drawRoundedRect with `Qt\SizeMode`, drawPixmap(QRect, QPixmap), drawText(QRect, int, QString, QRect *br)) and `QStyleOptionViewItem` (rect, state: the `QStyleOption` data members). Both are lent for one delegate call only, then read as gone.

@@ -18,6 +18,24 @@ it('clicks a push button into PHP and toggles a checkable one', function (): voi
         ->and($button)->toBeInstanceOf(QAbstractButton::class);
 });
 
+it('keeps one auto-exclusive checkable button checked among its siblings', function (): void {
+    $bar = new QWidget();
+    $today = new QToolButton($bar);
+    $recent = new QToolButton($bar);
+    foreach ([$today, $recent] as $button) {
+        $button->setCheckable(true);
+        $button->setAutoExclusive(true);
+    }
+
+    $today->click();
+    $recent->click();
+    $recent->click();
+
+    expect($today->autoExclusive())->toBeTrue()
+        ->and($today->isChecked())->toBeFalse()
+        ->and($recent->isChecked())->toBeTrue();
+});
+
 it('makes a push button the default button', function (): void {
     $button = new QPushButton('OK');
 

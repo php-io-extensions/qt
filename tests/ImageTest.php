@@ -77,6 +77,15 @@ it('turns an image into a pixmap a label shows', function (): void {
         ->and($label->devicePixelRatioF())->toBeGreaterThanOrEqual(1.0);
 });
 
+it('copies a pixmap whole or the part in a rect', function (): void {
+    $bytes = new QByteArray(str_repeat("\xff\x80\x00\xff", 6));
+    $pixmap = QPixmap::fromImage(new QImage($bytes->pointer(), 3, 2, 12, QImage\Format::RGBX8888));
+    $part = $pixmap->copy(new QRect(1, 0, 2, 1));
+
+    expect([$pixmap->copy()->width(), $pixmap->copy()->height()])->toBe([3, 2])
+        ->and([$part->width(), $part->height()])->toBe([2, 1]);
+});
+
 it('refuses a second construction', function (): void {
     $bytes = new QByteArray("\x01\x02\x03\x04");
     $image = new QImage($bytes->pointer(), 1, 1, 4, QImage\Format::RGBA8888);

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: e711c8629696caa8d11a4c5a0e421b90ea57dbe6 */
+ * Stub hash: 71b9aa1cf70a75af2f671fad3349f08f59bbccf3 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -72,6 +72,12 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractButton_setChecked, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, checked, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QAbstractButton_autoExclusive arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractButton_setAutoExclusive, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, autoExclusive, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractButton_click, 0, 0, IS_VOID, 0)
@@ -556,6 +562,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QAbstractItemView_indexAt, 
 	ZEND_ARG_OBJ_INFO(0, point, QPoint, 0)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QAbstractItemView_verticalScrollBar arginfo_class_QPlainTextEdit_verticalScrollBar
+
+#define arginfo_class_QAbstractItemView_horizontalScrollBar arginfo_class_QPlainTextEdit_verticalScrollBar
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTableWidget___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, rows, IS_LONG, 0, "0")
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, columns, IS_LONG, 0, "0")
@@ -756,6 +766,8 @@ ZEND_METHOD(QAbstractButton, isCheckable);
 ZEND_METHOD(QAbstractButton, setCheckable);
 ZEND_METHOD(QAbstractButton, isChecked);
 ZEND_METHOD(QAbstractButton, setChecked);
+ZEND_METHOD(QAbstractButton, autoExclusive);
+ZEND_METHOD(QAbstractButton, setAutoExclusive);
 ZEND_METHOD(QAbstractButton, click);
 ZEND_METHOD(QAbstractButton, toggle);
 ZEND_METHOD(QAbstractButton, setIcon);
@@ -913,6 +925,8 @@ ZEND_METHOD(QAbstractItemView, setItemDelegate);
 ZEND_METHOD(QAbstractItemView, iconSize);
 ZEND_METHOD(QAbstractItemView, setIconSize);
 ZEND_METHOD(QAbstractItemView, indexAt);
+ZEND_METHOD(QAbstractItemView, verticalScrollBar);
+ZEND_METHOD(QAbstractItemView, horizontalScrollBar);
 ZEND_METHOD(QTableWidget, __construct);
 ZEND_METHOD(QTableWidget, rowCount);
 ZEND_METHOD(QTableWidget, setRowCount);
@@ -1000,6 +1014,8 @@ static const zend_function_entry class_QAbstractButton_methods[] = {
 	ZEND_ME(QAbstractButton, setCheckable, arginfo_class_QAbstractButton_setCheckable, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, isChecked, arginfo_class_QAbstractButton_isChecked, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, setChecked, arginfo_class_QAbstractButton_setChecked, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractButton, autoExclusive, arginfo_class_QAbstractButton_autoExclusive, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractButton, setAutoExclusive, arginfo_class_QAbstractButton_setAutoExclusive, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, click, arginfo_class_QAbstractButton_click, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, toggle, arginfo_class_QAbstractButton_toggle, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractButton, setIcon, arginfo_class_QAbstractButton_setIcon, ZEND_ACC_PUBLIC)
@@ -1233,6 +1249,8 @@ static const zend_function_entry class_QAbstractItemView_methods[] = {
 	ZEND_ME(QAbstractItemView, iconSize, arginfo_class_QAbstractItemView_iconSize, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractItemView, setIconSize, arginfo_class_QAbstractItemView_setIconSize, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAbstractItemView, indexAt, arginfo_class_QAbstractItemView_indexAt, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, verticalScrollBar, arginfo_class_QAbstractItemView_verticalScrollBar, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAbstractItemView, horizontalScrollBar, arginfo_class_QAbstractItemView_horizontalScrollBar, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

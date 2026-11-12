@@ -933,6 +933,28 @@ ZEND_METHOD(QPixmap, scaled)
 		static_cast<Qt::TransformationMode>(phpqt_enum_value(transformation, Qt::FastTransformation))));
 }
 
+ZEND_METHOD(QPixmap, copy)
+{
+	zend_object *rect_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(rect_obj, phpqt_ce_QRect)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPixmap, pixmap);
+
+	QRect rect;
+	if (rect_obj != nullptr) {
+		QRect *given = static_cast<QRect *>(phpqt_value_arg(rect_obj, 1));
+		if (given == nullptr) {
+			RETURN_THROWS();
+		}
+		rect = *given;
+	}
+
+	phpqt_return_pixmap(return_value, pixmap->copy(rect));
+}
+
 ZEND_METHOD(QPixmap, devicePixelRatio)
 {
 	ZEND_PARSE_PARAMETERS_NONE();

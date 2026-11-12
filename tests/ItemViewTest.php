@@ -72,6 +72,19 @@ it('refuses a QPaintDelegate callable that is not callable', function (): void {
     new QPaintDelegate('no such function');
 })->throws(TypeError::class);
 
+it('reaches a list view\'s scroll bars', function (): void {
+    $view = new QListView();
+    $vertical = $view->verticalScrollBar();
+    $vertical->setRange(0, 900);
+    $vertical->setValue(450);
+
+    expect($vertical)->toBeInstanceOf(QScrollBar::class)
+        ->and($view->verticalScrollBar())->toBe($vertical)
+        ->and($vertical->value())->toBe(450)
+        ->and($vertical->orientation())->toBe(Qt\Orientation::VERTICAL)
+        ->and($view->horizontalScrollBar()->orientation())->toBe(Qt\Orientation::HORIZONTAL);
+});
+
 it('builds a QToolBar and puts it on a QMainWindow', function (): void {
     $window = new QMainWindow();
     $bar = new QToolBar();

@@ -7,6 +7,7 @@ okf_version: "0.2"
 * [Binding surface](api/surface.md) - Classes, enums and functions bound so far, each one Qt call under its native name and signature; C++ scopes as PHP namespaces; value classes as PHP value objects.
 * [Layout and geometry](api/layout.md) - Qt owns geometry; PHP installs layouts, adds widgets with stretch and alignment, reads sizes back as QSize, QPoint and QRect.
 * [Video](api/video.md) - QMediaPlayer + QAudioOutput + QVideoWidget over the platform backend; status and error signals; Multimedia build requirement.
+* [Web engine](api/web-engine.md) - QWebEngineView (Chromium): load, setHtml with a base URL, title and url; loadStarted/loadFinished(bool) signals; WebEngine build requirement.
 
 # Architecture
 

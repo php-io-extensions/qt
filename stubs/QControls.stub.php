@@ -165,6 +165,10 @@ namespace {
 
         public function setChecked(bool $checked): void {}
 
+        public function autoExclusive(): bool {}
+
+        public function setAutoExclusive(bool $autoExclusive): void {}
+
         public function click(): void {}
 
         public function toggle(): void {}
@@ -646,6 +650,12 @@ namespace {
         public function setIconSize(QSize $size): void {}
 
         public function indexAt(QPoint $point): QModelIndex {}
+
+        /** QAbstractScrollArea::verticalScrollBar(). */
+        public function verticalScrollBar(): QScrollBar {}
+
+        /** QAbstractScrollArea::horizontalScrollBar(). */
+        public function horizontalScrollBar(): QScrollBar {}
     }
 
     /**

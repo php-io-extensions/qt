@@ -308,6 +308,9 @@ namespace {
 
         public function scaled(int $width, int $height, Qt\AspectRatioMode $aspectRatioMode = Qt\AspectRatioMode::IGNORE_ASPECT_RATIO, Qt\TransformationMode $transformMode = Qt\TransformationMode::FAST_TRANSFORMATION): QPixmap {}
 
+        /** A null rect copies the whole pixmap. */
+        public function copy(?QRect $rect = null): QPixmap {}
+
         public function devicePixelRatio(): float {}
 
         /** @param float $scaleFactor greater than 0 */

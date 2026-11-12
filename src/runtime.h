@@ -233,6 +233,7 @@ extern zend_class_entry *phpqt_ce_QUrl;
 extern zend_class_entry *phpqt_ce_QAudioOutput;
 extern zend_class_entry *phpqt_ce_QMediaPlayer;
 extern zend_class_entry *phpqt_ce_QVideoWidget;
+extern zend_class_entry *phpqt_ce_QWebEngineView;
 extern zend_class_entry *phpqt_ce_QSpacerItem;
 extern zend_class_entry *phpqt_ce_Qt_TextFormat;
 extern zend_class_entry *phpqt_ce_Qt_TransformationMode;
@@ -258,6 +259,7 @@ void phpqt_register_QControls();
 void phpqt_register_QGui();
 void phpqt_register_QText();
 void phpqt_register_QMultimedia();
+void phpqt_register_QWebEngine();
 void phpqt_register_QInputEvents();
 
 class QEvent;

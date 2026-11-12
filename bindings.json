@@ -33,6 +33,7 @@
         "translate": []
     },
     "sites": {
+        "qapp-web-engine-view": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
         "qapp-font-metrics": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
         "qapp-font-info": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/ApplicationFirstTest.php"},
         "main-thread-macos": {"kind": "refusal", "outcome": 2, "probe": "tests/Probes/MainThreadTest.php"},

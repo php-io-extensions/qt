@@ -198,6 +198,7 @@ zend_class_entry *phpqt_ce_QUrl;
 zend_class_entry *phpqt_ce_QAudioOutput;
 zend_class_entry *phpqt_ce_QMediaPlayer;
 zend_class_entry *phpqt_ce_QVideoWidget;
+zend_class_entry *phpqt_ce_QWebEngineView;
 zend_class_entry *phpqt_ce_QSpacerItem;
 zend_class_entry *phpqt_ce_Qt_TextFormat;
 zend_class_entry *phpqt_ce_Qt_TransformationMode;
@@ -305,6 +306,7 @@ PHP_MINIT_FUNCTION(qt)
 	/* After QItemView: QPaintDelegate extends QStyledItemDelegate. */
 	phpqt_register_QtGlue();
 	phpqt_register_QMultimedia();
+	phpqt_register_QWebEngine();
 	phpqt_register_QInputEvents();
 	phpqt_register_QValues();
 	phpqt_register_QStyle();

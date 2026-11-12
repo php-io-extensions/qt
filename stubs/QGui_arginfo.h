@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: ee62ea46bb7bf278c4d0b0cd8a690ac8617706cf */
+ * Stub hash: ce06146cb4fc6bdc7ec0e208a58d5f37a5f4213d */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent_Attribute___construct, 0, 0, 4)
 	ZEND_ARG_OBJ_INFO(0, type, QInputMethodEvent\\AttributeType, 0)
@@ -122,6 +122,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_scaled, 0, 2, QPixm
 	ZEND_ARG_TYPE_INFO(0, height, IS_LONG, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, aspectRatioMode, Qt\\AspectRatioMode, 0, "Qt\\AspectRatioMode::IGNORE_ASPECT_RATIO")
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, transformMode, Qt\\TransformationMode, 0, "Qt\\TransformationMode::FAST_TRANSFORMATION")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_copy, 0, 0, QPixmap, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, rect, QRect, 1, "null")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QPixmap_devicePixelRatio arginfo_class_QFont_pointSizeF
@@ -268,6 +272,7 @@ ZEND_METHOD(QPixmap, isNull);
 ZEND_METHOD(QPixmap, width);
 ZEND_METHOD(QPixmap, height);
 ZEND_METHOD(QPixmap, scaled);
+ZEND_METHOD(QPixmap, copy);
 ZEND_METHOD(QPixmap, devicePixelRatio);
 ZEND_METHOD(QPixmap, setDevicePixelRatio);
 ZEND_METHOD(QIcon, __construct);
@@ -367,6 +372,7 @@ static const zend_function_entry class_QPixmap_methods[] = {
 	ZEND_ME(QPixmap, width, arginfo_class_QPixmap_width, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, height, arginfo_class_QPixmap_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, scaled, arginfo_class_QPixmap_scaled, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPixmap, copy, arginfo_class_QPixmap_copy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, devicePixelRatio, arginfo_class_QPixmap_devicePixelRatio, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, setDevicePixelRatio, arginfo_class_QPixmap_setDevicePixelRatio, ZEND_ACC_PUBLIC)
 	ZEND_FE_END

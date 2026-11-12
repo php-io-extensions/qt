@@ -354,6 +354,8 @@ PHPQT_GETTER_BOOL(QAbstractButton, isCheckable, isCheckable)
 PHPQT_SETTER_BOOL(QAbstractButton, setCheckable, setCheckable)
 PHPQT_GETTER_BOOL(QAbstractButton, isChecked, isChecked)
 PHPQT_SETTER_BOOL(QAbstractButton, setChecked, setChecked)
+PHPQT_GETTER_BOOL(QAbstractButton, autoExclusive, autoExclusive)
+PHPQT_SETTER_BOOL(QAbstractButton, setAutoExclusive, setAutoExclusive)
 PHPQT_VOID(QAbstractButton, click, click)
 PHPQT_VOID(QAbstractButton, toggle, toggle)
 
@@ -1659,6 +1661,22 @@ ZEND_METHOD(QAbstractItemView, indexAt)
 	}
 
 	phpqt_return_model_index(return_value, view->indexAt(*point));
+}
+
+ZEND_METHOD(QAbstractItemView, verticalScrollBar)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	phpqt_box(return_value, view->verticalScrollBar());
+}
+
+ZEND_METHOD(QAbstractItemView, horizontalScrollBar)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QAbstractItemView, view);
+
+	phpqt_box(return_value, view->horizontalScrollBar());
 }
 
 ZEND_METHOD(QTableWidget, __construct)
