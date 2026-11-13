@@ -244,3 +244,31 @@ it('makes an input method event, sets its commit string and hands it to a filter
     QCoreApplication::sendEvent($widget, $event);
     expect($seen)->toBe([[QInputMethodEvent::class, 'é']]);
 });
+
+it('leaves a watched object its filter released to Qt, which still sends it the event', function (): void {
+    // Qt sends the timer its own event: no PHP call holds the timer, so the filter's argument is its last wrapper.
+    $run = qtChild(<<<'PHP'
+        $timer = new QTimer();
+        $calls = 0;
+        $filter = new QEventFilter(function (QObject $watched, QEvent $event) use (&$timer, &$calls): bool {
+            if ($event->type() === QEvent\Type::TIMER) {
+                $calls++;
+                $timer = null;
+            }
+
+            return false;
+        });
+        $timer->installEventFilter($filter);
+        $timer->start(0);
+
+        for ($i = 0; $i < 200 && $calls === 0; $i++) {
+            QCoreApplication::processEvents(QEventLoop\ProcessEventsFlag::ALL_EVENTS);
+        }
+
+        return $calls;
+    PHP, gmalloc: true);
+
+    expect($run['signal'])->toBeNull()
+        ->and($run['survived'])->toBeTrue()
+        ->and($run['result'])->toBeGreaterThan(0);
+});

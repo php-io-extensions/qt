@@ -1,5 +1,9 @@
 # Log
 
+## 2026-11-12
+
+* Fix: [Signals](architecture/signals.md) — `QEventFilter` released the watched object's wrapper after the callback depth had dropped, so a callable that gave up PHP's last other reference to an owned, parentless watched object had it deleted while Qt was still sending it the event (SIGSEGV in `QCoreApplicationPrivate::sendThroughObjectEventFilters`, seen closing a `QMainWindow` from its own close-event filter). The depth now covers the release. `tests/EventsTest.php` (19 passed).
+
 ## 2026-11-10
 
 * New: [Web engine](api/web-engine.md) — `QWebEngineView` (Qt WebEngine linked): constructor (site `qapp-web-engine-view`), load, setHtml, title, url, stop, back, forward, reload. `tests/WebEngineTest.php` (2 passed).

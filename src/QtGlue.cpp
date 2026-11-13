@@ -24,6 +24,10 @@ public:
 		phpqt_box(&argv[0], watched);
 		phpqt_box_event(&argv[1], event);
 
+		/* Qt still sends this event to the watched object after PHP returns: its wrapper, when the one
+		 * released below is the last, must leave the object to deleteLater() as inside the call. */
+		PHPQT_G(callout_depth)++;
+
 		if (call(2, argv, &retval)) {
 			stop = zend_is_true(&retval);
 		}
@@ -32,6 +36,8 @@ public:
 		zval_ptr_dtor(&retval);
 		zval_ptr_dtor(&argv[0]);
 		zval_ptr_dtor(&argv[1]);
+
+		PHPQT_G(callout_depth)--;
 
 		return stop;
 	}

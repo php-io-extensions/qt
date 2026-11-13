@@ -5,7 +5,7 @@ description: String-signature connect through a moc-free dynamic slot; argument 
 resource: src/runtime.cpp
 tags: [qt, signals, callbacks]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-19T02:24:03Z }
+generated: { by: claude-fable/5.2, at: 2026-11-13T00:54:06Z }
 sources:
   - id: runtime
     resource: src/runtime.cpp
@@ -30,7 +30,7 @@ Lifetime:
 * `QImage`'s cleanup function: a slot with one bound argument (`cleanupInfo`), fired once on its own thread (queued there from another), then freed.
 * RSHUTDOWN deletes every remaining slot (disconnecting it) and frees its callable while the engine can still free it.
 
-`QEventFilter` is a `PhpSlot` subclass overriding `eventFilter(watched, event)`: it shares the slot's call path and request-end teardown, hands PHP every event as `(watched, event)` and returns PHP's bool to Qt. The callable reads `$event->type()` itself. `phpqt_box_event` boxes the most specific bound class by `dynamic_cast`, in order: `QContextMenuEvent`, `QMouseEvent`, `QKeyEvent`, `QWheelEvent` (a `QSinglePointEvent`, not a `QMouseEvent`, so it needs its own branch), `QInputEvent`, else `QEvent`.
+`QEventFilter` is a `PhpSlot` subclass overriding `eventFilter(watched, event)`: it shares the slot's call path and request-end teardown, hands PHP every event as `(watched, event)` and returns PHP's bool to Qt. The callable reads `$event->type()` itself. `phpqt_box_event` boxes the most specific bound class by `dynamic_cast`, in order: `QContextMenuEvent`, `QMouseEvent`, `QKeyEvent`, `QWheelEvent` (a `QSinglePointEvent`, not a `QMouseEvent`, so it needs its own branch), `QInputEvent`, else `QEvent`. `eventFilter()` counts as inside a Qt callback until it has released its two argument wrappers, not only while the callable runs: Qt goes on sending the event to the watched object after the filter returns, so when the callable dropped PHP's last other reference to an owned, parentless watched object, releasing the argument `deleteLater()`s it and does not delete it under Qt (`tests/EventsTest.php`).
 
 `QMetaObject::invokeMethod()` converts PHP arguments the other way, to the parameter types of the member of that name and arity (`phpqt_zval_to_variant`), the value classes included, and makes the native call with the connection type given.
 
