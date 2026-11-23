@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: b7d468a13cce5bcc6271d3657a3131496537ce56 */
+ * Stub hash: 291bd1644844914866fbafbf63fa6a1a151714c5 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -45,6 +45,9 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_hasFocus arginfo_class_QWidget_close
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_focusWidget, 0, 0, QWidget, 1)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_focusPolicy, 0, 0, Qt\\FocusPolicy, 0)
 ZEND_END_ARG_INFO()
 
@@ -55,6 +58,15 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setTabOrder, 0, 2, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, first, QWidget, 0)
 	ZEND_ARG_OBJ_INFO(0, second, QWidget, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_insertAction, 0, 2, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, before, QAction, 1)
+	ZEND_ARG_OBJ_INFO(0, action, QAction, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_removeAction, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, action, QAction, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_raise arginfo_class_QWidget_show
@@ -76,8 +88,7 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_height arginfo_class_QWidget_width
 
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_parentWidget, 0, 0, QWidget, 1)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QWidget_parentWidget arginfo_class_QWidget_focusWidget
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_mapFromGlobal, 0, 1, QPointF, 0)
 	ZEND_ARG_OBJ_INFO(0, pos, QPointF, 0)
@@ -206,9 +217,12 @@ ZEND_METHOD(QWidget, activateWindow);
 ZEND_METHOD(QWidget, setFocus);
 ZEND_METHOD(QWidget, clearFocus);
 ZEND_METHOD(QWidget, hasFocus);
+ZEND_METHOD(QWidget, focusWidget);
 ZEND_METHOD(QWidget, focusPolicy);
 ZEND_METHOD(QWidget, setFocusPolicy);
 ZEND_METHOD(QWidget, setTabOrder);
+ZEND_METHOD(QWidget, insertAction);
+ZEND_METHOD(QWidget, removeAction);
 ZEND_METHOD(QWidget, raise);
 ZEND_METHOD(QWidget, windowTitle);
 ZEND_METHOD(QWidget, setWindowTitle);
@@ -266,9 +280,12 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, setFocus, arginfo_class_QWidget_setFocus, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, clearFocus, arginfo_class_QWidget_clearFocus, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, hasFocus, arginfo_class_QWidget_hasFocus, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, focusWidget, arginfo_class_QWidget_focusWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, focusPolicy, arginfo_class_QWidget_focusPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setFocusPolicy, arginfo_class_QWidget_setFocusPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setTabOrder, arginfo_class_QWidget_setTabOrder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QWidget, insertAction, arginfo_class_QWidget_insertAction, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, removeAction, arginfo_class_QWidget_removeAction, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, raise, arginfo_class_QWidget_raise, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, windowTitle, arginfo_class_QWidget_windowTitle, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setWindowTitle, arginfo_class_QWidget_setWindowTitle, ZEND_ACC_PUBLIC)

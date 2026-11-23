@@ -97,3 +97,39 @@ it('sets roles, shortcuts and text', function (): void {
     $action->setShortcut(new QKeySequence(''));
     expect($action->shortcut()->isEmpty())->toBeTrue();
 });
+
+it('inserts an action into a widget and removes it without deleting it', function (): void {
+    $window = new QMainWindow();
+    $menu = $window->menuBar()->addMenu('File');
+    $save = new QAction('Save');
+    $open = new QAction('Open');
+
+    $menu->insertAction(null, $save);
+    $menu->insertAction($save, $open);
+    expect($menu->isEmpty())->toBeFalse();
+
+    $menu->removeAction($save);
+    expect($menu->isEmpty())->toBeFalse();
+
+    $menu->removeAction($open);
+    expect($menu->isEmpty())->toBeTrue()
+        ->and($save->text())->toBe('Save')
+        ->and($open->text())->toBe('Open');
+
+    $menu->insertAction(null, $open);
+    expect($menu->isEmpty())->toBeFalse();
+});
+
+it('refuses a deleted action in insertAction and removeAction', function (): void {
+    $window = new QMainWindow();
+    $menu = $window->menuBar()->addMenu('File');
+    $kept = $menu->addAction('Kept');
+    $gone = $menu->addAction('Gone');
+
+    $gone->deleteLater();
+    QCoreApplication::sendPostedEvents(null, DEFERRED_DELETE);
+
+    expect(fn () => $menu->insertAction(null, $gone))->toThrow(ValueError::class, 'Argument #2 ($action) is a QAction that no longer exists')
+        ->and(fn () => $menu->insertAction($gone, $kept))->toThrow(ValueError::class, 'Argument #1 ($before) is a QAction that no longer exists')
+        ->and(fn () => $menu->removeAction($gone))->toThrow(ValueError::class, 'Argument #1 ($action) is a QAction that no longer exists');
+});

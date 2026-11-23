@@ -7,7 +7,8 @@
         "QEventFilter": {"methods": ["__construct"], "forwards": "QObject::eventFilter(watched, event) trampoline"},
         "QOpenGLPainter": {"methods": ["__construct"], "forwards": "QOpenGLWidget::paintGL trampoline"},
         "QByteArray": {"methods": ["pointer"], "forwards": "address hand-off"},
-        "QPaintDelegate": {"methods": ["__construct"], "forwards": "QStyledItemDelegate::paint, sizeHint, editorEvent trampolines"}
+          "QPaintDelegate": {"methods": ["__construct"], "forwards": "QStyledItemDelegate::paint, sizeHint, editorEvent trampolines"},
+        "QPlatformNativeInterface": {"methods": ["nativeResourceForWindow"], "forwards": "QPlatformNativeInterface::nativeResourceForWindow (qpa header)"}
     },
     "helpers": {
         "marshal": [

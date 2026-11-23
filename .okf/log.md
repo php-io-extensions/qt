@@ -1,5 +1,13 @@
 # Log
 
+## 2026-11-22
+
+* New: [QWidget API](api/surface.md) — `QWidget::insertAction(?QAction $before, QAction $action): void` and `QWidget::removeAction(QAction $action): void`, no refusal beyond the deleted-wrapper check every object argument has (a `ValueError` naming the argument). A null or foreign `$before` appends, as Qt documents; the widget does not own the action and `removeAction` does not delete it. `tests/MenuTest.php` (two new cases; 41 passed with `tests/WidgetTest.php` and `tests/SurfaceTest.php`, offscreen, 8.4 NTS and ZTS).
+
+## 2026-11-21
+
+* New: [QWidget API](api/surface.md) — `QWidget::focusWidget(): ?QWidget`, no refusal. On a window it is the widget that gets focus when the window is activated, also while another window is active (`hasFocus()` is false then). `tests/WidgetTest.php` (new case; 33 passed with `tests/SurfaceTest.php`).
+
 ## 2026-11-12
 
 * Fix: [Signals](architecture/signals.md) — `QEventFilter` released the watched object's wrapper after the callback depth had dropped, so a callable that gave up PHP's last other reference to an owned, parentless watched object had it deleted while Qt was still sending it the event (SIGSEGV in `QCoreApplicationPrivate::sendThroughObjectEventFilters`, seen closing a `QMainWindow` from its own close-event filter). The depth now covers the release. `tests/EventsTest.php` (19 passed).

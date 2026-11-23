@@ -281,6 +281,22 @@ it('sets and reads a focus policy', function (): void {
     expect($widget->focusPolicy())->toBe(Qt\FocusPolicy::STRONG_FOCUS);
 });
 
+it('reads the focus widget a window keeps, also while it is not the focus', function (): void {
+    $window = new QWidget();
+    $a = new QLineEdit('', $window);
+    $b = new QLineEdit('', $window);
+
+    expect($window->focusWidget())->toBeNull();
+
+    $b->setFocus();
+
+    // Hidden, the window is not active, so nothing has the focus; it keeps $b as its focus widget.
+    expect($window->focusWidget())->toBe($b)
+        ->and($b->focusWidget())->toBe($b)
+        ->and($a->focusWidget())->toBeNull()
+        ->and($b->hasFocus())->toBeFalse();
+});
+
 it('moves Tab focus in the order setTabOrder gives', function (): void {
     $window = new QWidget();
     $a = new QLineEdit('', $window);

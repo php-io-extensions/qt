@@ -204,6 +204,14 @@ ZEND_METHOD(QWidget, parentWidget)
 	phpqt_box(return_value, widget->parentWidget());
 }
 
+ZEND_METHOD(QWidget, focusWidget)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->focusWidget());
+}
+
 ZEND_METHOD(QWidget, mapFromGlobal)
 {
 	zend_object *pos_obj;
@@ -585,6 +593,48 @@ ZEND_METHOD(QWidget, setTabOrder)
 	}
 
 	QWidget::setTabOrder(qfirst, qsecond);
+}
+
+ZEND_METHOD(QWidget, insertAction)
+{
+	zend_object *before;
+	zend_object *action;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(before, phpqt_ce_QAction)
+		Z_PARAM_OBJ_OF_CLASS(action, phpqt_ce_QAction)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QAction *qbefore = static_cast<QAction *>(phpqt_arg(before, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+	QAction *qaction = static_cast<QAction *>(phpqt_arg(action, 2, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	widget->insertAction(qbefore, qaction);
+}
+
+ZEND_METHOD(QWidget, removeAction)
+{
+	zend_object *action;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(action, phpqt_ce_QAction)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QAction *qaction = static_cast<QAction *>(phpqt_arg(action, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	widget->removeAction(qaction);
 }
 
 ZEND_METHOD(QWidget, window)

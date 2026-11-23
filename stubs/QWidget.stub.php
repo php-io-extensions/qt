@@ -39,12 +39,21 @@ class QWidget extends QObject
 
     public function hasFocus(): bool {}
 
+    /** QWidget::focusWidget(): the last child of this widget setFocus() was called on; on a window, the widget that gets focus when it is activated. */
+    public function focusWidget(): ?QWidget {}
+
     public function focusPolicy(): Qt\FocusPolicy {}
 
     public function setFocusPolicy(Qt\FocusPolicy $policy): void {}
 
     /** QWidget::setTabOrder(first, second): Tab moves from $first to $second. */
     public static function setTabOrder(QWidget $first, QWidget $second): void {}
+
+    /** QWidget::insertAction(before, action): inserts $action into this widget's list of actions before $before; appends it when $before is null or is not an action of this widget. The widget does not take ownership of $action. */
+    public function insertAction(?QAction $before, QAction $action): void {}
+
+    /** QWidget::removeAction(action): removes $action from this widget's list of actions. The action is not deleted. */
+    public function removeAction(QAction $action): void {}
 
     public function raise(): void {}
 
