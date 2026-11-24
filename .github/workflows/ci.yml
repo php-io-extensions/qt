@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            pkg-config qt6-base-dev qt6-base-dev-tools qt6-multimedia-dev libqt6multimediawidgets6
+            pkg-config qt6-base-dev qt6-base-dev-tools qt6-multimedia-dev libqt6multimediawidgets6 qt6-webengine-dev
 
       - name: Install Qt (macOS)
         if: runner.os == 'macOS'

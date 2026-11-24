@@ -1,5 +1,10 @@
 # Log
 
+## 2026-11-23
+
+* **Version**: 0.11.2 in `PHP_QT_VERSION` (`php_qt.h`) and the version test (set 2026-11-10). It carries what is logged since 0.11.1: Qt WebEngine (`QWebEngineView`), the item views, `QPainter` and `QPaintDelegate`, `QPixmap::copy`, the `QEventFilter` release fix, the `QPlatformNativeInterface` glue, `QWidget::focusWidget`, `insertAction` and `removeAction`.
+* CI: the Linux cells install `qt6-webengine-dev`. Since Qt WebEngine joined `config.m4`, `configure` stopped on Ubuntu 24.04 with `Qt6WebEngineCore` and `Qt6WebEngineWidgets` not found; Homebrew's `qt` carries WebEngine.
+
 ## 2026-11-22
 
 * New: [QWidget API](api/surface.md) — `QWidget::insertAction(?QAction $before, QAction $action): void` and `QWidget::removeAction(QAction $action): void`, no refusal beyond the deleted-wrapper check every object argument has (a `ValueError` naming the argument). A null or foreign `$before` appends, as Qt documents; the widget does not own the action and `removeAction` does not delete it. `tests/MenuTest.php` (two new cases; 41 passed with `tests/WidgetTest.php` and `tests/SurfaceTest.php`, offscreen, 8.4 NTS and ZTS).
