@@ -9,10 +9,9 @@ jobs:
   build:
     name: PHP ${{ matrix.php }} ${{ matrix.ts }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    # A cell runs in under 5 minutes; one stuck on a mirror fails instead of holding the run.
-    timeout-minutes: 20
-    env:
-      QT_PACKAGES: pkg-config qt6-base-dev qt6-base-dev-tools qt6-multimedia-dev libqt6multimediawidgets6 qt6-webengine-dev
+    # Linux cells run in an image with PHP and Qt preinstalled (.github/ci/Dockerfile), so they
+    # download nothing from an Ubuntu mirror. An empty image runs the cell on the host (macOS).
+    container: ${{ matrix.os == 'ubuntu-24.04' && format('usftechacg/php-qt:{0}-{1}', matrix.php, matrix.ts) || '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -23,52 +22,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up PHP
+      - name: Set up PHP (macOS)
+        if: runner.os == 'macOS'
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           tools: none
         env:
           phpts: ${{ matrix.ts == 'zts' && 'ts' || 'nts' }}
-
-      # Qt's 133 MB of packages come from GitHub's cache, not the runner's Ubuntu mirror: some
-      # runners get one that trickles at ~20 kB/s. apt still resolves and installs as usual; a
-      # cached .deb only spares the download of that exact version, so a stale cache costs
-      # time, never correctness.
-      - name: Resolve the Qt packages (Linux)
-        id: qt-debs
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          uris=$(sudo apt-get install -y --no-install-recommends --print-uris $QT_PACKAGES | grep -oE "^'[^']+\.deb'" | sort)
-          echo "key=qt-debs-${ImageOS}-${RUNNER_ARCH}-$(sha256sum <<<"$uris" | cut -c1-16)" >> "$GITHUB_OUTPUT"
-          echo "prefix=qt-debs-${ImageOS}-${RUNNER_ARCH}-" >> "$GITHUB_OUTPUT"
-
-      - name: Restore the Qt packages (Linux)
-        id: qt-cache
-        if: runner.os == 'Linux'
-        uses: actions/cache/restore@v4
-        with:
-          # only the packages: apt's lock and partial/ are root's
-          path: ~/qt-debs/*.deb
-          key: ${{ steps.qt-debs.outputs.key }}
-          restore-keys: ${{ steps.qt-debs.outputs.prefix }}
-
-      - name: Install Qt (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          # apt downloads into, and installs from, the cached directory itself.
-          mkdir -p ~/qt-debs/partial
-          sudo apt-get install -y --no-install-recommends -o Dir::Cache::Archives="$HOME/qt-debs" $QT_PACKAGES
-
-      # The four Linux cells race to save one key; the first wins and the rest skip.
-      - name: Save the Qt packages (Linux)
-        if: runner.os == 'Linux' && steps.qt-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        continue-on-error: true
-        with:
-          path: ~/qt-debs/*.deb
-          key: ${{ steps.qt-debs.outputs.key }}
 
       - name: Install Qt (macOS)
         if: runner.os == 'macOS'

@@ -3,7 +3,7 @@
 ## 2026-11-23
 
 * **Version**: 0.11.2 in `PHP_QT_VERSION` (`php_qt.h`) and the version test (set 2026-11-10). It carries what is logged since 0.11.1: Qt WebEngine (`QWebEngineView`), the item views, `QPainter` and `QPaintDelegate`, `QPixmap::copy`, the `QEventFilter` release fix, the `QPlatformNativeInterface` glue, `QWidget::focusWidget`, `insertAction` and `removeAction`.
-* CI: the Linux cells install `qt6-webengine-dev`. Since Qt WebEngine joined `config.m4`, `configure` stopped on Ubuntu 24.04 with `Qt6WebEngineCore` and `Qt6WebEngineWidgets` not found; Homebrew's `qt` carries WebEngine.
+* CI: the Linux cells run in `usftechacg/php-qt:<8.4|8.5>-<nts|zts>` (amd64 and arm64, built from `.github/ci/Dockerfile`: the official `php:<tag>-trixie` image with Debian's Qt 6, WebEngine included, and phpize's tools), so they install nothing. Installing Qt from apt on the runner depended on the runner's cloud: an AWS-hosted runner's Ubuntu mirror served the 133 MB at ~20 kB/s, an Azure one in 2 s. Qt WebEngine has been in `config.m4` since 2026-11-10; Homebrew's `qt` carries it.
 
 ## 2026-11-22
 
