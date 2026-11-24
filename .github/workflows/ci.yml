@@ -37,17 +37,10 @@ jobs:
       # Cached after the first run, so a cell does not wait on the Ubuntu mirror at all.
       - name: Install Qt (Linux)
         if: runner.os == 'Linux'
-<<<<<<< Updated upstream
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            pkg-config qt6-base-dev qt6-base-dev-tools qt6-multimedia-dev libqt6multimediawidgets6 qt6-webengine-dev
-=======
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: pkg-config qt6-base-dev qt6-base-dev-tools qt6-multimedia-dev libqt6multimediawidgets6 qt6-webengine-dev
           version: qt6-webengine-1
->>>>>>> Stashed changes
 
       - name: Install Qt (macOS)
         if: runner.os == 'macOS'
