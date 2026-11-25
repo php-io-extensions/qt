@@ -328,3 +328,80 @@ it('takes keyboard focus away with clearFocus', function (): void {
     expect($edit->hasFocus())->toBeFalse();
     $window->close();
 });
+
+it('makes a cursor of each shape and reads the shape back', function (): void {
+    foreach (Qt\CursorShape::cases() as $shape) {
+        if ($shape === Qt\CursorShape::BITMAP_CURSOR || $shape === Qt\CursorShape::CUSTOM_CURSOR) {
+            continue; // Qt makes these from a pixmap or bitmap, not a shape
+        }
+        expect((new QCursor($shape))->shape())->toBe($shape);
+    }
+
+    expect(Qt\CursorShape::DRAG_LINK_CURSOR->value)->toBe(21)
+        ->and(Qt\CursorShape::BITMAP_CURSOR->value)->toBe(24)
+        ->and(Qt\CursorShape::CUSTOM_CURSOR->value)->toBe(25);
+});
+
+it('sets a cursor on a widget, reads it back, and unsets it', function (): void {
+    $widget = new QWidget();
+
+    expect($widget->cursor())->toBeInstanceOf(QCursor::class)
+        ->and($widget->cursor()->shape())->toBe(Qt\CursorShape::ARROW_CURSOR);
+
+    $widget->setCursor(new QCursor(Qt\CursorShape::POINTING_HAND_CURSOR));
+    expect($widget->cursor()->shape())->toBe(Qt\CursorShape::POINTING_HAND_CURSOR);
+
+    $widget->unsetCursor();
+    expect($widget->cursor()->shape())->toBe(Qt\CursorShape::ARROW_CURSOR);
+});
+
+it('keeps a cursor the widget was given after the PHP cursor is gone', function (): void {
+    $widget = new QWidget();
+    $cursor = new QCursor(Qt\CursorShape::I_BEAM_CURSOR);
+    $widget->setCursor($cursor);
+    unset($cursor);
+
+    expect($widget->cursor()->shape())->toBe(Qt\CursorShape::I_BEAM_CURSOR);
+});
+
+it('lowers a widget and stacks one under a sibling, in its parent\'s child order', function (): void {
+    $parent = new QWidget();
+    $a = new QWidget($parent);
+    $b = new QWidget($parent);
+    $c = new QWidget($parent);
+
+    expect($parent->children())->toBe([$a, $b, $c]);
+
+    $c->lower();
+    expect($parent->children())->toBe([$c, $a, $b]);
+
+    $b->stackUnder($a);
+    expect($parent->children())->toBe([$c, $b, $a]);
+
+    $c->raise();
+    $a->stackUnder($b);
+    expect($parent->children())->toBe([$a, $b, $c]);
+});
+
+it('leaves the order alone when stackUnder names a widget that is not a sibling', function (): void {
+    $parent = new QWidget();
+    $a = new QWidget($parent);
+    $b = new QWidget($parent);
+    $stranger = new QWidget();
+
+    $b->stackUnder($stranger);
+
+    expect($parent->children())->toBe([$a, $b]);
+});
+
+it('sets and reads a tool tip', function (): void {
+    $widget = new QWidget();
+
+    expect($widget->toolTip())->toBe('');
+
+    $widget->setToolTip('Opens the file — ünïcode');
+    expect($widget->toolTip())->toBe('Opens the file — ünïcode');
+
+    $widget->setToolTip('');
+    expect($widget->toolTip())->toBe('');
+});

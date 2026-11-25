@@ -57,6 +57,11 @@ class QWidget extends QObject
 
     public function raise(): void {}
 
+    public function lower(): void {}
+
+    /** QWidget::stackUnder(w): places this widget under $w; both must be siblings, Qt ignores it otherwise. */
+    public function stackUnder(QWidget $w): void {}
+
     public function windowTitle(): string {}
 
     public function setWindowTitle(string $title): void {}
@@ -118,6 +123,16 @@ class QWidget extends QObject
     public function setStyleSheet(string $styleSheet): void {}
 
     public function styleSheet(): string {}
+
+    public function cursor(): QCursor {}
+
+    public function setCursor(QCursor $cursor): void {}
+
+    public function unsetCursor(): void {}
+
+    public function setToolTip(string $toolTip): void {}
+
+    public function toolTip(): string {}
 
     public function devicePixelRatioF(): float {}
 

@@ -37,6 +37,7 @@
 #include "checks/QComboBox_InsertPolicy.inc"
 #include "checks/QCompleter_CompletionMode.inc"
 #include "checks/QToolButton_ToolButtonPopupMode.inc"
+#include "checks/QLineEdit_ActionPosition.inc"
 
 static_assert(QPlainTextEdit::NoWrap == 0 && QPlainTextEdit::WidgetWidth == 1,
 	"QPlainTextEdit::LineWrapMode values differ from the stub's QPlainTextEdit\\LineWrapMode enum");
@@ -56,6 +57,7 @@ static_assert(QAbstractItemView::EnsureVisible == 0 && QAbstractItemView::Positi
 void phpqt_register_QControls()
 {
 	phpqt_ce_QLineEdit_EchoMode = register_class_QLineEdit_EchoMode();
+	phpqt_ce_QLineEdit_ActionPosition = register_class_QLineEdit_ActionPosition();
 	phpqt_ce_QPlainTextEdit_LineWrapMode = register_class_QPlainTextEdit_LineWrapMode();
 	phpqt_ce_QFrame_Shape = register_class_QFrame_Shape();
 	phpqt_ce_QFrame_Shadow = register_class_QFrame_Shadow();
@@ -248,6 +250,23 @@ PHPQT_GETTER_STRING(QLabel, text, text)
 PHPQT_SETTER_STRING(QLabel, setText, setText)
 PHPQT_GETTER_BOOL(QLabel, wordWrap, wordWrap)
 PHPQT_SETTER_BOOL(QLabel, setWordWrap, setWordWrap)
+PHPQT_GETTER_INT(QLabel, indent, indent)
+
+ZEND_METHOD(QLabel, setIndent)
+{
+	zend_long indent;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(indent)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QLabel, label);
+
+	if (!phpqt_long_fits(indent, INT_MIN, INT_MAX, 1)) {
+		RETURN_THROWS();
+	}
+
+	label->setIndent(static_cast<int>(indent));
+}
 PHPQT_SETTER_BOOL(QLabel, setScaledContents, setScaledContents)
 
 ZEND_METHOD(QLabel, alignment)
@@ -408,6 +427,8 @@ ZEND_METHOD(QPushButton, __construct)
 
 PHPQT_GETTER_BOOL(QPushButton, isDefault, isDefault)
 PHPQT_SETTER_BOOL(QPushButton, setDefault, setDefault)
+PHPQT_GETTER_BOOL(QPushButton, autoDefault, autoDefault)
+PHPQT_SETTER_BOOL(QPushButton, setAutoDefault, setAutoDefault)
 PHPQT_GETTER_BOOL(QPushButton, isFlat, isFlat)
 PHPQT_SETTER_BOOL(QPushButton, setFlat, setFlat)
 
@@ -1134,6 +1155,47 @@ ZEND_METHOD(QLineEdit, setEchoMode)
 	PHPQT_THIS(QLineEdit, edit);
 
 	edit->setEchoMode(static_cast<QLineEdit::EchoMode>(phpqt_enum_value(mode, QLineEdit::Normal)));
+}
+
+PHPQT_SETTER_BOOL(QLineEdit, setFrame, setFrame)
+PHPQT_GETTER_BOOL(QLineEdit, hasFrame, hasFrame)
+PHPQT_GETTER_INT(QLineEdit, maxLength, maxLength)
+PHPQT_SETTER_BOOL(QLineEdit, setClearButtonEnabled, setClearButtonEnabled)
+PHPQT_GETTER_BOOL(QLineEdit, isClearButtonEnabled, isClearButtonEnabled)
+
+ZEND_METHOD(QLineEdit, setMaxLength)
+{
+	zend_long length;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(length)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QLineEdit, edit);
+
+	if (!phpqt_long_fits(length, INT_MIN, INT_MAX, 1)) {
+		RETURN_THROWS();
+	}
+
+	edit->setMaxLength(static_cast<int>(length));
+}
+
+ZEND_METHOD(QLineEdit, addAction)
+{
+	zend_object *icon_obj;
+	zend_object *position;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_OBJ_OF_CLASS(icon_obj, phpqt_ce_QIcon)
+		Z_PARAM_OBJ_OF_CLASS(position, phpqt_ce_QLineEdit_ActionPosition)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QLineEdit, edit);
+
+	QIcon *icon = static_cast<QIcon *>(phpqt_value_arg(icon_obj, 1));
+	if (icon == nullptr) {
+		RETURN_THROWS();
+	}
+
+	phpqt_box(return_value, edit->addAction(*icon, static_cast<QLineEdit::ActionPosition>(phpqt_enum_value(position, QLineEdit::LeadingPosition))));
 }
 
 /* ---- QPlainTextEdit ---------------------------------------------------- */

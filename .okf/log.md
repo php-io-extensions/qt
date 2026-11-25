@@ -1,5 +1,22 @@
 # Log
 
+## 2026-11-25
+
+* New: [painting](api/surface.md) — `QPainter::__construct(?QPaintDevice $device = null)` (was a private constructor; the lent delegate painter is unchanged), `end(): bool`, `isActive(): bool`, `setClipPath(QPainterPath $path, Qt\ClipOperation $operation = REPLACE_CLIP): void`; `QPainterPath` (ctor, moveTo, lineTo, arcTo, closeSubpath, addRoundedRect(QRectF, …)); `QRectF`; the generated `Qt\ClipOperation` (Qt 6.11.2, the same in 6.8.2); `QPixmap::fill(QColor = white)`, `QPixmap::toImage()`; `QImage::pixel(x, y): int`, `pixelColor(x, y): QColor`. `QPaintDevice` is a new empty abstract parent of `QPixmap` and `QImage`, as in Qt. A painter PHP made holds its device's PHP object and ends the painting when freed. A pixmap painted through a path rounded at the bottom corners only (antialiased) reads opaque at the top corners and transparent at the bottom ones.
+* New: `QGridLayout::addLayout(QLayout $layout, int $row, int $column, int $rowSpan = 1, int $columnSpan = 1, Qt\AlignmentFlag|int $alignment = 0)` (the grid owns the layout), `QWidget::lower()`, `QWidget::stackUnder(QWidget $w)`.
+* `QPainter::drawPixmap(const QRectF &, const QPixmap &, const QRectF &)` is not bound: the existing `drawPixmap(QRect, QPixmap)` already scales the whole pixmap into its target, and one PHP method cannot take both overloads' types.
+* Tests: `ImageTest`, `LayoutTest`, `WidgetTest`, with `ItemViewTest`, `SurfaceTest`, `ControlsTest`, `CompleterTest`: 135 passed on 8.4 NTS and ZTS. SUPPORT.md: 796 / 11435.
+* New: [easing](api/surface.md) — `QEasingCurve` (value: ctor(`QEasingCurve\Type` = LINEAR), type, setType, valueForProgress), the generated `QEasingCurve\Type` (47 cases; Custom and NCurveTypes left out, as Qt's setType() refuses both), `QVariantAnimation::easingCurve(): QEasingCurve` and `setEasingCurve(QEasingCurve $easing): void`. `tests/AnimationTest.php` (five cases; 48 passed with `SurfaceTest` and `WidgetTest`, NTS and ZTS). SUPPORT.md: 802 / 11435.
+* New: `QEasingCurve::addCubicBezierSegment(QPointF $c1, QPointF $c2, QPointF $endPoint): void` and `toCubicSpline(): array` (QPointF list). A BEZIER_SPLINE curve of one segment (0.22, 1)-(0.36, 1)-(1, 1), and its mirror (0.64, 0)-(0.78, 0), match CSS cubic-bezier within 1e-3 at 0.1, 0.3, 0.5. `tests/AnimationTest.php` (26 passed with `SurfaceTest`, NTS and ZTS). SUPPORT.md: 804 / 11435.
+
+## 2026-11-24
+
+* New: [QWidget API](api/surface.md) — `cursor(): QCursor`, `setCursor(QCursor $cursor): void`, `unsetCursor(): void`, `setToolTip(string $toolTip): void`, `toolTip(): string`. `QCursor` (value: ctor(`Qt\CursorShape`), shape) and the generated `Qt\CursorShape`. `QLineEdit` setFrame/hasFrame, setMaxLength/maxLength, setClearButtonEnabled/isClearButtonEnabled, addAction(QIcon, `QLineEdit\ActionPosition`): QAction. `QPushButton` autoDefault/setAutoDefault. `QIcon::fromTheme(string|QIcon\ThemeIcon $name): QIcon` with the generated `QIcon\ThemeIcon` (Qt 6.7, guarded; below it fromTheme takes a string).
+* `QCursor`'s constructor before a QGuiApplication aborts in Qt (SIGABRT, "Must construct a QGuiApplication before a QPixmap", probed on macOS); it has no refusal site yet.
+* [Generating enums](runbooks/generating-enums.md): `scripts/gen-enum.php` reads an `enum class` and spells its checks with the enum's scope.
+* `tests/WidgetTest.php`, `tests/ControlsTest.php` (new cases); with `SurfaceTest`, `CompleterTest`, `ConstantsTest` and `MenuTest`: 102 passed on 8.4 NTS and ZTS (cocoa). SUPPORT.md regenerated: 771 / 11435.
+* New: [QLabel API](api/surface.md) — `indent(): int`, `setIndent(int $indent): void` (outside C int a ValueError). Qt's default -1 gives a framed label (a style sheet with a margin frames it) a size hint an 'x' wider; `setIndent(0)` drops it. `tests/ControlsTest.php` (three cases; 65 passed with `SurfaceTest` and `StyleTest`, NTS and ZTS). SUPPORT.md: 773 / 11435.
+
 ## 2026-11-23
 
 * **Version**: 0.11.2 in `PHP_QT_VERSION` (`php_qt.h`) and the version test (set 2026-11-10). It carries what is logged since 0.11.1: Qt WebEngine (`QWebEngineView`), the item views, `QPainter` and `QPaintDelegate`, `QPixmap::copy`, the `QEventFilter` release fix, the `QPlatformNativeInterface` glue, `QWidget::focusWidget`, `insertAction` and `removeAction`.

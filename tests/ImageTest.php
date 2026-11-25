@@ -100,3 +100,119 @@ it('copies a string into a byte array, to the first NUL when no size is given', 
         ->and((new QByteArray('abc', 0))->size())->toBe(0)
         ->and(fn () => new QByteArray('abc', 4))->toThrow(ValueError::class, 'must not be greater than the string');
 });
+
+/** A $size × $size pixmap of one opaque colour, from an RGBX8888 buffer (copied: the buffer goes with this call). */
+function solidPixmap(int $size, string $rgb): QPixmap
+{
+    $bytes = new QByteArray(str_repeat($rgb . "\xff", $size * $size), $size * $size * 4); // a size: the bytes may hold a NUL
+
+    return QPixmap::fromImage((new QImage($bytes->pointer(), $size, $size, $size * 4, QImage\Format::RGBX8888))->copy());
+}
+
+it('fills a pixmap with a colour, white by default, transparent with alpha 0', function (): void {
+    $pixmap = solidPixmap(4, "\x00\x00\xff");
+
+    $pixmap->fill();
+    expect($pixmap->toImage()->pixel(1, 1))->toBe(0xffffffff);
+
+    $pixmap->fill(new QColor(0, 0, 0, 0));
+    $image = $pixmap->toImage();
+    expect($image->pixelColor(1, 1)->alpha())->toBe(0)
+        ->and($image->pixel(1, 1) >> 24)->toBe(0);
+});
+
+it('reads Qt\'s answers for a pixel outside the image', function (): void {
+    $image = solidPixmap(2, "\xff\x00\x00")->toImage();
+
+    expect($image->pixel(0, 0))->toBe(0xffff0000)
+        ->and($image->pixelColor(0, 0)->red())->toBe(255)
+        ->and($image->pixel(5, 5))->toBe(12345)
+        ->and($image->pixelColor(5, 5)->isValid())->toBeFalse();
+});
+
+it('paints a pixmap through a path rounded at the bottom corners only into a transparent pixmap', function (): void {
+    $size = 20;
+    $r = 8;
+    $source = solidPixmap($size, "\xff\x00\x00");
+    $target = solidPixmap($size, "\x00\x00\x00");
+    $target->fill(new QColor(0, 0, 0, 0));
+
+    $path = new QPainterPath();
+    $path->moveTo(0, 0);
+    $path->lineTo($size, 0);
+    $path->lineTo($size, $size - $r);
+    $path->arcTo($size - 2 * $r, $size - 2 * $r, 2 * $r, 2 * $r, 0, -90);
+    $path->lineTo($r, $size);
+    $path->arcTo(0, $size - 2 * $r, 2 * $r, 2 * $r, -90, -90);
+    $path->closeSubpath();
+
+    $painter = new QPainter($target);
+    expect($painter->isActive())->toBeTrue();
+    $painter->setRenderHint(QPainter\RenderHint::ANTIALIASING);
+    $painter->setClipPath($path);
+    $painter->drawPixmap(new QRect(0, 0, $size, $size), $source);
+    expect($painter->end())->toBeTrue()
+        ->and($painter->isActive())->toBeFalse();
+
+    $image = $target->toImage();
+    expect($image->pixelColor(0, 0)->alpha())->toBe(255)
+        ->and($image->pixelColor($size - 1, 0)->alpha())->toBe(255)
+        ->and($image->pixel(0, 0))->toBe(0xffff0000)
+        ->and($image->pixelColor(0, $size - 1)->alpha())->toBe(0)
+        ->and($image->pixelColor($size - 1, $size - 1)->alpha())->toBe(0)
+        ->and($image->pixelColor($size / 2, $size / 2)->alpha())->toBe(255);
+});
+
+it('clips to a rounded rect and ends the painting when the painter is freed', function (): void {
+    $target = solidPixmap(20, "\x00\x00\x00");
+    $target->fill(new QColor(0, 0, 0, 0));
+    $path = new QPainterPath();
+    $path->addRoundedRect(new QRectF(0.0, 0.0, 20.0, 20.0), 8.0, 8.0);
+
+    $painter = new QPainter($target);
+    $painter->setClipPath($path, Qt\ClipOperation::REPLACE_CLIP);
+    $painter->drawPixmap(new QRect(0, 0, 20, 20), solidPixmap(20, "\x00\xff\x00"));
+    unset($painter);
+
+    $image = $target->toImage();
+    expect($image->pixelColor(0, 0)->alpha())->toBe(0)
+        ->and($image->pixelColor(19, 19)->alpha())->toBe(0)
+        ->and($image->pixel(10, 10))->toBe(0xff00ff00);
+});
+
+it('keeps the device a painter paints on after its PHP variable is gone', function (): void {
+    $painter = new QPainter(solidPixmap(4, "\x00\x00\x00"));
+    $painter->fillRect(new QRect(0, 0, 4, 4), new QColor(255, 255, 255));
+
+    expect($painter->isActive())->toBeTrue()
+        ->and($painter->end())->toBeTrue();
+});
+
+it('paints on an image, and makes an inactive painter with no device', function (): void {
+    $bytes = new QByteArray(str_repeat("\x00", 16), 16);
+    $image = new QImage($bytes->pointer(), 2, 2, 8, QImage\Format::RGBA8888);
+    $painter = new QPainter($image);
+    $painter->fillRect(new QRect(0, 0, 2, 2), new QColor(0, 0, 255));
+    $painter->end();
+
+    expect($image->pixel(1, 1))->toBe(0xff0000ff)
+        ->and((new QPainter())->isActive())->toBeFalse()
+        ->and((new QPainter(null))->end())->toBeFalse();
+});
+
+it('carries a QRectF and Qt\'s clip operations', function (): void {
+    $rect = new QRectF(0.5, 1.5, 10.25, 0.0);
+
+    expect([$rect->x(), $rect->y(), $rect->width(), $rect->height()])->toBe([0.5, 1.5, 10.25, 0.0])
+        ->and($rect->isValid())->toBeFalse()
+        ->and((new QRectF(0.0, 0.0, 1.0, 1.0))->isValid())->toBeTrue()
+        ->and(array_map(fn (Qt\ClipOperation $o): int => $o->value, Qt\ClipOperation::cases()))->toBe([0, 1, 2]);
+});
+
+it('refuses a second construction of a painter or a path', function (): void {
+    $painter = new QPainter();
+    $path = new QPainterPath();
+
+    expect(fn () => $painter->__construct())->toThrow(QtException::class, 'called twice')
+        ->and(fn () => $path->__construct())->toThrow(QtException::class, 'called twice');
+});

@@ -439,6 +439,37 @@ ZEND_METHOD(QGridLayout, __construct)
 	phpqt_construct_layout<QGridLayout>(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
+ZEND_METHOD(QGridLayout, addLayout)
+{
+	zend_object *layout_obj;
+	zend_long row;
+	zend_long column;
+	zend_long row_span = 1;
+	zend_long column_span = 1;
+	zend_object *alignment_case = nullptr;
+	zend_long alignment_long = 0;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(3, 6)
+		Z_PARAM_OBJ_OF_CLASS(layout_obj, phpqt_ce_QLayout)
+		Z_PARAM_LONG(row)
+		Z_PARAM_LONG(column)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(row_span)
+		Z_PARAM_LONG(column_span)
+		Z_PARAM_OBJ_OF_CLASS_OR_LONG(alignment_case, phpqt_ce_Qt_AlignmentFlag, alignment_long)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QGridLayout, grid);
+
+	QLayout *layout = static_cast<QLayout *>(phpqt_arg(layout_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	grid->addLayout(layout, static_cast<int>(row), static_cast<int>(column), static_cast<int>(row_span), static_cast<int>(column_span),
+		Qt::Alignment(static_cast<int>(phpqt_enum_value(alignment_case, alignment_long))));
+}
+
 ZEND_METHOD(QGridLayout, addWidget)
 {
 	zend_object *widget_obj;

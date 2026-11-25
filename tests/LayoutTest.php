@@ -205,3 +205,32 @@ it('hands back the spacer PHP made as the same object', function (): void {
         ->and($grid->itemAt(0)->spacerItem())->toBe($spacer)
         ->and($grid->itemAtPosition(5, 5))->toBeNull();
 });
+
+it('nests a layout in a grid cell, spanning cells, and the grid owns it', function (): void {
+    $host = new QWidget();
+    $grid = new QGridLayout($host);
+    $inner = new QVBoxLayout();
+    $inner->setContentsMargins(4, 6, 8, 10);
+    $label = new QLabel('overlay');
+    $inner->addWidget($label);
+    $corner = new QHBoxLayout();
+
+    $grid->addLayout($inner, 1, 2, 2, 3);
+    $grid->addLayout($corner, 0, 0, alignment: Qt\AlignmentFlag::LEFT);
+
+    expect($inner->parent())->toBe($grid)
+        ->and($corner->parent())->toBe($grid)
+        ->and($grid->itemAtPosition(1, 2)->layout())->toBe($inner)
+        ->and($grid->itemAtPosition(2, 4)->layout())->toBe($inner)
+        ->and($grid->itemAtPosition(0, 0)->layout())->toBe($corner)
+        ->and($grid->rowCount())->toBe(3)
+        ->and($grid->columnCount())->toBe(5)
+        ->and($label->parentWidget())->toBe($host);
+
+    unset($inner, $corner);
+
+    $held = $grid->itemAtPosition(1, 2)->layout();
+    expect($held)->toBeInstanceOf(QVBoxLayout::class)
+        ->and($held->parent())->toBe($grid)
+        ->and($held->itemAt(0)->widget())->toBe($label);
+});

@@ -21,6 +21,7 @@ zend_class_entry *phpqt_ce_QPoint;
 zend_class_entry *phpqt_ce_QPointF;
 zend_class_entry *phpqt_ce_QSize;
 zend_class_entry *phpqt_ce_QRect;
+zend_class_entry *phpqt_ce_QRectF;
 zend_class_entry *phpqt_ce_QDate;
 zend_class_entry *phpqt_ce_QKeySequence;
 zend_class_entry *phpqt_ce_QKeySequence_SequenceFormat;
@@ -60,6 +61,8 @@ void phpqt_register_QValues()
 	phpqt_value_setup(phpqt_ce_QSize);
 	phpqt_ce_QRect = register_class_QRect();
 	phpqt_value_setup(phpqt_ce_QRect);
+	phpqt_ce_QRectF = register_class_QRectF();
+	phpqt_value_setup(phpqt_ce_QRectF);
 	phpqt_ce_QDate = register_class_QDate();
 	phpqt_value_setup(phpqt_ce_QDate);
 	phpqt_ce_QKeySequence = register_class_QKeySequence();
@@ -217,6 +220,32 @@ PHPQT_VALUE_INT(QRect, y)
 PHPQT_VALUE_INT(QRect, width)
 PHPQT_VALUE_INT(QRect, height)
 PHPQT_VALUE_BOOL(QRect, isValid)
+
+ZEND_METHOD(QRectF, __construct)
+{
+	double left;
+	double top;
+	double width;
+	double height;
+
+	ZEND_PARSE_PARAMETERS_START(4, 4)
+		Z_PARAM_DOUBLE(left)
+		Z_PARAM_DOUBLE(top)
+		Z_PARAM_DOUBLE(width)
+		Z_PARAM_DOUBLE(height)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	phpqt_construct_value(Z_OBJ_P(ZEND_THIS), new QRectF(left, top, width, height));
+}
+
+PHPQT_VALUE_FLOAT(QRectF, x)
+PHPQT_VALUE_FLOAT(QRectF, y)
+PHPQT_VALUE_FLOAT(QRectF, width)
+PHPQT_VALUE_FLOAT(QRectF, height)
+PHPQT_VALUE_BOOL(QRectF, isValid)
 
 /* ---- QModelIndex ------------------------------------------------------- */
 

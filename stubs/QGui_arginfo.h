@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: ce06146cb4fc6bdc7ec0e208a58d5f37a5f4213d */
+ * Stub hash: 6494670a781db2f275e7e01e6bbab57cc9df796f */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent_Attribute___construct, 0, 0, 4)
 	ZEND_ARG_OBJ_INFO(0, type, QInputMethodEvent\\AttributeType, 0)
@@ -134,11 +134,37 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_setDevicePixelRati
 	ZEND_ARG_TYPE_INFO(0, scaleFactor, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPixmap_fill, 0, 0, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, fillColor, QColor, 0, "new QColor(255, 255, 255)")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QPixmap_toImage, 0, 0, QImage, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QIcon___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, pixmap, QPixmap, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QIcon_isNull arginfo_class_QMimeData_hasText
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QIcon_fromTheme, 0, 1, QIcon, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, name, QIcon\\ThemeIcon, MAY_BE_STRING, NULL)
+ZEND_END_ARG_INFO()
+#endif
+
+#if !(QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QIcon_fromTheme, 0, 1, QIcon, 0)
+	ZEND_ARG_TYPE_INFO(0, name, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QCursor___construct, 0, 0, 1)
+	ZEND_ARG_OBJ_INFO(0, shape, Qt\\CursorShape, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QCursor_shape, 0, 0, Qt\\CursorShape, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QImage___construct, 0, 0, 5)
 	ZEND_ARG_TYPE_INFO(0, data, IS_LONG, 0)
@@ -161,6 +187,16 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QImage_copy, 0, 0, QImage, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, rect, QRect, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QImage_pixel, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QImage_pixelColor, 0, 2, QColor, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QTableWidgetItem___construct, 0, 0, 0)
@@ -275,14 +311,26 @@ ZEND_METHOD(QPixmap, scaled);
 ZEND_METHOD(QPixmap, copy);
 ZEND_METHOD(QPixmap, devicePixelRatio);
 ZEND_METHOD(QPixmap, setDevicePixelRatio);
+ZEND_METHOD(QPixmap, fill);
+ZEND_METHOD(QPixmap, toImage);
 ZEND_METHOD(QIcon, __construct);
 ZEND_METHOD(QIcon, isNull);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+ZEND_METHOD(QIcon, fromTheme);
+#endif
+#if !(QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+ZEND_METHOD(QIcon, fromTheme);
+#endif
+ZEND_METHOD(QCursor, __construct);
+ZEND_METHOD(QCursor, shape);
 ZEND_METHOD(QImage, __construct);
 ZEND_METHOD(QImage, isNull);
 ZEND_METHOD(QImage, width);
 ZEND_METHOD(QImage, height);
 ZEND_METHOD(QImage, format);
 ZEND_METHOD(QImage, copy);
+ZEND_METHOD(QImage, pixel);
+ZEND_METHOD(QImage, pixelColor);
 ZEND_METHOD(QTableWidgetItem, __construct);
 ZEND_METHOD(QTableWidgetItem, text);
 ZEND_METHOD(QTableWidgetItem, setText);
@@ -375,12 +423,26 @@ static const zend_function_entry class_QPixmap_methods[] = {
 	ZEND_ME(QPixmap, copy, arginfo_class_QPixmap_copy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, devicePixelRatio, arginfo_class_QPixmap_devicePixelRatio, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPixmap, setDevicePixelRatio, arginfo_class_QPixmap_setDevicePixelRatio, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPixmap, fill, arginfo_class_QPixmap_fill, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPixmap, toImage, arginfo_class_QPixmap_toImage, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
 static const zend_function_entry class_QIcon_methods[] = {
 	ZEND_ME(QIcon, __construct, arginfo_class_QIcon___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QIcon, isNull, arginfo_class_QIcon_isNull, ZEND_ACC_PUBLIC)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+	ZEND_ME(QIcon, fromTheme, arginfo_class_QIcon_fromTheme, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+#endif
+#if !(QT_VERSION >= QT_VERSION_CHECK(6, 7, 0))
+	ZEND_ME(QIcon, fromTheme, arginfo_class_QIcon_fromTheme, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+#endif
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QCursor_methods[] = {
+	ZEND_ME(QCursor, __construct, arginfo_class_QCursor___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QCursor, shape, arginfo_class_QCursor_shape, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -391,6 +453,8 @@ static const zend_function_entry class_QImage_methods[] = {
 	ZEND_ME(QImage, height, arginfo_class_QImage_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QImage, format, arginfo_class_QImage_format, ZEND_ACC_PUBLIC)
 	ZEND_ME(QImage, copy, arginfo_class_QImage_copy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QImage, pixel, arginfo_class_QImage_pixel, ZEND_ACC_PUBLIC)
+	ZEND_ME(QImage, pixelColor, arginfo_class_QImage_pixelColor, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -864,6 +928,615 @@ static zend_class_entry *register_class_QKeySequence_StandardKey(void)
 	return class_entry;
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+static zend_class_entry *register_class_QIcon_ThemeIcon(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QIcon\\ThemeIcon", IS_LONG, NULL);
+
+	zval enum_case_ADDRESS_BOOK_NEW_value;
+	ZVAL_LONG(&enum_case_ADDRESS_BOOK_NEW_value, 0);
+	zend_enum_add_case_cstr(class_entry, "ADDRESS_BOOK_NEW", &enum_case_ADDRESS_BOOK_NEW_value);
+
+	zval enum_case_APPLICATION_EXIT_value;
+	ZVAL_LONG(&enum_case_APPLICATION_EXIT_value, 1);
+	zend_enum_add_case_cstr(class_entry, "APPLICATION_EXIT", &enum_case_APPLICATION_EXIT_value);
+
+	zval enum_case_APPOINTMENT_NEW_value;
+	ZVAL_LONG(&enum_case_APPOINTMENT_NEW_value, 2);
+	zend_enum_add_case_cstr(class_entry, "APPOINTMENT_NEW", &enum_case_APPOINTMENT_NEW_value);
+
+	zval enum_case_CALL_START_value;
+	ZVAL_LONG(&enum_case_CALL_START_value, 3);
+	zend_enum_add_case_cstr(class_entry, "CALL_START", &enum_case_CALL_START_value);
+
+	zval enum_case_CALL_STOP_value;
+	ZVAL_LONG(&enum_case_CALL_STOP_value, 4);
+	zend_enum_add_case_cstr(class_entry, "CALL_STOP", &enum_case_CALL_STOP_value);
+
+	zval enum_case_CONTACT_NEW_value;
+	ZVAL_LONG(&enum_case_CONTACT_NEW_value, 5);
+	zend_enum_add_case_cstr(class_entry, "CONTACT_NEW", &enum_case_CONTACT_NEW_value);
+
+	zval enum_case_DOCUMENT_NEW_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_NEW_value, 6);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_NEW", &enum_case_DOCUMENT_NEW_value);
+
+	zval enum_case_DOCUMENT_OPEN_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_OPEN_value, 7);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_OPEN", &enum_case_DOCUMENT_OPEN_value);
+
+	zval enum_case_DOCUMENT_OPEN_RECENT_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_OPEN_RECENT_value, 8);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_OPEN_RECENT", &enum_case_DOCUMENT_OPEN_RECENT_value);
+
+	zval enum_case_DOCUMENT_PAGE_SETUP_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_PAGE_SETUP_value, 9);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_PAGE_SETUP", &enum_case_DOCUMENT_PAGE_SETUP_value);
+
+	zval enum_case_DOCUMENT_PRINT_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_PRINT_value, 10);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_PRINT", &enum_case_DOCUMENT_PRINT_value);
+
+	zval enum_case_DOCUMENT_PRINT_PREVIEW_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_PRINT_PREVIEW_value, 11);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_PRINT_PREVIEW", &enum_case_DOCUMENT_PRINT_PREVIEW_value);
+
+	zval enum_case_DOCUMENT_PROPERTIES_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_PROPERTIES_value, 12);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_PROPERTIES", &enum_case_DOCUMENT_PROPERTIES_value);
+
+	zval enum_case_DOCUMENT_REVERT_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_REVERT_value, 13);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_REVERT", &enum_case_DOCUMENT_REVERT_value);
+
+	zval enum_case_DOCUMENT_SAVE_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_SAVE_value, 14);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_SAVE", &enum_case_DOCUMENT_SAVE_value);
+
+	zval enum_case_DOCUMENT_SAVE_AS_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_SAVE_AS_value, 15);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_SAVE_AS", &enum_case_DOCUMENT_SAVE_AS_value);
+
+	zval enum_case_DOCUMENT_SEND_value;
+	ZVAL_LONG(&enum_case_DOCUMENT_SEND_value, 16);
+	zend_enum_add_case_cstr(class_entry, "DOCUMENT_SEND", &enum_case_DOCUMENT_SEND_value);
+
+	zval enum_case_EDIT_CLEAR_value;
+	ZVAL_LONG(&enum_case_EDIT_CLEAR_value, 17);
+	zend_enum_add_case_cstr(class_entry, "EDIT_CLEAR", &enum_case_EDIT_CLEAR_value);
+
+	zval enum_case_EDIT_COPY_value;
+	ZVAL_LONG(&enum_case_EDIT_COPY_value, 18);
+	zend_enum_add_case_cstr(class_entry, "EDIT_COPY", &enum_case_EDIT_COPY_value);
+
+	zval enum_case_EDIT_CUT_value;
+	ZVAL_LONG(&enum_case_EDIT_CUT_value, 19);
+	zend_enum_add_case_cstr(class_entry, "EDIT_CUT", &enum_case_EDIT_CUT_value);
+
+	zval enum_case_EDIT_DELETE_value;
+	ZVAL_LONG(&enum_case_EDIT_DELETE_value, 20);
+	zend_enum_add_case_cstr(class_entry, "EDIT_DELETE", &enum_case_EDIT_DELETE_value);
+
+	zval enum_case_EDIT_FIND_value;
+	ZVAL_LONG(&enum_case_EDIT_FIND_value, 21);
+	zend_enum_add_case_cstr(class_entry, "EDIT_FIND", &enum_case_EDIT_FIND_value);
+
+	zval enum_case_EDIT_PASTE_value;
+	ZVAL_LONG(&enum_case_EDIT_PASTE_value, 22);
+	zend_enum_add_case_cstr(class_entry, "EDIT_PASTE", &enum_case_EDIT_PASTE_value);
+
+	zval enum_case_EDIT_REDO_value;
+	ZVAL_LONG(&enum_case_EDIT_REDO_value, 23);
+	zend_enum_add_case_cstr(class_entry, "EDIT_REDO", &enum_case_EDIT_REDO_value);
+
+	zval enum_case_EDIT_SELECT_ALL_value;
+	ZVAL_LONG(&enum_case_EDIT_SELECT_ALL_value, 24);
+	zend_enum_add_case_cstr(class_entry, "EDIT_SELECT_ALL", &enum_case_EDIT_SELECT_ALL_value);
+
+	zval enum_case_EDIT_UNDO_value;
+	ZVAL_LONG(&enum_case_EDIT_UNDO_value, 25);
+	zend_enum_add_case_cstr(class_entry, "EDIT_UNDO", &enum_case_EDIT_UNDO_value);
+
+	zval enum_case_FOLDER_NEW_value;
+	ZVAL_LONG(&enum_case_FOLDER_NEW_value, 26);
+	zend_enum_add_case_cstr(class_entry, "FOLDER_NEW", &enum_case_FOLDER_NEW_value);
+
+	zval enum_case_FORMAT_INDENT_LESS_value;
+	ZVAL_LONG(&enum_case_FORMAT_INDENT_LESS_value, 27);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_INDENT_LESS", &enum_case_FORMAT_INDENT_LESS_value);
+
+	zval enum_case_FORMAT_INDENT_MORE_value;
+	ZVAL_LONG(&enum_case_FORMAT_INDENT_MORE_value, 28);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_INDENT_MORE", &enum_case_FORMAT_INDENT_MORE_value);
+
+	zval enum_case_FORMAT_JUSTIFY_CENTER_value;
+	ZVAL_LONG(&enum_case_FORMAT_JUSTIFY_CENTER_value, 29);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_JUSTIFY_CENTER", &enum_case_FORMAT_JUSTIFY_CENTER_value);
+
+	zval enum_case_FORMAT_JUSTIFY_FILL_value;
+	ZVAL_LONG(&enum_case_FORMAT_JUSTIFY_FILL_value, 30);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_JUSTIFY_FILL", &enum_case_FORMAT_JUSTIFY_FILL_value);
+
+	zval enum_case_FORMAT_JUSTIFY_LEFT_value;
+	ZVAL_LONG(&enum_case_FORMAT_JUSTIFY_LEFT_value, 31);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_JUSTIFY_LEFT", &enum_case_FORMAT_JUSTIFY_LEFT_value);
+
+	zval enum_case_FORMAT_JUSTIFY_RIGHT_value;
+	ZVAL_LONG(&enum_case_FORMAT_JUSTIFY_RIGHT_value, 32);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_JUSTIFY_RIGHT", &enum_case_FORMAT_JUSTIFY_RIGHT_value);
+
+	zval enum_case_FORMAT_TEXT_DIRECTION_LTR_value;
+	ZVAL_LONG(&enum_case_FORMAT_TEXT_DIRECTION_LTR_value, 33);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_TEXT_DIRECTION_LTR", &enum_case_FORMAT_TEXT_DIRECTION_LTR_value);
+
+	zval enum_case_FORMAT_TEXT_DIRECTION_RTL_value;
+	ZVAL_LONG(&enum_case_FORMAT_TEXT_DIRECTION_RTL_value, 34);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_TEXT_DIRECTION_RTL", &enum_case_FORMAT_TEXT_DIRECTION_RTL_value);
+
+	zval enum_case_FORMAT_TEXT_BOLD_value;
+	ZVAL_LONG(&enum_case_FORMAT_TEXT_BOLD_value, 35);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_TEXT_BOLD", &enum_case_FORMAT_TEXT_BOLD_value);
+
+	zval enum_case_FORMAT_TEXT_ITALIC_value;
+	ZVAL_LONG(&enum_case_FORMAT_TEXT_ITALIC_value, 36);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_TEXT_ITALIC", &enum_case_FORMAT_TEXT_ITALIC_value);
+
+	zval enum_case_FORMAT_TEXT_UNDERLINE_value;
+	ZVAL_LONG(&enum_case_FORMAT_TEXT_UNDERLINE_value, 37);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_TEXT_UNDERLINE", &enum_case_FORMAT_TEXT_UNDERLINE_value);
+
+	zval enum_case_FORMAT_TEXT_STRIKETHROUGH_value;
+	ZVAL_LONG(&enum_case_FORMAT_TEXT_STRIKETHROUGH_value, 38);
+	zend_enum_add_case_cstr(class_entry, "FORMAT_TEXT_STRIKETHROUGH", &enum_case_FORMAT_TEXT_STRIKETHROUGH_value);
+
+	zval enum_case_GO_DOWN_value;
+	ZVAL_LONG(&enum_case_GO_DOWN_value, 39);
+	zend_enum_add_case_cstr(class_entry, "GO_DOWN", &enum_case_GO_DOWN_value);
+
+	zval enum_case_GO_HOME_value;
+	ZVAL_LONG(&enum_case_GO_HOME_value, 40);
+	zend_enum_add_case_cstr(class_entry, "GO_HOME", &enum_case_GO_HOME_value);
+
+	zval enum_case_GO_NEXT_value;
+	ZVAL_LONG(&enum_case_GO_NEXT_value, 41);
+	zend_enum_add_case_cstr(class_entry, "GO_NEXT", &enum_case_GO_NEXT_value);
+
+	zval enum_case_GO_PREVIOUS_value;
+	ZVAL_LONG(&enum_case_GO_PREVIOUS_value, 42);
+	zend_enum_add_case_cstr(class_entry, "GO_PREVIOUS", &enum_case_GO_PREVIOUS_value);
+
+	zval enum_case_GO_UP_value;
+	ZVAL_LONG(&enum_case_GO_UP_value, 43);
+	zend_enum_add_case_cstr(class_entry, "GO_UP", &enum_case_GO_UP_value);
+
+	zval enum_case_HELP_ABOUT_value;
+	ZVAL_LONG(&enum_case_HELP_ABOUT_value, 44);
+	zend_enum_add_case_cstr(class_entry, "HELP_ABOUT", &enum_case_HELP_ABOUT_value);
+
+	zval enum_case_HELP_FAQ_value;
+	ZVAL_LONG(&enum_case_HELP_FAQ_value, 45);
+	zend_enum_add_case_cstr(class_entry, "HELP_FAQ", &enum_case_HELP_FAQ_value);
+
+	zval enum_case_INSERT_IMAGE_value;
+	ZVAL_LONG(&enum_case_INSERT_IMAGE_value, 46);
+	zend_enum_add_case_cstr(class_entry, "INSERT_IMAGE", &enum_case_INSERT_IMAGE_value);
+
+	zval enum_case_INSERT_LINK_value;
+	ZVAL_LONG(&enum_case_INSERT_LINK_value, 47);
+	zend_enum_add_case_cstr(class_entry, "INSERT_LINK", &enum_case_INSERT_LINK_value);
+
+	zval enum_case_INSERT_TEXT_value;
+	ZVAL_LONG(&enum_case_INSERT_TEXT_value, 48);
+	zend_enum_add_case_cstr(class_entry, "INSERT_TEXT", &enum_case_INSERT_TEXT_value);
+
+	zval enum_case_LIST_ADD_value;
+	ZVAL_LONG(&enum_case_LIST_ADD_value, 49);
+	zend_enum_add_case_cstr(class_entry, "LIST_ADD", &enum_case_LIST_ADD_value);
+
+	zval enum_case_LIST_REMOVE_value;
+	ZVAL_LONG(&enum_case_LIST_REMOVE_value, 50);
+	zend_enum_add_case_cstr(class_entry, "LIST_REMOVE", &enum_case_LIST_REMOVE_value);
+
+	zval enum_case_MAIL_FORWARD_value;
+	ZVAL_LONG(&enum_case_MAIL_FORWARD_value, 51);
+	zend_enum_add_case_cstr(class_entry, "MAIL_FORWARD", &enum_case_MAIL_FORWARD_value);
+
+	zval enum_case_MAIL_MARK_IMPORTANT_value;
+	ZVAL_LONG(&enum_case_MAIL_MARK_IMPORTANT_value, 52);
+	zend_enum_add_case_cstr(class_entry, "MAIL_MARK_IMPORTANT", &enum_case_MAIL_MARK_IMPORTANT_value);
+
+	zval enum_case_MAIL_MARK_READ_value;
+	ZVAL_LONG(&enum_case_MAIL_MARK_READ_value, 53);
+	zend_enum_add_case_cstr(class_entry, "MAIL_MARK_READ", &enum_case_MAIL_MARK_READ_value);
+
+	zval enum_case_MAIL_MARK_UNREAD_value;
+	ZVAL_LONG(&enum_case_MAIL_MARK_UNREAD_value, 54);
+	zend_enum_add_case_cstr(class_entry, "MAIL_MARK_UNREAD", &enum_case_MAIL_MARK_UNREAD_value);
+
+	zval enum_case_MAIL_MESSAGE_NEW_value;
+	ZVAL_LONG(&enum_case_MAIL_MESSAGE_NEW_value, 55);
+	zend_enum_add_case_cstr(class_entry, "MAIL_MESSAGE_NEW", &enum_case_MAIL_MESSAGE_NEW_value);
+
+	zval enum_case_MAIL_REPLY_ALL_value;
+	ZVAL_LONG(&enum_case_MAIL_REPLY_ALL_value, 56);
+	zend_enum_add_case_cstr(class_entry, "MAIL_REPLY_ALL", &enum_case_MAIL_REPLY_ALL_value);
+
+	zval enum_case_MAIL_REPLY_SENDER_value;
+	ZVAL_LONG(&enum_case_MAIL_REPLY_SENDER_value, 57);
+	zend_enum_add_case_cstr(class_entry, "MAIL_REPLY_SENDER", &enum_case_MAIL_REPLY_SENDER_value);
+
+	zval enum_case_MAIL_SEND_value;
+	ZVAL_LONG(&enum_case_MAIL_SEND_value, 58);
+	zend_enum_add_case_cstr(class_entry, "MAIL_SEND", &enum_case_MAIL_SEND_value);
+
+	zval enum_case_MEDIA_EJECT_value;
+	ZVAL_LONG(&enum_case_MEDIA_EJECT_value, 59);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_EJECT", &enum_case_MEDIA_EJECT_value);
+
+	zval enum_case_MEDIA_PLAYBACK_PAUSE_value;
+	ZVAL_LONG(&enum_case_MEDIA_PLAYBACK_PAUSE_value, 60);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_PLAYBACK_PAUSE", &enum_case_MEDIA_PLAYBACK_PAUSE_value);
+
+	zval enum_case_MEDIA_PLAYBACK_START_value;
+	ZVAL_LONG(&enum_case_MEDIA_PLAYBACK_START_value, 61);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_PLAYBACK_START", &enum_case_MEDIA_PLAYBACK_START_value);
+
+	zval enum_case_MEDIA_PLAYBACK_STOP_value;
+	ZVAL_LONG(&enum_case_MEDIA_PLAYBACK_STOP_value, 62);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_PLAYBACK_STOP", &enum_case_MEDIA_PLAYBACK_STOP_value);
+
+	zval enum_case_MEDIA_RECORD_value;
+	ZVAL_LONG(&enum_case_MEDIA_RECORD_value, 63);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_RECORD", &enum_case_MEDIA_RECORD_value);
+
+	zval enum_case_MEDIA_SEEK_BACKWARD_value;
+	ZVAL_LONG(&enum_case_MEDIA_SEEK_BACKWARD_value, 64);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_SEEK_BACKWARD", &enum_case_MEDIA_SEEK_BACKWARD_value);
+
+	zval enum_case_MEDIA_SEEK_FORWARD_value;
+	ZVAL_LONG(&enum_case_MEDIA_SEEK_FORWARD_value, 65);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_SEEK_FORWARD", &enum_case_MEDIA_SEEK_FORWARD_value);
+
+	zval enum_case_MEDIA_SKIP_BACKWARD_value;
+	ZVAL_LONG(&enum_case_MEDIA_SKIP_BACKWARD_value, 66);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_SKIP_BACKWARD", &enum_case_MEDIA_SKIP_BACKWARD_value);
+
+	zval enum_case_MEDIA_SKIP_FORWARD_value;
+	ZVAL_LONG(&enum_case_MEDIA_SKIP_FORWARD_value, 67);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_SKIP_FORWARD", &enum_case_MEDIA_SKIP_FORWARD_value);
+
+	zval enum_case_OBJECT_ROTATE_LEFT_value;
+	ZVAL_LONG(&enum_case_OBJECT_ROTATE_LEFT_value, 68);
+	zend_enum_add_case_cstr(class_entry, "OBJECT_ROTATE_LEFT", &enum_case_OBJECT_ROTATE_LEFT_value);
+
+	zval enum_case_OBJECT_ROTATE_RIGHT_value;
+	ZVAL_LONG(&enum_case_OBJECT_ROTATE_RIGHT_value, 69);
+	zend_enum_add_case_cstr(class_entry, "OBJECT_ROTATE_RIGHT", &enum_case_OBJECT_ROTATE_RIGHT_value);
+
+	zval enum_case_PROCESS_STOP_value;
+	ZVAL_LONG(&enum_case_PROCESS_STOP_value, 70);
+	zend_enum_add_case_cstr(class_entry, "PROCESS_STOP", &enum_case_PROCESS_STOP_value);
+
+	zval enum_case_SYSTEM_LOCK_SCREEN_value;
+	ZVAL_LONG(&enum_case_SYSTEM_LOCK_SCREEN_value, 71);
+	zend_enum_add_case_cstr(class_entry, "SYSTEM_LOCK_SCREEN", &enum_case_SYSTEM_LOCK_SCREEN_value);
+
+	zval enum_case_SYSTEM_LOG_OUT_value;
+	ZVAL_LONG(&enum_case_SYSTEM_LOG_OUT_value, 72);
+	zend_enum_add_case_cstr(class_entry, "SYSTEM_LOG_OUT", &enum_case_SYSTEM_LOG_OUT_value);
+
+	zval enum_case_SYSTEM_SEARCH_value;
+	ZVAL_LONG(&enum_case_SYSTEM_SEARCH_value, 73);
+	zend_enum_add_case_cstr(class_entry, "SYSTEM_SEARCH", &enum_case_SYSTEM_SEARCH_value);
+
+	zval enum_case_SYSTEM_REBOOT_value;
+	ZVAL_LONG(&enum_case_SYSTEM_REBOOT_value, 74);
+	zend_enum_add_case_cstr(class_entry, "SYSTEM_REBOOT", &enum_case_SYSTEM_REBOOT_value);
+
+	zval enum_case_SYSTEM_SHUTDOWN_value;
+	ZVAL_LONG(&enum_case_SYSTEM_SHUTDOWN_value, 75);
+	zend_enum_add_case_cstr(class_entry, "SYSTEM_SHUTDOWN", &enum_case_SYSTEM_SHUTDOWN_value);
+
+	zval enum_case_TOOLS_CHECK_SPELLING_value;
+	ZVAL_LONG(&enum_case_TOOLS_CHECK_SPELLING_value, 76);
+	zend_enum_add_case_cstr(class_entry, "TOOLS_CHECK_SPELLING", &enum_case_TOOLS_CHECK_SPELLING_value);
+
+	zval enum_case_VIEW_FULLSCREEN_value;
+	ZVAL_LONG(&enum_case_VIEW_FULLSCREEN_value, 77);
+	zend_enum_add_case_cstr(class_entry, "VIEW_FULLSCREEN", &enum_case_VIEW_FULLSCREEN_value);
+
+	zval enum_case_VIEW_REFRESH_value;
+	ZVAL_LONG(&enum_case_VIEW_REFRESH_value, 78);
+	zend_enum_add_case_cstr(class_entry, "VIEW_REFRESH", &enum_case_VIEW_REFRESH_value);
+
+	zval enum_case_VIEW_RESTORE_value;
+	ZVAL_LONG(&enum_case_VIEW_RESTORE_value, 79);
+	zend_enum_add_case_cstr(class_entry, "VIEW_RESTORE", &enum_case_VIEW_RESTORE_value);
+
+	zval enum_case_WINDOW_CLOSE_value;
+	ZVAL_LONG(&enum_case_WINDOW_CLOSE_value, 80);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_CLOSE", &enum_case_WINDOW_CLOSE_value);
+
+	zval enum_case_WINDOW_NEW_value;
+	ZVAL_LONG(&enum_case_WINDOW_NEW_value, 81);
+	zend_enum_add_case_cstr(class_entry, "WINDOW_NEW", &enum_case_WINDOW_NEW_value);
+
+	zval enum_case_ZOOM_FIT_BEST_value;
+	ZVAL_LONG(&enum_case_ZOOM_FIT_BEST_value, 82);
+	zend_enum_add_case_cstr(class_entry, "ZOOM_FIT_BEST", &enum_case_ZOOM_FIT_BEST_value);
+
+	zval enum_case_ZOOM_IN_value;
+	ZVAL_LONG(&enum_case_ZOOM_IN_value, 83);
+	zend_enum_add_case_cstr(class_entry, "ZOOM_IN", &enum_case_ZOOM_IN_value);
+
+	zval enum_case_ZOOM_OUT_value;
+	ZVAL_LONG(&enum_case_ZOOM_OUT_value, 84);
+	zend_enum_add_case_cstr(class_entry, "ZOOM_OUT", &enum_case_ZOOM_OUT_value);
+
+	zval enum_case_AUDIO_CARD_value;
+	ZVAL_LONG(&enum_case_AUDIO_CARD_value, 85);
+	zend_enum_add_case_cstr(class_entry, "AUDIO_CARD", &enum_case_AUDIO_CARD_value);
+
+	zval enum_case_AUDIO_INPUT_MICROPHONE_value;
+	ZVAL_LONG(&enum_case_AUDIO_INPUT_MICROPHONE_value, 86);
+	zend_enum_add_case_cstr(class_entry, "AUDIO_INPUT_MICROPHONE", &enum_case_AUDIO_INPUT_MICROPHONE_value);
+
+	zval enum_case_BATTERY_value;
+	ZVAL_LONG(&enum_case_BATTERY_value, 87);
+	zend_enum_add_case_cstr(class_entry, "BATTERY", &enum_case_BATTERY_value);
+
+	zval enum_case_CAMERA_PHOTO_value;
+	ZVAL_LONG(&enum_case_CAMERA_PHOTO_value, 88);
+	zend_enum_add_case_cstr(class_entry, "CAMERA_PHOTO", &enum_case_CAMERA_PHOTO_value);
+
+	zval enum_case_CAMERA_VIDEO_value;
+	ZVAL_LONG(&enum_case_CAMERA_VIDEO_value, 89);
+	zend_enum_add_case_cstr(class_entry, "CAMERA_VIDEO", &enum_case_CAMERA_VIDEO_value);
+
+	zval enum_case_CAMERA_WEB_value;
+	ZVAL_LONG(&enum_case_CAMERA_WEB_value, 90);
+	zend_enum_add_case_cstr(class_entry, "CAMERA_WEB", &enum_case_CAMERA_WEB_value);
+
+	zval enum_case_COMPUTER_value;
+	ZVAL_LONG(&enum_case_COMPUTER_value, 91);
+	zend_enum_add_case_cstr(class_entry, "COMPUTER", &enum_case_COMPUTER_value);
+
+	zval enum_case_DRIVE_HARDDISK_value;
+	ZVAL_LONG(&enum_case_DRIVE_HARDDISK_value, 92);
+	zend_enum_add_case_cstr(class_entry, "DRIVE_HARDDISK", &enum_case_DRIVE_HARDDISK_value);
+
+	zval enum_case_DRIVE_OPTICAL_value;
+	ZVAL_LONG(&enum_case_DRIVE_OPTICAL_value, 93);
+	zend_enum_add_case_cstr(class_entry, "DRIVE_OPTICAL", &enum_case_DRIVE_OPTICAL_value);
+
+	zval enum_case_INPUT_GAMING_value;
+	ZVAL_LONG(&enum_case_INPUT_GAMING_value, 94);
+	zend_enum_add_case_cstr(class_entry, "INPUT_GAMING", &enum_case_INPUT_GAMING_value);
+
+	zval enum_case_INPUT_KEYBOARD_value;
+	ZVAL_LONG(&enum_case_INPUT_KEYBOARD_value, 95);
+	zend_enum_add_case_cstr(class_entry, "INPUT_KEYBOARD", &enum_case_INPUT_KEYBOARD_value);
+
+	zval enum_case_INPUT_MOUSE_value;
+	ZVAL_LONG(&enum_case_INPUT_MOUSE_value, 96);
+	zend_enum_add_case_cstr(class_entry, "INPUT_MOUSE", &enum_case_INPUT_MOUSE_value);
+
+	zval enum_case_INPUT_TABLET_value;
+	ZVAL_LONG(&enum_case_INPUT_TABLET_value, 97);
+	zend_enum_add_case_cstr(class_entry, "INPUT_TABLET", &enum_case_INPUT_TABLET_value);
+
+	zval enum_case_MEDIA_FLASH_value;
+	ZVAL_LONG(&enum_case_MEDIA_FLASH_value, 98);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_FLASH", &enum_case_MEDIA_FLASH_value);
+
+	zval enum_case_MEDIA_OPTICAL_value;
+	ZVAL_LONG(&enum_case_MEDIA_OPTICAL_value, 99);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_OPTICAL", &enum_case_MEDIA_OPTICAL_value);
+
+	zval enum_case_MEDIA_TAPE_value;
+	ZVAL_LONG(&enum_case_MEDIA_TAPE_value, 100);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_TAPE", &enum_case_MEDIA_TAPE_value);
+
+	zval enum_case_MULTIMEDIA_PLAYER_value;
+	ZVAL_LONG(&enum_case_MULTIMEDIA_PLAYER_value, 101);
+	zend_enum_add_case_cstr(class_entry, "MULTIMEDIA_PLAYER", &enum_case_MULTIMEDIA_PLAYER_value);
+
+	zval enum_case_NETWORK_WIRED_value;
+	ZVAL_LONG(&enum_case_NETWORK_WIRED_value, 102);
+	zend_enum_add_case_cstr(class_entry, "NETWORK_WIRED", &enum_case_NETWORK_WIRED_value);
+
+	zval enum_case_NETWORK_WIRELESS_value;
+	ZVAL_LONG(&enum_case_NETWORK_WIRELESS_value, 103);
+	zend_enum_add_case_cstr(class_entry, "NETWORK_WIRELESS", &enum_case_NETWORK_WIRELESS_value);
+
+	zval enum_case_PHONE_value;
+	ZVAL_LONG(&enum_case_PHONE_value, 104);
+	zend_enum_add_case_cstr(class_entry, "PHONE", &enum_case_PHONE_value);
+
+	zval enum_case_PRINTER_value;
+	ZVAL_LONG(&enum_case_PRINTER_value, 105);
+	zend_enum_add_case_cstr(class_entry, "PRINTER", &enum_case_PRINTER_value);
+
+	zval enum_case_SCANNER_value;
+	ZVAL_LONG(&enum_case_SCANNER_value, 106);
+	zend_enum_add_case_cstr(class_entry, "SCANNER", &enum_case_SCANNER_value);
+
+	zval enum_case_VIDEO_DISPLAY_value;
+	ZVAL_LONG(&enum_case_VIDEO_DISPLAY_value, 107);
+	zend_enum_add_case_cstr(class_entry, "VIDEO_DISPLAY", &enum_case_VIDEO_DISPLAY_value);
+
+	zval enum_case_APPOINTMENT_MISSED_value;
+	ZVAL_LONG(&enum_case_APPOINTMENT_MISSED_value, 108);
+	zend_enum_add_case_cstr(class_entry, "APPOINTMENT_MISSED", &enum_case_APPOINTMENT_MISSED_value);
+
+	zval enum_case_APPOINTMENT_SOON_value;
+	ZVAL_LONG(&enum_case_APPOINTMENT_SOON_value, 109);
+	zend_enum_add_case_cstr(class_entry, "APPOINTMENT_SOON", &enum_case_APPOINTMENT_SOON_value);
+
+	zval enum_case_AUDIO_VOLUME_HIGH_value;
+	ZVAL_LONG(&enum_case_AUDIO_VOLUME_HIGH_value, 110);
+	zend_enum_add_case_cstr(class_entry, "AUDIO_VOLUME_HIGH", &enum_case_AUDIO_VOLUME_HIGH_value);
+
+	zval enum_case_AUDIO_VOLUME_LOW_value;
+	ZVAL_LONG(&enum_case_AUDIO_VOLUME_LOW_value, 111);
+	zend_enum_add_case_cstr(class_entry, "AUDIO_VOLUME_LOW", &enum_case_AUDIO_VOLUME_LOW_value);
+
+	zval enum_case_AUDIO_VOLUME_MEDIUM_value;
+	ZVAL_LONG(&enum_case_AUDIO_VOLUME_MEDIUM_value, 112);
+	zend_enum_add_case_cstr(class_entry, "AUDIO_VOLUME_MEDIUM", &enum_case_AUDIO_VOLUME_MEDIUM_value);
+
+	zval enum_case_AUDIO_VOLUME_MUTED_value;
+	ZVAL_LONG(&enum_case_AUDIO_VOLUME_MUTED_value, 113);
+	zend_enum_add_case_cstr(class_entry, "AUDIO_VOLUME_MUTED", &enum_case_AUDIO_VOLUME_MUTED_value);
+
+	zval enum_case_BATTERY_CAUTION_value;
+	ZVAL_LONG(&enum_case_BATTERY_CAUTION_value, 114);
+	zend_enum_add_case_cstr(class_entry, "BATTERY_CAUTION", &enum_case_BATTERY_CAUTION_value);
+
+	zval enum_case_BATTERY_LOW_value;
+	ZVAL_LONG(&enum_case_BATTERY_LOW_value, 115);
+	zend_enum_add_case_cstr(class_entry, "BATTERY_LOW", &enum_case_BATTERY_LOW_value);
+
+	zval enum_case_DIALOG_ERROR_value;
+	ZVAL_LONG(&enum_case_DIALOG_ERROR_value, 116);
+	zend_enum_add_case_cstr(class_entry, "DIALOG_ERROR", &enum_case_DIALOG_ERROR_value);
+
+	zval enum_case_DIALOG_INFORMATION_value;
+	ZVAL_LONG(&enum_case_DIALOG_INFORMATION_value, 117);
+	zend_enum_add_case_cstr(class_entry, "DIALOG_INFORMATION", &enum_case_DIALOG_INFORMATION_value);
+
+	zval enum_case_DIALOG_PASSWORD_value;
+	ZVAL_LONG(&enum_case_DIALOG_PASSWORD_value, 118);
+	zend_enum_add_case_cstr(class_entry, "DIALOG_PASSWORD", &enum_case_DIALOG_PASSWORD_value);
+
+	zval enum_case_DIALOG_QUESTION_value;
+	ZVAL_LONG(&enum_case_DIALOG_QUESTION_value, 119);
+	zend_enum_add_case_cstr(class_entry, "DIALOG_QUESTION", &enum_case_DIALOG_QUESTION_value);
+
+	zval enum_case_DIALOG_WARNING_value;
+	ZVAL_LONG(&enum_case_DIALOG_WARNING_value, 120);
+	zend_enum_add_case_cstr(class_entry, "DIALOG_WARNING", &enum_case_DIALOG_WARNING_value);
+
+	zval enum_case_FOLDER_DRAG_ACCEPT_value;
+	ZVAL_LONG(&enum_case_FOLDER_DRAG_ACCEPT_value, 121);
+	zend_enum_add_case_cstr(class_entry, "FOLDER_DRAG_ACCEPT", &enum_case_FOLDER_DRAG_ACCEPT_value);
+
+	zval enum_case_FOLDER_OPEN_value;
+	ZVAL_LONG(&enum_case_FOLDER_OPEN_value, 122);
+	zend_enum_add_case_cstr(class_entry, "FOLDER_OPEN", &enum_case_FOLDER_OPEN_value);
+
+	zval enum_case_FOLDER_VISITING_value;
+	ZVAL_LONG(&enum_case_FOLDER_VISITING_value, 123);
+	zend_enum_add_case_cstr(class_entry, "FOLDER_VISITING", &enum_case_FOLDER_VISITING_value);
+
+	zval enum_case_IMAGE_LOADING_value;
+	ZVAL_LONG(&enum_case_IMAGE_LOADING_value, 124);
+	zend_enum_add_case_cstr(class_entry, "IMAGE_LOADING", &enum_case_IMAGE_LOADING_value);
+
+	zval enum_case_IMAGE_MISSING_value;
+	ZVAL_LONG(&enum_case_IMAGE_MISSING_value, 125);
+	zend_enum_add_case_cstr(class_entry, "IMAGE_MISSING", &enum_case_IMAGE_MISSING_value);
+
+	zval enum_case_MAIL_ATTACHMENT_value;
+	ZVAL_LONG(&enum_case_MAIL_ATTACHMENT_value, 126);
+	zend_enum_add_case_cstr(class_entry, "MAIL_ATTACHMENT", &enum_case_MAIL_ATTACHMENT_value);
+
+	zval enum_case_MAIL_UNREAD_value;
+	ZVAL_LONG(&enum_case_MAIL_UNREAD_value, 127);
+	zend_enum_add_case_cstr(class_entry, "MAIL_UNREAD", &enum_case_MAIL_UNREAD_value);
+
+	zval enum_case_MAIL_READ_value;
+	ZVAL_LONG(&enum_case_MAIL_READ_value, 128);
+	zend_enum_add_case_cstr(class_entry, "MAIL_READ", &enum_case_MAIL_READ_value);
+
+	zval enum_case_MAIL_REPLIED_value;
+	ZVAL_LONG(&enum_case_MAIL_REPLIED_value, 129);
+	zend_enum_add_case_cstr(class_entry, "MAIL_REPLIED", &enum_case_MAIL_REPLIED_value);
+
+	zval enum_case_MEDIA_PLAYLIST_REPEAT_value;
+	ZVAL_LONG(&enum_case_MEDIA_PLAYLIST_REPEAT_value, 130);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_PLAYLIST_REPEAT", &enum_case_MEDIA_PLAYLIST_REPEAT_value);
+
+	zval enum_case_MEDIA_PLAYLIST_SHUFFLE_value;
+	ZVAL_LONG(&enum_case_MEDIA_PLAYLIST_SHUFFLE_value, 131);
+	zend_enum_add_case_cstr(class_entry, "MEDIA_PLAYLIST_SHUFFLE", &enum_case_MEDIA_PLAYLIST_SHUFFLE_value);
+
+	zval enum_case_NETWORK_OFFLINE_value;
+	ZVAL_LONG(&enum_case_NETWORK_OFFLINE_value, 132);
+	zend_enum_add_case_cstr(class_entry, "NETWORK_OFFLINE", &enum_case_NETWORK_OFFLINE_value);
+
+	zval enum_case_PRINTER_PRINTING_value;
+	ZVAL_LONG(&enum_case_PRINTER_PRINTING_value, 133);
+	zend_enum_add_case_cstr(class_entry, "PRINTER_PRINTING", &enum_case_PRINTER_PRINTING_value);
+
+	zval enum_case_SECURITY_HIGH_value;
+	ZVAL_LONG(&enum_case_SECURITY_HIGH_value, 134);
+	zend_enum_add_case_cstr(class_entry, "SECURITY_HIGH", &enum_case_SECURITY_HIGH_value);
+
+	zval enum_case_SECURITY_LOW_value;
+	ZVAL_LONG(&enum_case_SECURITY_LOW_value, 135);
+	zend_enum_add_case_cstr(class_entry, "SECURITY_LOW", &enum_case_SECURITY_LOW_value);
+
+	zval enum_case_SOFTWARE_UPDATE_AVAILABLE_value;
+	ZVAL_LONG(&enum_case_SOFTWARE_UPDATE_AVAILABLE_value, 136);
+	zend_enum_add_case_cstr(class_entry, "SOFTWARE_UPDATE_AVAILABLE", &enum_case_SOFTWARE_UPDATE_AVAILABLE_value);
+
+	zval enum_case_SOFTWARE_UPDATE_URGENT_value;
+	ZVAL_LONG(&enum_case_SOFTWARE_UPDATE_URGENT_value, 137);
+	zend_enum_add_case_cstr(class_entry, "SOFTWARE_UPDATE_URGENT", &enum_case_SOFTWARE_UPDATE_URGENT_value);
+
+	zval enum_case_SYNC_ERROR_value;
+	ZVAL_LONG(&enum_case_SYNC_ERROR_value, 138);
+	zend_enum_add_case_cstr(class_entry, "SYNC_ERROR", &enum_case_SYNC_ERROR_value);
+
+	zval enum_case_SYNC_SYNCHRONIZING_value;
+	ZVAL_LONG(&enum_case_SYNC_SYNCHRONIZING_value, 139);
+	zend_enum_add_case_cstr(class_entry, "SYNC_SYNCHRONIZING", &enum_case_SYNC_SYNCHRONIZING_value);
+
+	zval enum_case_USER_AVAILABLE_value;
+	ZVAL_LONG(&enum_case_USER_AVAILABLE_value, 140);
+	zend_enum_add_case_cstr(class_entry, "USER_AVAILABLE", &enum_case_USER_AVAILABLE_value);
+
+	zval enum_case_USER_OFFLINE_value;
+	ZVAL_LONG(&enum_case_USER_OFFLINE_value, 141);
+	zend_enum_add_case_cstr(class_entry, "USER_OFFLINE", &enum_case_USER_OFFLINE_value);
+
+	zval enum_case_WEATHER_CLEAR_value;
+	ZVAL_LONG(&enum_case_WEATHER_CLEAR_value, 142);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_CLEAR", &enum_case_WEATHER_CLEAR_value);
+
+	zval enum_case_WEATHER_CLEAR_NIGHT_value;
+	ZVAL_LONG(&enum_case_WEATHER_CLEAR_NIGHT_value, 143);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_CLEAR_NIGHT", &enum_case_WEATHER_CLEAR_NIGHT_value);
+
+	zval enum_case_WEATHER_FEW_CLOUDS_value;
+	ZVAL_LONG(&enum_case_WEATHER_FEW_CLOUDS_value, 144);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_FEW_CLOUDS", &enum_case_WEATHER_FEW_CLOUDS_value);
+
+	zval enum_case_WEATHER_FEW_CLOUDS_NIGHT_value;
+	ZVAL_LONG(&enum_case_WEATHER_FEW_CLOUDS_NIGHT_value, 145);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_FEW_CLOUDS_NIGHT", &enum_case_WEATHER_FEW_CLOUDS_NIGHT_value);
+
+	zval enum_case_WEATHER_FOG_value;
+	ZVAL_LONG(&enum_case_WEATHER_FOG_value, 146);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_FOG", &enum_case_WEATHER_FOG_value);
+
+	zval enum_case_WEATHER_SHOWERS_value;
+	ZVAL_LONG(&enum_case_WEATHER_SHOWERS_value, 147);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_SHOWERS", &enum_case_WEATHER_SHOWERS_value);
+
+	zval enum_case_WEATHER_SNOW_value;
+	ZVAL_LONG(&enum_case_WEATHER_SNOW_value, 148);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_SNOW", &enum_case_WEATHER_SNOW_value);
+
+	zval enum_case_WEATHER_STORM_value;
+	ZVAL_LONG(&enum_case_WEATHER_STORM_value, 149);
+	zend_enum_add_case_cstr(class_entry, "WEATHER_STORM", &enum_case_WEATHER_STORM_value);
+
+	return class_entry;
+}
+#endif
+
 static zend_class_entry *register_class_QImage_Format(void)
 {
 	zend_class_entry *class_entry = zend_register_internal_enum("QImage\\Format", IS_LONG, NULL);
@@ -992,12 +1665,22 @@ static zend_class_entry *register_class_QFontInfo(void)
 	return class_entry;
 }
 
-static zend_class_entry *register_class_QPixmap(void)
+static zend_class_entry *register_class_QPaintDevice(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QPaintDevice", NULL);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_ABSTRACT|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QPixmap(zend_class_entry *class_entry_QPaintDevice)
 {
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QPixmap", class_QPixmap_methods);
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QPaintDevice, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }
@@ -1012,12 +1695,22 @@ static zend_class_entry *register_class_QIcon(void)
 	return class_entry;
 }
 
-static zend_class_entry *register_class_QImage(void)
+static zend_class_entry *register_class_QCursor(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QCursor", class_QCursor_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QImage(zend_class_entry *class_entry_QPaintDevice)
 {
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QImage", class_QImage_methods);
-	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+	class_entry = zend_register_internal_class_with_flags(&ce, class_entry_QPaintDevice, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;
 }

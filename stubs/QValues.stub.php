@@ -90,6 +90,26 @@ namespace {
     }
 
     /**
+     * A copy of a QRectF.
+     *
+     * @not-serializable
+     */
+    final class QRectF
+    {
+        public function __construct(float $left, float $top, float $width, float $height) {}
+
+        public function x(): float {}
+
+        public function y(): float {}
+
+        public function width(): float {}
+
+        public function height(): float {}
+
+        public function isValid(): bool {}
+    }
+
+    /**
      * A copy of a QModelIndex: valid while its model keeps the row (Qt's own rule for model indexes).
      *
      * @not-serializable

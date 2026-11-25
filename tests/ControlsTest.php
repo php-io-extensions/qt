@@ -45,6 +45,72 @@ it('makes a push button the default button', function (): void {
     expect($button->isDefault())->toBeTrue();
 });
 
+it('turns a push button\'s auto-default on and off', function (): void {
+    $button = new QPushButton('OK');
+
+    expect($button->autoDefault())->toBeFalse(); // outside a dialog, Qt's default is false
+
+    $button->setAutoDefault(true);
+    expect($button->autoDefault())->toBeTrue();
+
+    $button->setAutoDefault(false);
+    expect($button->autoDefault())->toBeFalse();
+});
+
+it('frames a line edit, limits its length and shows a clear button', function (): void {
+    $edit = new QLineEdit('abcdef');
+
+    expect($edit->hasFrame())->toBeTrue()
+        ->and($edit->maxLength())->toBe(32767)
+        ->and($edit->isClearButtonEnabled())->toBeFalse();
+
+    $edit->setFrame(false);
+    $edit->setMaxLength(3);
+    $edit->setClearButtonEnabled(true);
+
+    expect($edit->hasFrame())->toBeFalse()
+        ->and($edit->maxLength())->toBe(3)
+        ->and($edit->text())->toBe('abc')
+        ->and($edit->isClearButtonEnabled())->toBeTrue();
+
+    $edit->setClearButtonEnabled(false);
+    expect($edit->isClearButtonEnabled())->toBeFalse();
+});
+
+it('refuses a max length outside C int as a ValueError', function (): void {
+    expect(fn () => (new QLineEdit())->setMaxLength(PHP_INT_MAX))->toThrow(ValueError::class);
+});
+
+it('adds an icon action at each position of a line edit, owned by the line edit', function (): void {
+    $edit = new QLineEdit();
+    $icon = QIcon::fromTheme('edit-clear');
+
+    $leading = $edit->addAction($icon, QLineEdit\ActionPosition::LEADING_POSITION);
+    $trailing = $edit->addAction($icon, QLineEdit\ActionPosition::TRAILING_POSITION);
+
+    expect($leading)->toBeInstanceOf(QAction::class)
+        ->and($trailing)->toBeInstanceOf(QAction::class)
+        ->and($leading)->not->toBe($trailing)
+        ->and($leading->parent())->toBe($edit)
+        ->and(QLineEdit\ActionPosition::LEADING_POSITION->value)->toBe(0)
+        ->and(QLineEdit\ActionPosition::TRAILING_POSITION->value)->toBe(1);
+});
+
+it('makes an icon from the theme by name, Qt\'s null icon for a name the theme lacks', function (): void {
+    expect(QIcon::fromTheme('edit-copy'))->toBeInstanceOf(QIcon::class)
+        ->and(QIcon::fromTheme('no-such-icon-name-in-any-theme')->isNull())->toBeTrue();
+});
+
+it('makes an icon from each theme icon', function (): void {
+    foreach (QIcon\ThemeIcon::cases() as $themeIcon) {
+        expect(QIcon::fromTheme($themeIcon))->toBeInstanceOf(QIcon::class);
+    }
+
+    expect(QIcon\ThemeIcon::ADDRESS_BOOK_NEW->value)->toBe(0)
+        ->and(QIcon\ThemeIcon::WEATHER_STORM->value)->toBe(149)
+        ->and(count(QIcon\ThemeIcon::cases()))->toBe(150);
+})->skip(! enum_exists(QIcon\ThemeIcon::class), 'QIcon::ThemeIcon is Qt 6.7\'s');
+
 it('reports a checkbox toggle', function (): void {
     $box = new QCheckBox('Remember');
     $toggles = [];
@@ -134,6 +200,35 @@ it('labels text with wrap and alignment', function (): void {
         ->and($label->wordWrap())->toBeTrue()
         ->and($label->alignment())->toBe(Qt\AlignmentFlag::CENTER->value)
         ->and((new QLabel())->text())->toBe('');
+});
+
+it('indents a label by Qt\'s default and by a set indent', function (): void {
+    $label = new QLabel('Hello');
+
+    expect($label->indent())->toBe(-1);
+
+    $label->setIndent(0);
+    expect($label->indent())->toBe(0);
+
+    $label->setIndent(12);
+    expect($label->indent())->toBe(12);
+});
+
+it('drops the default indent a style-sheet frame adds once the indent is 0', function (): void {
+    $label = new QLabel('Hello');
+    $label->setStyleSheet('QLabel { margin: 6px; }');
+    $indented = $label->sizeHint()->width();
+
+    $label->setIndent(0);
+
+    // With a frame, Qt's -1 indent is the width of an 'x', less twice QLabel::margin() (0 here).
+    $x = (int) round((new QFontMetricsF($label->font()))->horizontalAdvance('x'));
+    expect($indented - $label->sizeHint()->width())->toBe($x)
+        ->and($x)->toBeGreaterThan(0);
+});
+
+it('refuses an indent outside C int as a ValueError', function (): void {
+    expect(fn () => (new QLabel())->setIndent(PHP_INT_MIN))->toThrow(ValueError::class);
 });
 
 it('describes a font and puts it on a widget', function (): void {

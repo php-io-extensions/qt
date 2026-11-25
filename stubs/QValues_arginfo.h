@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 2fa254ccd7de2c46e32b435fef3eb9a8eeb15d7b */
+ * Stub hash: d62966961f6c3d0b53f5bc975716d75be273bfff */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QPoint___construct, 0, 0, 2)
 	ZEND_ARG_TYPE_INFO(0, xpos, IS_LONG, 0)
@@ -71,6 +71,23 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QRect_height arginfo_class_QPoint_x
 
 #define arginfo_class_QRect_isValid arginfo_class_QPoint_isNull
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QRectF___construct, 0, 0, 4)
+	ZEND_ARG_TYPE_INFO(0, left, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, top, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, height, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QRectF_x arginfo_class_QPointF_x
+
+#define arginfo_class_QRectF_y arginfo_class_QPointF_x
+
+#define arginfo_class_QRectF_width arginfo_class_QPointF_x
+
+#define arginfo_class_QRectF_height arginfo_class_QPointF_x
+
+#define arginfo_class_QRectF_isValid arginfo_class_QPoint_isNull
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QModelIndex___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
@@ -156,6 +173,12 @@ ZEND_METHOD(QRect, y);
 ZEND_METHOD(QRect, width);
 ZEND_METHOD(QRect, height);
 ZEND_METHOD(QRect, isValid);
+ZEND_METHOD(QRectF, __construct);
+ZEND_METHOD(QRectF, x);
+ZEND_METHOD(QRectF, y);
+ZEND_METHOD(QRectF, width);
+ZEND_METHOD(QRectF, height);
+ZEND_METHOD(QRectF, isValid);
 ZEND_METHOD(QModelIndex, __construct);
 ZEND_METHOD(QModelIndex, row);
 ZEND_METHOD(QModelIndex, column);
@@ -212,6 +235,16 @@ static const zend_function_entry class_QRect_methods[] = {
 	ZEND_ME(QRect, width, arginfo_class_QRect_width, ZEND_ACC_PUBLIC)
 	ZEND_ME(QRect, height, arginfo_class_QRect_height, ZEND_ACC_PUBLIC)
 	ZEND_ME(QRect, isValid, arginfo_class_QRect_isValid, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QRectF_methods[] = {
+	ZEND_ME(QRectF, __construct, arginfo_class_QRectF___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QRectF, x, arginfo_class_QRectF_x, ZEND_ACC_PUBLIC)
+	ZEND_ME(QRectF, y, arginfo_class_QRectF_y, ZEND_ACC_PUBLIC)
+	ZEND_ME(QRectF, width, arginfo_class_QRectF_width, ZEND_ACC_PUBLIC)
+	ZEND_ME(QRectF, height, arginfo_class_QRectF_height, ZEND_ACC_PUBLIC)
+	ZEND_ME(QRectF, isValid, arginfo_class_QRectF_isValid, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -300,6 +333,16 @@ static zend_class_entry *register_class_QRect(void)
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QRect", class_QRect_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QRectF(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QRectF", class_QRectF_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

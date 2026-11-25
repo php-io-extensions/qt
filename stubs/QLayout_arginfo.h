@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 3ffcc3b5d44f547095d53e393b6bd2f8c2597a84 */
+ * Stub hash: 508c9951bd8a561278ef3cd8c0916528dcec9554 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_setSpacing, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)
@@ -116,6 +116,15 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QGridLayout_addWidget, 0, 
 	ZEND_ARG_OBJ_TYPE_MASK(0, alignment, Qt\\AlignmentFlag, MAY_BE_LONG, "0")
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QGridLayout_addLayout, 0, 3, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, layout, QLayout, 0)
+	ZEND_ARG_TYPE_INFO(0, row, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, column, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, rowSpan, IS_LONG, 0, "1")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, columnSpan, IS_LONG, 0, "1")
+	ZEND_ARG_OBJ_TYPE_MASK(0, alignment, Qt\\AlignmentFlag, MAY_BE_LONG, "0")
+ZEND_END_ARG_INFO()
+
 #define arginfo_class_QGridLayout_rowCount arginfo_class_QLayout_spacing
 
 #define arginfo_class_QGridLayout_columnCount arginfo_class_QLayout_spacing
@@ -183,6 +192,7 @@ ZEND_METHOD(QVBoxLayout, __construct);
 ZEND_METHOD(QHBoxLayout, __construct);
 ZEND_METHOD(QGridLayout, __construct);
 ZEND_METHOD(QGridLayout, addWidget);
+ZEND_METHOD(QGridLayout, addLayout);
 ZEND_METHOD(QGridLayout, rowCount);
 ZEND_METHOD(QGridLayout, columnCount);
 ZEND_METHOD(QGridLayout, setHorizontalSpacing);
@@ -246,6 +256,7 @@ static const zend_function_entry class_QHBoxLayout_methods[] = {
 static const zend_function_entry class_QGridLayout_methods[] = {
 	ZEND_ME(QGridLayout, __construct, arginfo_class_QGridLayout___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QGridLayout, addWidget, arginfo_class_QGridLayout_addWidget, ZEND_ACC_PUBLIC)
+	ZEND_ME(QGridLayout, addLayout, arginfo_class_QGridLayout_addLayout, ZEND_ACC_PUBLIC)
 	ZEND_ME(QGridLayout, rowCount, arginfo_class_QGridLayout_rowCount, ZEND_ACC_PUBLIC)
 	ZEND_ME(QGridLayout, columnCount, arginfo_class_QGridLayout_columnCount, ZEND_ACC_PUBLIC)
 	ZEND_ME(QGridLayout, setHorizontalSpacing, arginfo_class_QGridLayout_setHorizontalSpacing, ZEND_ACC_PUBLIC)

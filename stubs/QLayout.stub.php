@@ -120,6 +120,9 @@ namespace {
 
         public function addWidget(QWidget $widget, int $row, int $column, int $rowSpan = 1, int $columnSpan = 1, Qt\AlignmentFlag|int $alignment = 0): void {}
 
+        /** The grid takes $layout as its child; a layout that already has a parent is Qt's warning, not added. */
+        public function addLayout(QLayout $layout, int $row, int $column, int $rowSpan = 1, int $columnSpan = 1, Qt\AlignmentFlag|int $alignment = 0): void {}
+
         public function rowCount(): int {}
 
         public function columnCount(): int {}

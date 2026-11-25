@@ -2,8 +2,18 @@
 #include "../stubs/QAnimation_arginfo.h"
 
 #include <QtCore/QAbstractAnimation>
+#include <QtCore/QEasingCurve>
+#include <QtCore/QList>
+#include <QtCore/QPointF>
 #include <QtCore/QPropertyAnimation>
 #include <QtCore/QVariantAnimation>
+
+#include "checks/QEasingCurve_Type.inc"
+
+zend_class_entry *phpqt_ce_QEasingCurve;
+zend_class_entry *phpqt_ce_QEasingCurve_Type;
+
+static void phpqt_destroy_easing_curve(void *ptr) { delete static_cast<QEasingCurve *>(ptr); }
 
 static_assert(QAbstractAnimation::KeepWhenStopped == 0 && QAbstractAnimation::DeleteWhenStopped == 1,
 	"QAbstractAnimation::DeletionPolicy values differ from the stub's QAbstractAnimation\\DeletionPolicy enum");
@@ -23,6 +33,122 @@ void phpqt_register_QAnimation()
 	phpqt_ce_QPropertyAnimation = register_class_QPropertyAnimation(phpqt_ce_QVariantAnimation);
 	phpqt_object_setup(phpqt_ce_QPropertyAnimation);
 	phpqt_map_class("QPropertyAnimation", phpqt_ce_QPropertyAnimation);
+
+	phpqt_ce_QEasingCurve_Type = register_class_QEasingCurve_Type();
+	phpqt_ce_QEasingCurve = register_class_QEasingCurve();
+	phpqt_value_setup(phpqt_ce_QEasingCurve);
+}
+
+/* ---- QEasingCurve ------------------------------------------------------- */
+
+ZEND_METHOD(QEasingCurve, __construct)
+{
+	zend_object *type = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(type, phpqt_ce_QEasingCurve_Type)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QEasingCurve(static_cast<QEasingCurve::Type>(phpqt_enum_value(type, QEasingCurve::Linear))),
+		true, phpqt_destroy_easing_curve);
+}
+
+ZEND_METHOD(QEasingCurve, type)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QEasingCurve, curve);
+
+	phpqt_return_enum(return_value, phpqt_ce_QEasingCurve_Type, static_cast<zend_long>(curve->type()));
+}
+
+ZEND_METHOD(QEasingCurve, setType)
+{
+	zend_object *type;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(type, phpqt_ce_QEasingCurve_Type)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QEasingCurve, curve);
+
+	curve->setType(static_cast<QEasingCurve::Type>(phpqt_enum_value(type, QEasingCurve::Linear)));
+}
+
+ZEND_METHOD(QEasingCurve, valueForProgress)
+{
+	double progress;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_DOUBLE(progress)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QEasingCurve, curve);
+
+	RETURN_DOUBLE(curve->valueForProgress(progress));
+}
+
+ZEND_METHOD(QEasingCurve, addCubicBezierSegment)
+{
+	zend_object *c1_obj, *c2_obj, *end_obj;
+
+	ZEND_PARSE_PARAMETERS_START(3, 3)
+		Z_PARAM_OBJ_OF_CLASS(c1_obj, phpqt_ce_QPointF)
+		Z_PARAM_OBJ_OF_CLASS(c2_obj, phpqt_ce_QPointF)
+		Z_PARAM_OBJ_OF_CLASS(end_obj, phpqt_ce_QPointF)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QEasingCurve, curve);
+
+	QPointF *c1 = static_cast<QPointF *>(phpqt_value_arg(c1_obj, 1));
+	QPointF *c2 = c1 == nullptr ? nullptr : static_cast<QPointF *>(phpqt_value_arg(c2_obj, 2));
+	QPointF *end = c2 == nullptr ? nullptr : static_cast<QPointF *>(phpqt_value_arg(end_obj, 3));
+	if (end == nullptr) {
+		RETURN_THROWS();
+	}
+
+	curve->addCubicBezierSegment(*c1, *c2, *end);
+}
+
+ZEND_METHOD(QEasingCurve, toCubicSpline)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QEasingCurve, curve);
+
+	const QList<QPointF> points = curve->toCubicSpline();
+	array_init_size(return_value, static_cast<uint32_t>(points.size()));
+	for (const QPointF &point : points) {
+		zval boxed;
+		phpqt_return_qpointf(&boxed, point);
+		add_next_index_zval(return_value, &boxed);
+	}
+}
+
+ZEND_METHOD(QVariantAnimation, easingCurve)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QVariantAnimation, animation);
+
+	object_init_ex(return_value, phpqt_ce_QEasingCurve);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QEasingCurve(animation->easingCurve()), true, phpqt_destroy_easing_curve);
+}
+
+ZEND_METHOD(QVariantAnimation, setEasingCurve)
+{
+	zend_object *curve_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(curve_obj, phpqt_ce_QEasingCurve)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QVariantAnimation, animation);
+
+	QEasingCurve *curve = static_cast<QEasingCurve *>(phpqt_value_arg(curve_obj, 1));
+	if (curve == nullptr) {
+		RETURN_THROWS();
+	}
+
+	animation->setEasingCurve(*curve);
 }
 
 ZEND_METHOD(QAbstractAnimation, start)

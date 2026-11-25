@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 291bd1644844914866fbafbf63fa6a1a151714c5 */
+ * Stub hash: 01a37083b7077ec467be379822dc3ecce0092aed */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -70,6 +70,12 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_removeAction, 0, 1
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_raise arginfo_class_QWidget_show
+
+#define arginfo_class_QWidget_lower arginfo_class_QWidget_show
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_stackUnder, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, w, QWidget, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_windowTitle, 0, 0, IS_STRING, 0)
 ZEND_END_ARG_INFO()
@@ -172,6 +178,21 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_styleSheet arginfo_class_QWidget_windowTitle
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_cursor, 0, 0, QCursor, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setCursor, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, cursor, QCursor, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_unsetCursor arginfo_class_QWidget_show
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setToolTip, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, toolTip, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_toolTip arginfo_class_QWidget_windowTitle
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_devicePixelRatioF, 0, 0, IS_DOUBLE, 0)
 ZEND_END_ARG_INFO()
 
@@ -224,6 +245,8 @@ ZEND_METHOD(QWidget, setTabOrder);
 ZEND_METHOD(QWidget, insertAction);
 ZEND_METHOD(QWidget, removeAction);
 ZEND_METHOD(QWidget, raise);
+ZEND_METHOD(QWidget, lower);
+ZEND_METHOD(QWidget, stackUnder);
 ZEND_METHOD(QWidget, windowTitle);
 ZEND_METHOD(QWidget, setWindowTitle);
 ZEND_METHOD(QWidget, resize);
@@ -254,6 +277,11 @@ ZEND_METHOD(QWidget, setEnabled);
 ZEND_METHOD(QWidget, isEnabled);
 ZEND_METHOD(QWidget, setStyleSheet);
 ZEND_METHOD(QWidget, styleSheet);
+ZEND_METHOD(QWidget, cursor);
+ZEND_METHOD(QWidget, setCursor);
+ZEND_METHOD(QWidget, unsetCursor);
+ZEND_METHOD(QWidget, setToolTip);
+ZEND_METHOD(QWidget, toolTip);
 ZEND_METHOD(QWidget, devicePixelRatioF);
 ZEND_METHOD(QWidget, setFont);
 ZEND_METHOD(QWidget, font);
@@ -287,6 +315,8 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, insertAction, arginfo_class_QWidget_insertAction, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, removeAction, arginfo_class_QWidget_removeAction, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, raise, arginfo_class_QWidget_raise, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, lower, arginfo_class_QWidget_lower, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, stackUnder, arginfo_class_QWidget_stackUnder, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, windowTitle, arginfo_class_QWidget_windowTitle, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setWindowTitle, arginfo_class_QWidget_setWindowTitle, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, resize, arginfo_class_QWidget_resize, ZEND_ACC_PUBLIC)
@@ -317,6 +347,11 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, isEnabled, arginfo_class_QWidget_isEnabled, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setStyleSheet, arginfo_class_QWidget_setStyleSheet, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, styleSheet, arginfo_class_QWidget_styleSheet, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, cursor, arginfo_class_QWidget_cursor, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setCursor, arginfo_class_QWidget_setCursor, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, unsetCursor, arginfo_class_QWidget_unsetCursor, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setToolTip, arginfo_class_QWidget_setToolTip, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, toolTip, arginfo_class_QWidget_toolTip, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, devicePixelRatioF, arginfo_class_QWidget_devicePixelRatioF, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setFont, arginfo_class_QWidget_setFont, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, font, arginfo_class_QWidget_font, ZEND_ACC_PUBLIC)

@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: e18bc0714e47591baa4b644ce179bf26debae7f5 */
+ * Stub hash: b1335e65882f590e72d80bc861493295a1ef6429 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QAbstractItemDelegate___construct, 0, 0, 0)
 ZEND_END_ARG_INFO()
@@ -16,7 +16,19 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStyleOptionViewItem_state, 0, 0, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QPainter___construct arginfo_class_QAbstractItemDelegate___construct
+ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QPainter___construct, 0, 0, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, device, QPaintDevice, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainter_end, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPainter_isActive arginfo_class_QPainter_end
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainter_setClipPath, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, path, QPainterPath, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, operation, Qt\\ClipOperation, 0, "Qt\\ClipOperation::REPLACE_CLIP")
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainter_save, 0, 0, IS_VOID, 0)
 ZEND_END_ARG_INFO()
@@ -72,6 +84,33 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainter_drawText, 0, 3, I
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(1, br, QRect, 1, "null")
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QPainterPath___construct arginfo_class_QAbstractItemDelegate___construct
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainterPath_moveTo, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPainterPath_lineTo arginfo_class_QPainterPath_moveTo
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainterPath_arcTo, 0, 6, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, x, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, y, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, w, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, h, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, startAngle, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, arcLength, IS_DOUBLE, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPainterPath_closeSubpath arginfo_class_QPainter_save
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPainterPath_addRoundedRect, 0, 3, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, rect, QRectF, 0)
+	ZEND_ARG_TYPE_INFO(0, xRadius, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO(0, yRadius, IS_DOUBLE, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, mode, Qt\\SizeMode, 0, "Qt\\SizeMode::ABSOLUTE_SIZE")
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QListView___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
 ZEND_END_ARG_INFO()
@@ -90,8 +129,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QListView_setFlow, 0, 1, I
 	ZEND_ARG_OBJ_INFO(0, flow, QListView\\Flow, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QListView_isWrapping, 0, 0, _IS_BOOL, 0)
-ZEND_END_ARG_INFO()
+#define arginfo_class_QListView_isWrapping arginfo_class_QPainter_end
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QListView_setWrapping, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, enable, _IS_BOOL, 0)
@@ -124,7 +162,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QListView_setSpacing, 0, 1
 	ZEND_ARG_TYPE_INFO(0, space, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QListView_uniformItemSizes arginfo_class_QListView_isWrapping
+#define arginfo_class_QListView_uniformItemSizes arginfo_class_QPainter_end
 
 #define arginfo_class_QListView_setUniformItemSizes arginfo_class_QListView_setWrapping
 
@@ -137,13 +175,13 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QToolBar_addSeparator, 0, 0, QAction, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QToolBar_isMovable arginfo_class_QListView_isWrapping
+#define arginfo_class_QToolBar_isMovable arginfo_class_QPainter_end
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QToolBar_setMovable, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, movable, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QToolBar_isFloatable arginfo_class_QListView_isWrapping
+#define arginfo_class_QToolBar_isFloatable arginfo_class_QPainter_end
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QToolBar_setFloatable, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, floatable, _IS_BOOL, 0)
@@ -168,6 +206,9 @@ ZEND_METHOD(QStyleOptionViewItem, __construct);
 ZEND_METHOD(QStyleOptionViewItem, rect);
 ZEND_METHOD(QStyleOptionViewItem, state);
 ZEND_METHOD(QPainter, __construct);
+ZEND_METHOD(QPainter, end);
+ZEND_METHOD(QPainter, isActive);
+ZEND_METHOD(QPainter, setClipPath);
 ZEND_METHOD(QPainter, save);
 ZEND_METHOD(QPainter, restore);
 ZEND_METHOD(QPainter, setRenderHint);
@@ -180,6 +221,12 @@ ZEND_METHOD(QPainter, drawRect);
 ZEND_METHOD(QPainter, drawRoundedRect);
 ZEND_METHOD(QPainter, drawPixmap);
 ZEND_METHOD(QPainter, drawText);
+ZEND_METHOD(QPainterPath, __construct);
+ZEND_METHOD(QPainterPath, moveTo);
+ZEND_METHOD(QPainterPath, lineTo);
+ZEND_METHOD(QPainterPath, arcTo);
+ZEND_METHOD(QPainterPath, closeSubpath);
+ZEND_METHOD(QPainterPath, addRoundedRect);
 ZEND_METHOD(QListView, __construct);
 ZEND_METHOD(QListView, viewMode);
 ZEND_METHOD(QListView, setViewMode);
@@ -227,7 +274,10 @@ static const zend_function_entry class_QStyleOptionViewItem_methods[] = {
 };
 
 static const zend_function_entry class_QPainter_methods[] = {
-	ZEND_ME(QPainter, __construct, arginfo_class_QPainter___construct, ZEND_ACC_PRIVATE)
+	ZEND_ME(QPainter, __construct, arginfo_class_QPainter___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainter, end, arginfo_class_QPainter_end, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainter, isActive, arginfo_class_QPainter_isActive, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainter, setClipPath, arginfo_class_QPainter_setClipPath, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPainter, save, arginfo_class_QPainter_save, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPainter, restore, arginfo_class_QPainter_restore, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPainter, setRenderHint, arginfo_class_QPainter_setRenderHint, ZEND_ACC_PUBLIC)
@@ -240,6 +290,16 @@ static const zend_function_entry class_QPainter_methods[] = {
 	ZEND_ME(QPainter, drawRoundedRect, arginfo_class_QPainter_drawRoundedRect, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPainter, drawPixmap, arginfo_class_QPainter_drawPixmap, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPainter, drawText, arginfo_class_QPainter_drawText, ZEND_ACC_PUBLIC)
+	ZEND_FE_END
+};
+
+static const zend_function_entry class_QPainterPath_methods[] = {
+	ZEND_ME(QPainterPath, __construct, arginfo_class_QPainterPath___construct, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainterPath, moveTo, arginfo_class_QPainterPath_moveTo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainterPath, lineTo, arginfo_class_QPainterPath_lineTo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainterPath, arcTo, arginfo_class_QPainterPath_arcTo, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainterPath, closeSubpath, arginfo_class_QPainterPath_closeSubpath, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPainterPath, addRoundedRect, arginfo_class_QPainterPath_addRoundedRect, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -409,6 +469,16 @@ static zend_class_entry *register_class_QPainter(void)
 	zend_class_entry ce, *class_entry;
 
 	INIT_CLASS_ENTRY(ce, "QPainter", class_QPainter_methods);
+	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QPainterPath(void)
+{
+	zend_class_entry ce, *class_entry;
+
+	INIT_CLASS_ENTRY(ce, "QPainterPath", class_QPainterPath_methods);
 	class_entry = zend_register_internal_class_with_flags(&ce, NULL, ZEND_ACC_FINAL|ZEND_ACC_NOT_SERIALIZABLE);
 
 	return class_entry;

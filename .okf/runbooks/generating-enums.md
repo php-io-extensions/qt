@@ -5,7 +5,7 @@ description: scripts/gen-enum.php turns a Qt header enum into stub cases plus on
 resource: scripts/gen-enum.php
 tags: [qt, enums, contributing]
 status: draft
-generated: { by: claude-opus/5.5, at: 2026-10-19T02:24:03Z }
+generated: { by: claude-opus/5.5, at: 2026-11-25T02:56:51Z }
 sources:
   - id: gen
     resource: scripts/gen-enum.php
@@ -39,6 +39,7 @@ Rules the generator applies:
 * Names: prefix stripped, CamelCase → SCREAMING_SNAKE. A name the strip would start with a digit keeps its prefix (`Key_0` → `KEY_0`). Names that differ only in case keep the case of their one-letter word (`Key_Dead_a` → `DEAD_a`, `Key_Dead_A` → `DEAD_A`).
 * Values: numbers, hex, earlier enumerators, `| + - <<` evaluated.
 * Repeated value → later name dropped (backed PHP enum holds each value once).
+* `enum class` → the checks spell the enumerators `<scope>::<enum>::<name>` (`QIcon::ThemeIcon::EditCopy`).
 * Preprocessor follows a default Qt build: `#ifndef` / `#if` blocks kept, `#ifdef` blocks skipped, `#else` flips.
 * `Q_DECL_ENUMERATOR_DEPRECATED` names kept; the macro and its message (which may hold a comma, as `Key_mu`'s does) are dropped before the body is split.
 * `--since` wraps the named checks in `#if QT_VERSION >= QT_VERSION_CHECK(major, minor, 0)`: values newer than the floor (Qt 6.4) are proven on a Qt that has them, skipped on one that does not. Repeat per version.
@@ -57,6 +58,8 @@ Guards in force (`QEvent_Type.inc`, generated from Qt 6.8.2's `qcoreevent.h`; Qt
 | `Key_micro` (6.4 spells 0xb5 `Key_mu`) | 6.7 |
 | `Key_Keyboard`, `RangeModelDataRole`, `StandardItemFlagsRole`, `FileInfoRole` | 6.10 |
 | `RangeModelAdapterRole` | 6.11 |
+
+A whole enum newer than the floor has its stub enum under `#if QT_VERSION >= QT_VERSION_CHECK(…)` and its `.inc` included under the same guard: `QIcon\ThemeIcon` (6.7; `QIcon_ThemeIcon.inc` from Qt 6.11.2's `qicon.h`, identical in 6.7.0 and 6.8.2). `Qt_CursorShape.inc` and `QLineEdit_ActionPosition.inc` are from Qt 6.11.2; both enums are the same on the floor.
 
 [^gen]: scripts/gen-enum.php
 [^module]: src/qt.cpp

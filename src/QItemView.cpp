@@ -4,7 +4,9 @@
 #include <QtGui/QBrush>
 #include <QtGui/QColor>
 #include <QtGui/QFont>
+#include <QtGui/QImage>
 #include <QtGui/QPainter>
+#include <QtGui/QPainterPath>
 #include <QtGui/QPixmap>
 #include <QtGui/QAction>
 #include <QtWidgets/QListView>
@@ -22,6 +24,7 @@ zend_class_entry *phpqt_ce_QStyledItemDelegate;
 zend_class_entry *phpqt_ce_QStyleOptionViewItem;
 zend_class_entry *phpqt_ce_QPainter;
 zend_class_entry *phpqt_ce_QPainter_RenderHint;
+zend_class_entry *phpqt_ce_QPainterPath;
 zend_class_entry *phpqt_ce_QListView;
 zend_class_entry *phpqt_ce_QListView_ViewMode;
 zend_class_entry *phpqt_ce_QListView_Flow;
@@ -50,6 +53,9 @@ void phpqt_register_QItemView()
 
 	phpqt_ce_QPainter = register_class_QPainter();
 	phpqt_value_setup(phpqt_ce_QPainter);
+
+	phpqt_ce_QPainterPath = register_class_QPainterPath();
+	phpqt_value_setup(phpqt_ce_QPainterPath);
 
 	phpqt_ce_QListView = register_class_QListView(phpqt_ce_QAbstractItemView);
 	phpqt_object_setup(phpqt_ce_QListView);
@@ -110,9 +116,182 @@ ZEND_METHOD(QStyleOptionViewItem, state)
 
 /* ---- QPainter --------------------------------------------------------------- */
 
+/*
+ * A painter PHP made: it keeps the device's PHP object, which owns the native device, until the
+ * painter goes, and ends the painting first, as ~QPainter() would.
+ */
+class PhpDevicePainter : public QPainter {
+public:
+	PhpDevicePainter() = default;
+
+	PhpDevicePainter(QPaintDevice *native, zend_object *wrapper) : QPainter(native), device(wrapper)
+	{
+		GC_ADDREF(device);
+	}
+
+	~PhpDevicePainter()
+	{
+		if (isActive()) {
+			end();
+		}
+		if (device != nullptr) {
+			OBJ_RELEASE(device);
+		}
+	}
+
+	zend_object *device = nullptr;
+};
+
+static void phpqt_destroy_device_painter(void *ptr) { delete static_cast<PhpDevicePainter *>(static_cast<QPainter *>(ptr)); }
+
+/* QPainter() or QPainter(QPaintDevice *device): the PHP device classes are QPixmap and QImage. */
 ZEND_METHOD(QPainter, __construct)
 {
+	zend_object *device_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS_OR_NULL(device_obj, phpqt_ce_QPaintDevice)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QPaintDevice *device = nullptr;
+	if (device_obj != nullptr) {
+		void *native = phpqt_value_arg(device_obj, 1);
+		if (native == nullptr) {
+			RETURN_THROWS();
+		}
+		device = instanceof_function(device_obj->ce, phpqt_ce_QPixmap)
+			? static_cast<QPaintDevice *>(static_cast<QPixmap *>(native))
+			: static_cast<QPaintDevice *>(static_cast<QImage *>(native));
+	}
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	PhpDevicePainter *painter = device == nullptr ? new PhpDevicePainter() : new PhpDevicePainter(device, device_obj);
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), static_cast<QPainter *>(painter), true, phpqt_destroy_device_painter);
+}
+
+ZEND_METHOD(QPainter, end)
+{
 	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QPainter, painter);
+
+	RETURN_BOOL(painter->end());
+}
+
+ZEND_METHOD(QPainter, isActive)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QPainter, painter);
+
+	RETURN_BOOL(painter->isActive());
+}
+
+ZEND_METHOD(QPainter, setClipPath)
+{
+	zend_object *path_obj, *operation = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_OBJ_OF_CLASS(path_obj, phpqt_ce_QPainterPath)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(operation, phpqt_ce_Qt_ClipOperation)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPainter, painter);
+
+	QPainterPath *path = static_cast<QPainterPath *>(phpqt_value_arg(path_obj, 1));
+	if (path == nullptr) {
+		RETURN_THROWS();
+	}
+
+	painter->setClipPath(*path, static_cast<Qt::ClipOperation>(phpqt_enum_value(operation, Qt::ReplaceClip)));
+}
+
+/* ---- QPainterPath ----------------------------------------------------------- */
+
+static void phpqt_destroy_painter_path(void *ptr) { delete static_cast<QPainterPath *>(ptr); }
+
+ZEND_METHOD(QPainterPath, __construct)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QPainterPath(), true, phpqt_destroy_painter_path);
+}
+
+ZEND_METHOD(QPainterPath, moveTo)
+{
+	double x, y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_DOUBLE(x)
+		Z_PARAM_DOUBLE(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPainterPath, path);
+
+	path->moveTo(x, y);
+}
+
+ZEND_METHOD(QPainterPath, lineTo)
+{
+	double x, y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_DOUBLE(x)
+		Z_PARAM_DOUBLE(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPainterPath, path);
+
+	path->lineTo(x, y);
+}
+
+ZEND_METHOD(QPainterPath, arcTo)
+{
+	double x, y, w, h, start_angle, arc_length;
+
+	ZEND_PARSE_PARAMETERS_START(6, 6)
+		Z_PARAM_DOUBLE(x)
+		Z_PARAM_DOUBLE(y)
+		Z_PARAM_DOUBLE(w)
+		Z_PARAM_DOUBLE(h)
+		Z_PARAM_DOUBLE(start_angle)
+		Z_PARAM_DOUBLE(arc_length)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPainterPath, path);
+
+	path->arcTo(x, y, w, h, start_angle, arc_length);
+}
+
+ZEND_METHOD(QPainterPath, closeSubpath)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QPainterPath, path);
+
+	path->closeSubpath();
+}
+
+ZEND_METHOD(QPainterPath, addRoundedRect)
+{
+	zend_object *rect_obj, *mode = nullptr;
+	double x_radius, y_radius;
+
+	ZEND_PARSE_PARAMETERS_START(3, 4)
+		Z_PARAM_OBJ_OF_CLASS(rect_obj, phpqt_ce_QRectF)
+		Z_PARAM_DOUBLE(x_radius)
+		Z_PARAM_DOUBLE(y_radius)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_Qt_SizeMode)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPainterPath, path);
+
+	QRectF *rect = static_cast<QRectF *>(phpqt_value_arg(rect_obj, 1));
+	if (rect == nullptr) {
+		RETURN_THROWS();
+	}
+
+	path->addRoundedRect(*rect, x_radius, y_radius, static_cast<Qt::SizeMode>(phpqt_enum_value(mode, Qt::AbsoluteSize)));
 }
 
 ZEND_METHOD(QPainter, save)

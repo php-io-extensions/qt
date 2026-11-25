@@ -49,6 +49,8 @@ static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 #include "checks/Qt_FocusPolicy.inc"
 #include "checks/Qt_ToolButtonStyle.inc"
 #include "checks/Qt_SizeMode.inc"
+#include "checks/Qt_CursorShape.inc"
+#include "checks/Qt_ClipOperation.inc"
 #include "checks/Qt_CaseSensitivity.inc"
 #include "checks/QMessageBox_ButtonRole.inc"
 #include "checks/QMessageBox_Icon.inc"
@@ -136,6 +138,7 @@ zend_class_entry *phpqt_ce_QHBoxLayout;
 zend_class_entry *phpqt_ce_QGridLayout;
 zend_class_entry *phpqt_ce_Qt_Orientation;
 zend_class_entry *phpqt_ce_QLineEdit_EchoMode;
+zend_class_entry *phpqt_ce_QLineEdit_ActionPosition;
 zend_class_entry *phpqt_ce_QLabel;
 zend_class_entry *phpqt_ce_QAbstractButton;
 zend_class_entry *phpqt_ce_QPushButton;
@@ -208,6 +211,8 @@ zend_class_entry *phpqt_ce_Qt_WindowModality;
 zend_class_entry *phpqt_ce_Qt_FocusPolicy;
 zend_class_entry *phpqt_ce_Qt_ToolButtonStyle;
 zend_class_entry *phpqt_ce_Qt_SizeMode;
+zend_class_entry *phpqt_ce_Qt_CursorShape;
+zend_class_entry *phpqt_ce_Qt_ClipOperation;
 zend_class_entry *phpqt_ce_Qt_CaseSensitivity;
 zend_class_entry *phpqt_ce_QComboBox_InsertPolicy;
 zend_class_entry *phpqt_ce_QCompleter_CompletionMode;
@@ -218,6 +223,9 @@ zend_class_entry *phpqt_ce_QStandardItemModel;
 zend_class_entry *phpqt_ce_QStringListModel;
 zend_class_entry *phpqt_ce_QCompleter;
 zend_class_entry *phpqt_ce_QIcon;
+zend_class_entry *phpqt_ce_QIcon_ThemeIcon;
+zend_class_entry *phpqt_ce_QCursor;
+zend_class_entry *phpqt_ce_QPaintDevice;
 zend_class_entry *phpqt_ce_QActionGroup;
 zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;
 zend_class_entry *phpqt_ce_Qt_BrushStyle;
@@ -254,6 +262,8 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_FocusPolicy = register_class_Qt_FocusPolicy();
 	phpqt_ce_Qt_ToolButtonStyle = register_class_Qt_ToolButtonStyle();
 	phpqt_ce_Qt_SizeMode = register_class_Qt_SizeMode();
+	phpqt_ce_Qt_CursorShape = register_class_Qt_CursorShape();
+	phpqt_ce_Qt_ClipOperation = register_class_Qt_ClipOperation();
 	phpqt_ce_Qt_CaseSensitivity = register_class_Qt_CaseSensitivity();
 	phpqt_ce_Qt_ImageConversionFlag = register_class_Qt_ImageConversionFlag();
 	phpqt_ce_Qt_BrushStyle = register_class_Qt_BrushStyle();

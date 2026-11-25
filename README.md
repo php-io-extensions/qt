@@ -1,7 +1,7 @@
 # ext-qt
 
 [![CI](https://img.shields.io/github/actions/workflow/status/php-io-extensions/qt/ci.yml?style=flat-square&label=CI)](https://github.com/php-io-extensions/qt/actions/workflows/ci.yml)
-[![Qt API](https://img.shields.io/badge/Qt_API-5.9%25_%28671%2F11435%29-blue?style=flat-square)](SUPPORT.md)
+[![Qt API](https://img.shields.io/badge/Qt_API-7.0%25_%28804%2F11435%29-blue?style=flat-square)](SUPPORT.md)
 
 1:1 PHP bindings of Qt 6, written directly in C++ against the Zend API. Each
 PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,

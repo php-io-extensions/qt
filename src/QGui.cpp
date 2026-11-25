@@ -9,6 +9,7 @@
 
 #include <QtGui/QFont>
 #include <QtGui/QIcon>
+#include <QtGui/QCursor>
 #include <QtGui/QFontDatabase>
 #include <QtGui/QFontInfo>
 #include <QtGui/QFontMetricsF>
@@ -28,6 +29,10 @@
 
 /* After the Qt headers: the class constants spell QTableWidgetItem::Type and UserType, QTreeWidgetItem's the same. */
 #include "../stubs/QGui_arginfo.h"
+/* QIcon::ThemeIcon is Qt 6.7's: its stub enum and checks exist only on a Qt that has it. */
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+#include "checks/QIcon_ThemeIcon.inc"
+#endif
 
 static_assert(QTreeWidgetItem::ShowIndicator == 0 && QTreeWidgetItem::DontShowIndicator == 1 && QTreeWidgetItem::DontShowIndicatorWhenChildless == 2,
 	"QTreeWidgetItem::ChildIndicatorPolicy values differ from the stub's QTreeWidgetItem\\ChildIndicatorPolicy enum");
@@ -91,6 +96,7 @@ static void phpqt_destroy_font_metrics(void *ptr) { delete static_cast<QFontMetr
 static void phpqt_destroy_font_info(void *ptr) { delete static_cast<QFontInfo *>(ptr); }
 static void phpqt_destroy_pixmap(void *ptr) { delete static_cast<QPixmap *>(ptr); }
 static void phpqt_destroy_icon(void *ptr) { delete static_cast<QIcon *>(ptr); }
+static void phpqt_destroy_cursor(void *ptr) { delete static_cast<QCursor *>(ptr); }
 static void phpqt_destroy_image(void *ptr) { delete static_cast<QImage *>(ptr); }
 static void phpqt_destroy_table_item(void *ptr) { delete static_cast<QTableWidgetItem *>(ptr); }
 
@@ -183,14 +189,22 @@ void phpqt_register_QGui()
 	phpqt_ce_QFontInfo = register_class_QFontInfo();
 	phpqt_value_setup(phpqt_ce_QFontInfo);
 
-	phpqt_ce_QPixmap = register_class_QPixmap();
+	phpqt_ce_QPaintDevice = register_class_QPaintDevice();
+
+	phpqt_ce_QPixmap = register_class_QPixmap(phpqt_ce_QPaintDevice);
 	phpqt_value_setup(phpqt_ce_QPixmap);
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+	phpqt_ce_QIcon_ThemeIcon = register_class_QIcon_ThemeIcon();
+#endif
 	phpqt_ce_QIcon = register_class_QIcon();
 	phpqt_value_setup(phpqt_ce_QIcon);
 
+	phpqt_ce_QCursor = register_class_QCursor();
+	phpqt_value_setup(phpqt_ce_QCursor);
+
 	phpqt_ce_QImage_Format = register_class_QImage_Format();
-	phpqt_ce_QImage = register_class_QImage();
+	phpqt_ce_QImage = register_class_QImage(phpqt_ce_QPaintDevice);
 	phpqt_value_setup(phpqt_ce_QImage);
 
 	phpqt_ce_QTableWidgetItem = register_class_QTableWidgetItem();
@@ -370,6 +384,12 @@ void phpqt_return_pixmap(zval *rv, const QPixmap &pixmap)
 {
 	object_init_ex(rv, phpqt_ce_QPixmap);
 	phpqt_value_hold(Z_OBJ_P(rv), new QPixmap(pixmap), true, phpqt_destroy_pixmap);
+}
+
+void phpqt_return_cursor(zval *rv, const QCursor &cursor)
+{
+	object_init_ex(rv, phpqt_ce_QCursor);
+	phpqt_value_hold(Z_OBJ_P(rv), new QCursor(cursor), true, phpqt_destroy_cursor);
 }
 
 /* The wrapper the item already has, or a new table-owned one; null stays null. */
@@ -678,6 +698,62 @@ ZEND_METHOD(QIcon, isNull)
 	RETURN_BOOL(icon->isNull());
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+/* QIcon::fromTheme(const QString &name) and QIcon::fromTheme(QIcon::ThemeIcon icon): the argument's type picks the overload. */
+ZEND_METHOD(QIcon, fromTheme)
+{
+	zend_object *icon_case = nullptr;
+	zend_string *name = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS_OR_STR(icon_case, phpqt_ce_QIcon_ThemeIcon, name)
+	ZEND_PARSE_PARAMETERS_END();
+
+	QIcon icon = icon_case != nullptr
+		? QIcon::fromTheme(static_cast<QIcon::ThemeIcon>(phpqt_enum_value(icon_case, 0)))
+		: QIcon::fromTheme(phpqt_qstring(name));
+	object_init_ex(return_value, phpqt_ce_QIcon);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QIcon(icon), true, phpqt_destroy_icon);
+}
+#else
+ZEND_METHOD(QIcon, fromTheme)
+{
+	zend_string *name;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(name)
+	ZEND_PARSE_PARAMETERS_END();
+
+	object_init_ex(return_value, phpqt_ce_QIcon);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QIcon(QIcon::fromTheme(phpqt_qstring(name))), true, phpqt_destroy_icon);
+}
+#endif
+
+/* ---- QCursor ----------------------------------------------------------- */
+
+ZEND_METHOD(QCursor, __construct)
+{
+	zend_object *shape;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(shape, phpqt_ce_Qt_CursorShape)
+	ZEND_PARSE_PARAMETERS_END();
+
+	if (!phpqt_value_fresh(Z_OBJ_P(ZEND_THIS))) {
+		RETURN_THROWS();
+	}
+
+	phpqt_value_hold(Z_OBJ_P(ZEND_THIS), new QCursor(static_cast<Qt::CursorShape>(phpqt_enum_value(shape, Qt::ArrowCursor))), true, phpqt_destroy_cursor);
+}
+
+ZEND_METHOD(QCursor, shape)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QCursor, cursor);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_CursorShape, static_cast<zend_long>(cursor->shape()));
+}
+
 ZEND_METHOD(QPixmap, __construct)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
@@ -864,6 +940,42 @@ ZEND_METHOD(QImage, copy)
 	phpqt_value_hold(Z_OBJ_P(return_value), new QImage(image->copy(rect)), true, phpqt_destroy_image);
 }
 
+ZEND_METHOD(QImage, pixel)
+{
+	zend_long x;
+	zend_long y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(x)
+		Z_PARAM_LONG(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	if (!phpqt_long_fits(x, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(y, INT_MIN, INT_MAX, 2)) {
+		RETURN_THROWS();
+	}
+
+	RETURN_LONG(static_cast<zend_long>(image->pixel(static_cast<int>(x), static_cast<int>(y))));
+}
+
+ZEND_METHOD(QImage, pixelColor)
+{
+	zend_long x;
+	zend_long y;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(x)
+		Z_PARAM_LONG(y)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QImage, image);
+
+	if (!phpqt_long_fits(x, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(y, INT_MIN, INT_MAX, 2)) {
+		RETURN_THROWS();
+	}
+
+	phpqt_return_color(return_value, image->pixelColor(static_cast<int>(x), static_cast<int>(y)));
+}
+
 /* ---- QPixmap, continued ------------------------------------------------ */
 
 ZEND_METHOD(QPixmap, load)
@@ -953,6 +1065,38 @@ ZEND_METHOD(QPixmap, copy)
 	}
 
 	phpqt_return_pixmap(return_value, pixmap->copy(rect));
+}
+
+ZEND_METHOD(QPixmap, fill)
+{
+	zend_object *color_obj = nullptr;
+
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJ_OF_CLASS(color_obj, phpqt_ce_QColor)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_VALUE_THIS(QPixmap, pixmap);
+
+	if (color_obj == nullptr) {
+		pixmap->fill();
+		return;
+	}
+
+	QColor *color = static_cast<QColor *>(phpqt_value_arg(color_obj, 1));
+	if (color == nullptr) {
+		RETURN_THROWS();
+	}
+
+	pixmap->fill(*color);
+}
+
+ZEND_METHOD(QPixmap, toImage)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_VALUE_THIS(QPixmap, pixmap);
+
+	object_init_ex(return_value, phpqt_ce_QImage);
+	phpqt_value_hold(Z_OBJ_P(return_value), new QImage(pixmap->toImage()), true, phpqt_destroy_image);
 }
 
 ZEND_METHOD(QPixmap, devicePixelRatio)

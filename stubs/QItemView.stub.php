@@ -82,13 +82,22 @@ namespace {
     }
 
     /**
-     * The painter a delegate's paint() is given, borrowed for that call.
+     * QPainter(QPaintDevice *device) on a pixmap or an image, or QPainter() with no device. The
+     * painter keeps the device's PHP object until it is freed; freeing it ends the painting, as
+     * Qt's destructor does. Call end() before using the device otherwise. The painter a
+     * delegate's paint() is given is borrowed for that call only.
      *
      * @not-serializable
      */
     final class QPainter
     {
-        private function __construct() {}
+        public function __construct(?QPaintDevice $device = null) {}
+
+        public function end(): bool {}
+
+        public function isActive(): bool {}
+
+        public function setClipPath(QPainterPath $path, Qt\ClipOperation $operation = Qt\ClipOperation::REPLACE_CLIP): void {}
 
         public function save(): void {}
 
@@ -114,6 +123,27 @@ namespace {
 
         /** $flags: Qt\AlignmentFlag and Qt\TextFlag values combined with |; $br gets the bounding rect when given. */
         public function drawText(QRect $r, int $flags, string $text, ?QRect &$br = null): void {}
+    }
+
+    /**
+     * A value in Qt; here a heap copy owned by the PHP object. Angles in degrees, counter-clockwise
+     * from three o'clock.
+     *
+     * @not-serializable
+     */
+    final class QPainterPath
+    {
+        public function __construct() {}
+
+        public function moveTo(float $x, float $y): void {}
+
+        public function lineTo(float $x, float $y): void {}
+
+        public function arcTo(float $x, float $y, float $w, float $h, float $startAngle, float $arcLength): void {}
+
+        public function closeSubpath(): void {}
+
+        public function addRoundedRect(QRectF $rect, float $xRadius, float $yRadius, Qt\SizeMode $mode = Qt\SizeMode::ABSOLUTE_SIZE): void {}
     }
 
     /**

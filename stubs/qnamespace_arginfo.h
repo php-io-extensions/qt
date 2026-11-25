@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 421ff537f2e9a0e05ec7cae6c69043fb3aeac957 */
+ * Stub hash: db6db9416a681eb64e6ed981c54496add93882a1 */
 
 static zend_class_entry *register_class_Qt_DateFormat(void)
 {
@@ -987,6 +987,128 @@ static zend_class_entry *register_class_Qt_ToolButtonStyle(void)
 	zval enum_case_TOOL_BUTTON_FOLLOW_STYLE_value;
 	ZVAL_LONG(&enum_case_TOOL_BUTTON_FOLLOW_STYLE_value, 4);
 	zend_enum_add_case_cstr(class_entry, "TOOL_BUTTON_FOLLOW_STYLE", &enum_case_TOOL_BUTTON_FOLLOW_STYLE_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_CursorShape(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\CursorShape", IS_LONG, NULL);
+
+	zval enum_case_ARROW_CURSOR_value;
+	ZVAL_LONG(&enum_case_ARROW_CURSOR_value, 0);
+	zend_enum_add_case_cstr(class_entry, "ARROW_CURSOR", &enum_case_ARROW_CURSOR_value);
+
+	zval enum_case_UP_ARROW_CURSOR_value;
+	ZVAL_LONG(&enum_case_UP_ARROW_CURSOR_value, 1);
+	zend_enum_add_case_cstr(class_entry, "UP_ARROW_CURSOR", &enum_case_UP_ARROW_CURSOR_value);
+
+	zval enum_case_CROSS_CURSOR_value;
+	ZVAL_LONG(&enum_case_CROSS_CURSOR_value, 2);
+	zend_enum_add_case_cstr(class_entry, "CROSS_CURSOR", &enum_case_CROSS_CURSOR_value);
+
+	zval enum_case_WAIT_CURSOR_value;
+	ZVAL_LONG(&enum_case_WAIT_CURSOR_value, 3);
+	zend_enum_add_case_cstr(class_entry, "WAIT_CURSOR", &enum_case_WAIT_CURSOR_value);
+
+	zval enum_case_I_BEAM_CURSOR_value;
+	ZVAL_LONG(&enum_case_I_BEAM_CURSOR_value, 4);
+	zend_enum_add_case_cstr(class_entry, "I_BEAM_CURSOR", &enum_case_I_BEAM_CURSOR_value);
+
+	zval enum_case_SIZE_VER_CURSOR_value;
+	ZVAL_LONG(&enum_case_SIZE_VER_CURSOR_value, 5);
+	zend_enum_add_case_cstr(class_entry, "SIZE_VER_CURSOR", &enum_case_SIZE_VER_CURSOR_value);
+
+	zval enum_case_SIZE_HOR_CURSOR_value;
+	ZVAL_LONG(&enum_case_SIZE_HOR_CURSOR_value, 6);
+	zend_enum_add_case_cstr(class_entry, "SIZE_HOR_CURSOR", &enum_case_SIZE_HOR_CURSOR_value);
+
+	zval enum_case_SIZE_B_DIAG_CURSOR_value;
+	ZVAL_LONG(&enum_case_SIZE_B_DIAG_CURSOR_value, 7);
+	zend_enum_add_case_cstr(class_entry, "SIZE_B_DIAG_CURSOR", &enum_case_SIZE_B_DIAG_CURSOR_value);
+
+	zval enum_case_SIZE_F_DIAG_CURSOR_value;
+	ZVAL_LONG(&enum_case_SIZE_F_DIAG_CURSOR_value, 8);
+	zend_enum_add_case_cstr(class_entry, "SIZE_F_DIAG_CURSOR", &enum_case_SIZE_F_DIAG_CURSOR_value);
+
+	zval enum_case_SIZE_ALL_CURSOR_value;
+	ZVAL_LONG(&enum_case_SIZE_ALL_CURSOR_value, 9);
+	zend_enum_add_case_cstr(class_entry, "SIZE_ALL_CURSOR", &enum_case_SIZE_ALL_CURSOR_value);
+
+	zval enum_case_BLANK_CURSOR_value;
+	ZVAL_LONG(&enum_case_BLANK_CURSOR_value, 10);
+	zend_enum_add_case_cstr(class_entry, "BLANK_CURSOR", &enum_case_BLANK_CURSOR_value);
+
+	zval enum_case_SPLIT_V_CURSOR_value;
+	ZVAL_LONG(&enum_case_SPLIT_V_CURSOR_value, 11);
+	zend_enum_add_case_cstr(class_entry, "SPLIT_V_CURSOR", &enum_case_SPLIT_V_CURSOR_value);
+
+	zval enum_case_SPLIT_H_CURSOR_value;
+	ZVAL_LONG(&enum_case_SPLIT_H_CURSOR_value, 12);
+	zend_enum_add_case_cstr(class_entry, "SPLIT_H_CURSOR", &enum_case_SPLIT_H_CURSOR_value);
+
+	zval enum_case_POINTING_HAND_CURSOR_value;
+	ZVAL_LONG(&enum_case_POINTING_HAND_CURSOR_value, 13);
+	zend_enum_add_case_cstr(class_entry, "POINTING_HAND_CURSOR", &enum_case_POINTING_HAND_CURSOR_value);
+
+	zval enum_case_FORBIDDEN_CURSOR_value;
+	ZVAL_LONG(&enum_case_FORBIDDEN_CURSOR_value, 14);
+	zend_enum_add_case_cstr(class_entry, "FORBIDDEN_CURSOR", &enum_case_FORBIDDEN_CURSOR_value);
+
+	zval enum_case_WHATS_THIS_CURSOR_value;
+	ZVAL_LONG(&enum_case_WHATS_THIS_CURSOR_value, 15);
+	zend_enum_add_case_cstr(class_entry, "WHATS_THIS_CURSOR", &enum_case_WHATS_THIS_CURSOR_value);
+
+	zval enum_case_BUSY_CURSOR_value;
+	ZVAL_LONG(&enum_case_BUSY_CURSOR_value, 16);
+	zend_enum_add_case_cstr(class_entry, "BUSY_CURSOR", &enum_case_BUSY_CURSOR_value);
+
+	zval enum_case_OPEN_HAND_CURSOR_value;
+	ZVAL_LONG(&enum_case_OPEN_HAND_CURSOR_value, 17);
+	zend_enum_add_case_cstr(class_entry, "OPEN_HAND_CURSOR", &enum_case_OPEN_HAND_CURSOR_value);
+
+	zval enum_case_CLOSED_HAND_CURSOR_value;
+	ZVAL_LONG(&enum_case_CLOSED_HAND_CURSOR_value, 18);
+	zend_enum_add_case_cstr(class_entry, "CLOSED_HAND_CURSOR", &enum_case_CLOSED_HAND_CURSOR_value);
+
+	zval enum_case_DRAG_COPY_CURSOR_value;
+	ZVAL_LONG(&enum_case_DRAG_COPY_CURSOR_value, 19);
+	zend_enum_add_case_cstr(class_entry, "DRAG_COPY_CURSOR", &enum_case_DRAG_COPY_CURSOR_value);
+
+	zval enum_case_DRAG_MOVE_CURSOR_value;
+	ZVAL_LONG(&enum_case_DRAG_MOVE_CURSOR_value, 20);
+	zend_enum_add_case_cstr(class_entry, "DRAG_MOVE_CURSOR", &enum_case_DRAG_MOVE_CURSOR_value);
+
+	zval enum_case_DRAG_LINK_CURSOR_value;
+	ZVAL_LONG(&enum_case_DRAG_LINK_CURSOR_value, 21);
+	zend_enum_add_case_cstr(class_entry, "DRAG_LINK_CURSOR", &enum_case_DRAG_LINK_CURSOR_value);
+
+	zval enum_case_BITMAP_CURSOR_value;
+	ZVAL_LONG(&enum_case_BITMAP_CURSOR_value, 24);
+	zend_enum_add_case_cstr(class_entry, "BITMAP_CURSOR", &enum_case_BITMAP_CURSOR_value);
+
+	zval enum_case_CUSTOM_CURSOR_value;
+	ZVAL_LONG(&enum_case_CUSTOM_CURSOR_value, 25);
+	zend_enum_add_case_cstr(class_entry, "CUSTOM_CURSOR", &enum_case_CUSTOM_CURSOR_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_ClipOperation(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ClipOperation", IS_LONG, NULL);
+
+	zval enum_case_NO_CLIP_value;
+	ZVAL_LONG(&enum_case_NO_CLIP_value, 0);
+	zend_enum_add_case_cstr(class_entry, "NO_CLIP", &enum_case_NO_CLIP_value);
+
+	zval enum_case_REPLACE_CLIP_value;
+	ZVAL_LONG(&enum_case_REPLACE_CLIP_value, 1);
+	zend_enum_add_case_cstr(class_entry, "REPLACE_CLIP", &enum_case_REPLACE_CLIP_value);
+
+	zval enum_case_INTERSECT_CLIP_value;
+	ZVAL_LONG(&enum_case_INTERSECT_CLIP_value, 2);
+	zend_enum_add_case_cstr(class_entry, "INTERSECT_CLIP", &enum_case_INTERSECT_CLIP_value);
 
 	return class_entry;
 }

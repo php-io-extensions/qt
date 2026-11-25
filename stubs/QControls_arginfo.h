@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 71b9aa1cf70a75af2f671fad3349f08f59bbccf3 */
+ * Stub hash: 361f42807e5081851677513e670e82bc5edf7ac8 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -26,6 +26,12 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setWordWrap, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, on, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QLabel_indent arginfo_class_QLabel_alignment
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setIndent, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, indent, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLabel_setScaledContents, 0, 1, IS_VOID, 0)
@@ -105,6 +111,12 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPushButton_setDefault, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, default, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QPushButton_autoDefault arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QPushButton_setAutoDefault, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, autoDefault, _IS_BOOL, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QPushButton_isFlat arginfo_class_QLabel_wordWrap
@@ -376,6 +388,27 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLineEdit_setAlignment, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_TYPE_MASK(0, flag, Qt\\AlignmentFlag, MAY_BE_LONG, NULL)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLineEdit_setFrame, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, frame, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QLineEdit_hasFrame arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLineEdit_setMaxLength, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, maxLength, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QLineEdit_maxLength arginfo_class_QLabel_alignment
+
+#define arginfo_class_QLineEdit_setClearButtonEnabled arginfo_class_QToolButton_setAutoRaise
+
+#define arginfo_class_QLineEdit_isClearButtonEnabled arginfo_class_QLabel_wordWrap
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLineEdit_addAction, 0, 2, QAction, 0)
+	ZEND_ARG_OBJ_INFO(0, icon, QIcon, 0)
+	ZEND_ARG_OBJ_INFO(0, position, QLineEdit\\ActionPosition, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QPlainTextEdit___construct arginfo_class_QToolButton___construct
@@ -751,6 +784,8 @@ ZEND_METHOD(QLabel, alignment);
 ZEND_METHOD(QLabel, setAlignment);
 ZEND_METHOD(QLabel, wordWrap);
 ZEND_METHOD(QLabel, setWordWrap);
+ZEND_METHOD(QLabel, indent);
+ZEND_METHOD(QLabel, setIndent);
 ZEND_METHOD(QLabel, setScaledContents);
 ZEND_METHOD(QLabel, textFormat);
 ZEND_METHOD(QLabel, setTextFormat);
@@ -776,6 +811,8 @@ ZEND_METHOD(QAbstractButton, setIconSize);
 ZEND_METHOD(QPushButton, __construct);
 ZEND_METHOD(QPushButton, isDefault);
 ZEND_METHOD(QPushButton, setDefault);
+ZEND_METHOD(QPushButton, autoDefault);
+ZEND_METHOD(QPushButton, setAutoDefault);
 ZEND_METHOD(QPushButton, isFlat);
 ZEND_METHOD(QPushButton, setFlat);
 ZEND_METHOD(QToolButton, __construct);
@@ -861,6 +898,13 @@ ZEND_METHOD(QLineEdit, redo);
 ZEND_METHOD(QLineEdit, selectedText);
 ZEND_METHOD(QLineEdit, alignment);
 ZEND_METHOD(QLineEdit, setAlignment);
+ZEND_METHOD(QLineEdit, setFrame);
+ZEND_METHOD(QLineEdit, hasFrame);
+ZEND_METHOD(QLineEdit, setMaxLength);
+ZEND_METHOD(QLineEdit, maxLength);
+ZEND_METHOD(QLineEdit, setClearButtonEnabled);
+ZEND_METHOD(QLineEdit, isClearButtonEnabled);
+ZEND_METHOD(QLineEdit, addAction);
 ZEND_METHOD(QPlainTextEdit, __construct);
 ZEND_METHOD(QPlainTextEdit, toPlainText);
 ZEND_METHOD(QPlainTextEdit, setPlainText);
@@ -995,6 +1039,8 @@ static const zend_function_entry class_QLabel_methods[] = {
 	ZEND_ME(QLabel, setAlignment, arginfo_class_QLabel_setAlignment, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, wordWrap, arginfo_class_QLabel_wordWrap, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, setWordWrap, arginfo_class_QLabel_setWordWrap, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLabel, indent, arginfo_class_QLabel_indent, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLabel, setIndent, arginfo_class_QLabel_setIndent, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, setScaledContents, arginfo_class_QLabel_setScaledContents, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, textFormat, arginfo_class_QLabel_textFormat, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLabel, setTextFormat, arginfo_class_QLabel_setTextFormat, ZEND_ACC_PUBLIC)
@@ -1028,6 +1074,8 @@ static const zend_function_entry class_QPushButton_methods[] = {
 	ZEND_ME(QPushButton, __construct, arginfo_class_QPushButton___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPushButton, isDefault, arginfo_class_QPushButton_isDefault, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPushButton, setDefault, arginfo_class_QPushButton_setDefault, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPushButton, autoDefault, arginfo_class_QPushButton_autoDefault, ZEND_ACC_PUBLIC)
+	ZEND_ME(QPushButton, setAutoDefault, arginfo_class_QPushButton_setAutoDefault, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPushButton, isFlat, arginfo_class_QPushButton_isFlat, ZEND_ACC_PUBLIC)
 	ZEND_ME(QPushButton, setFlat, arginfo_class_QPushButton_setFlat, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
@@ -1157,6 +1205,13 @@ static const zend_function_entry class_QLineEdit_methods[] = {
 	ZEND_ME(QLineEdit, selectedText, arginfo_class_QLineEdit_selectedText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLineEdit, alignment, arginfo_class_QLineEdit_alignment, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLineEdit, setAlignment, arginfo_class_QLineEdit_setAlignment, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, setFrame, arginfo_class_QLineEdit_setFrame, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, hasFrame, arginfo_class_QLineEdit_hasFrame, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, setMaxLength, arginfo_class_QLineEdit_setMaxLength, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, maxLength, arginfo_class_QLineEdit_maxLength, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, setClearButtonEnabled, arginfo_class_QLineEdit_setClearButtonEnabled, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, isClearButtonEnabled, arginfo_class_QLineEdit_isClearButtonEnabled, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLineEdit, addAction, arginfo_class_QLineEdit_addAction, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 
@@ -1367,6 +1422,21 @@ static zend_class_entry *register_class_QLineEdit_EchoMode(void)
 	zval enum_case_PASSWORD_ECHO_ON_EDIT_value;
 	ZVAL_LONG(&enum_case_PASSWORD_ECHO_ON_EDIT_value, 3);
 	zend_enum_add_case_cstr(class_entry, "PASSWORD_ECHO_ON_EDIT", &enum_case_PASSWORD_ECHO_ON_EDIT_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QLineEdit_ActionPosition(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QLineEdit\\ActionPosition", IS_LONG, NULL);
+
+	zval enum_case_LEADING_POSITION_value;
+	ZVAL_LONG(&enum_case_LEADING_POSITION_value, 0);
+	zend_enum_add_case_cstr(class_entry, "LEADING_POSITION", &enum_case_LEADING_POSITION_value);
+
+	zval enum_case_TRAILING_POSITION_value;
+	ZVAL_LONG(&enum_case_TRAILING_POSITION_value, 1);
+	zend_enum_add_case_cstr(class_entry, "TRAILING_POSITION", &enum_case_TRAILING_POSITION_value);
 
 	return class_entry;
 }

@@ -6,6 +6,7 @@
 #include <QtCore/QString>
 #include <QtCore/QDir>
 #include <QtGui/QFont>
+#include <QtGui/QCursor>
 #include <QtGui/QWindow>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLayout>
@@ -121,6 +122,25 @@ PHPQT_WIDGET_VOID(setFocus, setFocus)
 PHPQT_WIDGET_VOID(clearFocus, clearFocus)
 PHPQT_WIDGET_BOOL(hasFocus, hasFocus)
 PHPQT_WIDGET_VOID(raise, raise)
+PHPQT_WIDGET_VOID(lower, lower)
+
+ZEND_METHOD(QWidget, stackUnder)
+{
+	zend_object *w_obj;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(w_obj, phpqt_ce_QWidget)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QWidget *w = static_cast<QWidget *>(phpqt_arg(w_obj, 1, &failed));
+	if (failed) {
+		RETURN_THROWS();
+	}
+
+	widget->stackUnder(w);
+}
 PHPQT_WIDGET_INT(width, width)
 PHPQT_WIDGET_INT(height, height)
 
@@ -440,6 +460,59 @@ ZEND_METHOD(QWidget, styleSheet)
 	PHPQT_THIS(QWidget, widget);
 
 	phpqt_return_qstring(return_value, widget->styleSheet());
+}
+
+ZEND_METHOD(QWidget, cursor)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_cursor(return_value, widget->cursor());
+}
+
+ZEND_METHOD(QWidget, setCursor)
+{
+	zend_object *cursor_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(cursor_obj, phpqt_ce_QCursor)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	QCursor *cursor = static_cast<QCursor *>(phpqt_value_arg(cursor_obj, 1));
+	if (cursor == nullptr) {
+		RETURN_THROWS();
+	}
+
+	widget->setCursor(*cursor);
+}
+
+ZEND_METHOD(QWidget, unsetCursor)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->unsetCursor();
+}
+
+ZEND_METHOD(QWidget, setToolTip)
+{
+	zend_string *tip;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(tip)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setToolTip(phpqt_qstring(tip));
+}
+
+ZEND_METHOD(QWidget, toolTip)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_qstring(return_value, widget->toolTip());
 }
 
 ZEND_METHOD(QWidget, devicePixelRatioF)
