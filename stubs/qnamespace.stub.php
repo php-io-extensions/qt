@@ -928,3 +928,13 @@ enum MouseEventSource: int
     case MOUSE_EVENT_SYNTHESIZED_BY_QT = 2;
     case MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION = 3;
 }
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+/** Qt::ColorScheme (Qt 6.5): the scheme the system or the application draws in. */
+enum ColorScheme: int
+{
+    case UNKNOWN = 0;
+    case LIGHT = 1;
+    case DARK = 2;
+}
+#endif

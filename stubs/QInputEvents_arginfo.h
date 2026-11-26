@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: f0a23e2b72d7966d592cdccbf96d0ab2c386ab6c */
+ * Stub hash: 8e83f23887759b6bddba83d607aab842e223bb8d */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QEvent___construct, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, type, QEvent\\Type, 0)
@@ -138,6 +138,20 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QStyleHints_mouseDoubleClickDistance arginfo_class_QInputEvent_modifiers
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QStyleHints_colorScheme, 0, 0, Qt\\ColorScheme, 0)
+ZEND_END_ARG_INFO()
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStyleHints_setColorScheme, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, scheme, Qt\\ColorScheme, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QStyleHints_unsetColorScheme, 0, 0, IS_VOID, 0)
+ZEND_END_ARG_INFO()
+#endif
+
 ZEND_METHOD(QEvent, __construct);
 ZEND_METHOD(QEvent, type);
 ZEND_METHOD(QEvent, accept);
@@ -179,6 +193,13 @@ ZEND_METHOD(QStyleHints, mousePressAndHoldInterval);
 ZEND_METHOD(QStyleHints, startDragDistance);
 ZEND_METHOD(QStyleHints, mouseDoubleClickInterval);
 ZEND_METHOD(QStyleHints, mouseDoubleClickDistance);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+ZEND_METHOD(QStyleHints, colorScheme);
+#endif
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+ZEND_METHOD(QStyleHints, setColorScheme);
+ZEND_METHOD(QStyleHints, unsetColorScheme);
+#endif
 
 static const zend_function_entry class_QEvent_methods[] = {
 	ZEND_ME(QEvent, __construct, arginfo_class_QEvent___construct, ZEND_ACC_PUBLIC)
@@ -250,6 +271,13 @@ static const zend_function_entry class_QStyleHints_methods[] = {
 	ZEND_ME(QStyleHints, startDragDistance, arginfo_class_QStyleHints_startDragDistance, ZEND_ACC_PUBLIC)
 	ZEND_ME(QStyleHints, mouseDoubleClickInterval, arginfo_class_QStyleHints_mouseDoubleClickInterval, ZEND_ACC_PUBLIC)
 	ZEND_ME(QStyleHints, mouseDoubleClickDistance, arginfo_class_QStyleHints_mouseDoubleClickDistance, ZEND_ACC_PUBLIC)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	ZEND_ME(QStyleHints, colorScheme, arginfo_class_QStyleHints_colorScheme, ZEND_ACC_PUBLIC)
+#endif
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+	ZEND_ME(QStyleHints, setColorScheme, arginfo_class_QStyleHints_setColorScheme, ZEND_ACC_PUBLIC)
+	ZEND_ME(QStyleHints, unsetColorScheme, arginfo_class_QStyleHints_unsetColorScheme, ZEND_ACC_PUBLIC)
+#endif
 	ZEND_FE_END
 };
 

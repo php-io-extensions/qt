@@ -625,6 +625,38 @@ ZEND_METHOD(QStyleHints, mouseDoubleClickDistance)
 	RETURN_LONG(hints->mouseDoubleClickDistance());
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+ZEND_METHOD(QStyleHints, colorScheme)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QStyleHints, hints);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_ColorScheme, static_cast<zend_long>(hints->colorScheme()));
+}
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+ZEND_METHOD(QStyleHints, setColorScheme)
+{
+	zend_object *scheme;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(scheme, phpqt_ce_Qt_ColorScheme)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QStyleHints, hints);
+
+	hints->setColorScheme(static_cast<Qt::ColorScheme>(phpqt_enum_value(scheme, 0)));
+}
+
+ZEND_METHOD(QStyleHints, unsetColorScheme)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QStyleHints, hints);
+
+	hints->unsetColorScheme();
+}
+#endif
+
 /* ---- QKeyEvent::matches ---------------------------------------------------- */
 
 ZEND_METHOD(QKeyEvent, matches)

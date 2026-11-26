@@ -201,6 +201,22 @@ it('reads the double-click hints', function (): void {
         ->and($hints->mouseDoubleClickDistance())->toBeGreaterThanOrEqual(0);
 });
 
+it('sets the colour scheme, reads it back, and unsets it', function (): void {
+    $hints = QGuiApplication::styleHints();
+    $system = $hints->colorScheme();
+
+    expect(array_map(fn (Qt\ColorScheme $s): int => $s->value, Qt\ColorScheme::cases()))->toBe([0, 1, 2]);
+
+    $hints->setColorScheme(Qt\ColorScheme::DARK);
+    expect($hints->colorScheme())->toBe(Qt\ColorScheme::DARK);
+
+    $hints->setColorScheme(Qt\ColorScheme::LIGHT);
+    expect($hints->colorScheme())->toBe(Qt\ColorScheme::LIGHT);
+
+    $hints->unsetColorScheme();
+    expect($hints->colorScheme())->toBe($system);
+})->skip(fn () => ! method_exists(QStyleHints::class, 'setColorScheme'), 'Qt older than 6.8');
+
 it('names the scroll phases and mouse event sources at their C values', function (): void {
     expect(array_map(fn (Qt\ScrollPhase $p): int => $p->value, Qt\ScrollPhase::cases()))->toBe([0, 1, 2, 3, 4])
         ->and([Qt\ScrollPhase::NO_SCROLL_PHASE, Qt\ScrollPhase::SCROLL_MOMENTUM])->toBe([Qt\ScrollPhase::from(0), Qt\ScrollPhase::from(4)])

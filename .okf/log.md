@@ -2,6 +2,8 @@
 
 ## 2026-11-26
 
+* New: [surface](api/surface.md) — `QStyleHints::colorScheme()` (Qt 6.5), `setColorScheme()` and `unsetColorScheme()` (Qt 6.8), and the `Qt\ColorScheme` enum (Qt 6.5), each under its `QT_VERSION` guard; `tests/EventsTest.php` sets, reads back and unsets the scheme.
+
 * New: [surface](api/surface.md) — `QScrollArea::verticalScrollBar()` and `horizontalScrollBar()` (QAbstractScrollArea's, as on `QPlainTextEdit` and `QAbstractItemView`): the area's own `QScrollBar`s, whose `valueChanged(int)` is a scroll and whose `maximum() + pageStep()` is the widget's length. `tests/ControlsTest.php` (one case; 64 passed with `SurfaceTest`, NTS and ZTS).
 * New: [surface](api/surface.md) — `QMessageBox::textFormat(): Qt\TextFormat` and `setTextFormat(Qt\TextFormat $format)`, which Qt applies to the text and the informative text. With `PLAIN_TEXT`, text that looks like HTML shows as written in Qt's own box; on macOS Qt still shows plain text as an `NSAlert`. `tests/WidgetTest.php` (one case; 40 passed with `SurfaceTest`, NTS and ZTS). SUPPORT.md: 816 / 11435. The full suite's four `VulkanInstanceTest` failures are not this change: they call ext-vulkan's `vkEnumerateInstanceExtensionProperties` with two arguments, and it now takes three.
 

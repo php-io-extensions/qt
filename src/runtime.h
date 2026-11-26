@@ -373,6 +373,7 @@ extern zend_class_entry *phpqt_ce_QStringListModel;
 extern zend_class_entry *phpqt_ce_QCompleter;
 extern zend_class_entry *phpqt_ce_QIcon;
 extern zend_class_entry *phpqt_ce_QIcon_ThemeIcon;
+extern zend_class_entry *phpqt_ce_Qt_ColorScheme;
 extern zend_class_entry *phpqt_ce_QCursor;
 extern zend_class_entry *phpqt_ce_QActionGroup;
 extern zend_class_entry *phpqt_ce_Qt_ImageConversionFlag;

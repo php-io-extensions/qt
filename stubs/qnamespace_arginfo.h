@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: db6db9416a681eb64e6ed981c54496add93882a1 */
+ * Stub hash: af49e9eb73ab47458240d01e876825c9c97ef676 */
 
 static zend_class_entry *register_class_Qt_DateFormat(void)
 {
@@ -3378,3 +3378,24 @@ static zend_class_entry *register_class_Qt_MouseEventSource(void)
 
 	return class_entry;
 }
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+static zend_class_entry *register_class_Qt_ColorScheme(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\ColorScheme", IS_LONG, NULL);
+
+	zval enum_case_UNKNOWN_value;
+	ZVAL_LONG(&enum_case_UNKNOWN_value, 0);
+	zend_enum_add_case_cstr(class_entry, "UNKNOWN", &enum_case_UNKNOWN_value);
+
+	zval enum_case_LIGHT_value;
+	ZVAL_LONG(&enum_case_LIGHT_value, 1);
+	zend_enum_add_case_cstr(class_entry, "LIGHT", &enum_case_LIGHT_value);
+
+	zval enum_case_DARK_value;
+	ZVAL_LONG(&enum_case_DARK_value, 2);
+	zend_enum_add_case_cstr(class_entry, "DARK", &enum_case_DARK_value);
+
+	return class_entry;
+}
+#endif

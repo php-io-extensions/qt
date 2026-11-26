@@ -35,6 +35,10 @@ static_assert(Qt::TextDate == 0 && Qt::ISODate == 1 && Qt::RFC2822Date == 8 && Q
 	"Qt::DateFormat values differ from the stub's Qt\\DateFormat enum");
 static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 	"Qt::TransformationMode values differ from the stub's Qt\\TransformationMode enum");
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+static_assert(int(Qt::ColorScheme::Unknown) == 0 && int(Qt::ColorScheme::Light) == 1 && int(Qt::ColorScheme::Dark) == 2,
+	"Qt::ColorScheme values differ from the stub's Qt\\ColorScheme enum");
+#endif
 
 /* Every generated enum case is proved against the Qt this build compiles with. */
 #include "checks/QEvent_Type.inc"
@@ -227,6 +231,7 @@ zend_class_entry *phpqt_ce_QStringListModel;
 zend_class_entry *phpqt_ce_QCompleter;
 zend_class_entry *phpqt_ce_QIcon;
 zend_class_entry *phpqt_ce_QIcon_ThemeIcon;
+zend_class_entry *phpqt_ce_Qt_ColorScheme;
 zend_class_entry *phpqt_ce_QCursor;
 zend_class_entry *phpqt_ce_QPaintDevice;
 zend_class_entry *phpqt_ce_QActionGroup;
@@ -255,6 +260,9 @@ void phpqt_register_enums()
 	phpqt_ce_Qt_AlignmentFlag = register_class_Qt_AlignmentFlag();
 	phpqt_ce_Qt_TextInteractionFlag = register_class_Qt_TextInteractionFlag();
 	phpqt_ce_Qt_Orientation = register_class_Qt_Orientation();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	phpqt_ce_Qt_ColorScheme = register_class_Qt_ColorScheme();
+#endif
 	phpqt_ce_Qt_AspectRatioMode = register_class_Qt_AspectRatioMode();
 	phpqt_ce_Qt_ScrollBarPolicy = register_class_Qt_ScrollBarPolicy();
 	phpqt_ce_Qt_TextFormat = register_class_Qt_TextFormat();

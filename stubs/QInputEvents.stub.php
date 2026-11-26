@@ -171,4 +171,17 @@ class QStyleHints extends QObject
 
     /** Pixels. */
     public function mouseDoubleClickDistance(): int {}
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+    /** The scheme the application draws in (Qt 6.5): Qt\ColorScheme::UNKNOWN when none is known. */
+    public function colorScheme(): Qt\ColorScheme {}
+#endif
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+    /** Qt 6.8. */
+    public function setColorScheme(Qt\ColorScheme $scheme): void {}
+
+    /** Qt 6.8: back to the system's scheme. */
+    public function unsetColorScheme(): void {}
+#endif
 }
