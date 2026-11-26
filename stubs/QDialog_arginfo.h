@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 25d90520913bf24821602795cdeb7b25ffea3149 */
+ * Stub hash: bfad0e929e9058e56ef47d4416e6bc0e080201dc */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QDialog___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -41,6 +41,13 @@ ZEND_END_ARG_INFO()
 #define arginfo_class_QMessageBox_informativeText arginfo_class_QMessageBox_text
 
 #define arginfo_class_QMessageBox_setInformativeText arginfo_class_QMessageBox_setText
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMessageBox_textFormat, 0, 0, Qt\\TextFormat, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMessageBox_setTextFormat, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, format, Qt\\TextFormat, 0)
+ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMessageBox_addButton, 0, 2, QPushButton, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
@@ -128,6 +135,8 @@ ZEND_METHOD(QMessageBox, text);
 ZEND_METHOD(QMessageBox, setText);
 ZEND_METHOD(QMessageBox, informativeText);
 ZEND_METHOD(QMessageBox, setInformativeText);
+ZEND_METHOD(QMessageBox, textFormat);
+ZEND_METHOD(QMessageBox, setTextFormat);
 ZEND_METHOD(QMessageBox, addButton);
 ZEND_METHOD(QMessageBox, setDefaultButton);
 ZEND_METHOD(QMessageBox, setEscapeButton);
@@ -166,6 +175,8 @@ static const zend_function_entry class_QMessageBox_methods[] = {
 	ZEND_ME(QMessageBox, setText, arginfo_class_QMessageBox_setText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMessageBox, informativeText, arginfo_class_QMessageBox_informativeText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMessageBox, setInformativeText, arginfo_class_QMessageBox_setInformativeText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QMessageBox, textFormat, arginfo_class_QMessageBox_textFormat, ZEND_ACC_PUBLIC)
+	ZEND_ME(QMessageBox, setTextFormat, arginfo_class_QMessageBox_setTextFormat, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMessageBox, addButton, arginfo_class_QMessageBox_addButton, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMessageBox, setDefaultButton, arginfo_class_QMessageBox_setDefaultButton, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMessageBox, setEscapeButton, arginfo_class_QMessageBox_setEscapeButton, ZEND_ACC_PUBLIC)

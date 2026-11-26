@@ -37,3 +37,48 @@ it('signals loadFinished(false) for a page it cannot load', function (): void {
 
     expect($result)->toBeFalse();
 });
+
+it('delivers QWebEngineLoadingInfo through the page loadingChanged signal, started then succeeded', function (): void {
+    $view = new QWebEngineView();
+    $page = $view->page();
+    $seen = [];
+    $loadingDuring = null;
+    QObject::connect($page, 'loadingChanged(QWebEngineLoadingInfo)', function (QWebEngineLoadingInfo $info) use (&$seen, &$loadingDuring, $page): void {
+        $seen[] = $info;
+        if ($info->status() === QWebEngineLoadingInfo\LoadStatus::LOAD_STARTED_STATUS) {
+            $loadingDuring = $page->isLoading();
+        }
+    });
+
+    expect($page)->toBeInstanceOf(QWebEnginePage::class)->and($page->isLoading())->toBeFalse();
+
+    $view->setHtml('<title>Page</title><p>hi</p>', new QUrl('https://example.test/base'));
+    processUntil(fn () => count(array_filter($seen, fn ($i) => $i->status() === QWebEngineLoadingInfo\LoadStatus::LOAD_SUCCEEDED_STATUS)) > 0, 20000);
+
+    $statuses = array_map(fn ($i) => $i->status(), $seen);
+    expect($statuses[0])->toBe(QWebEngineLoadingInfo\LoadStatus::LOAD_STARTED_STATUS)
+        ->and(end($statuses))->toBe(QWebEngineLoadingInfo\LoadStatus::LOAD_SUCCEEDED_STATUS)
+        ->and($loadingDuring)->toBeTrue()
+        ->and($page->isLoading())->toBeFalse()
+        ->and(end($seen)->url()->toString())->toBe('https://example.test/base')
+        ->and(end($seen)->isErrorPage())->toBeFalse()
+        ->and($page->title())->toBe('Page')
+        ->and($page->url()->toString())->toBe('https://example.test/base');
+});
+
+it('reports LoadFailedStatus with an error string for a page it cannot load', function (): void {
+    $view = new QWebEngineView();
+    $failed = null;
+    QObject::connect($view->page(), 'loadingChanged(QWebEngineLoadingInfo)', function (QWebEngineLoadingInfo $info) use (&$failed): void {
+        if ($info->status() === QWebEngineLoadingInfo\LoadStatus::LOAD_FAILED_STATUS) {
+            $failed = $info;
+        }
+    });
+
+    $view->load(new QUrl('file:///nonexistent/webengine-test.html'));
+    processUntil(fn () => $failed !== null, 20000);
+
+    expect($failed)->toBeInstanceOf(QWebEngineLoadingInfo::class)
+        ->and($failed->errorString())->not->toBe('')
+        ->and($failed->errorCode())->toBeInt();
+});

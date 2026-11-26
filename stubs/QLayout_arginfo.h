@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 508c9951bd8a561278ef3cd8c0916528dcec9554 */
+ * Stub hash: 92e02fbe1eb8a20456f19d5c3045baded8063578 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_setSpacing, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, spacing, IS_LONG, 0)
@@ -23,6 +23,10 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_indexOf, 0, 1, IS_LONG, 0)
 	ZEND_ARG_OBJ_INFO(0, widget, QWidget, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QLayout_removeItem, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_TYPE_MASK(0, item, QLayoutItem|QLayout, 0, NULL)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QLayout_itemAt, 0, 1, QLayoutItem, 1)
@@ -77,6 +81,12 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QBoxLayout_insertWidget, 0
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QBoxLayout_addLayout, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, layout, QLayout, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, stretch, IS_LONG, 0, "0")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QBoxLayout_insertLayout, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
 	ZEND_ARG_OBJ_INFO(0, layout, QLayout, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, stretch, IS_LONG, 0, "0")
 ZEND_END_ARG_INFO()
@@ -171,6 +181,7 @@ ZEND_METHOD(QLayout, setContentsMargins);
 ZEND_METHOD(QLayout, count);
 ZEND_METHOD(QLayout, removeWidget);
 ZEND_METHOD(QLayout, indexOf);
+ZEND_METHOD(QLayout, removeItem);
 ZEND_METHOD(QLayout, itemAt);
 ZEND_METHOD(QLayout, invalidate);
 ZEND_METHOD(QLayoutItem, __construct);
@@ -184,6 +195,7 @@ ZEND_METHOD(QBoxLayout, __construct);
 ZEND_METHOD(QBoxLayout, addWidget);
 ZEND_METHOD(QBoxLayout, insertWidget);
 ZEND_METHOD(QBoxLayout, addLayout);
+ZEND_METHOD(QBoxLayout, insertLayout);
 ZEND_METHOD(QBoxLayout, addStretch);
 ZEND_METHOD(QBoxLayout, setStretch);
 ZEND_METHOD(QBoxLayout, stretch);
@@ -211,6 +223,7 @@ static const zend_function_entry class_QLayout_methods[] = {
 	ZEND_ME(QLayout, count, arginfo_class_QLayout_count, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, removeWidget, arginfo_class_QLayout_removeWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, indexOf, arginfo_class_QLayout_indexOf, ZEND_ACC_PUBLIC)
+	ZEND_ME(QLayout, removeItem, arginfo_class_QLayout_removeItem, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, itemAt, arginfo_class_QLayout_itemAt, ZEND_ACC_PUBLIC)
 	ZEND_ME(QLayout, invalidate, arginfo_class_QLayout_invalidate, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
@@ -236,6 +249,7 @@ static const zend_function_entry class_QBoxLayout_methods[] = {
 	ZEND_ME(QBoxLayout, addWidget, arginfo_class_QBoxLayout_addWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBoxLayout, insertWidget, arginfo_class_QBoxLayout_insertWidget, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBoxLayout, addLayout, arginfo_class_QBoxLayout_addLayout, ZEND_ACC_PUBLIC)
+	ZEND_ME(QBoxLayout, insertLayout, arginfo_class_QBoxLayout_insertLayout, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBoxLayout, addStretch, arginfo_class_QBoxLayout_addStretch, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBoxLayout, setStretch, arginfo_class_QBoxLayout_setStretch, ZEND_ACC_PUBLIC)
 	ZEND_ME(QBoxLayout, stretch, arginfo_class_QBoxLayout_stretch, ZEND_ACC_PUBLIC)

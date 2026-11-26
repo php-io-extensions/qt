@@ -320,6 +320,47 @@ it('shapes a frame and scrolls a widget', function (): void {
         ->and($area)->toBeInstanceOf(QFrame::class);
 });
 
+it('lends a scroll area\'s bars, whose range is what its widget runs past the viewport', function (): void {
+    $area = new QScrollArea();
+    $area->resize(200, 100);
+    $tall = new QWidget();
+    $tall->setFixedSize(180, 400);
+    $area->setWidget($tall);
+    $area->show();
+    QCoreApplication::processEvents(QEventLoop\ProcessEventsFlag::ALL_EVENTS);
+
+    $bar = $area->verticalScrollBar();
+    $moved = [];
+    QObject::connect($bar, 'valueChanged(int)', function (int $value) use (&$moved): void {
+        $moved[] = $value;
+    });
+    $bar->setValue($bar->maximum());
+
+    expect($bar)->toBeInstanceOf(QScrollBar::class)
+        ->and($area->verticalScrollBar())->toBe($bar)
+        ->and($area->horizontalScrollBar())->toBeInstanceOf(QScrollBar::class)
+        ->and($bar->maximum() + $bar->pageStep())->toBe(400)
+        ->and($moved)->toBe([$bar->maximum()]);
+    $area->close();
+});
+
+it('lends a scroll area\'s viewport, which holds its widget, and Qt fills the widget\'s background', function (): void {
+    $area = new QScrollArea();
+    $inner = new QWidget();
+    $area->setWidget($inner);
+    $viewport = $area->viewport();
+
+    // QScrollArea::setWidget() turns the widget's autoFillBackground on.
+    expect($viewport)->toBeInstanceOf(QWidget::class)
+        ->and($area->viewport())->toBe($viewport)
+        ->and($inner->parentWidget())->toBe($viewport)
+        ->and($inner->autoFillBackground())->toBeTrue();
+
+    $inner->setAutoFillBackground(false);
+    $viewport->setAutoFillBackground(false);
+    expect([$inner->autoFillBackground(), $viewport->autoFillBackground()])->toBe([false, false]);
+});
+
 it('carries Qt\'s table item types', function (): void {
     expect([QTableWidgetItem::TYPE, QTableWidgetItem::USER_TYPE])->toBe([0, 1000]);
 });

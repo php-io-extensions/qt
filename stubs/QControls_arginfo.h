@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 361f42807e5081851677513e670e82bc5edf7ac8 */
+ * Stub hash: 8b9789ddad75ebe4d026ad8483e7cb2e640e93c4 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -559,6 +559,12 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QScrollArea_setVerticalScrollBarPolicy arginfo_class_QScrollArea_setHorizontalScrollBarPolicy
 
+#define arginfo_class_QScrollArea_viewport arginfo_class_QPlainTextEdit_viewport
+
+#define arginfo_class_QScrollArea_verticalScrollBar arginfo_class_QPlainTextEdit_verticalScrollBar
+
+#define arginfo_class_QScrollArea_horizontalScrollBar arginfo_class_QPlainTextEdit_verticalScrollBar
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAbstractItemView_setSelectionBehavior, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, behavior, QAbstractItemView\\SelectionBehavior, 0)
 ZEND_END_ARG_INFO()
@@ -958,6 +964,9 @@ ZEND_METHOD(QScrollArea, widget);
 ZEND_METHOD(QScrollArea, setWidgetResizable);
 ZEND_METHOD(QScrollArea, setHorizontalScrollBarPolicy);
 ZEND_METHOD(QScrollArea, setVerticalScrollBarPolicy);
+ZEND_METHOD(QScrollArea, viewport);
+ZEND_METHOD(QScrollArea, verticalScrollBar);
+ZEND_METHOD(QScrollArea, horizontalScrollBar);
 ZEND_METHOD(QAbstractItemView, setSelectionBehavior);
 ZEND_METHOD(QAbstractItemView, setSelectionMode);
 ZEND_METHOD(QAbstractItemView, setEditTriggers);
@@ -1289,6 +1298,9 @@ static const zend_function_entry class_QScrollArea_methods[] = {
 	ZEND_ME(QScrollArea, setWidgetResizable, arginfo_class_QScrollArea_setWidgetResizable, ZEND_ACC_PUBLIC)
 	ZEND_ME(QScrollArea, setHorizontalScrollBarPolicy, arginfo_class_QScrollArea_setHorizontalScrollBarPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QScrollArea, setVerticalScrollBarPolicy, arginfo_class_QScrollArea_setVerticalScrollBarPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QScrollArea, viewport, arginfo_class_QScrollArea_viewport, ZEND_ACC_PUBLIC)
+	ZEND_ME(QScrollArea, verticalScrollBar, arginfo_class_QScrollArea_verticalScrollBar, ZEND_ACC_PUBLIC)
+	ZEND_ME(QScrollArea, horizontalScrollBar, arginfo_class_QScrollArea_horizontalScrollBar, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

@@ -31,6 +31,8 @@ State arrives through signals ([signals](/architecture/signals.md)):
 | `titleChanged(QString)` | the page's title |
 | `urlChanged(QUrl)` | the page's URL |
 
+`page(): QWebEnginePage` (`qwebengineview.h:50`) boxes the page the view owns; PHP never deletes it. `QWebEnginePage extends QObject`: `isLoading()`, `url()`, `title()`, and the signal `loadingChanged(QWebEngineLoadingInfo)`, whose callable receives a `QWebEngineLoadingInfo` (a copy; methods `status()`, `url()`, `errorString()`, `errorCode()`, `isErrorPage()`). `status()` returns `QWebEngineLoadingInfo\LoadStatus`: `LOAD_STARTED_STATUS` 0, `LOAD_STOPPED_STATUS` 1, `LOAD_SUCCEEDED_STATUS` 2, `LOAD_FAILED_STATUS` 3. `isLoading()` is true inside the started callback and false after the succeeded one; a `file:///` path that does not exist reports `LOAD_FAILED_STATUS` with Qt's error string.
+
 Build: `config.m4` requires `Qt6WebEngineCore >= 6.4 Qt6WebEngineWidgets >= 6.4`. Homebrew: `qtwebengine` (its `QtWebEngineProcess.app` helper ships in QtWebEngineCore.framework). Debian trixie: `qt6-webengine-dev`.[^config]
 
 On macOS Qt 6.11.2 both cases pass, but each wait runs to its guard timer: the signals arrive while `processEvents(WaitForMoreEvents)` waits, without waking it.[^test]

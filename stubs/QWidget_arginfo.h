@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 01a37083b7077ec467be379822dc3ecce0092aed */
+ * Stub hash: 604016a9a2140fb0825a1d5ecff0e732afaa6328 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -136,12 +136,31 @@ ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_minimumHeight arginfo_class_QWidget_width
 
-#define arginfo_class_QWidget_setFixedSize arginfo_class_QWidget_resize
-
-ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_sizeHint, 0, 0, QSize, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setMaximumSize, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, maxw, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, maxh, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
-#define arginfo_class_QWidget_size arginfo_class_QWidget_sizeHint
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QWidget_maximumSize, 0, 0, QSize, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setMaximumWidth, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, maxw, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_maximumWidth arginfo_class_QWidget_width
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setMaximumHeight, 0, 1, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, maxh, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_maximumHeight arginfo_class_QWidget_width
+
+#define arginfo_class_QWidget_setFixedSize arginfo_class_QWidget_resize
+
+#define arginfo_class_QWidget_sizeHint arginfo_class_QWidget_maximumSize
+
+#define arginfo_class_QWidget_size arginfo_class_QWidget_maximumSize
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setSizePolicy, 0, 2, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, horizontal, QSizePolicy\\Policy, 0)
@@ -171,6 +190,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setEnabled, 0, 1, 
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QWidget_isEnabled arginfo_class_QWidget_close
+
+#define arginfo_class_QWidget_setAutoFillBackground arginfo_class_QWidget_setEnabled
+
+#define arginfo_class_QWidget_autoFillBackground arginfo_class_QWidget_close
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setStyleSheet, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, styleSheet, IS_STRING, 0)
@@ -265,6 +288,12 @@ ZEND_METHOD(QWidget, style);
 ZEND_METHOD(QWidget, setMinimumSize);
 ZEND_METHOD(QWidget, minimumWidth);
 ZEND_METHOD(QWidget, minimumHeight);
+ZEND_METHOD(QWidget, setMaximumSize);
+ZEND_METHOD(QWidget, maximumSize);
+ZEND_METHOD(QWidget, setMaximumWidth);
+ZEND_METHOD(QWidget, maximumWidth);
+ZEND_METHOD(QWidget, setMaximumHeight);
+ZEND_METHOD(QWidget, maximumHeight);
 ZEND_METHOD(QWidget, setFixedSize);
 ZEND_METHOD(QWidget, sizeHint);
 ZEND_METHOD(QWidget, size);
@@ -275,6 +304,8 @@ ZEND_METHOD(QWidget, geometry);
 ZEND_METHOD(QWidget, pos);
 ZEND_METHOD(QWidget, setEnabled);
 ZEND_METHOD(QWidget, isEnabled);
+ZEND_METHOD(QWidget, setAutoFillBackground);
+ZEND_METHOD(QWidget, autoFillBackground);
 ZEND_METHOD(QWidget, setStyleSheet);
 ZEND_METHOD(QWidget, styleSheet);
 ZEND_METHOD(QWidget, cursor);
@@ -335,6 +366,12 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, setMinimumSize, arginfo_class_QWidget_setMinimumSize, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, minimumWidth, arginfo_class_QWidget_minimumWidth, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, minimumHeight, arginfo_class_QWidget_minimumHeight, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setMaximumSize, arginfo_class_QWidget_setMaximumSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, maximumSize, arginfo_class_QWidget_maximumSize, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setMaximumWidth, arginfo_class_QWidget_setMaximumWidth, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, maximumWidth, arginfo_class_QWidget_maximumWidth, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setMaximumHeight, arginfo_class_QWidget_setMaximumHeight, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, maximumHeight, arginfo_class_QWidget_maximumHeight, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setFixedSize, arginfo_class_QWidget_setFixedSize, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, sizeHint, arginfo_class_QWidget_sizeHint, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, size, arginfo_class_QWidget_size, ZEND_ACC_PUBLIC)
@@ -345,6 +382,8 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, pos, arginfo_class_QWidget_pos, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setEnabled, arginfo_class_QWidget_setEnabled, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, isEnabled, arginfo_class_QWidget_isEnabled, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, setAutoFillBackground, arginfo_class_QWidget_setAutoFillBackground, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, autoFillBackground, arginfo_class_QWidget_autoFillBackground, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setStyleSheet, arginfo_class_QWidget_setStyleSheet, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, styleSheet, arginfo_class_QWidget_styleSheet, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, cursor, arginfo_class_QWidget_cursor, ZEND_ACC_PUBLIC)

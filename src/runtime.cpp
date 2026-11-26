@@ -26,6 +26,7 @@
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 #include <QtWidgets/QTreeWidgetItem>
+#include <QtWebEngineCore/QWebEngineLoadingInfo>
 
 #ifdef __APPLE__
 # include <pthread.h>
@@ -470,6 +471,12 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 	/* The item views' index signals (clicked, activated, …): a copy, as Qt's value classes cross. */
 	if (type == QMetaType::fromType<QModelIndex>()) {
 		phpqt_return_model_index(rv, *static_cast<QModelIndex *>(value));
+		return;
+	}
+
+	/* QWebEnginePage::loadingChanged: a copy, as Qt's value classes cross. */
+	if (type == QMetaType::fromType<QWebEngineLoadingInfo>()) {
+		phpqt_return_loading_info(rv, *static_cast<QWebEngineLoadingInfo *>(value));
 		return;
 	}
 

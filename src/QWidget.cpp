@@ -365,7 +365,80 @@ PHPQT_WIDGET_INT2(setFixedSize, setFixedSize)
 PHPQT_WIDGET_INT2(move, move)
 PHPQT_WIDGET_INT(minimumWidth, minimumWidth)
 PHPQT_WIDGET_INT(minimumHeight, minimumHeight)
+PHPQT_WIDGET_INT(maximumWidth, maximumWidth)
+PHPQT_WIDGET_INT(maximumHeight, maximumHeight)
+
+ZEND_METHOD(QWidget, setMaximumSize)
+{
+	zend_long maxw;
+	zend_long maxh;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(maxw)
+		Z_PARAM_LONG(maxh)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	if (!phpqt_long_fits(maxw, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(maxh, INT_MIN, INT_MAX, 2)) {
+		RETURN_THROWS();
+	}
+
+	widget->setMaximumSize(static_cast<int>(maxw), static_cast<int>(maxh));
+}
+
+ZEND_METHOD(QWidget, maximumSize)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_return_qsize(return_value, widget->maximumSize());
+}
+
+ZEND_METHOD(QWidget, setMaximumWidth)
+{
+	zend_long maxw;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(maxw)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	if (!phpqt_long_fits(maxw, INT_MIN, INT_MAX, 1)) {
+		RETURN_THROWS();
+	}
+
+	widget->setMaximumWidth(static_cast<int>(maxw));
+}
+
+ZEND_METHOD(QWidget, setMaximumHeight)
+{
+	zend_long maxh;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_LONG(maxh)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	if (!phpqt_long_fits(maxh, INT_MIN, INT_MAX, 1)) {
+		RETURN_THROWS();
+	}
+
+	widget->setMaximumHeight(static_cast<int>(maxh));
+}
 PHPQT_WIDGET_BOOL(isEnabled, isEnabled)
+PHPQT_WIDGET_BOOL(autoFillBackground, autoFillBackground)
+
+ZEND_METHOD(QWidget, setAutoFillBackground)
+{
+	bool enabled;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_BOOL(enabled)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QWidget, widget);
+
+	widget->setAutoFillBackground(enabled);
+}
 
 ZEND_METHOD(QWidget, sizeHint)
 {
@@ -909,6 +982,26 @@ ZEND_METHOD(QMessageBox, setInformativeText)
 	PHPQT_THIS(QMessageBox, box);
 
 	box->setInformativeText(phpqt_qstring(text));
+}
+
+ZEND_METHOD(QMessageBox, textFormat)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMessageBox, box);
+
+	phpqt_return_enum(return_value, phpqt_ce_Qt_TextFormat, static_cast<zend_long>(box->textFormat()));
+}
+
+ZEND_METHOD(QMessageBox, setTextFormat)
+{
+	zend_object *format;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(format, phpqt_ce_Qt_TextFormat)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QMessageBox, box);
+
+	box->setTextFormat(static_cast<Qt::TextFormat>(phpqt_enum_value(format, Qt::AutoText)));
 }
 
 ZEND_METHOD(QMessageBox, addButton)

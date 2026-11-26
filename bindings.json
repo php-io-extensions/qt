@@ -83,6 +83,9 @@
         ],
         "qintptr": [
             "mixed"
+        ],
+        "QLayoutItem": [
+            "QLayout"
         ]
     }
 }

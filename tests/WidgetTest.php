@@ -221,6 +221,19 @@ it('sets and reads back a message box icon and check box', function (): void {
         ->and($check->text())->toBe('Don\'t ask again');
 });
 
+it('sets and reads back a message box text format, kept with the text as written', function (): void {
+    $box = new QMessageBox();
+    expect($box->textFormat())->toBe(Qt\TextFormat::AUTO_TEXT);
+
+    $box->setTextFormat(Qt\TextFormat::PLAIN_TEXT);
+    $box->setText('<b>Clear</b> it?');
+    $box->setInformativeText('a <i>tag</i>');
+
+    expect($box->textFormat())->toBe(Qt\TextFormat::PLAIN_TEXT)
+        ->and($box->text())->toBe('<b>Clear</b> it?')
+        ->and($box->informativeText())->toBe('a <i>tag</i>');
+});
+
 it('sets and reads back a file dialog\'s name filters and QDir filter', function (): void {
     $dialog = new QFileDialog();
     $dialog->setNameFilters(['Text (*.txt *.md)', 'All (*)']);

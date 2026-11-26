@@ -239,6 +239,58 @@ ZEND_METHOD(QLayout, indexOf)
 	RETURN_LONG(layout->indexOf(widget));
 }
 
+/* Ownership goes back to the caller, as QLayout::removeItem() says: Qt only lists the item. */
+ZEND_METHOD(QLayout, removeItem)
+{
+	zend_object *item_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ(item_obj)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QLayout, layout);
+
+	/* A QLayout is a QLayoutItem in Qt; any other object is no item this layout holds. */
+	QLayoutItem *item = nullptr;
+	if (instanceof_function(item_obj->ce, phpqt_ce_QLayout)) {
+		bool failed;
+		item = static_cast<QLayout *>(phpqt_arg(item_obj, 1, &failed));
+		if (failed) {
+			RETURN_THROWS();
+		}
+	} else if (instanceof_function(item_obj->ce, phpqt_ce_QLayoutItem)) {
+		item = static_cast<QLayoutItem *>(phpqt_value_arg(item_obj, 1));
+		if (item == nullptr) {
+			RETURN_THROWS();
+		}
+	}
+	if (item == nullptr) {
+		return;
+	}
+
+	QLayout *nested = item->layout();
+	auto *ours = dynamic_cast<PhpSpacerItem *>(item);
+	bool held = layout->indexOf(static_cast<QLayoutItem *>(item)) >= 0;
+
+	layout->removeItem(item);
+	if (!held) {
+		return;
+	}
+
+	if (nested != nullptr) {
+		/* The box cleared the layout's parent: PHP deletes it with its last reference, widgets stay. */
+		if (nested->parent() == nullptr) {
+			zval wrapper;
+			phpqt_box(&wrapper, nested);
+			phpqt_object_from(Z_OBJ(wrapper))->owned = true;
+			zval_ptr_dtor(&wrapper);
+		}
+	} else if (ours != nullptr && ours->wrapper != nullptr) {
+		phpqt_value_from(ours->wrapper)->owned = true;
+	} else {
+		delete item;
+	}
+}
+
 ZEND_METHOD(QLayout, itemAt)
 {
 	zend_long index;
@@ -372,6 +424,29 @@ ZEND_METHOD(QBoxLayout, addLayout)
 	}
 
 	box->addLayout(layout, static_cast<int>(stretch));
+}
+
+ZEND_METHOD(QBoxLayout, insertLayout)
+{
+	zend_long index;
+	zend_object *layout_obj;
+	zend_long stretch = 0;
+	bool failed;
+
+	ZEND_PARSE_PARAMETERS_START(2, 3)
+		Z_PARAM_LONG(index)
+		Z_PARAM_OBJ_OF_CLASS(layout_obj, phpqt_ce_QLayout)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(stretch)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QBoxLayout, box);
+
+	QLayout *layout = static_cast<QLayout *>(phpqt_arg(layout_obj, 2, &failed));
+	if (failed || !phpqt_long_fits(index, INT_MIN, INT_MAX, 1) || !phpqt_long_fits(stretch, INT_MIN, INT_MAX, 3)) {
+		RETURN_THROWS();
+	}
+
+	box->insertLayout(static_cast<int>(index), layout, static_cast<int>(stretch));
 }
 
 ZEND_METHOD(QBoxLayout, addStretch)

@@ -645,6 +645,15 @@ namespace {
         public function setHorizontalScrollBarPolicy(Qt\ScrollBarPolicy $policy): void {}
 
         public function setVerticalScrollBarPolicy(Qt\ScrollBarPolicy $policy): void {}
+
+        /** QAbstractScrollArea::viewport(): the widget the area's widget scrolls in. */
+        public function viewport(): QWidget {}
+
+        /** QAbstractScrollArea::verticalScrollBar(); its value counts pixels. */
+        public function verticalScrollBar(): QScrollBar {}
+
+        /** QAbstractScrollArea::horizontalScrollBar(); its value counts pixels. */
+        public function horizontalScrollBar(): QScrollBar {}
     }
 
     /**

@@ -100,6 +100,19 @@ class QWidget extends QObject
 
     public function minimumHeight(): int {}
 
+    /** QWIDGETSIZE_MAX (16777215) is no limit, Qt's default; Qt bounds both to 0..QWIDGETSIZE_MAX with a warning. */
+    public function setMaximumSize(int $maxw, int $maxh): void {}
+
+    public function maximumSize(): QSize {}
+
+    public function setMaximumWidth(int $maxw): void {}
+
+    public function maximumWidth(): int {}
+
+    public function setMaximumHeight(int $maxh): void {}
+
+    public function maximumHeight(): int {}
+
     public function setFixedSize(int $w, int $h): void {}
 
     public function sizeHint(): QSize {}
@@ -119,6 +132,10 @@ class QWidget extends QObject
     public function setEnabled(bool $enabled): void {}
 
     public function isEnabled(): bool {}
+
+    public function setAutoFillBackground(bool $enabled): void {}
+
+    public function autoFillBackground(): bool {}
 
     public function setStyleSheet(string $styleSheet): void {}
 

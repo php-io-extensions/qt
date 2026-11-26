@@ -1562,6 +1562,30 @@ ZEND_METHOD(QScrollArea, setWidget)
 	area->setWidget(widget);
 }
 
+ZEND_METHOD(QScrollArea, viewport)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QScrollArea, area);
+
+	phpqt_box(return_value, area->viewport());
+}
+
+ZEND_METHOD(QScrollArea, verticalScrollBar)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QScrollArea, area);
+
+	phpqt_box(return_value, area->verticalScrollBar());
+}
+
+ZEND_METHOD(QScrollArea, horizontalScrollBar)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QScrollArea, area);
+
+	phpqt_box(return_value, area->horizontalScrollBar());
+}
+
 ZEND_METHOD(QScrollArea, widget)
 {
 	ZEND_PARSE_PARAMETERS_NONE();

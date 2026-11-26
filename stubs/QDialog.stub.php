@@ -126,6 +126,11 @@ namespace {
 
         public function setInformativeText(string $text): void {}
 
+        public function textFormat(): Qt\TextFormat {}
+
+        /** Applies to the text and the informative text. */
+        public function setTextFormat(Qt\TextFormat $format): void {}
+
         /** The new button; the box owns it. */
         public function addButton(string $text, QMessageBox\ButtonRole $role): QPushButton {}
 

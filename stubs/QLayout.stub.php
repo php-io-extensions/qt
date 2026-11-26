@@ -36,6 +36,14 @@ namespace {
 
         public function indexOf(QWidget $widget): int {}
 
+        /**
+         * Takes an item itemAt() lent, or a nested layout (a QLayout is a QLayoutItem in Qt), out of this layout, as Qt
+         * does; the widgets inside stay where they are. A nested layout goes back to PHP, which deletes it once its
+         * last reference goes. An item Qt made (a widget's, a stretch) is deleted with its removal; a spacer PHP made
+         * is PHP's again. One the layout does not hold is ignored.
+         */
+        public function removeItem(QLayoutItem|QLayout $item): void {}
+
         public function itemAt(int $index): ?QLayoutItem {}
 
         public function invalidate(): void {}
@@ -85,6 +93,9 @@ namespace {
         public function insertWidget(int $index, QWidget $widget, int $stretch = 0, Qt\AlignmentFlag|int $alignment = 0): void {}
 
         public function addLayout(QLayout $layout, int $stretch = 0): void {}
+
+        /** The box takes $layout as its child, as addLayout() does; a negative index appends. */
+        public function insertLayout(int $index, QLayout $layout, int $stretch = 0): void {}
 
         public function addStretch(int $stretch = 0): void {}
 
