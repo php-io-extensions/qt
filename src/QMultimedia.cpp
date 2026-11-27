@@ -299,6 +299,14 @@ ZEND_METHOD(QMediaPlayer, mediaStatus)
 	phpqt_return_enum(return_value, phpqt_ce_QMediaPlayer_MediaStatus, static_cast<zend_long>(player->mediaStatus()));
 }
 
+ZEND_METHOD(QMediaPlayer, loops)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QMediaPlayer, player);
+
+	RETURN_LONG(player->loops());
+}
+
 ZEND_METHOD(QMediaPlayer, setLoops)
 {
 	zend_long loops;

@@ -310,6 +310,21 @@ it('reads the focus widget a window keeps, also while it is not the focus', func
         ->and($b->hasFocus())->toBeFalse();
 });
 
+it('puts widgets in the focus chain in the order setTabOrder gives', function (): void {
+    $window = new QWidget();
+    $a = new QLineEdit('', $window);
+    $b = new QLineEdit('', $window);
+    $c = new QLineEdit('', $window);
+
+    expect($a->nextInFocusChain())->toBe($b);
+
+    QWidget::setTabOrder($a, $c);
+
+    expect($a->nextInFocusChain())->toBe($c)
+        ->and($c->previousInFocusChain())->toBe($a)
+        ->and($c->nextInFocusChain())->toBe($b);
+});
+
 it('moves Tab focus in the order setTabOrder gives', function (): void {
     $window = new QWidget();
     $a = new QLineEdit('', $window);
@@ -320,6 +335,10 @@ it('moves Tab focus in the order setTabOrder gives', function (): void {
     $window->activateWindow();
     $a->setFocus();
     processUntil(fn (): bool => QApplication::focusWidget() === $a);
+    if (QApplication::focusWidget() !== $a) {
+        $window->close();
+        $this->markTestSkipped('The window did not become active (macOS keeps another app in front), so no widget has focus to move.');
+    }
 
     QCoreApplication::sendEvent($a, new QKeyEvent(QEvent\Type::KEY_PRESS, Qt\Key::TAB->value, 0));
 

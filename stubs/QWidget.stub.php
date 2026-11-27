@@ -49,6 +49,12 @@ class QWidget extends QObject
     /** QWidget::setTabOrder(first, second): Tab moves from $first to $second. */
     public static function setTabOrder(QWidget $first, QWidget $second): void {}
 
+    /** qwidget.h:553: the widget after this one in the focus chain, the order Tab follows. */
+    public function nextInFocusChain(): ?QWidget {}
+
+    /** qwidget.h:554: the widget before this one in the focus chain, the order Shift-Tab follows. */
+    public function previousInFocusChain(): ?QWidget {}
+
     /** QWidget::insertAction(before, action): inserts $action into this widget's list of actions before $before; appends it when $before is null or is not an action of this widget. The widget does not take ownership of $action. */
     public function insertAction(?QAction $before, QAction $action): void {}
 

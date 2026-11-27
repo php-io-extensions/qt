@@ -41,7 +41,9 @@ it('pauses, seeks and loops', function (): void {
     $audio = new QAudioOutput();
     $audio->setVolume(0.0);
     $player->setAudioOutput($audio);
+    $loops = $player->loops();
     $player->setLoops(QMediaPlayer::INFINITE_LOOPS);
+    expect([$loops, $player->loops()])->toBe([1, QMediaPlayer::INFINITE_LOOPS]);
     $states = [];
     QObject::connect($player, 'playbackStateChanged(QMediaPlayer::PlaybackState)', function (int $s) use (&$states): void { $states[] = $s; });
     $player->setSource(QUrl::fromLocalFile(__DIR__.'/fixtures/clip.mp4'));

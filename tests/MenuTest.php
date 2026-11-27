@@ -40,6 +40,19 @@ it('nests a menu under a menu by title', function (): void {
     $bar->clear();
 });
 
+it('gives an action an icon, and the action reports the change through changed()', function (): void {
+    $bytes = new QByteArray(str_repeat("\x00\xff\x00\xff", 32 * 32));
+    $pixmap = QPixmap::fromImage(new QImage($bytes->pointer(), 32, 32, 128, QImage\Format::RGBA8888));
+    $menu = new QMenu();
+    $action = $menu->addAction('Images');
+    $changed = 0;
+    QObject::connect($action, 'changed()', function () use (&$changed): void { $changed++; });
+
+    $action->setIcon(new QIcon($pixmap));
+
+    expect($changed)->toBe(1)->and($action->text())->toBe('Images');
+});
+
 it('pops a menu up at a global point without waiting for a choice', function (): void {
     $menu = new QMenu();
     $menu->addAction('Download');

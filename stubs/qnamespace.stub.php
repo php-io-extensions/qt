@@ -929,6 +929,15 @@ enum MouseEventSource: int
     case MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION = 3;
 }
 
+/** Qt::TextElideMode: where QFontMetricsF::elidedText() puts the ellipsis; ELIDE_NONE cuts nothing. */
+enum TextElideMode: int
+{
+    case ELIDE_LEFT = 0;
+    case ELIDE_RIGHT = 1;
+    case ELIDE_MIDDLE = 2;
+    case ELIDE_NONE = 3;
+}
+
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 /** Qt::ColorScheme (Qt 6.5): the scheme the system or the application draws in. */
 enum ColorScheme: int

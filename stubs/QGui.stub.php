@@ -432,6 +432,9 @@ namespace {
 
         /** horizontalAdvance(const QString &, int len): the first $len characters; -1 = all. */
         public function horizontalAdvance(string $text, int $len = -1): float {}
+
+        /** elidedText(const QString &, Qt::TextElideMode, qreal width, int flags): $text, or it cut with an ellipsis where it is wider than $width. */
+        public function elidedText(string $text, \Qt\TextElideMode $mode, float $width, int $flags = 0): string {}
     }
 
     /**

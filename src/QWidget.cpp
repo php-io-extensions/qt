@@ -232,6 +232,22 @@ ZEND_METHOD(QWidget, focusWidget)
 	phpqt_box(return_value, widget->focusWidget());
 }
 
+ZEND_METHOD(QWidget, nextInFocusChain)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->nextInFocusChain());
+}
+
+ZEND_METHOD(QWidget, previousInFocusChain)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QWidget, widget);
+
+	phpqt_box(return_value, widget->previousInFocusChain());
+}
+
 ZEND_METHOD(QWidget, mapFromGlobal)
 {
 	zend_object *pos_obj;

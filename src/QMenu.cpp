@@ -287,6 +287,23 @@ ZEND_METHOD(QAction, setText)
 	action->setText(phpqt_qstring(text));
 }
 
+ZEND_METHOD(QAction, setIcon)
+{
+	zend_object *icon_obj;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(icon_obj, phpqt_ce_QIcon)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QAction, action);
+
+	QIcon *icon = static_cast<QIcon *>(phpqt_value_arg(icon_obj, 1));
+	if (icon == nullptr) {
+		RETURN_THROWS();
+	}
+
+	action->setIcon(*icon);
+}
+
 #define PHPQT_ACTION_BOOL_GETTER(name, call) \
 ZEND_METHOD(QAction, name) \
 { \

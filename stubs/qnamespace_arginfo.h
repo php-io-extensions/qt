@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: af49e9eb73ab47458240d01e876825c9c97ef676 */
+ * Stub hash: 829330363367dd26e6d58213fe37ced9921eb63b */
 
 static zend_class_entry *register_class_Qt_DateFormat(void)
 {
@@ -3375,6 +3375,29 @@ static zend_class_entry *register_class_Qt_MouseEventSource(void)
 	zval enum_case_MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION_value;
 	ZVAL_LONG(&enum_case_MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION_value, 3);
 	zend_enum_add_case_cstr(class_entry, "MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION", &enum_case_MOUSE_EVENT_SYNTHESIZED_BY_APPLICATION_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_Qt_TextElideMode(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Qt\\TextElideMode", IS_LONG, NULL);
+
+	zval enum_case_ELIDE_LEFT_value;
+	ZVAL_LONG(&enum_case_ELIDE_LEFT_value, 0);
+	zend_enum_add_case_cstr(class_entry, "ELIDE_LEFT", &enum_case_ELIDE_LEFT_value);
+
+	zval enum_case_ELIDE_RIGHT_value;
+	ZVAL_LONG(&enum_case_ELIDE_RIGHT_value, 1);
+	zend_enum_add_case_cstr(class_entry, "ELIDE_RIGHT", &enum_case_ELIDE_RIGHT_value);
+
+	zval enum_case_ELIDE_MIDDLE_value;
+	ZVAL_LONG(&enum_case_ELIDE_MIDDLE_value, 2);
+	zend_enum_add_case_cstr(class_entry, "ELIDE_MIDDLE", &enum_case_ELIDE_MIDDLE_value);
+
+	zval enum_case_ELIDE_NONE_value;
+	ZVAL_LONG(&enum_case_ELIDE_NONE_value, 3);
+	zend_enum_add_case_cstr(class_entry, "ELIDE_NONE", &enum_case_ELIDE_NONE_value);
 
 	return class_entry;
 }

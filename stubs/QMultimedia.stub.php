@@ -158,6 +158,9 @@ namespace {
 
         public function mediaStatus(): QMediaPlayer\MediaStatus {}
 
+        /** qmediaplayer.h:164: a count, or QMediaPlayer::INFINITE_LOOPS. */
+        public function loops(): int {}
+
         /** A count, or QMediaPlayer::INFINITE_LOOPS. */
         public function setLoops(int $loops): void {}
 

@@ -35,6 +35,7 @@
 /* After the Qt headers: the generated class registration spells QAbstractItemView::NoEditTriggers. */
 #include "../stubs/QControls_arginfo.h"
 #include "checks/QComboBox_InsertPolicy.inc"
+#include "checks/QComboBox_SizeAdjustPolicy.inc"
 #include "checks/QCompleter_CompletionMode.inc"
 #include "checks/QToolButton_ToolButtonPopupMode.inc"
 #include "checks/QLineEdit_ActionPosition.inc"
@@ -65,6 +66,7 @@ void phpqt_register_QControls()
 	phpqt_ce_QAbstractItemView_SelectionMode = register_class_QAbstractItemView_SelectionMode();
 	phpqt_ce_QAbstractItemView_ScrollHint = register_class_QAbstractItemView_ScrollHint();
 	phpqt_ce_QComboBox_InsertPolicy = register_class_QComboBox_InsertPolicy();
+	phpqt_ce_QComboBox_SizeAdjustPolicy = register_class_QComboBox_SizeAdjustPolicy();
 	phpqt_ce_QCompleter_CompletionMode = register_class_QCompleter_CompletionMode();
 	phpqt_ce_QToolButton_ToolButtonPopupMode = register_class_QToolButton_ToolButtonPopupMode();
 
@@ -681,6 +683,25 @@ ZEND_METHOD(QComboBox, itemText)
 	phpqt_return_qstring(return_value, combo->itemText(static_cast<int>(index)));
 }
 
+ZEND_METHOD(QComboBox, setItemIcon)
+{
+	zend_long index;
+	zend_object *icon_obj;
+
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_LONG(index)
+		Z_PARAM_OBJ_OF_CLASS(icon_obj, phpqt_ce_QIcon)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QComboBox, combo);
+
+	QIcon *icon = static_cast<QIcon *>(phpqt_value_arg(icon_obj, 2));
+	if (icon == nullptr) {
+		RETURN_THROWS();
+	}
+
+	combo->setItemIcon(static_cast<int>(index), *icon);
+}
+
 PHPQT_GETTER_BOOL(QComboBox, isEditable, isEditable)
 PHPQT_SETTER_BOOL(QComboBox, setEditable, setEditable)
 PHPQT_SETTER_STRING(QComboBox, setEditText, setEditText)
@@ -729,6 +750,26 @@ ZEND_METHOD(QComboBox, setInsertPolicy)
 	PHPQT_THIS(QComboBox, combo);
 
 	combo->setInsertPolicy(static_cast<QComboBox::InsertPolicy>(phpqt_enum_value(policy, QComboBox::NoInsert)));
+}
+
+ZEND_METHOD(QComboBox, sizeAdjustPolicy)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+	PHPQT_THIS(QComboBox, combo);
+
+	phpqt_return_enum(return_value, phpqt_ce_QComboBox_SizeAdjustPolicy, static_cast<zend_long>(combo->sizeAdjustPolicy()));
+}
+
+ZEND_METHOD(QComboBox, setSizeAdjustPolicy)
+{
+	zend_object *policy;
+
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_OBJ_OF_CLASS(policy, phpqt_ce_QComboBox_SizeAdjustPolicy)
+	ZEND_PARSE_PARAMETERS_END();
+	PHPQT_THIS(QComboBox, combo);
+
+	combo->setSizeAdjustPolicy(static_cast<QComboBox::SizeAdjustPolicy>(phpqt_enum_value(policy, QComboBox::AdjustToContentsOnFirstShow)));
 }
 
 /* ---- QAbstractItemModel, QStringListModel ------------------------------ */

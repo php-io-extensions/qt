@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 6494670a781db2f275e7e01e6bbab57cc9df796f */
+ * Stub hash: a2e2cb4643f138997454c7e792464e85fd8ba80c */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QInputMethodEvent_Attribute___construct, 0, 0, 4)
 	ZEND_ARG_OBJ_INFO(0, type, QInputMethodEvent\\AttributeType, 0)
@@ -91,6 +91,13 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFontMetricsF_horizontalAdvance, 0, 1, IS_DOUBLE, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, len, IS_LONG, 0, "-1")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QFontMetricsF_elidedText, 0, 3, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+	ZEND_ARG_OBJ_INFO(0, mode, Qt\\TextElideMode, 0)
+	ZEND_ARG_TYPE_INFO(0, width, IS_DOUBLE, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "0")
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QFontInfo___construct arginfo_class_QFontMetricsF___construct
@@ -299,6 +306,7 @@ ZEND_METHOD(QFontMetricsF, descent);
 ZEND_METHOD(QFontMetricsF, lineSpacing);
 ZEND_METHOD(QFontMetricsF, averageCharWidth);
 ZEND_METHOD(QFontMetricsF, horizontalAdvance);
+ZEND_METHOD(QFontMetricsF, elidedText);
 ZEND_METHOD(QFontInfo, __construct);
 ZEND_METHOD(QFontInfo, fixedPitch);
 ZEND_METHOD(QPixmap, __construct);
@@ -403,6 +411,7 @@ static const zend_function_entry class_QFontMetricsF_methods[] = {
 	ZEND_ME(QFontMetricsF, lineSpacing, arginfo_class_QFontMetricsF_lineSpacing, ZEND_ACC_PUBLIC)
 	ZEND_ME(QFontMetricsF, averageCharWidth, arginfo_class_QFontMetricsF_averageCharWidth, ZEND_ACC_PUBLIC)
 	ZEND_ME(QFontMetricsF, horizontalAdvance, arginfo_class_QFontMetricsF_horizontalAdvance, ZEND_ACC_PUBLIC)
+	ZEND_ME(QFontMetricsF, elidedText, arginfo_class_QFontMetricsF_elidedText, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
 

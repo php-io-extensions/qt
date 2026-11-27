@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 604016a9a2140fb0825a1d5ecff0e732afaa6328 */
+ * Stub hash: f5e9945bc8a2a7e9b8fac01a9bf894e92b38f45b */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QWidget___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, parent, QWidget, 1, "null")
@@ -59,6 +59,10 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_setTabOrder, 0, 2,
 	ZEND_ARG_OBJ_INFO(0, first, QWidget, 0)
 	ZEND_ARG_OBJ_INFO(0, second, QWidget, 0)
 ZEND_END_ARG_INFO()
+
+#define arginfo_class_QWidget_nextInFocusChain arginfo_class_QWidget_focusWidget
+
+#define arginfo_class_QWidget_previousInFocusChain arginfo_class_QWidget_focusWidget
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QWidget_insertAction, 0, 2, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, before, QAction, 1)
@@ -265,6 +269,8 @@ ZEND_METHOD(QWidget, focusWidget);
 ZEND_METHOD(QWidget, focusPolicy);
 ZEND_METHOD(QWidget, setFocusPolicy);
 ZEND_METHOD(QWidget, setTabOrder);
+ZEND_METHOD(QWidget, nextInFocusChain);
+ZEND_METHOD(QWidget, previousInFocusChain);
 ZEND_METHOD(QWidget, insertAction);
 ZEND_METHOD(QWidget, removeAction);
 ZEND_METHOD(QWidget, raise);
@@ -343,6 +349,8 @@ static const zend_function_entry class_QWidget_methods[] = {
 	ZEND_ME(QWidget, focusPolicy, arginfo_class_QWidget_focusPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setFocusPolicy, arginfo_class_QWidget_setFocusPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, setTabOrder, arginfo_class_QWidget_setTabOrder, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	ZEND_ME(QWidget, nextInFocusChain, arginfo_class_QWidget_nextInFocusChain, ZEND_ACC_PUBLIC)
+	ZEND_ME(QWidget, previousInFocusChain, arginfo_class_QWidget_previousInFocusChain, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, insertAction, arginfo_class_QWidget_insertAction, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, removeAction, arginfo_class_QWidget_removeAction, ZEND_ACC_PUBLIC)
 	ZEND_ME(QWidget, raise, arginfo_class_QWidget_raise, ZEND_ACC_PUBLIC)

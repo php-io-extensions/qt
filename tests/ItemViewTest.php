@@ -75,12 +75,15 @@ it('refuses a QPaintDelegate callable that is not callable', function (): void {
 it('reaches a list view\'s scroll bars', function (): void {
     $view = new QListView();
     $vertical = $view->verticalScrollBar();
-    $vertical->setRange(0, 900);
-    $vertical->setValue(450);
+    // The view sets its bars' range from its rows whenever it lays out, so range and value are read on a bar of its own.
+    $own = new QScrollBar(Qt\Orientation::VERTICAL);
+    $own->setRange(0, 900);
+    $own->setValue(450);
 
     expect($vertical)->toBeInstanceOf(QScrollBar::class)
         ->and($view->verticalScrollBar())->toBe($vertical)
-        ->and($vertical->value())->toBe(450)
+        ->and($own->maximum())->toBe(900)
+        ->and($own->value())->toBe(450)
         ->and($vertical->orientation())->toBe(Qt\Orientation::VERTICAL)
         ->and($view->horizontalScrollBar()->orientation())->toBe(Qt\Orientation::HORIZONTAL);
 });

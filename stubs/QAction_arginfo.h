@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 441acee41714956aa5b87619ed4ec2a450f312ba */
+ * Stub hash: f36ffb4a25f77d17c423abf75d77022ed6b6e358 */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QAction___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -11,6 +11,10 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAction_setText, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, text, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAction_setIcon, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, icon, QIcon, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QAction_isCheckable, 0, 0, _IS_BOOL, 0)
@@ -71,6 +75,7 @@ ZEND_END_ARG_INFO()
 ZEND_METHOD(QAction, __construct);
 ZEND_METHOD(QAction, text);
 ZEND_METHOD(QAction, setText);
+ZEND_METHOD(QAction, setIcon);
 ZEND_METHOD(QAction, isCheckable);
 ZEND_METHOD(QAction, setCheckable);
 ZEND_METHOD(QAction, isChecked);
@@ -93,6 +98,7 @@ static const zend_function_entry class_QAction_methods[] = {
 	ZEND_ME(QAction, __construct, arginfo_class_QAction___construct, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, text, arginfo_class_QAction_text, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, setText, arginfo_class_QAction_setText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QAction, setIcon, arginfo_class_QAction_setIcon, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, isCheckable, arginfo_class_QAction_isCheckable, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, setCheckable, arginfo_class_QAction_setCheckable, ZEND_ACC_PUBLIC)
 	ZEND_ME(QAction, isChecked, arginfo_class_QAction_isChecked, ZEND_ACC_PUBLIC)

@@ -31,7 +31,7 @@ State arrives through signals, enums as ints ([signals](/architecture/signals.md
 | `errorOccurred(QMediaPlayer::Error,QString)` | the `Error` value and `errorString()`; a missing local file is `RESOURCE_ERROR` |
 | `positionChanged(qint64)` | milliseconds |
 
-Reads: `position()`, `duration()` (ms; duration is known once `LOADED`), `playbackState()`, `mediaStatus()`, `hasVideo()`, `errorString()`, `source()`. `isAvailable()` is false when no media backend plugin loaded; such a player accepts every call and plays nothing, so it is the check to make before relying on playback. `setLoops(QMediaPlayer::INFINITE_LOOPS)` loops until `stop()`.[^source]
+Reads: `position()`, `duration()` (ms; duration is known once `LOADED`), `playbackState()`, `mediaStatus()`, `hasVideo()`, `errorString()`, `source()`. `isAvailable()` is false when no media backend plugin loaded; such a player accepts every call and plays nothing, so it is the check to make before relying on playback. `setLoops(QMediaPlayer::INFINITE_LOOPS)` loops until `stop()`; `loops()` (`qmediaplayer.h:164`) reads it back, 1 by default.[^source]
 
 Build: `config.m4` requires `Qt6Multimedia >= 6.4 Qt6MultimediaWidgets >= 6.4` beside Widgets/Gui/Core. Both installers refuse to build without the modules and without a backend plugin in `$(qtpaths6 --query QT_INSTALL_PLUGINS)/multimedia`. Packages: Debian trixie `qt6-multimedia-dev libqt6multimediawidgets6`; the FFmpeg backend, `libffmpegmediaplugin.so`, ships in `libqt6multimedia6`, which the dev package pulls in (trixie has no separate plugins package), and `qtpaths6` in `qt6-base-dev-tools`. Homebrew `qt` carries both modules and the darwin (AVFoundation) plugin.[^config]
 

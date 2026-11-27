@@ -635,6 +635,28 @@ ZEND_METHOD(QFontMetricsF, horizontalAdvance)
 	RETURN_DOUBLE(metrics->horizontalAdvance(phpqt_qstring(text), static_cast<int>(len)));
 }
 
+ZEND_METHOD(QFontMetricsF, elidedText)
+{
+	zend_string *text;
+	zend_object *mode;
+	double width;
+	zend_long flags = 0;
+
+	ZEND_PARSE_PARAMETERS_START(3, 4)
+		Z_PARAM_STR(text)
+		Z_PARAM_OBJ_OF_CLASS(mode, phpqt_ce_Qt_TextElideMode)
+		Z_PARAM_DOUBLE(width)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_LONG(flags)
+	ZEND_PARSE_PARAMETERS_END();
+	if (!phpqt_long_fits(flags, INT_MIN, INT_MAX, 4)) {
+		RETURN_THROWS();
+	}
+	PHPQT_VALUE_THIS(QFontMetricsF, metrics);
+
+	phpqt_return_qstring(return_value, metrics->elidedText(phpqt_qstring(text), static_cast<Qt::TextElideMode>(phpqt_enum_value(mode, Qt::ElideRight)), width, static_cast<int>(flags)));
+}
+
 /* ---- QFontInfo --------------------------------------------------------- */
 
 ZEND_METHOD(QFontInfo, __construct)

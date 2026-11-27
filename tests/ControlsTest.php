@@ -140,6 +140,40 @@ it('ranges a slider and reports one value change', function (): void {
         ->and($slider)->toBeInstanceOf(QAbstractSlider::class);
 });
 
+it('gives a combo box item an icon, which widens it by the icon', function (): void {
+    $bytes = new QByteArray(str_repeat("\xff\x00\x00\xff", 32 * 32));
+    $pixmap = QPixmap::fromImage(new QImage($bytes->pointer(), 32, 32, 128, QImage\Format::RGBA8888));
+    $plain = new QComboBox();
+    $plain->addItems(['All', 'Images']);
+    $combo = new QComboBox();
+    $combo->addItems(['All', 'Images']);
+
+    // Before either is asked its size: a combo box keeps the hint it worked out first.
+    $combo->setItemIcon(1, new QIcon($pixmap));
+
+    expect($combo->sizeHint()->width())->toBeGreaterThan($plain->sizeHint()->width())
+        ->and($combo->itemText(1))->toBe('Images');
+});
+
+it('sizes a combo box to its contents from then on only when told to', function (): void {
+    $bytes = new QByteArray(str_repeat("\xff\x00\x00\xff", 32 * 32));
+    $icon = new QIcon(QPixmap::fromImage(new QImage($bytes->pointer(), 32, 32, 128, QImage\Format::RGBA8888)));
+    $once = new QComboBox();
+    $once->addItems(['All', 'Images']);
+    $always = new QComboBox();
+    $always->addItems(['All', 'Images']);
+    $always->setSizeAdjustPolicy(QComboBox\SizeAdjustPolicy::ADJUST_TO_CONTENTS);
+    [$onceBefore, $alwaysBefore] = [$once->sizeHint()->width(), $always->sizeHint()->width()];
+
+    $once->setItemIcon(1, $icon);
+    $always->setItemIcon(1, $icon);
+
+    expect($once->sizeAdjustPolicy())->toBe(QComboBox\SizeAdjustPolicy::ADJUST_TO_CONTENTS_ON_FIRST_SHOW)
+        ->and($always->sizeAdjustPolicy())->toBe(QComboBox\SizeAdjustPolicy::ADJUST_TO_CONTENTS)
+        ->and($once->sizeHint()->width())->toBe($onceBefore)
+        ->and($always->sizeHint()->width())->toBeGreaterThan($alwaysBefore);
+});
+
 it('fills a combo box and reports the current index', function (): void {
     $combo = new QComboBox();
     $indexes = [];
@@ -221,10 +255,13 @@ it('drops the default indent a style-sheet frame adds once the indent is 0', fun
 
     $label->setIndent(0);
 
-    // With a frame, Qt's -1 indent is the width of an 'x', less twice QLabel::margin() (0 here).
-    $x = (int) round((new QFontMetricsF($label->font()))->horizontalAdvance('x'));
-    expect($indented - $label->sizeHint()->width())->toBe($x)
-        ->and($x)->toBeGreaterThan(0);
+    // With a frame, Qt's -1 indent is the width of an 'x' in whole points (its integer metrics,
+    // which may round either way from the exact width: 6.5 is 6 offscreen, 6.656 is 7 on Cocoa),
+    // less twice QLabel::margin() (0 here).
+    $x = (new QFontMetricsF($label->font()))->horizontalAdvance('x');
+    expect($indented - $label->sizeHint()->width())->toBeGreaterThanOrEqual((int) floor($x))
+        ->toBeLessThanOrEqual((int) ceil($x))
+        ->and($x)->toBeGreaterThan(0.0);
 });
 
 it('refuses an indent outside C int as a ValueError', function (): void {

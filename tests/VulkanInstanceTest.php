@@ -20,15 +20,17 @@ function vkInstanceForQt(): VkInstance
     $app->apiVersion = VK_API_VERSION_1_1;
     $info = new VkInstanceCreateInfo();
     $info->pApplicationInfo = $app;
-    vkEnumerateInstanceExtensionProperties(null, $available);
+    vkEnumerateInstanceExtensionProperties(null, $count, null);
+    vkEnumerateInstanceExtensionProperties(null, $count, $available);
     $names = array_map(fn (VkExtensionProperties $e): string => $e->extensionName, $available);
     $wanted = [VK_KHR_SURFACE_EXTENSION_NAME, PHP_OS_FAMILY === 'Darwin' ? VK_EXT_METAL_SURFACE_EXTENSION_NAME : VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME, VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME];
     if (in_array(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME, $names, true)) {
         $wanted[] = VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME;
         $info->flags |= VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR;
     }
-    $info->enabledExtensionNames = array_values(array_intersect($wanted, $names));
-    vkCreateInstance($info, null, $instance) === VK_SUCCESS || throw new RuntimeException('vkCreateInstance');
+    $info->ppEnabledExtensionNames = array_values(array_intersect($wanted, $names));
+    $info->enabledExtensionCount = count($info->ppEnabledExtensionNames);
+    vkCreateInstance($info, 0, $instance) === VK_SUCCESS || throw new RuntimeException('vkCreateInstance');
 
     return $instance;
 }
@@ -56,7 +58,7 @@ it('adopts an existing VkInstance', function (): void {
     $instance->destroy();
 
     expect($instance->isValid())->toBeFalse();
-    vkDestroyInstance($vk, null);
+    vkDestroyInstance($vk, 0);
 });
 
 it('makes a surface for a VulkanSurface window', function (): void {
@@ -99,7 +101,7 @@ it('detaches every window from an instance whose PHP object goes', function (): 
     unset($instance);
 
     expect($window->vulkanInstance())->toBeNull();
-    vkDestroyInstance($vk, null);
+    vkDestroyInstance($vk, 0);
 });
 
 it('gives up the platform window, and Qt\'s surface with it, on destroy()', function (): void {
@@ -122,5 +124,5 @@ it('gives up the platform window, and Qt\'s surface with it, on destroy()', func
         ->and(QVulkanInstance::surfaceForWindow($window))->toBe(0);
     $window->setVulkanInstance(null);
     $instance->destroy();
-    vkDestroyInstance($vk, null);
+    vkDestroyInstance($vk, 0);
 });

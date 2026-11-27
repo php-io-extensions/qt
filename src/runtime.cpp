@@ -461,6 +461,52 @@ static void phpqt_arg_to_zval(zval *rv, QMetaType type, void *value, QObject *se
 		case QMetaType::QColor:  phpqt_return_color(rv, *static_cast<QColor *>(value)); return;
 		case QMetaType::QFont:   phpqt_return_font(rv, *static_cast<QFont *>(value)); return;
 		case QMetaType::QPixmap: phpqt_return_pixmap(rv, *static_cast<QPixmap *>(value)); return;
+
+		/* Qt's containers of values (a JavaScript object or array, as QWebEnginePage hands it): PHP arrays of the converted values. */
+		case QMetaType::QVariantList: {
+			const QVariantList *list = static_cast<QVariantList *>(value);
+			array_init_size(rv, static_cast<uint32_t>(list->size()));
+			for (const QVariant &item : *list) {
+				zval element;
+				phpqt_variant_to_zval(&element, item);
+				add_next_index_zval(rv, &element);
+			}
+			return;
+		}
+
+		case QMetaType::QStringList: {
+			const QStringList *list = static_cast<QStringList *>(value);
+			array_init_size(rv, static_cast<uint32_t>(list->size()));
+			for (const QString &item : *list) {
+				QByteArray utf8 = item.toUtf8();
+				add_next_index_stringl(rv, utf8.constData(), utf8.size());
+			}
+			return;
+		}
+
+		case QMetaType::QVariantMap: {
+			const QVariantMap *map = static_cast<QVariantMap *>(value);
+			array_init_size(rv, static_cast<uint32_t>(map->size()));
+			for (auto it = map->cbegin(); it != map->cend(); ++it) {
+				QByteArray key = it.key().toUtf8();
+				zval element;
+				phpqt_variant_to_zval(&element, it.value());
+				zend_symtable_str_update(Z_ARRVAL_P(rv), key.constData(), key.size(), &element);
+			}
+			return;
+		}
+
+		case QMetaType::QVariantHash: {
+			const QVariantHash *hash = static_cast<QVariantHash *>(value);
+			array_init_size(rv, static_cast<uint32_t>(hash->size()));
+			for (auto it = hash->cbegin(); it != hash->cend(); ++it) {
+				QByteArray key = it.key().toUtf8();
+				zval element;
+				phpqt_variant_to_zval(&element, it.value());
+				zend_symtable_str_update(Z_ARRVAL_P(rv), key.constData(), key.size(), &element);
+			}
+			return;
+		}
 	}
 
 	if (type == QMetaType::fromType<QSocketDescriptor>()) {

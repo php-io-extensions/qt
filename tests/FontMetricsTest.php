@@ -22,6 +22,24 @@ it('measures a string\'s advance, all of it or its first len characters', functi
         ->and($metrics->horizontalAdvance('    ', 2))->toEqualWithDelta(2 * $one, 0.01);
 });
 
+it('elides a string wider than the width it is given, where the mode says, and leaves one that fits', function (): void {
+    $metrics = new QFontMetricsF(QFontDatabase::systemFont(QFontDatabase\SystemFont::FIXED_FONT));
+    $text = 'abcdefghijklmnopqrstuvwxyz';
+    $width = $metrics->horizontalAdvance('abcdefghij');
+
+    $right = $metrics->elidedText($text, Qt\TextElideMode::ELIDE_RIGHT, $width);
+    $left = $metrics->elidedText($text, Qt\TextElideMode::ELIDE_LEFT, $width);
+
+    expect($right)->toEndWith('…')
+        ->and($right)->toStartWith('a')
+        ->and($metrics->horizontalAdvance($right))->toBeLessThanOrEqual($width)
+        ->and($left)->toStartWith('…')
+        ->and($left)->toEndWith('z')
+        ->and($metrics->elidedText($text, Qt\TextElideMode::ELIDE_NONE, $width))->toBe($text)
+        ->and($metrics->elidedText('abc', Qt\TextElideMode::ELIDE_RIGHT, $width))->toBe('abc')
+        ->and(Qt\TextElideMode::cases())->toHaveCount(4);
+});
+
 it('tells the fixed system font from the general one', function (): void {
     expect((new QFontInfo(QFontDatabase::systemFont(QFontDatabase\SystemFont::FIXED_FONT)))->fixedPitch())->toBeTrue()
         ->and((new QFontInfo(QFontDatabase::systemFont(QFontDatabase\SystemFont::GENERAL_FONT)))->fixedPitch())->toBeFalse();

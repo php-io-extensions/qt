@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 8a2194135b4f1131120827472f3a76339eb40e81 */
+ * Stub hash: f5e9645689e8539db08615d3c628d63eef4a357a */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QUrl___construct, 0, 0, 1)
 	ZEND_ARG_TYPE_INFO(0, url, IS_STRING, 0)
@@ -73,6 +73,8 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QMediaPlayer_mediaStatus, 0, 0, QMediaPlayer\\MediaStatus, 0)
 ZEND_END_ARG_INFO()
 
+#define arginfo_class_QMediaPlayer_loops arginfo_class_QMediaPlayer_position
+
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QMediaPlayer_setLoops, 0, 1, IS_VOID, 0)
 	ZEND_ARG_TYPE_INFO(0, loops, IS_LONG, 0)
 ZEND_END_ARG_INFO()
@@ -110,6 +112,7 @@ ZEND_METHOD(QMediaPlayer, duration);
 ZEND_METHOD(QMediaPlayer, setPosition);
 ZEND_METHOD(QMediaPlayer, playbackState);
 ZEND_METHOD(QMediaPlayer, mediaStatus);
+ZEND_METHOD(QMediaPlayer, loops);
 ZEND_METHOD(QMediaPlayer, setLoops);
 ZEND_METHOD(QMediaPlayer, errorString);
 ZEND_METHOD(QMediaPlayer, hasVideo);
@@ -147,6 +150,7 @@ static const zend_function_entry class_QMediaPlayer_methods[] = {
 	ZEND_ME(QMediaPlayer, setPosition, arginfo_class_QMediaPlayer_setPosition, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMediaPlayer, playbackState, arginfo_class_QMediaPlayer_playbackState, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMediaPlayer, mediaStatus, arginfo_class_QMediaPlayer_mediaStatus, ZEND_ACC_PUBLIC)
+	ZEND_ME(QMediaPlayer, loops, arginfo_class_QMediaPlayer_loops, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMediaPlayer, setLoops, arginfo_class_QMediaPlayer_setLoops, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMediaPlayer, errorString, arginfo_class_QMediaPlayer_errorString, ZEND_ACC_PUBLIC)
 	ZEND_ME(QMediaPlayer, hasVideo, arginfo_class_QMediaPlayer_hasVideo, ZEND_ACC_PUBLIC)

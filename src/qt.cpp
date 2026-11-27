@@ -35,6 +35,8 @@ static_assert(Qt::TextDate == 0 && Qt::ISODate == 1 && Qt::RFC2822Date == 8 && Q
 	"Qt::DateFormat values differ from the stub's Qt\\DateFormat enum");
 static_assert(Qt::FastTransformation == 0 && Qt::SmoothTransformation == 1,
 	"Qt::TransformationMode values differ from the stub's Qt\\TransformationMode enum");
+static_assert(Qt::ElideLeft == 0 && Qt::ElideRight == 1 && Qt::ElideMiddle == 2 && Qt::ElideNone == 3,
+	"Qt::TextElideMode values differ from the stub's Qt\\TextElideMode enum");
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 static_assert(int(Qt::ColorScheme::Unknown) == 0 && int(Qt::ColorScheme::Light) == 1 && int(Qt::ColorScheme::Dark) == 2,
 	"Qt::ColorScheme values differ from the stub's Qt\\ColorScheme enum");
@@ -209,6 +211,14 @@ zend_class_entry *phpqt_ce_QWebEngineView;
 zend_class_entry *phpqt_ce_QWebEnginePage;
 zend_class_entry *phpqt_ce_QWebEngineLoadingInfo;
 zend_class_entry *phpqt_ce_QWebEngineLoadingInfo_LoadStatus;
+zend_class_entry *phpqt_ce_QWebEnginePage_JavaScriptConsoleMessageLevel;
+zend_class_entry *phpqt_ce_QWebEngineConsolePage;
+zend_class_entry *phpqt_ce_QWebEngineSettings;
+zend_class_entry *phpqt_ce_QWebEngineSettings_WebAttribute;
+zend_class_entry *phpqt_ce_QWebEngineScript;
+zend_class_entry *phpqt_ce_QWebEngineScript_InjectionPoint;
+zend_class_entry *phpqt_ce_QWebEngineScript_ScriptWorldId;
+zend_class_entry *phpqt_ce_QWebEngineScriptCollection;
 zend_class_entry *phpqt_ce_QSpacerItem;
 zend_class_entry *phpqt_ce_Qt_TextFormat;
 zend_class_entry *phpqt_ce_Qt_TransformationMode;
@@ -222,6 +232,7 @@ zend_class_entry *phpqt_ce_Qt_CursorShape;
 zend_class_entry *phpqt_ce_Qt_ClipOperation;
 zend_class_entry *phpqt_ce_Qt_CaseSensitivity;
 zend_class_entry *phpqt_ce_QComboBox_InsertPolicy;
+zend_class_entry *phpqt_ce_QComboBox_SizeAdjustPolicy;
 zend_class_entry *phpqt_ce_QCompleter_CompletionMode;
 zend_class_entry *phpqt_ce_QToolButton_ToolButtonPopupMode;
 zend_class_entry *phpqt_ce_QToolButton;
@@ -232,6 +243,7 @@ zend_class_entry *phpqt_ce_QCompleter;
 zend_class_entry *phpqt_ce_QIcon;
 zend_class_entry *phpqt_ce_QIcon_ThemeIcon;
 zend_class_entry *phpqt_ce_Qt_ColorScheme;
+zend_class_entry *phpqt_ce_Qt_TextElideMode;
 zend_class_entry *phpqt_ce_QCursor;
 zend_class_entry *phpqt_ce_QPaintDevice;
 zend_class_entry *phpqt_ce_QActionGroup;
@@ -263,6 +275,7 @@ void phpqt_register_enums()
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 	phpqt_ce_Qt_ColorScheme = register_class_Qt_ColorScheme();
 #endif
+	phpqt_ce_Qt_TextElideMode = register_class_Qt_TextElideMode();
 	phpqt_ce_Qt_AspectRatioMode = register_class_Qt_AspectRatioMode();
 	phpqt_ce_Qt_ScrollBarPolicy = register_class_Qt_ScrollBarPolicy();
 	phpqt_ce_Qt_TextFormat = register_class_Qt_TextFormat();

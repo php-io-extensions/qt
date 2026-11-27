@@ -41,5 +41,7 @@ it('refuses the call before an application, which Qt dies on without the refusal
     'a pixmap from an image' => ['qguiapp-pixmap-from-image',
         '$bytes = new QByteArray(str_repeat("\0", 4), 4); QPixmap::fromImage(new QImage($bytes->pointer(), 1, 1, 4, QImage\Format::RGB32)); return "built";',
         PROBE_SIGABRT],
+    // Site qguiapp-web-engine-console-page: Qt WebEngine qFatals with no QGuiApplication (it reaches QFontDatabase).
+    'a console page' => ['qguiapp-web-engine-console-page', 'new QWebEngineConsolePage(fn () => null); return "built";', PROBE_SIGABRT],
     'a Vulkan instance created' => ['qguiapp-vulkan-create', '(new QVulkanInstance())->create(); return "built";', PROBE_SIGSEGV],
 ]);

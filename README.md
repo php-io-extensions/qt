@@ -1,23 +1,109 @@
-# ext-qt
+<div align="center" id="header">
+
+<h1>ext-qt</h1>
+
+<h3>Qt 6 bound 1:1 into PHP 8.4+</h3>
+
 
 [![CI](https://img.shields.io/github/actions/workflow/status/php-io-extensions/qt/ci.yml?style=flat-square&label=CI)](https://github.com/php-io-extensions/qt/actions/workflows/ci.yml)
-[![Qt API](https://img.shields.io/badge/Qt_API-7.2%25_%28819%2F11435%29-blue?style=flat-square)](SUPPORT.md)
+[![Qt API](https://img.shields.io/badge/Qt_API-7.2%25_%28826%2F11435%29-blue?style=flat-square)](SUPPORT.md)
+[![Packagist](https://img.shields.io/packagist/v/php-io-extensions/qt?style=flat-square)](https://packagist.org/packages/php-io-extensions/qt)
+[![PHP](https://img.shields.io/packagist/dependency-v/php-io-extensions/qt/php?style=flat-square&label=PHP)](https://packagist.org/packages/php-io-extensions/qt)
+[![License](https://img.shields.io/github/license/php-io-extensions/qt?style=flat-square)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-linux_%7C_macos-blue?style=flat-square&logo=linux&logoColor=white)](#requirements)
+[![OKF](https://img.shields.io/badge/OKF-0.2-6f42c1?style=flat-square&label=knowledge%20bundle)](.okf/index.md)
+[![PIE](https://img.shields.io/badge/PIE-installable-4f5b93?style=flat-square&logo=php&logoColor=white)](https://github.com/php/pie)
 
-1:1 PHP bindings of Qt 6, written directly in C++ against the Zend API. Each
-PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`,
-…) and each method is one Qt call. Nested C++ scopes become PHP namespaces:
-`Qt::TimerType` is `Qt\TimerType`, `QMetaObject::Connection` is
-`QMetaObject\Connection`. Qt's value classes (`QPoint`, `QSize`, `QRect`,
-`QDate`, `QKeySequence`, `QUrl`, …) are PHP value objects. No defaults Qt lacks,
-no composites: behaviour is composed by the caller. What Qt does passes through
-(invalid values, nullptr as `null`, its warnings on stderr); the extension
-refuses a call only where a probe showed it crashes, and `tests/Probes` shows
-each one (`./configure --enable-qt --enable-qt-probes`).
+</div>
 
-Linux first, macOS too. Qt 6.4+ with the Multimedia and MultimediaWidgets
-modules, PHP 8.4+, NTS and ZTS.
+A desktop app that runs on Linux and macOS alike needs windows, menus, dialogs, layouts, text editors, tables and trees, video and web pages, drawn in each platform's style and fed by one event loop that also watches timers and sockets. Writing that once per platform is years of work before the first window looks right on either.
 
-## What is bound
+<b>Qt</b> is that framework. KDE Plasma and a long list of cross-platform applications are built on it: `QApplication` runs the event dispatcher, widgets hold the interface, layouts place them, signals carry what changed to whoever is connected, and Qt Multimedia and Qt WebEngine play video and show web pages. It is written in C++, and its documentation covers every class.
+
+<b>The only problem?</b> PHP can't reach it. This extension binds Qt 6 one to one in C++ against the Zend API, linked against the system's Qt. Each PHP class is its C++ counterpart (`QApplication`, `QTimer`, `QSocketNotifier`, …) and each method is one Qt call. Nested C++ scopes become PHP namespaces: `Qt::TimerType` is `Qt\TimerType`, `QMetaObject::Connection` is `QMetaObject\Connection`. Qt's value classes (`QPoint`, `QSize`, `QRect`, `QDate`, `QKeySequence`, `QUrl`, …) are PHP value objects. What Qt does passes through (invalid values, nullptr as `null`, its warnings on stderr); the extension refuses a call only where a probe showed it crashes. No defaults, no composites, no opinions: what Qt documents is what you call.
+
+## Basic usage
+
+Create the application, wait up to 16 ms for an event and dispatch it, and wake on a file descriptor:
+
+```php
+$argc = 1;
+$app = new QApplication($argc, [PHP_BINARY]);
+
+// Sleep up to 16 ms, or until an event arrives, dispatching what does.
+$budget = new QTimer();
+$budget->setSingleShot(true);
+$budget->start(16);
+QCoreApplication::processEvents(QEventLoop\ProcessEventsFlag::WAIT_FOR_MORE_EVENTS);
+
+// Wake on a descriptor (a kqueue or epoll fd works: it turns readable when its own events are pending).
+$notifier = new QSocketNotifier($fd, QSocketNotifier\Type::READ);
+QObject::connect($notifier, 'activated(QSocketDescriptor,QSocketNotifier::Type)', fn () => null);
+```
+
+## Requirements
+
+- Linux or macOS. `composer.json` lists those two families.
+- PHP 8.4 or newer, NTS or ZTS, with `phpize` and `php-config`.
+- A C++17 compiler and `pkg-config`.
+- Qt 6.4 or newer with its development files: Core, Gui, Widgets, OpenGL, OpenGLWidgets, Multimedia, MultimediaWidgets, WebEngineCore and WebEngineWidgets, found through `pkg-config`.
+- A Qt Multimedia backend plugin, which both installers require: AVFoundation on macOS (in Homebrew's qt), the FFmpeg plugin of `libqt6multimedia6` on Debian. On macOS the installer also requires the Vulkan headers, without which Qt declares no `QVulkanInstance`.
+
+```bash
+# Debian, Ubuntu, Raspberry Pi OS
+sudo apt install build-essential g++ pkg-config php8.4-dev qt6-base-dev qt6-base-dev-tools \
+    qt6-multimedia-dev libqt6multimedia6 libqt6multimediawidgets6 qt6-webengine-dev qt6-wayland
+
+# macOS: Xcode Command Line Tools, and Homebrew's PHP ships phpize and php-config
+xcode-select --install
+brew install pkgconf qt vulkan-headers php@8.4
+```
+
+## Installation
+
+### With PHP PIE (recommended)
+
+```bash
+pie install php-io-extensions/qt
+```
+
+### Manually (install script)
+
+```bash
+git clone https://github.com/php-io-extensions/qt.git
+cd qt
+
+./install-debian-trixie.sh             # Debian Trixie, Ubuntu 24.04+, Raspberry Pi OS: the php on PATH
+./install-macos.sh                     # Homebrew php@8.4 and php@8.4-zts
+./install-macos.sh /path/to/bin/php    # the macOS script takes specific PHP binaries
+```
+
+### Manually (phpize)
+
+```bash
+git clone https://github.com/php-io-extensions/qt.git
+cd qt
+phpize
+./configure --enable-qt
+make -j"$(nproc 2>/dev/null || sysctl -n hw.ncpu)"
+sudo make install
+```
+
+Then add `extension=qt.so` to your `php.ini`, or to a file in the scan directory `php --ini` reports.
+
+### Verify
+
+```console
+$ php --ri qt
+
+qt
+
+qt support => enabled
+Version => 0.11.2
+Qt => 6.11.2 (built 6.11.2)
+```
+
+## API
 
 The calls that create the application, pump Qt's event dispatcher, sleep with a
 budget, wake a sleep, open and close windows, build menu bars, lay widgets out,
@@ -37,7 +123,7 @@ style them, drive the common controls and play video:
 | `QVulkanInstance` | constructor, `setVkInstance` (adopts a `VkInstance` address, e.g. ext-vulkan's `VkInstance::pointer()`), `create`, `isValid`, `errorCode`, `vkInstance`, `destroy`, static `surfaceForWindow` (a `VkSurfaceKHR` address). Present when Qt was built with Vulkan. On macOS set `QT_VULKAN_LIB` to the loader (`$(pkg-config --variable=libdir vulkan)/libvulkan.1.dylib`): Qt loads it by name and Homebrew's is outside dyld's search path |
 | `QMainWindow` | constructor, `menuBar`, `setMenuBar`, `centralWidget`, `setCentralWidget` |
 | `QMenuBar`, `QMenu` | constructors, `addMenu(title)`, `addAction`, `clear`, `isNativeMenuBar`, `setNativeMenuBar`; `title`, `setTitle`, `addSeparator`, `isEmpty`, `menuAction`, `popup(QPoint, ?QAction)` |
-| `QAction` | constructor, `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `isEnabled`, `setEnabled`, `isSeparator`, `setSeparator`, `menuRole`, `setMenuRole`, `shortcut`, `setShortcut` (`QKeySequence`), `trigger`, `toggle` |
+| `QAction` | constructor, `text`, `setText`, `setIcon` (`QIcon`), `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `isEnabled`, `setEnabled`, `isSeparator`, `setSeparator`, `menuRole`, `setMenuRole`, `shortcut`, `setShortcut` (`QKeySequence`), `trigger`, `toggle` |
 | `QDialog`, `QMessageBox`, `QFileDialog` | constructors, `open`, `isModal`, `setModal`, `result`, `done`, `accept`, `reject`; `text`, `setText`, `informativeText`, `setInformativeText`, `textFormat`, `setTextFormat` (`Qt\TextFormat`), `addButton` (`QMessageBox\ButtonRole`), `setDefaultButton`, `setEscapeButton`, `clickedButton`; `setFileMode`, `setAcceptMode`, `setOption` (`QFileDialog\FileMode`, `AcceptMode`, `Option`), `setDirectory`, `selectFile`, `selectedFiles` |
 | `QClipboard` | from `QGuiApplication::clipboard()` (null, with Qt's warning, before a `QGuiApplication`): `setText`, `text` (`QClipboard\Mode`) |
 | `QObject` (filters) | `installEventFilter`, `removeEventFilter` |
@@ -53,7 +139,7 @@ style them, drive the common controls and play video:
 | `QDesktopServices` | `openUrl(QUrl)` |
 | `QAbstractButton`, `QPushButton`, `QCheckBox` | constructors (text, parent), `text`, `setText`, `isCheckable`, `setCheckable`, `isChecked`, `setChecked`, `click`, `toggle`, push button `isDefault`, `setDefault`; signals `clicked(bool)`, `toggled(bool)` |
 | `QAbstractSlider`, `QSlider`, `QScrollBar` | QScrollBar constructor (orientation, parent), or a scroll area's `verticalScrollBar`, `horizontalScrollBar`; QSlider constructor (orientation, vertical by default as in Qt, parent), `minimum`, `maximum`, `setRange`, `value`, `setValue`, `orientation`, `setOrientation`; signal `valueChanged(int)` |
-| `QComboBox` | constructor, `addItem`, `addItems`, `clear`, `count`, `currentIndex`, `setCurrentIndex`, `currentText`, `itemText`, `isEditable`, `setEditable`, `lineEdit`, `setCompleter`, `insertPolicy`, `setInsertPolicy`, `setEditText`; signal `currentIndexChanged(int)` |
+| `QComboBox` | constructor, `addItem`, `addItems`, `clear`, `count`, `currentIndex`, `setCurrentIndex`, `currentText`, `itemText`, `setItemIcon` (`QIcon`), `isEditable`, `setEditable`, `lineEdit`, `setCompleter`, `insertPolicy`, `setInsertPolicy`, `sizeAdjustPolicy`, `setSizeAdjustPolicy`, `setEditText`; signal `currentIndexChanged(int)` |
 | `QCompleter`, `QAbstractItemModel`, `QStringListModel` | constructor (model, parent), `setWidget`, `completionMode`, `setCompletionMode`, `setCaseSensitivity`, `completionPrefix`, `setCompletionPrefix`, `complete(rect)`, `popup`; abstract, made through `QStringListModel`; constructor, `setStringList`, `stringList` |
 | `QToolButton`, `QIcon`, `QActionGroup` | constructor, `setMenu` (the menu is not taken: its owner outlives the button), `menu`, `popupMode`, `setPopupMode`, `toolButtonStyle`, `setToolButtonStyle`, `autoRaise`, `setAutoRaise`, `showMenu`; value: constructor (`QPixmap`), `isNull`; constructor, `addAction`, `checkedAction` |
 | Button icons, tab insert, wheel phase, widget points | `QAbstractButton` `setIcon`, `iconSize`, `setIconSize`; `QPushButton` `isFlat`, `setFlat`; `QTabWidget` `insertTab`; `QWheelEvent` `phase`; `QWidget` `mapToGlobal`, `accessibleName`, `setAccessibleName` |
@@ -63,6 +149,7 @@ style them, drive the common controls and play video:
 | `QTextLayout` | a block's (`QTextBlock::layout`, held by a cursor at the block's start): `setFormats`, `formats` of `QTextLayout\FormatRange` (public `start`, `length`, `format`) |
 | `QColor`, `QBrush`, `QPalette`, `QTextCharFormat`, `QTextCursor`, `QTextBlock`, `QTextEdit\ExtraSelection` | values: `QColor` (`isValid`), `QBrush` (colour, `Qt\BrushStyle`), `QPalette` (a copy from `QGuiApplication::palette()`; `color` by `QPalette\ColorRole`, whose `ACCENT` is Qt 6.6's), `QTextCharFormat` (`setForeground`, `setBackground`, `setProperty`, `boolProperty`, `hasProperty`; `QTextFormat::FULL_WIDTH_SELECTION`), `QTextCursor` (UTF-16 positions, `setPosition`, `movePosition` by `QTextCursor\MoveOperation`, `isNull`), `QTextBlock` (`isValid`, `layout`), `QTextEdit\ExtraSelection` (public `cursor`, `format`) |
 | `QFontDatabase` | `systemFont` |
+| `QFontMetricsF` | value: constructor (`QFont`), `ascent`, `descent`, `lineSpacing`, `averageCharWidth`, `horizontalAdvance`, `elidedText` (`Qt\TextElideMode`) |
 | `QDateEdit`, `QCalendarWidget` | constructor, `date`, `setDate`, `minimumDate`, `setMinimumDate` (`QDate`), `setCalendarPopup`, `calendarWidget`, `setDisplayFormat`; signal `dateChanged(QDate)` hands a `QDate` over |
 | `QProgressBar` | constructor, `minimum`, `maximum`, `setRange`, `value`, `setValue`, `setTextVisible`, `reset` |
 | `QFrame`, `QScrollArea` | constructors, `frameShape`, `setFrameShape`, `setFrameShadow`; `setWidget`, `widget`, `setWidgetResizable`, `setHorizontalScrollBarPolicy`, `setVerticalScrollBarPolicy`, `viewport`, `verticalScrollBar`, `horizontalScrollBar` |
@@ -79,9 +166,9 @@ style them, drive the common controls and play video:
 
 Enums: `QEventLoop\ProcessEventsFlag`, `Qt\TimerType`, `QSocketNotifier\Type`,
 `QAction\MenuRole`, `Qt\Orientation`, `Qt\AspectRatioMode`, `Qt\ScrollBarPolicy`,
-`Qt\ToolButtonStyle`, `Qt\CaseSensitivity`, `QComboBox\InsertPolicy`, `QCompleter\CompletionMode`, `QToolButton\ToolButtonPopupMode`,
+`Qt\ToolButtonStyle`, `Qt\CaseSensitivity`, `QComboBox\InsertPolicy`, `QComboBox\SizeAdjustPolicy`, `QCompleter\CompletionMode`, `QToolButton\ToolButtonPopupMode`,
 `QSizePolicy\Policy`, `QLineEdit\EchoMode`, `QFont\Weight`, `QTextCursor\MoveMode`, `QTextCursor\MoveOperation`, `QPlainTextEdit\LineWrapMode`,
-`QFontDatabase\SystemFont`, `Qt\TextInteractionFlag`, `QFrame\Shape`,
+`QFontDatabase\SystemFont`, `Qt\TextElideMode`, `Qt\TextInteractionFlag`, `QFrame\Shape`,
 `QFrame\Shadow`, `QAbstractItemView\SelectionBehavior`,
 `QAbstractItemView\SelectionMode`, `QAbstractItemView\ScrollHint`,
 `QTreeWidgetItem\ChildIndicatorPolicy`, `QMediaPlayer\PlaybackState`,
@@ -91,6 +178,8 @@ headers by `scripts/gen-enum.php`, `QEvent\Type`, `Qt\WidgetAttribute`,
 prefix; `DEAD_a` / `DEAD_A` keep the case that tells them apart). QFlags parameters (`alignment`) take the enum or an OR'd int.
 Function: `qVersion()`. The stubs in `stubs/` are the full declaration.
 
+### Signals
+
 Signals connect by the signature `SIGNAL()` spells, and the callable receives
 the signal's arguments:
 
@@ -99,7 +188,7 @@ QObject::connect($timer, 'timeout()', fn () => …);
 QObject::connect($notifier, 'activated(QSocketDescriptor,QSocketNotifier::Type)', fn (int $fd, int $type) => …);
 ```
 
-## Coverage
+### Coverage
 
 [SUPPORT.md](SUPPORT.md) lists every public member function name of the classes QtCore, QtGui and
 QtWidgets declare (signals, operators, deprecated members and the value classes the extension
@@ -111,37 +200,11 @@ php84 scripts/support.php           # writes SUPPORT.md and the badge
 php84 scripts/support.php --check   # exits 1 when either is stale
 ```
 
-## Example
-
-```php
-$argc = 1;
-$app = new QApplication($argc, [PHP_BINARY]);
-
-// Sleep up to 16 ms, or until an event arrives, dispatching what does.
-$budget = new QTimer();
-$budget->setSingleShot(true);
-$budget->start(16);
-QCoreApplication::processEvents(QEventLoop\ProcessEventsFlag::WAIT_FOR_MORE_EVENTS);
-
-// Wake on a descriptor (a kqueue or epoll fd works: it turns readable when its own events are pending).
-$notifier = new QSocketNotifier($fd, QSocketNotifier\Type::READ);
-QObject::connect($notifier, 'activated(QSocketDescriptor,QSocketNotifier::Type)', fn () => null);
-```
-
-## Install
-
-```bash
-bash install-debian-trixie.sh   # Debian, Ubuntu, Raspberry Pi OS (needs qt6-base-dev, qt6-multimedia-dev, libqt6multimediawidgets6, g++)
-bash install-macos.sh           # Homebrew php@8.4 and php@8.4-zts (needs brew install qt, which carries Multimedia)
-```
-
-Or with PIE: `pie install php-io-extensions/qt`.
-
-## Test
+## Running the test suite
 
 ```bash
 composer install
-php vendor/bin/pest
+XDEBUG_MODE=off php -d memory_limit=128M vendor/bin/pest
 php examples/smoke.php          # bridge: application, pump, sleep, wake; prints SMOKE_OK
 php examples/window-smoke.php   # window, menu bar, actions, close filter; prints SMOKE_OK
 ```
@@ -150,10 +213,13 @@ php examples/window-smoke.php   # window, menu bar, actions, close filter; print
 platform media backend: AVFoundation on macOS, the FFmpeg plugin of
 `libqt6multimedia6` on Debian.
 
-On Linux over SSH, export the session's `DISPLAY` (and `WAYLAND_DISPLAY` when
+Each kept refusal has a probe in `tests/Probes` that shows the crash it prevents;
+they run against a build configured with `./configure --enable-qt --enable-qt-probes`.
+
+Tests open windows: run them in a logged-in GUI session. On Linux over SSH, export the session's `DISPLAY` (and `WAYLAND_DISPLAY` when
 the `qt6-wayland` platform plugin is installed) first. Design notes live in the
 OKF bundle under `.okf/`.
 
 ## License
 
-MIT
+MIT. See [LICENSE](LICENSE). Qt is available under the LGPL-3.0, the GPL or a commercial licence; it is linked, not shipped.

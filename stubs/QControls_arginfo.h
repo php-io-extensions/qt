@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: 8b9789ddad75ebe4d026ad8483e7cb2e640e93c4 */
+ * Stub hash: 42e971b6c5388b95ebe429ed3920e13bd16bb82b */
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_class_QLabel___construct, 0, 0, 0)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, text, IS_STRING, 0, "\"\"")
@@ -232,6 +232,11 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_itemText, 0, 1, 
 	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setItemIcon, 0, 2, IS_VOID, 0)
+	ZEND_ARG_TYPE_INFO(0, index, IS_LONG, 0)
+	ZEND_ARG_OBJ_INFO(0, icon, QIcon, 0)
+ZEND_END_ARG_INFO()
+
 #define arginfo_class_QComboBox_isEditable arginfo_class_QLabel_wordWrap
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setEditable, 0, 1, IS_VOID, 0)
@@ -250,6 +255,13 @@ ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setInsertPolicy, 0, 1, IS_VOID, 0)
 	ZEND_ARG_OBJ_INFO(0, policy, QComboBox\\InsertPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_class_QComboBox_sizeAdjustPolicy, 0, 0, QComboBox\\SizeAdjustPolicy, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_class_QComboBox_setSizeAdjustPolicy, 0, 1, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO(0, policy, QComboBox\\SizeAdjustPolicy, 0)
 ZEND_END_ARG_INFO()
 
 #define arginfo_class_QComboBox_setEditText arginfo_class_QLabel_setText
@@ -855,12 +867,15 @@ ZEND_METHOD(QComboBox, currentIndex);
 ZEND_METHOD(QComboBox, setCurrentIndex);
 ZEND_METHOD(QComboBox, currentText);
 ZEND_METHOD(QComboBox, itemText);
+ZEND_METHOD(QComboBox, setItemIcon);
 ZEND_METHOD(QComboBox, isEditable);
 ZEND_METHOD(QComboBox, setEditable);
 ZEND_METHOD(QComboBox, lineEdit);
 ZEND_METHOD(QComboBox, setCompleter);
 ZEND_METHOD(QComboBox, insertPolicy);
 ZEND_METHOD(QComboBox, setInsertPolicy);
+ZEND_METHOD(QComboBox, sizeAdjustPolicy);
+ZEND_METHOD(QComboBox, setSizeAdjustPolicy);
 ZEND_METHOD(QComboBox, setEditText);
 ZEND_METHOD(QAbstractItemModel, __construct);
 ZEND_METHOD(QAbstractItemModel, rowCount);
@@ -1145,12 +1160,15 @@ static const zend_function_entry class_QComboBox_methods[] = {
 	ZEND_ME(QComboBox, setCurrentIndex, arginfo_class_QComboBox_setCurrentIndex, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, currentText, arginfo_class_QComboBox_currentText, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, itemText, arginfo_class_QComboBox_itemText, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, setItemIcon, arginfo_class_QComboBox_setItemIcon, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, isEditable, arginfo_class_QComboBox_isEditable, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, setEditable, arginfo_class_QComboBox_setEditable, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, lineEdit, arginfo_class_QComboBox_lineEdit, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, setCompleter, arginfo_class_QComboBox_setCompleter, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, insertPolicy, arginfo_class_QComboBox_insertPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, setInsertPolicy, arginfo_class_QComboBox_setInsertPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, sizeAdjustPolicy, arginfo_class_QComboBox_sizeAdjustPolicy, ZEND_ACC_PUBLIC)
+	ZEND_ME(QComboBox, setSizeAdjustPolicy, arginfo_class_QComboBox_setSizeAdjustPolicy, ZEND_ACC_PUBLIC)
 	ZEND_ME(QComboBox, setEditText, arginfo_class_QComboBox_setEditText, ZEND_ACC_PUBLIC)
 	ZEND_FE_END
 };
@@ -1538,6 +1556,25 @@ static zend_class_entry *register_class_QComboBox_InsertPolicy(void)
 	zval enum_case_INSERT_ALPHABETICALLY_value;
 	ZVAL_LONG(&enum_case_INSERT_ALPHABETICALLY_value, 6);
 	zend_enum_add_case_cstr(class_entry, "INSERT_ALPHABETICALLY", &enum_case_INSERT_ALPHABETICALLY_value);
+
+	return class_entry;
+}
+
+static zend_class_entry *register_class_QComboBox_SizeAdjustPolicy(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("QComboBox\\SizeAdjustPolicy", IS_LONG, NULL);
+
+	zval enum_case_ADJUST_TO_CONTENTS_value;
+	ZVAL_LONG(&enum_case_ADJUST_TO_CONTENTS_value, 0);
+	zend_enum_add_case_cstr(class_entry, "ADJUST_TO_CONTENTS", &enum_case_ADJUST_TO_CONTENTS_value);
+
+	zval enum_case_ADJUST_TO_CONTENTS_ON_FIRST_SHOW_value;
+	ZVAL_LONG(&enum_case_ADJUST_TO_CONTENTS_ON_FIRST_SHOW_value, 1);
+	zend_enum_add_case_cstr(class_entry, "ADJUST_TO_CONTENTS_ON_FIRST_SHOW", &enum_case_ADJUST_TO_CONTENTS_ON_FIRST_SHOW_value);
+
+	zval enum_case_ADJUST_TO_MINIMUM_CONTENTS_LENGTH_WITH_ICON_value;
+	ZVAL_LONG(&enum_case_ADJUST_TO_MINIMUM_CONTENTS_LENGTH_WITH_ICON_value, 2);
+	zend_enum_add_case_cstr(class_entry, "ADJUST_TO_MINIMUM_CONTENTS_LENGTH_WITH_ICON", &enum_case_ADJUST_TO_MINIMUM_CONTENTS_LENGTH_WITH_ICON_value);
 
 	return class_entry;
 }

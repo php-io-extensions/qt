@@ -27,6 +27,8 @@ namespace {
 
         public function setText(string $text): void {}
 
+        public function setIcon(QIcon $icon): void {}
+
         public function isCheckable(): bool {}
 
         public function setCheckable(bool $checkable): void {}

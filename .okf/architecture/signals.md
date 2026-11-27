@@ -5,7 +5,7 @@ description: String-signature connect through a moc-free dynamic slot; argument 
 resource: src/runtime.cpp
 tags: [qt, signals, callbacks]
 status: draft
-generated: { by: claude-fable/5.2, at: 2026-11-13T00:54:06Z }
+generated: { by: claude-opus/5.5, at: 2026-11-27T00:00:00Z }
 sources:
   - id: runtime
     resource: src/runtime.cpp
@@ -19,7 +19,7 @@ sources:
 
 `PhpSlot` = a `QObject` subclass holding a PHP callable. `QObject::connect()` normalises the signature (`QMetaObject::normalizedSignature`), finds the signal with `indexOfSignal`, and calls `QMetaObject::connect(sender, index, slot, QObject::staticMetaObject.methodCount(), Qt::DirectConnection)`. Activation arrives in `PhpSlot::qt_metacall`; after `QObject::qt_metacall` subtracts QObject's own methods the id is 0, which invokes the callable. No moc, no generated metaobject. A signal the class lacks gets what Qt's own string connect gives: Qt's warning and the invalid connection.[^qobject]
 
-Arguments, typed by the signal's `QMetaMethod::parameterMetaType`: bool, integer and float types as PHP scalars; `QString`/`QByteArray` as strings; `QDate`, `QPoint`, `QPointF`, `QSize`, `QRect`, `QUrl`, `QKeySequence`, `QBrush`, `QColor`, `QFont` and `QPixmap` as copies in their PHP classes (`QDateEdit::dateChanged` hands a `QDate` over); `QSocketDescriptor` as the int fd; enums as ints (`QMediaPlayer::MediaStatus` arrives as the `QMediaPlayer\MediaStatus` case value); `QObject*` boxed; `QTreeWidgetItem*` as the wrapper PHP holds for the item (a new tree-owned one if none), null as null. The same conversion (`phpqt_variant_to_zval`) reads a `QVariant`: `QTreeWidgetItem::data()` returns what it holds, null when it holds nothing or a type with no PHP class. A `QObject*` that is the emitting sender maps to the sender's own wrapper even during `destroyed()`, when Qt has already cleared its QPointers.[^runtime]
+Arguments, typed by the signal's `QMetaMethod::parameterMetaType`: bool, integer and float types as PHP scalars; `QString`/`QByteArray` as strings; `QDate`, `QPoint`, `QPointF`, `QSize`, `QRect`, `QUrl`, `QKeySequence`, `QBrush`, `QColor`, `QFont` and `QPixmap` as copies in their PHP classes (`QDateEdit::dateChanged` hands a `QDate` over); `QSocketDescriptor` as the int fd; enums as ints (`QMediaPlayer::MediaStatus` arrives as the `QMediaPlayer\MediaStatus` case value); `QObject*` boxed; `QTreeWidgetItem*` as the wrapper PHP holds for the item (a new tree-owned one if none), null as null; `QVariantList` and `QStringList` as lists, `QVariantMap` and `QVariantHash` as arrays by key, each value converted the same way. The same conversion (`phpqt_variant_to_zval`) reads a `QVariant`: `QTreeWidgetItem::data()` returns what it holds, null when it holds nothing or a type with no PHP class. A `QObject*` that is the emitting sender maps to the sender's own wrapper even during `destroyed()`, when Qt has already cleared its QPointers.[^runtime]
 
 Lifetime:
 
